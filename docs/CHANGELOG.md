@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.1.12 - 2026-01-17
+- Append BONUS CAC practical appendix slides (B1&ndash;B10) to GRADE deck (append-only).
+
 ## v0.1.11 - 2026-01-17
 - Add LOCK shielding for OSTEOPOROSE (read-only rule + file banners).
 
