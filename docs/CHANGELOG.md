@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.1.4 - 2026-01-17
+- Fix GRADE navigation: keyboard and button navigation now works reliably (defer script, window keydown, tabindex).
+
 ## v0.1.3 - 2026-01-17
 - Insert real content for OSTEOPOROSE and GRADE (replace placeholders).
 

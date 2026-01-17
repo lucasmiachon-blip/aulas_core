@@ -92,8 +92,13 @@
 
     showSlide(slides, active);
     wireButtons();
-    document.addEventListener('keydown', onKeyDown);
+    window.addEventListener('keydown', onKeyDown);
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+  // Use defer or DOMContentLoaded for safety
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
