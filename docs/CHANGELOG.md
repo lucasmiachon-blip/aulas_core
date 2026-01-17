@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.1.7 - 2026-01-17
+- Create style lab for theme/table components using teste.html (no deck changes).
+
 ## v0.1.6 - 2026-01-17
 - Normalize GRADE encoding (remove mojibake/control chars)
 - Auto-fit slides to viewport to prevent clipping
