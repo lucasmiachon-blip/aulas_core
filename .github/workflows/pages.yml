@@ -30,11 +30,35 @@ jobs:
 
       - name: Prepare pages content
         run: |
-          mkdir -p _site
-          cp -r OSTEOPOROSE/dist/* _site/
-          mkdir -p _site/src
-          cp -r OSTEOPOROSE/src/css _site/src/
-          cp -r OSTEOPOROSE/src/js _site/src/
+          mkdir -p _site/osteoporose _site/grade
+          cp -r OSTEOPOROSE/dist/* _site/osteoporose/
+          cp -r GRADE/dist/* _site/grade/
+          mkdir -p _site/osteoporose/src _site/grade/src
+          cp -r OSTEOPOROSE/src/css _site/osteoporose/src/
+          cp -r OSTEOPOROSE/src/js _site/osteoporose/src/
+          cp -r GRADE/src/css _site/grade/src/
+          cp -r GRADE/src/js _site/grade/src/
+          sed -i 's|href="../src/|href="./src/|g' _site/osteoporose/index.html
+          sed -i 's|src="../src/|src="./src/|g' _site/osteoporose/index.html
+          sed -i 's|href="../src/|href="./src/|g' _site/grade/index.html
+          sed -i 's|src="../src/|src="./src/|g' _site/grade/index.html
+          cat > _site/index.html << 'EOF'
+          <!doctype html>
+          <html lang="pt-BR">
+            <head>
+              <meta charset="UTF-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <title>aulas</title>
+            </head>
+            <body>
+              <h1>aulas</h1>
+              <ul>
+                <li><a href="./osteoporose/">OSTEOPOROSE</a></li>
+                <li><a href="./grade/">GRADE</a></li>
+              </ul>
+            </body>
+          </html>
+          EOF
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
