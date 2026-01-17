@@ -1,6 +1,6 @@
 /*
   blocks.css
-  Estilos para "blocos" reutilizáveis.
+  Estilos para “blocos” reutilizáveis.
   Mantido intencionalmente simples nesta fase (placeholder).
 */
 
@@ -19,78 +19,3 @@
 .block__body {
   color: var(--text);
 }
-
-/* Table Styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    margin: 2vw 0;
-    background: white;
-    border-radius: 0.8vw;
-    overflow: hidden;
-    box-shadow: 0 0.2vw 1vw rgba(0,0,0,0.08);
-}
-
-thead {
-    background: var(--navy);
-}
-
-thead th {
-    font-family: 'Lato', sans-serif;
-    font-size: 1vw;
-    font-weight: 700;
-    color: white;
-    text-align: left;
-    padding: 1.2vw 1.5vw;
-    border-bottom: 0.3vw solid var(--gold);
-    word-wrap: break-word;
-    overflow-wrap: anywhere;
-}
-
-tbody tr {
-    border-bottom: 1px solid var(--border);
-}
-
-tbody tr:nth-child(even) {
-    background: #FAFAFA;
-}
-
-tbody td {
-    font-family: 'Lato', sans-serif;
-    font-size: 1vw;
-    padding: 1.2vw 1.5vw;
-    color: var(--text);
-    word-wrap: break-word;
-    overflow-wrap: anywhere;
-}
-
-/* Callout */
-.callout {
-    background: #F0F0F0;
-    border-left: 0.4vw solid var(--navy);
-    padding: 1.5vw 2vw;
-    margin: 2vw 0;
-    border-radius: 0.4vw;
-}
-
-.callout p {
-    margin: 0;
-    font-weight: 600;
-    color: var(--navy);
-}
-
-/* Badge */
-.badge {
-    display: inline-block;
-    padding: 0.4vw 0.8vw;
-    border-radius: 0.3vw;
-    font-size: 0.85vw;
-    font-weight: 900;
-    color: white;
-    background: var(--navy);
-    text-transform: uppercase;
-    letter-spacing: 0.05vw;
-}
-
-.badge-row { display: flex; gap: 0.5vw; margin-top: 1.5vw; }

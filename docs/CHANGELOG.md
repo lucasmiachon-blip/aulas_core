@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.1.9 - 2026-01-17
+- Revert OSTEOPOROSE CSS theme changes; keep theme only in GRADE.
+
 ## v0.1.8 - 2026-01-17
 - Apply standard theme (navy/gold/off-white, Georgia/Lato) + table/callout/badge components (no content changes).
 

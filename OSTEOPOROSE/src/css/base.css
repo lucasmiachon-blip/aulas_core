@@ -1,10 +1,10 @@
 :root {
-  --bg: #F9F8F4;      /* Off-white */
-  --navy: #0B1320;    /* Navy */
-  --gold: #DDB944;    /* Gold */
-  --text: #222;       /* Text color */
-  --muted: #666;      /* Muted text */
-  --border: #E9ECEF;  /* Border color */
+  --bg: #fbfbf7;       /* off-white */
+  --navy: #0b1f3b;     /* navy */
+  --gold: #c9a227;     /* gold */
+  --text: #111827;     /* near-black */
+  --muted: #6b7280;    /* gray */
+  --border: #e5e7eb;   /* light gray */
 }
 
 * { box-sizing: border-box; }
@@ -22,35 +22,14 @@ body {
   line-height: 1.4;
 }
 
-h1 {
-  font-family: 'Georgia', serif;
-  font-size: 8.5vw;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 2vw;
-}
-
-h2 {
-  font-family: 'Georgia', serif;
-  font-size: 3.5vw;
-  color: var(--navy);
-  line-height: 1.1;
-  margin: 2vw 0 1.5vw 0;
-  font-weight: 400;
-}
-
-h3 {
+h1, h2, h3 {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: var(--navy);
   margin: 0 0 0.6rem 0;
 }
 
 p {
-  font-family: 'Lato', sans-serif;
-  font-size: 1.4vw;
-  line-height: 1.6;
-  color: var(--text);
-  margin: 0 0 1.5vw 0;
+  margin: 0 0 0.8rem 0;
 }
 
 .deck {
