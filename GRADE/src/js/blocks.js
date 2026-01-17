@@ -2,43 +2,66 @@
     'use strict';
     
     const slides = document.querySelectorAll('.slide');
+    if (!slides.length) return;
+    
     let current = 0;
     
-    document.getElementById('totalSlides').textContent = slides.length;
+    // Update counter safely
+    const totalSlidesEl = document.getElementById('totalSlides');
+    if (totalSlidesEl) totalSlidesEl.textContent = slides.length;
     
     function show(index) { 
         slides.forEach(s => s.classList.remove('active')); 
         slides[index].classList.add('active'); 
         current = index;
-        document.getElementById('currentSlide').textContent = current + 1;
+        
+        const currentSlideEl = document.getElementById('currentSlide');
+        if (currentSlideEl) currentSlideEl.textContent = current + 1;
         
         // Animar barras quando entrar no Slide 4 (Interativo)
         if(index === 3) {
             setTimeout(() => {
-                document.getElementById('bar-cac').style.width = '65%';
-                document.getElementById('bar-grade').style.width = '35%';
+                const barCac = document.getElementById('bar-cac');
+                const barGrade = document.getElementById('bar-grade');
+                if (barCac) barCac.style.width = '65%';
+                if (barGrade) barGrade.style.width = '35%';
             }, 300);
         }
     }
     
-    document.getElementById('nextBtn').onclick = () => { 
+    function moveNext() {
         current = (current + 1) % slides.length; 
         show(current); 
-    };
+    }
     
-    document.getElementById('prevBtn').onclick = () => { 
+    function movePrev() {
         current = (current - 1 + slides.length) % slides.length; 
         show(current); 
-    };
+    }
     
-    document.onkeydown = (e) => { 
-        if(e.key === 'ArrowRight' || e.key === ' ') {
+    // Wire buttons safely
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    
+    if (nextBtn) {
+        nextBtn.onclick = moveNext;
+    }
+    if (prevBtn) {
+        prevBtn.onclick = movePrev;
+    }
+    
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => { 
+        if(e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
             e.preventDefault();
-            document.getElementById('nextBtn').click();
+            moveNext();
         }
-        if(e.key === 'ArrowLeft') {
+        if(e.key === 'ArrowLeft' || e.key === 'PageUp') {
             e.preventDefault();
-            document.getElementById('prevBtn').click();
+            movePrev();
         }
-    };
+    });
+    
+    // Initialize
+    show(0);
 })();
