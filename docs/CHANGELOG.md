@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.1.6 - 2026-01-17
+- Normalize GRADE encoding (remove mojibake/control chars)
+- Auto-fit slides to viewport to prevent clipping
+
 ## v0.1.5 - 2026-01-17
 - Fix GRADE doctype (standards mode)
 - Fix visible encoding/mojibake (pt-BR accents + arrows)

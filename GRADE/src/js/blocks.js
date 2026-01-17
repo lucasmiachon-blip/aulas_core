@@ -10,6 +10,37 @@
     const totalSlidesEl = document.getElementById('totalSlides');
     if (totalSlidesEl) totalSlidesEl.textContent = slides.length;
     
+    function fitActiveSlide() {
+        const viewport = document.getElementById('viewport');
+        const activeSlide = document.querySelector('.slide.active');
+        
+        if (!viewport || !activeSlide) return;
+        
+        // Reset transform before measuring
+        activeSlide.style.transform = '';
+        activeSlide.style.transformOrigin = 'top left';
+        
+        // Get viewport dimensions
+        const vw = viewport.clientWidth;
+        const vh = viewport.clientHeight;
+        
+        // Get slide dimensions
+        const sw = activeSlide.scrollWidth;
+        const sh = activeSlide.scrollHeight;
+        
+        // Calculate scale to fit
+        const scale = Math.min(1, vw / sw, vh / sh);
+        
+        if (scale < 1) {
+            // Calculate offsets to center
+            const offsetX = (vw - sw * scale) / 2;
+            const offsetY = (vh - sh * scale) / 2;
+            
+            // Apply transform
+            activeSlide.style.transform = `translate(${offsetX / scale}px, ${offsetY / scale}px) scale(${scale})`;
+        }
+    }
+    
     function show(index) { 
         slides.forEach(s => s.classList.remove('active')); 
         slides[index].classList.add('active'); 
@@ -17,6 +48,9 @@
         
         const currentSlideEl = document.getElementById('currentSlide');
         if (currentSlideEl) currentSlideEl.textContent = current + 1;
+        
+        // Fit slide to viewport
+        setTimeout(() => fitActiveSlide(), 10);
         
         // Animar barras quando entrar no Slide 4 (Interativo)
         if(index === 3) {
@@ -64,4 +98,9 @@
     
     // Initialize
     show(0);
+    
+    // Fit on window resize
+    window.addEventListener('resize', () => {
+        fitActiveSlide();
+    });
 })();
