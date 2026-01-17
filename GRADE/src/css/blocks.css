@@ -1,0 +1,21 @@
+/*
+  blocks.css
+  Estilos para “blocos” reutilizáveis.
+  Mantido intencionalmente simples nesta fase (placeholder).
+*/
+
+.block {
+  border-left: 4px solid var(--gold);
+  padding: 12px 14px;
+  background: rgba(11, 31, 59, 0.03);
+}
+
+.block__title {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: var(--navy);
+  margin: 0 0 6px 0;
+}
+
+.block__body {
+  color: var(--text);
+}
