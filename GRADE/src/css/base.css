@@ -1,17 +1,26 @@
 :root {
-    --navy: #0B1320; /* Midnight Navy */
-    --gold: #DDB944; /* Refined Gold */
-    --bg: #F9F8F4;   /* Ivory Luminous */
-    --teal: #1F766E; /* Clinical Teal */
+    --bg: #F9F8F4;      /* Off-white */
+    --navy: #0B1320;    /* Navy */
+    --gold: #DDB944;    /* Gold */
+    --text: #222;       /* Text color */
+    --muted: #666;      /* Muted text */
+    --border: #E9ECEF;  /* Border color */
+    --teal: #1F766E;    /* Clinical Teal */
     --blue: #2563EB;
     --white: #FFFFFF;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
-    background: #111; font-family: 'Lato', sans-serif; overflow: hidden; 
-    display: flex; justify-content: center; align-items: center; 
-    height: 100vh; width: 100vw;
+    background: var(--navy);
+    font-family: 'Lato', sans-serif;
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    height: 100vh;
+    width: 100vw;
+    color: var(--text);
 }
 
 /* Viewport 16:9 Anti-Corte */
@@ -31,17 +40,33 @@ body {
 .bg-navy { background: var(--navy) !important; color: white !important; justify-content: center !important; }
 
 /* Tipografia Magna */
-h1 { font-family: 'Georgia', serif; font-size: 8.5vw; color: var(--gold); line-height: 1; }
-h2 { 
-    font-family: 'Georgia', serif; 
-    font-size: 3.5vw; 
-    color: var(--navy); 
-    line-height: 1.1; 
-    margin: 0 0 1.5vw 0; 
+h1 {
+    font-family: 'Georgia', serif;
+    font-size: 8.5vw;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 2vw;
+}
+
+h2 {
+    font-family: 'Georgia', serif;
+    font-size: 3.5vw;
+    color: var(--navy);
+    line-height: 1.1;
+    margin: 2vw 0 1.5vw 0;
     font-weight: 400;
 }
+
+p {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.4vw;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 1.5vw;
+}
+
 .label-gold { color: var(--gold); font-weight: 900; font-size: 1vw; letter-spacing: 0.4vw; text-transform: uppercase; margin-bottom: 1vw; }
-.body-literal { font-size: 1.4vw; line-height: 1.5; color: #222; }
+.body-literal { font-size: 1.4vw; line-height: 1.5; color: var(--text); }
 
 /* Grid de 3 Colunas (Conforme o Desenho) */
 .grid-main { 

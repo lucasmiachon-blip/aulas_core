@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.1.8 - 2026-01-17
+- Apply standard theme (navy/gold/off-white, Georgia/Lato) + table/callout/badge components (no content changes).
+
 ## v0.1.7 - 2026-01-17
 - Create style lab for theme/table components using teste.html (no deck changes).
 
