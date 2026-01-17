@@ -1,4 +1,7 @@
 /*
+LOCK: OSTEOPOROSE is frozen. Do not edit until modularization phase. Only Lucas can authorize changes.
+*/
+/*
   navigation.js
   Navegação básica para decks HTML.
   - Setas (←/→), PageUp/PageDown e Espaço

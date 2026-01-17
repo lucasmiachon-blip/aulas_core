@@ -1,5 +1,8 @@
 # Changelog
 
+## v0.1.11 - 2026-01-17
+- Add LOCK shielding for OSTEOPOROSE (read-only rule + file banners).
+
 ## v0.1.10 - 2026-01-17
 - Revert OSTEOPOROSE to pre-theme state (no changes intended for this course yet).
 

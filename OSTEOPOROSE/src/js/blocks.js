@@ -1,6 +1,9 @@
 /*
+LOCK: OSTEOPOROSE is frozen. Do not edit until modularization phase. Only Lucas can authorize changes.
+*/
+/*
   blocks.js
-  Placeholder para lógica de “blocos” reutilizáveis.
+  Placeholder para lógica de "blocos" reutilizáveis.
 
   Regras:
   - Não refatorar blocos marcados como LOCK.

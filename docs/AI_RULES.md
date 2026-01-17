@@ -1,5 +1,7 @@
 # Regras de IA (obrigatórias)
 
+- **OSTEOPOROSE/ is read-only until explicitly unlocked.**
+- **Any changes to OSTEOPOROSE require explicit user permission in the chat.**
 - **Não inventar números.**
 - **Não inventar citações.**
 - Se faltar informação, usar **`[TBD]`**.
