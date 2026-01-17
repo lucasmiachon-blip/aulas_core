@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.5 - 2026-01-17
+- Fix GRADE doctype (standards mode)
+- Fix visible encoding/mojibake (pt-BR accents + arrows)
+- Improve 16:9 viewport fit
+
 ## v0.1.4 - 2026-01-17
 - Fix GRADE navigation: keyboard and button navigation now works reliably (defer script, window keydown, tabindex).
 

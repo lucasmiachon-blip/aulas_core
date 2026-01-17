@@ -16,9 +16,13 @@ body {
 
 /* Viewport 16:9 Anti-Corte */
 #viewport {
-    width: 100vw; height: 56.25vw; 
-    max-height: 100vh; max-width: 177.78vh; 
-    background: var(--bg); position: relative; overflow: hidden; display: flex;
+    width: min(100vw, calc(100vh * 16 / 9));
+    height: min(100vh, calc(100vw * 9 / 16));
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--bg);
+    position: relative;
+    display: flex;
     box-shadow: 0 0 100px rgba(0,0,0,0.5);
 }
 
