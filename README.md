@@ -197,3 +197,26 @@ Abra diretamente: `GRADE/src/index.html` no navegador
 
 **Última atualização:** Janeiro 2026
 **Versão da aula GRADE:** Em desenvolvimento (v0.1-alpha)
+
+---
+
+## CLAUDE_ROLE (Executor Policy)
+
+### Contract (must follow)
+1) Read FIRST: `README.md`, `docs/AI_RULES.md`, `docs/WORKFLOW.md`, `docs/STYLEGUIDE.md`, `docs/QUALITY.md`.
+2) Work ONLY on branch `main`. **Never create branches.**
+3) **Never request, print, store, or leak tokens/credentials** in commits, files, or handoffs (PAT, cookies, auth URLs, headers, logs with secrets). If prompted for auth in permanent docs, STOP.
+4) `OSTEOPOROSE/` is **LOCK (read-only)** until explicitly unlocked by the user. Do not edit anything under `OSTEOPOROSE/`.
+5) Changes must be **small and auditable**. **One objective per commit.**
+6) Every commit MUST update `docs/CHANGELOG.md`.
+7) Never invent numbers or citations. If missing, use **[TBD]**.
+
+### Allowed operations
+- **Technical fixes (GRADE only):** encoding cleanup, asset paths, slide fit, navigation robustness.
+- **Bonus slides (GRADE only):** append-only slides at the end (no edits above).
+
+### Output required (when asked)
+- Commit list (hash + message)
+- Diffstat (files changed)
+- For slides: **HTML block containing ONLY the new slides**
+- Validation checklist (local + Pages)
