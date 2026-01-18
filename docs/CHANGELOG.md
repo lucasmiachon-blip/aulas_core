@@ -15,6 +15,15 @@
   - Rodapé legível em todas as telas (9-12px)
   - ~45 linhas, não altera layout dos slides
 
+- **🔤 GRADE: higiene de texto (encoding + microcopy PT/EN):**
+  - Corrige encoding issue: "IMPRECISÁÆ'O" → "IMPRECISÃO"
+  - Slide CAC: "Bleeds raros" → "sangramentos raros"
+  - Slide Indirectness: "Four PICO Components" → "Componentes do PICO"
+  - Traduz PICO: Population/Intervention/Comparator/Outcome → População/Intervenção/Comparador/Desfecho
+  - "Warranty Period" → "Janela de reavaliação (warranty)"
+  - Padroniza "IC95%" → "IC 95%" (4 ocorrências)
+  - Números mantidos intactos
+
 ### Added
 - **🔀 Pages: redirects para compatibilidade (/GRADE/ e /GRADE/src/ → /grade/):**
   - Workflow cria redirects automáticos em _site/GRADE/ e _site/GRADE/src/
