@@ -2,6 +2,25 @@
 
 ## [Unreleased]
 
+### Changed
+- **📋 GRADE: recriar slide 14 - Aplicação GRADE Ácido Bempedóico:**
+  - Slide 14 recriado seguindo padrão visual CAC (2 colunas: recomendações + gramática GRADE)
+  - 2 recomendações ipsis literis da Diretriz SBC 2025:
+    1. Intolerância + ezetimiba (FORTE/ALTA)
+    2. Associação estatina + ezetimiba → adicionar anti-PCSK9 ou bempedóico (FORTE/ALTA)
+  - Box Gramática GRADE completo:
+    - Baseline: ⊕⊕⊕⊕ ALTA (CLEAR Outcomes RCT N=13.970)
+    - Downgrade: (-1) domínio IMPRECISÃO (IC 95% toca MID 0,79-0,96)
+    - Resultado final: ⊕⊕⊕⊝ MODERADA
+    - Análise crítica: Por que FORTE apesar de certeza MODERADA? (benefício CV claro, alternativa = sem terapia, valores paciente, perfil segurança)
+  - Paleta oficial 100% respeitada (var(--navy), var(--gold), var(--teal), var(--blue), var(--white))
+  - Fontes auditáveis: Nissen SE et al. NEJM 2023 + Rached FH et al. Arq Bras Cardiol. 2025
+  - Layout responsivo grid 2 colunas (1.2fr 0.8fr)
+  - UTF-8 preservado
+  - Zero fabricação de dados
+
+## [Unreleased]
+
 ### Added
 - **📚 MÓDULO SAMS + ÁCIDO BEMPEDÓICO (7 slides antes do PREVENT):**
   - Slide 13A: Recomendações SBC 2025 (tabela GRADE força/certeza)
