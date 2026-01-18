@@ -3,6 +3,18 @@
 ## [Unreleased]
 
 ### Added
+- **🎯 Nova seção PREVENT completa (Slides 14-24):** 11 slides detalhados sobre análise GRADE de calculadoras de risco cardiovascular
+  - Slide 14: Título - PREVENT Análise GRADE
+  - Slide 15: Recomendações Diretrizes (SBC 2025, AHA, ESC) ✅ MANTIDO PERFEITO
+  - Slide 16: GRADE Prognósticos ≠ Intervenções (certeza inicial ALTA)
+  - Slide 17: GRADE - Calibração (Paper #2 - Khan et al. 2024)
+  - Slide 18: GRADE - Discriminação (Paper #8 - C-statistic 0.78-0.82)
+  - Slide 19: Comparativo Calculadoras (PREVENT, PCE, SCORE2, QRISK3)
+  - Slide 20: 🚨 Limitações - Subgrupos Baixa Performance (jovens, hispânicos, DM1)
+  - Slide 21: 🚨 Quando PREVENT Subestima (CAC, Lp(a), história familiar ausentes)
+  - Slide 22: Quando Usar Reclassificadores - Algoritmo CAC
+  - Slide 23: PROBAST + TRIPOD+AI (ferramentas metodológicas)
+  - Slide 24: Conclusões & Próximos Passos
 - **🚨 Protocolo Obrigatório de Entrada no README.md:** Bloco de destaque extremo no topo do README instruindo Claude a SEMPRE ler `docs/CLAUDE_ROLE.md` PRIMEIRO antes de qualquer ação
 - Regras críticas destacadas: nunca expor tokens/chaves, sempre apresentar plano, sempre esperar aprovação
 - Documentação completa do papel de Claude em `docs/CLAUDE_ROLE.md`
@@ -12,7 +24,12 @@
 - Documentação de problemas históricos para evitar repetição
 
 ### Changed  
+- **Substituídos slides 14-18 antigos** por nova seção PREVENT completa (11 slides) com paleta do projeto (navy, gold, teal)
 - README.md agora documenta Claude como desenvolvedor/guardião/tutor
+- Workflow inclui checklist de entrada e verificação de encoding
+
+### Removed
+- Slide 26 (Variáveis Ausentes) removido conforme solicitado - conteúdo integrado ao Slide 21
 
 ---
 
