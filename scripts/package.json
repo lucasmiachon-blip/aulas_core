@@ -1,0 +1,22 @@
+{
+  "name": "grade-pdf-export",
+  "version": "1.0.0",
+  "description": "Script para exportar slides do GRADE para PDF usando Playwright",
+  "main": "export-grade-pdf.js",
+  "scripts": {
+    "export-grade": "node export-grade-pdf.js",
+    "install-browser": "npx playwright install chromium"
+  },
+  "keywords": [
+    "pdf",
+    "export",
+    "playwright",
+    "slides",
+    "reveal.js"
+  ],
+  "author": "Lucas Miachon",
+  "license": "MIT",
+  "dependencies": {
+    "playwright": "^1.40.0"
+  }
+}
