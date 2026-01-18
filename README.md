@@ -200,6 +200,35 @@ Abra diretamente: `GRADE/src/index.html` no navegador
 
 ---
 
+
+## 📝 SESSION HANDOFFS
+
+**IMPORTANTE:** Sempre leia o handoff da última sessão antes de iniciar trabalho.
+
+### Localização
+**Arquivo:** `docs/HANDOFF.md`
+
+### Quando Ler
+- ✅ No início de cada nova sessão
+- ✅ Antes de fazer qualquer commit
+- ✅ Ao retomar trabalho após pausa
+
+### O Que Contém
+- Resumo da última sessão
+- Commits realizados
+- Mudanças aplicadas
+- Score atual
+- Próxima tarefa pendente
+- Avisos e lembretes
+
+### Como Usar
+```bash
+# Ler handoff (comando para Claude)
+view docs/HANDOFF.md
+```
+
+---
+
 ## CLAUDE_ROLE (Executor Policy)
 
 ### Contract (must follow)
