@@ -76,6 +76,11 @@
   }
 
   function init() {
+    // Guard: if .slide exists, don't initialize (blocks.js is handling it)
+    if (document.querySelector('.slide')) {
+      return;
+    }
+    
     var slides = getSlides();
     if (!slides.length) return;
 
