@@ -3,6 +3,20 @@
 ## [Unreleased]
 
 ### Changed
+- **🔧 GRADE: otimizar layout slides 18-21 (viewport + spacing):**
+  - Correções para melhor distribuição na janela 16:9
+  - h2 reduzido: 3.5vw → 3vw (títulos mais compactos)
+  - Banners headline: padding reduzido 20-40%
+  - Cards: padding reduzido 20-40% (1.5-1.8vw vs 2.5-3vw)
+  - Gap entre elementos: reduzido 20-40%
+  - Ícones: 15-25% menores (mais proporcionais)
+  - Font-sizes: redução geral de 15-20%
+  - Borders: 3px → 2px (mais sutis)
+  - Números-chave: mantidos legíveis (2vw)
+  - Hierarquia visual preservada
+  - Resultado: conteúdo cabe melhor no viewport, espaçamento equilibrado
+
+
 - **🎓 GRADE: refatoração andragógica slides 3-4 (Discriminação + Variáveis Ausentes):**
   - Slide 18 (Discriminação PREVENT):
     - Headline destacado: "Ganho do PREVENT foi na CALIBRAÇÃO, não na discriminação"
