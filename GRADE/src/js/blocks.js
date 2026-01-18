@@ -4,12 +4,23 @@
     const slides = document.querySelectorAll('.slide');
     if (!slides.length) return;
     
+    // Inicialização: respeitar slide ativo existente
     let current = 0;
+    const activeSlide = document.querySelector('.slide.active');
+    if (activeSlide) {
+        current = Array.from(slides).indexOf(activeSlide);
+        if (current === -1) current = 0;
+    }
     
     // Update counter safely
     const totalSlidesEl = document.getElementById('totalSlides');
-    if (totalSlidesEl) totalSlidesEl.textContent = slides.length;
+    if (totalSlidesEl) {
+        totalSlidesEl.textContent = slides.length;
+    }
     
+    /**
+     * Fit active slide to viewport with reliable timing
+     */
     function fitActiveSlide() {
         const viewport = document.getElementById('viewport');
         const activeSlide = document.querySelector('.slide.active');
@@ -37,40 +48,63 @@
             const offsetY = (vh - sh * scale) / 2;
             
             // Apply transform
-            activeSlide.style.transform = `translate(${offsetX / scale}px, ${offsetY / scale}px) scale(${scale})`;
+            activeSlide.style.transform = 
+                `translate(${offsetX / scale}px, ${offsetY / scale}px) scale(${scale})`;
         }
     }
     
-    function show(index) { 
-        slides.forEach(s => s.classList.remove('active')); 
-        slides[index].classList.add('active'); 
+    /**
+     * Show slide at given index with bounds checking
+     */
+    function show(index) {
+        // Bounds check
+        if (index < 0 || index >= slides.length) {
+            console.warn(`Invalid slide index: ${index}. Total slides: ${slides.length}`);
+            return;
+        }
+        
+        // Update active class
+        slides.forEach(s => s.classList.remove('active'));
+        slides[index].classList.add('active');
         current = index;
         
+        // Update counter
         const currentSlideEl = document.getElementById('currentSlide');
-        if (currentSlideEl) currentSlideEl.textContent = current + 1;
-        
-        // Fit slide to viewport
-        setTimeout(() => fitActiveSlide(), 10);
-        
-        // Animar barras quando entrar no Slide 4 (Interativo)
-        if(index === 3) {
-            setTimeout(() => {
-                const barCac = document.getElementById('bar-cac');
-                const barGrade = document.getElementById('bar-grade');
-                if (barCac) barCac.style.width = '65%';
-                if (barGrade) barGrade.style.width = '35%';
-            }, 300);
+        if (currentSlideEl) {
+            currentSlideEl.textContent = current + 1;
         }
+        
+        // Fit slide to viewport using double rAF for reliability
+        requestAnimationFrame(() => {
+            requestAnimationFrame(fitActiveSlide);
+        });
+        
+        // Animate bars if they exist in the active slide
+        setTimeout(() => {
+            const barCac = document.getElementById('bar-cac');
+            const barGrade = document.getElementById('bar-grade');
+            
+            if (barCac && barGrade) {
+                barCac.style.width = '65%';
+                barGrade.style.width = '35%';
+            }
+        }, 300);
     }
     
+    /**
+     * Move to next slide
+     */
     function moveNext() {
-        current = (current + 1) % slides.length; 
-        show(current); 
+        current = (current + 1) % slides.length;
+        show(current);
     }
     
+    /**
+     * Move to previous slide
+     */
     function movePrev() {
-        current = (current - 1 + slides.length) % slides.length; 
-        show(current); 
+        current = (current - 1 + slides.length) % slides.length;
+        show(current);
     }
     
     // Wire buttons safely
@@ -85,22 +119,34 @@
     }
     
     // Keyboard navigation
-    window.addEventListener('keydown', (e) => { 
-        if(e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
             e.preventDefault();
             moveNext();
         }
-        if(e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
             e.preventDefault();
             movePrev();
         }
     });
     
-    // Initialize
-    show(0);
+    // Initialize with current slide (respecting active)
+    show(current);
     
     // Fit on window resize
     window.addEventListener('resize', () => {
         fitActiveSlide();
     });
+    
+    // Fit after fonts load (if available)
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready
+            .then(fitActiveSlide)
+            .catch(() => {
+                // Silently ignore font loading errors
+            });
+    }
+    
+    // Fit after window load (for images, etc)
+    window.addEventListener('load', fitActiveSlide);
 })();
