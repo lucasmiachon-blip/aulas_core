@@ -42,23 +42,74 @@ jobs:
           sed -i 's|src="../src/|src="./src/|g' _site/osteoporose/index.html
           sed -i 's|href="../src/|href="./src/|g' _site/grade/index.html
           sed -i 's|src="../src/|src="./src/|g' _site/grade/index.html
+          
+          # Create redirects for backward compatibility (/GRADE/ -> /grade/)
+          mkdir -p _site/GRADE/src
+          
+          # Redirect for /GRADE/src/
+          cat > _site/GRADE/src/index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=/aulas_core/grade/">
+  <title>Redirecionando...</title>
+  <script>
+    (function() {
+      const segments = location.pathname.split('/').filter(Boolean);
+      const repo = segments.length ? '/' + segments[0] : '';
+      const target = repo + '/grade/';
+      location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecionando para <a href="/aulas_core/grade/">/aulas_core/grade/</a>...</p>
+</body>
+</html>
+EOF
+          
+          # Redirect for /GRADE/
+          cat > _site/GRADE/index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=/aulas_core/grade/">
+  <title>Redirecionando...</title>
+  <script>
+    (function() {
+      const segments = location.pathname.split('/').filter(Boolean);
+      const repo = segments.length ? '/' + segments[0] : '';
+      const target = repo + '/grade/';
+      location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecionando para <a href="/aulas_core/grade/">/aulas_core/grade/</a>...</p>
+</body>
+</html>
+EOF
+          
+          # Landing page
           cat > _site/index.html << 'EOF'
-          <!doctype html>
-          <html lang="pt-BR">
-            <head>
-              <meta charset="UTF-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <title>aulas</title>
-            </head>
-            <body>
-              <h1>aulas</h1>
-              <ul>
-                <li><a href="./osteoporose/">OSTEOPOROSE</a></li>
-                <li><a href="./grade/">GRADE</a></li>
-              </ul>
-            </body>
-          </html>
-          EOF
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>aulas</title>
+  </head>
+  <body>
+    <h1>aulas</h1>
+    <ul>
+      <li><a href="./osteoporose/">OSTEOPOROSE</a></li>
+      <li><a href="./grade/">GRADE</a></li>
+    </ul>
+  </body>
+</html>
+EOF
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
@@ -68,3 +119,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
