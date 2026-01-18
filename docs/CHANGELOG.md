@@ -7,6 +7,14 @@
   - blocks.js: inicialização respeita slide ativo existente, fit mais confiável (double rAF + fonts.ready + window.load), animação de barras não depende de índice fixo, bounds check em show()
   - navigation.js: guard para evitar conflito (retorna se .slide existir)
 
+- **📱 GRADE: implementa responsive-fix.css com guardrails mínimos:**
+  - Remove BOM (ef bb bf) do arquivo vazio
+  - Adiciona media queries para controles e rodapé em telas pequenas
+  - Usa clamp() para padding/fonte adaptativa dos controles
+  - Touch targets mínimos (44x44px) para mobile
+  - Rodapé legível em todas as telas (9-12px)
+  - ~45 linhas, não altera layout dos slides
+
 ### Added
 - **🔀 Pages: redirects para compatibilidade (/GRADE/ e /GRADE/src/ → /grade/):**
   - Workflow cria redirects automáticos em _site/GRADE/ e _site/GRADE/src/
