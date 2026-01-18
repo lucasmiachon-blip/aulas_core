@@ -8,6 +8,11 @@
   - navigation.js: guard para evitar conflito (retorna se .slide existir)
 
 ### Added
+- **🔀 Pages: redirects para compatibilidade (/GRADE/ e /GRADE/src/ → /grade/):**
+  - Workflow cria redirects automáticos em _site/GRADE/ e _site/GRADE/src/
+  - Redirect robusto com meta refresh + JS location.replace + link fallback
+  - Elimina erro 404 em URLs antigas mantendo caminho canônico /grade/
+
 - **📝 SESSION HANDOFFS permanente:**
   - docs/HANDOFF.md: Handoff completo da sessão refatoração slides 14-25
   - README.md: Seção "SESSION HANDOFFS" com localização e instruções de uso
@@ -76,3 +81,4 @@
 - Add src/dist HTML placeholders (both courses).
 - Add base CSS + navigation JS scaffolding (both courses).
 - Repo structure created.
+
