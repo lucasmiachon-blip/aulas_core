@@ -1,1 +1,45 @@
-﻿
+/* ============================================================
+   GUARDRAILS MÍNIMOS PARA CONTROLES EM TELAS PEQUENAS
+   Não altera layout dos slides, apenas controles/rodapé
+   ============================================================ */
+
+/* Telas estreitas (mobile portrait) */
+@media (max-width: 768px) {
+    .controls {
+        bottom: clamp(8px, 2vw, 15px);
+        right: clamp(8px, 2vw, 15px);
+        gap: clamp(5px, 1vw, 8px);
+    }
+    
+    button {
+        padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 18px);
+        font-size: clamp(12px, 2.5vw, 14px);
+        min-width: 44px;  /* Touch target mínimo W3C */
+        min-height: 44px;
+    }
+    
+    .slide-counter {
+        bottom: clamp(8px, 2vw, 15px);
+        left: clamp(8px, 2vw, 15px);
+        padding: clamp(8px, 2vw, 10px) clamp(12px, 3vw, 16px);
+        font-size: clamp(11px, 2.5vw, 13px);
+    }
+}
+
+/* Telas baixas (landscape tablets, ultrawide monitors) */
+@media (max-height: 600px) {
+    .controls, .slide-counter {
+        bottom: 8px;
+    }
+    
+    button, .slide-counter {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Rodapé legível em todas as telas */
+.rodape, footer, .slide footer {
+    font-size: clamp(9px, 1vw, 12px) !important;
+    line-height: 1.4 !important;
+}
