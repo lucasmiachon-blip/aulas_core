@@ -1,5 +1,31 @@
 # aulas_core
 
+---
+
+# 🚨 ATENÇÃO CLAUDE (IA ASSISTANT)
+
+## ⚠️ PROTOCOLO OBRIGATÓRIO DE ENTRADA
+
+**ANTES DE FAZER QUALQUER COISA, LEIA PRIMEIRO:**
+
+### 📖 ORDEM OBRIGATÓRIA:
+1. **`docs/CLAUDE_ROLE.md`** ← **LEIA ISTO PRIMEIRO!** 
+2. Este README.md (você está aqui)
+3. `docs/CHANGELOG.md`
+4. `docs/AI_RULES.md` (se existir)
+
+**❌ NUNCA PULE O PASSO 1.**
+
+### 🔴 REGRAS CRÍTICAS:
+- ❌ **NÃO criar arquivos sem aprovação**
+- ❌ **NÃO fazer commits sem aprovação**  
+- ❌ **NÃO modificar código sem plano aprovado**
+- ❌ **NUNCA EXPOR TOKENS/CHAVES/SENHAS DE API**
+- ✅ **SEMPRE apresentar PLANO primeiro**
+- ✅ **SEMPRE esperar aprovação explícita do Professor**
+
+---
+
 Este repositório contém **duas aulas**:
 
 * **GRADE** (em desenvolvimento com Claude)
