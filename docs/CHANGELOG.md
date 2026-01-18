@@ -3,6 +3,8 @@
 ## [Unreleased]
 
 ### Added
+- **🚨 Protocolo Obrigatório de Entrada no README.md:** Bloco de destaque extremo no topo do README instruindo Claude a SEMPRE ler `docs/CLAUDE_ROLE.md` PRIMEIRO antes de qualquer ação
+- Regras críticas destacadas: nunca expor tokens/chaves, sempre apresentar plano, sempre esperar aprovação
 - Documentação completa do papel de Claude em `docs/CLAUDE_ROLE.md`
 - Protocolo de entrada obrigatório quando Claude retorna ao projeto
 - Seção no README explicando colaboração com Claude e autoridade de bloqueio
@@ -11,7 +13,6 @@
 
 ### Changed  
 - README.md agora documenta Claude como desenvolvedor/guardião/tutor
-- Workflow inclui checklist de entrada e verificação de encoding
 
 ---
 
