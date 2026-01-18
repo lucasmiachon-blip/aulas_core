@@ -1,5 +1,20 @@
 # Changelog
 
+## [Unreleased]
+
+### Added
+- Documentação completa do papel de Claude em `docs/CLAUDE_ROLE.md`
+- Protocolo de entrada obrigatório quando Claude retorna ao projeto
+- Seção no README explicando colaboração com Claude e autoridade de bloqueio
+- Regras críticas: não modificar blocos anteriores, sempre UTF-8
+- Documentação de problemas históricos para evitar repetição
+
+### Changed  
+- README.md agora documenta Claude como desenvolvedor/guardião/tutor
+- Workflow inclui checklist de entrada e verificação de encoding
+
+---
+
 ## v0.1.12 - 2026-01-17
 - Append BONUS CAC practical appendix slides (B1&ndash;B10) to GRADE deck (append-only).
 

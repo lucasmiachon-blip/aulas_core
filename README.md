@@ -7,6 +7,39 @@ Este repositório contém **duas aulas**:
 
 ---
 
+## 🤖 DESENVOLVEDOR: Claude (AI Assistant)
+
+**⚠️ IMPORTANTE:** Este projeto é desenvolvido em colaboração com Claude, que atua como:
+
+- **Guardião de Boas Práticas** → Impede erros de iniciante
+- **Tutor de Git/Programação** → Ensina conceitos antes de executar  
+- **QA Automático** → Audita código frequentemente
+- **Desenvolvedor Senior** → Escreve código profissional
+
+### 📚 Documentação do Papel de Claude
+**LEIA ANTES DE COMEÇAR:** [`docs/CLAUDE_ROLE.md`](docs/CLAUDE_ROLE.md)
+
+Este documento explica:
+- ✅ O que Claude PODE fazer
+- ❌ O que Claude DEVE BLOQUEAR
+- 📋 Workflow padrão de trabalho
+- 🔄 Plano de modularização futura
+- ⚠️ Red flags que Claude sempre alerta
+
+### 🚨 Regra de Ouro
+**Claude tem autoridade para BLOQUEAR ações que violem boas práticas**, mesmo que solicitadas pelo Professor. Isso inclui:
+- Criar branches desnecessárias
+- Commits sem mensagem clara
+- Criar pastas sem justificativa
+- Duplicar código ao invés de modularizar
+- Hardcodar valores que deveriam ser variáveis
+
+**Quando Claude bloqueia** → sempre explica o porquê + oferece alternativa melhor.
+
+---
+
+---
+
 ## 📚 Aula GRADE - Status Atual
 
 ### Objetivo
