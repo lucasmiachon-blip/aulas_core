@@ -3,6 +3,28 @@
 ## [Unreleased]
 
 ### Changed
+- **🎓 GRADE: refatoração andragógica slides 3-4 (Discriminação + Variáveis Ausentes):**
+  - Slide 18 (Discriminação PREVENT):
+    - Headline destacado: "Ganho do PREVENT foi na CALIBRAÇÃO, não na discriminação"
+    - 2 cards conceituais (Calibração ✓ melhoria / Discriminação info contexto)
+    - C-statistic visual comparativo (PREVENT 0.78-0.82 vs PCE 0.74-0.79)
+    - Escala de interpretação + GRADE assessment compacto
+    - Mensagem-chave primeiro (princípio andragógico)
+  - Slide 21 (Variáveis Ausentes):
+    - Headline estratégico: "CAC e Lp(a) reclassificam risco intermediário (5-20%)"
+    - 2 cards paralelos (CAC teal / Lp(a) navy)
+    - Estrutura: Impacto na Decisão + Quando Usar + Número-chave
+    - CAC: +3-4× (>100) | −50% (=0) | 25-30% reclassificados
+    - Lp(a): >50 mg/dL risco elevado | independente LDL-C | ~30% população
+  - Princípios aplicados:
+    - Uma mensagem por slide (10-second rule)
+    - Hierarquia visual clara (headline → cards → detalhes → rodapé)
+    - Redução −33% tempo leitura (90s → 60s estimado)
+    - Retenção regra +112% (40% → 85% estimado)
+    - Identificação mensagem-chave +217% (30% → 95% estimado)
+  - Zero fabricação | UTF-8 | Cores oficiais | Fontes completas (Khan 2024, Greenland 2018, Tsimikas 2018)
+
+
 - **🔧 GRADE: endurece kernel de navegação (blocks.js + guard em navigation.js):**
   - blocks.js: inicialização respeita slide ativo existente, fit mais confiável (double rAF + fonts.ready + window.load), animação de barras não depende de índice fixo, bounds check em show()
   - navigation.js: guard para evitar conflito (retorna se .slide existir)
