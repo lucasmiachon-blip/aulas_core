@@ -2,21 +2,20 @@
 
 ## [Unreleased]
 
+### Added
+- **📋 Documentação Executor Policy:**
+  - README.md: Seção CLAUDE_ROLE com contrato de execução, operações permitidas, e outputs requeridos
+  - docs/AI_RULES.md: Bloco HARD RULES com políticas de segurança (tokens, branches, OSTEOPOROSE lock, dados inventados)
+  - Clarificação: tokens OK em sessões privadas, proibidos em commits/arquivos/handoffs
+
 ### Changed
 - **✅ AUDIT QUALIDADE COMPLETO - Slides 14-26 refatorados:**
   - **Paleta oficial:** Todas as cores agora usam variáveis CSS (--navy, --gold, --teal, --bg, --muted)
   - **Rodapés com fontes:** TODOS os slides agora têm rodapé com referências auditáveis
   - **NNT adicionado:** Slide 22 (CAC) inclui NNT para estatina por faixa de CAC (5 anos)
-  - **Slides divididos:** Slide 21 dividido (CAC+Lp(a) separado); Slide 23 dividido (PROBAST e TRIPOD+AI separados)
+  - **Slides divididos:** Slide 21 dividido (CAC+Lp(a) separado); Slides 23-24 divididos (PROBAST e TRIPOD+AI separados)
   - **Texto simplificado:** Slides 17-18 com menos texto, foco em mensagem única
   - **Score GRADE:** 13/30 → **26/30** (meta: ≥25/30) ✅
-
-### Added
-- Slide 21: Variáveis Ausentes - CAC & Lp(a) (foco em 2 biomarcadores principais)
-- Slide 23: PROBAST (isolado, com 4 domínios claros)
-- Slide 24: TRIPOD+AI (isolado, extensão para ML/AI)
-- Slide 25: Conclusões & Próximos Passos (renumerado de 24)
-- Rodapés completos em slides 15-25 com fontes primárias
 
 ### Removed
 - Cores hardcoded não-oficiais removidas (#2C5F2D, #D32F2F, #F57C00, #7E57C2, #8B7355, #C62828)
