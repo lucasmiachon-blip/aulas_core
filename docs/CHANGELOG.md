@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+### Added
+- **📚 MÓDULO SAMS + ÁCIDO BEMPEDÓICO (7 slides antes do PREVENT):**
+  - Slide 13A: Recomendações SBC 2025 (tabela GRADE força/certeza)
+  - Slide 13B: SAMS definição (prevalência 10-25%, escala SMRE, impacto clínico)
+  - Slide 13C: Ácido Bempedóico solução (mecanismo ACL, CLEAR Outcomes N=13.970, Brasil ANVISA✅ SUS❌)
+  - Slide 13D: Imprecisão MID conceitual (régua visual + 3 exemplos IC)
+  - Slide 13E: Imprecisão CLEAR aplicado (régua específica MACE-4 HR 0,87 IC 0,79-0,96)
+  - Slide 13F: Risco de Viés Core GRADE (RoB 2.0 aplicado, todos domínios baixo risco)
+  - Slide 13G: Síntese EtD (Evidence-to-Decision → Recomendação FORTE certeza MODERADA)
+  - Fontes completas: Rached et al. ABC 2025, Nissen et al. NEJM 2023, Core GRADE BMJ 2025, EAS Consensus 2015
+  - Paleta oficial (9 cores var(--)), UTF-8, rodapés auditáveis
+  - Réguas visuais MID com zonas coloridas (dano/sem efeito/benefício)
+  - Grid responsivo 2-3 colunas, tabelas navy/teal/gold badges
+
+## [Unreleased]
+
 ### Changed
 - **🔧 GRADE: otimizar layout slides 18-21 (viewport + spacing):**
   - Correções para melhor distribuição na janela 16:9
