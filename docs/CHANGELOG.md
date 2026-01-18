@@ -3,6 +3,11 @@
 ## [Unreleased]
 
 ### Added
+- **📝 SESSION HANDOFFS permanente:**
+  - docs/HANDOFF.md: Handoff completo da sessão refatoração slides 14-25
+  - README.md: Seção "SESSION HANDOFFS" com localização e instruções de uso
+  - Protocolo: sempre ler HANDOFF.md no início de cada sessão
+
 - **📋 Documentação Executor Policy:**
   - README.md: Seção CLAUDE_ROLE com contrato de execução, operações permitidas, e outputs requeridos
   - docs/AI_RULES.md: Bloco HARD RULES com políticas de segurança (tokens, branches, OSTEOPOROSE lock, dados inventados)
