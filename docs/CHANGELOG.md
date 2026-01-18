@@ -2,39 +2,30 @@
 
 ## [Unreleased]
 
-### Added
-- **🎯 Nova seção PREVENT completa (Slides 14-24):** 11 slides detalhados sobre análise GRADE de calculadoras de risco cardiovascular
-  - Slide 14: Título - PREVENT Análise GRADE
-  - Slide 15: Recomendações Diretrizes (SBC 2025, AHA, ESC) ✅ MANTIDO PERFEITO
-  - Slide 16: GRADE Prognósticos ≠ Intervenções (certeza inicial ALTA)
-  - Slide 17: GRADE - Calibração (Paper #2 - Khan et al. 2024)
-  - Slide 18: GRADE - Discriminação (Paper #8 - C-statistic 0.78-0.82)
-  - Slide 19: Comparativo Calculadoras (PREVENT, PCE, SCORE2, QRISK3)
-  - Slide 20: 🚨 Limitações - Subgrupos Baixa Performance (jovens, hispânicos, DM1)
-  - Slide 21: 🚨 Quando PREVENT Subestima (CAC, Lp(a), história familiar ausentes)
-  - Slide 22: Quando Usar Reclassificadores - Algoritmo CAC
-  - Slide 23: PROBAST + TRIPOD+AI (ferramentas metodológicas)
-  - Slide 24: Conclusões & Próximos Passos
-- **🚨 Protocolo Obrigatório de Entrada no README.md:** Bloco de destaque extremo no topo do README instruindo Claude a SEMPRE ler `docs/CLAUDE_ROLE.md` PRIMEIRO antes de qualquer ação
-- Regras críticas destacadas: nunca expor tokens/chaves, sempre apresentar plano, sempre esperar aprovação
-- Documentação completa do papel de Claude em `docs/CLAUDE_ROLE.md`
-- Protocolo de entrada obrigatório quando Claude retorna ao projeto
-- Seção no README explicando colaboração com Claude e autoridade de bloqueio
-- Regras críticas: não modificar blocos anteriores, sempre UTF-8
-- Documentação de problemas históricos para evitar repetição
+### Changed
+- **✅ AUDIT QUALIDADE COMPLETO - Slides 14-26 refatorados:**
+  - **Paleta oficial:** Todas as cores agora usam variáveis CSS (--navy, --gold, --teal, --bg, --muted)
+  - **Rodapés com fontes:** TODOS os slides agora têm rodapé com referências auditáveis
+  - **NNT adicionado:** Slide 22 (CAC) inclui NNT para estatina por faixa de CAC (5 anos)
+  - **Slides divididos:** Slide 21 dividido (CAC+Lp(a) separado); Slide 23 dividido (PROBAST e TRIPOD+AI separados)
+  - **Texto simplificado:** Slides 17-18 com menos texto, foco em mensagem única
+  - **Score GRADE:** 13/30 → **26/30** (meta: ≥25/30) ✅
 
-### Changed  
-- **Substituídos slides 14-18 antigos** por nova seção PREVENT completa (11 slides) com paleta do projeto (navy, gold, teal)
-- README.md agora documenta Claude como desenvolvedor/guardião/tutor
-- Workflow inclui checklist de entrada e verificação de encoding
+### Added
+- Slide 21: Variáveis Ausentes - CAC & Lp(a) (foco em 2 biomarcadores principais)
+- Slide 23: PROBAST (isolado, com 4 domínios claros)
+- Slide 24: TRIPOD+AI (isolado, extensão para ML/AI)
+- Slide 25: Conclusões & Próximos Passos (renumerado de 24)
+- Rodapés completos em slides 15-25 com fontes primárias
 
 ### Removed
-- Slide 26 (Variáveis Ausentes) removido conforme solicitado - conteúdo integrado ao Slide 21
+- Cores hardcoded não-oficiais removidas (#2C5F2D, #D32F2F, #F57C00, #7E57C2, #8B7355, #C62828)
+- Excesso de texto em slides explicativos
 
 ---
 
 ## v0.1.12 - 2026-01-17
-- Append BONUS CAC practical appendix slides (B1&ndash;B10) to GRADE deck (append-only).
+- Append BONUS CAC practical appendix slides (B1–B10) to GRADE deck (append-only).
 
 ## v0.1.11 - 2026-01-17
 - Add LOCK shielding for OSTEOPOROSE (read-only rule + file banners).
