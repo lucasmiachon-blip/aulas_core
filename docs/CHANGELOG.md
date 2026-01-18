@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+### Changed
+- **🔧 GRADE: endurece kernel de navegação (blocks.js + guard em navigation.js):**
+  - blocks.js: inicialização respeita slide ativo existente, fit mais confiável (double rAF + fonts.ready + window.load), animação de barras não depende de índice fixo, bounds check em show()
+  - navigation.js: guard para evitar conflito (retorna se .slide existir)
+
 ### Added
 - **📝 SESSION HANDOFFS permanente:**
   - docs/HANDOFF.md: Handoff completo da sessão refatoração slides 14-25
