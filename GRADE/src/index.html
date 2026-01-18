@@ -1711,67 +1711,111 @@
         </div>
     </section>
 
-    <!-- SLIDE 18: GRADE - DISCRIMINAÇÃO -->
+    <!-- SLIDE 18: GRADE - DISCRIMINAÇÃO (REFATORADO ANDRAGOGIA) -->
     <section class="slide">
-        <h2 style="margin-bottom: 2vw; font-size: 3.5vw;">GRADE: <span style="color: var(--teal);">Discriminação</span> do PREVENT</h2>
+        <h2>GRADE: <span style="color: var(--gold);">Discriminação</span> do PREVENT</h2>
         
-        <div style="display: flex; flex-direction: column; gap: 2.5vw; flex-grow: 1;">
-            
-            <p style="font-family: 'Georgia', serif; font-size: 1.3vw; line-height: 1.7; color: var(--text); margin: 0;">
-                <strong>Discriminação (C-statistic):</strong> Capacidade de diferenciar quem terá vs não terá o evento
+        <!-- HEADLINE: Mensagem-chave primeiro -->
+        <div style="background: var(--gold); color: white; padding: 2vw 3vw; border-radius: 0.8vw; margin-bottom: 3vw;">
+            <p style="font-size: 1.6vw; line-height: 1.4; font-weight: 700; text-align: center; margin: 0;">
+                Ganho do PREVENT foi na CALIBRAÇÃO, não na discriminação
             </p>
+        </div>
+
+        <!-- Layout 2 colunas: Conceitos (esquerda) + Dados (direita) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; flex-grow: 1;">
             
-            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 2vw;">
+            <!-- Coluna 1: 2 Cards de Conceitos -->
+            <div style="display: flex; flex-direction: column; gap: 2.5vw;">
                 
-                <!-- Dados -->
-                <div>
-                    <div style="background: white; border: 3px solid var(--teal); border-radius: 0.8vw; padding: 2vw; margin-bottom: 2vw;">
-                        <p style="font-family: 'Georgia', serif; font-size: 1.8vw; font-weight: 700; color: var(--teal); margin: 0; text-align: center;">
-                            C-statistic: 0.78-0.82
+                <!-- Card 1: Calibração -->
+                <div style="background: linear-gradient(135deg, #E8F5E8 0%, #FFFFFF 100%); border: 3px solid #27AE60; border-radius: 1vw; padding: 2.5vw; box-shadow: 0 0.3vw 1.2vw rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; gap: 1.5vw; margin-bottom: 1.5vw;">
+                        <div style="background: #27AE60; color: white; width: 3vw; height: 3vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.8vw; flex-shrink: 0;">✓</div>
+                        <p style="font-size: 1.4vw; font-weight: 900; color: #27AE60; margin: 0;">
+                            Calibração
                         </p>
-                        <p style="font-family: 'Lato', sans-serif; font-size: 0.9vw; color: var(--muted); margin: 0.5vw 0 0 0; text-align: center;">
-                            PCE: 0.74-0.79
+                    </div>
+                    <p style="font-size: 1.1vw; line-height: 1.5; color: #222; margin: 0;">
+                        <strong>Predito = Observado?</strong><br>
+                        PREVENT corrigiu <strong>superestimação</strong> do PCE
+                    </p>
+                </div>
+                
+                <!-- Card 2: Discriminação -->
+                <div style="background: linear-gradient(135deg, #F0F3F8 0%, #FFFFFF 100%); border: 3px solid var(--navy); border-radius: 1vw; padding: 2.5vw; box-shadow: 0 0.3vw 1.2vw rgba(0,0,0,0.08);">
+                    <div style="display: flex; align-items: center; gap: 1.5vw; margin-bottom: 1.5vw;">
+                        <div style="background: var(--navy); color: white; width: 3vw; height: 3vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.8vw; flex-shrink: 0;">i</div>
+                        <p style="font-size: 1.4vw; font-weight: 900; color: var(--navy); margin: 0;">
+                            Discriminação
                         </p>
+                    </div>
+                    <p style="font-size: 1.1vw; line-height: 1.5; color: #222; margin: 0;">
+                        <strong>Separar evento SIM vs NÃO</strong><br>
+                        Medida: C-statistic (AUC-ROC)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Coluna 2: C-statistic Visual + Interpretação -->
+            <div style="display: flex; flex-direction: column; gap: 2.5vw;">
+                
+                <!-- C-statistic Comparativo -->
+                <div style="background: white; border: 3px solid var(--gold); border-radius: 1vw; padding: 3vw; box-shadow: 0 0.3vw 1.2vw rgba(0,0,0,0.08);">
+                    <p style="font-size: 1.1vw; font-weight: 700; color: var(--gold); text-transform: uppercase; text-align: center; margin-bottom: 2vw;">C-statistic Comparativo</p>
+                    
+                    <!-- PREVENT -->
+                    <div style="margin-bottom: 2.5vw;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8vw;">
+                            <p style="font-size: 1.2vw; font-weight: 700; color: var(--navy); margin: 0;">PREVENT</p>
+                            <p style="font-size: 1.8vw; font-weight: 900; color: var(--navy); margin: 0;">0.78–0.82</p>
+                        </div>
+                        <div style="background: #E9ECEF; border-radius: 0.5vw; height: 1.5vw; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, var(--navy) 0%, var(--teal) 100%); width: 80%; height: 100%; border-radius: 0.5vw;"></div>
+                        </div>
                     </div>
                     
-                    <div style="background: var(--bg); border-left: 4px solid var(--muted); padding: 1.5vw; border-radius: 0.5vw;">
-                        <p style="font-family: 'Lato', sans-serif; font-size: 0.9vw; font-weight: 700; color: var(--text); margin: 0 0 1vw 0;">
-                            Interpretação:
-                        </p>
-                        <p style="font-family: 'Georgia', serif; font-size: 0.95vw; line-height: 1.6; margin: 0; color: var(--text);">
-                            0.7-0.8 = aceitável<br>
-                            0.8-0.9 = excelente
-                        </p>
+                    <!-- PCE -->
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8vw;">
+                            <p style="font-size: 1.2vw; font-weight: 700; color: #666; margin: 0;">PCE (antigo)</p>
+                            <p style="font-size: 1.8vw; font-weight: 900; color: #666; margin: 0;">0.74–0.79</p>
+                        </div>
+                        <div style="background: #E9ECEF; border-radius: 0.5vw; height: 1.5vw; overflow: hidden;">
+                            <div style="background: #999; width: 76%; height: 100%; border-radius: 0.5vw;"></div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Conclusão GRADE -->
-                <div style="background: white; border: 3px solid var(--gold); border-radius: 0.8vw; padding: 2vw; display: flex; flex-direction: column; justify-content: center;">
-                    <p style="font-family: 'Lato', sans-serif; font-size: 1vw; font-weight: 700; color: var(--gold); margin: 0 0 1.5vw 0;">
-                        Avaliação GRADE:
+                <!-- Escala de Interpretação -->
+                <div style="background: #F8F9FA; border-left: 0.5vw solid var(--teal); padding: 2vw; border-radius: 0.6vw;">
+                    <p style="font-size: 1vw; font-weight: 700; color: var(--teal); text-transform: uppercase; margin-bottom: 1.2vw;">Escala C-statistic:</p>
+                    <p style="font-size: 1.05vw; color: #444; line-height: 1.5; margin: 0;">
+                        <strong>0.7–0.8:</strong> Aceitável<br>
+                        <strong>0.8–0.9:</strong> Excelente<br>
+                        <strong>>0.9:</strong> Excepcional (raro)
                     </p>
-                    <p style="font-family: 'Georgia', serif; font-size: 1vw; line-height: 1.7; color: var(--text); margin: 0;">
-                        Melhoria <strong>modesta</strong> vs PCE. Consistente em múltiplas coortes, mas IC 95% não reportado (<em>Imprecision</em>).
+                </div>
+                
+                <!-- Avaliação GRADE -->
+                <div style="background: #FFF9F0; border: 2px solid var(--gold); border-radius: 0.6vw; padding: 1.5vw;">
+                    <p style="font-size: 0.85vw; font-weight: 700; color: var(--gold); text-transform: uppercase; margin-bottom: 0.8vw;">GRADE:</p>
+                    <p style="font-size: 1vw; color: #444; line-height: 1.4;">
+                        Melhoria <strong>modesta</strong>. Imprecision (IC 95% não reportado)
                     </p>
                 </div>
                 
             </div>
-            
-            <div style="background: #FFFBF0; border: 2px solid var(--gold); border-radius: 0.8vw; padding: 1.5vw; text-align: center;">
-                <p style="font-family: 'Georgia', serif; font-size: 1.1vw; line-height: 1.6; margin: 0; color: var(--text);">
-                    <strong style="color: var(--gold);">Mensagem-chave:</strong> Ganho do PREVENT foi na <em>calibração</em>, não na discriminação
-                </p>
-            </div>
-            
         </div>
         
         <!-- Rodapé -->
         <div style="position: absolute; bottom: 1vw; left: 2vw; right: 2vw;">
             <p style="font-family: 'Lato', sans-serif; font-size: 0.7vw; color: var(--muted); margin: 0;">
-                <strong>Fonte:</strong> Khan SS et al. JAMA 2024;331(22):1931-1943; Pencina MJ et al. JAMA 2013 (PCE)
+                <strong>Fonte:</strong> Khan SS et al. JAMA 2024;331(22):1931-1943 | Pencina MJ et al. JAMA 2013
             </p>
         </div>
     </section>
+
 
     <!-- SLIDE 19: COMPARATIVO CALCULADORAS -->
     <section class="slide">
@@ -1953,69 +1997,131 @@
         </div>
     </section>
 
-    <!-- SLIDE 21: VARIÁVEIS AUSENTES - CAC & Lp(a) -->
+    <!-- SLIDE 21: VARIÁVEIS AUSENTES (REFATORADO ANDRAGOGIA) -->
     <section class="slide">
-        <h2 style="margin-bottom: 2vw; font-size: 3.5vw;">Variáveis <span style="color: var(--teal);">Ausentes</span> no PREVENT</h2>
+        <h2>Variáveis <span style="color: var(--teal);">Ausentes</span> no PREVENT</h2>
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5vw; flex-grow: 1;">
-            
-            <!-- CAC -->
-            <div style="background: white; border: 3px solid var(--teal); border-radius: 0.8vw; padding: 2.5vw;">
-                <p style="font-family: 'Lato', sans-serif; font-size: 1.2vw; font-weight: 900; color: var(--teal); margin: 0 0 1.5vw 0;">
-                    🔬 Escore de Cálcio Coronariano (CAC)
-                </p>
-                
-                <p style="font-family: 'Georgia', serif; font-size: 1.1vw; line-height: 1.8; color: var(--text); margin: 0 0 1.5vw 0;">
-                    CAC &gt; 100 aumenta risco em <strong>3-4x</strong><br>
-                    CAC = 0 reduz risco em <strong>~50%</strong>
-                </p>
-                
-                <div style="background: var(--bg); padding: 1.5vw; border-radius: 0.5vw;">
-                    <p style="font-family: 'Lato', sans-serif; font-size: 0.9vw; font-weight: 700; color: var(--navy); margin: 0 0 0.8vw 0;">
-                        Impacto:
-                    </p>
-                    <p style="font-family: 'Georgia', serif; font-size: 0.95vw; line-height: 1.6; color: var(--text); margin: 0;">
-                        Reclassifica 25-30% dos pacientes em risco intermediário
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Lp(a) -->
-            <div style="background: white; border: 3px solid var(--navy); border-radius: 0.8vw; padding: 2.5vw;">
-                <p style="font-family: 'Lato', sans-serif; font-size: 1.2vw; font-weight: 900; color: var(--navy); margin: 0 0 1.5vw 0;">
-                    🧬 Lipoproteína(a) — Lp(a)
-                </p>
-                
-                <p style="font-family: 'Georgia', serif; font-size: 1.1vw; line-height: 1.8; color: var(--text); margin: 0 0 1.5vw 0;">
-                    Lp(a) &gt; 50 mg/dL → risco elevado<br>
-                    <strong>~30%</strong> da população tem níveis altos
-                </p>
-                
-                <div style="background: var(--bg); padding: 1.5vw; border-radius: 0.5vw;">
-                    <p style="font-family: 'Lato', sans-serif; font-size: 0.9vw; font-weight: 700; color: var(--navy); margin: 0 0 0.8vw 0;">
-                        Impacto:
-                    </p>
-                    <p style="font-family: 'Georgia', serif; font-size: 0.95vw; line-height: 1.6; color: var(--text); margin: 0;">
-                        Aumenta risco independente de LDL-C
-                    </p>
-                </div>
-            </div>
-            
-        </div>
-        
-        <div style="background: var(--navy); color: white; padding: 2vw; border-radius: 0.8vw; margin-top: 2vw;">
-            <p style="font-family: 'Georgia', serif; font-size: 1.1vw; line-height: 1.7; margin: 0; text-align: center;">
-                <strong style="color: var(--gold);">Estratégia:</strong> Usar CAC e Lp(a) como <em>reclassificadores</em> em risco intermediário (5-20%)
+        <!-- HEADLINE: Estratégia clara -->
+        <div style="background: var(--navy); color: white; padding: 2.2vw; border-radius: 0.8vw; margin-bottom: 3vw;">
+            <p style="font-size: 1.7vw; line-height: 1.4; font-weight: 700; text-align: center; margin: 0;">
+                <span style="color: var(--gold);">CAC</span> e <span style="color: var(--gold);">Lp(a)</span> reclassificam pacientes em risco intermediário (5–20%)
             </p>
         </div>
+
+        <!-- Layout 2 colunas: CAC (esquerda) + Lp(a) (direita) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3vw; flex-grow: 1;">
+            
+            <!-- CARD 1: CAC -->
+            <div style="background: linear-gradient(135deg, #E8F5F5 0%, #FFFFFF 100%); border: 3px solid var(--teal); border-radius: 1vw; padding: 3vw; display: flex; flex-direction: column; gap: 2vw; box-shadow: 0 0.3vw 1.2vw rgba(0,0,0,0.08);">
+                
+                <!-- Título -->
+                <div style="text-align: center;">
+                    <p style="font-size: 1.4vw; font-weight: 900; color: var(--teal); margin: 0; text-transform: uppercase; letter-spacing: 0.08vw;">
+                        🔬 Cálcio Coronariano (CAC)
+                    </p>
+                </div>
+                
+                <!-- O que muda a decisão -->
+                <div style="background: white; border-radius: 0.6vw; padding: 2vw;">
+                    <p style="font-size: 1vw; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.08vw; margin-bottom: 1.2vw;">Impacto na Decisão:</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1vw;">
+                        <div style="display: flex; align-items: center; gap: 1vw;">
+                            <div style="background: #C0392B; color: white; width: 2vw; height: 2vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1vw; flex-shrink: 0;">↑</div>
+                            <p style="font-size: 1.1vw; color: #222; line-height: 1.3;">
+                                <strong>CAC > 100:</strong> Risco +3–4×
+                            </p>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 1vw;">
+                            <div style="background: #27AE60; color: white; width: 2vw; height: 2vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1vw; flex-shrink: 0;">↓</div>
+                            <p style="font-size: 1.1vw; color: #222; line-height: 1.3;">
+                                <strong>CAC = 0:</strong> Risco −50%
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Como usar -->
+                <div style="background: #F8F9FA; border-left: 0.4vw solid var(--teal); padding: 1.5vw; border-radius: 0.5vw;">
+                    <p style="font-size: 0.9vw; font-weight: 700; color: var(--teal); text-transform: uppercase; margin-bottom: 0.8vw;">Quando Usar:</p>
+                    <p style="font-size: 1.05vw; color: #444; line-height: 1.4;">
+                        Risco intermediário, LDL-C 70–159 mg/dL, idade > 40 anos
+                    </p>
+                </div>
+                
+                <!-- Número-chave (rodapé) -->
+                <div style="text-align: center; padding-top: 1vw; border-top: 2px solid #DDD; margin-top: auto;">
+                    <p style="font-size: 2.5vw; font-weight: 900; color: var(--teal); line-height: 1; margin-bottom: 0.5vw;">
+                        25–30%
+                    </p>
+                    <p style="font-size: 0.95vw; color: #666;">
+                        reclassificados (risco intermediário)
+                    </p>
+                </div>
+                
+            </div>
+
+            <!-- CARD 2: Lp(a) -->
+            <div style="background: linear-gradient(135deg, #F0F3F8 0%, #FFFFFF 100%); border: 3px solid var(--navy); border-radius: 1vw; padding: 3vw; display: flex; flex-direction: column; gap: 2vw; box-shadow: 0 0.3vw 1.2vw rgba(0,0,0,0.08);">
+                
+                <!-- Título -->
+                <div style="text-align: center;">
+                    <p style="font-size: 1.4vw; font-weight: 900; color: var(--navy); margin: 0; text-transform: uppercase; letter-spacing: 0.08vw;">
+                        🧬 Lipoproteína(a)
+                    </p>
+                </div>
+                
+                <!-- O que muda a decisão -->
+                <div style="background: white; border-radius: 0.6vw; padding: 2vw;">
+                    <p style="font-size: 1vw; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.08vw; margin-bottom: 1.2vw;">Impacto na Decisão:</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1vw;">
+                        <div style="display: flex; align-items: center; gap: 1vw;">
+                            <div style="background: #E67E22; color: white; width: 2vw; height: 2vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1vw; flex-shrink: 0;">!</div>
+                            <p style="font-size: 1.1vw; color: #222; line-height: 1.3;">
+                                <strong>Lp(a) > 50 mg/dL:</strong> Risco elevado
+                            </p>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 1vw;">
+                            <div style="background: #8E44AD; color: white; width: 2vw; height: 2vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1vw; flex-shrink: 0;">≠</div>
+                            <p style="font-size: 1.1vw; color: #222; line-height: 1.3;">
+                                Independente de LDL-C
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Como usar -->
+                <div style="background: #F8F9FA; border-left: 0.4vw solid var(--navy); padding: 1.5vw; border-radius: 0.5vw;">
+                    <p style="font-size: 0.9vw; font-weight: 700; color: var(--navy); text-transform: uppercase; margin-bottom: 0.8vw;">Quando Usar:</p>
+                    <p style="font-size: 1.05vw; color: #444; line-height: 1.4;">
+                        História familiar de DCV prematura, risco borderline
+                    </p>
+                </div>
+                
+                <!-- Número-chave (rodapé) -->
+                <div style="text-align: center; padding-top: 1vw; border-top: 2px solid #DDD; margin-top: auto;">
+                    <p style="font-size: 2.5vw; font-weight: 900; color: var(--navy); line-height: 1; margin-bottom: 0.5vw;">
+                        ~30%
+                    </p>
+                    <p style="font-size: 0.95vw; color: #666;">
+                        da população tem níveis altos
+                    </p>
+                </div>
+                
+            </div>
+        </div>
         
-        <!-- Rodapé -->
+        <!-- Rodapé (fontes) -->
         <div style="position: absolute; bottom: 1vw; left: 2vw; right: 2vw;">
             <p style="font-family: 'Lato', sans-serif; font-size: 0.7vw; color: var(--muted); margin: 0;">
-                <strong>Fontes:</strong> Greenland P et al. JACC 2018 (CAC reclassification); Tsimikas S et al. JAMA 2018 (Lp(a) epidemiology)
+                <strong>Fontes:</strong> Greenland P et al. JACC 2018 | Tsimikas S et al. JAMA 2018
             </p>
         </div>
     </section>
+
 
     <!-- SLIDE 22: CAC COMO RECLASSIFICADOR -->
     <section class="slide">
