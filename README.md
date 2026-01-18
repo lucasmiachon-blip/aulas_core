@@ -1,32 +1,140 @@
-# aulas
+# aulas_core
 
 Este repositório contém **duas aulas**:
-- **GRADE**
-- **OSTEOPOROSE**
 
-## Como o repositório está organizado
+* **GRADE** (em desenvolvimento com Claude)
+* **OSTEOPOROSE** (estável - não modificar)
 
-Cada aula tem duas pastas principais:
-- `src/` → **edição** (onde você trabalha e altera conteúdo)
-- `dist/` → **entrega** (o que será apresentado/compartilhado quando estiver estável)
+---
 
-> Política: `dist/` só recebe conteúdo estável vindo de `src/`.
+## 📚 Aula GRADE - Status Atual
 
-## Como abrir a aula no navegador
+### Objetivo
+Criar apresentação completa sobre **metodologia GRADE** aplicada à Diretriz Brasileira de Dislipidemia 2025.
 
-Você pode abrir diretamente o arquivo `dist/index.html` no navegador:
-- `GRADE/dist/index.html`
-- `OSTEOPOROSE/dist/index.html`
+### Estratégia de Desenvolvimento
+1. **Fase 1 (ATUAL):** Construir conteúdo em HTML/CSS
+   - Mais fácil para editar e visualizar
+   - Permite iteração rápida
+   - Design responsivo e modular
 
-## Servidor local (opcional, recomendado)
+2. **Fase 2 (FUTURA):** Converter para PowerPoint (.pptx)
+   - Exportação final para apresentação
+   - Compatível com ferramentas corporativas
 
-Para evitar problemas de caminhos relativos e facilitar testes, rode um servidor local na raiz do repositório:
+### Temas Principais (4 THREADS)
+- **CAC** (Escore de Cálcio Coronariano)
+- **PREVENT** (Calculadora de Risco AHA)
+- **SAMS & Bempedoic Acid** (Intolerância a estatinas)
+- **LDL-C Targets** (Metas agressivas e segurança)
 
-```bash
-cd aulas
-python -m http.server 8000
+### Estrutura GRADE
+- ✅ **Core GRADE:** 8 domínios fundamentais
+- ⏳ **GRADEs Adicionais:** Modelos preditivos, diretrizes
+- ⏳ **Exemplos SBC 2025:** Casos práticos brasileiros
+
+---
+
+## 🗂️ Organização do Repositório
+
+Cada aula tem **duas pastas principais**:
+
+* **`src/`** → Edição (onde trabalhamos e modificamos)
+* **`dist/`** → Entrega (versão estável para apresentação)
+
+> **Política:** `dist/` só recebe conteúdo estável vindo de `src/`
+
+### Estrutura da Aula GRADE
+
+```
+GRADE/
+├── src/                    ← ÁREA DE TRABALHO
+│   ├── blocks/            ← Blocos modulares de conteúdo
+│   ├── css/               ← Estilos (base, blocks, responsive)
+│   ├── js/                ← Scripts de navegação
+│   ├── partials/          ← Componentes reutilizáveis
+│   └── index.html         ← Arquivo principal
+│
+├── dist/                   ← VERSÃO FINAL
+│   └── index.html         ← (será gerado de src/)
+│
+├── assets/                ← Imagens, QR codes, gráficos
+├── notes/                 ← Anotações de desenvolvimento
+└── refs/                  ← Referências bibliográficas
 ```
 
-Depois abra no navegador:
-- `http://localhost:8000/GRADE/dist/`
-- `http://localhost:8000/OSTEOPOROSE/dist/`
+---
+
+## 🚀 Como Usar
+
+### Visualizar a Aula Localmente
+
+**Opção 1 - Servidor Local (RECOMENDADO):**
+```bash
+cd aulas_core
+python -m http.server 8000
+```
+Depois abra: `http://localhost:8000/GRADE/src/`
+
+**Opção 2 - Arquivo Direto:**
+Abra diretamente: `GRADE/src/index.html` no navegador
+
+---
+
+## 👨‍💻 Desenvolvimento com Claude
+
+### Status Atual
+- **Desenvolvedor:** Claude (Assistente IA)
+- **Orientação:** Prof. Lucas
+- **Metodologia:** 
+  - Explicação completa antes de qualquer ação
+  - Commits profissionais e organizados
+  - Sem branches desnecessários
+  - Código limpo e documentado
+
+### Próximos Passos
+1. Completar 8 domínios do Core GRADE
+2. Adicionar exemplos práticos da SBC 2025
+3. Integrar os 4 THREADS ao longo do conteúdo
+4. Finalizar GRADEs adicionais
+5. Converter para PPTX
+
+---
+
+## ⚠️ Regras Importantes
+
+### ✅ PODE:
+- Modificar qualquer arquivo em `GRADE/`
+- Criar novos blocos em `GRADE/src/blocks/`
+- Atualizar CSS e JavaScript
+- Adicionar referências e notas
+
+### ❌ NÃO PODE:
+- **Tocar em OSTEOPOROSE** (pasta completa bloqueada)
+- Criar branches sem explicação
+- Fazer commits sem documentação
+- Alterar estrutura sem aprovação
+
+---
+
+## 📅 Timeline
+
+**Prazo:** 1 mês para conclusão da aula GRADE
+
+**Semana 1:** Fundamentos + primeiros blocos
+**Semana 2:** Core GRADE (8 domínios completos)
+**Semana 3:** Exemplos SBC 2025 + THREADS
+**Semana 4:** GRADEs adicionais + conversão PPTX
+
+---
+
+## 📖 Recursos
+
+- [Diretriz SBC Dislipidemia 2025](https://abc.cardiol.br/)
+- [GRADE Working Group](https://www.gradeworkinggroup.org/)
+- Documentação local em `GRADE/refs/`
+
+---
+
+**Última atualização:** Janeiro 2026
+**Versão da aula GRADE:** Em desenvolvimento (v0.1-alpha)
