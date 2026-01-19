@@ -2,6 +2,43 @@
 
 ## [Unreleased]
 
+### Added
+- **📚 DOCS: complete documentation overhaul with 3-actor structure:**
+  - **README.md:** Complete rewrite with clear division of 3 actors (Claude Technical, Claude Content, ChatGPT Auditor)
+  - **CLAUDE_ROLE.md:** Full rewrite defining responsibilities for all 3 actors with entry protocols, checklists, and workflows
+  - **TECHNICAL_QUALITY.md:** New comprehensive technical quality protocol covering:
+    - WCAG 2.1 AA accessibility (contrast ratios, color blindness, screen readers)
+    - Performance metrics (Lighthouse, FCP, TTI, image optimization)
+    - Cross-browser compatibility (Chrome/Firefox/Safari/Edge)
+    - Transitions/animations policy (minimal, respects user preferences)
+    - Export/distribution (PDF, standalone HTML, print version)
+    - Versioning/snapshots before presentations
+  - **PRESENTATION_TECH.md:** New technical presentation setup guide covering:
+    - PDF export configuration (Playwright)
+    - Standalone HTML generation (offline distribution)
+    - Print CSS optimization
+    - Presenter mode (future: dual screen, notes, timer)
+    - Pre-presentation checklist (hardware, backup, troubleshooting)
+    - Mobile/tablet support (optional)
+    - Security/privacy (anonymization, controlled distribution)
+  - **PROTOCOL_MAP.md:** Updated with clear 3-actor division
+  - Problem solved: **Other Claude instances now have CRYSTAL CLEAR understanding of their role and responsibilities**
+  - Each actor (Claude Technical, Claude Content, ChatGPT Auditor) has dedicated section with:
+    - Entry protocol (what docs to read first)
+    - Responsibilities (what they CAN/CAN'T do)
+    - Checklists (validation before delivery)
+    - Workflow integration (how 3 actors collaborate)
+
+### Changed
+- **🔧 STRUCTURE: reorganized responsibility boundaries:**
+  - Claude Technical: Structure, palette enforcement, quality control, Git commits
+  - Claude Content: Medical content, andragogy, educational design (uses official palette)
+  - ChatGPT Auditor: Final validation (content + design + technical + palette)
+  - Clear handoff workflow: Content creates → Technical validates → Auditor approves → Technical commits
+
+
+## [Unreleased]
+
 ### Changed
 - **📘 DOCS: update README and add protocol map:**
   - Updated README.md with palette and slide protocols section
