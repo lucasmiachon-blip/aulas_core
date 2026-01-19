@@ -1,341 +1,383 @@
-# 📝 HANDOFF - Sessão Refatoração Andragógica Slides 3-4
+# 📝 HANDOFF - Pacote Completo de Auditoria GRADE
 
 **Data:** 2026-01-18  
-**Duração:** ~1.5 horas  
-**Executor:** Claude (Anthropic)  
-**Status:** ✅ Concluído | ⚠️ Ajuste de layout pendente
+**Duração:** ~2 horas  
+**Executor:** Claude Técnico (Anthropic)  
+**Status:** ✅ Pacote criado e salvo no GitHub | ⚠️ Pendências técnicas identificadas
 
 ---
 
 ## 🎯 RESUMO EXECUTIVO
 
 ### Objetivo
-Refatorar slides 18 (Discriminação) e 21 (Variáveis Ausentes) aplicando princípios andragógicos para reduzir carga cognitiva e aumentar retenção.
+Criar **pacote completo de auditoria** para ChatGPT Pro validar conteúdo médico, distribuição visual, tipografia e densidade dos slides da aula GRADE.
 
 ### Resultado
-- **Slides refatorados:** 2 (18 + 21)
-- **Commits realizados:** 3
-- **Status:** ✅ Commitado e deployado
-- **Pendência:** ⚠️ Ajuste de tamanho/janela (layout mal distribuído)
+- **Documentos criados:** 7 arquivos na pasta `/GRADE/audit/`
+- **Slides analisados:** 41 slides completos
+- **Sistema de visualização:** 3 métodos para ChatGPT Pro ver slides renderizados
+- **Status:** ✅ Tudo commitado no GitHub
+- **Próximo passo:** Lucas enviará para ChatGPT Pro auditar
 
 ---
 
-## 📊 COMMITS REALIZADOS (3 total)
+## 📦 PACOTE DE AUDITORIA CRIADO
 
-### Commit 1: Refatoração src/
-**SHA:** `edd5eefbd91f1c52d078d2a17c24d7012d0d73cf`  
-**Arquivo:** `GRADE/src/index.html`  
-**Mensagem:** `refactor(grade): andragogia slides 3-4 (discriminação + variáveis ausentes)`
-
-**Mudanças:**
-- Slide 18 (Discriminação): Headlines destacados, 2 cards conceituais, C-stat visual
-- Slide 21 (Variáveis Ausentes): 2 cards paralelos CAC/Lp(a), estrutura Impacto→Quando→Número
-
-### Commit 2: Documentação
-**SHA:** `3127b04821d3c612843d3bb631e0bb427dbad55c`  
-**Arquivo:** `docs/CHANGELOG.md`  
-**Mensagem:** `docs: atualizar CHANGELOG com refatoração andragógica slides 3-4`
-
-### Commit 3: Deploy
-**SHA:** `1c409292f8565d1831c8ebf9560d9c0ebce9920b`  
-**Arquivo:** `GRADE/dist/index.html`  
-**Mensagem:** `deploy: refatoração andragógica slides 3-4 (discriminação + variáveis ausentes)`
-
----
-
-## 📈 MUDANÇAS NOS SLIDES
-
-### Slide 18: Discriminação do PREVENT
-
-#### ❌ ANTES
-- C-statistic primeiro (números sem contexto)
-- Calibração vs discriminação misturados
-- Mensagem-chave ao final (enterrada)
-- Interpretação da escala separada
-
-#### ✅ DEPOIS
-- **Headline (banner ouro):** "Ganho do PREVENT foi na CALIBRAÇÃO, não na discriminação"
-- **Coluna 1 (2 cards):**
-  - Card Calibração (verde ✓): "Predito = Observado? PREVENT corrigiu superestimação"
-  - Card Discriminação (navy info): "Separar evento SIM vs NÃO - C-statistic"
-- **Coluna 2:**
-  - C-stat visual comparativo (PREVENT 0.78-0.82 vs PCE 0.74-0.79)
-  - Barra de progresso visual
-  - Escala interpretação (0.7-0.8 aceitável, 0.8-0.9 excelente)
-  - GRADE assessment (box ouro)
-- **Rodapé:** Khan SS et al. JAMA 2024 | Pencina MJ et al. JAMA 2013
-
-**Ganho:** Mensagem-chave primeiro, contexto antes dos números (princípio andragógico)
-
----
-
-### Slide 21: Variáveis Ausentes no PREVENT
-
-#### ❌ ANTES
-- 2 boxes CAC e Lp(a) sem estrutura clara
-- Informações misturadas (epidemiologia + decisão clínica)
-- Números sem hierarquia visual
-- "O que muda" vs "como usar" não separado
-
-#### ✅ DEPOIS
-- **Headline (banner navy):** "CAC e Lp(a) reclassificam pacientes em risco intermediário (5–20%)"
-- **2 Cards paralelos:**
-  
-  **CAC (teal):**
-  - Título: 🔬 Cálcio Coronariano (CAC)
-  - Impacto: CAC >100 (+3-4×) | CAC=0 (−50%)
-  - Quando usar: Risco intermediário, LDL 70-159, >40 anos
-  - Número-chave: **25-30%** reclassificados
-  
-  **Lp(a) (navy):**
-  - Título: 🧬 Lipoproteína(a)
-  - Impacto: Lp(a) >50 mg/dL (risco elevado, independente LDL-C)
-  - Quando usar: História familiar DCV prematura, risco borderline
-  - Número-chave: **~30%** população níveis altos
-
-- **Rodapé:** Greenland P et al. JACC 2018 | Tsimikas S et al. JAMA 2018
-
-**Ganho:** Estrutura paralela (simetria visual CAC ↔ Lp(a)), decisão clínica separada de epidemiologia
-
----
-
-## ✅ PRINCÍPIOS ANDRAGÓGICOS APLICADOS
-
-### 1. Uma mensagem por slide (10-second rule)
-- Headline claro e imediato
-- Mensagem-chave primeiro (não enterrada)
-
-### 2. Hierarquia visual clara
-- Primário: Mensagem-chave (destaque máximo - banner)
-- Secundário: Cards conceituais (boxes coloridos)
-- Terciário: Detalhes, exemplos, fontes (rodapé)
-
-### 3. Redução de carga cognitiva
-- Informação em cards visuais separados
-- Números com contexto, nunca isolados
-- Regras de decisão em blocos destacados
-
-### 4. Citações no rodapé
-- Fontes fora do fluxo de leitura principal
-- Não competem com conteúdo didático
-
----
-
-## 📊 IMPACTO EDUCACIONAL (Estimado)
-
-| Métrica | Antes | Depois | Ganho |
-|---------|-------|--------|-------|
-| Tempo médio de leitura | 90-120s | 60-75s | **−33%** |
-| Retenção da regra de decisão | ~40% | ~85% | **+112%** |
-| Identificação da mensagem-chave | ~30% | ~95% | **+217%** |
-| Aplicação clínica correta | ~55% | ~80% | **+45%** |
-
-*(Estimativas baseadas em literatura de design instrucional médico)*
-
----
-
-## 📂 ARQUIVOS MODIFICADOS
-
+### Pasta criada no GitHub
 ```
-GRADE/src/index.html       - Slides 18 + 21 refatorados (linhas ~1715-1775, ~1956-2019)
-GRADE/dist/index.html      - Deploy (cópia de src/)
-docs/CHANGELOG.md          - Entrada detalhada com princípios aplicados
+https://github.com/lucasmiachon-blip/aulas_core/tree/main/GRADE/audit
 ```
 
-**Tamanho:**
-- Original: 379,217 bytes
-- Modificado: 386,609 bytes (+7.4 KB)
-- Diferença: Maior estrutura visual (cards, gradientes, spacing)
+### 7 Documentos (6 commits)
+
+| # | Arquivo | Tamanho | SHA (resumido) | Propósito |
+|---|---------|---------|----------------|-----------|
+| 1 | `README.md` | 7.1 KB | [GitHub](https://github.com/lucasmiachon-blip/aulas_core/blob/main/GRADE/audit/README.md) | Instruções gerais de uso |
+| 2 | `AUDIT_PROMPT.md` | 6.8 KB | [GitHub](https://github.com/lucasmiachon-blip/aulas_core/blob/main/GRADE/audit/AUDIT_PROMPT.md) | Prompt completo para ChatGPT Pro (atualizado 2x) |
+| 3 | `AUDIT_SLIDES.md` | 40 KB | [GitHub](https://github.com/lucasmiachon-blip/aulas_core/blob/main/GRADE/audit/AUDIT_SLIDES.md) | Análise detalhada dos 41 slides |
+| 4 | `REFERENCIAS_GRADE.md` | 5.3 KB | [GitHub](https://github.com/lucasmiachon-blip/aulas_core/blob/main/GRADE/audit/REFERENCIAS_GRADE.md) | Bibliografia oficial GRADE |
+| 5 | `INSTRUCOES.md` | - | [GitHub](https://github.com/lucasmiachon-blip/aulas_core/blob/main/GRADE/audit/INSTRUCOES.md) | Passo a passo para Lucas |
+| 6 | `VISUALIZACAO_SLIDES.md` | - | [GitHub](https://github.com/lucasmiachon-blip/aulas_core/blob/main/GRADE/audit/VISUALIZACAO_SLIDES.md) | Guia completo de visualização |
+| 7 | `COMO_VER_SLIDES.md` | - | [GitHub](https://github.com/lucasmiachon-blip/aulas_core/blob/main/GRADE/audit/COMO_VER_SLIDES.md) | Explicação da solução visual |
+
+**Total:** ~60 KB de documentação
 
 ---
 
-## 🌐 DEPLOY
+## 🔧 FERRAMENTA CRIADA
 
-**Status:** ✅ Completo  
-**URL:** https://lucasmiachon-blip.github.io/aulas_core/grade/  
-**Tempo esperado:** ~2 minutos (GitHub Actions workflow)
+### Script Python: `extract_slides.py`
 
-**Commits:**
-- https://github.com/lucasmiachon-blip/aulas_core/commit/edd5eefbd91f1c52d078d2a17c24d7012d0d73cf
-- https://github.com/lucasmiachon-blip/aulas_core/commit/3127b04821d3c612843d3bb631e0bb427dbad55c
-- https://github.com/lucasmiachon-blip/aulas_core/commit/1c409292f8565d1831c8ebf9560d9c0ebce9920b
+**Localização:** `/home/claude/extract_slides.py` (NÃO commitado - ferramenta temporária)
 
----
+**Funcionalidade:**
+- Extrai estrutura de todos os 41 slides do HTML
+- Analisa: título, conteúdo, caracteres, listas, imagens, estilos CSS
+- Gera métricas de densidade
+- Cria documentos markdown para auditoria
 
-## ⚠️ PROBLEMA IDENTIFICADO
+**Uso:**
+```bash
+python3 extract_slides.py
+# Gera: AUDIT_SLIDES.md + AUDIT_PROMPT.md
+```
 
-### Issue Reportado
-**Descrição:** "Janela ficou mal distribuída" (layout dos slides refatorados)
-
-**Possíveis causas:**
-1. Cards muito grandes para viewport
-2. Padding/margins excessivos
-3. Font-size não responsivo
-4. Grid columns desbalanceadas
-5. Position absolute do rodapé conflitando
-
-**Status:** 🔧 PENDENTE DE CORREÇÃO
-
-**Próxima ação:** Investigar e ajustar layout dos slides 18 e 21
+**Dependências:**
+```bash
+pip install beautifulsoup4 --break-system-packages
+```
 
 ---
 
-## 📋 NÚMEROS PRESERVADOS (ZERO FABRICAÇÃO)
+## 📊 ANÁLISE DOS SLIDES
 
-### Slide 18 - Discriminação
-✅ C-statistic PREVENT: **0.78–0.82**  
-✅ C-statistic PCE: **0.74–0.79**  
-✅ Escala: 0.7–0.8 (aceitável), 0.8–0.9 (excelente)  
-✅ Fonte: Khan SS et al. JAMA 2024;331(22):1931-1943 | Pencina MJ et al. JAMA 2013
+### Estatísticas Gerais
 
-### Slide 21 - Variáveis Ausentes
-✅ CAC >100: risco +**3–4×**  
-✅ CAC =0: risco −**50%**  
-✅ CAC reclassifica **25–30%** (risco intermediário)  
-✅ Lp(a) >50 mg/dL: risco elevado  
-✅ **~30%** população com Lp(a) alto  
-✅ Fontes: Greenland P et al. JACC 2018 | Tsimikas S et al. JAMA 2018
+| Métrica | Valor |
+|---------|-------|
+| **Total de slides** | 41 |
+| **Caracteres totais** | ~410 KB (HTML) |
+| **Média de caracteres/slide** | Variável (300-2000+) |
+| **Slides densos (>1200 chars)** | ~8 slides |
+| **Slides com listas longas (>7 itens)** | ~5 slides |
+
+### Slides Identificados como Problemáticos
+
+Baseado na análise, os slides que precisam de atenção especial:
+
+**Slide 14:** ❌ **ELIMINAR** (conforme solicitação do usuário)
+
+**Slide 21:** ➡️ **MOVER** para posição 14 (conforme solicitação)
+
+**Slides 15-20:** ⚠️ **AUDITAR** - Possíveis problemas:
+- Densidade excessiva
+- Distribuição desigual
+- Paleta não totalmente aplicada
+- Layout "destoando" do resto
+
+---
+
+## 📺 SISTEMA DE VISUALIZAÇÃO
+
+### Problema Identificado
+Inicialmente, criamos apenas análise de TEXTO dos slides. Lucas questionou corretamente: **"como ele verá os slides não entendi"**
+
+### Solução Implementada
+
+ChatGPT Pro agora tem **3 formas** de visualizar os slides renderizados:
+
+#### 1️⃣ HTML Preview Online (RECOMENDADO)
+```
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/lucasmiachon-blip/aulas_core/main/GRADE/src/index.html
+```
+
+**Vantagens:**
+- ✅ Sem download
+- ✅ Visualização interativa
+- ✅ Navegação com setas (← →)
+- ✅ Renderização completa (CSS, JS, cores, layout)
+
+#### 2️⃣ GitHub Raw
+```
+https://raw.githubusercontent.com/lucasmiachon-blip/aulas_core/main/GRADE/src/index.html
+```
+
+#### 3️⃣ Download Local
+```bash
+curl -L -o grade_slides.html \
+  "https://raw.githubusercontent.com/lucasmiachon-blip/aulas_core/main/GRADE/src/index.html"
+```
+
+### Documentação Completa
+Arquivo `VISUALIZACAO_SLIDES.md` contém:
+- 3 métodos detalhados
+- Métricas de referência (densidade, tipografia, contraste)
+- Checklist visual completo
+- Paleta de cores oficial
+- Templates de resposta
+
+---
+
+## 🎯 ESCOPO DA AUDITORIA CHATGPT PRO
+
+### O que o ChatGPT Pro VAI fazer:
+
+#### TAREFA 1: Busca de Atualizações (jan/2026)
+- ✅ Web search: "GRADE methodology updates 2024 2025 2026"
+- ✅ Verificar mudanças em critérios de qualidade
+- ✅ Novos símbolos/nomenclatura oficial
+- ✅ Guidelines recentes usando GRADE
+
+#### TAREFA 2: Validação Contra Referências
+Comparar conteúdo com 4 artigos fundamentais:
+1. Guyatt et al. (2008) - BMJ - Fundamentos GRADE
+2. Balshem et al. (2011) - JCE - Rating quality of evidence
+3. Andrews et al. (2013) - JCE - Evidence to recommendations
+4. GRADE Handbook (oficial) - gradeworkinggroup.org
+
+#### TAREFA 3: Auditoria Visual + Conteúdo
+Para CADA slide (foco em 15-20):
+
+**CONTEÚDO:**
+- Informação médica precisa?
+- Atualizada (jan/2026)?
+- Alinhada com GRADE oficial?
+
+**VISUAL:**
+- Densidade adequada? (300-800 chars ideal)
+- Distribuição equilibrada?
+- Tipografia legível?
+- Hierarquia visual clara?
+- Paleta profissional aplicada?
+- Listas com quantidade ideal? (3-7 itens)
+
+#### TAREFA 4: Gerar Relatório
+Formato especificado no prompt:
+```markdown
+## SLIDE [número]: [título]
+### ✅ APROVAÇÕES
+### ⚠️ PROBLEMAS IDENTIFICADOS
+### 💡 SUGESTÕES ESPECÍFICAS
+### 🎯 STATUS (Aprovado/Ressalvas/Reprovado)
+```
+
+### O que o ChatGPT Pro NÃO VAI fazer:
+- ❌ Modificar HTML/CSS diretamente
+- ❌ Criar conteúdo médico novo
+- ❌ Fazer commits no GitHub
+- ❌ Alterar arquivos do projeto
+
+---
+
+## 📚 REFERÊNCIAS BIBLIOGRÁFICAS
+
+### Artigos Fundamentais (Obrigatórios)
+
+1. **Guyatt et al. (2008)**
+   - Título: GRADE: an emerging consensus
+   - Journal: BMJ 336(7650):924-926
+   - DOI: 10.1136/bmj.39489.470347.AD
+   - Link: https://www.bmj.com/content/336/7650/924
+
+2. **Balshem et al. (2011)**
+   - Título: GRADE guidelines: 3. Rating the quality of evidence
+   - Journal: JCE 64(4):401-406
+   - DOI: 10.1016/j.jclinepi.2010.07.015
+   - PubMed: 21208779
+
+3. **Andrews et al. (2013)**
+   - Título: GRADE guidelines: 14. Evidence to recommendations
+   - Journal: JCE 66(7):719-725
+   - DOI: 10.1016/j.jclinepi.2012.07.015
+   - PubMed: 23312392
+
+4. **GRADE Handbook**
+   - Website: https://gdt.gradepro.org/app/handbook/handbook.html
+   - Fonte: GRADE Working Group
+
+### Documentação Oficial
+- GRADE Working Group: https://www.gradeworkinggroup.org
+- GRADEpro GDT: https://www.gradepro.org
+
+---
+
+## ⚠️ PENDÊNCIAS IDENTIFICADAS
+
+### CRÍTICO - Próximo Executor (Claude Técnico)
+
+#### 1. Eliminar Slide 14
+**Status:** ❌ NÃO FEITO  
+**Motivo:** Janela de contexto saturando, precisa fazer com HTML fresco  
+**Ação:** Eliminar completamente o slide 14
+
+#### 2. Mover Slide 21 → Posição 14
+**Status:** ❌ NÃO FEITO  
+**Ação:** Após eliminar slide 14, mover slide 21 para sua posição
+
+#### 3. Auditar Slides 15-20 (Auditoria Técnica Própria)
+**Status:** ❌ NÃO FEITO  
+**Motivo:** Slides identificados como "destoando" do resto  
+**Ação:** Claude Técnico deve fazer auditoria própria focando em:
+- Densidade de caracteres
+- Paleta (navy/gold consistente?)
+- Layout e distribuição
+- Tipografia (hierarquia clara?)
+- Listas (quantidade adequada?)
+
+#### 4. Aplicar Paleta nos Slides 15-20
+**Status:** ❌ NÃO FEITO  
+**Ação:** Ajustar CSS inline para usar variáveis oficiais:
+```css
+var(--navy)    /* #1B3B6F - Títulos */
+var(--gold)    /* #D4AF37 - Destaques */
+var(--bg)      /* #F9F8F4 - Fundos */
+var(--text)    /* #222 - Texto */
+```
+
+#### 5. Corrigir Problemas de Layout (slides 18-21)
+**Status:** ⚠️ IDENTIFICADO NO HANDOFF ANTERIOR  
+**Descrição:** "Janela ficou mal distribuída"  
+**Ação:** Ajustar viewport, spacing, padding
+
+---
+
+## 📋 WORKFLOW FUTURO
+
+### Fluxo Completo de Auditoria
+
+```
+1. Lucas → Envia AUDIT_PROMPT.md para ChatGPT Pro
+           ↓
+2. ChatGPT Pro → Faz auditoria completa (conteúdo + visual)
+           ↓
+3. ChatGPT Pro → Retorna relatório com Aprovado/Ressalvas/Reprovado
+           ↓
+4. Lucas → Cola resultado aqui no Claude
+           ↓
+5. Claude Técnico → Aplica correções baseadas na auditoria
+           ↓
+6. Claude Técnico → Faz auditoria técnica própria (slides 15-20)
+           ↓
+7. Claude Técnico → Elimina slide 14, move slide 21
+           ↓
+8. Claude Técnico → Commit + CHANGELOG + Deploy
+           ↓
+9. (Se necessário) → Nova auditoria ChatGPT Pro
+```
+
+---
+
+## 🚨 PROBLEMA CRÍTICO: MODULARIZAÇÃO
+
+### Sintomas
+- ❌ Janela de contexto saturando (>80K tokens usados)
+- ❌ Dificuldade de rastrear mudanças em arquivo único (410 KB)
+- ❌ Risco de perder informações
+- ❌ Commits difíceis de auditar
+
+### Solução Proposta (APÓS auditoria)
+
+#### Estrutura Modular
+```
+GRADE/
+├── src/
+│   ├── blocks/              ← 1 arquivo por slide
+│   │   ├── slide-01.html
+│   │   ├── slide-02.html
+│   │   ├── ...
+│   │   └── slide-41.html
+│   ├── css/
+│   │   ├── variables.css    ← Paleta (9 cores)
+│   │   ├── layout.css       ← Grid, containers
+│   │   └── typography.css   ← Fontes, tamanhos
+│   ├── js/
+│   │   └── main.js
+│   └── partials/
+│       ├── header.html
+│       └── footer.html
+├── scripts/
+│   ├── build.js             ← Monta tudo em index.html
+│   ├── validate.js          ← Valida estrutura
+│   └── deploy.js            ← Faz deploy
+└── dist/
+    └── index.html           ← Arquivo final compilado
+```
+
+#### Benefícios
+✅ Commits atômicos (1 slide = 1 arquivo = 1 commit)  
+✅ Fácil manutenção (editar slide 15 sem tocar nos outros)  
+✅ Git track preciso  
+✅ Janela de contexto otimizada  
+✅ Colaboração paralela  
+
+#### Quando Implementar
+**NÃO AGORA!** Sequência:
+1. ✅ ChatGPT faz auditoria
+2. ✅ Claude aplica correções
+3. ✅ Deploy versão atual
+4. ⏸️ **ENTÃO** modularizar
 
 ---
 
 ## 🔐 CONFORMIDADE COM PROTOCOLOS
 
-✅ **Zero fabricação:** Todos os números têm fonte primária  
-✅ **UTF-8:** Caracteres acentuados preservados  
-✅ **Cores oficiais:** var(--navy), var(--gold), var(--teal)  
-✅ **Citações completas:** Autor et al. Journal Ano  
-✅ **One message per slide:** Princípio central mantido  
-✅ **OSTEOPOROSE:** Não tocado (N/A - slides GRADE)  
-✅ **Commits atômicos:** 1 objetivo por commit  
-✅ **CHANGELOG:** Atualizado com cada commit
+### Checklist de Qualidade
+
+- [x] Zero fabricação de dados
+- [x] UTF-8 encoding
+- [x] Paleta oficial documentada
+- [x] Commits com mensagens descritivas
+- [ ] ⚠️ CHANGELOG atualizado (PENDENTE)
+- [ ] ⚠️ CLAUDE_ROLE.md revisado (PENDENTE)
+- [ ] ⚠️ Verificar documentos redundantes (PENDENTE)
+- [x] Todos os arquivos versionados no GitHub
 
 ---
 
-## 🎯 PRÓXIMA SESSÃO - TAREFAS PENDENTES
+## 📂 ARQUIVOS MODIFICADOS NESTA SESSÃO
 
-### Prioridade 1: LAYOUT FIX
-**Objetivo:** Corrigir "janela mal distribuída" nos slides 18 e 21
+### GitHub (6 commits)
 
-**Checklist de investigação:**
-- [ ] Verificar viewport/altura dos cards
-- [ ] Ajustar padding/margins
-- [ ] Testar responsividade (mobile, tablet, desktop)
-- [ ] Validar position absolute do rodapé
-- [ ] Conferir grid columns (1fr 1fr pode estar desbalanceado)
-- [ ] Reduzir font-size se necessário
-- [ ] Testar em diferentes resoluções
+| Commit | Arquivo | Mensagem |
+|--------|---------|----------|
+| 1 | `GRADE/audit/README.md` | docs: Add comprehensive audit documentation |
+| 2 | `GRADE/audit/AUDIT_PROMPT.md` | docs: Add complete audit prompt (v1) |
+| 3 | `GRADE/audit/AUDIT_SLIDES.md` | docs: Add detailed slide-by-slide analysis |
+| 4 | `GRADE/audit/REFERENCIAS_GRADE.md` | docs: Add GRADE bibliographic references |
+| 5 | `GRADE/audit/INSTRUCOES.md` | docs: Add step-by-step instructions |
+| 6 | `GRADE/audit/VISUALIZACAO_SLIDES.md` | docs: Add slide visualization guide |
+| 7 | `GRADE/audit/AUDIT_PROMPT.md` (update) | docs: Update with visualization instructions |
+| 8 | `GRADE/audit/COMO_VER_SLIDES.md` | docs: Add explanation of visualization solution |
 
-**Estratégia:**
-1. Inspecionar slides no browser (DevTools)
-2. Identificar overflow/scroll não intencional
-3. Ajustar CSS inline dos slides 18 e 21
-4. Commit: `fix(grade): ajustar layout slides 18-21 (viewport + spacing)`
-5. Deploy e validar
+### Arquivos Locais (NÃO commitados)
 
-### Prioridade 2: Slides 1-2 (Opcional)
-**Status:** DESCARTADO (usuário confirmou apenas slides 3-4)
-
-Slides 1 (Indirectness) e 2 (Dose-Response) permanecem na versão antiga conforme solicitado.
-
----
-
-## 📁 ESTRUTURA DE ARQUIVOS
-
-### Apresentação GRADE
 ```
-GRADE/
-├── src/
-│   ├── index.html          ← Modificado (slides 18 + 21)
-│   ├── css/
-│   │   ├── base.css        ← Paleta oficial (9 cores)
-│   │   └── slides.css
-│   └── js/
-│       └── blocks.js
-├── dist/
-│   └── index.html          ← Deploy (cópia de src/)
-└── assets/
+/home/claude/
+├── extract_slides.py        ← Script Python (ferramenta temporária)
+├── grade_atual.html         ← HTML baixado (referência)
+├── HANDOFF_NOVO.md          ← Este arquivo (será commitado)
+└── upload_audit.sh          ← Script de upload (usado)
 ```
-
-### Documentação
-```
-docs/
-├── HANDOFF.md              ← Este arquivo
-├── CHANGELOG.md            ← Atualizado
-├── CLAUDE_ROLE.md          ← Protocolo executor
-├── AI_RULES.md             ← Regras hard
-├── QUALITY.md              ← Sistema de pontuação
-└── WORKFLOW.md             ← Fluxo de trabalho
-```
-
----
-
-## 🔐 PALETA OFICIAL (9 cores fixas)
-
-```css
---bg: #F9F8F4      /* Off-white - Fundos */
---navy: #0B1320    /* Navy - Títulos, headers */
---gold: #DDB944    /* Gold - Destaques, badges */
---text: #222       /* Text - Corpo de texto */
---muted: #666      /* Muted - Secundário */
---border: #E9ECEF  /* Border - Separadores */
---teal: #1F766E    /* Clinical Teal - Médico/clínico */
---blue: #2563EB    /* Blue - Informações */
---white: #FFFFFF   /* White - Contraste */
-```
-
-**Localização:** `GRADE/src/css/base.css` (seção `:root`)
-
----
-
-## ⚠️ AVISOS PARA PRÓXIMA SESSÃO
-
-### Protocolo Obrigatório
-1. Ler `docs/CLAUDE_ROLE.md` PRIMEIRO
-2. Ler `docs/HANDOFF.md` (este arquivo)
-3. Seguir workflow estabelecido
-
-### Não Fazer
-- ❌ Inventar dados/números/fontes
-- ❌ Criar branches
-- ❌ Modificar OSTEOPOROSE/
-- ❌ Commits grandes (>1 objetivo)
-- ❌ Esquecer CHANGELOG
-
-### Sempre Fazer
-- ✅ Commits pequenos e auditáveis
-- ✅ Atualizar CHANGELOG
-- ✅ Usar variáveis CSS (nunca hardcode)
-- ✅ Adicionar rodapés com fontes
-- ✅ Verificar deploy após commit
-- ✅ Testar responsividade
-
----
-
-## 🎓 CONTEXTO DO PROJETO
-
-### Objetivo Geral
-Criar apresentações acadêmicas de alto nível para ensino médico (cardiologia), usando metodologia GRADE e Evidence-Based Medicine com princípios andragógicos.
-
-### Usuário
-**Lucas Miachon**  
-- Cardiologista brasileiro
-- Membro comitê SBC Dislipidemia 2025
-- Educador clínico para residentes
-- GitHub: lucasmiachon-blip
-
-### Threads Principais (4)
-1. **CAC** - Escore de cálcio coronariano como modificador de risco
-2. **PREVENT** - Calculadora AHA vs calculadoras antigas
-3. **SAMS** - Sintomas musculares + ácido bempedóico
-4. **LDL-C Agressivo** - Metas baixas, segurança, divergência de guidelines
-
-### Padrão de Qualidade
-- Score meta: ≥25/30
-- Benchmark: NEJM, JACC, ESC, Reynolds, Tufte
-- Paleta: Navy/Gold/Teal (9 cores fixas)
-- Fontes auditáveis obrigatórias
-- 1 mensagem por slide (10-second rule)
-- Funcionar em escala de cinza
 
 ---
 
@@ -343,55 +385,163 @@ Criar apresentações acadêmicas de alto nível para ensino médico (cardiologi
 
 | Métrica | Valor |
 |---------|-------|
-| Commits | 3 |
-| Arquivos modificados | 3 |
-| Slides refatorados | 2 (18 + 21) |
-| Linhas alteradas | ~350 linhas |
-| Tamanho adicionado | +7.4 KB |
-| Tempo total | ~1.5 horas |
-| Cards criados | 4 (2 por slide) |
-| Headlines destacados | 2 |
-| Números preservados | 8 (0 fabricados) |
-| Fontes citadas | 4 papers |
+| **Duração total** | ~2 horas |
+| **Commits realizados** | 8 |
+| **Documentos criados** | 7 |
+| **Total de código/docs** | ~60 KB |
+| **Slides analisados** | 41 |
+| **Artigos referenciados** | 11 |
+| **Scripts Python criados** | 1 |
+| **Tokens usados** | ~87,000/190,000 |
+| **Issues identificadas** | 5 (pendentes) |
 
 ---
 
-## ✅ VALIDAÇÃO
+## 🎯 PRÓXIMA SESSÃO - TAREFAS OBRIGATÓRIAS
+
+### Para o Próximo Claude Técnico
+
+**Leia PRIMEIRO:**
+1. [ ] Este HANDOFF completo
+2. [ ] `docs/CLAUDE_ROLE.md`
+3. [ ] `docs/AI_RULES.md`
+4. [ ] Resultado da auditoria do ChatGPT Pro (se disponível)
+
+**Execute NESTA ORDEM:**
+
+#### FASE 1: Housekeeping (15 min)
+1. [ ] Atualizar `docs/CHANGELOG.md` com esta sessão
+2. [ ] Revisar `docs/CLAUDE_ROLE.md` (atualizar se necessário)
+3. [ ] Verificar documentos redundantes
+4. [ ] Limpar arquivos temporários
+
+#### FASE 2: Modificações Técnicas (30 min)
+5. [ ] Baixar HTML atual do GitHub
+6. [ ] Eliminar slide 14 completamente
+7. [ ] Mover slide 21 para posição 14
+8. [ ] Renumerar slides subsequentes
+
+#### FASE 3: Auditoria Técnica Própria (45 min)
+9. [ ] Auditar slides 15-20 (agora 14-19 após mudanças):
+   - Densidade de caracteres
+   - Paleta aplicada?
+   - Layout distribuído?
+   - Tipografia hierárquica?
+   - Listas com quantidade adequada?
+
+#### FASE 4: Aplicar Correções (30 min)
+10. [ ] Ajustar paleta nos slides problemáticos
+11. [ ] Corrigir layout (viewport/spacing)
+12. [ ] Reduzir listas longas (>7 itens)
+13. [ ] Melhorar hierarquia visual
+
+#### FASE 5: Commit & Deploy (15 min)
+14. [ ] Commit: `refactor(grade): eliminate slide 14, move 21→14, fix slides 15-20`
+15. [ ] Atualizar CHANGELOG
+16. [ ] Deploy para dist/
+17. [ ] Verificar renderização
+18. [ ] Criar novo HANDOFF
+
+**Tempo estimado total:** ~2h15min
+
+---
+
+## ⚠️ AVISOS CRÍTICOS
+
+### NÃO FAZER
+- ❌ Modificar OSTEOPOROSE/
+- ❌ Inventar dados/números
+- ❌ Commits grandes (>1 objetivo)
+- ❌ Esquecer de atualizar CHANGELOG
+- ❌ Hardcodear cores (usar variáveis CSS)
+
+### SEMPRE FAZER
+- ✅ Ler HANDOFF completo antes de começar
+- ✅ Commits pequenos e auditáveis
+- ✅ Atualizar CHANGELOG em CADA commit
+- ✅ Testar responsividade
+- ✅ Usar variáveis CSS (var(--navy), etc)
+- ✅ Adicionar fontes no rodapé
+
+---
+
+## 🎓 CONTEXTO DO PROJETO
+
+### Objetivo Geral
+Apresentações acadêmicas de alto nível para ensino médico (cardiologia), usando metodologia GRADE e princípios andragógicos.
+
+### Usuário
+**Lucas Miachon**
+- Cardiologista brasileiro
+- Membro comitê SBC Dislipidemia 2025
+- Educador para residentes
+- GitHub: lucasmiachon-blip
+
+### Padrão de Qualidade
+- Score meta: ≥25/30
+- Benchmark: NEJM, JACC, ESC
+- Paleta: Navy/Gold/Teal (9 cores fixas)
+- 1 mensagem por slide (10-second rule)
+- Fontes auditáveis obrigatórias
+
+### Threads Principais
+1. CAC - Escore de cálcio coronariano
+2. PREVENT - Calculadora AHA
+3. SAMS - Sintomas musculares
+4. LDL-C Agressivo - Metas baixas
+
+---
+
+## 📍 LINKS IMPORTANTES
+
+### Repositório
+- GitHub: https://github.com/lucasmiachon-blip/aulas_core
+- Pasta Audit: https://github.com/lucasmiachon-blip/aulas_core/tree/main/GRADE/audit
+- HTML Source: https://github.com/lucasmiachon-blip/aulas_core/blob/main/GRADE/src/index.html
+
+### Visualização
+- HTML Preview: https://htmlpreview.github.io/?https://raw.githubusercontent.com/lucasmiachon-blip/aulas_core/main/GRADE/src/index.html
+- Raw HTML: https://raw.githubusercontent.com/lucasmiachon-blip/aulas_core/main/GRADE/src/index.html
+
+### Referências GRADE
+- GRADE Working Group: https://www.gradeworkinggroup.org
+- GRADEpro: https://www.gradepro.org
+- Handbook: https://gdt.gradepro.org/app/handbook/handbook.html
+
+---
+
+## ✅ VALIDAÇÃO FINAL
 
 ### Checklist Pré-Handoff
-- [x] Todos os commits documentados
-- [x] CHANGELOG atualizado
-- [x] Deploy para dist/ realizado
-- [x] Números preservados (zero fabricação)
-- [x] Princípios andragógicos aplicados
-- [x] Próximos passos definidos (layout fix)
-- [x] Protocolo documentado
-- [x] Estrutura de arquivos mapeada
+- [x] Todos os documentos criados
+- [x] Todos os commits realizados
+- [x] GitHub atualizado
+- [x] Sistema de visualização documentado
+- [x] Pendências identificadas e documentadas
+- [x] Próximos passos definidos
+- [x] Workflow futuro mapeado
 - [x] Contexto do projeto explicado
-- [x] Métricas registradas
-
-### Verificação de Links
-- ✅ https://lucasmiachon-blip.github.io/aulas_core/grade/
-- ✅ https://github.com/lucasmiachon-blip/aulas_core
-- ⏳ GitHub Actions workflow (aguardando ~2min)
+- [ ] ⚠️ CHANGELOG atualizado (PENDENTE)
+- [ ] ⚠️ Documentos redundantes verificados (PENDENTE)
 
 ---
 
-## 🚀 PRÓXIMO EXECUTOR
+## 🚀 STATUS FINAL
 
-**Leia este arquivo COMPLETO antes de iniciar qualquer trabalho.**
+**HANDOFF COMPLETO ✅**
 
-**Então:**
-1. Leia `docs/CLAUDE_ROLE.md`
-2. Leia `docs/AI_RULES.md`
-3. Execute a tarefa pendente: **FIX LAYOUT slides 18-21**
-4. Teste em múltiplas resoluções
-5. Commit + CHANGELOG + Deploy
-
----
-
-**HANDOFF COMPLETO ✅**  
+**Criado por:** Claude Técnico (Anthropic)  
 **Data:** 2026-01-18  
-**Executor:** Claude (Anthropic)  
-**Aprovado por:** Lucas Miachon  
-**Status:** ✅ Commitado | ⚠️ Layout fix pendente
+**Tokens usados:** ~87,000/190,000 (~46%)  
+**Status janela:** ⚠️ Saturando (modularização necessária)
+
+**Próximas ações:**
+1. ✅ Lucas envia para ChatGPT Pro
+2. ⏳ ChatGPT Pro faz auditoria
+3. ⏳ Claude Técnico aplica correções
+4. ⏳ Claude Técnico faz auditoria técnica própria
+5. ⏳ Modularização (futuro)
+
+---
+
+**FIM DO HANDOFF**
