@@ -70,11 +70,10 @@
         
         try {
             // Detectar path correto baseado no contexto
-            // Se estamos em src: ./slides/
-            // Se estamos em dist: ../src/slides/
-            // Tentar primeiro ./slides/, se falhar, tentar ../src/slides/
+            // GitHub Pages: ./src/slides/ (a partir de /grade/index.html)
+            // Desenvolvimento local: ./slides/ (a partir de /src/index.html)
             async function loadSlideFile(file) {
-                const paths = ['./slides/', '../src/slides/'];
+                const paths = ['./src/slides/', './slides/'];
                 
                 for (const basePath of paths) {
                     try {
@@ -118,7 +117,7 @@
                     <h2>Erro ao carregar slides</h2>
                     <p>${error.message}</p>
                     <p style="font-size: 0.9em; color: #666; margin-top: 2vw;">
-                        Verifique se os arquivos estão em ./slides/
+                        Verifique se os arquivos estão em ./src/slides/ ou ./slides/
                     </p>
                 </div>
             `;
