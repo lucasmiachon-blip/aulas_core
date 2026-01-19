@@ -3,6 +3,20 @@
 ## [Unreleased]
 
 ### Added
+- **📋 DOCS: mandatory slides creation checklist for Claude:**
+  - Created docs/CLAUDE_SLIDES_CHECKLIST.md - self-enforcement protocol
+  - Addresses issue: Claude (AI) was creating slides with hardcoded colors instead of var(--) variables
+  - Checklist includes: color palette verification, typography rules, slide templates, badge standards
+  - Pre-creation requirements: Must read palette guide, use ONLY official colors, validate before delivery
+  - Forbidden practices explicitly listed (hex colors, wrong fonts, missing footers)
+  - Quick reference table for 9 official CSS variables
+  - Mental command to repeat before creating any slide
+  - Solves problem: Claude breaking visual identity by not following established protocols
+
+
+## [Unreleased]
+
+### Added
 - **📘 DOCS: official color palette enforcement guide:**
   - Created docs/PROMPT_PALETA_OFICIAL.md with complete visual identity specs
   - Defines 9 official CSS variables (navy, gold, teal, blue, bg, white, text, muted, border)
