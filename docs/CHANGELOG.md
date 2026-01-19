@@ -2,6 +2,20 @@
 
 ## [Unreleased]
 
+### Added
+- **📘 DOCS: official color palette enforcement guide:**
+  - Created docs/PROMPT_PALETA_OFICIAL.md with complete visual identity specs
+  - Defines 9 official CSS variables (navy, gold, teal, blue, bg, white, text, muted, border)
+  - Typography rules (Georgia for titles, Lato for body)
+  - Forbidden colors list to prevent palette violations
+  - Usage examples for cards, badges, and slides
+  - Quick command reference for ChatGPT/other assistants
+  - Validation checklist for quality assurance
+  - Solves problem: external assistants reverting to non-professional palettes
+
+
+## [Unreleased]
+
 ### Changed
 - **🧹 GRADE: organize project structure (move docs from root):**
   - Moved HANDOFF_*.md files to notes/archive/ (3 files)
