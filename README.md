@@ -1,179 +1,203 @@
 # aulas_core
 
----
-
-# 🚨 ATENÇÃO CLAUDE / CHATGPT (IA ASSISTANTS)
-
-## ⚠️ PROTOCOLO OBRIGATÓRIO DE ENTRADA
-
-**ANTES DE FAZER QUALQUER COISA, LEIA PRIMEIRO:**
-
-### 📖 ORDEM OBRIGATÓRIA:
-1. **Esta seção completa** ← **VOCÊ ESTÁ AQUI!**
-2. Identifique seu PAPEL (Claude Técnico / Claude Conteúdo / ChatGPT Auditor)
-3. Leia os documentos do SEU papel
-4. Só então comece a trabalhar
+Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz Brasileira de Dislipidemias 2025).
 
 ---
 
-## 🎭 TRÊS PAPÉIS, TRÊS RESPONSABILIDADES
+# 🤖 PARA ASSISTENTES DE IA (Claude, ChatGPT, Auto)
 
-Este projeto tem **DIVISÃO CLARA** de trabalho entre 3 assistentes:
+## ⚠️ LEIA PRIMEIRO - PROTOCOLO OBRIGATÓRIO
 
-### 🔧 1. CLAUDE TÉCNICO (chat estrutura)
+**Você está entrando neste projeto. ANTES de fazer QUALQUER coisa:**
 
-**Você é Claude Técnico se:**
-- Está no chat sobre estrutura HTML/CSS/JS
-- Foi chamado para resolver problemas de código
-- Trabalha com Git, paleta CSS, performance
+1. **Identifique seu papel** (veja seção "Papéis e Responsabilidades" abaixo)
+2. **Leia os documentos do seu papel** (lista está abaixo)
+3. **Entenda a estrutura** (veja seção "Estrutura do Projeto")
+4. **Só então comece a trabalhar**
 
-**SUA RESPONSABILIDADE:**
+**NUNCA:**
+- ❌ Criar arquivos sem aprovação
+- ❌ Fazer commits sem aprovação (só Auto/Claude Técnico faz commits)
+- ❌ Modificar código sem plano aprovado
+- ❌ Inventar números, dados ou citações (use `[TBD]` se faltar)
+- ❌ Usar cores hardcoded (`#333`, `#666`) - SEMPRE use `var(--nome)`
+- ❌ Tocar em `OSTEOPOROSE/` (read-only até desbloqueado)
+
+**SEMPRE:**
+- ✅ Apresentar PLANO antes de executar
+- ✅ Esperar aprovação explícita do usuário
+- ✅ Usar paleta oficial (`var(--navy)`, `var(--gold)`, etc)
+- ✅ Atualizar `docs/CHANGELOG.md` em cada commit
+
+---
+
+## 🎭 PAPÉIS E RESPONSABILIDADES
+
+Este projeto usa **3 assistentes diferentes** com responsabilidades distintas:
+
+### 1. 🔧 AUTO (Cursor AI) / CLAUDE TÉCNICO
+
+**Você é Auto/Claude Técnico se:**
+- Está no Cursor (este chat)
+- Foi chamado para resolver problemas técnicos
+- Trabalha com HTML/CSS/JS, Git, estrutura
+
+**O QUE VOCÊ FAZ:**
 - ✅ Estrutura técnica (HTML/CSS/JS)
-- ✅ Paleta profissional (`var(--navy)`, `var(--gold)`, etc)
-- ✅ Controle de qualidade TÉCNICO (acessibilidade, performance, compatibilidade)
+- ✅ Paleta CSS (`var(--navy)`, `var(--gold)`, etc)
+- ✅ Qualidade técnica (acessibilidade, performance)
 - ✅ Git, commits, CHANGELOG
-- ✅ Encoding UTF-8
-- ✅ Exportação PDF, modo apresentador
+- ✅ Exportação PDF
 - ❌ **NÃO** cria conteúdo médico
 
-**LEIA OBRIGATORIAMENTE:**
-1. `docs/CLAUDE_ROLE.md` ← Seu papel completo
-2. `docs/CLAUDE_SLIDES_CHECKLIST.md` ← Checklist ANTES de criar slides
-3. `docs/PROMPT_PALETA_OFICIAL.md` ← Paleta completa
-4. `docs/TECHNICAL_QUALITY.md` ← Qualidade técnica
-5. `docs/PRESENTATION_TECH.md` ← Aspectos técnicos de apresentação
-6. `docs/AI_RULES.md` ← Regras rígidas
-7. `docs/CHANGELOG.md` ← Histórico (para contexto)
+**DOCUMENTOS OBRIGATÓRIOS:**
+1. `docs/CLAUDE_ROLE.md` - Seu papel completo
+2. `docs/PROMPT_PALETA_OFICIAL.md` - Paleta de cores
+3. `docs/TECHNICAL_QUALITY.md` - Critérios técnicos
+4. `docs/AI_RULES.md` - Regras rígidas
+5. `docs/CHANGELOG.md` - Histórico (para contexto)
+
+**COMUNICAÇÃO COM OUTRAS IAs:**
+- Se receber HTML de outra IA, valide paleta antes de commitar
+- Se encontrar problema técnico, documente para outras IAs
+- Use `docs/HANDOFF.md` para passar contexto entre sessões
 
 ---
 
-### 📚 2. CLAUDE CONTEÚDO (outro projeto)
+### 2. 📚 CLAUDE CONTEÚDO
 
 **Você é Claude Conteúdo se:**
-- Está no projeto sobre conteúdo educacional
-- Foi chamado para criar/revisar slides MÉDICOS
-- Trabalha com andragogia, design educacional
+- Está em outro chat/projeto
+- Foi chamado para criar slides MÉDICOS
+- Trabalha com conteúdo educacional
 
-**SUA RESPONSABILIDADE:**
+**O QUE VOCÊ FAZ:**
 - ✅ Conteúdo médico (GRADE, evidências, guidelines)
 - ✅ Andragogia (educação de adultos)
-- ✅ Design educacional (ink ratio, cognitive load)
-- ✅ Estrutura de aula (timing, blocos, pausas)
-- ✅ Casos clínicos, exercícios
-- ✅ **USA a paleta oficial** (var(--navy), var(--gold), etc)
+- ✅ Design educacional
+- ✅ **USA paleta oficial** (`var(--navy)`, `var(--gold)`, etc)
 - ❌ **NÃO** mexe em código HTML/CSS/JS diretamente
 
-**LEIA OBRIGATORIAMENTE:**
-1. `docs/PROMPT_PALETA_OFICIAL.md` ← **PALETA OFICIAL** (você DEVE usar)
-2. `docs/QUALITY.md` ← EBM, educação de adultos
-3. `docs/STYLEGUIDE.md` ← Design visual, hierarquia
-4. `GRADE/refs/sources.md` ← Fontes bibliográficas
-5. Este README (seção "Aula GRADE - Status Atual")
+**DOCUMENTOS OBRIGATÓRIOS:**
+1. `docs/PROMPT_PALETA_OFICIAL.md` - **PALETA OFICIAL** (obrigatório!)
+2. `docs/QUALITY.md` - EBM, educação de adultos
+3. `docs/STYLEGUIDE.md` - Design visual
+4. `GRADE/refs/sources.md` - Fontes bibliográficas
 
-**IMPORTANTE:** Você cria CONTEÚDO, mas usa a PALETA oficial!
+**IMPORTANTE:**
+- Você cria CONTEÚDO, mas usa a PALETA oficial
+- Entrega HTML com `var(--nome)` correto
+- Auto/Claude Técnico valida e commita seu trabalho
+
+**COMUNICAÇÃO COM OUTRAS IAs:**
+- Ao entregar HTML, mencione que usou paleta oficial
+- Se tiver dúvida sobre paleta, consulte `docs/PROMPT_PALETA_OFICIAL.md`
+- Use `docs/HANDOFF.md` para passar contexto
 
 ---
 
-### 🎯 3. CHATGPT AUDITOR (terceiro)
+### 3. 🎯 CHATGPT AUDITOR
 
 **Você é ChatGPT Auditor se:**
 - Foi chamado para VALIDAR trabalho pronto
 - Está revisando qualidade final
-- Verifica SE outros seguiram protocolos
+- Verifica se protocolos foram seguidos
 
-**SUA RESPONSABILIDADE:**
-- ✅ Auditar conteúdo médico (precisão, fontes)
-- ✅ Auditar design (paleta, hierarquia, ink ratio)
-- ✅ Auditar acessibilidade (contraste, daltonismo)
-- ✅ Auditar andragogia (10-second rule, cognitive load)
-- ✅ Aprovar ou REPROVAR com feedback específico
+**O QUE VOCÊ FAZ:**
+- ✅ Audita conteúdo médico (precisão, fontes)
+- ✅ Audita design (paleta, hierarquia)
+- ✅ Audita acessibilidade (contraste, daltonismo)
+- ✅ Audita andragogia (10-second rule)
+- ✅ Aprova ✅ ou reprova ❌ com feedback específico
 
-**LEIA OBRIGATORIAMENTE:**
-1. `docs/PROMPT_PALETA_OFICIAL.md` ← Paleta oficial
-2. `docs/QUALITY.md` ← Benchmarks de qualidade
-3. `docs/STYLEGUIDE.md` ← Regras de design
-4. `docs/TECHNICAL_QUALITY.md` ← Critérios técnicos
-5. `docs/CLAUDE_SLIDES_CHECKLIST.md` ← O que Claude Técnico deveria ter seguido
+**DOCUMENTOS OBRIGATÓRIOS:**
+1. `docs/PROMPT_PALETA_OFICIAL.md` - Paleta oficial
+2. `docs/QUALITY.md` - Benchmarks de qualidade
+3. `docs/STYLEGUIDE.md` - Regras de design
+4. `docs/TECHNICAL_QUALITY.md` - Critérios técnicos
+5. `docs/CLAUDE_SLIDES_CHECKLIST.md` - Checklist
 
 **CHECKLIST DE AUDITORIA:**
-- [ ] Paleta correta? (var(--) usado, sem #XXXXXX hardcoded?)
+- [ ] Paleta correta? (`var(--)` usado, sem `#XXXXXX` hardcoded?)
 - [ ] Contraste WCAG AA/AAA? (≥ 4.5:1)
 - [ ] Conteúdo médico preciso? (fontes auditáveis?)
 - [ ] 10-second rule aplicado? (mensagem clara?)
 - [ ] Hierarquia visual clara?
 - [ ] Ink ratio adequado? (sem chartjunk?)
-- [ ] NNT/NNH incluídos quando aplicável?
+
+**COMUNICAÇÃO COM OUTRAS IAs:**
+- Se aprovar, mencione o que está correto
+- Se reprovar, liste problemas específicos e como corrigir
+- Use `docs/HANDOFF.md` para documentar feedback
 
 ---
 
-## 🔴 REGRAS CRÍTICAS (TODOS OS PAPÉIS):
+## 💬 COMO AS IAs SE COMUNICAM
 
-- ❌ **NUNCA EXPOR TOKENS/CHAVES/SENHAS DE API**
-- ❌ **NÃO criar arquivos sem aprovação**
-- ❌ **NÃO fazer commits sem aprovação** (só Claude Técnico faz commits)
-- ❌ **NÃO modificar código sem plano aprovado**
-- ❌ **NUNCA inventar números, dados, citações**
-- ✅ **SEMPRE apresentar PLANO primeiro**
-- ✅ **SEMPRE esperar aprovação explícita do Professor**
-- ✅ **SEMPRE usar paleta oficial** (`var(--navy)`, `var(--gold)`, etc)
+### Handoff entre sessões:
+- Use `docs/HANDOFF.md` para passar contexto
+- Documente o que foi feito e o que falta fazer
+- Mencione problemas encontrados e soluções
 
----
+### Validação de trabalho:
+1. **Claude Conteúdo** cria HTML → entrega para **Auto/Claude Técnico**
+2. **Auto/Claude Técnico** valida paleta → commita → entrega para **ChatGPT Auditor**
+3. **ChatGPT Auditor** valida tudo → aprova ou reprova com feedback
 
-# 📚 Estrutura do Repositório
-
-Este repositório contém **duas aulas**:
-
-* **GRADE** (em desenvolvimento ativo)
-* **OSTEOPOROSE** (estável - **READ-ONLY**, não modificar sem permissão)
+### Se encontrar problema:
+- Documente em `docs/HANDOFF.md`
+- Mencione qual IA deve resolver
+- Seja específico sobre o problema
 
 ---
 
-## 🗂️ Organização
+## 📁 ESTRUTURA DO PROJETO
 
-Cada aula tem **duas pastas principais**:
-
-* **`src/`** → Edição (onde trabalhamos e modificamos)
-* **`dist/`** → Entrega (versão estável para apresentação)
-
-> **Política:** `dist/` só recebe conteúdo estável vindo de `src/`
+```
+aulas_core/
+├── GRADE/                    ← PROJETO ATIVO (você trabalha aqui)
+│   ├── src/                  ← ÁREA DE TRABALHO
+│   │   ├── index.html        ← Arquivo principal (edite aqui)
+│   │   ├── css/
+│   │   │   ├── base.css      ← Paleta oficial (var(--cores))
+│   │   │   ├── blocks.css    ← Estilos para tabelas/callouts (opcional)
+│   │   │   └── responsive-fix.css
+│   │   └── js/
+│   │       └── slide-system/  ← Sistema de slides modular
+│   │           ├── slide-core.js
+│   │           ├── slide-navigation.js
+│   │           ├── slide-viewport.js
+│   │           └── init.js
+│   ├── dist/                 ← VERSÃO FINAL (gerado de src/)
+│   │   └── index.html        ← Sincronizado automaticamente
+│   ├── assets/               ← Imagens, QR codes, gráficos
+│   ├── notes/                ← Anotações de desenvolvimento
+│   └── refs/                 ← Referências bibliográficas
+│       └── sources.md
+│
+├── OSTEOPOROSE/              ← READ-ONLY (não tocar sem permissão)
+│
+├── docs/                     ← PROTOCOLOS E GUIAS
+│   ├── CLAUDE_ROLE.md        ← Papel do Claude Técnico
+│   ├── PROMPT_PALETA_OFICIAL.md ← Paleta completa (OBRIGATÓRIO)
+│   ├── QUALITY.md            ← EBM, educação de adultos
+│   ├── STYLEGUIDE.md         ← Design visual
+│   ├── TECHNICAL_QUALITY.md  ← Qualidade técnica
+│   ├── AI_RULES.md           ← Regras rígidas
+│   ├── WORKFLOW.md           ← Git, commits
+│   ├── HANDOFF.md            ← Contexto entre sessões
+│   └── CHANGELOG.md          ← Histórico completo
+│
+└── scripts/                  ← Scripts de automação
+    ├── export-grade-pdf.js    ← Gera PDF das slides
+    └── sync-grade-dist.js     ← Sincroniza src/ → dist/
+```
 
 ---
 
-## 📋 Aula GRADE - Status Atual
+## 🎨 PALETA OFICIAL (OBRIGATÓRIA)
 
-### Objetivo
-Criar apresentação completa sobre **metodologia GRADE** aplicada à Diretriz Brasileira de Dislipidemia 2025.
-
-### Estratégia de Desenvolvimento
-1. **Fase Atual:** Construir conteúdo em HTML/CSS
-   - Mais fácil para editar e visualizar
-   - Permite iteração rápida
-   - Design responsivo e modular
-
-2. **Fase Futura:** Converter para PowerPoint (.pptx)
-   - Exportação final para apresentação
-   - Compatível com ferramentas corporativas
-
-### Temas Principais (4 THREADS)
-- **CAC** (Escore de Cálcio Coronariano)
-- **PREVENT** (Calculadora de Risco AHA)
-- **SAMS & Bempedoic Acid** (Intolerância a estatinas)
-- **LDL-C Targets** (Metas agressivas e segurança)
-
-### Estrutura GRADE
-- ✅ **Core GRADE:** 8 domínios fundamentais
-- ⏳ **GRADEs Adicionais:** Modelos preditivos, diretrizes
-- ⏳ **Exemplos SBC 2025:** Casos práticos brasileiros
-
-### Score de Qualidade
-**Meta:** ≥ 25/30  
-**Atual:** 26/30 ✅
-
----
-
-## 🎨 PALETA PROFISSIONAL OBRIGATÓRIA
-
-### ✅ CORES OFICIAIS (use APENAS estas):
+### ✅ USE APENAS ESTAS CORES:
 
 ```css
 :root {
@@ -189,175 +213,94 @@ Criar apresentação completa sobre **metodologia GRADE** aplicada à Diretriz B
 }
 ```
 
-### 🎯 TIPOGRAFIA:
-- **Títulos:** Georgia (serif)
-- **Corpo:** Lato (sans-serif)
-
-### ❌ CORES PROIBIDAS:
-```
-#333333, #000000, #666 (hardcoded)
-#FF0000, #00FF00 (cores primárias puras)
-#2C5F2D, #D32F2F, #F57C00, #7E57C2
-Qualquer cor fora da lista oficial
-```
+### ❌ NUNCA USE:
+- `#333333`, `#000000`, `#666` (hardcoded)
+- `#FF0000`, `#00FF00` (cores primárias puras)
+- Qualquer cor fora da lista oficial
 
 **REGRA DE OURO:** Se você digitar `#` seguido de hex no HTML, VOCÊ ESTÁ ERRANDO!
 
----
+**SEMPRE use:** `var(--navy)`, `var(--gold)`, `var(--text)`, etc.
 
-## 🗂️ Estrutura de Arquivos GRADE
-
-```
-GRADE/
-├── src/                    ← ÁREA DE TRABALHO
-│   ├── css/
-│   │   ├── base.css       ← Definição das var(--cores) OFICIAIS
-│   │   └── responsive-fix.css
-│   ├── js/
-│   │   └── slide-system/
-│   │       ├── slide-core.js
-│   │       ├── slide-navigation.js
-│   │       ├── slide-viewport.js
-│   │       └── init.js
-│   └── index.html         ← Arquivo principal
-│
-├── dist/                   ← VERSÃO FINAL
-│   └── index.html         ← (gerado de src/)
-│
-├── assets/                ← Imagens, QR codes, gráficos
-├── notes/                 ← Anotações de desenvolvimento
-│   └── archive/           ← Handoffs antigos
-└── refs/                  ← Referências bibliográficas
-    └── sources.md
-
-docs/                      ← PROTOCOLOS E GUIAS
-├── CLAUDE_ROLE.md         ← Papel do Claude Técnico
-├── CLAUDE_SLIDES_CHECKLIST.md ← Checklist obrigatório
-├── PROMPT_PALETA_OFICIAL.md   ← Paleta completa
-├── QUICK_PALETTE_REFERENCE.md ← Versão curta
-├── TECHNICAL_QUALITY.md       ← Qualidade técnica
-├── PRESENTATION_TECH.md       ← Aspectos de apresentação
-├── QUALITY.md                 ← EBM + educação adultos
-├── STYLEGUIDE.md              ← Design visual
-├── PROTOCOL_MAP.md            ← Mapa de responsabilidades
-├── AI_RULES.md                ← Regras rígidas
-├── WORKFLOW.md                ← Git, commits
-└── CHANGELOG.md               ← Histórico completo
-```
+### 📖 TIPOGRAFIA:
+- **Títulos:** Georgia (serif)
+- **Corpo:** Lato (sans-serif)
 
 ---
 
-## 🚀 Como Usar
+## 🚀 COMO USAR
 
-### Visualizar a Aula Localmente
-
-**Opção 1 - Servidor Local (RECOMENDADO):**
+### Visualizar Localmente:
 ```bash
+# Opção 1: Servidor local
 cd aulas_core
 python -m http.server 8000
+# Abra: http://localhost:8000/GRADE/src/
+
+# Opção 2: Arquivo direto
+# Abra: GRADE/src/index.html no navegador
+
+# Opção 3: GitHub Pages (produção)
+# https://lucasmiachon-blip.github.io/aulas_core/grade/
 ```
-Depois abra: `http://localhost:8000/GRADE/src/`
 
-**Opção 2 - Arquivo Direto:**
-Abra diretamente: `GRADE/src/index.html` no navegador
+### Sincronizar src/ → dist/:
+```bash
+cd scripts
+npm run sync-grade
+```
 
-**Opção 3 - GitHub Pages (Produção):**
-https://lucasmiachon-blip.github.io/aulas_core/grade/
-
----
-
-## 👨‍💻 Desenvolvimento com IAs
-
-### Claude Técnico (estrutura)
-- **Metodologia:**
-  - Explicação completa antes de qualquer ação
-  - Commits profissionais e organizados
-  - Sem branches desnecessários
-  - Código limpo e documentado
-  - **SEMPRE** atualiza `docs/CHANGELOG.md`
-
-### Claude Conteúdo (outro projeto)
-- **Metodologia:**
-  - Cria conteúdo médico baseado em evidências
-  - Aplica andragogia e design educacional
-  - **USA paleta oficial** (var(--navy), var(--gold), etc)
-  - NÃO mexe em código HTML/CSS/JS
-
-### ChatGPT (auditor)
-- **Metodologia:**
-  - Valida se protocolos foram seguidos
-  - Verifica paleta, design, conteúdo
-  - Aprova ou reprova com feedback específico
+### Gerar PDF:
+```bash
+cd scripts
+npm run export-grade
+```
 
 ---
 
-## ⚠️ Regras Importantes
+## 📋 STATUS ATUAL
 
-### ✅ PODE:
-- Modificar qualquer arquivo em `GRADE/src/`
-- Criar novos slides
-- Atualizar CSS e JavaScript
-- Adicionar referências e notas
+### Aula GRADE:
+- **Objetivo:** Metodologia GRADE aplicada à Diretriz Brasileira de Dislipidemia 2025
+- **Status:** MVP em desenvolvimento
+- **Score de qualidade:** 26/30 ✅
+- **Temas:** CAC, PREVENT, SAMS & Bempedoic Acid, LDL-C Targets
 
-### ❌ NÃO PODE:
-- **Tocar em OSTEOPOROSE** (pasta completa bloqueada)
-- Criar branches sem explicação
-- Fazer commits sem documentação
-- Alterar estrutura sem aprovação
-- **Usar cores hardcoded** (#333, #666, etc)
-- Inventar dados, números, citações
+### Estrutura GRADE:
+- ✅ Core GRADE: 8 domínios fundamentais
+- ⏳ GRADEs Adicionais: Modelos preditivos, diretrizes
+- ⏳ Exemplos SBC 2025: Casos práticos brasileiros
 
 ---
 
-## 📅 Timeline
-
-**Prazo:** 20 dias para conclusão do MVP
-
-**Foco atual:**
-- Finalizar slides técnicos (estrutura)
-- Validar paleta e qualidade
-- Preparar para apresentação
-
----
-
-## 📖 Recursos
-
-- [Diretriz SBC Dislipidemia 2025](https://abc.cardiol.br/)
-- [GRADE Working Group](https://www.gradeworkinggroup.org/)
-- Documentação local em `GRADE/refs/`
-
----
-
-## 📝 WORKFLOW RECOMENDADO
+## ⚙️ WORKFLOW RECOMENDADO
 
 ### Para criar um novo slide:
 
-**PASSO 1 - Claude Conteúdo (outro projeto):**
-1. Define conteúdo médico
-2. Aplica andragogia
-3. Calcula cognitive load
-4. Estrutura hierarquia
-5. **USA paleta oficial** (var(--navy), var(--gold), etc)
-6. Entrega HTML com `var(--nome)` correto
+**1. Claude Conteúdo (outro projeto):**
+- Define conteúdo médico
+- Aplica andragogia
+- **USA paleta oficial** (`var(--navy)`, `var(--gold)`, etc)
+- Entrega HTML com `var(--nome)` correto
 
-**PASSO 2 - Claude Técnico (aqui):**
-1. Recebe HTML do Claude Conteúdo
-2. Valida paleta (`var(--nome)` usado?)
-3. Valida tipografia (Georgia + Lato?)
-4. Valida acessibilidade (contraste?)
-5. Faz commit + atualiza CHANGELOG
-6. Entrega para auditoria
+**2. Auto/Claude Técnico (aqui):**
+- Recebe HTML do Claude Conteúdo
+- Valida paleta (`var(--nome)` usado?)
+- Valida tipografia (Georgia + Lato?)
+- Valida acessibilidade (contraste?)
+- Faz commit + atualiza CHANGELOG
+- Entrega para auditoria
 
-**PASSO 3 - ChatGPT (auditor):**
-1. Recebe slide pronto
-2. Valida TUDO (paleta, conteúdo, design)
-3. Aprova ✅ ou reprova ❌ com feedback
+**3. ChatGPT Auditor:**
+- Recebe slide pronto
+- Valida TUDO (paleta, conteúdo, design)
+- Aprova ✅ ou reprova ❌ com feedback
 
 ---
 
-## 🎯 VALIDAÇÃO RÁPIDA
+## ✅ VALIDAÇÃO RÁPIDA
 
-### Claude Técnico seguiu paleta?
+### Paleta correta?
 ```bash
 # Buscar cores hardcoded (deve retornar VAZIO)
 grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
@@ -366,34 +309,37 @@ grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
 # Se retornar algo: ❌ Quebrou regra
 ```
 
-### Claude Conteúdo usou paleta correta?
-- Código tem `var(--navy)`, `var(--gold)`, etc? ✅
-- Código tem `#333`, `#666`, `#2C2C2C`? ❌
-
-### ChatGPT pode aprovar?
-- Paleta correta? ✅
-- Conteúdo médico preciso? ✅
-- Design educacional aplicado? ✅
-- Contraste WCAG AA? ✅
-- 10-second rule? ✅
+### Checklist rápido:
+- [ ] Usa `var(--nome)` ao invés de `#XXXXXX`? ✅
+- [ ] Tipografia: Georgia (títulos) + Lato (corpo)? ✅
+- [ ] Contraste WCAG AA (≥ 4.5:1)? ✅
+- [ ] 10-second rule aplicado? ✅
 
 ---
 
-## 🚨 EXECUTOR POLICY (Claude Técnico)
+## 🔒 REGRAS RÍGIDAS (HARD RULES)
 
-**HARD RULES:**
-1. Work ONLY on branch `main` (never create branches)
+1. **Work ONLY on branch `main`** (never create branches)
 2. **Never request, print, store, or leak tokens/credentials**
-3. `OSTEOPOROSE/` is **LOCK (read-only)**
-4. Changes must be small and auditable
-5. Every commit MUST update `docs/CHANGELOG.md`
-6. Never invent numbers or citations (use **[TBD]** if missing)
-7. **ALWAYS use `var(--nome)` for colors** (never hardcoded #XXXXXX)
+3. **`OSTEOPOROSE/` is LOCK (read-only)** - não tocar sem permissão
+4. **Changes must be small and auditable**
+5. **Every commit MUST update `docs/CHANGELOG.md`**
+6. **Never invent numbers or citations** (use `[TBD]` if missing)
+7. **ALWAYS use `var(--nome)` for colors** (never hardcoded `#XXXXXX`)
 
 **Allowed operations:**
 - Technical fixes (GRADE only)
 - Bonus slides (append-only at the end)
 - Git commits with proper messages
+
+---
+
+## 📚 RECURSOS
+
+- [Diretriz SBC Dislipidemia 2025](https://abc.cardiol.br/)
+- [GRADE Working Group](https://www.gradeworkinggroup.org/)
+- Documentação local em `GRADE/refs/`
+- Paleta oficial em `docs/PROMPT_PALETA_OFICIAL.md`
 
 ---
 
