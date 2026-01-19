@@ -18,6 +18,48 @@ Você é o **AUDITOR FINAL** do projeto aulas_core.
 
 ---
 
+## 📺 COMO VISUALIZAR OS SLIDES
+
+**CRÍTICO:** Você precisa VER os slides renderizados, não só ler o texto!
+
+### Opção 1: HTML Preview (RECOMENDADO)
+**Link direto:**
+```
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/lucasmiachon-blip/aulas_core/main/GRADE/src/index.html
+```
+
+1. Cole este link no navegador OU use web_fetch
+2. Os slides vão renderizar como apresentação
+3. Navegue com setas do teclado (← →)
+4. Foque especialmente nos slides 15-20
+
+### Opção 2: Download Local
+```bash
+# Baixar HTML
+curl -L -o grade_slides.html \
+  "https://raw.githubusercontent.com/lucasmiachon-blip/aulas_core/main/GRADE/src/index.html"
+
+# Abrir no navegador
+# Arrastar arquivo para Chrome/Firefox/Safari
+```
+
+### Opção 3: Guia Completo
+**Documento detalhado:**
+```
+https://github.com/lucasmiachon-blip/aulas_core/blob/main/GRADE/audit/VISUALIZACAO_SLIDES.md
+```
+
+**Este documento contém:**
+- 3 formas de visualizar os slides
+- Métricas de referência (densidade, tipografia, contraste)
+- Checklist visual completo
+- Paleta de cores oficial
+- Templates de resposta
+
+**⚠️ IMPORTANTE:** Sem visualizar os slides, você NÃO pode auditar layout, distribuição visual, tipografia ou densidade adequadamente!
+
+---
+
 ## 📋 TAREFAS ESPECÍFICAS
 
 ### TAREFA 1: BUSCA DE ATUALIZAÇÕES (jan/2026)
