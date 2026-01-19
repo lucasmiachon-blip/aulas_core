@@ -3,6 +3,17 @@
 ## [Unreleased]
 
 ### Changed
+- **🧹 GRADE: organize project structure (move docs from root):**
+  - Moved HANDOFF_*.md files to notes/archive/ (3 files)
+  - Moved PESQUISA_*.md and RECURSOS_*.md to refs/ (2 files)
+  - Moved ATUALIZ_*.md and PROMPT_*.md to notes/ (2 files)
+  - Result: GRADE/ root now contains only essential directories (assets/, dist/, notes/, refs/, src/)
+  - Improved project navigation and professionalism
+
+
+## [Unreleased]
+
+### Changed
 - **📋 GRADE: recriar slide 14 - Aplicação GRADE Ácido Bempedóico:**
   - Slide 14 recriado seguindo padrão visual CAC (2 colunas: recomendações + gramática GRADE)
   - 2 recomendações ipsis literis da Diretriz SBC 2025:
