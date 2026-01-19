@@ -58,3 +58,6 @@ coverage/
 # Arquivos de verificação local (apenas para Auto)
 docs/STATUS_SYNC.md
 docs/VERIFICACAO_ALINHAMENTO.md
+
+# Tokens e credenciais
+config/github-token.txt

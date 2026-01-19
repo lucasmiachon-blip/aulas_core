@@ -1,0 +1,103 @@
+<section class="slide">
+        <h2 style="font-size: 3vw; margin-bottom: 1.2vw;">GRADE: <span style="color: var(--gold);">Discriminação</span> do PREVENT</h2>
+        
+        <!-- HEADLINE: Mensagem-chave primeiro -->
+        <div style="background: var(--gold); color: white; padding: 1.2vw 2vw; border-radius: 0.6vw; margin-bottom: 1.5vw;">
+            <p style="font-size: 1.3vw; line-height: 1.3; font-weight: 700; text-align: center; margin: 0;">
+                Ganho do PREVENT foi na CALIBRAÇÃO, não na discriminação
+            </p>
+        </div>
+
+        <!-- Layout 2 colunas: Conceitos (esquerda) + Dados (direita) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2vw; flex-grow: 1;">
+            
+            <!-- Coluna 1: 2 Cards de Conceitos -->
+            <div style="display: flex; flex-direction: column; gap: 1.5vw;">
+                
+                <!-- Card 1: Calibração -->
+                <div style="background: linear-gradient(135deg, #E8F5E8 0%, #FFFFFF 100%); border: 2px solid #27AE60; border-radius: 0.7vw; padding: 1.5vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.06);">
+                    <div style="display: flex; align-items: center; gap: 1vw; margin-bottom: 0.8vw;">
+                        <div style="background: #27AE60; color: white; width: 2vw; height: 2vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.3vw; flex-shrink: 0;">✓</div>
+                        <p style="font-size: 1.2vw; font-weight: 900; color: #27AE60; margin: 0;">
+                            Calibração
+                        </p>
+                    </div>
+                    <p style="font-size: 1vw; line-height: 1.4; color: #222; margin: 0;">
+                        <strong>Predito = Observado?</strong><br>
+                        PREVENT corrigiu superestimação do PCE
+                    </p>
+                </div>
+                
+                <!-- Card 2: Discriminação -->
+                <div style="background: linear-gradient(135deg, #F0F3F8 0%, #FFFFFF 100%); border: 2px solid var(--navy); border-radius: 0.7vw; padding: 1.5vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.06);">
+                    <div style="display: flex; align-items: center; gap: 1vw; margin-bottom: 0.8vw;">
+                        <div style="background: var(--navy); color: white; width: 2vw; height: 2vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.3vw; flex-shrink: 0;">i</div>
+                        <p style="font-size: 1.2vw; font-weight: 900; color: var(--navy); margin: 0;">
+                            Discriminação
+                        </p>
+                    </div>
+                    <p style="font-size: 1vw; line-height: 1.4; color: #222; margin: 0;">
+                        <strong>Separar evento SIM vs NÃO</strong><br>
+                        Medida: C-statistic (AUC-ROC)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Coluna 2: C-statistic Visual + Interpretação -->
+            <div style="display: flex; flex-direction: column; gap: 1.5vw;">
+                
+                <!-- C-statistic Comparativo -->
+                <div style="background: white; border: 2px solid var(--gold); border-radius: 0.7vw; padding: 1.8vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.06);">
+                    <p style="font-size: 0.9vw; font-weight: 700; color: var(--gold); text-transform: uppercase; text-align: center; margin-bottom: 1.2vw;">C-statistic Comparativo</p>
+                    
+                    <!-- PREVENT -->
+                    <div style="margin-bottom: 1.5vw;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5vw;">
+                            <p style="font-size: 1.1vw; font-weight: 700; color: var(--navy); margin: 0;">PREVENT</p>
+                            <p style="font-size: 1.5vw; font-weight: 900; color: var(--navy); margin: 0;">0.78–0.82</p>
+                        </div>
+                        <div style="background: #E9ECEF; border-radius: 0.4vw; height: 1vw; overflow: hidden;">
+                            <div style="background: linear-gradient(90deg, var(--navy) 0%, var(--teal) 100%); width: 80%; height: 100%; border-radius: 0.4vw;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- PCE -->
+                    <div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5vw;">
+                            <p style="font-size: 1.1vw; font-weight: 700; color: #666; margin: 0;">PCE (antigo)</p>
+                            <p style="font-size: 1.5vw; font-weight: 900; color: #666; margin: 0;">0.74–0.79</p>
+                        </div>
+                        <div style="background: #E9ECEF; border-radius: 0.4vw; height: 1vw; overflow: hidden;">
+                            <div style="background: #999; width: 76%; height: 100%; border-radius: 0.4vw;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Escala de Interpretação -->
+                <div style="background: #F8F9FA; border-left: 0.4vw solid var(--teal); padding: 1.2vw; border-radius: 0.5vw;">
+                    <p style="font-size: 0.85vw; font-weight: 700; color: var(--teal); text-transform: uppercase; margin-bottom: 0.7vw;">Escala C-statistic:</p>
+                    <p style="font-size: 0.95vw; color: #444; line-height: 1.4; margin: 0;">
+                        <strong>0.7–0.8:</strong> Aceitável<br>
+                        <strong>0.8–0.9:</strong> Excelente<br>
+                        <strong>>0.9:</strong> Excepcional
+                    </p>
+                </div>
+                
+                <!-- Avaliação GRADE -->
+                <div style="background: #FFF9F0; border: 2px solid var(--gold); border-radius: 0.5vw; padding: 1vw;">
+                    <p style="font-size: 0.75vw; font-weight: 700; color: var(--gold); text-transform: uppercase; margin-bottom: 0.5vw;">GRADE:</p>
+                    <p style="font-size: 0.9vw; color: #444; line-height: 1.3; margin: 0;">
+                        Melhoria modesta. Imprecision (IC 95% não reportado)
+                    </p>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!-- Rodapé -->
+        <div style="position: absolute; bottom: 1vw; left: 2vw; right: 2vw;">
+            <p style="font-family: 'Lato', sans-serif; font-size: 0.7vw; color: var(--muted); margin: 0;">
+                <strong>Fonte:</strong> Khan SS et al. JAMA 2024;331(22):1931-1943 | Pencina MJ et al. JAMA 2013
+            </p>
+        </div>
+    </section>

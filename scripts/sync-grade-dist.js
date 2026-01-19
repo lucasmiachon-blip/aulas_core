@@ -18,9 +18,15 @@ console.log('🔄 Sincronizando GRADE/src/index.html → GRADE/dist/index.html..
 // Ler arquivo src
 let content = fs.readFileSync(srcPath, 'utf8');
 
-// Ajustar caminhos: ../src/ -> ./src/
-content = content.replace(/href="\.\.\/src\//g, 'href="./src/');
-content = content.replace(/src="\.\.\/src\//g, 'src="./src/');
+// Ajustar caminhos relativos para dist:
+// ./css/ -> ../src/css/ (CSS está em GRADE/src/css/, não em GRADE/dist/)
+// ./js/ -> ../src/js/ (JS está em GRADE/src/js/, não em GRADE/dist/)
+// ./slides/ -> ../src/slides/ (Slides estão em GRADE/src/slides/, não em GRADE/dist/)
+content = content.replace(/href="\.\/css\//g, 'href="../src/css/');
+content = content.replace(/href="\.\/js\//g, 'href="../src/js/');
+content = content.replace(/src="\.\/css\//g, 'src="../src/css/');
+content = content.replace(/src="\.\/js\//g, 'src="../src/js/');
+content = content.replace(/\.\/slides\//g, '../src/slides/');
 
 // Verificar se os scripts estão corretos
 const requiredScripts = [

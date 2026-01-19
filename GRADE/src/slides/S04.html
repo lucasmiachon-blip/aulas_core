@@ -1,0 +1,54 @@
+<section class="slide" id="slide-interativo">
+        <div style="text-align: center; margin-bottom: 3.5vw;">
+            <p style="color: #B8860B; font-weight: 900; font-size: 1.1vw; letter-spacing: 0.3vw; text-transform: uppercase; margin-bottom: 0.8vw;">CALIBRAGEM DA SALA</p>
+            <h2 style="font-family: 'Georgia', serif; font-size: 3.8vw; color: #002B5C; margin-top: 0.5vw;">Aonde a sala est&aacute;?</h2>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; flex-grow: 1; align-items: start;">
+            
+            <!-- POLL 1: CAC -->
+            <div style="background: white; padding: 3vw; border-radius: 0.5vw; box-shadow: 0 1vw 4vw rgba(0,0,0,0.04); text-align: center; border-top: 0.7vw solid #002B5C;">
+                <div style="width: 15vw; height: 15vw; background: #F8F9FA; border: 1px solid #E9ECEF; margin: 0 auto 1vw; display: flex; align-items: center; justify-content: center; color: #ADB5BD; font-size: 1vw;">
+                    [QR CODE 1]
+                </div>
+                <p style="font-size: 0.9vw; color: #6C757D; margin-bottom: 1.5vw; font-weight: 600;">Abra a câmera e responda em 10s</p>
+                
+                <h3 style="font-family: 'Georgia', serif; font-size: 2vw; color: #1A1A1A; margin-bottom: 0.8vw;">Frequência de Uso (CAC)</h3>
+                
+                <p style="font-size: 1.15vw; color: #4A5568; margin-bottom: 2vw; line-height: 1.4;">0 = nunca uso<br>100 = uso como regra em casos eleg&iacute;veis</p>
+                
+                <div style="position: relative; margin-top: 1.5vw;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3vw;">
+                        <span style="font-size: 0.75vw; color: #999;">0</span>
+                        <span style="font-size: 0.75vw; color: #999;">50</span>
+                        <span style="font-size: 0.75vw; color: #999;">100</span>
+                    </div>
+                    <div style="height: 0.8vw; background: #E9ECEF; border-radius: 1vw; position: relative; overflow: hidden;">
+                        <div id="bar-cac" style="height: 100%; background: #002B5C; width: 0%; transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- POLL 2: GRADE -->
+            <div style="background: white; padding: 3vw; border-radius: 0.5vw; box-shadow: 0 1vw 4vw rgba(0,0,0,0.04); text-align: center; border-top: 0.7vw solid #B8860B;">
+                <div style="width: 15vw; height: 15vw; background: #F8F9FA; border: 1px solid #E9ECEF; margin: 0 auto 1vw; display: flex; align-items: center; justify-content: center; color: #ADB5BD; font-size: 1vw;">
+                    [QR CODE 2]
+                </div>
+                <p style="font-size: 0.9vw; color: #6C757D; margin-bottom: 1.5vw; font-weight: 600;">Abra a câmera e responda em 10s</p>
+                
+                <h3 style="font-family: 'Georgia', serif; font-size: 2vw; color: #1A1A1A; margin-bottom: 0.8vw;">Dom&iacute;nio do GRADE</h3>
+                
+                <p style="font-size: 1.15vw; color: #4A5568; margin-bottom: 2vw; line-height: 1.4;">0 = n&atilde;o sei interpretar<br>100 = consigo justificar no prontu&aacute;rio</p>
+                
+                <div style="position: relative; margin-top: 1.5vw;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3vw;">
+                        <span style="font-size: 0.75vw; color: #999;">0</span>
+                        <span style="font-size: 0.75vw; color: #999;">50</span>
+                        <span style="font-size: 0.75vw; color: #999;">100</span>
+                    </div>
+                    <div style="height: 0.8vw; background: #E9ECEF; border-radius: 1vw; position: relative; overflow: hidden;">
+                        <div id="bar-grade" style="height: 100%; background: #B8860B; width: 0%; transition: width 2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
