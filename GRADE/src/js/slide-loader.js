@@ -10,7 +10,7 @@
 (function() {
     'use strict';
     
-    // Lista de slides na ordem correta
+    // Lista de slides na ordem correta (41 slides - S21 removido como duplicata)
     const slideFiles = [
         'S01.html',
         'S02.html',
@@ -32,8 +32,7 @@
         'S18.html',
         'S19.html',
         'S20.html',
-        'S21.html',
-        'S22.html',
+        'S22.html',  // S21 removido (duplicata de S14)
         'S23.html',
         'S24.html',
         'S25.html',
