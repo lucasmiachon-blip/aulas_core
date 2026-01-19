@@ -8,6 +8,29 @@
   - **CLAUDE_ROLE.md:** Full rewrite defining responsibilities for all 3 actors with entry protocols, checklists, and workflows
   - **TECHNICAL_QUALITY.md:** New comprehensive technical quality protocol covering:
     - WCAG 2.1 AA accessibility (contrast ratios, color blindness, screen readers)
+## [2026-01-19] - Reorganização de Slides e Correção de Paleta
+
+### ♻️ Refatoração
+**Reorganização de slides:**
+- ❌ **Deletado:** Slide 14 (Ácido Bempedóico - Aplicação GRADE)
+- 📍 **Movido:** Slide 21 (Variáveis Ausentes: CAC e Lp(a)) → nova posição 14
+- 🎨 **Paleta corrigida:** Slides 15-20 (17 correções de cores hardcoded)
+
+**Detalhes técnicos:**
+- Substituídas cores hardcoded (#0B1320, #DDB944, #1F766E, etc) por variáveis CSS oficiais
+- Aplicado var(--navy), var(--gold), var(--teal), var(--blue), var(--text), var(--muted)
+- Mantida conformidade com PROMPT_PALETA_OFICIAL.md
+- Encoding UTF-8 preservado
+
+**Rationale:**
+- Slide 14 (Bempedóico) estava duplicando conteúdo já presente em slides 13B-13G
+- Slide 21 (Variáveis Ausentes) é mais relevante para fluxo principal da apresentação
+- Paleta oficial garante acessibilidade WCAG AA e funcionalidade em escala de cinza
+
+**Commit:** `eb5fea2605a68c6e2001d00a5f09bdc6522064fc`
+
+---
+
     - Performance metrics (Lighthouse, FCP, TTI, image optimization)
     - Cross-browser compatibility (Chrome/Firefox/Safari/Edge)
     - Transitions/animations policy (minimal, respects user preferences)
