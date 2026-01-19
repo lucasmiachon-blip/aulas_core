@@ -25,6 +25,7 @@
         const activeSlide = document.querySelector('.slide.active');
         if (activeSlide) {
             state.currentIndex = state.slides.indexOf(activeSlide);
+            if (state.currentIndex === -1) state.currentIndex = 0;  // PROTEÇÃO ADICIONADA
         }
         
         // Inicializar contador
