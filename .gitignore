@@ -42,6 +42,10 @@ build/
 dist/
 out/
 
+# Exceção: GRADE/dist precisa estar no repositório para GitHub Pages
+!GRADE/dist/
+!GRADE/dist/index.html
+
 # Testes
 coverage/
 .nyc_output/
