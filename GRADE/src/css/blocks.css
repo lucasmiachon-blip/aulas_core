@@ -1,8 +1,12 @@
 /*
   blocks.css
-  Estilos para "blocos" reutilizáveis.
-  Mantido intencionalmente simples nesta fase (placeholder).
+  Estilos para "blocos" reutilizáveis: tabelas, callouts, badges, blocks.
+  Integrado e pronto para uso.
 */
+
+/* ============================================
+   BLOCKS - Blocos de conteúdo destacados
+   ============================================ */
 
 .block {
   border-left: 4px solid var(--gold);
@@ -20,7 +24,11 @@
   color: var(--text);
 }
 
-/* Table Styling */
+/* ============================================
+   TABLES - Estilos para tabelas
+   ============================================ */
+
+/* Estilo base para todas as tabelas */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -65,9 +73,54 @@ tbody td {
     overflow-wrap: anywhere;
 }
 
-/* Callout */
+/* Variantes de tamanho para tabelas */
+table.table-small th,
+table.table-small td {
+    font-size: 0.85vw;
+    padding: 0.8vw 1vw;
+}
+
+table.table-medium th,
+table.table-medium td {
+    font-size: 1vw;
+    padding: 1.2vw 1.5vw;
+}
+
+table.table-large th,
+table.table-large td {
+    font-size: 1.5vw;
+    padding: 1.5vw 2vw;
+}
+
+table.table-xlarge th,
+table.table-xlarge td {
+    font-size: 1.6vw;
+    padding: 1.8vw 2.2vw;
+}
+
+/* Tabela sem estilo (para casos especiais) */
+table.table-plain {
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+}
+
+table.table-plain thead {
+    background: transparent;
+}
+
+table.table-plain thead th {
+    background: var(--navy);
+    border-bottom: 0.3vw solid var(--gold);
+}
+
+/* ============================================
+   CALLOUT - Caixas de destaque
+   ============================================ */
+
 .callout {
-    background: #F0F0F0;
+    background: rgba(11, 31, 59, 0.05);
     border-left: 0.4vw solid var(--navy);
     padding: 1.5vw 2vw;
     margin: 2vw 0;
@@ -78,9 +131,28 @@ tbody td {
     margin: 0;
     font-weight: 600;
     color: var(--navy);
+    font-family: 'Lato', sans-serif;
 }
 
-/* Badge */
+.callout.callout-warning {
+    border-left-color: var(--gold);
+    background: rgba(221, 185, 68, 0.1);
+}
+
+.callout.callout-info {
+    border-left-color: var(--blue);
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.callout.callout-success {
+    border-left-color: var(--teal);
+    background: rgba(31, 118, 110, 0.1);
+}
+
+/* ============================================
+   BADGES - Badges e tags
+   ============================================ */
+
 .badge {
     display: inline-block;
     padding: 0.4vw 0.8vw;
@@ -91,6 +163,32 @@ tbody td {
     background: var(--navy);
     text-transform: uppercase;
     letter-spacing: 0.05vw;
+    font-family: 'Lato', sans-serif;
 }
 
-.badge-row { display: flex; gap: 0.5vw; margin-top: 1.5vw; }
+.badge.badge-gold {
+    background: var(--gold);
+    color: var(--navy);
+}
+
+.badge.badge-teal {
+    background: var(--teal);
+    color: white;
+}
+
+.badge.badge-blue {
+    background: var(--blue);
+    color: white;
+}
+
+.badge.badge-muted {
+    background: var(--muted);
+    color: white;
+}
+
+.badge-row {
+    display: flex;
+    gap: 0.5vw;
+    margin-top: 1.5vw;
+    flex-wrap: wrap;
+}

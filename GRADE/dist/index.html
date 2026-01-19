@@ -10,6 +10,7 @@
     
     <!-- Modular CSS -->
     <link rel="stylesheet" href="./src/css/base.css">
+    <link rel="stylesheet" href="./src/css/blocks.css">
     <link rel="stylesheet" href="./src/css/responsive-fix.css">
 </head>
 <body tabindex="0">
@@ -1808,7 +1809,7 @@
         </div>
 
         <!-- TABELA DE DECISÃO -->
-        <table style="width: 100%; border-collapse: collapse; margin-top: 2vw; font-family: Lato, sans-serif; font-size: 1.6vw;">
+        <table class="table-xlarge">
             <thead>
                 <tr style="background: var(--navy); color: var(--white);">
                     <th style="padding: 1vw; text-align: left; border: 1px solid var(--border);">Critério</th>
@@ -1968,7 +1969,7 @@
         </h2>
 
         <!-- TABELA EtD -->
-        <table style="width: 100%; border-collapse: collapse; font-family: Lato, sans-serif; font-size: 1.5vw;">
+        <table class="table-large">
             <thead>
                 <tr style="background: var(--navy); color: var(--white);">
                     <th style="padding: 0.8vw; text-align: left; border: 1px solid var(--border); width: 35%;">Critério EtD</th>
@@ -2492,7 +2493,7 @@
         <h2 style="margin-bottom: 2vw; font-size: 3.5vw;">Comparativo de <span style="color: var(--gold);">Calculadoras</span></h2>
         
         <div style="flex-grow: 1; overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif;">
+            <table class="table-medium">
                 <thead>
                     <tr style="background: var(--navy); color: white;">
                         <th style="padding: 1.2vw; text-align: left; font-size: 1vw; font-weight: 900; border: 2px solid var(--navy);">Calculadora</th>
@@ -2839,7 +2840,7 @@
             </div>
             
             <!-- Tabela CAC → Conduta + NNT -->
-            <table style="width: 100%; border-collapse: collapse; font-family: 'Lato', sans-serif;">
+            <table class="table-small">
                 <thead>
                     <tr style="background: var(--navy); color: white;">
                         <th style="padding: 1vw; text-align: left; font-size: 0.9vw; font-weight: 900;">CAC</th>
@@ -3185,15 +3186,14 @@
         <h2 style="margin-bottom: 2vw; font-size: 3.5vw;">SBC 2025: CAC reclassifica risco &rarr; meta LDL-c</h2>
         
         <div style="flex-grow: 1; margin-top: 2vw;">
-            <div style="background: white; border-radius: 0.8vw; overflow: hidden; box-shadow: 0 0.2vw 1vw rgba(0,0,0,0.08);">
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background: var(--navy);">
-                            <th style="font-family: 'Lato', sans-serif; font-size: 1vw; font-weight: 700; color: white; text-align: left; padding: 1.2vw 1.5vw; border-right: 1px solid rgba(255,255,255,0.1);">Crit&eacute;rio</th>
-                            <th style="font-family: 'Lato', sans-serif; font-size: 1vw; font-weight: 700; color: white; text-align: left; padding: 1.2vw 1.5vw; border-right: 1px solid rgba(255,255,255,0.1);">Categoria</th>
-                            <th style="font-family: 'Lato', sans-serif; font-size: 1vw; font-weight: 700; color: white; text-align: left; padding: 1.2vw 1.5vw;">Meta LDL-c</th>
-                        </tr>
-                    </thead>
+            <table class="table-medium">
+                <thead>
+                    <tr>
+                        <th style="text-align: left; border-right: 1px solid rgba(255,255,255,0.1);">Crit&eacute;rio</th>
+                        <th style="text-align: left; border-right: 1px solid rgba(255,255,255,0.1);">Categoria</th>
+                        <th style="text-align: left;">Meta LDL-c</th>
+                    </tr>
+                </thead>
                     <tbody>
                         <tr style="border-bottom: 1px solid #E9ECEF;">
                             <td style="font-family: 'Lato', sans-serif; font-size: 1vw; padding: 1.5vw; color: #666;">CAC &gt;100 OU &gt;p75</td>
