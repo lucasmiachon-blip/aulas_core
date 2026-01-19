@@ -1,18 +1,14 @@
 /**
- * CORE: Gerencia estado e operações básicas dos slides
+ * SLIDE CORE - Gerencia estado e operações básicas
  */
 (function() {
     'use strict';
     
-    // Estado global dos slides
     const state = {
         slides: [],
         currentIndex: 0
     };
     
-    /**
-     * Inicializa o sistema de slides
-     */
     function init() {
         state.slides = Array.from(document.querySelectorAll('.slide'));
         
@@ -21,22 +17,16 @@
             return false;
         }
         
-        // Respeitar slide ativo existente
         const activeSlide = document.querySelector('.slide.active');
         if (activeSlide) {
             state.currentIndex = state.slides.indexOf(activeSlide);
-            if (state.currentIndex === -1) state.currentIndex = 0;  // PROTEÇÃO ADICIONADA
+            if (state.currentIndex === -1) state.currentIndex = 0;
         }
         
-        // Inicializar contador
         updateCounter();
-        
         return true;
     }
     
-    /**
-     * Atualiza contador de slides
-     */
     function updateCounter() {
         const currentEl = document.getElementById('currentSlide');
         const totalEl = document.getElementById('totalSlides');
@@ -45,27 +35,18 @@
         if (totalEl) totalEl.textContent = state.slides.length;
     }
     
-    /**
-     * Ativa um slide específico
-     */
     function showSlide(index) {
-        // Validação de índice
         if (index < 0 || index >= state.slides.length) {
             console.warn(`Índice inválido: ${index}`);
             return false;
         }
         
-        // Remover active de todos
         state.slides.forEach(s => s.classList.remove('active'));
-        
-        // Adicionar active no novo
         state.slides[index].classList.add('active');
         state.currentIndex = index;
         
-        // Atualizar UI
         updateCounter();
         
-        // Disparar evento customizado para viewport
         window.dispatchEvent(new CustomEvent('slidechange', { 
             detail: { index } 
         }));
@@ -73,9 +54,6 @@
         return true;
     }
     
-    /**
-     * Animação de barras (específica do projeto)
-     */
     function animateBars() {
         setTimeout(() => {
             const barCac = document.getElementById('bar-cac');
@@ -88,7 +66,6 @@
         }, 300);
     }
     
-    // API pública
     window.SlideCore = {
         init,
         showSlide,
