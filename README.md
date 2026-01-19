@@ -231,6 +231,47 @@ view docs/HANDOFF.md
 
 ## CLAUDE_ROLE (Executor Policy)
 
+
+---
+
+## 🎨 PALETA PROFISSIONAL E PROTOCOLO DE SLIDES
+
+### Para Claude (estrutura técnica)
+Ao criar/modificar slides, Claude DEVE:
+
+1. **Ler primeiro:** `docs/CLAUDE_SLIDES_CHECKLIST.md`
+2. **Cores:** Usar EXCLUSIVAMENTE `var(--navy)`, `var(--gold)`, `var(--teal)`, etc
+3. **NUNCA:** Cores hardcoded como `#333`, `#666`, `#2C2C2C`
+4. **Tipografia:** Georgia (títulos) + Lato (corpo)
+5. **Rodapé:** Incluir fonte quando houver dados verificáveis
+
+**Documentação completa:**
+- `docs/CLAUDE_SLIDES_CHECKLIST.md` - Checklist obrigatório
+- `docs/PROMPT_PALETA_OFICIAL.md` - Paleta completa
+- `docs/QUICK_PALETTE_REFERENCE.md` - Referência rápida
+
+### Para design e conteúdo
+Princípios de qualidade (ChatGPT/outros assistentes):
+
+**Design visual:**
+- Ink ratio (Tufte)
+- Hierarquia visual
+- Chartjunk (evitar)
+- Teoria das cores
+- Escala de cinza (acessibilidade)
+
+**Conteúdo educacional:**
+- 10-second rule (mensagem principal clara)
+- Carga cognitiva (reduzir texto)
+- Andragogia (educação de adultos)
+- Segmentação (blocos curtos)
+- NNT/NNH quando aplicável
+
+**Documentação:**
+- `docs/QUALITY.md` - Benchmarks e checklists
+- `docs/STYLEGUIDE.md` - Regras de slide e hierarquia
+
+
 ### Contract (must follow)
 1) Read FIRST: `README.md`, `docs/AI_RULES.md`, `docs/WORKFLOW.md`, `docs/STYLEGUIDE.md`, `docs/QUALITY.md`.
 2) Work ONLY on branch `main`. **Never create branches.**
