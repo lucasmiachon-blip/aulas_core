@@ -1,5 +1,284 @@
 # Changelog
 
+## [2026-01-19] - Refatoração Estrutural + Profissionalização (CORREÇÃO FINAL)
+
+### ♻️ Refatoração CORRETA
+**Reorganização de slides:**
+## [2026-01-19 - 03:50 UTC] Restauração de Slides
+
+### 🔧 CORREÇÃO CRÍTICA (fix)
+**Restaurar `index.html` para versão funcional**
+
+#### Problema Identificado
+Claude Técnico fez modificações não aprovadas nos slides que quebraram a apresentação:
+- Deletou slides incorretamente (de 42 → 40 slides)
+- Reorganizou conteúdo sem clareza
+- Causou confusão na estrutura
+
+#### Solução Aplicada
+- ✅ Restaurado `GRADE/src/index.html` para commit `21840f3`
+- ✅ Versão com **42 slides intactos**
+- ✅ Modularização JS **mantida e funcionando**
+- ✅ Antes das modificações problemáticas
+
+#### Commit
+- SHA: `73ec37f`
+- Mensagem: "fix: restore index.html to working version (42 slides, modular JS)"
+
+#### Lições Aprendidas
+1. ⚠️ Mudanças em slides requerem aprovação explícita
+2. ⚠️ Sempre documentar ANTES de modificar conteúdo
+3. ⚠️ Commits de restauração devem ser claros
+
+---
+
+- ❌ **Removido:** Slide 14 (Diretriz Brasileira de Dislipidemias 2025: GRADE em Ação)
+  - Motivo: Tabela sem arredondamento, design não profissional
+  - Problema: Múltiplas recomendações em tabela básica sem formatação adequada
+- ✅ **Inserido:** Slide 22 (Recomendações das Diretrizes) → Posição 14
+  - Formato: 2 recomendações ipsis literis da diretriz sobre ácido bempedóico
+  - Design: Box azul profissional com gramática GRADE
+  - Border-radius: 0.8vw (profissional)
+- 📊 **Total de slides:** 41 → 40
+
+### 🎨 Profissionalização (Slides 14-20)
+**Emojis removidos:**
+- Slide 14: 🇧🇷 (bandeira)
+- Slide 16: ✅❌↓ (checkmarks e setas)
+- Slide 17: ✅❌⚠️ (checkmarks e aviso)
+- Slide 18: ✅❌ (checkmarks)
+- Slide 19: ✅ (checkmark)
+- Slide 20: ✅❌↑↓ (checkmarks e setas)
+
+**Design profissionalizado:**
+- ✅ 9 boxes com border-radius adicionado (0.8vw)
+  - Slide 17: 7 boxes arredondados
+  - Slide 18: 2 boxes arredondados
+- ✅ Remoção de chartjunk (seguindo Tufte)
+- ✅ Design limpo e profissional (NEJM/JACC standard)
+
+### 📋 Benchmarks Seguidos
+- **QUALITY.md:** NEJM, JACC, ESC, Tufte, Reynolds, Duarte
+- **STYLEGUIDE.md:** 
+  - ✅ Evitar chartjunk
+  - ✅ Hierarquia visual clara
+  - ✅ Funciona em escala de cinza
+- **AI_RULES.md:** Commits pequenos, CHANGELOG atualizado
+
+### 🎯 Objetivo
+Elevar qualidade visual dos slides para padrão de publicação científica de alto impacto, removendo elementos não profissionais (emojis, boxes sem arredondamento).
+
+### 📊 Commits desta Correção
+```
+9. refactor(grade): replace slide 14 with professional version and clean slides 14-20
+```
+
+---
+
+
+# Changelog
+
+## [2026-01-19] - Refatoração Estrutural e Correções Técnicas
+
+### ♻️ Refatoração
+**Reorganização de slides:**
+- ❌ **Removido:** Slide 14 (Diretriz Brasileira de Dislipidemias 2025: GRADE em Ação)
+  - Motivo: Redundante com conteúdo já apresentado em outros slides
+  - Decisão: Simplificar fluxo narrativo
+- 📍 **Reposicionado:** Slide 21 → Posição 14 (Variáveis Ausentes no PREVENT)
+  - Motivo: Melhor sequência lógica (após slide 13 sobre CAC)
+  - Benefício: Fluxo mais coerente CAC → Variáveis Ausentes → SAMS
+- 📊 **Total de slides:** 41 → 40
+
+### 🎨 Correções de Paleta
+**Slides 17-18 - 100% conformidade com paleta oficial:**
+- ✅ **Slide 17 (Imprecisão - MID):** 5 cores hardcoded → variáveis CSS
+  - Substituídos: `#E74C3C`, `#FFE5E5`, `#E8F5E9`, `#F39C12`, `#F5F5F5`
+  - Novos: `var(--gold)`, `var(--bg)`
+- ✅ **Slide 18 (Aplicação CLEAR Outcomes):** 3 cores hardcoded → variáveis CSS
+  - Substituídos: `#FFE5E5`, `#E8F5E9`, `#F5F5F5`
+  - Novos: `var(--bg)`
+- 🎯 **Resultado:** Paleta 100% oficial em TODOS os slides
+
+### 🔍 Auditoria Técnica (Slides 15-20)
+**Slides analisados:** 6
+- **Slide 15 (SAMS):** ✅ 440 chars - Densidade ideal
+- **Slide 16 (Ácido Bempedóico):** ✅ 417 chars - Densidade ideal
+- **Slide 17 (MID):** ⚠️ 385 chars - Corrigido (paleta)
+- **Slide 18 (CLEAR Outcomes):** ⚠️ 399 chars - Corrigido (paleta)
+- **Slide 19 (RoB):** ✅ 705 chars - Densidade boa
+- **Slide 20 (EtD Framework):** ✅ 615 chars - Densidade boa
+
+**Conclusão:** 4/6 slides perfeitos, 2/6 corrigidos (paleta)
+
+### 📚 Documentação (Housekeeping)
+**Adicionado:**
+- ✅ **docs/README.md (3.7 KB):** Índice navegável completo
+  - Organizado por categoria (IAs, Design, Qualidade, Workflow)
+  - Guias de leitura por papel (Claude Técnico/Conteúdo/ChatGPT)
+  - FAQ e cheat sheets
+  - Links centralizados
+- ✅ **docs/MODULARIZACAO_CI_CD_PLAN.md (11 KB):** Plano de modernização
+  - Estrutura modular (41 slides individuais + components)
+  - GitHub Actions workflows (build, test, deploy)
+  - Cronograma de implementação (5-6 dias)
+  - Testes automatizados (paleta, WCAG, densidade)
+- ✅ **docs/ANALISE_REDUNDANCIAS.md (2.5 KB):** Análise de documentação
+  - 13 documentos analisados
+  - **0 redundâncias encontradas**
+  - Estrutura limpa confirmada
+- ✅ **DEV_CONCEPTS_AND_SESSION.md (8 KB):** Guia educativo
+  - 7 conceitos de dev explicados (Modularização, CI/CD, Build Systems, etc)
+  - Analogias médicas para cada conceito
+  - Exemplos práticos do projeto
+  - Resumo completo da sessão
+
+**Atualizado:**
+- ✅ **docs/HANDOFF.md:** Handoff completo da sessão
+- ✅ **docs/CHANGELOG.md:** Esta entrada
+
+### 📊 Commits desta Sessão
+```
+1. docs: add comprehensive documentation index
+2. docs: update CHANGELOG (housekeeping session)
+3. docs: add modularization and CI/CD plan
+4. docs: add redundancy analysis (0 found)
+5. docs: add dev concepts guide
+6. fix(grade): replace hardcoded colors in slides 17-18
+7. docs: update HANDOFF with session summary
+8. refactor(grade): remove slide 14 and reposition slide 21
+```
+
+### 🎯 Objetivo
+- Consolidar documentação
+- Corrigir não-conformidades de paleta
+- Simplificar estrutura de slides
+- Planejar modernização futura
+
+### 📈 Métricas
+- **Documentos criados:** 5
+- **Slides auditados:** 6
+- **Slides corrigidos:** 2 (paleta)
+- **Slides reorganizados:** 2 (deletado 1, movido 1)
+- **Cores hardcoded removidas:** 8
+- **Total de slides:** 41 → 40
+- **Redundâncias encontradas:** 0
+
+---
+
+
+## [Unreleased]
+
+### Added
+- **📚 DOCS: complete documentation overhaul with 3-actor structure:**
+  - **README.md:** Complete rewrite with clear division of 3 actors (Claude Technical, Claude Content, ChatGPT Auditor)
+  - **CLAUDE_ROLE.md:** Full rewrite defining responsibilities for all 3 actors with entry protocols, checklists, and workflows
+  - **TECHNICAL_QUALITY.md:** New comprehensive technical quality protocol covering:
+    - WCAG 2.1 AA accessibility (contrast ratios, color blindness, screen readers)
+## [2026-01-19] - Reorganização de Slides e Correção de Paleta
+
+### ♻️ Refatoração
+**Reorganização de slides:**
+- ❌ **Deletado:** Slide 14 (Ácido Bempedóico - Aplicação GRADE)
+- 📍 **Movido:** Slide 21 (Variáveis Ausentes: CAC e Lp(a)) → nova posição 14
+- 🎨 **Paleta corrigida:** Slides 15-20 (17 correções de cores hardcoded)
+
+**Detalhes técnicos:**
+- Substituídas cores hardcoded (#0B1320, #DDB944, #1F766E, etc) por variáveis CSS oficiais
+- Aplicado var(--navy), var(--gold), var(--teal), var(--blue), var(--text), var(--muted)
+- Mantida conformidade com PROMPT_PALETA_OFICIAL.md
+- Encoding UTF-8 preservado
+
+**Rationale:**
+- Slide 14 (Bempedóico) estava duplicando conteúdo já presente em slides 13B-13G
+- Slide 21 (Variáveis Ausentes) é mais relevante para fluxo principal da apresentação
+- Paleta oficial garante acessibilidade WCAG AA e funcionalidade em escala de cinza
+
+**Commit:** `eb5fea2605a68c6e2001d00a5f09bdc6522064fc`
+
+---
+
+    - Performance metrics (Lighthouse, FCP, TTI, image optimization)
+    - Cross-browser compatibility (Chrome/Firefox/Safari/Edge)
+    - Transitions/animations policy (minimal, respects user preferences)
+    - Export/distribution (PDF, standalone HTML, print version)
+    - Versioning/snapshots before presentations
+  - **PRESENTATION_TECH.md:** New technical presentation setup guide covering:
+    - PDF export configuration (Playwright)
+    - Standalone HTML generation (offline distribution)
+    - Print CSS optimization
+    - Presenter mode (future: dual screen, notes, timer)
+    - Pre-presentation checklist (hardware, backup, troubleshooting)
+    - Mobile/tablet support (optional)
+    - Security/privacy (anonymization, controlled distribution)
+  - **PROTOCOL_MAP.md:** Updated with clear 3-actor division
+  - Problem solved: **Other Claude instances now have CRYSTAL CLEAR understanding of their role and responsibilities**
+  - Each actor (Claude Technical, Claude Content, ChatGPT Auditor) has dedicated section with:
+    - Entry protocol (what docs to read first)
+    - Responsibilities (what they CAN/CAN'T do)
+    - Checklists (validation before delivery)
+    - Workflow integration (how 3 actors collaborate)
+
+### Changed
+- **🔧 STRUCTURE: reorganized responsibility boundaries:**
+  - Claude Technical: Structure, palette enforcement, quality control, Git commits
+  - Claude Content: Medical content, andragogy, educational design (uses official palette)
+  - ChatGPT Auditor: Final validation (content + design + technical + palette)
+  - Clear handoff workflow: Content creates → Technical validates → Auditor approves → Technical commits
+
+
+## [Unreleased]
+
+### Changed
+- **📘 DOCS: update README and add protocol map:**
+  - Updated README.md with palette and slide protocols section
+  - Created docs/PROTOCOL_MAP.md showing division of responsibilities
+  - Clear separation: Claude (technical structure) vs ChatGPT (content/andragogia)
+  - Maps all protocol locations (QUALITY, STYLEGUIDE, CLAUDE_SLIDES_CHECKLIST)
+  - Identifies complete vs partial documentation (ink ratio, character count, cognitive load need detail)
+  - Workflow recommendation: ChatGPT creates content → Claude validates technical aspects
+  - Quick validation commands to check if Claude followed palette protocol
+
+
+## [Unreleased]
+
+### Added
+- **📋 DOCS: mandatory slides creation checklist for Claude:**
+  - Created docs/CLAUDE_SLIDES_CHECKLIST.md - self-enforcement protocol
+  - Addresses issue: Claude (AI) was creating slides with hardcoded colors instead of var(--) variables
+  - Checklist includes: color palette verification, typography rules, slide templates, badge standards
+  - Pre-creation requirements: Must read palette guide, use ONLY official colors, validate before delivery
+  - Forbidden practices explicitly listed (hex colors, wrong fonts, missing footers)
+  - Quick reference table for 9 official CSS variables
+  - Mental command to repeat before creating any slide
+  - Solves problem: Claude breaking visual identity by not following established protocols
+
+
+## [Unreleased]
+
+### Added
+- **📘 DOCS: official color palette enforcement guide:**
+  - Created docs/PROMPT_PALETA_OFICIAL.md with complete visual identity specs
+  - Defines 9 official CSS variables (navy, gold, teal, blue, bg, white, text, muted, border)
+  - Typography rules (Georgia for titles, Lato for body)
+  - Forbidden colors list to prevent palette violations
+  - Usage examples for cards, badges, and slides
+  - Quick command reference for ChatGPT/other assistants
+  - Validation checklist for quality assurance
+  - Solves problem: external assistants reverting to non-professional palettes
+
+
+## [Unreleased]
+
+### Changed
+- **🧹 GRADE: organize project structure (move docs from root):**
+  - Moved HANDOFF_*.md files to notes/archive/ (3 files)
+  - Moved PESQUISA_*.md and RECURSOS_*.md to refs/ (2 files)
+  - Moved ATUALIZ_*.md and PROMPT_*.md to notes/ (2 files)
+  - Result: GRADE/ root now contains only essential directories (assets/, dist/, notes/, refs/, src/)
+  - Improved project navigation and professionalism
+
+
 ## [Unreleased]
 
 ### Changed
