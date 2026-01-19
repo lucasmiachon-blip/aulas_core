@@ -1,5 +1,45 @@
 # Changelog
 
+## [2026-01-19] - Modularização Completa: 42 Slides Separados
+
+### 🎯 Modularização Estrutural (FEATURE)
+**Separar `GRADE/src/index.html` em arquivos individuais:**
+
+- ✅ **42 slides extraídos** em `GRADE/src/slides/` (S01.html a S42.html)
+- ✅ **index.html reduzido** de ~3400 linhas para 40 linhas (template limpo)
+- ✅ **slide-loader.js criado** para carregamento dinâmico de slides
+- ✅ **Sistema de slides atualizado** para aguardar carregamento assíncrono
+- ✅ **Script extract-slides.js** para extração automática de slides
+
+**Estrutura criada:**
+- `GRADE/src/slides/` - Pasta com 42 slides individuais
+- `GRADE/src/js/slide-loader.js` - Carregador dinâmico
+- `scripts/extract-slides.js` - Script de extração
+
+**Mudanças técnicas:**
+- `init.js` atualizado para aguardar evento `slidesloaded`
+- `sync-grade-dist.js` atualizado para ajustar paths de slides
+- GitHub Pages workflow atualizado para copiar pasta `slides/`
+- Slide-loader detecta automaticamente path correto (src vs dist)
+
+**Benefícios:**
+- ✅ Manutenibilidade: cada slide editável independentemente
+- ✅ Versionamento: mudanças individuais por slide
+- ✅ Performance: carregamento assíncrono otimizado
+- ✅ Colaboração: múltiplos IAs podem trabalhar em slides diferentes
+
+**Arquivos afetados:**
+- `GRADE/src/index.html` - Modularizado (40 linhas)
+- `GRADE/src/js/slide-system/init.js` - Aguarda carregamento
+- `GRADE/src/js/slide-loader.js` - Novo (carregador dinâmico)
+- `scripts/sync-grade-dist.js` - Paths de slides ajustados
+- `.github/workflows/pages.yml` - Copia pasta slides/
+
+**Commit:** `822b27d`  
+**Métricas:** 52 arquivos alterados, 3.673 inserções, 6.753 deleções
+
+---
+
 ## [2026-01-19] - Refatoração Estrutural + Profissionalização (CORREÇÃO FINAL)
 
 ### ♻️ Refatoração CORRETA

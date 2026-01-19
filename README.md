@@ -157,12 +157,18 @@ Este projeto usa **3 assistentes diferentes** com responsabilidades distintas:
 aulas_core/
 ├── GRADE/                    ← PROJETO ATIVO (você trabalha aqui)
 │   ├── src/                  ← ÁREA DE TRABALHO
-│   │   ├── index.html        ← Arquivo principal (edite aqui)
+│   │   ├── index.html        ← Template principal (40 linhas, carrega slides dinamicamente)
+│   │   ├── slides/           ← SLIDES MODULARES (42 arquivos)
+│   │   │   ├── S01.html      ← Slide 1 (Capa)
+│   │   │   ├── S02.html      ← Slide 2
+│   │   │   ├── ...           ← Slides 3-41
+│   │   │   └── S42.html      ← Slide 42
 │   │   ├── css/
 │   │   │   ├── base.css      ← Paleta oficial (var(--cores))
 │   │   │   ├── blocks.css    ← Estilos para tabelas/callouts (opcional)
 │   │   │   └── responsive-fix.css
 │   │   └── js/
+│   │       ├── slide-loader.js ← Carregador dinâmico de slides (NOVO)
 │   │       └── slide-system/  ← Sistema de slides modular
 │   │           ├── slide-core.js
 │   │           ├── slide-navigation.js
@@ -268,8 +274,15 @@ npm run export-grade
 
 ### Estrutura GRADE:
 - ✅ Core GRADE: 8 domínios fundamentais
+- ✅ **Modularização completa:** 42 slides em arquivos separados (2026-01-19)
 - ⏳ GRADEs Adicionais: Modelos preditivos, diretrizes
 - ⏳ Exemplos SBC 2025: Casos práticos brasileiros
+
+### 🆕 Modularização de Slides:
+- **Status:** ✅ Completo (2026-01-19)
+- **Slides:** 42 arquivos em `GRADE/src/slides/` (S01.html a S42.html)
+- **Carregamento:** Dinâmico via `slide-loader.js`
+- **Benefícios:** Manutenibilidade, versionamento individual, colaboração paralela
 
 ---
 
