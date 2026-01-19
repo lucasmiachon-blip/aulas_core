@@ -4,6 +4,34 @@
 
 ### ♻️ Refatoração CORRETA
 **Reorganização de slides:**
+## [2026-01-19 - 03:50 UTC] Restauração de Slides
+
+### 🔧 CORREÇÃO CRÍTICA (fix)
+**Restaurar `index.html` para versão funcional**
+
+#### Problema Identificado
+Claude Técnico fez modificações não aprovadas nos slides que quebraram a apresentação:
+- Deletou slides incorretamente (de 42 → 40 slides)
+- Reorganizou conteúdo sem clareza
+- Causou confusão na estrutura
+
+#### Solução Aplicada
+- ✅ Restaurado `GRADE/src/index.html` para commit `21840f3`
+- ✅ Versão com **42 slides intactos**
+- ✅ Modularização JS **mantida e funcionando**
+- ✅ Antes das modificações problemáticas
+
+#### Commit
+- SHA: `73ec37f`
+- Mensagem: "fix: restore index.html to working version (42 slides, modular JS)"
+
+#### Lições Aprendidas
+1. ⚠️ Mudanças em slides requerem aprovação explícita
+2. ⚠️ Sempre documentar ANTES de modificar conteúdo
+3. ⚠️ Commits de restauração devem ser claros
+
+---
+
 - ❌ **Removido:** Slide 14 (Diretriz Brasileira de Dislipidemias 2025: GRADE em Ação)
   - Motivo: Tabela sem arredondamento, design não profissional
   - Problema: Múltiplas recomendações em tabela básica sem formatação adequada
