@@ -334,6 +334,48 @@ grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
 
 ---
 
+## 🔍 PROCESSO DE AUDITORIA (AUTO/Cursor AI)
+
+**⚠️ OBRIGATÓRIO:** Auto (Cursor AI) deve auditar TODAS as mudanças antes de commitar.
+
+### Checklist Rápido:
+
+1. **Cores hardcoded?**
+   ```bash
+   grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
+   # Deve retornar VAZIO
+   ```
+
+2. **Estrutura OK?**
+   - Caminhos corretos?
+   - Referências não quebradas?
+   - Arquivos não utilizados removidos?
+
+3. **Sincronização?**
+   - Se mudou `src/`, executou `npm run sync-grade`?
+
+4. **CHANGELOG atualizado?**
+   - `docs/CHANGELOG.md` foi atualizado?
+
+5. **Regras rígidas?**
+   - Sem tokens/senhas?
+   - Sem dados inventados?
+   - OSTEOPOROSE não tocado?
+
+### 📖 Documento Completo:
+**Leia:** `docs/PROCESSO_AUDITORIA_AUTO.md` ← **OBRIGATÓRIO antes de cada commit**
+
+### 💬 Comunicação:
+Se encontrar problemas durante auditoria:
+1. Listar problemas encontrados
+2. Explicar impacto
+3. Sugerir correções
+4. **Aguardar aprovação do usuário antes de corrigir**
+
+**NUNCA commite sem auditar primeiro!**
+
+---
+
 ## 📚 RECURSOS
 
 - [Diretriz SBC Dislipidemia 2025](https://abc.cardiol.br/)
