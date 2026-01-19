@@ -54,3 +54,7 @@ coverage/
 .env
 .env.local
 .env.*.local
+
+# Arquivos de verificação local (apenas para Auto)
+docs/STATUS_SYNC.md
+docs/VERIFICACAO_ALINHAMENTO.md
