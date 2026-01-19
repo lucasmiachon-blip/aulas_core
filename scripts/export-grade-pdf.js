@@ -5,8 +5,9 @@ const fs = require('fs');
 async function exportPDF() {
   console.log('🚀 Iniciando exportação de PDF...');
   
-  // URL do site GRADE
-  const url = 'https://lucasmiachon-blip.github.io/aulas_core/GRADE/dist/';
+  // Usar arquivo local ao invés de URL online
+  const gradeIndexPath = path.join(__dirname, '..', 'GRADE', 'dist', 'index.html');
+  const url = `file://${gradeIndexPath.replace(/\\/g, '/')}`;
   
   // Pasta de saída
   const outputDir = path.join(__dirname, '..', 'exports');
@@ -35,34 +36,14 @@ async function exportPDF() {
   
   // Aguardar fontes e recursos carregarem
   console.log('⏳ Aguardando recursos carregarem...');
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(5000);
   
-  // Aguardar o reveal.js estar pronto
-  await page.waitForFunction(() => {
-    return typeof Reveal !== 'undefined' && Reveal.isReady();
-  });
+  // Aguardar scripts carregarem (não usa Reveal.js, usa sistema próprio)
+  console.log('⏳ Aguardando scripts e DOM estarem prontos...');
+  await page.waitForLoadState('domcontentloaded');
+  await page.waitForTimeout(3000); // Tempo extra para scripts executarem
   
-  console.log('✅ Reveal.js pronto');
-  
-  // Preparar para PDF (desabilitar animações, etc)
-  await page.evaluate(() => {
-    // Forçar modo de impressão do Reveal.js
-    if (typeof Reveal !== 'undefined') {
-      Reveal.configure({
-        pdfMaxPagesPerSlide: 1,
-        pdfSeparateFragments: false
-      });
-    }
-  });
-  
-  // Adicionar parâmetro print-pdf na URL se necessário
-  const printUrl = url.includes('?') ? `${url}&print-pdf` : `${url}?print-pdf`;
-  await page.goto(printUrl, {
-    waitUntil: 'networkidle',
-    timeout: 60000
-  });
-  
-  await page.waitForTimeout(2000);
+  console.log('✅ Página carregada');
   
   // Gerar PDF
   console.log('📋 Gerando PDF...');
