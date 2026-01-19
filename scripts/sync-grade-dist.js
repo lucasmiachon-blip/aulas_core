@@ -1,0 +1,45 @@
+/**
+ * Script para sincronizar GRADE/src/index.html com GRADE/dist/index.html
+ * 
+ * Este script:
+ * 1. Copia src/index.html para dist/index.html
+ * 2. Ajusta os caminhos relativos (../src/ -> ./src/)
+ * 3. Garante que os scripts JS estejam corretos
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+const srcPath = path.join(__dirname, '..', 'GRADE', 'src', 'index.html');
+const distPath = path.join(__dirname, '..', 'GRADE', 'dist', 'index.html');
+
+console.log('🔄 Sincronizando GRADE/src/index.html → GRADE/dist/index.html...');
+
+// Ler arquivo src
+let content = fs.readFileSync(srcPath, 'utf8');
+
+// Ajustar caminhos: ../src/ -> ./src/
+content = content.replace(/href="\.\.\/src\//g, 'href="./src/');
+content = content.replace(/src="\.\.\/src\//g, 'src="./src/');
+
+// Verificar se os scripts estão corretos
+const requiredScripts = [
+  'slide-system/slide-core.js',
+  'slide-system/slide-navigation.js',
+  'slide-system/slide-viewport.js',
+  'slide-system/init.js'
+];
+
+const hasAllScripts = requiredScripts.every(script => 
+  content.includes(`slide-system/${script.split('/')[1]}`)
+);
+
+if (!hasAllScripts) {
+  console.warn('⚠️  Aviso: Nem todos os scripts slide-system estão presentes!');
+}
+
+// Escrever em dist
+fs.writeFileSync(distPath, content, 'utf8');
+
+console.log('✅ Sincronização concluída!');
+console.log(`📄 Arquivo atualizado: ${distPath}`);

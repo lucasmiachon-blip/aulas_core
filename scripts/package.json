@@ -5,7 +5,8 @@
   "main": "export-grade-pdf.js",
   "scripts": {
     "export-grade": "node export-grade-pdf.js",
-    "install-browser": "npx playwright install chromium"
+    "install-browser": "npx playwright install chromium",
+    "sync-grade": "node sync-grade-dist.js"
   },
   "keywords": [
     "pdf",
