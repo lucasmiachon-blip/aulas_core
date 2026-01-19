@@ -1,5 +1,55 @@
 # Changelog
 
+## [2026-01-19] - Refatoração Estrutural + Profissionalização (CORREÇÃO FINAL)
+
+### ♻️ Refatoração CORRETA
+**Reorganização de slides:**
+- ❌ **Removido:** Slide 14 (Diretriz Brasileira de Dislipidemias 2025: GRADE em Ação)
+  - Motivo: Tabela sem arredondamento, design não profissional
+  - Problema: Múltiplas recomendações em tabela básica sem formatação adequada
+- ✅ **Inserido:** Slide 22 (Recomendações das Diretrizes) → Posição 14
+  - Formato: 2 recomendações ipsis literis da diretriz sobre ácido bempedóico
+  - Design: Box azul profissional com gramática GRADE
+  - Border-radius: 0.8vw (profissional)
+- 📊 **Total de slides:** 41 → 40
+
+### 🎨 Profissionalização (Slides 14-20)
+**Emojis removidos:**
+- Slide 14: 🇧🇷 (bandeira)
+- Slide 16: ✅❌↓ (checkmarks e setas)
+- Slide 17: ✅❌⚠️ (checkmarks e aviso)
+- Slide 18: ✅❌ (checkmarks)
+- Slide 19: ✅ (checkmark)
+- Slide 20: ✅❌↑↓ (checkmarks e setas)
+
+**Design profissionalizado:**
+- ✅ 9 boxes com border-radius adicionado (0.8vw)
+  - Slide 17: 7 boxes arredondados
+  - Slide 18: 2 boxes arredondados
+- ✅ Remoção de chartjunk (seguindo Tufte)
+- ✅ Design limpo e profissional (NEJM/JACC standard)
+
+### 📋 Benchmarks Seguidos
+- **QUALITY.md:** NEJM, JACC, ESC, Tufte, Reynolds, Duarte
+- **STYLEGUIDE.md:** 
+  - ✅ Evitar chartjunk
+  - ✅ Hierarquia visual clara
+  - ✅ Funciona em escala de cinza
+- **AI_RULES.md:** Commits pequenos, CHANGELOG atualizado
+
+### 🎯 Objetivo
+Elevar qualidade visual dos slides para padrão de publicação científica de alto impacto, removendo elementos não profissionais (emojis, boxes sem arredondamento).
+
+### 📊 Commits desta Correção
+```
+9. refactor(grade): replace slide 14 with professional version and clean slides 14-20
+```
+
+---
+
+
+# Changelog
+
 ## [2026-01-19] - Refatoração Estrutural e Correções Técnicas
 
 ### ♻️ Refatoração
