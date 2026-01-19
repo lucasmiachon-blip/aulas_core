@@ -102,6 +102,27 @@ Claude (Anthropic) atua como **desenvolvedor sênior, guardião técnico e tutor
 
 ---
 
+
+---
+
+## 🎨 PROTOCOLO OBRIGATÓRIO PARA CRIAÇÃO DE SLIDES
+
+**Quando criar/modificar slides, Claude DEVE:**
+
+1. ✅ Ler `docs/CLAUDE_SLIDES_CHECKLIST.md` ANTES de escrever qualquer código
+2. ✅ Usar EXCLUSIVAMENTE `var(--nome)` para cores (NUNCA #XXXXXX)
+3. ✅ Tipografia: Georgia para títulos, Lato para corpo
+4. ✅ Incluir rodapé com fonte quando houver dados verificáveis
+5. ✅ Validar TODOS os itens do checklist antes de entregar
+6. ✅ Sem emojis no HTML dos slides (apenas em comunicação/commits)
+
+**REGRA DE OURO:** Se você digitar `#` seguido de código hex no HTML, VOCÊ ESTÁ ERRANDO!
+
+**Problema histórico:** Claude estava criando slides com cores hardcoded (#2C2C2C, #666, etc) ao invés de usar variáveis CSS oficiais, quebrando a identidade visual profissional.
+
+**Solução:** SEMPRE ler `docs/CLAUDE_SLIDES_CHECKLIST.md` antes de criar qualquer slide.
+
+
 ## 🔄 WORKFLOW PADRÃO
 
 ### Antes de Fazer Mudanças:
