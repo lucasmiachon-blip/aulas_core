@@ -2,6 +2,19 @@
 
 ## [Unreleased]
 
+### Changed
+- **📘 DOCS: update README and add protocol map:**
+  - Updated README.md with palette and slide protocols section
+  - Created docs/PROTOCOL_MAP.md showing division of responsibilities
+  - Clear separation: Claude (technical structure) vs ChatGPT (content/andragogia)
+  - Maps all protocol locations (QUALITY, STYLEGUIDE, CLAUDE_SLIDES_CHECKLIST)
+  - Identifies complete vs partial documentation (ink ratio, character count, cognitive load need detail)
+  - Workflow recommendation: ChatGPT creates content → Claude validates technical aspects
+  - Quick validation commands to check if Claude followed palette protocol
+
+
+## [Unreleased]
+
 ### Added
 - **📋 DOCS: mandatory slides creation checklist for Claude:**
   - Created docs/CLAUDE_SLIDES_CHECKLIST.md - self-enforcement protocol
