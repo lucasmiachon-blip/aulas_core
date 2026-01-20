@@ -8,10 +8,10 @@
 - Navegação funcional (módulos carregam dinamicamente)
 - PDF export configurado
 - Slides apêndice (S35-S44) corrigidos
+- Conteúdo médico corrigido (MID, PREVENT, TBD)
 
 ## ⏳ Em Andamento
 
-- [ ] Revisão de conteúdo (PREVENT, [TBD], inconsistências)
 - [ ] Remoção de redundâncias estruturais (após revisão conteúdo)
 
 ## 🎯 Próximos Passos
