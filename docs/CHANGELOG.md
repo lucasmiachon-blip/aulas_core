@@ -2,6 +2,39 @@
 
 ## [Unreleased]
 
+### 🔴 P0 - Correção de Problemas Críticos (2024-12-28)
+
+**Problemas corrigidos:**
+- ✅ **P0-1:** Navegação pulando slides (1→4→7...) - múltiplos listeners de teclado
+- ✅ **P0-2:** Dupla inicialização - verificado, sem problema
+- ✅ **P0-3:** Links/documentação 404 - verificado, sem problemas graves
+- ✅ **P0-4:** Contagem inconsistente (41 vs 42) - resolvido, consistente: 41 slides
+- ✅ **P0-5:** PDF com páginas em branco/overlap - CSS print criado + aguarda slidesloaded
+
+**Mudanças:**
+- ✅ `slide-navigation.js`: Proteção dupla na IIFE e `setupKeyboard()` com AbortController
+- ✅ `init.js`: Guard `window.GRADE.initDone` para prevenir reentrância
+- ✅ `print.css`: Criado com `@media print` para linearizar slides no PDF
+- ✅ `export-grade-pdf.js`: Aguarda evento `slidesloaded` e ativa modo print
+
+**Arquivos modificados:**
+- `GRADE/src/js/slide-system/slide-navigation.js`
+- `GRADE/src/js/slide-system/init.js`
+- `GRADE/src/css/print.css` (NOVO)
+- `GRADE/src/index.html` - adicionado link para print.css
+- `scripts/export-grade-pdf.js` - aguarda slidesloaded
+
+**Resultado esperado:**
+- Navegação sequencial: 1→2→3→4... (sem pular)
+- Apenas 1 listener de teclado ativo
+- PDF com 41 páginas (uma por slide) sem páginas em branco
+
+**Documentação:**
+- ✅ `docs/P0_CORRECOES.md` - Documentação completa das correções
+- ✅ `docs/INVESTIGACAO_LISTENERS.md` - Investigação detalhada
+
+---
+
 ### 🐛 Correção de Bug: Navegação pulando slides (1→4→7...)
 
 **Problema corrigido:**
@@ -33,6 +66,93 @@
 
 ---
 
+## [2026-01-19] - Auditoria Completa + Remoção de Duplicata
+
+### 🔍 AUDITORIA TÉCNICA (audit)
+**Auditoria completa de todos os slides aplicando Gates 0-4:**
+
+- ✅ **41 slides auditados** (S01-S42, exceto S21 removido)
+- ✅ **Gates aplicados:** G0 (Estrutura) | G1 (Interatividade) | G2 (Visual) | G3 (Andragogia) | G4 (Evidência)
+- ✅ **Benchmarks aplicados:** NEJM, JACC, Tufte, Legibilidade
+- ✅ **Relatório gerado:** `GRADE/AUDITORIA-SLIDES.md` (23 KB)
+
+**Resultados da auditoria:**
+- Score total: **21.0/25.0** (84%)
+- Aprovados (todos gates ✅): **7 slides**
+- Com ressalvas (algum gate ⚠️): **32 slides**
+- Reprovados (algum gate ❌): **4 slides**
+
+**Score por Gate:**
+- Gate 0 (Estrutura): 3.7/5.0
+- Gate 1 (Interatividade): 5.0/5.0
+- Gate 2 (Visual): 3.7/5.0
+- Gate 3 (Andragogia): 4.6/5.0
+- Gate 4 (Evidência): 4.1/5.0
+
+**Slides sobre ÁCIDO BEMPEDÓICO identificados:** 13 slides
+- S08, S10, S11, S14, S15, S16, S18, S19, S20, S22, S28, S29, S33
+
+**Issues P0 (Urgente) identificados:**
+- S10.html: CRÍTICO - 206 KB (muito denso), usar var(--cores)
+- S11.html: 67 ocorrências CSS inline, usar var(--cores)
+- S12.html: 52 ocorrências CSS inline, usar var(--cores)
+- S13.html: 49 ocorrências CSS inline, usar var(--cores)
+
+**Issues P1 (Importante):**
+- Falta `data-slide-id` em muitos slides
+- CSS inline excessivo (>20 ocorrências) em vários slides
+- Falta estrutura de cards visuais em alguns slides
+- Alguns slides sem citação/fonte
+
+### ♻️ REFATORAÇÃO (refactor)
+**Remoção de slide duplicado:**
+
+- ❌ **Deletado:** `S21.html` - "Aplicação GRADE: Ácido Bempedóico" (8.7 KB)
+- ✅ **Mantido:** `S14.html` - "Aplicação GRADE: Ácido Bempedóico" (7.8 KB)
+- **Motivo:** S14 tem fonte citada no topo, S21 não tinha
+- **Total de slides:** 42 → 41
+
+### 📋 ATUALIZAÇÃO (docs)
+**Arquivos atualizados:**
+
+- ✅ `GRADE/src/slides/_list.txt` - Atualizado para 41 slides (sem S21)
+- ✅ `GRADE/AUDITORIA-SLIDES.md` - Relatório completo criado
+- ✅ `docs/CHANGELOG.md` - Esta entrada
+
+### 📊 COMMITS DESTA SESSÃO
+
+```
+1. refactor(grade): remove duplicate slide S21 (keep S14 with source citation)
+   SHA: 559ace5c83771c2198bb5871a2237e9cfeebbff8
+
+2. docs(grade): add comprehensive slide-by-slide audit report (41 slides)
+   SHA: da319d1e93ba6efc62aee1fb5f598c23efe1d4c6
+
+3. refactor(grade): update slide list (41 slides after removing S21 duplicate)
+   SHA: bff87c8f2440422adf35323c5369bf9126c48124
+```
+
+### 🎯 PRÓXIMOS PASSOS RECOMENDADOS
+
+**P0 (Urgente):**
+1. Corrigir S10.html (206 KB) - otimizar densidade
+2. Adicionar `data-slide-id` nos slides que faltam
+3. Converter cores hardcoded para var(--cores) em S10, S11, S12, S13
+
+**P1 (Importante):**
+1. Reduzir CSS inline (criar classes reutilizáveis)
+2. Adicionar estrutura de cards onde apropriado
+3. Completar citações/fontes em slides que faltam
+
+**P2 (Melhorias):**
+1. Completar [TBD] com referências
+2. Otimizar slides muito densos (>10KB)
+3. Padronizar estrutura visual
+
+---
+
+## [2026-01-19] - Modularização Completa: 42 Slides Separados
+>>>>>>> 5b0f4d37e0aceed66e2d28e4f55fd6037d26e2e6
 ## [2026-01-19] - Modularização Completa: 42 Slides Separados
 
 ### 🎯 Modularização Estrutural (FEATURE)

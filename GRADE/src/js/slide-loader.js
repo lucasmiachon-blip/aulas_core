@@ -7,17 +7,49 @@
 (function() {
     'use strict';
     
+    // Lista de slides na ordem correta (41 slides - S21 removido como duplicata, S33 é BONUS)
     const slideFiles = [
-        'S01.html', 'S02.html', 'S03.html', 'S04.html', 'S05.html',
-        'S06.html', 'S07.html', 'S08.html', 'S09.html', 'S10.html',
-        'S11.html', 'S12.html', 'S13.html', 'S14.html', 'S15.html',
-        'S16.html', 'S17.html', 'S18.html', 'S19.html', 'S20.html',
-        'S21.html', 'S22.html', 'S23.html', 'S24.html', 'S25.html',
-        'S26.html', 'S27.html', 'S28.html', 'S29.html', 'S30.html',
-        'S31.html', 'S32.html', 'S34.html', 'S35.html', 'S36.html',
-        'S37.html', 'S38.html', 'S39.html', 'S40.html', 'S41.html',
-        'S42.html'
+        'S01.html',
+        'S02.html',
+        'S03.html',
+        'S04.html',
+        'S05.html',
+        'S06.html',
+        'S07.html',
+        'S08.html',
+        'S09.html',
+        'S10.html',
+        'S11.html',
+        'S12.html',
+        'S13.html',
+        'S14.html',
+        'S15.html',
+        'S16.html',
+        'S17.html',
+        'S18.html',
+        'S19.html',
+        'S20.html',
+        'S22.html',  // S21 removido (duplicata de S14)
+        'S23.html',
+        'S24.html',
+        'S25.html',
+        'S26.html',
+        'S27.html',
+        'S28.html',
+        'S29.html',
+        'S30.html',
+        'S31.html',
+        'S32.html',
         // S33.html removido: slide BONUS não conta no total principal
+        'S34.html',
+        'S35.html',
+        'S36.html',
+        'S37.html',
+        'S38.html',
+        'S39.html',
+        'S40.html',
+        'S41.html',
+        'S42.html'
     ];
     
     async function loadSlides() {
@@ -38,8 +70,12 @@
         viewport.innerHTML = '';
         
         try {
+            // Detectar path correto baseado no contexto
+            // GitHub Pages: ./src/slides/ (a partir de /grade/index.html)
+            // Desenvolvimento local: ./slides/ (a partir de /src/index.html)
             async function loadSlideFile(file) {
-                const paths = ['./slides/', '../src/slides/'];
+                const paths = ['./src/slides/', './slides/'];
+                
                 for (const basePath of paths) {
                     try {
                         const response = await fetch(`${basePath}${file}`);
@@ -109,7 +145,7 @@
                     <h2>Erro ao carregar slides</h2>
                     <p>${error.message}</p>
                     <p style="font-size: 0.9em; color: #666; margin-top: 2vw;">
-                        Verifique se os arquivos estão em ./slides/
+                        Verifique se os arquivos estão em ./src/slides/ ou ./slides/
                     </p>
                 </div>
             `;
