@@ -1,3 +1,71 @@
+## [2026-01-20] - Correção Estética: Paleta Oficial nos Slides Apêndice
+
+### 🎨 P1 - Cores Hardcoded → Variáveis CSS
+
+**Problema identificado:**
+- Slides S35-S44 (apêndice CAC) continham cores hardcoded
+- Violavam paleta profissional oficial do projeto
+- Cores encontradas: #222, #FFFBF0, #F0F0F0, #FAFAFA, #F8F9FA
+
+**Correção aplicada:**
+- ✅ `color: #222` → `var(--text)` (30+ ocorrências)
+- ✅ `background: #FFFBF0` → `var(--white)` (S35)
+- ✅ `background: #F0F0F0` → `var(--white); border: 1px solid var(--border)` (S35)
+- ✅ `background: #FAFAFA` → `var(--bg)` (S36)
+- ✅ `background: #F8F9FA` → `var(--white)` (S42)
+
+**Slides corrigidos:**
+- S35.html, S36.html, S37.html, S38.html, S39.html
+- S40.html, S41.html, S42.html, S43.html, S44.html
+
+**Commits:**
+- 10 commits individuais (um por slide)
+- Convenção: `style(slides): corrige paleta nos slides apêndice SXX`
+
+**Conformidade:**
+- ✅ Alinhado com `PROMPT_PALETA_OFICIAL.md`
+- ✅ Todas cores agora usam `var(--nome)` conforme especificação
+- ✅ Fundos brancos com borda `var(--border)` para elegância
+
+**Impacto:**
+- Apresentação visualmente consistente em todos os 44 slides
+- Paleta profissional (navy + gold) aplicada uniformemente
+- Facilita manutenção futura (cores centralizadas em CSS)
+
+---
+
+## [2026-01-20] - Correção Metodológica GRADE (S18)
+
+### 🔴 P0 - Erro de Julgamento de Imprecisão
+
+**Problema identificado:**
+- Slide S18 (Análise de Imprecisão MACE-4) continha erro metodológico grave
+- Afirmava que IC 95% 0.79-0.96 NÃO cruza MID 0.8 (incorreto!)
+- Metodologia GRADE exige rebaixar por imprecisão quando IC cruza threshold
+
+**Correção aplicada:**
+- ✅ Tabela corrigida: "IC cruza MID? SIM (marginalmente: 0,79 < 0,8 < 0,96)"
+- ✅ Decisão atualizada: "REBAIXAR 1 NÍVEL por imprecisão"
+- ✅ Justificativa GRADE adicionada: Core GRADE 2 (BMJ 2025; DOI: 10.1136/bmj-2024-081904)
+- ✅ Badge visual alterado: verde → amarelo/warning
+- ✅ Citação metodológica: "When the CI crosses the threshold of importance, rate down for imprecision"
+
+**Impacto:**
+- Certeza da evidência CLEAR Outcomes permanece MODERADA
+- Interpretação GRADE agora está metodologicamente correta
+- Alinhamento com Core GRADE BMJ 2025
+
+**Commit:** 4639194c  
+**Arquivo modificado:** GRADE/src/slides/S18.html (+22 -18 linhas)  
+**Autor:** Claude Técnico (via GitHub API)
+
+---
+
+### ⚠️ Nota sobre commit a001cb0
+
+Commit vazio (0 files changed) foi criado por erro durante tentativa de correção.
+Pode ser ignorado. A correção real está no commit 4639194c.
+
 # Changelog
 
 ## [Unreleased]
