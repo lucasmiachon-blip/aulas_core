@@ -34,19 +34,39 @@ async function exportPDF() {
     timeout: 60000
   });
   
-  // Aguardar fontes e recursos carregarem
-  console.log('⏳ Aguardando recursos carregarem...');
-  await page.waitForTimeout(5000);
-  
   // Aguardar scripts carregarem (não usa Reveal.js, usa sistema próprio)
   console.log('⏳ Aguardando scripts e DOM estarem prontos...');
   await page.waitForLoadState('domcontentloaded');
-  await page.waitForTimeout(3000); // Tempo extra para scripts executarem
   
-  console.log('✅ Página carregada');
+  // CRÍTICO: Aguardar evento 'slidesloaded' (slides carregados dinamicamente via fetch)
+  console.log('⏳ Aguardando slides carregarem...');
+  await page.evaluate(() => {
+    return new Promise((resolve) => {
+      // Se slides já carregaram, resolver imediatamente
+      if (document.querySelectorAll('.slide').length > 0) {
+        resolve();
+        return;
+      }
+      // Caso contrário, aguardar evento
+      window.addEventListener('slidesloaded', resolve, { once: true });
+      // Timeout de segurança (30s)
+      setTimeout(resolve, 30000);
+    });
+  });
   
-  // Gerar PDF
+  // Aguardar fontes e recursos carregarem
+  console.log('⏳ Aguardando fontes e recursos carregarem...');
+  await page.waitForTimeout(2000);
+  
+  // Verificar quantos slides foram carregados
+  const slidesCount = await page.evaluate(() => {
+    return document.querySelectorAll('.slide').length;
+  });
+  console.log(`✅ ${slidesCount} slides carregados`);
+  
+  // Gerar PDF com modo print ativado
   console.log('📋 Gerando PDF...');
+  await page.emulateMedia({ media: 'print' }); // Ativar @media print CSS
   await page.pdf({
     path: outputPath,
     format: 'A4',
@@ -57,7 +77,8 @@ async function exportPDF() {
       right: 0,
       bottom: 0,
       left: 0
-    }
+    },
+    preferCSSPageSize: true // Respeitar @page do CSS
   });
   
   await browser.close();

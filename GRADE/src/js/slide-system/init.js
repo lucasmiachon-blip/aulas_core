@@ -7,14 +7,14 @@
 (function() {
     'use strict';
     
-    // Flag global CRÍTICA - usar window para persistir
-    if (typeof window.__slideSystemInitialized === 'undefined') {
-        window.__slideSystemInitialized = false;
+    // Namespace para evitar conflito com outros projetos (ex: OSTEOPOROSE)
+    if (!window.GRADE) {
+        window.GRADE = { initDone: false };
     }
     
     function initSlideSystem(event) {
-        // VERIFICAÇÃO CRÍTICA - PRIMEIRA COISA (guard contra reentrância)
-        if (window.__slideSystemInitialized === true || window.__GRADE_SLIDE_INIT_DONE === true) {
+        // VERIFICAÇÃO CRÍTICA - PRIMEIRA COISA (guard contra reentrância com namespacing)
+        if (window.GRADE.initDone || window.__slideSystemInitialized === true) {
             // Sistema já inicializado - NÃO FAZER NADA
             return;
         }
@@ -29,7 +29,7 @@
         
         // MARCAR COMO INICIALIZADO IMEDIATAMENTE (antes de qualquer coisa)
         window.__slideSystemInitialized = true;
-        window.__GRADE_SLIDE_INIT_DONE = true;
+        window.GRADE.initDone = true;
         
         // Verificar se módulos estão disponíveis
         if (!window.SlideCore || !window.SlideCore.init) {
@@ -54,6 +54,15 @@
         window.SlideCore.showSlide(state.currentIndex);
         if (window.SlideCore.animateBars) {
             window.SlideCore.animateBars();
+        }
+        
+        // Forçar foco no viewport para permitir navegação imediata por teclado
+        const viewport = document.getElementById('viewport');
+        if (viewport && viewport.tabIndex === -1) {
+            viewport.setAttribute('tabindex', '0');
+        }
+        if (viewport) {
+            viewport.focus();
         }
         
         console.log(`✅ Sistema inicializado: ${state.slides.length} slides`);

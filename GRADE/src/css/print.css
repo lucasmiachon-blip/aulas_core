@@ -1,0 +1,70 @@
+/**
+ * PRINT CSS - Lineariza slides para exportação PDF
+ * 
+ * Remove position:absolute e mostra todos os slides sequencialmente
+ * para que o PDF tenha uma página por slide (sem sobreposição)
+ */
+
+@media print {
+    /* Resetar viewport para fluxo normal */
+    #viewport {
+        width: 100%;
+        height: auto;
+        aspect-ratio: unset;
+        overflow: visible;
+        display: block;
+        position: relative;
+        box-shadow: none;
+    }
+    
+    /* Linearizar slides - remover absolute e mostrar todos sequencialmente */
+    .slide {
+        position: static !important;
+        display: block !important;
+        page-break-after: always; /* Nova página por slide */
+        page-break-inside: avoid;
+        padding: 2cm 2cm !important;
+        margin: 0 !important;
+        transform: none !important;
+        inset: unset !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: calc(29.7cm - 4cm); /* A4 landscape - margens */
+        max-height: calc(29.7cm - 4cm);
+    }
+    
+    /* Garantir que todos os slides sejam visíveis (não apenas .active) */
+    .slide.active {
+        display: block !important;
+    }
+    
+    /* Esconder controles e contador na impressão */
+    .controls,
+    .slide-counter {
+        display: none !important;
+    }
+    
+    /* Ajustar body para impressão */
+    body {
+        background: white !important;
+        overflow: visible !important;
+        height: auto !important;
+        width: 100% !important;
+        display: block !important;
+    }
+    
+    /* Manter proporções de fonte para impressão */
+    h1 {
+        font-size: 3.5cm !important;
+        page-break-after: avoid;
+    }
+    
+    h2 {
+        font-size: 1.8cm !important;
+        page-break-after: avoid;
+    }
+    
+    p {
+        font-size: 0.6cm !important;
+    }
+}

@@ -4,6 +4,9 @@
 (function() {
     'use strict';
     
+    // Flag de controle para evitar múltiplas inicializações
+    let initialized = false;
+    
     function fitActiveSlide() {
         const viewport = document.getElementById('viewport');
         const activeSlide = document.querySelector('.slide.active');
@@ -38,21 +41,46 @@
     }
     
     function init() {
-        window.addEventListener('slidechange', () => {
+        // Evitar múltiplas inicializações
+        if (initialized) {
+            return;
+        }
+        
+        // Remover listeners antigos se existirem (evitar duplicatas)
+        if (window._slideChangeHandler) {
+            window.removeEventListener('slidechange', window._slideChangeHandler);
+        }
+        if (window._viewportResizeHandler) {
+            window.removeEventListener('resize', window._viewportResizeHandler);
+        }
+        if (window._viewportLoadHandler) {
+            window.removeEventListener('load', window._viewportLoadHandler);
+        }
+        
+        // Criar handlers e armazenar em window para poder remover depois
+        window._slideChangeHandler = () => {
             requestAnimationFrame(() => {
                 requestAnimationFrame(fitActiveSlide);
             });
-        });
+        };
         
-        window.addEventListener('resize', debounce(fitActiveSlide, 250));
+        const debouncedFit = debounce(fitActiveSlide, 250);
+        window._viewportResizeHandler = debouncedFit;
+        window._viewportLoadHandler = fitActiveSlide;
+        
+        // Adicionar listeners uma única vez
+        window.addEventListener('slidechange', window._slideChangeHandler);
+        window.addEventListener('resize', window._viewportResizeHandler);
         
         if (document.fonts && document.fonts.ready) {
             document.fonts.ready.then(fitActiveSlide).catch(() => {});
         }
         
-        window.addEventListener('load', fitActiveSlide);
+        window.addEventListener('load', window._viewportLoadHandler);
         
         fitActiveSlide();
+        
+        initialized = true;
     }
     
     window.SlideViewport = {

@@ -22,6 +22,15 @@
 - Apenas 1 listener de teclado ativo
 - Contador atualiza corretamente
 
+**Correções adicionais:**
+- ✅ Contador corrigido de 42 para 41 slides (S33 é BONUS e não conta no total principal)
+- ✅ `slide-loader.js` atualizado: removido S33.html da lista principal
+- ✅ **Namespacing implementado:** `window.GRADE` para evitar conflito com OSTEOPOROSE
+- ✅ **AbortController:** Substituído removeEventListener por AbortController (limpeza moderna)
+- ✅ **Contagem dinâmica:** Navegação usa `state.slides.length` (não hardcoded)
+- ✅ **Foco automático:** Viewport recebe foco após slides carregarem (acessibilidade)
+- ✅ **Ordem garantida:** Promise.allSettled() garante ordem de inserção mesmo com downloads assíncronos
+
 ---
 
 ## [2026-01-19] - Modularização Completa: 42 Slides Separados

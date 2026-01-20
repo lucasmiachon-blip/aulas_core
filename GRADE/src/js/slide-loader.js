@@ -1,82 +1,45 @@
 /**
- * SLIDE LOADER - Carrega slides dinamicamente de arquivos separados
+ * SLIDE LOADER - Carrega slides dinamicamente do diretório /slides/
  * 
- * Este módulo:
- * 1. Carrega cada slide de GRADE/src/slides/
- * 2. Insere no #viewport
- * 3. Re-inicializa o sistema de slides após carregar tudo
+ * Lê os arquivos S01.html, S02.html, ... S42.html (41 slides principais, S33 é BONUS)
+ * e insere cada um dentro do #viewport como <section class="slide">
  */
-
 (function() {
     'use strict';
     
-    // Lista de slides na ordem correta
     const slideFiles = [
-        'S01.html',
-        'S02.html',
-        'S03.html',
-        'S04.html',
-        'S05.html',
-        'S06.html',
-        'S07.html',
-        'S08.html',
-        'S09.html',
-        'S10.html',
-        'S11.html',
-        'S12.html',
-        'S13.html',
-        'S14.html',
-        'S15.html',
-        'S16.html',
-        'S17.html',
-        'S18.html',
-        'S19.html',
-        'S20.html',
-        'S21.html',
-        'S22.html',
-        'S23.html',
-        'S24.html',
-        'S25.html',
-        'S26.html',
-        'S27.html',
-        'S28.html',
-        'S29.html',
-        'S30.html',
-        'S31.html',
-        'S32.html',
-        'S33.html',
-        'S34.html',
-        'S35.html',
-        'S36.html',
-        'S37.html',
-        'S38.html',
-        'S39.html',
-        'S40.html',
-        'S41.html',
+        'S01.html', 'S02.html', 'S03.html', 'S04.html', 'S05.html',
+        'S06.html', 'S07.html', 'S08.html', 'S09.html', 'S10.html',
+        'S11.html', 'S12.html', 'S13.html', 'S14.html', 'S15.html',
+        'S16.html', 'S17.html', 'S18.html', 'S19.html', 'S20.html',
+        'S21.html', 'S22.html', 'S23.html', 'S24.html', 'S25.html',
+        'S26.html', 'S27.html', 'S28.html', 'S29.html', 'S30.html',
+        'S31.html', 'S32.html', 'S34.html', 'S35.html', 'S36.html',
+        'S37.html', 'S38.html', 'S39.html', 'S40.html', 'S41.html',
         'S42.html'
+        // S33.html removido: slide BONUS não conta no total principal
     ];
     
-    /**
-     * Carrega todos os slides e insere no viewport
-     */
     async function loadSlides() {
-        const viewport = document.getElementById('viewport');
+        // Prevenir múltiplas execuções
+        if (window.__slidesLoading) {
+            return;
+        }
+        window.__slidesLoading = true;
         
+        const viewport = document.getElementById('viewport');
         if (!viewport) {
             console.error('❌ #viewport não encontrado!');
+            window.__slidesLoading = false;
             return;
         }
         
-        console.log(`📚 Carregando ${slideFiles.length} slides...`);
+        // Limpar viewport antes de carregar (evitar duplicatas)
+        viewport.innerHTML = '';
         
         try {
-            // Detectar path correto baseado no contexto
-            // Se estamos em src: ./slides/
-            // Se estamos em dist: ../src/slides/
-            // Tentar primeiro ./slides/, se falhar, tentar ../src/slides/
             async function loadSlideFile(file) {
                 const paths = ['./slides/', '../src/slides/'];
-                
                 for (const basePath of paths) {
                     try {
                         const response = await fetch(`${basePath}${file}`);
@@ -87,29 +50,56 @@
                         // Continuar para próximo path
                     }
                 }
-                throw new Error(`Erro ao carregar ${file}: não encontrado em nenhum path`);
+                return ''; // Retornar string vazia se não encontrado
             }
             
-            // Carregar todos os slides em paralelo
             const promises = slideFiles.map(file => loadSlideFile(file));
+            const results = await Promise.allSettled(promises);
+            const slideContents = results.map(result => 
+                result.status === 'fulfilled' ? result.value : ''
+            );
             
-            const slideContents = await Promise.all(promises);
+            let loadedCount = 0;
+            let failedCount = 0;
             
-            // Inserir slides no viewport na ordem correta
+            // CRÍTICO: Promise.allSettled() mantém ordem do array original
+            // Inserir slides sequencialmente (ordem garantida pelo array)
             slideContents.forEach((html, index) => {
-                viewport.insertAdjacentHTML('beforeend', html);
-                console.log(`  ✓ ${slideFiles[index]} carregado`);
+                if (html && html.trim().length > 0) {
+                    // Inserir HTML no DOM na ordem do array (não ordem de carregamento)
+                    viewport.insertAdjacentHTML('beforeend', html);
+                    
+                    // Garantir que o slide inserido tem data-slide-id correto
+                    const insertedSlide = viewport.lastElementChild;
+                    if (insertedSlide && insertedSlide.classList.contains('slide')) {
+                        // Se não tem data-slide-id, adicionar baseado no nome do arquivo
+                        if (!insertedSlide.dataset.slideId && !insertedSlide.getAttribute('data-slide-id')) {
+                            const expectedId = slideFiles[index].replace('.html', '').toUpperCase();
+                            insertedSlide.setAttribute('data-slide-id', expectedId);
+                        }
+                    }
+                    
+                    loadedCount++;
+                } else {
+                    failedCount++;
+                }
             });
             
-            console.log('✅ Todos os slides carregados!');
+            console.log(`✅ ${loadedCount} slides carregados${failedCount > 0 ? `, ${failedCount} falhas` : ''}`);
             
-            // Aguardar um frame para garantir que o DOM foi atualizado
             requestAnimationFrame(() => {
-                // Disparar evento customizado para que init.js saiba que slides foram carregados
-                window.dispatchEvent(new CustomEvent('slidesloaded'));
+                const slidesInDOM = document.querySelectorAll('.slide').length;
                 
-                // Tentar inicializar imediatamente se os módulos já estiverem disponíveis
-                initializeSlideSystem();
+                if (slidesInDOM !== slideFiles.length) {
+                    console.warn(`⚠️ ${slideFiles.length - slidesInDOM} slide(s) não foram carregados`);
+                }
+                
+                // Disparar evento UMA VEZ
+                window.dispatchEvent(new CustomEvent('slidesloaded', { 
+                    detail: { count: slidesInDOM } 
+                }));
+                
+                window.__slidesLoading = false;
             });
             
         } catch (error) {
@@ -123,39 +113,7 @@
                     </p>
                 </div>
             `;
-        }
-    }
-    
-    /**
-     * Inicializar sistema de slides após slides serem carregados
-     */
-    function initializeSlideSystem() {
-        if (window.SlideCore && typeof window.SlideCore.init === 'function') {
-            if (window.SlideCore.init()) {
-                // Se já tiver navegação e viewport, re-inicializar também
-                if (window.SlideNavigation) {
-                    window.SlideNavigation.init();
-                }
-                if (window.SlideViewport) {
-                    window.SlideViewport.init();
-                }
-                
-                // Mostrar slide ativo (primeiro slide com .active ou slide 0)
-                const state = window.SlideCore.getState();
-                if (state) {
-                    window.SlideCore.showSlide(state.currentIndex);
-                    if (window.SlideCore.animateBars) {
-                        window.SlideCore.animateBars();
-                    }
-                }
-                
-                console.log('✅ Sistema de slides inicializado');
-            } else {
-                console.warn('⚠️ Falha ao inicializar slides');
-            }
-        } else {
-            // Se os scripts ainda não carregaram, aguardar um pouco mais
-            setTimeout(initializeSlideSystem, 50);
+            window.__slidesLoading = false;
         }
     }
     
@@ -163,19 +121,33 @@
      * Inicializar quando DOM estiver pronto
      */
     function init() {
+        // Prevenir múltiplas inicializações
+        if (window.__slideLoaderInitialized) {
+            return;
+        }
+        window.__slideLoaderInitialized = true;
+        
+        // Limpar viewport antes de carregar (evitar duplicatas)
+        const viewport = document.getElementById('viewport');
+        if (viewport) {
+            viewport.innerHTML = '';
+        }
+        
         // Aguardar módulos de slides carregarem antes de inicializar
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', loadSlides);
+            // Adicionar listener apenas uma vez
+            if (!window.__domContentLoadedListener) {
+                window.__domContentLoadedListener = loadSlides;
+                document.addEventListener('DOMContentLoaded', window.__domContentLoadedListener, { once: true });
+            }
         } else {
             // DOM já está pronto, carregar imediatamente
             loadSlides();
         }
-        
-        // Também escutar evento de slides carregados (caso init.js precise)
-        window.addEventListener('slidesloaded', initializeSlideSystem);
     }
     
-    // Executar
-    init();
-    
+    // Executar apenas se ainda não foi executado
+    if (!window.__slideLoaderInitialized) {
+        init();
+    }
 })();
