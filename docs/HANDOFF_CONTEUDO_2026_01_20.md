@@ -143,7 +143,7 @@ Você é **Claude de Conteúdo** (ou **ChatGPT Auditor**). Sua responsabilidade 
 
 ## 🔴 PROBLEMAS DE CONTEÚDO IDENTIFICADOS (P0 - URGENTE)
 
-### 1. Placeholders [TBD] Precisam Ser Preenchidos
+### 1. Placeholders [TBD] e Figuras Precisam Ser Preenchidos
 
 **🔴 ENCONTRADOS - Precisam ser corrigidos:**
 
@@ -174,6 +174,63 @@ TODO na zona de benefício
 - Vários slides usam "todo" (palavra normal, não TODO de tarefa)
 
 **⚠️ Status:** **3 placeholders confirmados precisando correção**
+
+---
+
+## 🖼️ **INSTRUÇÕES CRÍTICAS SOBRE FIGURAS E PLACEHOLDERS VISUAIS**
+
+### ⚠️ **REGRA ABSOLUTA PARA FIGURAS:**
+
+**Quando houver placeholders de figuras/gráficos/imagens nos slides:**
+
+1. **FIGURAS DEVEM VIR DOS ARTIGOS ORIGINAIS:**
+   - ❌ **NÃO** criar figuras do zero
+   - ❌ **NÃO** usar figuras genéricas
+   - ❌ **NÃO** deixar placeholders vazios
+   - ✅ **SEMPRE** usar figuras dos artigos originais citados no slide
+
+2. **PROCESSO:**
+   - Você receberá o artigo PDF/PDF do usuário
+   - Localize as figuras relevantes no artigo original
+   - Recorte a figura específica necessária
+   - Cole/insira no slide HTML no lugar do placeholder
+
+3. **EXEMPLOS DE PLACEHOLDERS QUE PRECISAM DE FIGURAS:**
+   - Funnel plots (Publication Bias)
+   - Forest plots (meta-análises)
+   - Gráficos Kaplan-Meier (sobrevida)
+   - Figuras de desenho de estudo (CONSORT)
+   - Tabelas GRADE (Evidence Profile)
+   - Qualquer referência a "ver figura no artigo original"
+
+4. **QUALIDADE DAS FIGURAS:**
+   - Use alta resolução (300 DPI mínimo para impressão)
+   - Mantenha legibilidade (texto legível)
+   - Preserve cores originais quando relevantes
+   - Se necessário redimensionar, mantenha proporção
+   - Inclua legenda/notas se fizerem parte da figura
+
+5. **FORMATO:**
+   - Salvar em `GRADE/assets/img/`
+   - Usar nome descritivo: `clear-outcomes-funnel-plot.png`
+   - Incluir no HTML: `<img src="../assets/img/nome-arquivo.png" alt="Descrição">`
+   - Se for muito grande, otimizar antes de inserir
+
+**Exemplo de slide S44:**
+- Há menção a "Publication Bias (funnel plot)"
+- Se houver placeholder vazio, você deve:
+  1. Abrir o artigo NEJM 2023 (CLEAR Outcomes)
+  2. Localizar o funnel plot no artigo
+  3. Recortar a figura
+  4. Salvar como `GRADE/assets/img/clear-outcomes-funnel-plot.png`
+  5. Inserir no slide onde está o placeholder
+
+**⚠️ IMPORTANTE:**
+- Sempre verifique se o artigo original tem a figura mencionada
+- Se não tiver, avise o usuário e NÃO invente
+- Figuras de artigos são propriedade intelectual - use apenas para fins educacionais
+
+---
 
 ### 2. Slides Órfãos/Vazios (Estruturais - Mas Afetam Conteúdo)
 
@@ -386,7 +443,9 @@ TODO na zona de benefício
 - [ ] Usei `var(--nome)` para todas as cores?
 - [ ] Incluí rodapé com fonte auditável?
 - [ ] Apliquei 10-second rule (mensagem clara)?
-- [ ] Verifiquei que não há [TBD] ou placeholders?
+- [ ] Verifiquei que não há [TBD] ou placeholders de texto?
+- [ ] **Substituí placeholders de figuras por figuras dos artigos originais?**
+- [ ] Figuras salvas em `GRADE/assets/img/` com nomes descritivos?
 - [ ] Conferi fontes bibliográficas?
 
 **Após criar/modificar:**
@@ -406,10 +465,16 @@ TODO na zona de benefício
 - ⏳ Decisão sobre PREVENT (validação BR?)
 
 **Próximas ações prioritárias:**
-1. Verificar [TBD] manualmente (S40, S43)
-2. Validar consistência metodológica (IC/MID em todos os slides)
-3. Decidir sobre PREVENT (atualizar ou manter)
-4. Revisar fluxo narrativo após deleções estruturais
+1. Verificar [TBD] manualmente (S17, S38, S41)
+2. **Identificar e substituir placeholders de figuras por figuras dos artigos originais**
+3. Validar consistência metodológica (IC/MID em todos os slides)
+4. Decidir sobre PREVENT (atualizar ou manter)
+5. Revisar fluxo narrativo após deleções estruturais
+
+**⚠️ ATENÇÃO ESPECIAL - Figuras:**
+- Quando o usuário fornecer artigos PDF, você deve recortar figuras relevantes
+- Substituir todos os placeholders visuais por figuras reais dos artigos
+- Verificar especialmente slides S44 (funnel plot), S46 (tabelas GRADE), e outros que mencionam figuras
 
 ---
 
