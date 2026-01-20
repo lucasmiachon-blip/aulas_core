@@ -2,6 +2,37 @@
 
 ## [Unreleased]
 
+### ⚡ Simplificação: Sistema de Slides em 1 Arquivo JS (2024-12-28)
+
+**Mudança arquitetural:**
+- ✅ Substituído sistema modular (5 arquivos JS) por versão simplificada (1 arquivo)
+- ✅ Criado `slides-simple.js` (~100 linhas) com toda funcionalidade essencial
+- ✅ Removidos arquivos do sistema modular:
+  - `slide-loader.js`
+  - `slide-system/slide-core.js`
+  - `slide-system/slide-navigation.js`
+  - `slide-system/slide-viewport.js`
+  - `slide-system/init.js`
+
+**Benefícios:**
+- 🚀 **80% menos código:** De ~500+ linhas para ~100 linhas
+- 🎯 **Mais simples:** 1 arquivo ao invés de 5 módulos
+- ✅ **Mesma funcionalidade:** Navegação, carregamento dinâmico, botões
+- 🔒 **Guards absolutos:** `window.__SLIDES_LOADED` previne múltiplas inicializações
+- 🎹 **Handler nomeado:** `handleKey` permite remover listeners duplicados
+
+**Arquivos modificados:**
+- `GRADE/src/js/slides-simple.js` (NOVO)
+- `GRADE/src/index.html` - simplificado para 1 script apenas
+- `GRADE/dist/index.html` - sincronizado
+
+**Resultado:**
+- Sistema mais fácil de manter e debugar
+- Mesma experiência de usuário
+- Código mais legível e direto
+
+---
+
 ### 🔴 P0 - Correção de Problemas Críticos (2024-12-28)
 
 **Problemas corrigidos:**
