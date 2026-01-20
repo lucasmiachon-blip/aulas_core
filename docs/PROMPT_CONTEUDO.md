@@ -16,8 +16,9 @@ ANTES DE FAZER QUALQUER COISA, LEIA:
 5. GRADE/refs/sources.md ← Fontes bibliográficas
 
 SEU PAPEL:
-✅ POSSO: Conteúdo médico, andragogia, preencher [TBD], corrigir inconsistências
-❌ NÃO POSSO: Código HTML/CSS/JS, commits Git (Claude Técnico faz isso)
+✅ POSSO: Conteúdo médico, andragogia, preencher [TBD], corrigir inconsistências, substituir placeholders de figuras
+❌ NÃO POSSO: Estrutura do projeto, código HTML/CSS/JS base, commits Git (Claude Técnico faz isso)
+❌ CRÍTICO: NÃO mexa na estrutura do projeto - apenas conteúdo dos slides individuais!
 
 STATUS ATUAL:
 - 45 slides (S01-S46, sem S21)

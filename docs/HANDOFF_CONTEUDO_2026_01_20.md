@@ -20,12 +20,35 @@ Você é **Claude de Conteúdo** (ou **ChatGPT Auditor**). Sua responsabilidade 
 - ✅ **Preencher [TBD]** com conteúdo real
 - ✅ Corrigir inconsistências metodológicas
 - ✅ Validar fontes e citações
+- ✅ **Substituir placeholders de figuras** por figuras dos artigos originais
 - ✅ **USAR paleta oficial** (`var(--navy)`, `var(--gold)`, etc)
 
-**❌ NÃO faço:**
-- ❌ Mexer em código HTML/CSS/JS diretamente (Claude Técnico faz)
-- ❌ Fazer commits no Git (Claude Técnico faz)
-- ❌ Decisões técnicas (performance, encoding)
+**❌ NÃO faço - ESTRUTURA DO PROJETO (CRÍTICO):**
+- ❌ **NÃO** mexer na estrutura de pastas/arquivos
+- ❌ **NÃO** criar/deletar arquivos de estrutura (HTML templates, CSS base, JS)
+- ❌ **NÃO** modificar arquivos técnicos (`index.html`, `slides-simple.js`, `base.css`)
+- ❌ **NÃO** reorganizar código ou arquitetura
+- ❌ **NÃO** fazer commits no Git (Claude Técnico faz)
+- ❌ **NÃO** mexer em código HTML/CSS/JS da estrutura base
+- ❌ **NÃO** decidir sobre estrutura técnica
+
+**⚠️ VOCÊ SÓ TRABALHA EM:**
+- ✅ **Conteúdo dos slides individuais** (`GRADE/src/slides/SXX.html`)
+- ✅ **Figuras/imagens** (salvar em `GRADE/assets/img/`)
+- ✅ **Texto médico** dentro dos slides
+- ✅ **Fontes bibliográficas** (`GRADE/refs/sources.md`)
+
+**🔧 ESTRUTURA É RESPONSABILIDADE DO CLAUDE TÉCNICO:**
+- Estrutura HTML, CSS, JavaScript → Claude Técnico
+- Organização de arquivos → Claude Técnico
+- Git, commits, deploy → Claude Técnico
+- Performance, encoding → Claude Técnico
+
+**📋 WORKFLOW CORRETO:**
+1. Você cria/modifica **conteúdo** dos slides (`SXX.html`)
+2. Você salva **figuras** em `GRADE/assets/img/`
+3. Você **entrega** para Claude Técnico
+4. Claude Técnico valida estrutura/paleta e faz commit
 
 **📖 Protocolo de Entrada:**
 1. `README.md` ← Visão geral
@@ -397,17 +420,31 @@ TODO na zona de benefício
 
 ### Quando Você Cria/Corrige Conteúdo:
 
-1. **Criar/modificar slide HTML:**
+1. **Criar/modificar slide HTML INDIVIDUAL:**
+   - **APENAS** arquivos em `GRADE/src/slides/SXX.html`
    - Usar paleta oficial (`var(--nome)`)
    - Incluir rodapé com fonte (se dados verificáveis)
    - Aplicar 10-second rule (mensagem clara)
+   - **NÃO** modificar `index.html`, `base.css`, ou arquivos de estrutura
 
-2. **Entregar para Claude Técnico:**
-   - Ele valida paleta e estrutura
-   - Ele faz commit no Git
-   - Ele atualiza CHANGELOG
+2. **Trabalhar com figuras:**
+   - Salvar em `GRADE/assets/img/` com nome descritivo
+   - Inserir no slide usando `<img src="../assets/img/nome.png">`
+   - **NÃO** criar novas pastas ou reorganizar estrutura
 
-3. **Depois:** ChatGPT Auditor pode validar tudo (opcional)
+3. **Entregar para Claude Técnico:**
+   - Informe quais slides foram modificados
+   - Informe quais figuras foram adicionadas
+   - Claude Técnico valida paleta e estrutura
+   - Claude Técnico faz commit no Git
+   - Claude Técnico atualiza CHANGELOG
+
+4. **Depois:** ChatGPT Auditor pode validar tudo (opcional)
+
+**⚠️ LEMBRETE CRÍTICO:**
+- Você trabalha **APENAS no conteúdo** dos slides
+- **NÃO mexa em estrutura**, arquivos técnicos, ou organização do projeto
+- Qualquer dúvida sobre estrutura → pergunte ao usuário ou Claude Técnico
 
 ### Exemplo de HTML que Você Cria:
 
