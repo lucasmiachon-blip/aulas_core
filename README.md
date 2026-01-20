@@ -389,6 +389,21 @@ Se encontrar problemas durante auditoria:
 
 ---
 
+## 📋 HANDOFF ENTRE SESSÕES
+
+**Para IAs iniciando nova sessão, ler PRIMEIRO:**
+- `docs/HANDOFF_SESSAO_2026_01_20.md` ← Último handoff completo
+- `docs/CHANGELOG.md` ← Histórico completo de mudanças
+
+**O handoff contém:**
+- Contexto do que foi feito na última sessão
+- Status atual do projeto (número de slides, estrutura)
+- Protocolo de trabalho reafirmado (o que posso/não posso fazer)
+- Próximas tarefas potenciais
+- Links para documentação relacionada
+
+---
+
 ## 📚 RECURSOS
 
 - [Diretriz SBC Dislipidemia 2025](https://abc.cardiol.br/)
