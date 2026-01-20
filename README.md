@@ -392,15 +392,28 @@ Se encontrar problemas durante auditoria:
 ## 📋 HANDOFF ENTRE SESSÕES
 
 **Para IAs iniciando nova sessão, ler PRIMEIRO:**
-- `docs/HANDOFF_SESSAO_2026_01_20.md` ← Último handoff completo
+
+**🔧 Claude Técnico (este projeto - estrutura):**
+- `docs/HANDOFF_SESSAO_2026_01_20.md` ← Último handoff técnico completo
 - `docs/CHANGELOG.md` ← Histórico completo de mudanças
 
-**O handoff contém:**
-- Contexto do que foi feito na última sessão
+**📚 Claude de Conteúdo (outro projeto - conteúdo médico):**
+- `docs/HANDOFF_CONTEUDO_2026_01_20.md` ← **Último handoff de conteúdo** (status atualizado)
+- `docs/CHANGELOG.md` ← Histórico completo de mudanças
+- `GRADE/refs/sources.md` ← Fontes bibliográficas
+
+**O handoff técnico contém:**
+- Contexto do que foi feito na última sessão técnica
 - Status atual do projeto (número de slides, estrutura)
 - Protocolo de trabalho reafirmado (o que posso/não posso fazer)
-- Próximas tarefas potenciais
-- Links para documentação relacionada
+- Próximas tarefas estruturais potenciais
+
+**O handoff de conteúdo contém:**
+- Status atual do conteúdo médico (45 slides)
+- Slides criados recentemente (S43-S46 sobre SAMS/Bempedóico)
+- Problemas de conteúdo identificados ([TBD], inconsistências)
+- Próximas ações para correção de conteúdo
+- Análise de auditoria referenciada
 
 ---
 
