@@ -1,3 +1,19 @@
+# 📖 Como usar este CHANGELOG
+
+**Para começar sessão rápida:**
+1. Leia `STATUS.md` (contexto atual)
+2. Veja só a última entrada deste arquivo
+3. Comece a trabalhar
+
+**Este arquivo contém:**
+- Histórico completo de todas as mudanças
+- Detalhes técnicos de cada sessão
+- Comandos executados e resultados
+
+**Não precisa ler tudo - use STATUS.md para contexto.**
+
+---
+
 ## [2026-01-20] - Sincronização entre Computadores
 
 ### 🔄 Alinhamento Local com Remoto
