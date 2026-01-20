@@ -1,3 +1,35 @@
+## [2026-01-20] - Sincronização entre Computadores
+
+### 🔄 Alinhamento Local com Remoto
+
+**Mudanças trazidas do remoto:**
+- ✅ Slides S43-S46 adicionados (total: 45 slides)
+  - S43: Contexto clínico SAMS
+  - S44: CLEAR Outcomes + Risk/Publication Bias
+  - S45: Tensão metodológica (ASCII box + Indirectness)
+  - S46: GRADE final + contexto Brasil
+- ✅ Correções de paleta em slides S35-S44 (cores hardcoded → var(--))
+- ✅ Atualização de `slides-simple.js` para 45 slides
+- ✅ Atualização de `index.html` contador para 45
+
+**Arquivos organizados:**
+- ✅ `PROXIMOS_PASSOS.md` → `docs/GUIDES/PROXIMOS_PASSOS.md`
+- ✅ `SETUP_FORA_ONEDRIVE.md` → `docs/GUIDES/SETUP_FORA_ONEDRIVE.md`
+- ✅ `SOLUCAO_NODEJS.md` → `docs/GUIDES/SOLUCAO_NODEJS.md`
+- ✅ `setup-dev.ps1` → `scripts/setup-dev.ps1`
+
+**Mudanças locais preservadas:**
+- ✅ Centralização vertical no PDF (`print.css` com `display: flex`, `justify-content: center`)
+- ✅ Estrutura de documentação organizada (ESSENTIAL/, GUIDES/, etc.)
+
+**Status final:**
+- ✅ 45 slides carregando corretamente
+- ✅ Contadores atualizados (41 → 45)
+- ✅ PDF com centralização vertical preservada
+- ✅ Estrutura de docs organizada e mantida
+
+---
+
 ## [2026-01-20] - Correção Estética: Paleta Oficial nos Slides Apêndice
 
 ### 🎨 P1 - Cores Hardcoded → Variáveis CSS
