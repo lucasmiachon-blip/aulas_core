@@ -2,6 +2,48 @@
 
 ## [Unreleased]
 
+### 🗂️ Reorganização Estrutural de Documentação (2026-01-19)
+
+**Reorganização completa da estrutura de documentação e arquivos obsoletos:**
+
+**Nova estrutura:**
+- ✅ **docs/ESSENTIAL/:** Documentos essenciais (7 arquivos)
+  - `AI_RULES.md`, `CLAUDE_ROLE.md`, `CLAUDE_SLIDES_CHECKLIST.md`
+  - `PRESENTATION_TECH.md`, `PROMPT_PALETA_OFICIAL.md`, `STYLEGUIDE.md`, `TECHNICAL_QUALITY.md`
+- ✅ **docs/GUIDES/:** Guias práticos (6 arquivos)
+  - `COMO_ABRIR_LOCAL.md`, `COMO_SINCRONIZAR.md`, `GUIA_BLOCKS_CSS.md`
+  - `PROTOCOL_MAP.md`, `TRABALHO_2_COMPUTADORES.md`, `WORKFLOW.md`
+- ✅ **docs/HISTORY/:** Histórico de mudanças (2 arquivos)
+  - `MODULARIZACAO_CI_CD_PLAN.md`, `MODULARIZACAO_SLIDES.md`
+- ✅ **docs/PROCESS/:** Processos e templates (3 arquivos)
+  - `AUDITORIA_TEMPLATE.md`, `ESTRUTURA_PATHS.md`, `PROCESSO_AUDITORIA_AUTO.md`
+- ✅ **docs/SECURITY/:** Segurança (1 arquivo)
+  - `GITHUB_TOKEN.md`
+- ✅ **docs/archive/:** Documentos históricos (13 arquivos)
+  - Handoffs antigos, análises técnicas, troubleshooting histórico
+- ✅ **archive/:** Arquivos obsoletos
+  - JS antigo (slide-system), backups
+
+**Benefícios:**
+- 🎯 Estrutura mais clara e navegável
+- 📚 Separação lógica: essencial, guias, histórico, processos
+- 🗄️ Arquivos obsoletos organizados sem perder histórico
+- 🚀 Facilita manutenção e onboarding de novos IAs
+
+**Arquivos adicionados:**
+- `.cursorignore` - Configuração do Cursor
+- `aulas.code-workspace` - Workspace do VS Code
+- `SOLUCAO_ONEDRIVE.md` - Solução para problemas de sincronização
+- `forcar-sincronizacao.ps1` - Script PowerShell para forçar sincronização
+- `verificar-setup.ps1` - Script PowerShell para verificar setup
+
+**Commit:** `d1d5a85`  
+**Métricas:** 49 arquivos alterados, 887 inserções, 38 deleções
+
+---
+
+## [Unreleased]
+
 ### ⚡ Simplificação: Sistema de Slides em 1 Arquivo JS (2024-12-28)
 
 **Mudança arquitetural:**
