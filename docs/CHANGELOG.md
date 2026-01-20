@@ -1,3 +1,35 @@
+## [2026-01-20] - Correção Metodológica GRADE (S18)
+
+### 🔴 P0 - Erro de Julgamento de Imprecisão
+
+**Problema identificado:**
+- Slide S18 (Análise de Imprecisão MACE-4) continha erro metodológico grave
+- Afirmava que IC 95% 0.79-0.96 NÃO cruza MID 0.8 (incorreto!)
+- Metodologia GRADE exige rebaixar por imprecisão quando IC cruza threshold
+
+**Correção aplicada:**
+- ✅ Tabela corrigida: "IC cruza MID? SIM (marginalmente: 0,79 < 0,8 < 0,96)"
+- ✅ Decisão atualizada: "REBAIXAR 1 NÍVEL por imprecisão"
+- ✅ Justificativa GRADE adicionada: Core GRADE 2 (BMJ 2025; DOI: 10.1136/bmj-2024-081904)
+- ✅ Badge visual alterado: verde → amarelo/warning
+- ✅ Citação metodológica: "When the CI crosses the threshold of importance, rate down for imprecision"
+
+**Impacto:**
+- Certeza da evidência CLEAR Outcomes permanece MODERADA
+- Interpretação GRADE agora está metodologicamente correta
+- Alinhamento com Core GRADE BMJ 2025
+
+**Commit:** 4639194c  
+**Arquivo modificado:** GRADE/src/slides/S18.html (+22 -18 linhas)  
+**Autor:** Claude Técnico (via GitHub API)
+
+---
+
+### ⚠️ Nota sobre commit a001cb0
+
+Commit vazio (0 files changed) foi criado por erro durante tentativa de correção.
+Pode ser ignorado. A correção real está no commit 4639194c.
+
 # Changelog
 
 ## [Unreleased]
