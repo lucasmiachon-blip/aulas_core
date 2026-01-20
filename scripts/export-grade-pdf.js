@@ -66,6 +66,10 @@ async function exportPDF() {
   // Gerar PDF com modo print ativado
   console.log('📋 Gerando PDF...');
   await page.emulateMedia({ media: 'print' }); // Ativar @media print CSS
+  
+  // Aguardar um pouco mais para CSS print aplicar
+  await page.waitForTimeout(1000);
+  
   await page.pdf({
     path: outputPath,
     format: 'A4',
@@ -77,7 +81,8 @@ async function exportPDF() {
       bottom: 0,
       left: 0
     },
-    preferCSSPageSize: true // Respeitar @page do CSS
+    preferCSSPageSize: false, // Desabilitar para evitar conflitos
+    displayHeaderFooter: false // Garantir sem cabeçalho/rodapé
   });
   
   await browser.close();
