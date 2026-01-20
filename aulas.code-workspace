@@ -19,6 +19,9 @@
 		"search.exclude": {
 			"**/node_modules": true,
 			"**/.git": true
-		}
+		},
+		"files.watcherInclude": [
+			"**/docs/**"
+		]
 	}
 }
