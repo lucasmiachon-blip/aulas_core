@@ -5,9 +5,9 @@ const fs = require('fs');
 async function exportPDF() {
   console.log('🚀 Iniciando exportação de PDF...');
   
-  // Usar arquivo local ao invés de URL online
-  const gradeIndexPath = path.join(__dirname, '..', 'GRADE', 'dist', 'index.html');
-  const url = `file://${gradeIndexPath.replace(/\\/g, '/')}`;
+  // Usar servidor local (fetch() não funciona com file:// por CORS)
+  // Se servidor não estiver rodando, tentar iniciar ou usar URL
+  const url = 'http://localhost:8001/index.html';
   
   // Pasta de saída
   const outputDir = path.join(__dirname, '..', 'exports');
@@ -38,31 +38,30 @@ async function exportPDF() {
   console.log('⏳ Aguardando scripts e DOM estarem prontos...');
   await page.waitForLoadState('domcontentloaded');
   
-  // CRÍTICO: Aguardar evento 'slidesloaded' (slides carregados dinamicamente via fetch)
-  console.log('⏳ Aguardando slides carregarem...');
-  await page.evaluate(() => {
-    return new Promise((resolve) => {
-      // Se slides já carregaram, resolver imediatamente
-      if (document.querySelectorAll('.slide').length > 0) {
-        resolve();
-        return;
-      }
-      // Caso contrário, aguardar evento
-      window.addEventListener('slidesloaded', resolve, { once: true });
-      // Timeout de segurança (30s)
-      setTimeout(resolve, 30000);
-    });
+  // CRÍTICO: Aguardar slides carregarem (sistema simplificado não usa evento 'slidesloaded')
+  // Fetch com file:// não funciona por CORS, usar timeout maior para garantir carregamento
+  console.log('⏳ Aguardando slides carregarem (pode demorar devido ao fetch local)...');
+  await page.waitForTimeout(5000); // Tempo para fetch() tentar carregar (mesmo que falhe por CORS)
+  
+  // Verificar se slides foram carregados
+  const slidesCount = await page.evaluate(() => {
+    return document.querySelectorAll('.slide').length;
   });
+  
+  if (slidesCount === 0) {
+    console.warn('⚠️ Nenhum slide carregado via fetch (esperado com file:// protocol)');
+    console.log('💡 Para gerar PDF completo, use: npm run serve (servidor local)');
+    console.log('📋 Gerando PDF com estrutura vazia (slides serão carregados em servidor)...');
+  } else {
+    console.log(`✅ ${slidesCount} slides detectados`);
+  }
   
   // Aguardar fontes e recursos carregarem
   console.log('⏳ Aguardando fontes e recursos carregarem...');
   await page.waitForTimeout(2000);
   
-  // Verificar quantos slides foram carregados
-  const slidesCount = await page.evaluate(() => {
-    return document.querySelectorAll('.slide').length;
-  });
-  console.log(`✅ ${slidesCount} slides carregados`);
+  // Verificar quantos slides foram carregados (já verificado acima, apenas logar)
+  console.log(`✅ ${slidesCount} slides detectados`);
   
   // Gerar PDF com modo print ativado
   console.log('📋 Gerando PDF...');
