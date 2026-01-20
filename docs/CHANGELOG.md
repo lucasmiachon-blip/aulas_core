@@ -1,5 +1,29 @@
 # Changelog
 
+## [Unreleased]
+
+### 🐛 Correção de Bug: Navegação pulando slides (1→4→7...)
+
+**Problema corrigido:**
+- Navegação estava pulando slides de 3 em 3 (1→4→7→10...) causado por múltiplos listeners de teclado e inicialização duplicada
+
+**Mudanças:**
+- ✅ `slide-navigation.js`: Tornado idempotente - remove listeners antigos antes de adicionar novos
+- ✅ `init.js`: Adicionado guard `__GRADE_SLIDE_INIT_DONE` para prevenir reentrância
+- ✅ Listener de teclado usa referência persistente (`keyHandler`) para permitir remoção segura
+- ✅ `init()` pode ser chamado múltiplas vezes sem duplicar listeners
+
+**Arquivos modificados:**
+- `GRADE/src/js/slide-system/slide-navigation.js`
+- `GRADE/src/js/slide-system/init.js`
+
+**Resultado esperado:**
+- Navegação sequencial: 1→2→3→4... (sem pular)
+- Apenas 1 listener de teclado ativo
+- Contador atualiza corretamente
+
+---
+
 ## [2026-01-19] - Modularização Completa: 42 Slides Separados
 
 ### 🎯 Modularização Estrutural (FEATURE)
