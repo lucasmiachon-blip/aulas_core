@@ -28,6 +28,12 @@
 - ✅ Mantida estrutura visual (grid 2 colunas preservado)
 - ✅ Substituídos inline styles por variáveis CSS do sistema
 
+### 📝 Refatoração S08.html - Dose-Response Gradient
+- ✅ Aplicado sistema de design (variáveis CSS spacing, typography)
+- ✅ Aplicadas classes componentes (`.card`, `.title-card`, `.body-large`, `.caption`)
+- ✅ Mantida estrutura visual (grid 2 colunas preservado, 3 microprovas)
+- ✅ Substituídos inline styles por variáveis CSS do sistema
+
 ---
 
 ## [2026-01-22] - Batch 2: Design System + Grid System + Type Scale
