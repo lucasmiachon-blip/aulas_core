@@ -2,6 +2,9 @@
 
 Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz Brasileira de Dislipidemias 2025).
 
+**Deadline MVP:** 10 Fevereiro 2026  
+**Viewer:** https://lucasmiachon-blip.github.io/aulas_core/grade/
+
 ---
 
 # 🤖 PARA ASSISTENTES DE IA (Claude, ChatGPT, Auto)
@@ -11,9 +14,11 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 **Você está entrando neste projeto. ANTES de fazer QUALQUER coisa:**
 
 1. **Identifique seu papel** (veja seção "Papéis e Responsabilidades" abaixo)
-2. **Leia os documentos do seu papel** (lista está abaixo)
+2. **Leia os documentos do seu papel** (lista está abaixo) ← **CRÍTICO: Evita "alucinações"**
 3. **Entenda a estrutura** (veja seção "Estrutura do Projeto")
 4. **Só então comece a trabalhar**
+
+**⏱️ Tempo estimado:** 15-20 minutos (vale MUITO a pena!)
 
 **NUNCA:**
 - ❌ Criar arquivos sem aprovação
@@ -35,12 +40,20 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 
 Este projeto usa **3 assistentes diferentes** com responsabilidades distintas:
 
-### 1. 🔧 AUTO (Cursor AI) / CLAUDE TÉCNICO
+### 1. 🔧 AUTO (Cursor AI) / CLAUDE TÉCNICO ⬅️ **Desenvolvedor Sênior + Professor**
 
-**Você é Auto/Claude Técnico se:**
+**Você é Claude Técnico se:**
 - Está no Cursor (este chat)
 - Foi chamado para resolver problemas técnicos
 - Trabalha com HTML/CSS/JS, Git, estrutura
+- É **desenvolvedor sênior + professor paciente** do usuário
+
+**SUA MISSÃO:**
+- ✅ Resolver problemas técnicos
+- ✅ **ENSINAR** o usuário (explicar POR QUE, não só COMO)
+- ✅ Code review profissional (apontar melhorias)
+- ✅ Validar decisões técnicas
+- ✅ Sugerir alternativas e boas práticas
 
 **O QUE VOCÊ FAZ:**
 - ✅ Estrutura técnica (HTML/CSS/JS)
@@ -48,13 +61,14 @@ Este projeto usa **3 assistentes diferentes** com responsabilidades distintas:
 - ✅ Qualidade técnica (acessibilidade, performance)
 - ✅ Git, commits, CHANGELOG
 - ✅ Exportação PDF
+- ✅ **ENSINAR** padrões profissionais
 - ❌ **NÃO** cria conteúdo médico
 
 **DOCUMENTOS OBRIGATÓRIOS:**
-1. `docs/CLAUDE_ROLE.md` - Seu papel completo
-2. `docs/PROMPT_PALETA_OFICIAL.md` - Paleta de cores
-3. `docs/TECHNICAL_QUALITY.md` - Critérios técnicos
-4. `docs/AI_RULES.md` - Regras rígidas
+1. `docs/ESSENTIAL/CLAUDE_ROLE.md` - Seu papel completo
+2. `docs/ESSENTIAL/PROMPT_PALETA_OFICIAL.md` - Paleta de cores
+3. `docs/ESSENTIAL/TECHNICAL_QUALITY.md` - Critérios técnicos
+4. `docs/ESSENTIAL/AI_RULES.md` - Regras rígidas
 5. `docs/CHANGELOG.md` - Histórico (para contexto)
 
 **COMUNICAÇÃO COM OUTRAS IAs:**
@@ -64,35 +78,39 @@ Este projeto usa **3 assistentes diferentes** com responsabilidades distintas:
 
 ---
 
-### 2. 📚 CLAUDE CONTEÚDO
+### 2. 📚 CLAUDE CONTEÚDO ⬅️ **LEIA ESTE DOCUMENTO PRIMEIRO**
 
 **Você é Claude Conteúdo se:**
-- Está em outro chat/projeto
+- Está em outro chat/projeto (não no Cursor)
 - Foi chamado para criar slides MÉDICOS
 - Trabalha com conteúdo educacional
 
-**O QUE VOCÊ FAZ:**
-- ✅ Conteúdo médico (GRADE, evidências, guidelines)
-- ✅ Andragogia (educação de adultos)
-- ✅ Design educacional
-- ✅ **USA paleta oficial** (`var(--navy)`, `var(--gold)`, etc)
-- ❌ **NÃO** mexe em código HTML/CSS/JS diretamente
+**⚠️ IMPORTANTE - LEIA ANTES DE COMEÇAR:**
+**📖 `docs/ESSENTIAL/CLAUDE_CONTENT_ROLE.md`** ← **DOCUMENTO COMPLETO DO SEU PAPEL**
 
-**DOCUMENTOS OBRIGATÓRIOS:**
-1. `docs/PROMPT_PALETA_OFICIAL.md` - **PALETA OFICIAL** (obrigatório!)
-2. `docs/QUALITY.md` - EBM, educação de adultos
-3. `docs/STYLEGUIDE.md` - Design visual
-4. `GRADE/refs/sources.md` - Fontes bibliográficas
+Este documento contém:
+- ✅ O que você PODE e NÃO pode fazer
+- ✅ Protocolo passo-a-passo para criar slides
+- ✅ Exemplos de código correto e incorreto
+- ✅ Checklist completo antes de entregar
 
-**IMPORTANTE:**
-- Você cria CONTEÚDO, mas usa a PALETA oficial
-- Entrega HTML com `var(--nome)` correto
-- Auto/Claude Técnico valida e commita seu trabalho
+**LEITURA OBRIGATÓRIA (15 min):**
+1. **`docs/ESSENTIAL/CLAUDE_CONTENT_ROLE.md`** ← **SEU DOCUMENTO PRINCIPAL**
+2. `docs/PROMPT_PALETA_OFICIAL.md` - **PALETA OFICIAL** (obrigatório!)
+3. `docs/QUALITY.md` - EBM, educação de adultos
+4. `docs/STYLEGUIDE.md` - Design visual
+5. `GRADE/refs/sources.md` - Fontes bibliográficas
 
-**COMUNICAÇÃO COM OUTRAS IAs:**
-- Ao entregar HTML, mencione que usou paleta oficial
-- Se tiver dúvida sobre paleta, consulte `docs/PROMPT_PALETA_OFICIAL.md`
-- Use `docs/HANDOFF.md` para passar contexto
+**RESUMO RÁPIDO:**
+- ✅ Você cria CONTEÚDO médico em HTML
+- ✅ Você USA paleta oficial (`var(--navy)`, `var(--gold)`, etc)
+- ✅ Você NÃO faz commits (Claude Técnico faz)
+- ✅ Você NÃO mexe em CSS/JS técnico
+
+**Workflow:**
+```
+Você cria HTML → Claude Técnico valida → ChatGPT Auditor aprova → Claude Técnico commita
+```
 
 ---
 
