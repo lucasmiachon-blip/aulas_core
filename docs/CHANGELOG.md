@@ -14,6 +14,107 @@
 
 ---
 
+## [2026-01-22] - Batch 1: Header Contrast + PDF Safety + Content Fixes
+
+### 🎯 OBJETIVO DESTA SESSÃO
+**Corrigir problemas de contraste em headers azuis (navy) e garantir segurança no PDF export, SEM mudar a paleta.**
+
+**⚠️ IMPORTANTE PARA ASSISTENTES:**
+- **NÃO invente novas cores** - use APENAS paleta oficial (`var(--navy)`, `var(--gold)`, etc)
+- **NÃO remova `print-color-adjust: exact`** - é crítico para PDF
+- **USE a classe `.cardHeader`** para novos cards com header navy
+- **NÃO use cores hardcoded** - sempre `var(--nome)`
+
+### 🖨️ PDF Safety - Print Color Adjust
+**Problema:** Headers navy desapareciam no PDF export.
+
+**Solução implementada:**
+- ✅ Adicionado `print-color-adjust: exact` globalmente em `base.css`
+- ✅ Adicionado `print-color-adjust: exact` no `print.css` também
+- ✅ Script `export-grade-pdf.js` já tinha `printBackground: true` ✓
+
+**Onde está:**
+- `GRADE/src/css/base.css` - linha ~1 (global)
+- `GRADE/src/css/print.css` - dentro de `@media print`
+
+**⚠️ NUNCA remova isso!** É essencial para backgrounds aparecerem no PDF.
+
+### 🎨 Classe Reutilizável `.cardHeader`
+**Criada classe CSS reutilizável para headers navy em cards:**
+
+```css
+.cardHeader {
+    background: var(--navy) !important;
+    color: var(--white) !important;
+    padding: 1.2vw 1.8vw;
+    border-radius: 0.8vw 0.8vw 0 0;
+    flex-shrink: 0;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+```
+
+**Como usar:**
+```html
+<div class="cardHeader">
+    <p>Título do Card</p>
+</div>
+```
+
+**Aplicado em:**
+- ✅ S03: Dois cards de risco (Risco Intermediário, Risco Baixo + História Familiar)
+
+**⚠️ Para novos slides:** Use `.cardHeader` ao invés de inline styles para headers navy.
+
+### 📝 Correções de Conteúdo (Batch 1 - Slides 1-5)
+
+**S02 - Números corrigidos (JAMA 2019 Fanaroff et al.):**
+- ❌ **ANTES:** 48% ESC, 44% ACC/AHA
+- ✅ **DEPOIS:** **54.8%** ESC, **41.5%** ACC/AHA
+- ✅ LOE A mantido: 14.2% ESC, 8.5% ACC/AHA
+
+**S03 - Layout e Headers:**
+- ✅ Layout mudado de horizontal (2 colunas) → **vertical (empilhado)**
+- ✅ Headers navy melhorados: fonte 0.9vw → **1.1vw**, weight 700 → **900**
+- ✅ Aplicada classe `.cardHeader` para consistência
+- ✅ Text-shadow adicionado para melhor legibilidade
+
+**S04 - Correção gramatical:**
+- ❌ **ANTES:** "Aonde a sala está?"
+- ✅ **DEPOIS:** **"Onde a sala está?"**
+
+### 🚫 O QUE NÃO FOI FEITO (Evitar Alucinações)
+
+**NÃO foi alterado:**
+- ❌ Paleta de cores (mantida 100% oficial)
+- ❌ Tipografia (Inter + Georgia mantidos)
+- ❌ Estrutura geral dos slides
+- ❌ Sistema de navegação
+
+**NÃO existe:**
+- ❌ "Class IIa → IIb" em S03 (não havia essa informação no slide)
+- ❌ Remoção de segunda quote em S02 (não havia segunda quote)
+
+**⚠️ Se você encontrar referências a essas mudanças, são alucinações - ignore.**
+
+### 📋 Arquivos Modificados
+- `GRADE/src/css/base.css` - print-color-adjust + .cardHeader
+- `GRADE/src/css/print.css` - print-color-adjust + regras para headers
+- `GRADE/src/slides/S02.html` - números corrigidos
+- `GRADE/src/slides/S03.html` - layout vertical + .cardHeader
+- `GRADE/src/slides/S04.html` - correção gramatical
+
+### ✅ Validação
+- ✅ Headers navy visíveis no PDF
+- ✅ Contraste legível no GitHub Pages
+- ✅ Paleta oficial mantida (zero cores hardcoded)
+- ✅ Sem regressões visuais
+
+**Commits:**
+- `179aaf6` - fix(Batch 1): header contrast + PDF safety + content fixes
+
+---
+
 ## [2026-01-21] - Migração Inter + Georgia + Paleta Profissional + Melhorias Visuais
 
 ### 🎨 Tipografia Premium (Inter + Georgia)
