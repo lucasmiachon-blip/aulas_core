@@ -108,3 +108,40 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - ✅ PDF 15KB menor (339KB vs 354KB)
 - ✅ Layout equilibrado e profissional
 
+
+---
+
+## [BATCH 1.2] - 2026-01-21 (Correção de Alinhamento Vertical)
+
+### Objetivo: Corrigir desalinhamento vertical das 3 colunas no PDF
+
+**Problema identificado:** Coluna direita (navy) esticada ocupando página inteira, enquanto outras colunas ficavam pequenas. Grid com `flex-grow`, `justify-content: space-between` e `height: 100%` causavam esticamento desproporcional no PDF.
+
+### Correções aplicadas:
+
+**S05.html - Fundamento GRADE:**
+- Removido `height: 100%` do grid principal
+- Alterado `align-items: stretch` → `align-items: start`
+- Cards agora alinham pelo topo sem esticar verticalmente
+
+**S06.html - Motor GRADE:**
+- Removido `flex-grow: 1` do grid principal
+- Removido `justify-content: space-between` da coluna navy
+- Removido `justify-content: center` da coluna esquerda
+- Adicionado `align-items: start` no grid
+- Adicionado `height: fit-content` + `align-self: start` na coluna navy
+- Todas as 3 colunas agora com altura proporcional ao conteúdo
+
+### Resultado:
+- ✅ 3 colunas balanceadas verticalmente
+- ✅ Sem esticamento desproporcional
+- ✅ PDF 18KB menor (321KB vs 339KB)
+- ✅ Layout equilibrado e profissional
+- ✅ Funciona bem tanto no navegador quanto no PDF
+
+### Lições aprendidas:
+- `flex-grow`, `justify-content: space-between`, `height: 100%`, `align-items: stretch` funcionam no navegador mas quebram no PDF com página de altura fixa
+- Sempre usar `align-items: start` em grids
+- Sempre usar `height: fit-content` em cards
+- Testar PDF após cada mudança estrutural
+
