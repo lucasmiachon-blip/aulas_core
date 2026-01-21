@@ -53,6 +53,16 @@
 - ✅ Sistema de design aplicado em S03, S06-S10
 - ✅ ISSUES.md criado para rastrear problemas
 
+### 🐛 Fix: Conflito de Especificidade CSS
+**Problema:** Classes do sistema (`.title-section`, `.body-large`, `.caption`) não funcionavam porque `base.css` tinha regras mais específicas para `h2` e `p`.
+
+**Solução:**
+- Adicionado `!important` nas classes de tipografia do `system.css`
+- Garante que classes do sistema sobrescrevem estilos base
+- Mantém compatibilidade com estilos inline existentes
+
+**Commit:** `[próximo commit]`
+
 ---
 
 ## [2026-01-22] - Batch 2: Design System + Grid System + Type Scale
