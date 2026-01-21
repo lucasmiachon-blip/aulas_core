@@ -135,13 +135,15 @@
     color: var(--navy);
 }
 
+/* Especificidade maior que h2 do base.css */
+h2.title-section,
 .title-section {
-    font-size: var(--text-3xl) !important; /* Sobrescreve h2 do base.css */
-    font-family: Georgia, serif !important;
-    line-height: var(--leading-tight) !important;
-    font-weight: var(--font-normal) !important;
-    color: var(--navy) !important;
-    margin-bottom: var(--spacing-4) !important;
+    font-size: var(--text-3xl);
+    font-family: Georgia, serif;
+    line-height: var(--leading-tight);
+    font-weight: var(--font-normal);
+    color: var(--navy);
+    margin-bottom: var(--spacing-4);
 }
 
 .title-card {
@@ -151,26 +153,31 @@
     margin-bottom: var(--spacing-2);
 }
 
+/* Especificidade maior que p do base.css */
+p.body-large,
 .body-large {
-    font-size: var(--text-lg) !important;
-    line-height: var(--leading-normal) !important;
-    font-family: 'Inter', sans-serif !important;
+    font-size: var(--text-lg);
+    line-height: var(--leading-normal);
+    font-family: 'Inter', sans-serif;
 }
 
+p.body,
 .body {
-    font-size: var(--text-base) !important;
-    line-height: var(--leading-normal) !important;
-    font-family: 'Inter', sans-serif !important;
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    font-family: 'Inter', sans-serif;
 }
 
+p.caption,
 .caption {
-    font-size: var(--text-sm) !important;
-    line-height: var(--leading-normal) !important;
-    color: var(--muted) !important;
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    color: var(--muted);
 }
 
+p.caption-xs,
 .caption-xs {
-    font-size: var(--text-xs) !important;
-    line-height: var(--leading-normal) !important;
-    color: var(--muted) !important;
+    font-size: var(--text-xs);
+    line-height: var(--leading-normal);
+    color: var(--muted);
 }

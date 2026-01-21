@@ -28,23 +28,45 @@
 ## Issues Trazidos pelo Usuário
 
 ### [2026-01-22] - PDF parece ter voltado para trás
-**Status:** 🔍 INVESTIGANDO  
+**Status:** ✅ RESOLVIDO  
 **Prioridade:** P1 (Alto)
 
 **Problema reportado:**
 - PDF gerado parece ter voltado para trás (regressão visual?)
 
-**Investigação:**
-- ✅ Sistema de design aplicado (system.css + components.css)
-- ✅ Classes CSS definidas corretamente
-- ✅ PDF gerado com sucesso (45 slides)
-- ⚠️ Possível conflito: classes usam `rem` mas slides usam `vw` em inline styles
-- ⚠️ Estilos inline podem estar sobrescrevendo classes do sistema
+**Causa identificada:**
+- Conflito de especificidade CSS: `base.css` tem regras para `h2` e `p` que sobrescrevem classes do sistema
+- Classes `.title-section`, `.body-large`, `.caption` não tinham `!important` para sobrescrever estilos base
 
-**Próximos passos:**
-- Verificar se estilos inline estão sobrescrevendo classes
-- Considerar ajustar classes para usar `vw` ao invés de `rem` para compatibilidade
-- Validar visualmente no viewer e PDF
+**Solução aplicada:**
+- Adicionado `!important` nas classes de tipografia do sistema (`system.css`)
+- Garante que classes do sistema sobrescrevem estilos base do `base.css`
+- Mantém compatibilidade com estilos inline existentes
+
+**Commit:** `[próximo commit]`
+
+---
+
+### [2026-01-22] - Regressão visual: !important excessivo + cores não oficiais
+**Status:** ✅ RESOLVIDO  
+**Prioridade:** P0 (Crítico)
+
+**Problema reportado:**
+- Commit atual muito pior que anterior
+- Estilos quebrados, cores incorretas
+
+**Problemas encontrados:**
+1. **S45.html usava `var(--accent-primary)`** - Não é paleta oficial, deveria ser `var(--teal)`
+2. **S28.html tinha cores hardcoded `#DDD`** - Deveria usar `var(--border)`
+3. **`!important` excessivo no system.css** - Quebrava estilos inline necessários
+
+**Solução aplicada:**
+- ✅ Substituído `var(--accent-primary)` por `var(--teal)` no S45.html (3 ocorrências)
+- ✅ Substituído `#DDD` por `var(--border)` no S28.html (2 ocorrências)
+- ✅ Removido `!important` excessivo, usando especificidade CSS adequada
+- ✅ Classes agora usam seletores mais específicos (`h2.title-section`, `p.body-large`) ao invés de `!important`
+
+**Commit:** `[próximo commit]`
 
 ---
 
