@@ -14,6 +14,16 @@
 
 ---
 
+## [2026-01-22] - Batch 2: Design System + Grid System + Type Scale (Continuação)
+
+### 📝 Refatoração S06.html - Motor do GRADE
+- ✅ Aplicado sistema de design (variáveis CSS spacing, typography)
+- ✅ Aplicadas classes componentes (`.card`, `.card--navy`, `.title-card`, `.caption-xs`)
+- ✅ Mantida estrutura visual (grid 3 colunas preservado)
+- ✅ Substituídos inline styles por variáveis CSS do sistema
+
+---
+
 ## [2026-01-22] - Batch 2: Design System + Grid System + Type Scale
 
 ### 🎯 OBJETIVO DESTA SESSÃO
