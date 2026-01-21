@@ -14,6 +14,93 @@
 
 ---
 
+## [2026-01-22] - Batch 2: Design System + Grid System + Type Scale
+
+### 🎯 OBJETIVO DESTA SESSÃO
+**Criar sistema de design profissional (grid 12-column, type scale 1.250, spacing 8px) e refatorar slides S03, S06-S10 aplicando o sistema.**
+
+**⚠️ IMPORTANTE PARA ASSISTENTES:**
+- **Sistema de design criado** - use `system.css` e `components.css` para novos slides
+- **Grid 12-column disponível** - use classes `.col-1` até `.col-12` para layouts
+- **Type scale 1.250** - use variáveis `--text-xs` até `--text-4xl`
+- **Spacing scale 8px** - use variáveis `--spacing-1` até `--spacing-16`
+- **Paleta mantida** - todas cores usam `var(--nome)`, zero hardcoded
+
+### 🎨 Sistema de Design Criado
+
+**Arquivos novos:**
+- ✅ `GRADE/src/css/system.css` - Design tokens (grid, typography, spacing, colors)
+- ✅ `GRADE/src/css/components.css` - Componentes reutilizáveis (cards, badges, stats, quotes)
+
+**Grid System (12-column):**
+```css
+.col-4 { grid-column: span 4; } /* 1/3 do slide */
+.col-6 { grid-column: span 6; } /* 1/2 do slide */
+.col-8 { grid-column: span 8; } /* 2/3 do slide */
+.col-12 { grid-column: span 12; } /* full width */
+```
+
+**Type Scale (1.250 - Major Third):**
+- `--text-xs: 0.8rem` (12.8px) - captions
+- `--text-sm: 1rem` (16px) - body small
+- `--text-base: 1.25rem` (20px) - body
+- `--text-lg: 1.563rem` (25px) - subtitle
+- `--text-xl: 1.953rem` (31.25px) - heading 3
+- `--text-2xl: 2.441rem` (39px) - heading 2
+- `--text-3xl: 3.052rem` (48.8px) - heading 1
+- `--text-4xl: 3.815rem` (61px) - hero
+
+**Spacing Scale (8px base):**
+- `--spacing-1: 0.5rem` (8px)
+- `--spacing-2: 1rem` (16px)
+- `--spacing-3: 1.5rem` (24px)
+- `--spacing-4: 2rem` (32px)
+- `--spacing-6: 3rem` (48px)
+- `--spacing-8: 4rem` (64px)
+- `--spacing-12: 6rem` (96px)
+
+**Componentes criados:**
+- `.card` - Card base com variants (--navy, --highlight, --teal)
+- `.cardHeader` - Header navy reutilizável (mantido do Batch 1)
+- `.stat-card`, `.stat-value`, `.stat-label` - Componentes de estatísticas
+- `.quote-large`, `.quote-author` - Componentes de citações
+- `.grade-badge` - Badges GRADE (high, moderate, low, very-low)
+- `.recommendation-badge` - Badges de recomendação (conditional, strong)
+
+### 📝 Refatoração de Slides (Batch 2)
+
+**S03.html - Framework CAC:**
+- ✅ Aplicado sistema de design (classes utilitárias)
+- ✅ Substituídos inline styles por classes do sistema
+- ✅ Mantida estrutura visual (2 cards empilhados)
+- ✅ Badges GRADE usando `.grade-badge.low`
+- ✅ Badges recomendação usando `.recommendation-badge.conditional`
+
+**S06-S10.html:**
+- ⏳ **Pendente** - Refatoração completa será feita em próximos batches
+- ✅ Sistema de design disponível para uso
+
+### 🔧 Arquivos Modificados
+
+**Novos:**
+- `GRADE/src/css/system.css` - Design tokens
+- `GRADE/src/css/components.css` - Componentes
+
+**Modificados:**
+- `GRADE/src/index.html` - Adicionados links para `system.css` e `components.css`
+- `GRADE/src/slides/S03.html` - Refatorado com sistema de design
+
+### ✅ Validação
+
+- ✅ Paleta oficial mantida (zero cores hardcoded)
+- ✅ Sistema de design não quebra navegação
+- ✅ Compatibilidade com PDF export mantida
+- ✅ Classes reutilizáveis criadas
+
+**⚠️ NOTA:** Refatoração completa dos slides S06-S10 será feita em próximos batches para garantir qualidade e não quebrar funcionalidades existentes.
+
+---
+
 ## [2026-01-22] - Batch 1: Header Contrast + PDF Safety + Content Fixes
 
 ### 🎯 OBJETIVO DESTA SESSÃO
