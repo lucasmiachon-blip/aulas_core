@@ -85,7 +85,7 @@
   /* Descomentar depois do MVP:
   --navy: var(--text-primary);
   --teal: var(--accent-primary);
-  --gold: var(--warning);
+  --gold: #DDB944;  /* Gold oficial da paleta atual */
   */
 }
 ```

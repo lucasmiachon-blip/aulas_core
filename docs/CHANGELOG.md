@@ -32,7 +32,7 @@
 ### 🎨 Normalização de Paleta (400+ substituições)
 **Correções massivas de paleta não profissional:**
 - ✅ **535 cores hardcoded → 164** (70% redução)
-- ✅ **Cores laranjas** substituídas por `var(--warning)`
+- ✅ **Cores laranjas** substituídas por `var(--gold)` (paleta oficial)
 - ✅ **Boxes quadrados** corrigidos (border-radius: 0 → 0.6vw)
 - ✅ **Lato → Inter** em todos os slides (393 substituições)
 
@@ -49,7 +49,7 @@
 **Slide S45 (Ácido Bempedoico - Tensão Metodológica):**
 - ✅ **ASCII box removido** (visual não profissional)
 - ✅ **Box moderno** com grid, cards, hierarquia clara
-- ✅ Cores profissionais (`var(--accent-primary)`, `var(--warning)`)
+- ✅ Cores profissionais (`var(--accent-primary)`, `var(--gold)`)
 - ✅ Tipografia Inter consistente
 
 **Viewport ajustado:**
