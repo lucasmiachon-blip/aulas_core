@@ -1,3 +1,10 @@
+/* Print-safe: Force background colors in PDF export */
+* {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+}
+
 :root {
     /* ============================================
        PALETA ATUAL (Mantida para compatibilidade)
@@ -197,6 +204,30 @@ p {
 .risk-card.dark,
 .dark-card {
     box-shadow: var(--shadow-dark-card);
+}
+
+/* ============================================
+   CARD HEADER - Reusable Header Style
+   ============================================ */
+.cardHeader {
+    background: var(--navy) !important;
+    color: var(--white) !important;
+    padding: 1.2vw 1.8vw;
+    border-radius: 0.8vw 0.8vw 0 0;
+    flex-shrink: 0;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+}
+
+.cardHeader p {
+    font-size: 1.1vw !important;
+    font-weight: 900 !important;
+    margin: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08vw !important;
+    line-height: 1.4 !important;
+    color: var(--white) !important;
+    text-shadow: 0 0.1vw 0.2vw rgba(0,0,0,0.2) !important;
 }
 
 .controls { position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; gap: 10px; }
