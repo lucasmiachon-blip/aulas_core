@@ -1,71 +1,71 @@
 <section class="slide" data-slide-id="S08" style="padding-bottom: 5%;">
-        <h2 style="margin-bottom: 1.5vw; font-size: 3.2vw;">
+        <h2 class="title-section" style="margin-bottom: var(--spacing-3); font-size: 3.2vw;">
             <span style="font-family: 'Georgia', serif; color: var(--navy);">GRADE Domain:</span> 
             <span style="font-family: 'Georgia', serif; color: var(--gold);">Dose-Response Gradient</span>
         </h2>
         
-        <!-- Tese (uma frase, Lato 26-28px) -->
-        <div style="margin-bottom: 3vw;">
-            <p style="font-family: 'Inter', sans-serif; font-size: 1.6vw; line-height: 1.4; color: var(--text); font-weight: 400;">
-                Aumento sistem&aacute;tico do efeito com maior exposi&ccedil;&atilde;o (dose, dura&ccedil;&atilde;o ou severidade).
+        <!-- Tese -->
+        <div style="margin-bottom: var(--spacing-6);">
+            <p class="body-large" style="line-height: 1.4; color: var(--text); font-weight: 400;">
+                Aumento sistemático do efeito com maior exposição (dose, duração ou severidade).
             </p>
         </div>
         
         <!-- Layout 2 colunas: Microprovas (esquerda) + Regra (direita) -->
-        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 4vw; flex-grow: 1; align-items: start;">
+        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--spacing-8); flex-grow: 1; align-items: start;">
             
             <!-- Coluna Esquerda: Três Microprovas -->
-            <div style="display: flex; flex-direction: column; gap: 2vw;">
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
                 
                 <!-- Microprova 1: Dose -->
-                <div style="background: white; border-left: 0.25vw solid var(--gold); padding: 1.5vw 2vw; border-radius: 0.5vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.06);">
-                    <div style="display: flex; align-items: center; gap: 1vw; margin-bottom: 1vw;">
-                        <span style="background: var(--gold); color: var(--navy); width: 1.6vw; height: 1.6vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1vw; flex-shrink: 0;">1</span>
-                        <p style="font-family: 'Inter', sans-serif; font-size: 1.4vw; font-weight: 700; color: var(--navy); margin: 0;">Dose</p>
+                <div class="card" style="border-left: 0.25vw solid var(--gold);">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-2); margin-bottom: var(--spacing-2);">
+                        <span style="background: var(--gold); color: var(--navy); width: 1.6vw; height: 1.6vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1vw; flex-shrink: 0;">1</span>
+                        <p class="title-card" style="font-size: 1.4vw; color: var(--navy); margin: 0;">Dose</p>
                     </div>
                     
                     <!-- Micro-visual: 3 barras crescentes -->
-                    <div style="display: flex; align-items: flex-end; gap: 0.4vw; height: 2vw; margin-bottom: 1vw;">
+                    <div style="display: flex; align-items: flex-end; gap: 0.4vw; height: 2vw; margin-bottom: var(--spacing-2);">
                         <div style="width: 1.5vw; height: 40%; background: var(--gold); border-radius: 0.2vw 0.2vw 0 0;"></div>
                         <div style="width: 1.5vw; height: 70%; background: var(--gold); border-radius: 0.2vw 0.2vw 0 0;"></div>
                         <div style="width: 1.5vw; height: 100%; background: var(--gold); border-radius: 0.2vw 0.2vw 0 0;"></div>
-                        <p style="font-family: 'Lato', sans-serif; font-size: 1.05vw; color: var(--muted); margin: 0 0 0 0.5vw; align-self: flex-end; line-height: 1;">&rarr; dose &rarr; efeito</p>
+                        <p class="caption" style="font-size: 1.05vw; margin: 0 0 0 0.5vw; align-self: flex-end; line-height: 1;">→ dose → efeito</p>
                     </div>
                     
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--muted); margin: 0; font-style: italic;">
-                        &Acirc;ncora: CTT 2010 (meta-an&aacute;lise estatinas)
+                    <p class="caption" style="font-size: 0.95vw; margin: 0; font-style: italic;">
+                        Âncora: CTT 2010 (meta-análise estatinas)
                     </p>
                 </div>
                 
-                <!-- Microprova 2: Dura&ccedil;&atilde;o -->
-                <div style="background: white; border-left: 0.25vw solid var(--gold); padding: 1.5vw 2vw; border-radius: 0.5vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.06);">
-                    <div style="display: flex; align-items: center; gap: 1vw; margin-bottom: 1vw;">
-                        <span style="background: var(--gold); color: var(--navy); width: 1.6vw; height: 1.6vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1vw; flex-shrink: 0;">2</span>
-                        <p style="font-family: 'Inter', sans-serif; font-size: 1.4vw; font-weight: 700; color: var(--navy); margin: 0;">Dura&ccedil;&atilde;o</p>
+                <!-- Microprova 2: Duração -->
+                <div class="card" style="border-left: 0.25vw solid var(--gold);">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-2); margin-bottom: var(--spacing-2);">
+                        <span style="background: var(--gold); color: var(--navy); width: 1.6vw; height: 1.6vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1vw; flex-shrink: 0;">2</span>
+                        <p class="title-card" style="font-size: 1.4vw; color: var(--navy); margin: 0;">Duração</p>
                     </div>
                     
-                    <!-- Micro-visual: 3 c&iacute;rculos crescentes -->
-                    <div style="display: flex; align-items: center; gap: 0.6vw; height: 2vw; margin-bottom: 1vw;">
+                    <!-- Micro-visual: 3 círculos crescentes -->
+                    <div style="display: flex; align-items: center; gap: 0.6vw; height: 2vw; margin-bottom: var(--spacing-2);">
                         <div style="width: 1vw; height: 1vw; background: var(--gold); border-radius: 50%;"></div>
                         <div style="width: 1.4vw; height: 1.4vw; background: var(--gold); border-radius: 50%;"></div>
                         <div style="width: 1.8vw; height: 1.8vw; background: var(--gold); border-radius: 50%;"></div>
-                        <p style="font-family: 'Lato', sans-serif; font-size: 1.05vw; color: var(--muted); margin: 0 0 0 0.5vw; line-height: 1;">&rarr; tempo &rarr; risco</p>
+                        <p class="caption" style="font-size: 1.05vw; margin: 0 0 0 0.5vw; line-height: 1;">→ tempo → risco</p>
                     </div>
                     
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--muted); margin: 0; font-style: italic;">
-                        &Acirc;ncora: WHI 2002 (TRH e CA mama)
+                    <p class="caption" style="font-size: 0.95vw; margin: 0; font-style: italic;">
+                        Âncora: WHI 2002 (TRH e CA mama)
                     </p>
                 </div>
                 
                 <!-- Microprova 3: Severidade -->
-                <div style="background: white; border-left: 0.25vw solid var(--gold); padding: 1.5vw 2vw; border-radius: 0.5vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.06);">
-                    <div style="display: flex; align-items: center; gap: 1vw; margin-bottom: 1vw;">
-                        <span style="background: var(--gold); color: var(--navy); width: 1.6vw; height: 1.6vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-weight: 900; font-size: 1vw; flex-shrink: 0;">3</span>
-                        <p style="font-family: 'Inter', sans-serif; font-size: 1.4vw; font-weight: 700; color: var(--navy); margin: 0;">Severidade</p>
+                <div class="card" style="border-left: 0.25vw solid var(--gold);">
+                    <div style="display: flex; align-items: center; gap: var(--spacing-2); margin-bottom: var(--spacing-2);">
+                        <span style="background: var(--gold); color: var(--navy); width: 1.6vw; height: 1.6vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1vw; flex-shrink: 0;">3</span>
+                        <p class="title-card" style="font-size: 1.4vw; color: var(--navy); margin: 0;">Severidade</p>
                     </div>
                     
-                    <!-- Micro-visual: 3 n&iacute;veis em escada -->
-                    <div style="display: flex; align-items: flex-end; gap: 0.3vw; height: 2vw; margin-bottom: 1vw;">
+                    <!-- Micro-visual: 3 níveis em escada -->
+                    <div style="display: flex; align-items: flex-end; gap: 0.3vw; height: 2vw; margin-bottom: var(--spacing-2);">
                         <div style="display: flex; flex-direction: column; gap: 0.2vw; justify-content: flex-end;">
                             <div style="width: 1.2vw; height: 0.5vw; background: var(--teal);"></div>
                         </div>
@@ -78,43 +78,43 @@
                             <div style="width: 1.2vw; height: 0.5vw; background: var(--gold);"></div>
                             <div style="width: 1.2vw; height: 0.5vw; background: var(--teal);"></div>
                         </div>
-                        <p style="font-family: 'Lato', sans-serif; font-size: 1.05vw; color: var(--muted); margin: 0 0 0 0.5vw; line-height: 1;">leve &rarr; grave</p>
+                        <p class="caption" style="font-size: 1.05vw; margin: 0 0 0 0.5vw; line-height: 1;">leve → grave</p>
                     </div>
                     
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--muted); margin: 0; font-style: italic;">
-                        &Acirc;ncora: Copenhagen City 2013 (tabagismo)
+                    <p class="caption" style="font-size: 0.95vw; margin: 0; font-style: italic;">
+                        Âncora: Copenhagen City 2013 (tabagismo)
                     </p>
                 </div>
                 
             </div>
 
-            <!-- Coluna Direita: Regra de Decis&atilde;o (DOMINANTE) -->
-            <div style="display: flex; flex-direction: column; gap: 2vw;">
+            <!-- Coluna Direita: Regra de Decisão (DOMINANTE) -->
+            <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
                 
-                <!-- Regra de Decis&atilde;o -->
-                <div style="background: white; border: 2px solid var(--gold); border-radius: 0.8vw; padding: 2.5vw;">
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1vw; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08vw; margin-bottom: 2.5vw;">Regra de Decis&atilde;o</p>
+                <!-- Regra de Decisão -->
+                <div class="card" style="border: 2px solid var(--gold);">
+                    <p class="caption" style="font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.08vw; margin-bottom: var(--spacing-6);">Regra de Decisão</p>
                     
-                    <!-- +1: DOMINANTE (44-52px = ~3vw) -->
-                    <div style="margin-bottom: 3vw;">
-                        <div style="display: flex; align-items: baseline; gap: 1.2vw; margin-bottom: 1vw;">
-                            <span style="font-family: 'Lato', sans-serif; font-size: 3vw; font-weight: 900; color: var(--teal); line-height: 1;">+1</span>
-                            <p style="font-family: 'Inter', sans-serif; font-size: 1.3vw; color: var(--navy); font-weight: 700; line-height: 1.2; margin: 0;">Gradiente claro</p>
+                    <!-- +1: DOMINANTE -->
+                    <div style="margin-bottom: var(--spacing-6);">
+                        <div style="display: flex; align-items: baseline; gap: var(--spacing-3); margin-bottom: var(--spacing-2);">
+                            <span style="font-size: 3vw; font-weight: 900; color: var(--teal); line-height: 1;">+1</span>
+                            <p class="body-large" style="font-size: 1.3vw; color: var(--navy); font-weight: 700; line-height: 1.2; margin: 0;">Gradiente claro</p>
                         </div>
-                        <p style="font-family: 'Inter', sans-serif; font-size: 1.1vw; color: var(--muted); line-height: 1.5; margin: 0 0 0 4.2vw;">
-                            Considerar upgrade de 1 n&iacute;vel<br>
-                            <span style="color: var(--muted);">(BAIXA &#8594; MODERADA)</span>
+                        <p class="body" style="font-size: 1.1vw; color: var(--muted); line-height: 1.5; margin: 0 0 0 4.2vw;">
+                            Considerar upgrade de 1 nível<br>
+                            <span style="color: var(--muted);">(BAIXA → MODERADA)</span>
                         </p>
                     </div>
                     
                     <!-- +2: menor, raro -->
-                    <div style="border-top: 1px solid var(--border); padding-top: 2vw;">
-                        <div style="display: flex; align-items: baseline; gap: 1.2vw; margin-bottom: 0.8vw;">
-                            <span style="font-family: 'Inter', sans-serif; font-size: 2vw; font-weight: 900; color: var(--muted); line-height: 1;">+2</span>
-                            <p style="font-family: 'Inter', sans-serif; font-size: 1.1vw; color: var(--muted); font-weight: 700; line-height: 1.2; margin: 0;">Raro</p>
+                    <div style="border-top: 1px solid var(--border); padding-top: var(--spacing-4);">
+                        <div style="display: flex; align-items: baseline; gap: var(--spacing-3); margin-bottom: var(--spacing-2);">
+                            <span style="font-size: 2vw; font-weight: 900; color: var(--muted); line-height: 1;">+2</span>
+                            <p class="body" style="font-size: 1.1vw; color: var(--muted); font-weight: 700; line-height: 1.2; margin: 0;">Raro</p>
                         </div>
-                        <p style="font-family: 'Lato', sans-serif; font-size: 1vw; color: var(--muted); line-height: 1.5; margin: 0 0 0 3.2vw;">
-                            Exige padr&atilde;o excepcionalmente consistente + considera&ccedil;&otilde;es adicionais
+                        <p class="caption" style="font-size: 1vw; color: var(--muted); line-height: 1.5; margin: 0 0 0 3.2vw;">
+                            Exige padrão excepcionalmente consistente + considerações adicionais
                         </p>
                     </div>
                 </div>
@@ -122,10 +122,10 @@
             </div>
         </div>
         
-        <!-- Rodap&eacute; discreto (1 linha, 16-18px) -->
-        <div style="margin-top: 2.5vw; padding-top: 1.2vw; border-top: 1px solid var(--border);">
-            <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--muted); line-height: 1.4; text-align: center;">
-                Gradientes monot&ocirc;nicos reduzem a plausibilidade de confus&atilde;o residual explicar todo o efeito.
+        <!-- Rodapé discreto -->
+        <div style="margin-top: var(--spacing-5); padding-top: var(--spacing-3); border-top: 1px solid var(--border);">
+            <p class="caption" style="font-size: 0.95vw; line-height: 1.4; text-align: center;">
+                Gradientes monotônicos reduzem a plausibilidade de confusão residual explicar todo o efeito.
             </p>
         </div>
     </section>
