@@ -36,6 +36,20 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 
 ---
 
+## 📋 MUDANÇAS RECENTES (2026-01-22)
+
+**⚠️ IMPORTANTE:** Antes de trabalhar, leia a última entrada do `docs/CHANGELOG.md` para entender o contexto atual.
+
+**Última sessão (Batch 1 - Slides 1-5):**
+- ✅ **PDF Safety:** `print-color-adjust: exact` adicionado (NUNCA remover!)
+- ✅ **Classe `.cardHeader`:** Criada para headers navy reutilizáveis (use em novos slides)
+- ✅ **Correções de conteúdo:** S02 (números), S03 (layout vertical), S04 (gramática)
+- ✅ **O que NÃO foi feito:** Documentado no CHANGELOG para evitar alucinações
+
+**📖 Leia:** `docs/CHANGELOG.md` - Seção `[2026-01-22] - Batch 1: Header Contrast + PDF Safety + Content Fixes`
+
+---
+
 ## 🚨 PALETA OFICIAL - REGRA ABSOLUTA
 
 **⚠️ CRÍTICO: Este projeto usa APENAS uma paleta profissional definida. NUNCA invente cores!**
