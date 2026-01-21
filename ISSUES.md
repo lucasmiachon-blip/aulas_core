@@ -27,7 +27,24 @@
 
 ## Issues Trazidos pelo Usuário
 
-_(Nenhum ainda - este arquivo será atualizado conforme issues forem reportados)_
+### [2026-01-22] - PDF parece ter voltado para trás
+**Status:** 🔍 INVESTIGANDO  
+**Prioridade:** P1 (Alto)
+
+**Problema reportado:**
+- PDF gerado parece ter voltado para trás (regressão visual?)
+
+**Investigação:**
+- ✅ Sistema de design aplicado (system.css + components.css)
+- ✅ Classes CSS definidas corretamente
+- ✅ PDF gerado com sucesso (45 slides)
+- ⚠️ Possível conflito: classes usam `rem` mas slides usam `vw` em inline styles
+- ⚠️ Estilos inline podem estar sobrescrevendo classes do sistema
+
+**Próximos passos:**
+- Verificar se estilos inline estão sobrescrevendo classes
+- Considerar ajustar classes para usar `vw` ao invés de `rem` para compatibilidade
+- Validar visualmente no viewer e PDF
 
 ---
 
