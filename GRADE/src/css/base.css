@@ -31,11 +31,8 @@
     --accent-primary: #2563EB;   /* Blue universal */
     --accent-secondary: #7C3AED; /* Purple (uso raro) */
     
-    /* Semantic */
-    --success: #10B981;  /* Green */
-    --warning: #F59E0B;  /* Amber */
-    --danger: #EF4444;   /* Red */
-    --info: #0EA5E9;     /* Sky blue */
+    /* Semantic - REMOVIDO: não fazem parte da paleta oficial */
+    /* Use var(--teal) para dados clínicos, var(--gold) para destaques */
     
     /* ============================================
        ALIASES DE COMPATIBILIDADE (Descomentar pós-MVP)
