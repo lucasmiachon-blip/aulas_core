@@ -11,34 +11,62 @@
         </h2>
     </div>
 
-    <!-- ASCII BOX - FORMATADO -->
-    <div style="background: var(--navy); color: #E8E6E1; font-family: 'Courier New', monospace; font-size: 0.95vw; line-height: 1.6; padding: 2vw; border-radius: 0.6vw; margin: 1.5vw 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
-<pre style="margin: 0; white-space: pre; color: #E8E6E1;">┌─────────────────────────────────────────────────────────┐
-│  <span style="color: var(--gold); font-weight: bold;">SBC 2025: DUAS RECOMENDAÇÕES, MESMA CLASSIFICAÇÃO</span>     │
-├─────────────────────────────────────────────────────────┤
-│                                                          │
-│  <span style="color: #4A90E2; font-weight: bold;">Rec 1:</span> Não atingiu meta → PCSK9i <span style="color: var(--gold);">OU</span> bempedoico    │
-│         <span style="background: #2C5F2D; color: white; padding: 0 0.5vw;">FORTE</span> │ <span style="background: var(--muted); color: white; padding: 0 0.5vw;">ALTA</span>                                   │
-│                                                          │
-│  <span style="color: #4A90E2; font-weight: bold;">Rec 2:</span> Intolerante → bempedoico                        │
-│         <span style="background: #2C5F2D; color: white; padding: 0 0.5vw;">FORTE</span> │ <span style="background: var(--muted); color: white; padding: 0 0.5vw;">ALTA</span>                                   │
-│                                                          │
-├─────────────────────────────────────────────────────────┤
-│  <span style="color: var(--warning);">⚠️ TENSÃO METODOLÓGICA:</span>                                │
-│                                                          │
-│  CLEAR Outcomes testou <span style="color: #4A90E2; text-decoration: underline;">INTOLERANTES</span>                     │
-│  Rec 1 aplica para <span style="color: #E74C3C; text-decoration: underline;">TODOS</span> que não atingem meta          │
-│                                                          │
-│  → Indirectness rebaixaria certeza (<span style="color: var(--muted);">ALTA</span>→<span style="color: var(--warning);">MODERADA</span>)     │
-│  → Mas SBC julgou aplicável (mecanismo + necessidade)  │
-│                                                          │
-├─────────────────────────────────────────────────────────┤
-│  <span style="color: var(--success);">💭 REFLEXÃO:</span>                                           │
-│  GRADE estrutura, mas não substitui julgamento.         │
-│  Diretrizes incorporam viabilidade e contexto local.    │
-│                                                          │
-│  Nossa tarefa: <span style="color: var(--gold); font-weight: bold;">aplicar com discernimento</span>.               │
-└─────────────────────────────────────────────────────────┘</pre>
+    <!-- BOX PROFISSIONAL - Substituído ASCII -->
+    <div style="background: white; border: 2px solid var(--teal); border-radius: 0.8vw; padding: 2.5vw; margin: 1.5vw 0; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+        <div style="border-bottom: 3px solid var(--teal); padding-bottom: 1vw; margin-bottom: 1.5vw;">
+            <h3 style="font-family: 'Georgia', serif; font-size: 1.8vw; color: var(--navy); margin: 0; font-weight: 400;">
+                SBC 2025: Duas Recomendações, Mesma Classificação
+            </h3>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr; gap: 1.5vw;">
+            <!-- Rec 1 -->
+            <div style="background: var(--bg); padding: 1.5vw; border-radius: 0.5vw; border-left: 4px solid var(--accent-primary);">
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.1vw; color: var(--navy); font-weight: 700; margin: 0 0 0.8vw 0;">
+                    <span style="color: var(--accent-primary);">Rec 1:</span> Não atingiu meta → PCSK9i <span style="color: var(--gold);">OU</span> bempedoico
+                </p>
+                <div style="display: flex; gap: 1vw; align-items: center;">
+                    <span style="background: #2C5F2D; color: white; padding: 0.4vw 0.8vw; border-radius: 0.3vw; font-size: 0.85vw; font-weight: 700;">FORTE</span>
+                    <span style="color: var(--muted);">|</span>
+                    <span style="background: var(--muted); color: white; padding: 0.4vw 0.8vw; border-radius: 0.3vw; font-size: 0.85vw; font-weight: 700;">ALTA</span>
+                </div>
+            </div>
+            
+            <!-- Rec 2 -->
+            <div style="background: var(--bg); padding: 1.5vw; border-radius: 0.5vw; border-left: 4px solid var(--accent-primary);">
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.1vw; color: var(--navy); font-weight: 700; margin: 0 0 0.8vw 0;">
+                    <span style="color: var(--accent-primary);">Rec 2:</span> Intolerante → bempedoico
+                </p>
+                <div style="display: flex; gap: 1vw; align-items: center;">
+                    <span style="background: #2C5F2D; color: white; padding: 0.4vw 0.8vw; border-radius: 0.3vw; font-size: 0.85vw; font-weight: 700;">FORTE</span>
+                    <span style="color: var(--muted);">|</span>
+                    <span style="background: var(--muted); color: white; padding: 0.4vw 0.8vw; border-radius: 0.3vw; font-size: 0.85vw; font-weight: 700;">ALTA</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tensão Metodológica -->
+        <div style="margin-top: 2vw; padding-top: 2vw; border-top: 2px solid var(--border);">
+            <p style="font-family: 'Inter', sans-serif; font-size: 1vw; color: var(--warning); font-weight: 700; margin: 0 0 1vw 0;">
+                ⚠️ Tensão Metodológica
+            </p>
+            <ul style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--text); line-height: 1.8; margin: 0; padding-left: 1.5vw;">
+                <li>CLEAR Outcomes testou <strong style="color: var(--accent-primary);">intolerantes</strong></li>
+                <li>Rec 1 aplica para <strong style="color: var(--danger);">todos</strong> que não atingem meta</li>
+                <li>→ Indirectness rebaixaria certeza (<span style="background: var(--muted); color: white; padding: 0.2vw 0.5vw; border-radius: 0.2vw;">ALTA</span> → <span style="background: var(--warning); color: white; padding: 0.2vw 0.5vw; border-radius: 0.2vw;">MODERADA</span>)</li>
+                <li>→ Mas SBC julgou aplicável (mecanismo + necessidade)</li>
+            </ul>
+        </div>
+        
+        <!-- Reflexão -->
+        <div style="margin-top: 2vw; padding: 1.5vw; background: rgba(221, 185, 68, 0.1); border-left: 4px solid var(--gold); border-radius: 0.5vw;">
+            <p style="font-family: 'Inter', sans-serif; font-size: 1vw; color: var(--success); font-weight: 700; margin: 0 0 0.8vw 0;">
+                💭 Reflexão
+            </p>
+            <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--text); line-height: 1.6; margin: 0;">
+                GRADE oferece estrutura, mas não substitui julgamento. Diretrizes incorporam viabilidade e contexto local. <strong style="color: var(--gold);">Nossa tarefa: aplicar com discernimento</strong>.
+            </p>
+        </div>
     </div>
 
     <!-- ANÁLISE EXPANDIDA -->

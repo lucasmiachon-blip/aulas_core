@@ -14,6 +14,69 @@
 
 ---
 
+## [2026-01-21] - Migração Inter + Georgia + Paleta Profissional + Melhorias Visuais
+
+### 🎨 Tipografia Premium (Inter + Georgia)
+**Migração completa para Inter + Georgia:**
+- ✅ **Inter substituiu Lato** no corpo de texto (400, 600, 700, 800)
+- ✅ **Georgia mantida** nos títulos (hierarquia serif/sans-serif)
+- ✅ **Google Fonts atualizado** para incluir Inter
+- ✅ **Line-height otimizado** (1.6 → 1.7 para Inter)
+
+**Resultado:**
+- Legibilidade superior em projeção
+- Visual mais moderno e profissional (Apple Keynote style)
+- Mantém autoridade acadêmica com Georgia nos títulos
+- 43 arquivos modificados
+
+### 🎨 Normalização de Paleta (400+ substituições)
+**Correções massivas de paleta não profissional:**
+- ✅ **535 cores hardcoded → 164** (70% redução)
+- ✅ **Cores laranjas** substituídas por `var(--warning)`
+- ✅ **Boxes quadrados** corrigidos (border-radius: 0 → 0.6vw)
+- ✅ **Lato → Inter** em todos os slides (393 substituições)
+
+**Slides corrigidos:** 39 arquivos
+- S02-S13: Paleta normalizada
+- S17-S46: Cores laranjas e boxes corrigidos
+
+### 🎯 Melhorias Visuais Específicas
+**Slide S18 (Imprecisão):**
+- ✅ Régua visual melhorada (bordas 1px → 2px, sombras, cores mais vibrantes)
+- ✅ Paleta de cores profissional (rgba() ajustados)
+- ✅ Linha MID mais visível (3px, border-radius)
+
+**Slide S45 (Ácido Bempedoico - Tensão Metodológica):**
+- ✅ **ASCII box removido** (visual não profissional)
+- ✅ **Box moderno** com grid, cards, hierarquia clara
+- ✅ Cores profissionais (`var(--accent-primary)`, `var(--warning)`)
+- ✅ Tipografia Inter consistente
+
+**Viewport ajustado:**
+- ✅ Padding reduzido (3% 4% → 2.5% 3.5%) para slides caberem melhor na tela
+- ✅ `box-sizing: border-box` adicionado
+
+### 📚 Documentação Atualizada
+**README.md:**
+- ✅ Tipografia atualizada (Inter + Georgia)
+- ✅ Links para documentos de papéis corrigidos
+
+**Scripts:**
+- ✅ `scripts/normalize-colors.py` - Normalização automática de paleta
+- ✅ `scripts/fix-palette-issues.py` - Correção de problemas de paleta
+
+### 📊 Métricas
+- **Arquivos modificados:** 43
+- **Substituições de cores:** 400+
+- **Substituições de fontes:** 393
+- **Melhoria visual:** Significativa
+
+**Commits:**
+- `feat(palette): Normaliza paleta de cores em todos os slides (400+ substituições)`
+- `feat(typography): Migra para Inter + Georgia e corrige paleta não profissional`
+
+---
+
 ## [2026-01-20] - Documentação de Papéis + Preparação Paleta + Correções MVP
 
 ### 📚 Documentos de Papéis Específicos

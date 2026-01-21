@@ -76,15 +76,16 @@ body {
     box-shadow: 0 0 100px rgba(0,0,0,0.5);
 }
 
-/* CORRIGIDO: Padding reduzido de 5% 6% → 3% 4% para não cortar conteúdo */
+/* CORRIGIDO: Padding ajustado para slides caberem na tela */
 .slide { 
     position: absolute; 
     inset: 0; 
     display: none; 
-    padding: 3% 4%; 
+    padding: 2.5% 3.5%; 
     flex-direction: column; 
     transform-origin: top left;
     overflow-y: auto; /* Permite scroll se necessário */
+    box-sizing: border-box;
 }
 
 .slide.active { display: flex; }

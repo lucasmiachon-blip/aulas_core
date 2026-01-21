@@ -249,8 +249,8 @@ Migração completa será feita após MVP (10 Fevereiro).
 **SEMPRE use:** `var(--navy)`, `var(--gold)`, `var(--text)`, etc.
 
 ### 📖 TIPOGRAFIA:
-- **Títulos:** Georgia (serif)
-- **Corpo:** Lato (sans-serif)
+- **Títulos:** Georgia (serif) — autoridade acadêmica
+- **Corpo:** Inter (sans-serif) — legibilidade premium otimizada para telas
 
 ---
 
