@@ -28,20 +28,11 @@ content = content.replace(/src="\.\/css\//g, 'src="../src/css/');
 content = content.replace(/src="\.\/js\//g, 'src="../src/js/');
 content = content.replace(/\.\/slides\//g, '../src/slides/');
 
-// Verificar se os scripts estão corretos
-const requiredScripts = [
-  'slide-system/slide-core.js',
-  'slide-system/slide-navigation.js',
-  'slide-system/slide-viewport.js',
-  'slide-system/init.js'
-];
-
-const hasAllScripts = requiredScripts.every(script => 
-  content.includes(`slide-system/${script.split('/')[1]}`)
-);
-
-if (!hasAllScripts) {
-  console.warn('⚠️  Aviso: Nem todos os scripts slide-system estão presentes!');
+// Verificar se o script slides-simple.js está presente
+if (!content.includes('slides-simple.js')) {
+  console.warn('⚠️  Aviso: slides-simple.js não encontrado no HTML!');
+} else {
+  console.log('✅ slides-simple.js encontrado');
 }
 
 // Escrever em dist
