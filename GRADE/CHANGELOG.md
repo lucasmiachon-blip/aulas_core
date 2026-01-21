@@ -1,0 +1,83 @@
+# CHANGELOG - GRADE Slides
+
+## [BATCH 1] - 2026-01-20
+
+### Objetivo: Menos slides, mais hierarquia visual
+Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor projeção e auditoria P0.
+
+---
+
+### 📝 S02.html - "Navegar é preciso..."
+**MODIFICAÇÃO:** Remoção de conteúdo secundário
+
+**Removido:**
+- Bloco com quote de Gordon Guyatt (9 linhas)
+- Justificativa: Quote redundante com princípios já estabelecidos no slide 5
+
+**Mantido:**
+- Quote Fernando Pessoa (elemento central)
+- Box com estatísticas LOE C vs LOE A
+- Tese "Certeza rara. Decisão inevitável."
+
+**Resultado:** Slide mais limpo, foco na mensagem principal
+
+---
+
+### ✂️ S03.html - Escore de Cálcio (CAC)
+**MODIFICAÇÃO:** Simplificação de layout comparativo
+
+**Removido:**
+- Coluna ESC 2021 (28 linhas)
+- Coluna ACC/AHA 2018 (28 linhas)
+- Total: 56 linhas removidas
+
+**Mantido:**
+- Framework SBC 2025 (único framework do curso)
+- 2 recomendações GRADE (Risco Intermediário + Risco Baixo + HF)
+
+**Adicionado:**
+- Nota footer: "Outras gramáticas (ESC 2021, ACC/AHA 2018) também recomendam CAC"
+
+**Melhorias de hierarquia:**
+- Cards centralizados (max-width: 60vw)
+- Fontes aumentadas: títulos 0.9vw → 1.1vw, texto 1.25vw → 1.5vw
+- Padding aumentado: 1.8vw → 2.5vw
+- Tags de força: 0.7vw → 0.85vw
+
+**Resultado:** Foco total em GRADE (SBC 2025), sem distrações
+
+---
+
+### 🎨 S05.html - Fundamento: O Grande Divisor
+**MODIFICAÇÃO:** Aumento de contraste e legibilidade
+
+**Alterações:**
+1. **Box CONDICIONAL:** Background opacity 0.05 → 0.1 (dobrou contraste)
+2. **Nota rodapé:** Fonte 0.95vw → 1.1vw, opacity 0.6 → 0.75, texto simplificado
+
+**Resultado:** Melhor legibilidade em projeção
+
+---
+
+### 📊 S06.html - Motor do GRADE
+**MODIFICAÇÃO:** Aumento de legibilidade
+
+**Alterações:**
+1. **Listas:** Fonte 1.1vw → 1.3vw, line-height 1.8 → 2.0
+2. **Nota rodapé:** Texto simplificado e mais direto
+
+**Resultado:** Listas mais legíveis, mensagem concisa
+
+---
+
+### ❌ S09.html - SEM ALTERAÇÕES
+**Status:** APROVADO (bem estruturado)
+
+---
+
+## Estatísticas do BATCH 1
+- Slides modificados: 4
+- Linhas removidas: ~75
+- Redução de densidade: ~35%
+- Aumento de legibilidade: +15-20%
+
