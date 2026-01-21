@@ -34,6 +34,12 @@
 - ✅ Mantida estrutura visual (grid 2 colunas preservado, 3 microprovas)
 - ✅ Substituídos inline styles por variáveis CSS do sistema
 
+### 📝 Refatoração S09.html - Aplicação GRADE
+- ✅ Aplicado sistema de design (variáveis CSS spacing, typography)
+- ✅ Aplicadas classes componentes (`.card`, `.card--navy`, `.card--large`, `.cardHeader`, `.section-divider`)
+- ✅ Mantida estrutura visual (grid 2 colunas preservado)
+- ✅ Substituídos inline styles por variáveis CSS do sistema
+
 ---
 
 ## [2026-01-22] - Batch 2: Design System + Grid System + Type Scale
