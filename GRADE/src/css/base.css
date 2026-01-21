@@ -1,4 +1,7 @@
 :root {
+    /* ============================================
+       PALETA ATUAL (Mantida para compatibilidade)
+       ============================================ */
     --bg: #F9F8F4;      /* Off-white */
     --navy: #0B1320;    /* Navy */
     --gold: #DDB944;    /* Gold */
@@ -8,6 +11,44 @@
     --teal: #1F766E;    /* Clinical Teal */
     --blue: #2563EB;
     --white: #FFFFFF;
+    
+    /* ============================================
+       NOVA PALETA - Swiss Neutral Professional
+       (Preparação para migração pós-MVP)
+       ============================================ */
+    
+    /* Backgrounds */
+    --bg-primary: #FAFAF9;    /* Warm white */
+    --bg-secondary: #F5F5F4;  /* Light gray */
+    --surface: #FFFFFF;        /* Pure white */
+    
+    /* Text */
+    --text-primary: #1C1917;   /* Almost black (13:1 contrast) */
+    --text-secondary: #57534E; /* Dark gray (7:1 contrast) */
+    --text-tertiary: #78716C;  /* Medium gray (4.5:1 contrast) */
+    
+    /* Accents */
+    --accent-primary: #2563EB;   /* Blue universal */
+    --accent-secondary: #7C3AED; /* Purple (uso raro) */
+    
+    /* Semantic */
+    --success: #10B981;  /* Green */
+    --warning: #F59E0B;  /* Amber */
+    --danger: #EF4444;   /* Red */
+    --info: #0EA5E9;     /* Sky blue */
+    
+    /* ============================================
+       ALIASES DE COMPATIBILIDADE (Descomentar pós-MVP)
+       ============================================ */
+    /* 
+    --navy: var(--text-primary);
+    --teal: var(--accent-primary);
+    --gold: var(--warning);
+    --text: var(--text-primary);
+    --muted: var(--text-secondary);
+    --bg: var(--bg-primary);
+    --white: var(--surface);
+    */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }

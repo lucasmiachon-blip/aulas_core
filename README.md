@@ -218,7 +218,7 @@ aulas_core/
 
 ## 🎨 PALETA OFICIAL (OBRIGATÓRIA)
 
-### ✅ USE APENAS ESTAS CORES:
+### ✅ USE APENAS ESTAS CORES (ATUAL):
 
 ```css
 :root {
@@ -233,6 +233,11 @@ aulas_core/
     --white: #FFFFFF;   /* Branco - cards */
 }
 ```
+
+**📋 Nova paleta preparada (pós-MVP):**  
+Paleta "Swiss Neutral Professional" já está no CSS base (`GRADE/src/css/base.css`) como preparação.  
+Migração completa será feita após MVP (10 Fevereiro).  
+**Para detalhes:** Ver `docs/ESSENTIAL/PALETA_MIGRATION_PLAN.md`
 
 ### ❌ NUNCA USE:
 - `#333333`, `#000000`, `#666` (hardcoded)
