@@ -81,3 +81,30 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - Redução de densidade: ~35%
 - Aumento de legibilidade: +15-20%
 
+
+---
+
+## [BATCH 1.1] - 2026-01-21 (Correção de PDF)
+
+### Objetivo: Corrigir altura excessiva dos cards no PDF
+
+**Problema identificado:** Cards com `flex-grow: 1` e `margin-top: auto` ficavam com altura desproporcional no PDF, criando espaços vazios excessivos.
+
+### Correções aplicadas:
+
+**S05.html - Fundamento GRADE:**
+- Removido `margin-top: auto` dos cards de Certeza e Força
+- Adicionado `height: fit-content` para altura natural do conteúdo
+- Alterado `margin-top: auto` → `margin-top: 1.5vw` (espaçamento fixo)
+
+**S06.html - Motor GRADE:**
+- Removido `flex-grow: 1` do card de downgrade
+- Adicionado `height: fit-content` nos cards downgrade e upgrade
+- Cards agora ocupam apenas o espaço necessário
+
+### Resultado:
+- ✅ Altura dos cards proporcional ao conteúdo
+- ✅ Sem espaços vazios excessivos
+- ✅ PDF 15KB menor (339KB vs 354KB)
+- ✅ Layout equilibrado e profissional
+
