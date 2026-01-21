@@ -122,6 +122,26 @@
         font-size: 0.6cm !important;
     }
     
+    /* Manter sombras no PDF mas mais leves */
+    .card,
+    .stat-card,
+    .quote-card,
+    .risk-card,
+    .qr-card,
+    .divisor-card,
+    .stats-container {
+        box-shadow: 0 0.2vw 0.8vw 0 rgba(0, 0, 0, 0.1) !important;
+        transform: none !important;
+    }
+    
+    /* Remover hover effects no PDF */
+    .card:hover,
+    .qr-card:hover,
+    .divisor-card:hover {
+        box-shadow: 0 0.2vw 0.8vw 0 rgba(0, 0, 0, 0.1) !important;
+        transform: none !important;
+    }
+    
     /* Esconde controles */
     .controls,
     .slide-counter,
