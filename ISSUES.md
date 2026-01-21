@@ -71,3 +71,33 @@
 ---
 
 **Última atualização:** 2026-01-22
+
+---
+
+### [2026-01-21] - Restauração: CSS e paleta quebrados por "sistema de design"
+**Status:** ✅ RESOLVIDO  
+**Prioridade:** P0 (Crítico)
+
+**Problema:**
+- Claude sugeriu criar "sistema de design" → Cursor criou system.css e components.css
+- CSS conflicts com base.css (necessário !important)
+- Paleta profissional destruída: preto #2C2C2C substituiu navy #0B1320
+- Visual agressivo ("doía aos olhos")
+
+**Solução:**
+- Restaurou base.css do commit 79e1cb5 (paleta profissional)
+- Deletou system.css e components.css
+- Restaurou slides para Batch 1 (commit aa28dfc)
+
+**Commits:** 2d4f9ae, 37b6bf0, 27f648f, a19eb86
+
+**Lição aprendida:**
+- ❌ NÃO criar arquivos CSS extras sem forte necessidade
+- ❌ NÃO aceitar sugestões de IA sem questionar
+- ✅ Questionar: "É realmente necessário?"
+- ✅ Testar incremental (1 slide primeiro)
+
+**Golden commits (estados seguros):**
+- 79e1cb5: base.css com paleta profissional
+- aa28dfc: Batch 1 limpo
+- 822b27d: S03 estrutura original
