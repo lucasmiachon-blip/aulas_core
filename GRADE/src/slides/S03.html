@@ -1,78 +1,134 @@
-<section class="slide" data-slide-id="S03">
+<section class="slide">
         
-        <!-- Header Section -->
-        <div style="margin-bottom: var(--spacing-4);">
-            <p class="caption-xs" style="text-transform: uppercase; letter-spacing: 0.05vw; margin-bottom: var(--spacing-1);">
-                Escore de Cálcio (CAC)
+        <div style="margin-bottom: 2vw;">
+            <p style="font-size: 0.9vw; color: #999; font-weight: 600; letter-spacing: 0.05vw; text-transform: uppercase; margin-bottom: 0.5vw;">
+                Escore de C&aacute;lcio (CAC)
             </p>
-            <h2 class="title-section" style="margin-bottom: var(--spacing-2);">
+            <h2 style="font-size: 3.2vw; margin-bottom: 0.6vw; color: #2C2C2C;">
                 CAC para decidir sob incerteza: a lente GRADE
             </h2>
-            <p class="caption" style="margin-bottom: var(--spacing-2);">
-                Outras gramáticas existem (Class/LoE); aqui o foco é GRADE
+            <p style="font-size: 1vw; color: #666; font-weight: 500; margin-bottom: 0.8vw;">
+                Outras gram&aacute;ticas existem (Class/LoE); aqui o foco &eacute; GRADE
+            </p>
+            <p style="font-size: 0.85vw; color: #AAA; font-style: italic; padding: 0.8vw 1.5vw; background: #F8F8F8; border-radius: 0.4vw; display: inline-block;">
+                 Comparar fun&ccedil;&atilde;o cl&iacute;nica, n&atilde;o r&oacute;tulos
             </p>
         </div>
         
-        <!-- Framework Header -->
-        <div style="background: var(--navy); color: var(--white); padding: var(--spacing-3) var(--spacing-4); border-radius: 0.7vw; text-align: center; margin-bottom: var(--spacing-4);">
-            <p style="font-size: 0.85vw; font-weight: 700; letter-spacing: 0.08vw; margin: 0; text-transform: uppercase;">
-                Framework do curso: GRADE (SBC 2025)
-            </p>
-        </div>
-        
-        <!-- Cards Container (Grid vertical) -->
-        <div style="display: flex; flex-direction: column; gap: var(--spacing-4); max-width: 85vw; margin: 0 auto;">
+        <!-- Grid assim&eacute;trico: SBC dominante, outras secund&aacute;rias -->
+        <div style="display: grid; grid-template-columns: 1.4fr 0.8fr 0.8fr; gap: 2vw; flex-grow: 1; align-items: start;">
             
-            <!-- Card 1: Risco Intermediário -->
-            <div class="card" style="border: 1px solid var(--border); border-radius: 0.8vw; overflow: visible; display: flex; flex-direction: column;">
-                <div class="cardHeader">
-                    <p>Risco Intermediário</p>
+            <!-- COLUNA 1: SBC 2025 - FRAMEWORK DO CURSO -->
+            <div style="display: flex; flex-direction: column; gap: 1.2vw;">
+                
+                <div style="background: #2C2C2C; color: white; padding: 1vw 1.5vw; border-radius: 0.6vw;">
+                    <p style="font-size: 0.85vw; font-weight: 700; letter-spacing: 0.05vw; margin: 0;">
+                        Framework do curso: GRADE (SBC 2025)
+                    </p>
                 </div>
                 
-                <div style="padding: 1.8vw; flex-grow: 1; display: flex; flex-direction: column;">
-                    <p class="body-large" style="line-height: 1.6; color: var(--text); margin-bottom: var(--spacing-3); flex-grow: 1;">
-                        "O CAC <strong>pode ser útil</strong> para decidir sobre a necessidade e a intensidade da terapia hipolipemiante."
+                <!-- Card 1: Risco Intermedi&aacute;rio -->
+                <div style="background: white; border: 1px solid rgba(0,0,0,0.08); border-radius: 0.8vw; padding: 1.8vw; box-shadow: 0 0.3vw 1vw rgba(0,0,0,0.04); flex: 1;">
+                    
+                    <p style="font-size: 0.9vw; font-weight: 700; color: #1F766E; margin-bottom: 1vw; text-transform: uppercase; letter-spacing: 0.03vw;">
+                        Risco Intermedi&aacute;rio
                     </p>
                     
-                    <div style="display: flex; gap: var(--spacing-2); flex-wrap: wrap; align-items: center; margin-top: auto;">
-                        <span class="grade-badge low">
-                            ⊕⊕◯◯ BAIXA
+                    <p style="font-size: 1.25vw; line-height: 1.5; color: #2C2C2C; margin-bottom: 1.5vw;">
+                        "O CAC <strong>pode ser &uacute;til</strong> para decidir sobre a necessidade e a intensidade da terapia hipolipemiante."
+                    </p>
+                    
+                    <div style="display: flex; gap: 0.4vw; margin-top: auto;">
+                        <span style="padding: 0.3vw 0.6vw; border-radius: 0.3vw; font-size: 0.7vw; font-weight: 700; color: white; background: #888; text-transform: uppercase;">
+                            FORTE
                         </span>
-                        <span class="recommendation-badge conditional">
-                            Recomendação CONDICIONAL
+                        <span style="padding: 0.3vw 0.6vw; border-radius: 0.3vw; font-size: 0.7vw; font-weight: 700; color: white; background: #999; text-transform: uppercase;">
+                            MODERADA
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Card 2: Risco Baixo + HF -->
+                <div style="background: white; border: 1px solid rgba(0,0,0,0.08); border-radius: 0.8vw; padding: 1.8vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.03); flex: 1;">
+                    
+                    <p style="font-size: 0.9vw; font-weight: 700; color: #1F766E; margin-bottom: 1vw; text-transform: uppercase; letter-spacing: 0.03vw;">
+                        Risco Baixo + HF
+                    </p>
+                    
+                    <p style="font-size: 1.25vw; line-height: 1.5; color: #2C2C2C; margin-bottom: 1.5vw;">
+                        "Em indiv&iacute;duos com <strong>hist&oacute;rico familiar de DCVA prematura</strong>... o escore de c&aacute;lcio <strong>&eacute; razo&aacute;vel</strong>."
+                    </p>
+                    
+                    <div style="display: flex; gap: 0.4vw; margin-top: auto;">
+                        <span style="padding: 0.3vw 0.6vw; border-radius: 0.3vw; font-size: 0.7vw; font-weight: 700; color: white; background: #AAA; text-transform: uppercase;">
+                            CONDICIONAL
+                        </span>
+                        <span style="padding: 0.3vw 0.6vw; border-radius: 0.3vw; font-size: 0.7vw; font-weight: 700; color: white; background: #999; text-transform: uppercase;">
+                            MODERADA
                         </span>
                     </div>
                 </div>
             </div>
             
-            <!-- Card 2: Risco Baixo + História Familiar -->
-            <div class="card" style="border: 1px solid var(--border); border-radius: 0.8vw; overflow: visible; display: flex; flex-direction: column;">
-                <div class="cardHeader">
-                    <p>Risco Baixo + História Familiar</p>
+            <!-- COLUNA 2: ESC 2021 -->
+            <div style="display: flex; flex-direction: column; gap: 1.2vw; opacity: 0.85;">
+                
+                <div style="background: #F5F5F5; padding: 0.8vw 1.2vw; border-radius: 0.5vw; border: 1px solid rgba(0,0,0,0.06);">
+                    <p style="font-size: 0.75vw; font-weight: 600; color: #666; letter-spacing: 0.03vw; margin: 0;">
+                        Outras gram&aacute;ticas (Class/LoE)
+                    </p>
                 </div>
                 
-                <div style="padding: 1.8vw; flex-grow: 1; display: flex; flex-direction: column;">
-                    <p class="body-large" style="line-height: 1.6; color: var(--text); margin-bottom: var(--spacing-3); flex-grow: 1;">
-                        "O CAC <strong>pode ser útil</strong> na avaliação de risco em indivíduos com baixo risco."
+                <div style="background: white; border: 1px solid rgba(0,0,0,0.06); border-radius: 0.7vw; padding: 1.5vw; box-shadow: 0 0.2vw 0.6vw rgba(0,0,0,0.02); flex: 1;">
+                    
+                    <p style="font-size: 0.8vw; font-weight: 600; color: #777; margin-bottom: 0.8vw; text-transform: uppercase; letter-spacing: 0.02vw;">
+                        ESC 2021
                     </p>
                     
-                    <div style="display: flex; gap: var(--spacing-2); flex-wrap: wrap; align-items: center; margin-top: auto;">
-                        <span class="grade-badge low">
-                            ⊕⊕◯◯ BAIXA
+                    <p style="font-size: 1.1vw; line-height: 1.5; color: #444; margin-bottom: 1.2vw;">
+                        "CAC scoring <strong>may be considered</strong> as a risk modifier in cardiovascular risk assessment of asymptomatic individuals at low or intermediate risk."
+                    </p>
+                    
+                    <div style="display: flex; gap: 0.3vw;">
+                        <span style="padding: 0.25vw 0.5vw; border-radius: 0.25vw; font-size: 0.65vw; font-weight: 600; color: #666; background: #EFEFEF; text-transform: uppercase;">
+                            CLASS IIa
                         </span>
-                        <span class="recommendation-badge conditional">
-                            Recomendação CONDICIONAL
+                        <span style="padding: 0.25vw 0.5vw; border-radius: 0.25vw; font-size: 0.65vw; font-weight: 600; color: #666; background: #EFEFEF; text-transform: uppercase;">
+                            LEVEL B
                         </span>
                     </div>
                 </div>
             </div>
+            
+            <!-- COLUNA 3: ACC/AHA 2018 -->
+            <div style="display: flex; flex-direction: column; gap: 1.2vw; opacity: 0.85;">
+                
+                <div style="background: #F5F5F5; padding: 0.8vw 1.2vw; border-radius: 0.5vw; border: 1px solid rgba(0,0,0,0.06);">
+                    <p style="font-size: 0.75vw; font-weight: 600; color: #666; letter-spacing: 0.03vw; margin: 0;">
+                        Outras gram&aacute;ticas (Class/LoE)
+                    </p>
+                </div>
+                
+                <div style="background: white; border: 1px solid rgba(0,0,0,0.06); border-radius: 0.7vw; padding: 1.5vw; box-shadow: 0 0.2vw 0.6vw rgba(0,0,0,0.02); flex: 1;">
+                    
+                    <p style="font-size: 0.8vw; font-weight: 600; color: #777; margin-bottom: 0.8vw; text-transform: uppercase; letter-spacing: 0.02vw;">
+                        ACC/AHA 2018
+                    </p>
+                    
+                    <p style="font-size: 1.1vw; line-height: 1.5; color: #444; margin-bottom: 1.2vw;">
+                        "In intermediate-risk patients... if the decision about statin remains uncertain, <strong>CAC score is useful</strong> to guide discussion."
+                    </p>
+                    
+                    <div style="display: flex; gap: 0.3vw;">
+                        <span style="padding: 0.25vw 0.5vw; border-radius: 0.25vw; font-size: 0.65vw; font-weight: 600; color: #666; background: #EFEFEF; text-transform: uppercase;">
+                            CLASS 2a
+                        </span>
+                        <span style="padding: 0.25vw 0.5vw; border-radius: 0.25vw; font-size: 0.65vw; font-weight: 600; color: #666; background: #EFEFEF; text-transform: uppercase;">
+                            LEVEL B-NR
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
         </div>
-        
-        <!-- Footer -->
-        <div style="margin-top: var(--spacing-4); text-align: center;">
-            <p class="caption-xs">
-                Outras gramáticas (ESC 2021, ACC/AHA 2018) também recomendam CAC
-            </p>
-        </div>
-        
     </section>
