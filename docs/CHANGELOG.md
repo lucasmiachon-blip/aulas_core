@@ -14,6 +14,59 @@
 
 ---
 
+## [2026-01-20] - Documentação de Papéis + Preparação Paleta + Correções MVP
+
+### 📚 Documentos de Papéis Específicos
+
+**Criados documentos dedicados para cada IA:**
+- ✅ `docs/ESSENTIAL/CLAUDE_DEV_ROLE.md` - Desenvolvedor sênior + UI/UX + professor
+- ✅ `docs/ESSENTIAL/CLAUDE_CONTENT_ROLE.md` - Especialista em conteúdo médico
+- ✅ `docs/ESSENTIAL/CHATGPT_AUDITOR_ROLE.md` - Guardião da qualidade
+
+**Benefícios:**
+- Cada papel sabe exatamente o que fazer
+- Evita "alucinações" sobre responsabilidades
+- Workflow claro entre os 3 papéis
+- README atualizado com direcionamento para documentos específicos
+
+### 🎨 Preparação Nova Paleta (Pós-MVP)
+
+**Adicionada paleta "Swiss Neutral Professional" no CSS:**
+- ✅ Novas variáveis CSS adicionadas (não ativas ainda)
+- ✅ Paleta atual mantida (compatibilidade total)
+- ✅ Aliases comentados para migração futura
+- ✅ Zero risco (nada quebra, só adiciona código)
+
+**Plano documentado:**
+- `docs/ESSENTIAL/PALETA_MIGRATION_PLAN.md` criado
+- Análise técnica completa
+- Migração completa será pós-MVP (depois de 10 Fevereiro)
+
+### 🔧 Correções MVP
+
+**Capa (S01.html):**
+- ✅ Rodapé invisível corrigido (`var(--gold)` ao invés de `rgba()`)
+- ✅ Distribuição vertical melhorada
+- ✅ Subtítulo "A Coragem na Incerteza" mais visível
+- ✅ Layout centralizado e equilibrado
+
+**GitHub Pages:**
+- ✅ Redirect para `/GRADE/dist/` adicionado
+- ✅ Todos os caminhos agora redirecionam corretamente
+
+**CSS base:**
+- ✅ Comentários educacionais adicionados
+- ✅ `overflow-y: auto` para scroll quando necessário
+- ✅ Formatação melhorada para legibilidade
+
+### 📁 Estrutura
+
+**Análise de estrutura proposta:**
+- `docs/ESTRUTURA_PROPOSTA.md` criado
+- Recomendação: manter simples até MVP, expandir depois
+
+---
+
 ## [2026-01-20] - Sincronização entre Computadores
 
 ### 🔄 Alinhamento Local com Remoto
