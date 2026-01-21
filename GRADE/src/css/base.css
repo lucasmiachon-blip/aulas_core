@@ -54,7 +54,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { 
     background: var(--navy);
-    font-family: 'Lato', sans-serif;
+    font-family: 'Inter', sans-serif;
     overflow: hidden; 
     display: flex;
     justify-content: center;
@@ -114,9 +114,9 @@ h2 {
 }
 
 p {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: 1.4vw;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--text);
     margin-bottom: 1.5vw;
 }
