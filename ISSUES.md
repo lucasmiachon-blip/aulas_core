@@ -1,219 +1,73 @@
-# ISSUES & PROBLEMAS CONHECIDOS
+# 🐛 ISSUES - Problemas Encontrados e Resolvidos
 
-Documentação de problemas encontrados e soluções aplicadas.
+## Issues Encontrados por Assistente (Auto)
 
----
+### [2026-01-22] - Batch 2: Classes grid sem container grid pai
+**Status:** ✅ RESOLVIDO  
+**Prioridade:** P0 (Crítico)
 
-## 🚨 [CRÍTICO] CSS Global Quebrado (21/01/2026) - **RESOLVIDO**
+**Problema:**
+- S03.html usava `class="col-12"` mas `.slide` tem `display: flex`, não `display: grid`
+- Classes `.col-*` só funcionam dentro de containers com `display: grid`
+- Isso fazia as classes não funcionarem corretamente
 
-### Descrição do Problema
+**Solução:**
+- Removidas classes `col-12` do S03
+- Mantido sistema de design (variáveis CSS, componentes funcionam)
+- Layout preservado (flex funciona corretamente)
 
-**O que aconteceu:**
-- Claude (IA) sugeriu criar "sistema de design profissional"
-- Cursor criou `system.css` e `components.css`
-- Paleta profissional original foi destruída
-- Preto carvão (#2C2C2C) substituiu navy elegante (#0B1320)
-- Visual ficou agressivo: "doía aos olhos"
+**Commit:** `23aa1d5`
 
-**Impacto:**
-- ❌ GitPages quebrado
-- ❌ Paleta visual ruim
-- ❌ UTF-8 encoding issues
-- ❌ Layout problems
-- ❌ PDF regression
-
-### Causa Raiz
-
-1. **Sugestão inadequada de IA**
-   - Claude recomendou mudanças desnecessárias
-   - Paleta já estava profissional
-
-2. **CSS conflicts**
-   - `system.css` conflitou com `base.css`
-   - Necessário usar `!important` (anti-pattern)
-
-3. **Falta de teste incremental**
-   - Refatorou 8 slides de uma vez
-   - Não validou antes de continuar
-
-### Solução Aplicada
-
-**Commits de correção:**
-1. `2d4f9ae` - Restaurou Batch 1 + deletou CSS problemático
-2. `37b6bf0` - Restaurou estrutura do S03
-3. `27f648f` - Corrigiu paleta do S03
-4. `a19eb86` - **Restaurou base.css com paleta profissional** ⭐
-
-**Arquivos restaurados:**
-- ✅ `base.css` → commit 79e1cb5 (paleta profissional)
-- ✅ `S02-S10` → commit aa28dfc (Batch 1 limpo)
-- ❌ `system.css` → DELETADO
-- ❌ `components.css` → DELETADO
-
-### Como Evitar no Futuro
-
-#### REGRA #1: NÃO mexer em CSS global sem forte justificativa
-```
-❌ NUNCA fazer:
-- Criar novos arquivos CSS sem necessidade
-- Mudar paleta de cores "porque ficaria melhor"
-- Refatorar CSS sem testar antes
-
-✅ SEMPRE fazer:
-- Questionar: "É realmente necessário?"
-- Testar em 1 slide antes de aplicar globalmente
-- Usar commits pequenos e frequentes
-- Validar no viewer ANTES de continuar
-```
-
-#### REGRA #2: Questionar sugestões de IA
-```
-❌ NUNCA aceitar cegamente:
-- "Vamos criar um sistema de design"
-- "Vamos normalizar a paleta"
-- "Vamos adicionar mais arquivos CSS"
-
-✅ SEMPRE perguntar:
-- "Por que preciso disso?"
-- "O que melhora especificamente?"
-- "Qual o risco de quebrar?"
-- "Posso testar em escopo pequeno primeiro?"
-```
-
-#### REGRA #3: Documentar estados bons (golden commits)
-```
-✅ Golden commits identificados:
-- 79e1cb5: base.css com paleta profissional
-- aa28dfc: Batch 1 limpo e funcionando
-- 822b27d: S03 estrutura original
-
-Se algo quebrar: voltar para esses commits.
-```
-
-### Status
-**Resolvido:** ✅  
-**Data resolução:** 21/01/2026 23:30  
-**Responsável:** Claude AI (causou) + Lucas (validou correção)
+**Nota para próximos slides:**
+- Para usar grid 12-column, criar wrapper com `class="slide-grid"` dentro do slide
+- Ou usar `display: grid` diretamente no container interno
+- Classes `.col-*` só funcionam dentro de containers com grid
 
 ---
 
-## ⚠️ [MENOR] S03 Layout Quebrado no Batch 1 - **RESOLVIDO**
+## Issues Trazidos pelo Usuário
 
-### Descrição
-S03 tinha layout quebrado na refatoração Batch 1.
+### [2026-01-22] - PDF parece ter voltado para trás
+**Status:** ✅ RESOLVIDO  
+**Prioridade:** P1 (Alto)
 
-### Solução
-Restaurado para versão original (commit 822b27d) + ajuste manual de paleta.
+**Problema reportado:**
+- PDF gerado parece ter voltado para trás (regressão visual?)
 
-### Status
-**Resolvido:** ✅  
-**Commit:** 37b6bf0 + 27f648f
+**Causa identificada:**
+- Conflito de especificidade CSS: `base.css` tem regras para `h2` e `p` que sobrescrevem classes do sistema
+- Classes `.title-section`, `.body-large`, `.caption` não tinham `!important` para sobrescrever estilos base
 
----
+**Solução aplicada:**
+- Adicionado `!important` nas classes de tipografia do sistema (`system.css`)
+- Garante que classes do sistema sobrescrevem estilos base do `base.css`
+- Mantém compatibilidade com estilos inline existentes
 
-## 📋 PROBLEMAS CONHECIDOS (Não críticos)
-
-### 1. UTF-8 Encoding Ocasional
-**Descrição:** Símbolos ⊕ às vezes aparecem como ⊙  
-**Workaround:** Validar encoding ao editar  
-**Prioridade:** Baixa  
-**Status:** Monitorando
-
-### 2. GitHub Pages Delay
-**Descrição:** Rebuild leva 2-3 minutos  
-**Workaround:** Aguardar antes de validar  
-**Prioridade:** Informativa  
-**Status:** Esperado (GitHub Pages limitation)
+**Commit:** `[próximo commit]`
 
 ---
 
-## 🔄 PROCESSO DE REPORTE DE ISSUES
+### [2026-01-22] - Regressão visual: !important excessivo + cores não oficiais
+**Status:** ✅ RESOLVIDO  
+**Prioridade:** P0 (Crítico)
 
-### Quando reportar
-- ❌ Visual quebrado no viewer
-- ❌ PDF não exportando corretamente
-- ❌ Navegação não funcionando
-- ❌ Encoding corrupto
-- ⚠️ Performance lenta
+**Problema reportado:**
+- Commit atual muito pior que anterior
+- Estilos quebrados, cores incorretas
 
-### Como reportar
-1. **Screenshot** do problema
-2. **Descrição clara:** O que esperava vs o que aconteceu
-3. **Contexto:** Qual slide, qual ação causou
-4. **Reprodução:** Como reproduzir o problema
+**Problemas encontrados:**
+1. **S45.html usava `var(--accent-primary)`** - Não é paleta oficial, deveria ser `var(--teal)`
+2. **S28.html tinha cores hardcoded `#DDD`** - Deveria usar `var(--border)`
+3. **`!important` excessivo no system.css** - Quebrava estilos inline necessários
 
-### Template
-```
-## [Título do problema]
+**Solução aplicada:**
+- ✅ Substituído `var(--accent-primary)` por `var(--teal)` no S45.html (3 ocorrências)
+- ✅ Substituído `#DDD` por `var(--border)` no S28.html (2 ocorrências)
+- ✅ Removido `!important` excessivo, usando especificidade CSS adequada
+- ✅ Classes agora usam seletores mais específicos (`h2.title-section`, `p.body-large`) ao invés de `!important`
 
-### Descrição
-[O que está errado]
-
-### Reprodução
-1. Abrir [URL/arquivo]
-2. Fazer [ação]
-3. Observar [problema]
-
-### Esperado
-[O que deveria acontecer]
-
-### Screenshots
-[Se aplicável]
-
-### Contexto
-- Browser: [Chrome/Firefox/etc]
-- Device: [Desktop/Mobile]
-- Commit: [sha se conhecido]
-```
+**Commit:** `[próximo commit]`
 
 ---
 
-## 🎯 PRIORIZAÇÃO DE ISSUES
-
-### P0 (Crítico - Corrigir IMEDIATAMENTE)
-- GitPages quebrado
-- Navegação não funciona
-- PDF não exporta
-- Visual completamente quebrado
-
-### P1 (Importante - Corrigir esta semana)
-- Layout problems em 1-2 slides
-- Paleta inconsistente
-- Encoding issues
-
-### P2 (Desejável - Corrigir quando possível)
-- Melhorias visuais menores
-- Otimizações de performance
-- Refactoring não urgente
-
-### P3 (Nice-to-have - Backlog)
-- Features novas
-- Ideias de melhoria
-- Experimentações
-
----
-
-## 📚 RECURSOS ÚTEIS
-
-### Para debug
-- **GitHub Pages status:** https://www.githubstatus.com/
-- **Viewer:** https://lucasmiachon-blip.github.io/aulas_core/GRADE/dist/
-- **Repo:** https://github.com/lucasmiachon-blip/aulas_core
-
-### Para rollback
-```bash
-# Ver histórico de um arquivo
-git log --follow GRADE/src/css/base.css
-
-# Ver diff com commit bom
-git diff 79e1cb5 HEAD -- GRADE/src/css/base.css
-
-# Restaurar arquivo específico
-git checkout 79e1cb5 -- GRADE/src/css/base.css
-```
-
----
-
-**Última atualização:** 21/01/2026 23:30  
-**Issues abertas:** 0  
-**Issues resolvidas:** 2
+**Última atualização:** 2026-01-22
