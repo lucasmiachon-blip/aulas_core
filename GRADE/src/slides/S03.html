@@ -1,71 +1,73 @@
 <section class="slide" data-slide-id="S03">
         
-        <div style="margin-bottom: 2.5vw;">
-            <p style="font-size: 0.8vw; color: var(--muted); font-weight: 600; letter-spacing: 0.05vw; text-transform: uppercase; margin-bottom: 0.7vw;">
+        <div style="margin-bottom: 2vw;">
+            <p style="font-size: 0.75vw; color: var(--muted); font-weight: 600; letter-spacing: 0.05vw; text-transform: uppercase; margin-bottom: 0.6vw;">
                 Escore de Cálcio (CAC)
             </p>
-            <h2 style="font-size: 2.6vw; margin-bottom: 1vw; color: var(--text);">
+            <h2 style="font-size: 2.4vw; margin-bottom: 0.8vw; color: var(--text); line-height: 1.2;">
                 CAC para decidir sob incerteza: a lente GRADE
             </h2>
-            <p style="font-size: 0.9vw; color: var(--muted); font-weight: 500; margin-bottom: 1.2vw;">
+            <p style="font-size: 0.85vw; color: var(--muted); font-weight: 500; margin-bottom: 1vw;">
                 Outras gramáticas existem (Class/LoE); aqui o foco é GRADE
-            </p>
-            <p style="font-size: 0.75vw; color: var(--muted); font-style: italic; padding: 0.9vw 1.5vw; background: var(--bg); border-radius: 0.5vw; display: inline-block;">
-                 Comparar função clínica, não rótulos
             </p>
         </div>
         
-        <!-- Grid simplificado: apenas SBC 2025 -->
-        <div style="display: flex; justify-content: center; align-items: start;">
+        <!-- Header Framework -->
+        <div style="background: var(--navy); color: var(--white); padding: 1vw 1.5vw; border-radius: 0.7vw; text-align: center; margin-bottom: 2vw; max-width: 85vw; margin-left: auto; margin-right: auto;">
+            <p style="font-size: 0.85vw; font-weight: 700; letter-spacing: 0.08vw; margin: 0; text-transform: uppercase;">
+                Framework do curso: GRADE (SBC 2025)
+            </p>
+        </div>
+        
+        <!-- Grid horizontal: 2 colunas lado a lado -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.5vw; align-items: start; max-width: 95vw; margin: 0 auto;">
             
-            <!-- SBC 2025 - FRAMEWORK DO CURSO (centralizado, com mais espaço) -->
-            <div style="display: flex; flex-direction: column; gap: 1.7vw; max-width: 70vw;">
-                
-                <div style="background: var(--text); color: white; padding: 1.2vw 1.8vw; border-radius: 0.7vw; text-align: center;">
-                    <p style="font-size: 0.9vw; font-weight: 700; letter-spacing: 0.08vw; margin: 0;">
-                        Framework do curso: GRADE (SBC 2025)
+            <!-- Card 1: Risco Intermediário -->
+            <div class="risk-card" style="background: var(--white); border: 1px solid var(--border); border-radius: 0.8vw; overflow: visible; display: flex; flex-direction: column;">
+                <!-- Header navy - CORRIGIDO: sem margin negativo, dentro do card -->
+                <div style="background: var(--navy); color: var(--white); padding: 1vw 1.5vw; border-radius: 0.8vw 0.8vw 0 0; flex-shrink: 0;">
+                    <p style="font-size: 0.9vw; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 0.05vw; line-height: 1.3;">
+                        Risco Intermediário
                     </p>
                 </div>
                 
-                <!-- Card 1: Risco Intermediário -->
-                <div class="risk-card" style="background: var(--white); border: 1px solid var(--border); border-radius: 0.8vw; padding: 2.2vw; overflow: hidden;">
-                    <div style="background: var(--navy); color: var(--white); padding: 1.2vw 1.8vw; margin: -2.2vw -2.2vw 1.5vw -2.2vw;">
-                        <p style="font-size: 0.95vw; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 0.05vw;">
-                            Risco Intermediário
-                        </p>
-                    </div>
-                    
-                    <p style="font-size: 1.25vw; line-height: 1.7; color: var(--text); margin-bottom: 1.7vw;">
+                <!-- Conteúdo do card -->
+                <div style="padding: 1.8vw; flex-grow: 1; display: flex; flex-direction: column;">
+                    <p style="font-size: 1.1vw; line-height: 1.6; color: var(--text); margin-bottom: 1.5vw; flex-grow: 1;">
                         "O CAC <strong>pode ser útil</strong> para decidir sobre a necessidade e a intensidade da terapia hipolipemiante."
                     </p>
                     
-                    <div style="display: flex; gap: 0.9vw; flex-wrap: wrap; align-items: center;">
-                        <span style="background: rgba(31, 118, 110, 0.15); border: 1px solid var(--teal); color: var(--teal); padding: 0.55vw 1vw; border-radius: 0.35vw; font-weight: 700; font-size: 0.75vw; box-shadow: 0 0.2vw 0.6vw rgba(31, 118, 110, 0.2);">
+                    <div style="display: flex; gap: 0.8vw; flex-wrap: wrap; align-items: center; margin-top: auto;">
+                        <span style="background: rgba(31, 118, 110, 0.15); border: 1px solid var(--teal); color: var(--teal); padding: 0.5vw 0.9vw; border-radius: 0.35vw; font-weight: 700; font-size: 0.7vw; box-shadow: 0 0.2vw 0.6vw rgba(31, 118, 110, 0.2); white-space: nowrap;">
                             ⊕⊕◯◯ BAIXA
                         </span>
-                        <span style="background: rgba(31, 118, 110, 0.1); color: var(--teal); padding: 0.55vw 1vw; border-radius: 0.35vw; font-weight: 600; font-size: 0.75vw;">
+                        <span style="background: rgba(31, 118, 110, 0.1); color: var(--teal); padding: 0.5vw 0.9vw; border-radius: 0.35vw; font-weight: 600; font-size: 0.7vw; white-space: nowrap;">
                             Recomendação CONDICIONAL
                         </span>
                     </div>
                 </div>
+            </div>
+            
+            <!-- Card 2: Risco Baixo + História Familiar -->
+            <div class="risk-card" style="background: var(--white); border: 1px solid var(--border); border-radius: 0.8vw; overflow: visible; display: flex; flex-direction: column;">
+                <!-- Header navy - CORRIGIDO: sem margin negativo, dentro do card -->
+                <div style="background: var(--navy); color: var(--white); padding: 1vw 1.5vw; border-radius: 0.8vw 0.8vw 0 0; flex-shrink: 0;">
+                    <p style="font-size: 0.9vw; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 0.05vw; line-height: 1.3;">
+                        Risco Baixo + História Familiar
+                    </p>
+                </div>
                 
-                <!-- Card 2: Risco Baixo + História Familiar -->
-                <div class="risk-card" style="background: var(--white); border: 1px solid var(--border); border-radius: 0.8vw; padding: 2.2vw; overflow: hidden;">
-                    <div style="background: var(--navy); color: var(--white); padding: 1.2vw 1.8vw; margin: -2.2vw -2.2vw 1.5vw -2.2vw;">
-                        <p style="font-size: 0.95vw; font-weight: 700; margin: 0; text-transform: uppercase; letter-spacing: 0.05vw;">
-                            Risco Baixo + História Familiar
-                        </p>
-                    </div>
-                    
-                    <p style="font-size: 1.25vw; line-height: 1.7; color: var(--text); margin-bottom: 1.7vw;">
+                <!-- Conteúdo do card -->
+                <div style="padding: 1.8vw; flex-grow: 1; display: flex; flex-direction: column;">
+                    <p style="font-size: 1.1vw; line-height: 1.6; color: var(--text); margin-bottom: 1.5vw; flex-grow: 1;">
                         "O CAC <strong>pode ser útil</strong> na avaliação de risco em indivíduos com baixo risco."
                     </p>
                     
-                    <div style="display: flex; gap: 0.9vw; flex-wrap: wrap; align-items: center;">
-                        <span style="background: rgba(31, 118, 110, 0.15); border: 1px solid var(--teal); color: var(--teal); padding: 0.55vw 1vw; border-radius: 0.35vw; font-weight: 700; font-size: 0.75vw; box-shadow: 0 0.2vw 0.6vw rgba(31, 118, 110, 0.2);">
+                    <div style="display: flex; gap: 0.8vw; flex-wrap: wrap; align-items: center; margin-top: auto;">
+                        <span style="background: rgba(31, 118, 110, 0.15); border: 1px solid var(--teal); color: var(--teal); padding: 0.5vw 0.9vw; border-radius: 0.35vw; font-weight: 700; font-size: 0.7vw; box-shadow: 0 0.2vw 0.6vw rgba(31, 118, 110, 0.2); white-space: nowrap;">
                             ⊕⊕◯◯ BAIXA
                         </span>
-                        <span style="background: rgba(31, 118, 110, 0.1); color: var(--teal); padding: 0.55vw 1vw; border-radius: 0.35vw; font-weight: 600; font-size: 0.75vw;">
+                        <span style="background: rgba(31, 118, 110, 0.1); color: var(--teal); padding: 0.5vw 0.9vw; border-radius: 0.35vw; font-weight: 600; font-size: 0.7vw; white-space: nowrap;">
                             Recomendação CONDICIONAL
                         </span>
                     </div>
