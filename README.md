@@ -32,7 +32,30 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 - ✅ Apresentar PLANO antes de executar
 - ✅ Esperar aprovação explícita do usuário
 - ✅ Usar paleta oficial (`var(--navy)`, `var(--gold)`, etc)
-- ✅ Atualizar `docs/CHANGELOG.md` em cada commit
+- ✅ **ATUALIZAR `docs/CHANGELOG.md` em CADA commit** ← **OBRIGATÓRIO!**
+
+---
+
+## 📝 REGRA ABSOLUTA: CHANGELOG
+
+**⚠️ CRÍTICO:** **TODA mudança DEVE ser documentada no `docs/CHANGELOG.md` ANTES do commit.**
+
+**Você (assistente) DEVE:**
+1. **SEMPRE** atualizar `docs/CHANGELOG.md` quando fizer QUALQUER mudança
+2. **SEMPRE** ler a última entrada do CHANGELOG antes de começar a trabalhar
+3. **SEMPRE** documentar o que foi feito, por quê, e o que NÃO foi feito (para evitar alucinações)
+
+**Formato da entrada no CHANGELOG:**
+- Data da sessão
+- Objetivo da sessão
+- O que foi feito (com detalhes técnicos)
+- O que NÃO foi feito (se relevante)
+- Arquivos modificados
+- Commits relacionados
+
+**📖 Exemplo:** Veja `docs/CHANGELOG.md` - Seção `[2026-01-22] - Batch 1` como referência.
+
+**NUNCA commite sem atualizar o CHANGELOG primeiro!**
 
 ---
 
@@ -416,7 +439,7 @@ grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
 2. **Never request, print, store, or leak tokens/credentials**
 3. **`OSTEOPOROSE/` is LOCK (read-only)** - não tocar sem permissão
 4. **Changes must be small and auditable**
-5. **Every commit MUST update `docs/CHANGELOG.md`**
+5. **🚨 EVERY commit MUST update `docs/CHANGELOG.md` FIRST** ← **LEIA A SEÇÃO "REGRA ABSOLUTA: CHANGELOG" ACIMA**
 6. **Never invent numbers or citations** (use `[TBD]` if missing)
 7. **ALWAYS use `var(--nome)` for colors** (never hardcoded `#XXXXXX`)
 
