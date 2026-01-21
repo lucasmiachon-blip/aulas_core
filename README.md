@@ -36,6 +36,48 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 
 ---
 
+## 🚨 PALETA OFICIAL - REGRA ABSOLUTA
+
+**⚠️ CRÍTICO: Este projeto usa APENAS uma paleta profissional definida. NUNCA invente cores!**
+
+### ✅ CORES PERMITIDAS (USE APENAS ESTAS):
+
+```css
+var(--navy)    /* #0B1320 - Títulos/base escura */
+var(--gold)    /* #DDB944 - Destaques/ênfase */
+var(--text)    /* #222 - Texto principal */
+var(--muted)   /* #666 - Texto secundário */
+var(--bg)      /* #F9F8F4 - Fundo padrão */
+var(--white)   /* #FFFFFF - Cards */
+var(--teal)    /* #1F766E - Clínico/dados */
+var(--border)  /* #E9ECEF - Bordas */
+var(--blue)    /* #2563EB - Suporte/informação */
+```
+
+### ❌ CORES PROIBIDAS (NUNCA USAR):
+
+**Variáveis CSS problemáticas (NÃO EXISTEM mais):**
+- ❌ `var(--success)` → Use `var(--teal)` ou `var(--gold)`
+- ❌ `var(--warning)` → Use `var(--gold)`
+- ❌ `var(--danger)` → Use `var(--navy)` ou `var(--text)`
+
+**Cores hardcoded problemáticas (NUNCA usar):**
+- ❌ `#10B981` (verde) → Use `var(--teal)`
+- ❌ `#F59E0B` (laranja) → Use `var(--gold)`
+- ❌ `#EF4444` (vermelho) → Use `var(--navy)`
+- ❌ `#F97316` (laranja escuro) → Use `var(--gold)`
+- ❌ `#2C5F2D` (verde escuro) → Use `var(--navy)` ou `var(--teal)`
+- ❌ `#ECFDF5`, `#FEF3C7` (verde/amarelo claro) → Use `rgba()` com cores oficiais
+- ❌ Qualquer `#XXXXXX` hardcoded → Use `var(--nome)`
+
+**REGRA DE OURO:** Se você digitar `#` seguido de hex no HTML, VOCÊ ESTÁ ERRANDO!
+
+**📖 Leia a paleta completa:** `docs/ESSENTIAL/PROMPT_PALETA_OFICIAL.md` ← **OBRIGATÓRIO ANTES DE CRIAR/MODIFICAR SLIDES**
+
+---
+
+---
+
 ## 🎭 PAPÉIS E RESPONSABILIDADES
 
 Este projeto usa **3 assistentes diferentes** com responsabilidades distintas:
@@ -216,7 +258,9 @@ aulas_core/
 
 ---
 
-## 🎨 PALETA OFICIAL (OBRIGATÓRIA)
+## 🎨 PALETA OFICIAL (OBRIGATÓRIA) - DETALHES COMPLETOS
+
+**⚠️ ATENÇÃO: Esta seção é um resumo. Leia `docs/ESSENTIAL/PROMPT_PALETA_OFICIAL.md` para detalhes completos!**
 
 ### ✅ USE APENAS ESTAS CORES (ATUAL):
 
@@ -242,6 +286,8 @@ Migração completa será feita após MVP (10 Fevereiro).
 ### ❌ NUNCA USE:
 - `#333333`, `#000000`, `#666` (hardcoded)
 - `#FF0000`, `#00FF00` (cores primárias puras)
+- `#10B981`, `#F59E0B`, `#EF4444` (cores problemáticas que foram removidas)
+- `var(--success)`, `var(--warning)`, `var(--danger)` (variáveis que NÃO EXISTEM mais)
 - Qualquer cor fora da lista oficial
 
 **REGRA DE OURO:** Se você digitar `#` seguido de hex no HTML, VOCÊ ESTÁ ERRANDO!
@@ -250,7 +296,7 @@ Migração completa será feita após MVP (10 Fevereiro).
 
 ### 📖 TIPOGRAFIA:
 - **Títulos:** Georgia (serif) — autoridade acadêmica
-- **Corpo:** Inter (sans-serif) — legibilidade premium otimizada para telas
+- **Corpo:** Lato (sans-serif) — legibilidade premium
 
 ---
 
