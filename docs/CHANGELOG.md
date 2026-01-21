@@ -56,10 +56,24 @@
 ### 🐛 Fix: Conflito de Especificidade CSS
 **Problema:** Classes do sistema (`.title-section`, `.body-large`, `.caption`) não funcionavam porque `base.css` tinha regras mais específicas para `h2` e `p`.
 
-**Solução:**
+**Solução inicial (revertida):**
 - Adicionado `!important` nas classes de tipografia do `system.css`
-- Garante que classes do sistema sobrescrevem estilos base
+- **Problema:** `!important` excessivo quebrava estilos inline necessários
+
+**Solução final:**
+- Removido `!important` excessivo
+- Usado seletores mais específicos (`h2.title-section`, `p.body-large`) ao invés de `!important`
 - Mantém compatibilidade com estilos inline existentes
+
+**Commit:** `b53025c` (inicial), `[próximo commit]` (correção)
+
+### 🐛 Fix: Regressão Visual - Cores Não Oficiais
+**Problema:** S45.html usava `var(--accent-primary)` (não é paleta oficial) e S28.html tinha cores hardcoded `#DDD`.
+
+**Solução:**
+- Substituído `var(--accent-primary)` por `var(--teal)` no S45.html (3 ocorrências)
+- Substituído `#DDD` por `var(--border)` no S28.html (2 ocorrências)
+- Garante aderência à paleta oficial
 
 **Commit:** `[próximo commit]`
 
