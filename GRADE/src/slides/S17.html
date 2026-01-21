@@ -4,33 +4,41 @@
             <span style="color: var(--gold); display: block; margin-top: 0.4vw;">Diferença Mínima Importante (MID)</span>
         </h2>
 
-        <!-- RÉGUA CONCEITUAL -->
+        <!-- RÉGUA CONCEITUAL PROFISSIONAL -->
         <div style="margin: 1.5vw 0;">
-            <div style="display: flex; align-items: center; position: relative; height: 3.5vw;">
-                <!-- Zona DANO -->
-                <div style="flex: 1; background: rgba(239, 68, 68, 0.12); height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 1.2vw; color: var(--text); font-weight: bold; border-right: 2px dashed var(--muted);">
-                    DANO
-                </div>
-                <!-- Linha RR 1.0 -->
-                <div style="position: absolute; left: 50%; width: 2px; height: 110%; background: var(--muted); transform: translateX(-50%); border-style: dashed;"></div>
-                <div style="position: absolute; left: 50%; top: -1.2vw; transform: translateX(-50%); font-family: 'Inter', sans-serif; font-size: 1vw; color: var(--muted); font-weight: bold; background: var(--white); padding: 0.2vw 0.5vw; border-radius: 0.2vw;">
-                    RR 1.0
-                </div>
-                
-                <!-- Zona SEM EFEITO -->
-                <div style="flex: 1; background: var(--bg); height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 1.2vw; color: var(--text); font-weight: bold;">
-                    SEM EFEITO
+            <!-- Container com sombra e borda -->
+            <div style="background: white; border: 2px solid var(--border); border-radius: 0.6vw; padding: 1.5vw; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+                <!-- Escala numérica superior -->
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.6vw; font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--muted); font-weight: 500;">
+                    <span>1.5</span>
+                    <span>1.2</span>
+                    <span>1.0</span>
+                    <span style="font-weight: 700; color: var(--gold);">0.8 (MID)</span>
+                    <span>0.6</span>
+                    <span>0.4</span>
                 </div>
                 
-                <!-- Linha MID 0.80 -->
-                <div style="position: absolute; left: 75%; width: 4px; height: 110%; background: var(--gold); transform: translateX(-50%); border-radius: 2px;"></div>
-                <div style="position: absolute; left: 75%; top: -1.2vw; transform: translateX(-50%); font-family: 'Inter', sans-serif; font-size: 1vw; color: var(--gold); font-weight: bold; background: var(--white); padding: 0.2vw 0.5vw; border-radius: 0.2vw;">
-                    MID 0.80
+                <!-- Régua visual profissional -->
+                <div style="position: relative; height: 4vw; background: linear-gradient(to right, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.15) 33.3%, var(--bg) 33.3%, var(--bg) 66.6%, rgba(16, 185, 129, 0.15) 66.6%, rgba(16, 185, 129, 0.15) 100%); border: 2px solid var(--border); border-radius: 0.4vw; overflow: visible; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
+                    
+                    <!-- Linha RR 1.0 (centro) -->
+                    <div style="position: absolute; left: 50%; width: 3px; height: 100%; background: var(--muted); transform: translateX(-50%); border-style: dashed; opacity: 0.6;"></div>
+                    <div style="position: absolute; left: 50%; top: -1.5vw; transform: translateX(-50%); font-family: 'Inter', sans-serif; font-size: 0.9vw; color: var(--muted); font-weight: 700; background: white; padding: 0.3vw 0.6vw; border-radius: 0.3vw; border: 1px solid var(--muted); box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
+                        RR 1.0
+                    </div>
+                    
+                    <!-- Linha MID 0.80 (destacada) -->
+                    <div style="position: absolute; left: 75%; width: 4px; height: 100%; background: var(--gold); transform: translateX(-50%); border-radius: 2px; box-shadow: 0 0 8px rgba(221, 185, 68, 0.4);"></div>
+                    <div style="position: absolute; left: 75%; top: -1.5vw; transform: translateX(-50%); font-family: 'Inter', sans-serif; font-size: 0.9vw; color: var(--gold); font-weight: 700; background: white; padding: 0.3vw 0.6vw; border-radius: 0.3vw; border: 2px solid var(--gold); box-shadow: 0 2px 6px rgba(0,0,0,0.08);">
+                        MID 0.80
+                    </div>
                 </div>
                 
-                <!-- Zona BENEFÍCIO -->
-                <div style="flex: 1; background: rgba(16, 185, 129, 0.12); height: 100%; display: flex; align-items: center; justify-content: center; font-family: 'Inter', sans-serif; font-size: 1.2vw; color: var(--text); font-weight: bold;">
-                    BENEFÍCIO
+                <!-- Labels das zonas -->
+                <div style="display: flex; justify-content: space-between; margin-top: 0.8vw; font-family: 'Inter', sans-serif; font-size: 1.1vw; color: var(--text); font-weight: 700;">
+                    <span style="color: var(--danger);">DANO</span>
+                    <span style="color: var(--muted);">SEM EFEITO</span>
+                    <span style="color: var(--success);">BENEFÍCIO</span>
                 </div>
             </div>
         </div>
