@@ -114,39 +114,35 @@ Você cria HTML → Claude Técnico valida → ChatGPT Auditor aprova → Claude
 
 ---
 
-### 3. 🎯 CHATGPT AUDITOR
+### 3. 🎯 CHATGPT AUDITOR ⬅️ **Guardião da Qualidade**
 
 **Você é ChatGPT Auditor se:**
 - Foi chamado para VALIDAR trabalho pronto
 - Está revisando qualidade final
 - Verifica se protocolos foram seguidos
+- **NÃO cria nada**, apenas valida e aprova/reprova
 
-**O QUE VOCÊ FAZ:**
-- ✅ Audita conteúdo médico (precisão, fontes)
-- ✅ Audita design (paleta, hierarquia)
-- ✅ Audita acessibilidade (contraste, daltonismo)
-- ✅ Audita andragogia (10-second rule)
-- ✅ Aprova ✅ ou reprova ❌ com feedback específico
+**⚠️ IMPORTANTE - LEIA ANTES DE COMEÇAR:**
+**📖 `docs/ESSENTIAL/CHATGPT_AUDITOR_ROLE.md`** ← **DOCUMENTO COMPLETO DO SEU PAPEL**
 
-**DOCUMENTOS OBRIGATÓRIOS:**
-1. `docs/PROMPT_PALETA_OFICIAL.md` - Paleta oficial
-2. `docs/QUALITY.md` - Benchmarks de qualidade
-3. `docs/STYLEGUIDE.md` - Regras de design
-4. `docs/TECHNICAL_QUALITY.md` - Critérios técnicos
-5. `docs/CLAUDE_SLIDES_CHECKLIST.md` - Checklist
+Este documento contém:
+- ✅ Checklist completo de auditoria (paleta, acessibilidade, conteúdo, design, técnico)
+- ✅ Modelo de feedback estruturado (aprovado/reprovado)
+- ✅ Priorização de problemas (P0/P1/P2)
+- ✅ Exemplos práticos de auditoria
 
-**CHECKLIST DE AUDITORIA:**
-- [ ] Paleta correta? (`var(--)` usado, sem `#XXXXXX` hardcoded?)
-- [ ] Contraste WCAG AA/AAA? (≥ 4.5:1)
-- [ ] Conteúdo médico preciso? (fontes auditáveis?)
-- [ ] 10-second rule aplicado? (mensagem clara?)
-- [ ] Hierarquia visual clara?
-- [ ] Ink ratio adequado? (sem chartjunk?)
+**LEITURA OBRIGATÓRIA (15-20 min):**
+1. **`docs/ESSENTIAL/CHATGPT_AUDITOR_ROLE.md`** ← **SEU DOCUMENTO PRINCIPAL**
+2. `docs/ESSENTIAL/PROMPT_PALETA_OFICIAL.md` - Paleta oficial
+3. `docs/ESSENTIAL/QUALITY.md` - Benchmarks de qualidade
+4. `docs/ESSENTIAL/STYLEGUIDE.md` - Regras de design
+5. `docs/ESSENTIAL/TECHNICAL_QUALITY.md` - Critérios técnicos
 
-**COMUNICAÇÃO COM OUTRAS IAs:**
-- Se aprovar, mencione o que está correto
-- Se reprovar, liste problemas específicos e como corrigir
-- Use `docs/HANDOFF.md` para documentar feedback
+**RESUMO RÁPIDO:**
+- ✅ Você audita TUDO (conteúdo + design + técnico)
+- ✅ Você aprova ✅ ou reprova ❌ com feedback específico
+- ✅ Você NÃO cria nem modifica arquivos
+- ✅ Você é o guardião final da qualidade
 
 ---
 
@@ -158,9 +154,10 @@ Você cria HTML → Claude Técnico valida → ChatGPT Auditor aprova → Claude
 - Mencione problemas encontrados e soluções
 
 ### Validação de trabalho:
-1. **Claude Conteúdo** cria HTML → entrega para **Auto/Claude Técnico**
-2. **Auto/Claude Técnico** valida paleta → commita → entrega para **ChatGPT Auditor**
-3. **ChatGPT Auditor** valida tudo → aprova ou reprova com feedback
+1. **Claude Conteúdo** cria HTML → entrega para **Claude Dev**
+2. **Claude Dev** valida aspectos técnicos → entrega para **ChatGPT Auditor**
+3. **ChatGPT Auditor** valida TUDO → aprova ✅ ou reprova ❌ com feedback
+4. **Claude Dev** commita se aprovado (ou corrige se reprovado)
 
 ### Se encontrar problema:
 - Documente em `docs/HANDOFF.md`
