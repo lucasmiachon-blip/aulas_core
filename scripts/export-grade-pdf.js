@@ -7,7 +7,8 @@ async function exportPDF() {
   
   // Usar servidor local (fetch() não funciona com file:// por CORS)
   // Se servidor não estiver rodando, tentar iniciar ou usar URL
-  const url = 'http://localhost:8001/index.html';
+  // Tentar GitHub Pages primeiro, fallback para localhost
+  const url = 'https://lucasmiachon-blip.github.io/aulas_core/GRADE/dist/index.html';
   
   // Pasta de saída
   const outputDir = path.join(__dirname, '..', 'exports');
