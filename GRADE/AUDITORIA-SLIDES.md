@@ -1,646 +1,86 @@
-# AUDITORIA SLIDE-BY-SLIDE - GRADE 2026
-*Auditoria completa aplicando Gates 0-4 e Benchmarks NEJM/JACC/ESC/Tufte*
+# Auditoria de Slides — GRADE
 
-**Data:** 2026-01-19
-**Executor:** Claude Técnico (Anthropic)
+**Data:** 2026-01-22  
+**Escopo:** Passo **P0 (MVP)** — paleta, tipografia, consistência de tokens, viewer e exportação PDF 16:9.
 
----
+## Diagnóstico mais gritante (antes do P0)
+- **Inconsistência de cor**: mistura de RGB hardcoded + tentativas de `rgba(var(--gold), …)` (CSS inválido) → fundos/tints quebravam e a paleta “parecia amadora”.
+- **Tipografia sem regra**: Inter + Lato + Georgia usados de forma ad-hoc → hierarquia visual inconsistente.
+- **Print/PDF não-PPT**: exportação em A4 e “normalização” agressiva de layout → deformava slides e comprometia uso em congresso.
+- **Viewer com UX de palco incompleta**: sem deep link por slide, sem clique/swipe (útil em ensaio e revisão).
 
-## RESUMO EXECUTIVO
+## Correções aplicadas (P0)
+- Tokens revisados + **RGB helpers** para transparências (`rgba(var(--gold-rgb), 0.x)`).
+- **Fonte principal Inter** (Georgia fica opcional para quotes/ênfase).
+- **Exportação PDF em 16:9** (1 slide/página), preservando layout do slide.
+- Viewer com: `_list.txt` (menos manutenção), hash `#Sxx`, clique, swipe, Home/End.
 
-- **Total de slides:** 41
-- **Aprovados (todos gates OK):** 7
-- **Com ressalvas (algum gate warning):** 32
-- **Reprovados (algum gate critical):** 4
+## Checklist P0 (MVP)
+- [x] Nenhum slide com **cores hex hardcoded** em `style=""` (cores → tokens).
+- [x] Nenhuma ocorrência de `rgba(var(--gold), …)` inválido.
+- [x] Tipografia consistente (Inter via `--font-sans`).
+- [x] Print/PDF: 16:9 + 1 slide por página + background preservado.
+- [x] Viewer: teclado, clique, swipe, deep-link.
 
-**Score médio por Gate:**
-- Gate 0 (Estrutura): 3.7/5.0
-- Gate 1 (Interatividade): 5.0/5.0
-- Gate 2 (Visual): 3.7/5.0
-- Gate 3 (Andragogia): 4.6/5.0
-- Gate 4 (Evidência): 4.1/5.0
-- **TOTAL: 21.0/25.0**
-
----
-
-## ⭐ ÁCIDO BEMPEDÓICO + SAMS (Prioridade Máxima)
-
-**Total de slides relacionados:** 13
-
-### S08.html - GRADE Domain: 
-            Dose-Response Gradient
-**Gates:** G0 ⚠️ | G1 ✅ | G2 ⚠️ | G3 ⚠️ | G4 ⚠️
-**Tamanho:** 10204 bytes (10.0 KB)
-
-**Issues:**
-- [G0] Falta <section class="slide">
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (60 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Slide muito denso (10203 chars)
-- [G3] Muitos elementos (16) - simplificar
-- [G4] Falta citação/fonte
-
-### S10.html - CAC = 0: por quanto tempo sinaliza risco baixo?
-**Gates:** G0 ⚠️ | G1 ✅ | G2 ❌ | G3 ✅ | G4 ✅
-**Tamanho:** 210907 bytes (206.0 KB)
-
-**Issues:**
-- [G0] Falta <section class="slide">
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (33 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Slide muito denso (210897 chars)
-- [G2] Usar var(--cores) para paleta oficial
-
-### S11.html - CAC = 0: estatina reduz eventos?
-**Gates:** G0 ⚠️ | G1 ✅ | G2 ❌ | G3 ✅ | G4 ✅
-**Tamanho:** 12261 bytes (12.0 KB)
-
-**Issues:**
-- [G0] Falta <section class="slide">
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (67 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Slide muito denso (12246 chars)
-- [G2] Usar var(--cores) para paleta oficial
-
-### S14.html - Aplicação GRADE: Ácido Bempedóico
-**Gates:** G0 ✅ | G1 ✅ | G2 ✅ | G3 ✅ | G4 ✅
-**Tamanho:** 8035 bytes (7.8 KB)
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (39 ocorrências) - criar classes
-
-### S15.html - Sintomas Musculares Associados às Estatinas
-            (SAM
-**Gates:** G0 ✅ | G1 ✅ | G2 ✅ | G3 ✅ | G4 ✅
-**Tamanho:** 2687 bytes (2.6 KB)
-
-**Issues:**
-- [G0] Falta data-slide-id
-
-### S16.html - Ácido Bempedóico:
-            Por que NÃO causa sintomas mus
-**Gates:** G0 ✅ | G1 ✅ | G2 ⚠️ | G3 ✅ | G4 ✅
-**Tamanho:** 3502 bytes (3.4 KB)
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (24 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### S18.html - Aplicação ao CLEAR Outcomes:
-            Análise de Imprecis
-**Gates:** G0 ✅ | G1 ✅ | G2 ✅ | G3 ✅ | G4 ✅
-**Tamanho:** 5891 bytes (5.8 KB)
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (34 ocorrências) - criar classes
-
-### S19.html - Risco de Viés (RoB):
-            Critérios Core GRADE Aplica
-**Gates:** G0 ✅ | G1 ✅ | G2 ✅ | G3 ⚠️ | G4 ✅
-**Tamanho:** 7340 bytes (7.2 KB)
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (35 ocorrências) - criar classes
-- [G3] Muitos elementos (13) - simplificar
-
-### S20.html - Da Evidência à Recomendação:
-            Evidence-to-Decisio
-**Gates:** G0 ✅ | G1 ✅ | G2 ✅ | G3 ✅ | G4 ✅
-**Tamanho:** 4559 bytes (4.5 KB)
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (35 ocorrências) - criar classes
-
-### S24.html - GRADE: Calibração do PREVENT
-**Gates:** G0 ✅ | G1 ✅ | G2 ✅ | G3 ✅ | G4 ✅
-**Tamanho:** 3200 bytes (3.1 KB)
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-
-### S26.html - Comparativo de Calculadoras
-**Gates:** G0 ✅ | G1 ✅ | G2 ⚠️ | G3 ✅ | G4 ✅
-**Tamanho:** 7361 bytes (7.2 KB)
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (51 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### S29.html - CAC como Reclassificador
-**Gates:** G0 ✅ | G1 ✅ | G2 ⚠️ | G3 ✅ | G4 ✅
-**Tamanho:** 6341 bytes (6.2 KB)
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (45 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### S34.html - GRADE: Indirectness = PICO mismatch (treino r&aacute;pido)
-**Gates:** G0 ✅ | G1 ✅ | G2 ✅ | G3 ✅ | G4 ⚠️
-**Tamanho:** 2067 bytes (2.0 KB)
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
+## Slide a slide (status visual)
+| ID | Título | P0 Visual | Próximo passo |
+|---|---|---|---|
+| S01 | CORE GRADE | OK (contraste) | P1: confirmar subtítulo/ano + logos (se necessário) |
+| S02 | "Navegar é preciso..." | OK | P1: validar números (LOE A/C) + fonte |
+| S03 | CAC para decidir sob incerteza: a lente GRADE | OK (rework) | P1: checar redação exata da recomendação SBC 2025 |
+| S04 | Onde a sala está? | OK | P1: decidir pergunta interativa (mentimeter/QR) |
+| S05 | O Grande Divisor | OK | P1: reduzir densidade e checar consistência com narrativa |
+| S06 | O Motor do GRADE | OK | P1: reduzir densidade e checar consistência com narrativa |
+| S07 | GRADE Domain: Indirectness | OK | P1: citar referência do domínio GRADE |
+| S08 | GRADE Domain: Dose-Response Gradient | OK | P1: citar referência do domínio GRADE |
+| S09 | Aplicação GRADE: Escore de Cálcio Coronariano | OK | P1: adicionar/confirmar referências (CAC, eventos, follow-up) |
+| S10 | CAC = 0: por quanto tempo sinaliza risco baixo? | OK | P1: adicionar/confirmar referências (CAC, eventos, follow-up) |
+| S11 | CAC = 0: estatina reduz eventos? | OK | P1: adicionar/confirmar referências (CAC, eventos, follow-up) |
+| S12 | CAC=0 não exclui placa não calcificada | OK | P1: adicionar/confirmar referências (CAC, eventos, follow-up) |
+| S13 | Aspirina na prevenção primária: NNT vs NNH por CAC | OK | P1: revisar NNT/NNH + fonte primária |
+| S14 | Aplicação GRADE: Ácido Bempedóico | OK | P1: revisar evidência (bempedoic/SAMS) + rodapé |
+| S15 | Sintomas Musculares Associados às Estatinas (SAMS) | OK | P1: revisar evidência (bempedoic/SAMS) + rodapé |
+| S16 | Ácido Bempedóico: Por que NÃO causa sintomas musculares? | OK | P1: revisar evidência (bempedoic/SAMS) + rodapé |
+| S17 | Imprecisão: Conceito de Diferença Mínima Importante (MID) | OK | P1: revisar MID/imprecisão + CLEAR Outcomes |
+| S18 | Aplicação ao CLEAR Outcomes: Análise de Imprecisão (MACE-4) | OK | P1: revisar MID/imprecisão + CLEAR Outcomes |
+| S19 | Risco de Viés (RoB): Critérios Core GRADE Aplicados ao CLEAR Outcomes | OK | P1: alinhar com RoB/EtD oficiais + exemplos |
+| S20 | Da Evidência à Recomendação: Evidence-to-Decision (EtD) Framework | OK | P1: alinhar com RoB/EtD oficiais + exemplos |
+| S22 | Recomendações das Diretrizes | OK | P1: validar métricas PREVENT/prognóstico + fontes |
+| S23 | GRADE: Prognósticos ≠ Intervenções | OK | P1: validar métricas PREVENT/prognóstico + fontes |
+| S24 | GRADE: Calibração do PREVENT | OK | P1: validar métricas PREVENT/prognóstico + fontes |
+| S25 | GRADE: Discriminação do PREVENT | OK | P1: validar métricas PREVENT/prognóstico + fontes |
+| S26 | Comparativo de Calculadoras | OK | P1: validar tabelas (calculadoras, PROBAST, TRIPOD+AI) |
+| S27 | 🚨 Limitação: Subgrupos de Baixa Performance | OK | P1: validar tabelas (calculadoras, PROBAST, TRIPOD+AI) |
+| S28 | Variáveis Ausentes no PREVENT | OK | P1: validar tabelas (calculadoras, PROBAST, TRIPOD+AI) |
+| S29 | CAC como Reclassificador | OK | P1: validar tabelas (calculadoras, PROBAST, TRIPOD+AI) |
+| S30 | PROBAST : Avaliação de Viés | OK | P1: validar tabelas (calculadoras, PROBAST, TRIPOD+AI) |
+| S31 | TRIPOD+AI : Transparência em Modelos | OK | P1: validar tabelas (calculadoras, PROBAST, TRIPOD+AI) |
+| S32 | Conclusões & Próximos Passos | OK | P1: validar tabelas (calculadoras, PROBAST, TRIPOD+AI) |
+| S33 | BÔNUS — CAC | OK | P2: refino narrativo + Q&A (respostas curtas) |
+| S34 | GRADE: Indirectness = PICO mismatch (treino rápido) | OK | P2: refino narrativo + Q&A (respostas curtas) |
+| S35 | CAC e Indirectness: mapa do risco ≠ prova de estratégia | OK | P2: refino narrativo + Q&A (respostas curtas) |
+| S36 | SBC 2025: CAC reclassifica risco → meta LDL-c | OK | P2: refino narrativo + Q&A (respostas curtas) |
+| S37 | Fronteiras: CAC (assintomático) ≠ CCTA (sintomático) | OK | P2: refino narrativo + Q&A (respostas curtas) |
+| S38 | SCOT-HEART (CCTA em dor torácica): o que importa | OK | P2: refino narrativo + Q&A (respostas curtas) |
+| S39 | Aspirina guiada por CAC: por que é tentador e por que é ‘EtD pesado’ | OK | P2: refino narrativo + Q&A (respostas curtas) |
+| S40 | CAC Staging (2024): proposta, não guideline | OK | P2: refino narrativo + Q&A (respostas curtas) |
+| S41 | Rescan: só se for mudar conduta | OK | P2: refino narrativo + Q&A (respostas curtas) |
+| S42 | Se perguntarem X, responda Y (curto) | OK | P2: refino narrativo + Q&A (respostas curtas) |
+| S43 | SAMS: O Problema Clínico que Aumenta Risco Cardiovascular | OK | P1: revisão final de síntese + consistência de termos |
+| S44 | Bempedoic Acid para Redução de MACE | OK | P1: revisão final de síntese + consistência de termos |
+| S45 | Tensão Metodológica em Recomendações Brasileiras | OK | P1: revisão final de síntese + consistência de termos |
+| S46 | Síntese GRADE + Contexto Brasileiro | OK | P1: revisão final de síntese + consistência de termos |
 
 ---
 
-## ANÁLISE DETALHADA POR SLIDE
+## Plano de batches (a partir de amanhã)
+Sugestão prática (5 por batch):
+- **Batch A:** S01–S05 (capa + introdução)
+- **Batch B:** S06–S10 (motor + CAC)
+- **Batch C:** S11–S15 (CAC + aspirina + bempedoic)
+- **Batch D:** S16–S20 (SAMS + imprecisão + RoB/EtD)
+- **Batch E:** S22–S26 (diretrizes + prognóstico + PREVENT + comparativos)
+- **Batch F:** S27–S32 (limitações + PROBAST/TRIPOD+AI + conclusões)
+- **Batch G:** S33–S38 (bônus CAC + SCOT-HEART)
+- **Batch H:** S39–S46 (aspirina por CAC + staging + Q&A + síntese)
 
-### Slide 01: CORE GRADE
-**Arquivo:** `S01.html` | **Tamanho:** 0.5 KB
-**Gates:** G0 ⚠️ (2.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 5/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta <section class="slide">
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G2] Slide muito vazio (544 chars)
-- [G4] Falta citação/fonte
-
-### Slide 02: "Navegar &eacute; preciso..."
-**Arquivo:** `S02.html` | **Tamanho:** 3.8 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (5.0/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (23 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
-### Slide 03: CAC para decidir sob incerteza: a lente GRADE
-**Arquivo:** `S03.html` | **Tamanho:** 8.3 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (2.8/5) | G3 ✅ (5.0/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 2/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (39 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Usar var(--cores) para paleta oficial
-- [G4] Falta citação/fonte
-
-### Slide 04: Aonde a sala est&aacute;?
-**Arquivo:** `S04.html` | **Tamanho:** 4.1 KB
-**Gates:** G0 ⚠️ (2.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.0/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 2/5
-
-**Issues:**
-- [G0] Falta <section class="slide">
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (28 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Usar var(--cores) para paleta oficial
-- *(+1 issues adicionais)*
-
-### Slide 05: O Grande Divisor
-**Arquivo:** `S05.html` | **Tamanho:** 5.0 KB
-**Gates:** G0 ⚠️ (2.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ⚠️ (3.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta <section class="slide">
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (31 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G3] Muitos elementos (14) - simplificar
-- *(+1 issues adicionais)*
-
-### Slide 06: O Motor do GRADE
-**Arquivo:** `S06.html` | **Tamanho:** 6.6 KB
-**Gates:** G0 ⚠️ (2.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ⚠️ (3.5/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta <section class="slide">
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (45 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G3] Muitos elementos (12) - simplificar
-
-### Slide 07: GRADE Domain: Indirectness
-**Arquivo:** `S07.html` | **Tamanho:** 6.0 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (44 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
-### Slide 08: GRADE Domain: 
-            Dose-Response Gradient
-**Arquivo:** `S08.html` | **Tamanho:** 10.0 KB
-**Gates:** G0 ⚠️ (2.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.0/5) | G3 ⚠️ (3.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta <section class="slide">
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (60 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Slide muito denso (10203 chars)
-- *(+2 issues adicionais)*
-
-### Slide 09: Aplica&ccedil;&atilde;o GRADE: Escore de C&aacute;lcio Coronariano
-**Arquivo:** `S09.html` | **Tamanho:** 9.5 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.5/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (45 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
-### Slide 10: CAC = 0: por quanto tempo sinaliza risco baixo?
-**Arquivo:** `S10.html` | **Tamanho:** 206.0 KB
-**Gates:** G0 ⚠️ (2.0/5) | G1 ✅ (5.0/5) | G2 ❌ (2.2/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 2/5
-
-**Issues:**
-- [G0] Falta <section class="slide">
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (33 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Slide muito denso (210897 chars)
-- *(+1 issues adicionais)*
-
-### Slide 11: CAC = 0: estatina reduz eventos?
-**Arquivo:** `S11.html` | **Tamanho:** 12.0 KB
-**Gates:** G0 ⚠️ (2.0/5) | G1 ✅ (5.0/5) | G2 ❌ (2.2/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 2/5
-
-**Issues:**
-- [G0] Falta <section class="slide">
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (67 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Slide muito denso (12246 chars)
-- *(+1 issues adicionais)*
-
-### Slide 12: CAC=0 n&atilde;o exclui placa n&atilde;o calcificada
-**Arquivo:** `S12.html` | **Tamanho:** 10.3 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ❌ (2.2/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 2/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (52 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Slide muito denso (10546 chars)
-- [G2] Usar var(--cores) para paleta oficial
-
-### Slide 13: Aspirina na preven&ccedil;&atilde;o prim&aacute;ria: NNT vs NNH por CA
-**Arquivo:** `S13.html` | **Tamanho:** 12.4 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ❌ (2.2/5) | G3 ✅ (4.5/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 2/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (62 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Slide muito denso (12702 chars)
-- [G2] Usar var(--cores) para paleta oficial
-
-### Slide 14: Aplicação GRADE: Ácido Bempedóico
-**Arquivo:** `S14.html` | **Tamanho:** 7.8 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.2/5) | G3 ✅ (4.5/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 5/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (39 ocorrências) - criar classes
-
-### Slide 15: Sintomas Musculares Associados às Estatinas
-            (SAMS)
-**Arquivo:** `S15.html` | **Tamanho:** 2.6 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.5/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 5/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-
-### Slide 16: Ácido Bempedóico:
-            Por que NÃO causa sintomas musculares?
-**Arquivo:** `S16.html` | **Tamanho:** 3.4 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (24 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### Slide 17: Imprecisão: Conceito de
-            Diferença Mínima Importante (MID)
-**Arquivo:** `S17.html` | **Tamanho:** 5.0 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.2/5) | G3 ✅ (4.5/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 5/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (23 ocorrências) - criar classes
-
-### Slide 18: Aplicação ao CLEAR Outcomes:
-            Análise de Imprecisão (MACE-4
-**Arquivo:** `S18.html` | **Tamanho:** 5.8 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.2/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 5/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (34 ocorrências) - criar classes
-
-### Slide 19: Risco de Viés (RoB):
-            Critérios Core GRADE Aplicados ao CLE
-**Arquivo:** `S19.html` | **Tamanho:** 7.2 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.2/5) | G3 ⚠️ (3.5/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 5/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (35 ocorrências) - criar classes
-- [G3] Muitos elementos (13) - simplificar
-
-### Slide 20: Da Evidência à Recomendação:
-            Evidence-to-Decision (EtD) Fr
-**Arquivo:** `S20.html` | **Tamanho:** 4.5 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.2/5) | G3 ✅ (4.5/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 5/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (35 ocorrências) - criar classes
-
-### Slide 22: Recomenda&ccedil;&otilde;es das Diretrizes
-**Arquivo:** `S22.html` | **Tamanho:** 6.4 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (4.5/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (29 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### Slide 23: GRADE: Prognósticos ≠ Intervenções
-**Arquivo:** `S23.html` | **Tamanho:** 3.9 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.0/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-
-### Slide 24: GRADE: Calibração do PREVENT
-**Arquivo:** `S24.html` | **Tamanho:** 3.1 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.0/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-
-### Slide 25: GRADE: Discriminação do PREVENT
-**Arquivo:** `S25.html` | **Tamanho:** 6.7 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ⚠️ (3.5/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (38 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G3] Muitos elementos (12) - simplificar
-
-### Slide 26: Comparativo de Calculadoras
-**Arquivo:** `S26.html` | **Tamanho:** 7.2 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (4.5/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (51 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### Slide 27: 🚨 Limitação: Subgrupos de Baixa Performance
-**Arquivo:** `S27.html` | **Tamanho:** 4.3 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (23 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### Slide 28: Variáveis Ausentes no PREVENT
-**Arquivo:** `S28.html` | **Tamanho:** 7.9 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ⚠️ (3.5/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (45 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G3] Muitos elementos (11) - simplificar
-
-### Slide 29: CAC como Reclassificador
-**Arquivo:** `S29.html` | **Tamanho:** 6.2 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (45 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### Slide 30: PROBAST: Avaliação de Viés
-**Arquivo:** `S30.html` | **Tamanho:** 3.8 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (23 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### Slide 31: TRIPOD+AI: Transparência em Modelos
-**Arquivo:** `S31.html` | **Tamanho:** 3.8 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (23 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### Slide 32: Conclusões & Próximos Passos
-**Arquivo:** `S32.html` | **Tamanho:** 5.2 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (5.0/5) | G4 ✅ (5.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (27 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-
-### Slide 33: B&Ocirc;NUS &mdash; CAC
-**Arquivo:** `S33.html` | **Tamanho:** 0.5 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.8/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 5/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G2] Slide muito vazio (523 chars)
-- [G4] Falta citação/fonte
-
-### Slide 34: GRADE: Indirectness = PICO mismatch (treino r&aacute;pido)
-**Arquivo:** `S34.html` | **Tamanho:** 2.0 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.5/5) | G3 ✅ (5.0/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 5/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
-### Slide 35: CAC e Indirectness: mapa do risco &ne; prova de estrat&eacute;gia
-**Arquivo:** `S35.html` | **Tamanho:** 2.0 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.0/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
-### Slide 36: SBC 2025: CAC reclassifica risco &rarr; meta LDL-c
-**Arquivo:** `S36.html` | **Tamanho:** 3.8 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ⚠️ (3.0/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 2/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Muito CSS inline (25 ocorrências) - criar classes
-- [G2] Falta estrutura de cards visuais
-- [G2] Usar var(--cores) para paleta oficial
-- [G4] Falta citação/fonte
-
-### Slide 37: Fronteiras: CAC (assintom&aacute;tico) &ne; CCTA (sintom&aacute;tico)
-**Arquivo:** `S37.html` | **Tamanho:** 1.6 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.2/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 5/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
-### Slide 38: SCOT-HEART (CCTA em dor tor&aacute;cica): o que importa
-**Arquivo:** `S38.html` | **Tamanho:** 1.7 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.2/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 5/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
-### Slide 39: Aspirina guiada por CAC: por que &eacute; tentador e por que &eacute; 
-**Arquivo:** `S39.html` | **Tamanho:** 1.7 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.2/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 5/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
-### Slide 40: CAC Staging (2024): proposta, n&atilde;o guideline
-**Arquivo:** `S40.html` | **Tamanho:** 1.8 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.2/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 5/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
-### Slide 41: Rescan: s&oacute; se for mudar conduta
-**Arquivo:** `S41.html` | **Tamanho:** 1.6 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.2/5) | G3 ✅ (4.5/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 5/5 | JACC 3/5 | Tufte 3/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
-### Slide 42: Se perguntarem X, responda Y (curto)
-**Arquivo:** `S42.html` | **Tamanho:** 2.4 KB
-**Gates:** G0 ✅ (4.0/5) | G1 ✅ (5.0/5) | G2 ✅ (4.0/5) | G3 ✅ (5.0/5) | G4 ⚠️ (3.0/5)
-**Benchmark:** NEJM 3/5 | JACC 3/5 | Tufte 5/5 | Legibilidade 5/5
-
-**Issues:**
-- [G0] Falta data-slide-id
-- [G2] Falta estrutura de cards visuais
-- [G4] Falta citação/fonte
-
----
-
-## 🎯 PRIORIDADES DE AÇÃO
-
-### P0 (Urgente - Gates Reprovados)
-- S10.html: Muito CSS inline (33 ocorrências) - criar classes
-- S10.html: Falta estrutura de cards visuais
-- S10.html: Slide muito denso (210897 chars)
-- S10.html: Usar var(--cores) para paleta oficial
-- S11.html: Muito CSS inline (67 ocorrências) - criar classes
-- S11.html: Falta estrutura de cards visuais
-- S11.html: Slide muito denso (12246 chars)
-- S11.html: Usar var(--cores) para paleta oficial
-- S12.html: Muito CSS inline (52 ocorrências) - criar classes
-- S12.html: Falta estrutura de cards visuais
-- *(+6 issues P0 adicionais)*
-
-### P1 (Importante - Gates com Ressalvas)
-- S01.html: Falta <section class="slide">
-- S01.html: Falta data-slide-id
-- S01.html: Falta estrutura de cards visuais
-- S01.html: Slide muito vazio (544 chars)
-- S01.html: Falta citação/fonte
-- S02.html: Muito CSS inline (23 ocorrências) - criar classes
-- S02.html: Falta estrutura de cards visuais
-- S02.html: Falta citação/fonte
-- S03.html: Muito CSS inline (39 ocorrências) - criar classes
-- S03.html: Falta estrutura de cards visuais
-- S03.html: Usar var(--cores) para paleta oficial
-- S03.html: Falta citação/fonte
-- S04.html: Falta <section class="slide">
-- S04.html: Falta data-slide-id
-- S04.html: Muito CSS inline (28 ocorrências) - criar classes
-- *(+69 issues P1 adicionais)*
-
-### P2 (Melhorias)
-- Reduzir CSS inline em slides com >20 ocorrências
-- Adicionar mais estrutura de cards visuais onde apropriado
-- Completar [TBD] com referências
-- Otimizar densidade em slides muito grandes (>10KB)
-
----
-
-**Fim do relatório de auditoria**

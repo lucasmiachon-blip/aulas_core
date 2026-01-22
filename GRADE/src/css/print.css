@@ -1,184 +1,72 @@
-/**
- * PRINT CSS - Reset completo de layout para exportação PDF
- * 
- * Remove position:absolute, transforms e mostra todos os slides sequencialmente
- * para que o PDF tenha uma página por slide (sem sobreposição)
- */
+/*
+  print.css
+  --------------------------------------------------------------------
+  PDF export ("Print to PDF") that behaves like a PPT deck:
+  - one slide per page
+  - 16:9 canvas
+  - preserves slide layout (no forced reflow)
+
+  Tip for Chrome/Edge:
+  - File → Print → "Save as PDF"
+  - Scale: 100%
+  - Background graphics: ON
+*/
 
 @media print {
-    /* Print-safe: Force background colors */
-    * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        color-adjust: exact !important;
-    }
-    
-    @page {
-        size: A4 landscape;
-        margin: 8mm;
-    }
-    
-    body {
-        margin: 0 !important;
-        padding: 0 !important;
-        overflow: visible !important;
-        background: white !important;
-        height: auto !important;
-        width: 100% !important;
-        display: block !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-    
-    /* Container principal */
-    #viewport {
-        position: static !important;
-        width: 100% !important;
-        height: auto !important;
-        aspect-ratio: unset !important;
-        transform: none !important;
-        overflow: visible !important;
-        display: block !important;
-        box-shadow: none !important;
-        perspective: none !important;
-        background: white !important;
-    }
-    
-    /* Cada slide */
-    .slide,
-    section.slide {
-        position: relative !important;
-        display: flex !important; /* ← NOVO: flex para centralização */
-        flex-direction: column !important; /* ← NOVO: coluna */
-        justify-content: center !important; /* ← NOVO: centraliza vertical */
-        
-        transform: none !important;
-        
-        /* Altura flexível - SEM limite máximo */
-        width: 100% !important;
-        height: auto !important;
-        min-height: 95vh !important;
-        max-height: none !important; /* ← SEM limite */
-        
-        padding: 15mm !important;
-        margin: 0 !important;
-        box-sizing: border-box !important;
-        
-        page-break-after: always !important;
-        page-break-inside: avoid !important;
-        
-        overflow: visible !important; /* ← Mostra tudo */
-        opacity: 1 !important;
-        visibility: visible !important;
-        
-        /* Remove absolute positioning */
-        inset: unset !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-        
-        /* Remove z-index */
-        z-index: auto !important;
-    }
-    
-    /* Último slide NÃO força página extra */
-    .slide:last-child {
-        page-break-after: avoid !important;
-    }
-    
-    /* Garantir que todos os slides sejam visíveis (não apenas .active) */
-    .slide.active {
-        display: block !important;
-    }
-    
-    /* CRÍTICO: Força TODOS elementos internos */
-    .slide *,
-    section.slide * {
-        position: relative !important; /* ← Tira absolute de TUDO */
-        transform: none !important;
-        page-break-inside: auto !important; /* ← Permite quebrar se necessário */
-        float: none !important;
-    }
-    
-    /* Elementos internos podem quebrar se necessário */
-    .slide > * {
-        page-break-inside: avoid !important; /* Mas preferir não quebrar */
-    }
-    
-    /* Wrapper interno mantém tamanho original */
-    .slide > div,
-    section.slide > div {
-        width: 100% !important;
-        flex-shrink: 0 !important; /* ← Mantém tamanho original */
-    }
-    
-    /* Manter proporções de fonte para impressão */
-    .slide h1 {
-        font-size: 0.95em !important;
-        line-height: 1.2 !important;
-        page-break-after: avoid !important;
-        page-break-inside: avoid !important;
-    }
-    
-    .slide h2 {
-        font-size: 0.95em !important;
-        page-break-after: avoid !important;
-        page-break-inside: avoid !important;
-    }
-    
-    .slide p {
-        font-size: 0.6cm !important;
-    }
-    
-    /* Manter sombras no PDF mas mais leves */
-    .card,
-    .stat-card,
-    .quote-card,
-    .risk-card,
-    .qr-card,
-    .divisor-card,
-    .stats-container {
-        box-shadow: 0 0.2vw 0.8vw 0 rgba(0, 0, 0, 0.1) !important;
-        transform: none !important;
-    }
-    
-    /* Remover hover effects no PDF */
-    .card:hover,
-    .qr-card:hover,
-    .divisor-card:hover {
-        box-shadow: 0 0.2vw 0.8vw 0 rgba(0, 0, 0, 0.1) !important;
-        transform: none !important;
-    }
-    
-    /* Garantir headers navy aparecem no PDF */
-    .cardHeader,
-    .cardHeader *,
-    [style*="background: var(--navy)"],
-    [style*="background:var(--navy)"] {
-        background: var(--navy) !important;
-        color: var(--white) !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-    
-    /* Remover mix-blend-mode e filters no print */
-    * {
-        mix-blend-mode: normal !important;
-        backdrop-filter: none !important;
-        filter: none !important;
-    }
-    
-    /* Esconde controles */
-    .controls,
-    .slide-counter,
-    .slide-background {
-        display: none !important;
-    }
-    
-    /* Fragmentos visíveis */
-    .fragment {
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
+  /* Force background colors (Chrome/WebKit) */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  /* PPT widescreen (13.333 × 7.5 in) */
+  @page {
+    size: 13.333in 7.5in;
+    margin: 0;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+    display: block !important;
+  }
+
+  /* Remove viewer chrome */
+  .controls,
+  .slide-counter {
+    display: none !important;
+  }
+
+  /* Let slides flow vertically (each page is a slide) */
+  #viewport {
+    width: 13.333in !important;
+    height: auto !important;
+    position: static !important;
+    display: block !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: white !important;
+  }
+
+  .slide,
+  section.slide {
+    position: relative !important;
+    inset: auto !important;
+    display: flex !important;
+    width: 13.333in !important;
+    height: 7.5in !important;
+    page-break-after: always !important;
+    overflow: hidden !important;
+  }
+
+  .slide:last-child {
+    page-break-after: auto !important;
+  }
 }

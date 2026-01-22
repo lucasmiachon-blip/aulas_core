@@ -11,13 +11,14 @@
 .block {
   border-left: 4px solid var(--gold);
   padding: 12px 14px;
-  background: rgba(11, 31, 59, 0.03);
+  background: rgba(var(--navy-rgb), 0.035);
 }
 
 .block__title {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: var(--font-sans);
   color: var(--navy);
   margin: 0 0 6px 0;
+  letter-spacing: -0.01em;
 }
 
 .block__body {
@@ -34,10 +35,10 @@ table {
     border-collapse: collapse;
     table-layout: fixed;
     margin: 2vw 0;
-    background: white;
+    background: var(--surface);
     border-radius: 0.8vw;
     overflow: hidden;
-    box-shadow: 0 0.2vw 1vw rgba(0,0,0,0.08);
+    box-shadow: var(--shadow-sm);
 }
 
 thead {
@@ -45,7 +46,7 @@ thead {
 }
 
 thead th {
-    font-family: 'Lato', sans-serif;
+    font-family: var(--font-sans);
     font-size: 1vw;
     font-weight: 700;
     color: white;
@@ -61,11 +62,11 @@ tbody tr {
 }
 
 tbody tr:nth-child(even) {
-    background: #FAFAFA;
+    background: var(--surface-2);
 }
 
 tbody td {
-    font-family: 'Lato', sans-serif;
+    font-family: var(--font-sans);
     font-size: 1vw;
     padding: 1.2vw 1.5vw;
     color: var(--text);
@@ -120,7 +121,7 @@ table.table-plain thead th {
    ============================================ */
 
 .callout {
-    background: rgba(11, 31, 59, 0.05);
+    background: rgba(var(--navy-rgb), 0.05);
     border-left: 0.4vw solid var(--navy);
     padding: 1.5vw 2vw;
     margin: 2vw 0;
@@ -131,22 +132,22 @@ table.table-plain thead th {
     margin: 0;
     font-weight: 600;
     color: var(--navy);
-    font-family: 'Lato', sans-serif;
+    font-family: var(--font-sans);
 }
 
 .callout.callout-warning {
     border-left-color: var(--gold);
-    background: rgba(221, 185, 68, 0.1);
+    background: rgba(var(--gold-rgb), 0.12);
 }
 
 .callout.callout-info {
     border-left-color: var(--blue);
-    background: rgba(37, 99, 235, 0.1);
+    background: rgba(var(--blue-rgb), 0.10);
 }
 
 .callout.callout-success {
     border-left-color: var(--teal);
-    background: rgba(31, 118, 110, 0.1);
+    background: rgba(var(--teal-rgb), 0.10);
 }
 
 /* ============================================
@@ -156,14 +157,14 @@ table.table-plain thead th {
 .badge {
     display: inline-block;
     padding: 0.4vw 0.8vw;
-    border-radius: 0.3vw;
+    border-radius: var(--r-sm);
     font-size: 0.85vw;
     font-weight: 900;
     color: white;
     background: var(--navy);
     text-transform: uppercase;
     letter-spacing: 0.05vw;
-    font-family: 'Lato', sans-serif;
+    font-family: var(--font-sans);
 }
 
 .badge.badge-gold {

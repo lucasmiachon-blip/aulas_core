@@ -1,134 +1,111 @@
-<section class="slide" data-slide-id="S03">
-        
-        <div style="margin-bottom: 2vw;">
-            <p style="font-size: 0.9vw; color: #999; font-weight: 600; letter-spacing: 0.05vw; text-transform: uppercase; margin-bottom: 0.5vw;">
-                Escore de C&aacute;lcio (CAC)
-            </p>
-            <h2 style="font-size: 3.2vw; margin-bottom: 0.6vw; color: #1A1A1A;">
-                CAC para decidir sob incerteza: a lente GRADE
-            </h2>
-            <p style="font-size: 1vw; color: #666; font-weight: 500; margin-bottom: 0.8vw;">
-                Outras gram&aacute;ticas existem (Class/LoE); aqui o foco &eacute; GRADE
-            </p>
-            <p style="font-size: 0.85vw; color: #AAA; font-style: italic; padding: 0.8vw 1.5vw; background: #F8F8F8; border-radius: 0.4vw; display: inline-block;">
-                 Comparar fun&ccedil;&atilde;o cl&iacute;nica, n&atilde;o r&oacute;tulos
+<section class="slide" data-slide-id="S03" style="background: var(--bg);">
+    <div style="margin-bottom: 2vw;">
+        <p style="font-size: 0.9vw; color: rgba(var(--muted-rgb), 0.85); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.5vw;">
+            Escore de Cálcio (CAC)
+        </p>
+        <h2 style="font-size: 3.2vw; margin: 0 0 0.6vw 0; color: var(--navy); font-weight: 800; letter-spacing: -0.02em;">
+            CAC para decidir sob incerteza: a lente GRADE
+        </h2>
+        <p style="font-size: 1.05vw; color: var(--muted); font-weight: 500; margin-bottom: 0.8vw;">
+            Não é “rótulo”: é confiança na evidência + valores do paciente.
+        </p>
+        <p style="font-size: 0.85vw; color: rgba(var(--muted-rgb), 0.85); font-style: italic; padding: 0.7vw 1.2vw; background: rgba(var(--navy-rgb), 0.035); border: 1px solid rgba(var(--text-rgb), 0.06); border-radius: var(--r-sm); display: inline-block;">
+            Comparar função clínica, não rótulos
+        </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1.3fr 0.95fr; gap: 2vw; flex-grow: 1; align-items: stretch;">
+        <!-- COLUNA ESQUERDA: recomendações SBC 2025 (traduzidas em GRADE) -->
+        <div style="display: flex; flex-direction: column; gap: 1.2vw;">
+            <div style="background: var(--navy); color: white; padding: 1vw 1.5vw; border-radius: 0.6vw; border: 1px solid rgba(255,255,255,0.12);">
+                <p style="font-size: 0.85vw; font-weight: 700; letter-spacing: 0.10em; margin: 0; color: rgba(255,255,255,0.82); text-transform: uppercase;">
+                    SBC 2025 • leitura GRADE
+                </p>
+            </div>
+
+            <!-- Card 1 -->
+            <div style="background: var(--white); border: 1px solid rgba(var(--text-rgb), 0.08); border-radius: 0.8vw; padding: 1.8vw; box-shadow: var(--shadow-sm); flex: 1; display: flex; flex-direction: column;">
+                <p style="font-size: 0.9vw; font-weight: 800; color: var(--teal); margin-bottom: 0.9vw; text-transform: uppercase; letter-spacing: 0.08em;">
+                    Risco intermediário
+                </p>
+
+                <p style="font-size: 1.25vw; line-height: 1.5; color: var(--text); margin-bottom: 1.2vw;">
+                    “O CAC <strong>pode ser útil</strong> para decidir sobre a necessidade e a intensidade da terapia hipolipemiante.”
+                </p>
+
+                <div style="display: flex; gap: 0.5vw; margin-top: auto; flex-wrap: wrap;">
+                    <span style="padding: 0.32vw 0.65vw; border-radius: 0.35vw; font-size: 0.75vw; font-weight: 800; color: white; background: var(--teal); text-transform: uppercase; letter-spacing: 0.06em;">
+                        Recomendação forte
+                    </span>
+                    <span style="padding: 0.32vw 0.65vw; border-radius: 0.35vw; font-size: 0.75vw; font-weight: 800; color: white; background: rgba(var(--navy-rgb), 0.60); text-transform: uppercase; letter-spacing: 0.06em;">
+                        Certeza moderada
+                    </span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div style="background: var(--white); border: 1px solid rgba(var(--text-rgb), 0.08); border-radius: 0.8vw; padding: 1.8vw; box-shadow: var(--shadow-sm); flex: 1; display: flex; flex-direction: column;">
+                <p style="font-size: 0.9vw; font-weight: 800; color: var(--teal); margin-bottom: 0.9vw; text-transform: uppercase; letter-spacing: 0.08em;">
+                    Risco baixo + história familiar
+                </p>
+
+                <p style="font-size: 1.25vw; line-height: 1.5; color: var(--text); margin-bottom: 1.2vw;">
+                    “Em indivíduos com <strong>histórico familiar de DCVA prematura</strong>… o escore de cálcio <strong>é razoável</strong>.”
+                </p>
+
+                <div style="display: flex; gap: 0.5vw; margin-top: auto; flex-wrap: wrap;">
+                    <span style="padding: 0.32vw 0.65vw; border-radius: 0.35vw; font-size: 0.75vw; font-weight: 800; color: white; background: var(--blue); text-transform: uppercase; letter-spacing: 0.06em;">
+                        Condicional
+                    </span>
+                    <span style="padding: 0.32vw 0.65vw; border-radius: 0.35vw; font-size: 0.75vw; font-weight: 800; color: white; background: rgba(var(--navy-rgb), 0.60); text-transform: uppercase; letter-spacing: 0.06em;">
+                        Certeza moderada
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- COLUNA DIREITA: gramática GRADE (didática) -->
+        <div style="display: flex; flex-direction: column; gap: 1.2vw;">
+            <div style="background: rgba(var(--navy-rgb), 0.035); border: 1px solid rgba(var(--text-rgb), 0.08); border-radius: 0.8vw; padding: 1.5vw;">
+                <p style="font-size: 0.85vw; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase; color: var(--navy); margin: 0 0 0.8vw 0;">
+                    Como ler a recomendação (GRADE)
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr; gap: 1vw;">
+                    <div style="display: flex; gap: 0.9vw; align-items: flex-start;">
+                        <div style="width: 1.05vw; height: 1.05vw; border-radius: 0.25vw; background: var(--teal); margin-top: 0.25vw;"></div>
+                        <div>
+                            <p style="margin: 0; font-size: 1.05vw; font-weight: 800; color: var(--text);">Força</p>
+                            <p style="margin: 0.25vw 0 0 0; font-size: 0.95vw; color: var(--muted); line-height: 1.45;">
+                                <strong>Forte</strong> = a maioria deve receber. <strong>Condicional</strong> = depende de valores/preferências e contexto.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 0.9vw; align-items: flex-start;">
+                        <div style="width: 1.05vw; height: 1.05vw; border-radius: 0.25vw; background: var(--gold); margin-top: 0.25vw;"></div>
+                        <div>
+                            <p style="margin: 0; font-size: 1.05vw; font-weight: 800; color: var(--text);">Certeza</p>
+                            <p style="margin: 0.25vw 0 0 0; font-size: 0.95vw; color: var(--muted); line-height: 1.45;">
+                                Alta / moderada / baixa / muito baixa — o quanto confiamos que o efeito estimado é próximo do “verdadeiro”.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: var(--white); border: 1px solid rgba(var(--text-rgb), 0.08); border-radius: 0.8vw; padding: 1.5vw; box-shadow: var(--shadow-sm);">
+                <p style="font-size: 0.85vw; font-weight: 800; letter-spacing: 0.10em; text-transform: uppercase; color: var(--navy); margin: 0 0 0.8vw 0;">
+                    Frase pronta para o congresso
+                </p>
+                <p style="font-family: var(--font-serif); font-size: 1.25vw; color: var(--navy); margin: 0; line-height: 1.45;">
+                    “CAC ajuda quando o risco é intermediário — mas a confiança na evidência e os valores do paciente definem o passo seguinte.”
+                </p>
+            </div>
+
+            <p style="margin-top: auto; font-size: 0.78vw; color: rgba(var(--muted-rgb), 0.85); line-height: 1.5;">
+                <strong>Nota:</strong> outras diretrizes usam “Class/LoE”. Neste curso, traduzimos para a gramática GRADE para manter consistência didática.
             </p>
         </div>
-        
-        <!-- Grid assim&eacute;trico: SBC dominante, outras secund&aacute;rias -->
-        <div style="display: grid; grid-template-columns: 1.4fr 0.8fr 0.8fr; gap: 2vw; flex-grow: 1; align-items: start;">
-            
-            <!-- COLUNA 1: SBC 2025 - FRAMEWORK DO CURSO -->
-            <div style="display: flex; flex-direction: column; gap: 1.2vw;">
-                
-                <div style="background: #0B1320; color: white; padding: 1vw 1.5vw; border-radius: 0.6vw;">
-                    <p style="font-size: 0.85vw; font-weight: 700; letter-spacing: 0.05vw; margin: 0;">
-                        Framework do curso: GRADE (SBC 2025)
-                    </p>
-                </div>
-                
-                <!-- Card 1: Risco Intermedi&aacute;rio -->
-                <div style="background: white; border: 1px solid rgba(0,0,0,0.08); border-radius: 0.8vw; padding: 1.8vw; box-shadow: 0 0.3vw 1vw rgba(0,0,0,0.04); flex: 1;">
-                    
-                    <p style="font-size: 0.9vw; font-weight: 700; color: #1F766E; margin-bottom: 1vw; text-transform: uppercase; letter-spacing: 0.03vw;">
-                        Risco Intermedi&aacute;rio
-                    </p>
-                    
-                    <p style="font-size: 1.25vw; line-height: 1.5; color: #1A1A1A; margin-bottom: 1.5vw;">
-                        "O CAC <strong>pode ser &uacute;til</strong> para decidir sobre a necessidade e a intensidade da terapia hipolipemiante."
-                    </p>
-                    
-                    <div style="display: flex; gap: 0.4vw; margin-top: auto;">
-                        <span style="padding: 0.3vw 0.6vw; border-radius: 0.3vw; font-size: 0.7vw; font-weight: 700; color: white; background: #888; text-transform: uppercase;">
-                            FORTE
-                        </span>
-                        <span style="padding: 0.3vw 0.6vw; border-radius: 0.3vw; font-size: 0.7vw; font-weight: 700; color: white; background: #999; text-transform: uppercase;">
-                            MODERADA
-                        </span>
-                    </div>
-                </div>
-                
-                <!-- Card 2: Risco Baixo + HF -->
-                <div style="background: white; border: 1px solid rgba(0,0,0,0.08); border-radius: 0.8vw; padding: 1.8vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.03); flex: 1;">
-                    
-                    <p style="font-size: 0.9vw; font-weight: 700; color: #1F766E; margin-bottom: 1vw; text-transform: uppercase; letter-spacing: 0.03vw;">
-                        Risco Baixo + HF
-                    </p>
-                    
-                    <p style="font-size: 1.25vw; line-height: 1.5; color: #1A1A1A; margin-bottom: 1.5vw;">
-                        "Em indiv&iacute;duos com <strong>hist&oacute;rico familiar de DCVA prematura</strong>... o escore de c&aacute;lcio <strong>&eacute; razo&aacute;vel</strong>."
-                    </p>
-                    
-                    <div style="display: flex; gap: 0.4vw; margin-top: auto;">
-                        <span style="padding: 0.3vw 0.6vw; border-radius: 0.3vw; font-size: 0.7vw; font-weight: 700; color: white; background: #AAA; text-transform: uppercase;">
-                            CONDICIONAL
-                        </span>
-                        <span style="padding: 0.3vw 0.6vw; border-radius: 0.3vw; font-size: 0.7vw; font-weight: 700; color: white; background: #999; text-transform: uppercase;">
-                            MODERADA
-                        </span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- COLUNA 2: ESC 2021 -->
-            <div style="display: flex; flex-direction: column; gap: 1.2vw; opacity: 0.85;">
-                
-                <div style="background: #F5F5F5; padding: 0.8vw 1.2vw; border-radius: 0.5vw; border: 1px solid rgba(0,0,0,0.06);">
-                    <p style="font-size: 0.75vw; font-weight: 600; color: #666; letter-spacing: 0.03vw; margin: 0;">
-                        Outras gram&aacute;ticas (Class/LoE)
-                    </p>
-                </div>
-                
-                <div style="background: white; border: 1px solid rgba(0,0,0,0.06); border-radius: 0.7vw; padding: 1.5vw; box-shadow: 0 0.2vw 0.6vw rgba(0,0,0,0.02); flex: 1;">
-                    
-                    <p style="font-size: 0.8vw; font-weight: 600; color: #777; margin-bottom: 0.8vw; text-transform: uppercase; letter-spacing: 0.02vw;">
-                        ESC 2021
-                    </p>
-                    
-                    <p style="font-size: 1.1vw; line-height: 1.5; color: #444; margin-bottom: 1.2vw;">
-                        "CAC scoring <strong>may be considered</strong> as a risk modifier in cardiovascular risk assessment of asymptomatic individuals at low or intermediate risk."
-                    </p>
-                    
-                    <div style="display: flex; gap: 0.3vw;">
-                        <span style="padding: 0.25vw 0.5vw; border-radius: 0.25vw; font-size: 0.65vw; font-weight: 600; color: #666; background: #EFEFEF; text-transform: uppercase;">
-                            CLASS IIa
-                        </span>
-                        <span style="padding: 0.25vw 0.5vw; border-radius: 0.25vw; font-size: 0.65vw; font-weight: 600; color: #666; background: #EFEFEF; text-transform: uppercase;">
-                            LEVEL B
-                        </span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- COLUNA 3: ACC/AHA 2018 -->
-            <div style="display: flex; flex-direction: column; gap: 1.2vw; opacity: 0.85;">
-                
-                <div style="background: #F5F5F5; padding: 0.8vw 1.2vw; border-radius: 0.5vw; border: 1px solid rgba(0,0,0,0.06);">
-                    <p style="font-size: 0.75vw; font-weight: 600; color: #666; letter-spacing: 0.03vw; margin: 0;">
-                        Outras gram&aacute;ticas (Class/LoE)
-                    </p>
-                </div>
-                
-                <div style="background: white; border: 1px solid rgba(0,0,0,0.06); border-radius: 0.7vw; padding: 1.5vw; box-shadow: 0 0.2vw 0.6vw rgba(0,0,0,0.02); flex: 1;">
-                    
-                    <p style="font-size: 0.8vw; font-weight: 600; color: #777; margin-bottom: 0.8vw; text-transform: uppercase; letter-spacing: 0.02vw;">
-                        ACC/AHA 2018
-                    </p>
-                    
-                    <p style="font-size: 1.1vw; line-height: 1.5; color: #444; margin-bottom: 1.2vw;">
-                        "In intermediate-risk patients... if the decision about statin remains uncertain, <strong>CAC score is useful</strong> to guide discussion."
-                    </p>
-                    
-                    <div style="display: flex; gap: 0.3vw;">
-                        <span style="padding: 0.25vw 0.5vw; border-radius: 0.25vw; font-size: 0.65vw; font-weight: 600; color: #666; background: #EFEFEF; text-transform: uppercase;">
-                            CLASS 2a
-                        </span>
-                        <span style="padding: 0.25vw 0.5vw; border-radius: 0.25vw; font-size: 0.65vw; font-weight: 600; color: #666; background: #EFEFEF; text-transform: uppercase;">
-                            LEVEL B-NR
-                        </span>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </section>
+    </div>
+</section>

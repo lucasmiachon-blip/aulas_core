@@ -1,5 +1,63 @@
 # CHANGELOG - GRADE Slides
 
+## [BATCH 2] - 2026-01-22 (MVP UI Pass: Paleta + Viewer + Print)
+
+### Objetivo: Deixar o viewer “conference-ready” (legível, consistente, exportável)
+
+**O que mudou (alto impacto, baixo risco):**
+- **Paleta** revisada para um look mais “Tier-1”: fundo mais neutro/cool, texto mais “ink”, acento dourado menos saturado.
+- **Tokens RGB** adicionados (`--gold-rgb`, `--teal-rgb`, `--blue-rgb`, `--navy-rgb`) para permitir `rgba()` sem gambiarras.
+- **Tipografia** padronizada em **Inter** (Georgia mantida como serif opcional em quotes/ênfase).
+- **Print/PDF** refeito para exportar em **16:9** (estilo PPT) + 1 slide por página, preservando o layout.
+- **Viewer JS** agora:
+  - usa `_list.txt` quando disponível (menos manutenção);
+  - suporta deep-link por hash (`#S05`), Home/End, clique e swipe.
+
+---
+
+### 🧱 CSS (base + blocks + print)
+**GRADE/src/css/base.css**
+- Novo sistema de tokens + sombras + radii.
+- Background externo com gradiente sutil (só fora do slide).
+- Controles de navegação com estilo “glass” (melhor UX em palco).
+
+**GRADE/src/css/blocks.css**
+- Removeu Lato → `var(--font-sans)`.
+- Normalizou backgrounds e callouts usando `rgba(var(--*-rgb), a)`.
+
+**GRADE/src/css/print.css**
+- Exportação em **PPT ratio** (13.333in × 7.5in), sem forçar `position: relative` em tudo.
+- Slides sequenciais (todas as seções aparecem na impressão).
+
+---
+
+### 🧠 JS (viewer)
+**GRADE/src/js/slides-simple.js**
+- Carrega lista de slides via `_list.txt` (fallback para lista padrão).
+- Hash navigation: `#Sxx` abre no slide correto e mantém URL sincronizada.
+- Navegação por clique (metade esquerda/direita), swipe, Home/End.
+
+---
+
+### 🖼️ Slides
+**S01**
+- Aumentado contraste/legibilidade da linha “Diretriz Brasileira…” (peso e espaçamento).
+
+**S03**
+- Refeito para o padrão do curso (SBC 2025 + gramática GRADE).
+- Removidas colunas ESC/ACC (reduz densidade, melhora projeção).
+- Adicionado painel “Como ler GRADE” + “Frase pronta para o congresso”.
+
+**Múltiplos slides (S05, S08, S09, S11, S13, S16, S17, S22-24, S26-27, S29, S31-32, S35, S43-44, S46)**
+- Troca de `rgba(var(--gold), …)` inválido → `rgba(var(--gold-rgb), …)`.
+- Remoção de RGB hardcoded (221,185,68 / 212,175,55 / 31,118,110 / etc) → tokens.
+- Remoção de `Lato` hardcoded → `var(--font-sans)`.
+
+---
+
+### 📚 Documentação
+- Atualizada **QUICK_PALETTE_REFERENCE.md** e **STYLEGUIDE.md** para refletir a nova paleta e o uso de `*-rgb`.
+
 ## [BATCH 1] - 2026-01-20
 
 ### Objetivo: Menos slides, mais hierarquia visual
