@@ -1,5 +1,7 @@
 # 📖 Como usar este CHANGELOG
 
+> **NOTA (estrutura atual)**: O CSS do deck GRADE foi consolidado em `GRADE/src/css/base.css`, `GRADE/src/css/blocks.css`, `GRADE/src/css/responsive-fix.css` e `GRADE/src/css/print.css`. Entradas antigas que mencionam `system.css`/`components.css` representam rascunhos anteriores e podem ser consideradas **supersedidas**.
+
 **Para começar sessão rápida:**
 1. Leia `STATUS.md` (contexto atual)
 2. Veja só a última entrada deste arquivo
@@ -1199,4 +1201,3 @@ Elevar qualidade visual dos slides para padrão de publicação científica de a
 - Add src/dist HTML placeholders (both courses).
 - Add base CSS + navigation JS scaffolding (both courses).
 - Repo structure created.
-

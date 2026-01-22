@@ -3,25 +3,29 @@
 ## ⚠️ ANTES DE CRIAR SLIDES, COLE ISTO:
 
 ```
-🎨 PALETA PROFISSIONAL OBRIGATÓRIA (aulas_core):
+🎨 PALETA PROFISSIONAL OBRIGATÓRIA (aulas_core / GRADE):
 
 CORES (use APENAS estas via var(--)):
---bg: #F9F8F4        (fundo)
---navy: #0B1320      (títulos/base escura)
---gold: #DDB944      (destaques)
---teal: #1F766E      (clínico)
---blue: #2563EB      (suporte)
---text: #222         (texto principal)
---muted: #666        (legendas)
+--bg: #F8FAFC        (fundo)
+--navy: #0B1320      (base escura)
+--gold: #D2B55B      (acento quente — use com parcimônia)
+--teal: #0F766E      (clínico)
+--blue: #2563EB      (acento frio)
+--text: #0F172A      (texto principal)
+--muted: #475569     (legendas)
 --white: #FFFFFF     (cards)
---border: #E9ECEF    (bordas)
+--border: #E2E8F0    (bordas)
+
+RGB HELPERS (para transparência):
+--gold-rgb: 210,181,91 | --teal-rgb: 15,118,110 | --blue-rgb: 37,99,235 | --navy-rgb: 11,19,32
 
 TIPOGRAFIA:
-- Títulos: Georgia (serif)
-- Corpo: Lato (sans-serif)
+- Principal (slides): Inter (sans)
+- Serif opcional (quotes): Georgia
 
 REGRAS:
 ✅ SEMPRE use var(--nome) no HTML inline
+✅ Para fundos “tint”: use rgba(var(--*-rgb), 0.x) (ex: rgba(var(--gold-rgb),0.12))
 ✅ Fundo slide: var(--bg) ou var(--navy) (capa)
 ✅ Títulos H2: var(--navy)
 ✅ Destaques: var(--gold) ou var(--teal)
@@ -47,13 +51,13 @@ SE VOCÊ USAR QUALQUER COR FORA DESTA LISTA, O SLIDE SERÁ REJEITADO.
 
 ```
 CORES OBRIGATÓRIAS:
-Navy #0B1320 | Gold #DDB944 | Teal #1F766E | Blue #2563EB
-Bg #F9F8F4 | Text #222 | Muted #666 | White #FFF | Border #E9ECEF
+Navy #0B1320 | Gold #D2B55B | Teal #0F766E | Blue #2563EB
+Bg #F8FAFC | Text #0F172A | Muted #475569 | White #FFF | Border #E2E8F0
 
 USE: var(--navy) var(--gold) etc
 NUNCA: #333 #000 ou cores aleatórias
 
-Fontes: Georgia (títulos) | Lato (corpo)
+Fonte principal: Inter
 ```
 
 ## 🚀 COMO USAR:

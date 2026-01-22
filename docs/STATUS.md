@@ -1,32 +1,33 @@
 # Status do Projeto - aulas_core/GRADE
 
-**Última atualização:** 2026-01-20
+**Última atualização:** 2026-01-22
 
-## ✅ Completo
+## ✅ Completo (P0 / MVP base)
 
-- Paleta oficial aplicada (100% - S1 a S44)
-- Navegação funcional (módulos carregam dinamicamente)
-- PDF export configurado
-- Slides apêndice (S35-S44) corrigidos
-- Conteúdo médico corrigido (MID, PREVENT, TBD)
+- Paleta e tipografia consolidadas (look “Tier-1” + tokens RGB)
+- Viewer estável: navegação por teclado, clique (TED-like), swipe e deep-link por hash
+- Print/PDF em estilo PPT (16:9, 1 slide/página) via `GRADE/src/css/print.css`
+- Patch de contraste: chips de certeza (`⊕⊕○○ BAIXA`) legíveis em headers navy (`.cardHeader`)
+- Batch 06–15 revisado visualmente (S06–S15 marcados READY no dashboard)
 
-## ⏳ Em Andamento
+## ⏳ Em Andamento (P1)
 
-- [ ] Remoção de redundâncias estruturais (após revisão conteúdo)
+- [ ] Padronizar referências (rodapé/citações) em todo o deck
+- [ ] Revisão de conteúdo/números (NNT/NNH/HR) + checagem de fontes
+- [ ] Slide SCOT-HEART: atualizar para follow-up 10 anos (figura + citação)
 
-## 🎯 Próximos Passos
+## 🎯 Próximos Passos (próximos 1–2 dias)
 
-1. Claude Conteúdo revisa slides principais
-2. Claude Técnico remove redundâncias (7 pares identificados)
-3. Regenerar PDF final
+1. **Fix SCOT-HEART 10y**: substituir placeholder (HR + seguimento) e inserir figura com citação completa
+2. **Uniformizar sidebar GRADE**: header consistente + posição fixa do badge
+3. Rodar exportação de PDF (node) e validar no projetor (contraste real)
 
 ## 📊 Métricas
 
-- Total slides: 44 (41 principais + 3 apêndice extra)
-- Commits: 78+
-- Última sessão: Correção estética paleta S35-S44
+- Total de slides no deck: **45** (S01–S46, com S21 removido)
+- Status (dashboard): S06–S15 = READY (PDF_OK=Yes)
+- Última sessão: patch de contraste (chips em header) + ajuste do exportador PDF para respeitar 16:9
 
 ---
 
-**Para detalhes técnicos:** Ver `CHANGELOG.md`  
-**Para próxima sessão:** Ler este arquivo + último commit
+**Para detalhes técnicos:** ver `GRADE/CHANGELOG.md` e `ISSUES.md`

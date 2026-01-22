@@ -56,7 +56,7 @@ Depois execute o script novamente.
 Quando abrir `http://localhost:8000/index.html`, você deve ver:
 
 - ✅ Slide 1 (capa "CORE GRADE")
-- ✅ Contador "1 / 46" no canto
+- ✅ Contador "1 / 45" no canto
 - ✅ Setas de navegação funcionando
 - ✅ Sem erros no Console (F12)
 

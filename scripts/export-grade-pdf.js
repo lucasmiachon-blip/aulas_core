@@ -8,7 +8,12 @@ async function exportPDF() {
   // Usar servidor local (fetch() não funciona com file:// por CORS)
   // Se servidor não estiver rodando, tentar iniciar ou usar URL
   // Tentar GitHub Pages primeiro, fallback para localhost
-  const url = 'https://lucasmiachon-blip.github.io/aulas_core/GRADE/dist/index.html';
+  const urlCandidates = [
+    'https://lucasmiachon-blip.github.io/aulas_core/grade/',
+    'https://lucasmiachon-blip.github.io/aulas_core/GRADE/dist/index.html',
+    'http://localhost:8000/GRADE/dist/index.html'
+  ];
+  let url = urlCandidates[0];
   
   // Pasta de saída
   const outputDir = path.join(__dirname, '..', 'exports');
@@ -28,31 +33,45 @@ async function exportPDF() {
   
   const page = await browser.newPage();
   
-  // Navegar para a página
-  console.log('📄 Carregando página:', url);
-  await page.goto(url, {
-    waitUntil: 'networkidle',
-    timeout: 60000
-  });
+  // Navegar para a página (com fallback)
+  let loaded = false;
+  for (const candidate of urlCandidates) {
+    try {
+      url = candidate;
+      console.log('📄 Carregando página:', url);
+      await page.goto(url, {
+        waitUntil: 'networkidle',
+        timeout: 60000
+      });
+      loaded = true;
+      break;
+    } catch (e) {
+      console.warn('⚠️ Falhou:', candidate);
+    }
+  }
+  if (!loaded) {
+    throw new Error('Nenhuma URL funcionou para exportar o PDF. Verifique rede/servidor.');
+  }
   
   // Aguardar scripts carregarem (não usa Reveal.js, usa sistema próprio)
   console.log('⏳ Aguardando scripts e DOM estarem prontos...');
   await page.waitForLoadState('domcontentloaded');
   
-  // CRÍTICO: Aguardar slides carregarem (sistema simplificado não usa evento 'slidesloaded')
-  // Fetch com file:// não funciona por CORS, usar timeout maior para garantir carregamento
-  console.log('⏳ Aguardando slides carregarem (pode demorar devido ao fetch local)...');
-  await page.waitForTimeout(5000); // Tempo para fetch() tentar carregar (mesmo que falhe por CORS)
-  
-  // Verificar se slides foram carregados
-  const slidesCount = await page.evaluate(() => {
-    return document.querySelectorAll('.slide').length;
-  });
-  
+  // CRÍTICO: aguardar slides carregarem (fetch + insertAdjacentHTML)
+  console.log('⏳ Aguardando slides carregarem...');
+  let slidesCount = 0;
+  try {
+    await page.waitForFunction(() => document.querySelectorAll('.slide').length >= 40, { timeout: 60000 });
+    slidesCount = await page.evaluate(() => document.querySelectorAll('.slide').length);
+  } catch (e) {
+    // Fallback: esperar um pouco e seguir (evita falha dura em rede instável)
+    await page.waitForTimeout(5000);
+    slidesCount = await page.evaluate(() => document.querySelectorAll('.slide').length);
+  }
+
   if (slidesCount === 0) {
-    console.warn('⚠️ Nenhum slide carregado via fetch (esperado com file:// protocol)');
-    console.log('💡 Para gerar PDF completo, use: npm run serve (servidor local)');
-    console.log('📋 Gerando PDF com estrutura vazia (slides serão carregados em servidor)...');
+    console.warn('⚠️ Nenhum slide detectado. Verifique se a URL está acessível e se o fetch() não foi bloqueado.');
+    console.log('💡 Dica: abra a URL no navegador e confira o console para erros de rede.');
   } else {
     console.log(`✅ ${slidesCount} slides detectados`);
   }
@@ -73,8 +92,8 @@ async function exportPDF() {
   
   await page.pdf({
     path: outputPath,
-    format: 'A4',
-    landscape: true,
+    // 16:9 widescreen (definido em src/css/print.css via @page)
+    preferCSSPageSize: true,
     printBackground: true,
     margin: {
       top: 0,
@@ -82,7 +101,6 @@ async function exportPDF() {
       bottom: 0,
       left: 0
     },
-    preferCSSPageSize: false, // Desabilitar para evitar conflitos
     displayHeaderFooter: false // Garantir sem cabeçalho/rodapé
   });
   

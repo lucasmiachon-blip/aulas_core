@@ -5,6 +5,142 @@
 */
 
 /* ============================================
+   CARDS - Base component system (low-code)
+   Use for consistent, conference-grade layouts.
+   ============================================ */
+
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(var(--text-rgb), 0.10);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1.6vw;
+}
+
+.card--soft {
+  background: var(--surface-2);
+  border-color: rgba(var(--text-rgb), 0.08);
+}
+
+.card--outline {
+  background: var(--surface);
+  border: 2px solid var(--border);
+  box-shadow: none;
+}
+
+.card--navy {
+  background: rgba(var(--navy-rgb), 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.card--navy h1,
+.card--navy h2,
+.card--navy h3 {
+  color: var(--white);
+}
+
+.card--navy p {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.cardHeader {
+  background: rgba(var(--navy-rgb), 0.98);
+  color: var(--white);
+  padding: 0.85vw 1.2vw;
+  border-radius: calc(var(--r-lg) - 0.1vw) calc(var(--r-lg) - 0.1vw) 0 0;
+  border-bottom: 0.25vw solid var(--gold);
+  font-family: var(--font-sans);
+  font-size: 0.85vw;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  padding: 1.4vw 1.6vw;
+}
+
+.section-divider {
+  border-top: 1px solid var(--border);
+  margin: 1.2vw 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45vw;
+  padding: 0.35vw 0.7vw;
+  border-radius: var(--r-sm);
+  font-family: var(--font-sans);
+  font-size: 0.8vw;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.chip--gold {
+  background: rgba(var(--gold-rgb), 0.18);
+  color: var(--navy);
+  border: 1px solid rgba(var(--gold-rgb), 0.50);
+}
+
+/*
+  Contrast fix: chips rendered inside .cardHeader sit on a dark navy background.
+  The default translucent gold (18%) collapses contrast, so we use a near-solid gold fill.
+*/
+.cardHeader .chip--gold {
+  background: rgba(var(--gold-rgb), 0.92);
+  color: var(--navy);
+  border-color: rgba(var(--gold-rgb), 0.92);
+}
+
+.cardHeader .chip--muted {
+  background: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.20);
+}
+
+.chip--teal {
+  background: rgba(var(--teal-rgb), 0.16);
+  color: var(--teal);
+  border: 1px solid rgba(var(--teal-rgb), 0.46);
+}
+
+.chip--muted {
+  background: rgba(var(--text-rgb), 0.06);
+  color: var(--muted);
+  border: 1px solid rgba(var(--text-rgb), 0.10);
+}
+
+.kpi {
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.kpi--xl { font-size: 3.2vw; font-weight: 900; line-height: 1; }
+.kpi--lg { font-size: 2.4vw; font-weight: 900; line-height: 1; }
+.kpi--md { font-size: 1.8vw; font-weight: 900; line-height: 1; }
+
+.kpi-label {
+  font-family: var(--font-sans);
+  font-size: 0.82vw;
+  color: var(--muted);
+  font-weight: 750;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.note {
+  background: rgba(var(--gold-rgb), 0.08);
+  border-left: 4px solid var(--gold);
+  padding: 1vw 1.2vw;
+  border-radius: var(--r-md);
+}
+
+
+/* ============================================
    BLOCKS - Blocos de conteúdo destacados
    ============================================ */
 

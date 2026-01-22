@@ -11,6 +11,7 @@ from pathlib import Path
 
 # Configuração
 SLIDES_DIR = "GRADE/src/slides"
+SLIDE_LIST_FILE = "_list.txt"  # fonte de verdade (evita assumir S01..S46)
 DEADLINE = datetime(2026, 2, 10)
 OUTPUT_FILE = "METRICAS_MVP.txt"
 
@@ -61,12 +62,26 @@ def generate_metrics():
         print("   Execute este script no diretório aulas_core/")
         return
     
-    # Escanear todos slides
+    # Escanear todos slides (a partir do _list.txt)
     slides = {}
-    for i in range(1, 46):
-        slide_id = f"S{i:02d}"
-        filepath = os.path.join(SLIDES_DIR, f"{slide_id}.html")
-        
+
+    list_path = os.path.join(SLIDES_DIR, SLIDE_LIST_FILE)
+    if not os.path.exists(list_path):
+        print(f"❌ Lista não encontrada: {list_path}")
+        print("   Dica: verifique se o arquivo _list.txt existe em GRADE/src/slides/")
+        return
+
+    with open(list_path, 'r', encoding='utf-8') as f:
+        slide_files = [
+            line.strip()
+            for line in f.read().splitlines()
+            if line.strip() and not line.strip().startswith('#')
+        ]
+
+    for fname in slide_files:
+        slide_id = fname.replace('.html', '')
+        filepath = os.path.join(SLIDES_DIR, fname)
+
         if os.path.exists(filepath):
             slides[slide_id] = scan_slide(filepath)
         else:
@@ -98,6 +113,7 @@ def generate_metrics():
     daily_pace = slides_remaining / max(days_remaining, 1)
     
     # Gerar arquivo de métricas
+    total = total_slides
     output = f"""# MÉTRICAS MVP - GRADE
 # Atualizado: {today.strftime('%d/%m/%Y %H:%M')}
 # Gerado automaticamente por mvp-tracker.py
@@ -107,11 +123,11 @@ Deadline: 10 Fevereiro 2026
 Dias restantes: {days_remaining} dias
 
 ## 📊 PROGRESSO SLIDES
-READY (apresentáveis): {ready_count}/45 ({ready_count/45*100:.0f}%)
-DRAFT (com problemas): {draft_count}/45
-MISSING (não existem): {missing_count}/45
+READY (apresentáveis): {ready_count}/{total} ({ready_count/total*100:.0f}%)
+DRAFT (com problemas): {draft_count}/{total}
+MISSING (não existem): {missing_count}/{total}
 
-Completion MVP: {'█' * int(ready_count/45*10)}{'░' * (10-int(ready_count/45*10))} {ready_count/45*100:.0f}%
+Completion MVP: {'█' * int(ready_count/total*10)}{'░' * (10-int(ready_count/total*10))} {ready_count/total*100:.0f}%
 
 ## ⚡ RITMO NECESSÁRIO
 Slides restantes: {slides_remaining}
@@ -132,7 +148,7 @@ Total P0: {len(p0_issues)}
     output += f"""
 ## 📋 PRÓXIMOS 3 PASSOS
 1. {'✅' if len(p0_issues) == 0 else '[ ]'} Eliminar todos P0 ({len(p0_issues)} restantes)
-2. {'✅' if ready_count == 45 else '[ ]'} Todos slides READY ({ready_count}/45)
+2. {'✅' if ready_count == total else '[ ]'} Todos slides READY ({ready_count}/{total})
 3. [ ] Teste final com colegas
 
 ## 📈 HISTÓRICO (últimos 7 dias)
@@ -145,13 +161,13 @@ Total P0: {len(p0_issues)}
             with open(OUTPUT_FILE, 'r', encoding='utf-8') as f:
                 content = f.read()
                 # Extrair linha do histórico anterior
-                if match := re.search(r'(\d{2}/\d{2}) \| (\d+)/45', content):
-                    history.append(f"{match.group(1)} | {match.group(2)}/45")
+                if match := re.search(r'(\d{2}/\d{2}) \| (\d+)/(\d+)', content):
+                    history.append(f"{match.group(1)} | {match.group(2)}/{match.group(3)}")
         except:
             pass
     
     # Adicionar hoje
-    history.append(f"{today.strftime('%d/%m')} | {ready_count}/45")
+    history.append(f"{today.strftime('%d/%m')} | {ready_count}/{total}")
     
     # Manter só últimos 7 dias
     for line in history[-7:]:
@@ -171,7 +187,7 @@ Para detalhes: ver DASHBOARD.xlsx
     print(f"✅ Métricas salvas em: {OUTPUT_FILE}")
     print()
     print("📊 RESUMO:")
-    print(f"   READY: {ready_count}/45 ({ready_count/45*100:.0f}%)")
+    print(f"   READY: {ready_count}/{total} ({ready_count/total*100:.0f}%)")
     print(f"   P0 críticos: {len(p0_issues)}")
     print(f"   Dias restantes: {days_remaining}")
     print(f"   Ritmo necessário: {daily_pace:.1f} slides/dia")

@@ -39,41 +39,34 @@
             <!-- COLUNA DIREITA: GRADE + WARRANTY -->
             <div style="display: flex; flex-direction: column; gap: 1.8vw;">
                 
-                <!-- ZONA 2: MINI-GRADE (card escuro) -->
-                <div style="background: var(--navy); border-radius: 0.6vw; padding: 1.8vw;">
-                    
-                    <!-- Header GRADE -->
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2vw;">
-                        <span style="font-family: 'Inter', sans-serif; font-size: 0.9vw; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 0.1em;">AN&Aacute;LISE GRADE</span>
-                        <span style="font-family: 'Inter', sans-serif; background: var(--gold); color: var(--navy); font-size: 0.85vw; padding: 0.3vw 0.7vw; border-radius: 0.3vw; font-weight: 700;">
-                            &#8853;&#8853;&#9675;&#9675; BAIXA
-                        </span>
+                <!-- ZONA 2: MINI-GRADE (menos contraste, mais editorial) -->
+                <div class="card" style="padding: 0; overflow: hidden; border: 1px solid rgba(var(--navy-rgb),0.18);">
+                    <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>ANÁLISE GRADE</span>
+                        <span class="chip chip--gold">⊕⊕◯◯ BAIXA</span>
                     </div>
-                    
-                    <!-- (a) Tipo de evidência -->
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1vw; color: rgba(255,255,255,0.9); margin: 0 0 1vw 0; line-height: 1.5;">
-                        <strong style="color: var(--gold);">Tipo:</strong> Evidência observacional (coortes prospectivas &mdash; MESA)
-                    </p>
-                    
-                    <!-- (b) Por que confio -->
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1vw; color: rgba(255,255,255,0.9); margin: 0 0 1vw 0; line-height: 1.5;">
-                        <strong style="color: var(--gold);">For&ccedil;a:</strong> Gradiente dose-resposta consistente entre categorias de CAC
-                    </p>
-                    
-                    <!-- (c) Limite principal -->
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1vw; color: rgba(255,255,255,0.9); margin: 0 0 1vw 0; line-height: 1.5;">
-                        <strong style="color: var(--gold);">Limite:</strong> Confus&atilde;o residual (ajuste incompleto para outros fatores de risco)
-                    </p>
-                    
-                    <!-- (d) Mensagem final -->
-                    <div style="border-top: 1px solid rgba(var(--gold-rgb),0.3); padding-top: 1vw; margin-top: 1vw;">
-                        <p style="font-family: Georgia, serif; font-size: 1.15vw; color: var(--gold); font-style: italic; margin: 0;">
-                            Predi&ccedil;&atilde;o &ne;  prescri&ccedil;&atilde;o
+
+                    <div class="cardBody">
+                        <p style="font-family: var(--font-sans); font-size: 1.02vw; color: var(--text); margin: 0 0 1vw 0; line-height: 1.5;">
+                            <strong style="color: var(--gold);">Tipo:</strong> Evidência observacional (coortes prospectivas — MESA)
                         </p>
+
+                        <p style="font-family: var(--font-sans); font-size: 1.02vw; color: var(--text); margin: 0 0 1vw 0; line-height: 1.5;">
+                            <strong style="color: var(--gold);">Força:</strong> Gradiente dose–resposta consistente entre categorias de CAC.
+                        </p>
+
+                        <p style="font-family: var(--font-sans); font-size: 1.02vw; color: var(--text); margin: 0; line-height: 1.5;">
+                            <strong style="color: var(--gold);">Limite:</strong> Confusão residual (ajuste incompleto para outros fatores de risco).
+                        </p>
+
+                        <div class="note" style="margin-top: 1.1vw; border-left-color: var(--gold); background: rgba(var(--gold-rgb),0.10);">
+                            <p style="font-family: var(--font-serif); font-size: 1.12vw; color: var(--navy); font-style: italic; margin: 0;">
+                                Predição ≠ prescrição — exige julgamento clínico.
+                            </p>
+                        </div>
                     </div>
-                    
                 </div>
-                
+
                 <!-- ZONA 3: WARRANTY (enxuto) -->
                 <div style="background: white; border: 2px solid var(--gold); border-radius: 0.6vw; padding: 1.8vw;">
                     

@@ -1,13 +1,16 @@
 # Style Guide
 
 ## Paleta (padrão)
-- **Navy** (base)
-- **Gold** (destaques)
-- **Off-white** (fundo)
+- **Navy** `#0B1320` (base escura)
+- **Bg** `#F8FAFC` (fundo claro)
+- **Gold** `#D2B55B` (acento quente — usar com parcimônia)
+- **Teal** `#0F766E` (clínico)
+- **Blue** `#2563EB` (acento frio)
+- Texto: `#0F172A` | Muted: `#475569` | Border: `#E2E8F0`
 
 ## Tipografia (padrão)
-- Títulos: **Georgia**
-- Texto: **Lato**
+- Fonte principal (slides): **Inter**
+- Serif opcional (quotes/ênfase): **Georgia**
 
 ## Regras de slide
 - **1 mensagem por slide** (uma ideia principal).

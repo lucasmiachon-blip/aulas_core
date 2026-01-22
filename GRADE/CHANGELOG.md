@@ -1,5 +1,23 @@
 # CHANGELOG - GRADE Slides
 
+## [PATCH 2.1] - 2026-01-22 (Contrast fix + PDF 16:9)
+
+### UI/Visual
+- Fixed low contrast for score chips (e.g., "⊕⊕○○ BAIXA") when rendered inside dark navy headers (`.cardHeader`).
+  - Implemented contextual override: `.cardHeader .chip--gold` now uses a near-solid gold fill for reliable contrast.
+  - Added `.cardHeader .chip--muted` styling for optional dark-header chips.
+
+### Slides
+- **S09**: fixed the SBC guideline "source strip" text to render in white (previously inherited global `<p>` color and became unreadable on navy).
+
+### Tooling
+- **scripts/export-grade-pdf.js**
+  - Now targets GitHub Pages `/grade/` URL (aligned with the shared viewer link).
+  - Waits for slides to load (`.slide` count) before printing.
+  - Uses `preferCSSPageSize: true` to respect `src/css/print.css` 16:9 page size (PPT-style).
+
+---
+
 ## [BATCH 2] - 2026-01-22 (MVP UI Pass: Paleta + Viewer + Print)
 
 ### Objetivo: Deixar o viewer “conference-ready” (legível, consistente, exportável)

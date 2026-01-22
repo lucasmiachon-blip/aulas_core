@@ -23,6 +23,7 @@
                             CAC = 0
                         </h3>
                         <span style="font-family: var(--font-sans); font-size: 0.8vw; color: var(--muted); font-weight: 600; background: var(--bg); padding: 0.4vw 0.8vw; border-radius: 0.3vw;">
+                        <span style="font-family: var(--font-sans); font-size: 0.8vw; color: var(--muted); font-weight: 600; background: var(--bg); padding: 0.4vw 0.8vw; border-radius: 0.3vw;">
                             NNT > NNH
                         </span>
                     </div>
@@ -57,6 +58,7 @@
                         <h3 style="font-family: 'Inter', sans-serif; font-size: 1.2vw; color: var(--navy); font-weight: 700; margin: 0;">
                             CAC 1&mdash;99
                         </h3>
+                        <span style="font-family: var(--font-sans); font-size: 0.8vw; color: var(--muted); font-weight: 600; background: var(--bg); padding: 0.4vw 0.8vw; border-radius: 0.3vw;">
                         <span style="font-family: var(--font-sans); font-size: 0.8vw; color: var(--muted); font-weight: 600; background: var(--bg); padding: 0.4vw 0.8vw; border-radius: 0.3vw;">
                             NNT > NNH
                         </span>
@@ -126,52 +128,44 @@
             <!-- COLUNA DIREITA: GRADE + REGRA PR&Aacute;TICA -->
             <div style="display: flex; flex-direction: column; gap: 1.2vw;">
                 
-                <!-- CARD GRADE -->
-                <div style="background: var(--navy); border-radius: 0.6vw; padding: 1.5vw; flex-grow: 1; display: flex; flex-direction: column;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2vw;">
-                        <span style="font-family: 'Inter', sans-serif; font-size: 0.85vw; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 0.1em; text-transform: uppercase;">
-                            An&aacute;lise GRADE
-                        </span>
-                        <span style="font-family: 'Inter', sans-serif; background: rgba(var(--gold-rgb),0.2); color: var(--gold); font-size: 0.8vw; padding: 0.4vw 0.8vw; border-radius: 0.3vw; font-weight: 700; white-space: nowrap; border: 1px solid var(--gold);">
-                            &#8857;&#8857;&#9676;&#9676; BAIXA&mdash;MODERADA
-                        </span>
+                <!-- CARD GRADE (contraste equilibrado) -->
+                <div class="card" style="padding: 0; overflow: hidden; border: 1px solid rgba(var(--navy-rgb),0.18); flex-grow: 1; display: flex; flex-direction: column;">
+                    <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center;">
+                        <span>ANÁLISE GRADE</span>
+                        <span class="chip chip--gold">⊕⊕◯◯ BAIXA&ndash;MODERADA</span>
                     </div>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 1vw; flex-grow: 1;">
-                        
+
+                    <div class="cardBody" style="display: flex; flex-direction: column; gap: 1vw; flex-grow: 1;">
                         <div>
-                            <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--gold); margin: 0 0 0.4vw 0; font-weight: 700;">
-                                Tipo de evidência:
-                            </p>
-                            <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: rgba(255,255,255,0.9); margin: 0; line-height: 1.4;">
-                                Coorte (MESA) + efeitos (RRR/RRI) transportados de meta-an&aacute;lises
+                            <p class="kpi-label" style="margin: 0 0 0.4vw 0; color: var(--gold);">Tipo de evidência</p>
+                            <p style="font-family: var(--font-sans); font-size: 1.0vw; color: var(--text); margin: 0; line-height: 1.45;">
+                                Coorte (MESA) + efeitos (RRR/RRI) transportados de meta-análises
                             </p>
                         </div>
 
-                        <div style="border-top: 1px solid rgba(var(--gold-rgb),0.2); padding-top: 1vw;">
-                            <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--gold); margin: 0 0 0.4vw 0; font-weight: 700;">
-                                Dom&iacute;nio-chave:
-                            </p>
-                            <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: rgba(255,255,255,0.9); margin: 0; line-height: 1.4;">
-                                <strong>INDIRECTNESS</strong> &mdash; N&atilde;o &eacute; RCT estratificado por CAC
+                        <div class="section-divider" style="margin: 0.9vw 0;"></div>
+
+                        <div>
+                            <p class="kpi-label" style="margin: 0 0 0.4vw 0; color: var(--gold);">Domínio-chave</p>
+                            <p style="font-family: var(--font-sans); font-size: 1.0vw; color: var(--text); margin: 0; line-height: 1.45;">
+                                <strong>INDIRECTNESS</strong> &mdash; não é RCT estratificado por CAC
                             </p>
                         </div>
 
-                        <div style="border-top: 1px solid rgba(var(--gold-rgb),0.2); padding-top: 1vw;">
-                            <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--gold); margin: 0 0 0.4vw 0; font-weight: 700;">
-                                Dom&iacute;nio 2:
-                            </p>
-                            <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: rgba(255,255,255,0.9); margin: 0; line-height: 1.4;">
+                        <div class="section-divider" style="margin: 0.9vw 0;"></div>
+
+                        <div>
+                            <p class="kpi-label" style="margin: 0 0 0.4vw 0; color: var(--gold);">Domínio 2</p>
+                            <p style="font-family: var(--font-sans); font-size: 1.0vw; color: var(--text); margin: 0; line-height: 1.45;">
                                 <strong>IMPRECISÃO</strong> &mdash; sangramentos raros em CAC muito alto
                             </p>
                         </div>
 
-                        <div style="border-top: 1px solid rgba(var(--gold-rgb),0.2); padding-top: 1vw; margin-top: auto;">
-                            <p style="font-family: Georgia, serif; font-size: 1vw; color: var(--gold); font-style: italic; margin: 0;">
+                        <div class="note" style="margin-top: auto; border-left-color: var(--teal); background: rgba(var(--teal-rgb),0.09);">
+                            <p style="font-family: var(--font-serif); font-size: 1.05vw; color: var(--navy); font-style: italic; margin: 0;">
                                 &rarr; Recomenda&ccedil;&atilde;o CONDICIONAL
                             </p>
                         </div>
-
                     </div>
                 </div>
 
