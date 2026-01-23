@@ -26,6 +26,7 @@
   --gold: #D2B55B;     /* Warm highlight (use sparingly) */
   --teal: #0F766E;     /* Clinical teal */
   --blue: #2563EB;     /* Primary blue */
+  --danger: #DC2626;   /* Critical / contraindication */
 
   /* RGB helpers (for alpha backgrounds) */
   --navy-rgb: 11, 19, 32;
@@ -35,6 +36,7 @@
   --gold-rgb: 210, 181, 91;
   --teal-rgb: 15, 118, 110;
   --blue-rgb: 37, 99, 235;
+  --danger-rgb: 220, 38, 38;
 
   /* Surfaces & shadows */
   --surface: var(--white);

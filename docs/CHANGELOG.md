@@ -16,6 +16,32 @@
 
 ---
 
+
+## [2026-01-22] - Batch 3: Slides 16–26 + PREVENT (fontes) + Correções de contraste + Placeholders SCOT-HEART 10y
+
+### ✅ Correções globais (CSS tokens)
+- **base.css**
+  - Adicionado **--danger / --danger-rgb** (sinalização de contraindicação/alerta).
+  - Adicionado **--navy-rgb** (suporte a rgba() em placeholders e bordas).
+
+### ✅ Slides atualizados
+- **S12 (SCOT-HEART / LAP)**
+  - Adicionados placeholders para **seguimento 10 anos**: **HR + IC 95%** (aguardando paper).
+  - Adicionado placeholder de **figura** (slot pronto para inserir imagem + citação completa).
+  - Compactação dos blocos novos para evitar overflow.
+- **S19 (RoB 2.0)**
+  - Compactação de **paddings + type scale** para garantir que os **5 domínios** apareçam sem corte.
+- **S24–S26 (PREVENT)**
+  - Removido claim com data futura ("validação brasileira 2026").
+  - Fontes corrigidas para **PREVENT / PCE / SCORE2** (tier 1).
+- **S43 + S46 (SAMS / CLEAR Outcomes)**
+  - Corrigido texto ilegível (navy-on-navy).
+  - Contraindicação/indisponibilidade com contraste consistente em painel escuro.
+
+### 📊 Dashboard
+- Atualizado `DASHBOARD.xlsx` (Status/OKs/Next_Action/Notes para o lote acima).
+
+
 ## [2026-01-22] - Batch 2: Design System + Grid System + Type Scale (Continuação)
 
 ### 📝 Refatoração S06.html - Motor do GRADE
@@ -80,6 +106,32 @@
 **Commit:** `[próximo commit]`
 
 ---
+
+
+## [2026-01-22] - Batch 3: Slides 16–26 + PREVENT (fontes) + Correções de contraste + Placeholders SCOT-HEART 10y
+
+### ✅ Correções globais (CSS tokens)
+- **base.css**
+  - Adicionado **--danger / --danger-rgb** (sinalização de contraindicação/alerta).
+  - Adicionado **--navy-rgb** (suporte a rgba() em placeholders e bordas).
+
+### ✅ Slides atualizados
+- **S12 (SCOT-HEART / LAP)**
+  - Adicionados placeholders para **seguimento 10 anos**: **HR + IC 95%** (aguardando paper).
+  - Adicionado placeholder de **figura** (slot pronto para inserir imagem + citação completa).
+  - Compactação dos blocos novos para evitar overflow.
+- **S19 (RoB 2.0)**
+  - Compactação de **paddings + type scale** para garantir que os **5 domínios** apareçam sem corte.
+- **S24–S26 (PREVENT)**
+  - Removido claim com data futura ("validação brasileira 2026").
+  - Fontes corrigidas para **PREVENT / PCE / SCORE2** (tier 1).
+- **S43 + S46 (SAMS / CLEAR Outcomes)**
+  - Corrigido texto ilegível (navy-on-navy).
+  - Contraindicação/indisponibilidade com contraste consistente em painel escuro.
+
+### 📊 Dashboard
+- Atualizado `DASHBOARD.xlsx` (Status/OKs/Next_Action/Notes para o lote acima).
+
 
 ## [2026-01-22] - Batch 2: Design System + Grid System + Type Scale
 

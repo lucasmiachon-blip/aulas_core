@@ -1,5 +1,21 @@
 # CHANGELOG - GRADE Slides
 
+## [PATCH 2.2] - 2026-01-22 (Batch 3: PREVENT fontes + RoB fit + SAMS contrast + placeholders)
+
+### UI/Visual
+- **base.css**
+  - Added `--danger` / `--danger-rgb` tokens (contraindicação/alerta em painéis escuros).
+  - Ensured `--navy-rgb` is available for `rgba()` borders (placeholders).
+
+### Slides
+- **S12**: added placeholders for **SCOT-HEART 10-year follow-up** (HR/IC 95%) + **figure slot** (image + full citation); compacted to prevent overflow.
+- **S19**: reduced padding/type scale to guarantee all **5 RoB 2.0 domains** display without clipping.
+- **S24–S26**: corrected **PREVENT** references to the tier-1 source (Circulation 2024 PREVENT equations) and removed future-dated BR validation claim.
+- **S43**: fixed navy-on-navy text (rhabdomyolysis/contraindication panel now readable; contraindication highlighted with `--danger`).
+- **S46**: fixed navy-on-navy text for SUS availability line (now readable with consistent emphasis).
+
+---
+
 ## [PATCH 2.1] - 2026-01-22 (Contrast fix + PDF 16:9)
 
 ### UI/Visual
