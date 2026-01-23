@@ -18,10 +18,14 @@
         'S11','S12','S13','S14','S15','S16','S17','S18','S19','S20',
         'S22','S23','S24','S25','S26','S27','S28','S29','S30',
         'S31','S32','S33','S34','S35','S36','S37','S38','S39','S40',
-        'S41','S42','S43','S44','S45','S46'
+        'S41','S42','S43','S44','S45','S46','S47','S48','S49'
     ];
 
-    const basePathCandidates = ['./src/slides/', './slides/'];
+    // Compatível com:
+    // - GRADE/src/index.html  -> ./slides/
+    // - GRADE/dist/index.html -> ../src/slides/
+    // - raiz (legacy)         -> ./src/slides/
+    const basePathCandidates = ['../src/slides/', './slides/', './src/slides/'];
 
     function normalizeHash(value) {
         return (value || '').replace('#', '').trim().toUpperCase();

@@ -1,5 +1,35 @@
 # CHANGELOG - GRADE Slides
 
+## [PATCH 2.5] - 2026-01-23 (S12 figura inserida)
+
+- **S12**: figura Kaplan-Meier inserida (código HTML pronto; imagem real pendente em `assets/figures/scot-heart-10y-km.png`).
+- Estrutura de pastas criada: `src/assets/figures/` com README.md.
+
+## [PATCH 2.4] - 2026-01-23 (Polish P0: alinhamento + ordem SAMS)
+
+- `_list.txt`: SAMS (S43–S49) movido para após S14; S15–S16 suprimidos do fluxo.
+- **S07**: alinhamento (PICO box) corrigido.
+- **S12**: padding/altura do placeholder ajustados.
+- **S12**: números SCOT-HEART 10y preenchidos (Lancet 2025); figura segue placeholder.
+- **S14**: restyle para ficar paralelo ao S09.
+- **S17–S20**: removidos emojis como semântica; labels/chips consistentes; texto BR mais explícito.
+
+
+## [PATCH 2.3] - 2026-01-23 (Batch SAMS MVP P0: nocebo tier-1 + EtD aplicado)
+
+### SAMS (sequência didática para residentes)
+- **S43**: ajustado para focar em conceito central: *SAMS ≠ causalidade*; mantido espectro de gravidade; epidemiologia suavizada para evitar números frágeis.
+- **S44**: novo slide **SAMSON** (N-of-1 crossover) com mensagem nocebo + números-chave e impacto na prática.
+- **S45**: novo slide **StatinWISE** (BMJ 2021; N-of-1) reforçando efeito médio ~zero em sintomas musculares.
+- **S46**: novo slide de **algoritmo curto** (EAS/NLA/AHA) para confirmar intolerância “de verdade” + script anti-nocebo.
+- **S47**: CLEAR Outcomes reposicionado para manter ponte com GRADE/EtD (desfecho → certeza).
+- **S48**: novo comparativo **ezetimiba vs PCSK9i vs bempedoic** (mapa de alternativas + EtD em 4 perguntas).
+- **S49**: síntese **GRADE + contexto brasileiro** (viabilidade/acesso como determinante de recomendação), removendo cálculo de custo não rastreável.
+
+### Tooling / Estrutura
+- Criado MVP de viewer em **GRADE/src/index.html** e **GRADE/dist/index.html** (compatível com `slides-simple.js`).
+- `slides-simple.js` agora resolve caminhos também para **/GRADE/dist/** (inclui `../src/slides/`).
+
 ## [PATCH 2.2] - 2026-01-22 (Batch 3: PREVENT fontes + RoB fit + SAMS contrast + placeholders)
 
 ### UI/Visual

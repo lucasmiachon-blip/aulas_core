@@ -1,35 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORE GRADE 2026 &ndash; Magna Class v2.0.0 (SBC 2025 Edition)</title>
-    
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Georgia:ital,wght@0,400;1,400&display=swap">
-    
-    <!-- Modular CSS -->
-    <link rel="stylesheet" href="../src/css/base.css">
-    <link rel="stylesheet" href="../src/css/blocks.css">
-    <link rel="stylesheet" href="../src/css/responsive-fix.css">
-    <link rel="stylesheet" href="../src/css/print.css" media="print">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GRADE • CORE</title>
+
+  <!-- CSS (dist aponta para src) -->
+  <link rel="stylesheet" href="../src/css/base.css" />
+  <link rel="stylesheet" href="../src/css/blocks.css" />
+  <link rel="stylesheet" href="../src/css/responsive-fix.css" />
+  <link rel="stylesheet" href="../src/css/print.css" />
 </head>
-<body tabindex="0">
 
-<div id="viewport">
-    <!-- Slides serão carregados dinamicamente por slides-simple.js -->
-</div>
+<body>
+  <div class="controls" aria-label="Controles">
+    <button class="nav-btn" id="prevBtn" type="button">◀ Anterior</button>
+    <div class="slide-indicator"><span id="currentSlide">--</span> / <span id="totalSlides">--</span></div>
+    <button class="nav-btn" id="nextBtn" type="button">Próximo ▶</button>
+  </div>
 
-<div class="slide-counter">
-    <span id="currentSlide">1</span> / <span id="totalSlides">45</span>
-</div>
+  <div id="viewport" aria-label="Slides"></div>
 
-<div class="controls">
-    <button id="prevBtn" aria-label="Anterior">&larr;</button>
-    <button id="nextBtn" aria-label="Próximo">&rarr;</button>
-</div>
-
-<!-- Sistema de Slides Simplificado -->
-<script src="../src/js/slides-simple.js"></script>
+  <!-- JS -->
+  <script src="../src/js/slides-simple.js"></script>
 </body>
 </html>

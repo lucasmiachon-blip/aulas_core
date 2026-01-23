@@ -1,289 +1,97 @@
-/*
-  base.css
-  --------------------------------------------------------------------
-  Design tokens + base layout for the GRADE slide viewer (16:9).
-  Goal: conference-grade legibility (projector), minimal + consistent.
-
-  Notes:
-  - Keep tokens stable: slides reference --bg, --navy, --gold, --teal, etc.
-  - Prefer rgba(var(--*-rgb), a) for translucent fills (CSS can’t alpha hex).
-*/
+/* ============================================
+   GRADE • Base (tokens + viewer) — MVP
+   Guardrails: mudanças pequenas, foco em legibilidade
+   ============================================ */
 
 :root {
-  /* =====================
-     COLOR TOKENS
-     ===================== */
+  /* Paleta oficial */
+  --bg: #f8fafc;
+  --navy: #0b1320;
+  --gold: #d2b55b;
+  --teal: #0f766e;
+  --blue: #2563eb;
+  --text: #0f172a;
+  --muted: #475569;
+  --white: #ffffff;
+  --border: #e2e8f0;
 
-  /* Neutrals (cool, professional) */
-  --bg: #F8FAFC;       /* Slide background */
-  --white: #FFFFFF;
-  --navy: #0B1320;     /* Frame/background */
-  --text: #0F172A;     /* Main text (Slate-900) */
-  --muted: #475569;    /* Secondary text (Slate-600) */
-  --border: #E2E8F0;   /* Borders (Slate-200) */
-
-  /* Accents */
-  --gold: #D2B55B;     /* Warm highlight (use sparingly) */
-  --teal: #0F766E;     /* Clinical teal */
-  --blue: #2563EB;     /* Primary blue */
-  --danger: #DC2626;   /* Critical / contraindication */
-
-  /* RGB helpers (for alpha backgrounds) */
+  /* Helpers RGB */
   --navy-rgb: 11, 19, 32;
-  --text-rgb: 15, 23, 42;
-  --muted-rgb: 71, 85, 105;
-  --border-rgb: 226, 232, 240;
   --gold-rgb: 210, 181, 91;
   --teal-rgb: 15, 118, 110;
   --blue-rgb: 37, 99, 235;
-  --danger-rgb: 220, 38, 38;
+  --text-rgb: 15, 23, 42;
 
-  /* Surfaces & shadows */
-  --surface: var(--white);
-  --surface-2: #F1F5F9; /* Slate-100 */
-  --shadow-sm: 0 8px 18px rgba(0, 0, 0, 0.08);
-  --shadow-md: 0 18px 40px rgba(0, 0, 0, 0.18);
-  --shadow-xl: 0 40px 120px rgba(0, 0, 0, 0.55);
+  /* Alertas */
+  --danger: #ef4444;
+  --danger-rgb: 239, 68, 68;
 
-  /* =====================
-     TYPOGRAPHY TOKENS
-     ===================== */
-
-  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  /* Tipografia */
+  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;
   --font-serif: Georgia, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
 
-  /* Radii (vw keeps proportions inside the 16:9 viewport) */
-  --r-xs: 0.25vw;
-  --r-sm: 0.4vw;
-  --r-md: 0.7vw;
-  --r-lg: 1vw;
-
-  /* Motion */
-  --ease-out: cubic-bezier(.16, .84, .44, 1);
+  /* UI tokens */
+  --radius-sm: 0.5vw;
+  --radius-md: 0.8vw;
+  --shadow-sm: 0 0.35vw 1.2vw rgba(var(--navy-rgb), 0.10);
 }
 
-/* =====================
-   RESET
-   ===================== */
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { height: 100%; }
-
-body {
-  background:
-    radial-gradient(1200px circle at 50% -15%,
-      rgba(var(--blue-rgb), 0.22),
-      rgba(0, 0, 0, 0) 60%),
-    var(--navy);
-
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #0a0f1a;
   font-family: var(--font-sans);
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  color: var(--text);
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* =====================
-   VIEWPORT (16:9)
-   ===================== */
-
+/* Viewer container */
 #viewport {
-  width: min(100vw, calc(100vh * 16 / 9));
-  height: min(100vh, calc(100vw * 9 / 16));
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--bg);
   position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
   display: flex;
-  box-shadow: var(--shadow-xl);
-  border-radius: 0.6vw;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: center;
+  justify-content: center;
 }
 
-/* =====================
-   SLIDES
-   ===================== */
-
+/* Slide base — 16:9 */
 .slide {
+  width: 100vw;
+  height: calc(100vw * 0.5625); /* 16:9 */
+  max-width: calc(100vh * 1.7777778);
+  max-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 0.6vw;
+  box-shadow: 0 0.8vw 3vw rgba(0,0,0,0.35);
   position: absolute;
   inset: 0;
+  margin: auto;
+  overflow: hidden;
   display: none;
-  padding: 5% 6%;
   flex-direction: column;
-  transform-origin: top left;
+  padding: 4vw 6%;
+  box-sizing: border-box;
 }
 
-.slide.active { display: flex; }
+.slide.active {
+  display: flex;
+}
 
 .bg-navy {
   background: var(--navy) !important;
   color: var(--white) !important;
-  justify-content: center !important;
 }
 
-.bg-navy h1 { color: var(--gold); }
-.bg-navy h2 { color: var(--white); }
-.bg-navy p { color: rgba(255, 255, 255, 0.86); }
-.bg-navy .label-gold { color: var(--gold); }
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
 
-/* =====================
-   TYPOGRAPHY (base)
-   ===================== */
-
-h1 {
+p, li, span, div {
   font-family: var(--font-sans);
-  font-size: 8.2vw;
-  color: var(--navy);
-  line-height: 1.02;
-  margin-bottom: 2vw;
-  letter-spacing: -0.03em;
-  font-weight: 800;
 }
 
-h2 {
-  font-family: var(--font-sans);
-  font-size: 3.3vw;
-  color: var(--navy);
-  line-height: 1.12;
-  margin: 0 0 1.4vw 0;
-  font-weight: 750;
-  letter-spacing: -0.02em;
-}
-
-h3 {
-  font-family: var(--font-sans);
-  font-size: 1.6vw;
-  color: var(--navy);
-  line-height: 1.2;
-  margin: 0 0 0.8vw 0;
-  font-weight: 750;
-}
-
-p {
-  font-family: var(--font-sans);
-  font-size: 1.35vw;
-  line-height: 1.55;
-  color: var(--text);
-  margin-bottom: 1.2vw;
-}
-
-strong { font-weight: 800; }
-
-.label-gold {
-  color: var(--gold);
-  font-weight: 800;
-  font-size: 0.9vw;
-  letter-spacing: 0.18vw;
-  text-transform: uppercase;
-  margin-bottom: 0.8vw;
-}
-
-.body-literal {
-  font-size: 1.35vw;
-  line-height: 1.55;
-  color: var(--text);
-}
-
-/* =====================
-   LAYOUT HELPERS
-   ===================== */
-
-.grid-main {
-  display: grid;
-  grid-template-columns: 1.15fr 0.95fr 0.95fr;
-  gap: 2.3vw;
-  flex-grow: 1;
-  align-items: stretch;
-}
-
-.column-stack { display: flex; flex-direction: column; gap: 1.5vw; }
-
-.card-magna {
-  background: var(--surface);
-  border-radius: var(--r-lg);
-  padding: 2vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid rgba(var(--text-rgb), 0.06);
-}
-
-/* =====================
-   CONTROLS
-   ===================== */
-
-.controls {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-  display: flex;
-  gap: 10px;
-}
-
-.controls button {
-  width: 46px;
-  height: 46px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(var(--navy-rgb), 0.72);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 900;
-  font-size: 18px;
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  transition:
-    transform 120ms var(--ease-out),
-    background 120ms var(--ease-out),
-    border-color 120ms var(--ease-out);
-}
-
-.controls button:hover {
-  background: rgba(var(--navy-rgb), 0.88);
-  border-color: rgba(255, 255, 255, 0.22);
-  transform: translateY(-1px);
-}
-
-.controls button:active { transform: translateY(0); }
-
-.controls button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(var(--blue-rgb), 0.35);
-}
-
-.slide-counter {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  z-index: 1000;
-
-  background: rgba(var(--navy-rgb), 0.72);
-  color: white;
-  padding: 12px 18px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-
-  font-weight: 750;
-  font-size: 14px;
-  letter-spacing: 0.02em;
-
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
+/* Minimal anchor reset */
+a { color: inherit; }
