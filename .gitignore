@@ -4,6 +4,8 @@ package-lock.json
 
 # Arquivos gerados (outputs)
 exports/
+exports/*.pdf
+exports/*.zip
 *.pdf
 
 # Logs

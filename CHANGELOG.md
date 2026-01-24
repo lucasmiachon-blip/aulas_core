@@ -1,28 +1,23 @@
 # CHANGELOG - GRADE Slides
 
-## [PATCH 2.5] - 2026-01-23 (P0 polish: imprecisão/RoB + consistência PREVENT)
+## PATCH2_5 — 2026-01-23
+- P0 polish (GRADE): S07 alinhamento/estrutura; S12 padding; S17–S20 refinados (imprecisão/RoB/EtD); S23–S26 harmonizados (PREVENT) + remoção de emojis como semântica.
+- Atualizações de controle: CHANGELOGs, ISSUES.md, DASHBOARD.xlsx.
 
-### Slides (P0)
-- **S07**: layout mais simétrico (2×2) + “Key concept” em largura total (melhor alinhamento em projeção).
-- **S12**: ajustes finos de padding/altura (reduz risco de overflow sem perder hierarquia).
-- **S17**: acrescentado bloco “Além do MID” (OIS/eventos + IC incluindo benefício e dano).
-- **S18**: refeito como checklist Core GRADE (limiar, nulidade, OIS/eventos) — removidos ícones/emoji como semântica.
-- **S19**: redesign completo em formato tabela (RoB 2.0) com chips consistentes + decisão GRADE explícita.
-- **S20**: badge de certeza padronizado + linha de recomendação com melhor contraste (navy) e tamanho mais contido.
-- **S23–S26**: bloco PREVENT harmonizado com o restante do deck (cards/chips, padding, sem emojis de bandeira; mensagens em alto nível).
+## [PATCH 2.4] - 2026-01-23 (Polish P0: alinhamento + SAMS no lugar certo)
 
-### Documentação / Controle
-- Atualizados **CHANGELOGs**, **ISSUES.md** e **DASHBOARD.xlsx** (registro do batch e progresso).
+### Ordem / Sequência didática (SAMS)
+- `_list.txt`: **SAMS (S43–S49)** agora entra logo após **S14**, substituindo **S15–S16** (suprimidos do fluxo).
+- Mantido **S42** como fechamento do bloco CAC (Q&A curto).
 
-## [PATCH 2.4] - 2026-01-23 (Polish P0: alinhamento + ordem SAMS)
+### Ajustes de slides (P0)
+- **S07**: removido `margin-top: auto` do box PICO e reduzido gap para alinhar blocos verticalmente.
+- **S12**: padding interno levemente aumentado; números do **SCOT-HEART 10y** preenchidos (Lancet 2025) e figura ficou como placeholder.
+- **S14**: refeito para ficar **paralelo ao S09** (mesma gramática: card com faixa navy + card GRADE à direita).
+- **S17–S20**: removidos emojis como semântica; adicionadas chips/labels consistentes e texto BR mais explícito (ANVISA vs SUS).
 
-- `_list.txt`: SAMS (S43–S49) movido para após S14; S15–S16 suprimidos do fluxo.
-- **S07**: alinhamento (PICO box) corrigido.
-- **S12**: padding/altura do placeholder ajustados.
-- **S12**: números SCOT-HEART 10y preenchidos (Lancet 2025); figura segue placeholder.
-- **S14**: restyle para ficar paralelo ao S09.
-- **S17–S20**: removidos emojis como semântica; labels/chips consistentes; texto BR mais explícito.
-
+### Operação
+- **DASHBOARD.xlsx** e **ISSUES.md** atualizados no fim do batch.
 
 ## [PATCH 2.3] - 2026-01-23 (Batch SAMS MVP P0: nocebo tier-1 + EtD aplicado)
 

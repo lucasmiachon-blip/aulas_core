@@ -161,12 +161,3 @@
   font-size: 0.95vw;
   color: var(--text);
 }
-
-/* Kaplan-Meier Figure Container */
-.kaplan-meier-container img {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
