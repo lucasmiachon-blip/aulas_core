@@ -1,5 +1,31 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## OSTEOPOROSE_PATCH0_3 — 2026-01-25
+
+### P0: corte inferior / overflow (viewer + PDF)
+- Viewer: auto-fit do slide ativo quando o conteúdo excede a área útil (evita **corte inferior** sem editar cada slide).
+  - Implementado em `src/js/viewer.js` via `fitSlideOverflow()` (downscale leve com tolerância).
+- Print/PDF: `print.css` refeito para **1 slide por página 16:9** com múltiplas páginas de verdade.
+  - Removido “gargalo” de `overflow: hidden` do deck no print (causava PDFs com poucas páginas).
+
+### P0: encoding + unidades
+- Corrigidos restos de mojibake em múltiplos slides (ex.: **duração**, **Infusão**, **Evidência**, **µg/L**, acentos e símbolos).
+
+### P0: paleta profissional (sem hex)
+- Removidos **100%** dos `#hex` dos slides de OSTEOPOROSE.
+  - Substituídos por `var(--...)` e `rgba(var(--*-rgb), a)` conforme paleta oficial.
+
+### UI/UX polish (placeholders)
+- Substituído o emoji **📷** por ícone SVG monocromático (mais “enterprise”).
+- Slides 67/68: ajustes finos de padding/tipografia para reduzir densidade e evitar overflow.
+
+### Arquivos principais
+- `OSTEOPOROSE/src/js/viewer.js`
+- `OSTEOPOROSE/src/css/print.css`
+- `OSTEOPOROSE/src/css/base.css` (tokens usados pelos slides)
+- `OSTEOPOROSE/src/slides/*` (encoding + remoção de hex + placeholders)
+
+
 ## OSTEOPOROSE_PATCH0_2 — 2026-01-25
 
 ### Viewer (tela total + paddings)

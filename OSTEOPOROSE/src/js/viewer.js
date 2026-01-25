@@ -58,6 +58,8 @@
     updateCounter();
     syncSelect();
 
+    fitActiveSlideOverflow();
+
     if (opts.pushHash !== false) {
       var key = state.slides[state.idx].getAttribute('data-key');
       if (key) window.location.hash = key;
@@ -147,10 +149,8 @@
   function openPrintMode() {
     var url = new URL(window.location.href);
     url.searchParams.set('print', '1');
-    var w = window.open(url.toString(), '_blank', 'noopener,noreferrer');
-    if (!w || w.closed) {
-      window.location.href = url.toString();
-    }
+    // manter hash ajuda no debug; mas na impressão exibimos todos os slides mesmo
+    window.open(url.toString(), '_blank', 'noopener,noreferrer');
   }
 
   function toggleFullscreen() {
@@ -159,6 +159,7 @@
 
     if (!doc.fullscreenElement) {
       if (el.requestFullscreen) el.requestFullscreen();
+      fitAllSlidesOverflowForPrint();
       return;
     }
     if (doc.exitFullscreen) doc.exitFullscreen();
@@ -189,7 +190,56 @@
 
     inner.style.setProperty('--scale', String(scale));
     if (zoom) zoom.textContent = String(Math.round(scale * 100)) + '%';
+
+    // Após mudar o scale do palco, revalida overflow do slide ativo
+    fitActiveSlideOverflow();
   }
+
+  // Se algum slide "estourar" a altura/largura útil (conteúdo maior que 1280×720),
+  // reduzimos levemente via transform para evitar cortes (P0: margem inferior).
+  function fitSlideOverflow(slide) {
+    if (!slide) return;
+
+    // Reset
+    slide.style.transform = '';
+    slide.style.transformOrigin = '';
+
+    // Medidas após layout
+    var ch = slide.clientHeight;
+    var sh = slide.scrollHeight;
+    var cw = slide.clientWidth;
+    var sw = slide.scrollWidth;
+
+    if (!ch || !cw) return;
+
+    var scale = Math.min(ch / sh, cw / sw, 1);
+
+    // Tolerância: evita micro-jitter
+    if (scale < 0.995) {
+      scale = Math.max(0.88, scale); // não encolher demais (sinaliza que precisa refatorar o slide)
+      slide.style.transformOrigin = 'top center';
+      slide.style.transform = 'scale(' + scale.toFixed(4) + ')';
+    }
+  }
+
+  function fitActiveSlideOverflow() {
+    if (isPrintMode()) return;
+    var active = state.slides[state.idx];
+    if (!active) return;
+    // esperar um frame para garantir reflow/paint do slide recém-ativado
+    window.requestAnimationFrame(function () {
+      fitSlideOverflow(active);
+    });
+  }
+
+  function fitAllSlidesOverflowForPrint() {
+    if (!isPrintMode()) return;
+    // Um frame para garantir que todos os slides já estejam no DOM e visíveis
+    window.requestAnimationFrame(function () {
+      state.slides.forEach(function (s) { fitSlideOverflow(s); });
+    });
+  }
+
   function syncFullscreenClass() {
     var viewer = qs('[data-viewer]');
     if (!viewer) return;
@@ -227,6 +277,7 @@
     if (!state.present) {
       if (state.hideTimer) window.clearTimeout(state.hideTimer);
       setUiHidden(false);
+      fitAllSlidesOverflowForPrint();
       return;
     }
 
@@ -243,36 +294,42 @@
     if (key === 'ArrowRight' || key === 'PageDown' || key === ' ') {
       e.preventDefault();
       move(1);
+      fitAllSlidesOverflowForPrint();
       return;
     }
 
     if (key === 'ArrowLeft' || key === 'PageUp') {
       e.preventDefault();
       move(-1);
+      fitAllSlidesOverflowForPrint();
       return;
     }
 
     if (key === 'Home') {
       e.preventDefault();
       setActive(0);
+      fitAllSlidesOverflowForPrint();
       return;
     }
 
     if (key === 'End') {
       e.preventDefault();
       setActive(state.slides.length - 1);
+      fitAllSlidesOverflowForPrint();
       return;
     }
 
     if (key === 'f' || key === 'F') {
       e.preventDefault();
       toggleFullscreen();
+      fitAllSlidesOverflowForPrint();
       return;
     }
 
     if (key === 'p' || key === 'P') {
       e.preventDefault();
       openPrintMode();
+      fitAllSlidesOverflowForPrint();
       return;
     }
 
@@ -323,19 +380,17 @@
     setHtmlPrintMode();
 
     state.slides = qsa('[data-slide]');
-    if (!state.slides.length) {
-      wireUI();
-      return;
-    }
+    if (!state.slides.length) return;
 
-    // Em modo print: todos visíveis e abrir diálogo de impressão (Save as PDF)
+
+    // Em modo print, mostramos todos; sem navegação.
     if (isPrintMode()) {
       state.slides.forEach(function (s) {
         s.hidden = false;
         s.classList.add('is-active');
         s.setAttribute('aria-hidden', 'false');
       });
-      setTimeout(function () { window.print(); }, 1200);
+      fitAllSlidesOverflowForPrint();
       return;
     }
 

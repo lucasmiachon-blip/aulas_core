@@ -111,6 +111,33 @@ var(--blue)    /* #2563EB - Suporte/informação */
 
 **📖 Leia a paleta completa:** `docs/ESSENTIAL/PROMPT_PALETA_OFICIAL.md` ← **OBRIGATÓRIO ANTES DE CRIAR/MODIFICAR SLIDES**
 
+
+## ✨ UI/UX Guardrails (benchmark TED / big tech)
+
+Objetivo: deixar qualquer deck **conference-ready** (auditório, câmera, PDF) com estética de “produto” (Apple/Microsoft-level).
+
+**Regras práticas (obrigatórias):**
+- **Tipografia:** usar **Inter** como default. Serif só em *quotes* (quando intencional).  
+  - H1: 36–44px (em 720p), H2: 22–28px, corpo: 16–20px.  
+  - Line-height confortável (1.25–1.6) e sem “paredão” de texto.
+- **Grid/spacing:** usar **múltiplos de 8px** (8/16/24/32/40/48/56/64).  
+  - Padding padrão do slide: **48–64px** (ajuste fino por densidade).  
+  - **Sempre checar corte inferior** (nada encosta no bottom).
+- **Cores:** **0 hex hardcoded**. Somente `var(--...)` e `rgba(var(--*-rgb), a)`.  
+  - Em fundo claro: texto `var(--navy)`/`var(--text)`.  
+  - `var(--gold)` para acento (não para parágrafo longo).
+- **Ícones:** evitar **emoji como semântica** (⚠️📷✅) — prefira `[!]`, `[i]` ou **SVG monocromático** (navy/muted/gold).
+- **Hierarquia:** 1 ideia por slide. Se tem 2 ideias, faça 2 slides.  
+  - Regra de projeção: “se ler exige esforço, está denso”.
+- **Acessibilidade:** contraste alto; evitar `muted` em fonte pequena (<14px).  
+- **Sombras/bordas:** bordas suaves (`rgba(var(--navy-rgb),0.14–0.22)`) e sombra leve (sem “glow”).
+- **PDF:** sempre testar `?print=1` e garantir **1 slide/página (16:9)**, com cores preservadas.
+
+### OSTEOPOROSE (limbo P0 ↔ P1)
+**Permitido agora:** modularização, viewer/print, correções de encoding/ortografia, ajustes visuais (cores/fontes/espaçamento) **sem mudar claims/dados**.  
+**Proibido:** reescrever frases médicas, trocar números, adicionar/remover referências.
+
+
 ---
 
 ---

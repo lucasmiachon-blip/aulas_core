@@ -83,7 +83,6 @@
         '<h2 style="margin:0 0 8px 0;">Erro ao carregar slides</h2>' +
         '<p style="margin:0;opacity:.8;">Verifique se os arquivos em <code>slides/</code> estão disponíveis e se você está servindo via HTTP (não file://).</p>' +
         '</div>';
-      document.dispatchEvent(new CustomEvent('deck:loaded', { detail: { count: 0 } }));
     });
   });
 })();
