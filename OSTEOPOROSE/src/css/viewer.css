@@ -250,7 +250,11 @@
   - Remove paddings e chrome do deck para maximizar área útil.
 */
 .viewer.is-fullscreen .stage{
-  padding: 0;
+  /* Pequena margem de segurança (overscan / projetores) */
+  padding: max(10px, env(safe-area-inset-top))
+           max(10px, env(safe-area-inset-right))
+           max(10px, env(safe-area-inset-bottom))
+           max(10px, env(safe-area-inset-left));
 }
 
 .viewer.is-fullscreen .deck--fixed{

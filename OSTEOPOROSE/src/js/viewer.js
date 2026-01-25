@@ -147,11 +147,48 @@
   }
 
   function openPrintMode() {
-    var url = new URL(window.location.href);
-    url.searchParams.set('print', '1');
-    // manter hash ajuda no debug; mas na impressão exibimos todos os slides mesmo
-    window.open(url.toString(), '_blank', 'noopener,noreferrer');
+    // Preferir print.html (estático) para exportar PDF sem depender de fetch/async.
+    // Fallback: ?print=1 (modo antigo).
+    try {
+      var url = new URL(window.location.href);
+      url.hash = '';
+
+      var p = url.pathname || '';
+      // casos comuns:
+      // /dist/index.html -> /dist/print.html
+      // /src/index.html  -> /src/print.html
+      if (p.endsWith('/index.html')) {
+        url.pathname = p.replace(/index\.html$/, 'print.html');
+        url.search = '';
+        window.open(url.toString(), '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      if (p.endsWith('/index-legacy.html')) {
+        url.pathname = p.replace(/index-legacy\.html$/, 'print.html');
+        url.search = '';
+        window.open(url.toString(), '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      // Se estiver em /dist/ ou /src/ sem nome de arquivo
+      if (p.endsWith('/dist/') || p.endsWith('/src/')) {
+        url.pathname = p + 'print.html';
+        url.search = '';
+        window.open(url.toString(), '_blank', 'noopener,noreferrer');
+        return;
+      }
+
+      // fallback legacy
+      url.searchParams.set('print', '1');
+      window.open(url.toString(), '_blank', 'noopener,noreferrer');
+    } catch (e) {
+      var fallback = new URL(window.location.href);
+      fallback.searchParams.set('print', '1');
+      window.open(fallback.toString(), '_blank', 'noopener,noreferrer');
+    }
   }
+
 
   function toggleFullscreen() {
     var doc = document;
@@ -206,21 +243,69 @@
 
     // Medidas após layout
     var ch = slide.clientHeight;
-    var sh = slide.scrollHeight;
     var cw = slide.clientWidth;
-    var sw = slide.scrollWidth;
-
     if (!ch || !cw) return;
 
-    var scale = Math.min(ch / sh, cw / sw, 1);
+    // Guard: evita clipping por 1–2px (arredondamento, zoom, subpixel)
+    var SAFE_PX = 2;
+
+    // 1) Métrica por flow (rápida)
+    var sh = slide.scrollHeight;
+    var sw = slide.scrollWidth;
+
+    // 2) Métrica visual (robusta: inclui margens/absolutos)
+    var rect = slide.getBoundingClientRect();
+    var left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
+    var nodes = slide.querySelectorAll('*');
+
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+
+      // pula nós invisíveis
+      var cs = window.getComputedStyle(el);
+      if (!cs || cs.display === 'none' || cs.visibility === 'hidden') continue;
+
+      var r = el.getBoundingClientRect();
+      if (!r || (r.width === 0 && r.height === 0)) continue;
+
+      // ignora "hitboxes" fora do canvas (ex.: offscreen helpers)
+      // (mantemos simples: só agregamos o que está próximo do slide)
+      left = Math.min(left, r.left);
+      top = Math.min(top, r.top);
+      right = Math.max(right, r.right);
+      bottom = Math.max(bottom, r.bottom);
+    }
+
+    var scale = 1;
+
+    if (isFinite(left)) {
+      var contentW = right - left;
+      var contentH = bottom - top;
+
+      var availW = Math.max(0, rect.width - SAFE_PX * 2);
+      var availH = Math.max(0, rect.height - SAFE_PX * 2);
+
+      // Se por algum motivo o bounding box vier inválido, cai para scroll
+      if (contentW > 0 && contentH > 0) {
+        scale = Math.min(availH / contentH, availW / contentW, 1);
+      } else if (sh && sw) {
+        scale = Math.min(ch / sh, cw / sw, 1);
+      }
+    } else if (sh && sw) {
+      scale = Math.min(ch / sh, cw / sw, 1);
+    }
 
     // Tolerância: evita micro-jitter
     if (scale < 0.995) {
       scale = Math.max(0.88, scale); // não encolher demais (sinaliza que precisa refatorar o slide)
       slide.style.transformOrigin = 'top center';
       slide.style.transform = 'scale(' + scale.toFixed(4) + ')';
+      slide.dataset.fitScale = scale.toFixed(4);
+    } else {
+      delete slide.dataset.fitScale;
     }
   }
+
 
   function fitActiveSlideOverflow() {
     if (isPrintMode()) return;

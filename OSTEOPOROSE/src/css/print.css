@@ -2,9 +2,12 @@
   print.css
   PDF/print em estilo PPT (16:9) com 1 slide por página.
 
-  Uso:
+  Preferência (robusto):
+  - Abrir: dist/print.html  (já vem com todos os slides inline)
+  Alternativa (legacy):
   - Abrir: index.html?print=1
-  - Imprimir com "Plano de fundo" habilitado.
+
+  Dica: Imprimir com "Plano de fundo" / "Background graphics" habilitado.
 */
 
 html {
@@ -12,99 +15,86 @@ html {
   print-color-adjust: exact;
 }
 
-/* Preview (screen) quando ?print=1 */
-html.is-print .viewer__bar { display: none !important; }
+/* Preview (screen) para checar cortes antes de imprimir */
+html.is-print body {
+  background: var(--bg);
+}
 
-html.is-print .stage{
+html.is-print .viewer__bar {
+  display: none !important;
+}
+
+html.is-print .stage {
+  display: block !important;
   padding: 0 !important;
-  display: block !important;
-  background: #fff !important;
+  overflow: visible !important;
 }
 
-html.is-print .stage__inner{
+html.is-print .stage__inner {
+  width: auto !important;
+  height: auto !important;
   transform: none !important;
-  width: auto !important;
-  height: auto !important;
 }
 
-html.is-print .deck{
-  width: auto !important;
-  height: auto !important;
-  border: none !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  overflow: visible !important; /* CRÍTICO: permite múltiplos slides */
-  background: #fff !important;
-}
-
-html.is-print .slides{
-  height: auto !important;
-}
-
-html.is-print .slide{
+html.is-print .deck {
   display: block !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  aspect-ratio: auto !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  margin: 0 !important;
+  background: transparent !important;
+}
+
+html.is-print .slides {
+  display: block !important;
+  position: static !important;
+  height: auto !important;
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+/* Em preview (tela), travamos 1280×720 px para ser WYSIWYG com o canvas 16:9 */
+html.is-print .slide {
+  display: block !important;
+  width: calc(var(--stage-w) * 1px) !important;
+  height: calc(var(--stage-h) * 1px) !important;
+  margin: 0 auto 24px;
+  overflow: hidden;
   page-break-after: always;
   break-after: page;
 }
 
-html.is-print .slide:last-child{
+
+html.is-print .slide:last-child {
   page-break-after: auto;
   break-after: auto;
+  margin-bottom: 0;
 }
 
+/* Print real */
 @media print {
-  @page{
+  @page {
     size: 13.333in 7.5in; /* 16:9 */
     margin: 0;
   }
 
-  html, body{
-    margin: 0;
-    padding: 0;
-    background: #fff !important;
-  }
-
-  .viewer__bar{ display: none !important; }
-
-  .viewer{ background: #fff !important; }
-
-  .stage{
+  html, body {
+    margin: 0 !important;
     padding: 0 !important;
-    background: #fff !important;
-    display: block !important;
+    background: var(--white) !important;
   }
 
-  .stage__inner{
-    transform: none !important;
-    width: auto !important;
-    height: auto !important;
-  }
-
-  .deck{
-    width: auto !important;
-    height: auto !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    overflow: visible !important; /* CRÍTICO */
-    background: #fff !important;
-  }
-
-  .slides{
-    height: auto !important;
-  }
-
-  /* 1 slide por página, dimensões fixas PPT */
-  .slide{
+  html.is-print .slide {
     width: 13.333in !important;
     height: 7.5in !important;
-    overflow: hidden;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
     page-break-after: always;
     break-after: page;
-  }
-
-  .slide:last-child{
-    page-break-after: auto;
-    break-after: auto;
   }
 }

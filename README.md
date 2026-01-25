@@ -577,7 +577,7 @@ Se encontrar problemas durante auditoria:
 - **Citações**: sempre no rodapé, curtas (1–2 linhas) e nunca truncadas.
 - **Grid + safe margins**: alinhar tudo em uma grade; manter “margem segura” constante.
 - **Consistência visual**: mesma gramática de cards/tabelas/callouts em todo o deck.
-- **Print/PDF**: manter `print-color-adjust: exact`; 1 slide por página; proporção 16:9.
+- **Print/PDF**: preferir `dist/print.html` (slides inline). Garantir 1 slide por página, 16:9, sem cortes, com `print-color-adjust: exact`.
 
 ## Regras específicas (OSTEOPOROSE - fase atual)
 - **Conteúdo médico congelado**: nesta fase, só viewer/modularização/print.
@@ -586,4 +586,3 @@ Se encontrar problemas durante auditoria:
 - **Cores:** preferir `var(--bg)`, `var(--navy)`, `var(--gold)`, `var(--teal)`, `var(--blue)` + tints via `rgba(var(--*-rgb), α)`.
   - Evite hex hardcoded em estilos inline (principalmente cores fora da paleta).
 - **Anti-truncamento:** todo slide precisa caber em 1280×720 sem cortar conteúdo (teste em fullscreen + print).
-
