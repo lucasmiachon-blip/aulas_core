@@ -1,4 +1,53 @@
-# CHANGELOG - GRADE Slides
+# CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
+
+## OSTEOPOROSE_PATCH0_2 — 2026-01-25
+
+### Viewer (tela total + paddings)
+- Fit-to-screen agora permite **upscale** (até 300%) para ocupar telas grandes em fullscreen/projeção.
+- Adicionada classe `is-fullscreen` (remover padding/borda/sombra do deck) para maximizar área útil.
+- Ajuste fino de paddings do palco (`--stage-pad`) e tipografia do chrome do viewer.
+
+### Tipografia + tokens
+- `base.css` alinhado à **paleta oficial** (bg/navy/gold + teal/blue) com tokens `*-rgb`.
+- Inter (sans-serif) como fonte padrão (viewer + slides) + import via Google Fonts.
+
+### Encoding (P0)
+- Correção de caracteres quebrados (mojibake) em múltiplos slides (ex.: ✓ / ∅ / 📷 / acentos).
+
+### Slides com truncamento (P0)
+- Slide 67 (LSC) e Slide 68 (Rádio 33%): redução de margens/paddings e reorganização leve para evitar corte inferior.
+- Slides 67/68: cores migradas para tokens (`var(--bg/navy/gold/teal/blue)`) para consistência.
+
+
+## OSTEOPOROSE_PATCH0_1 — 2026-01-25 (Modularização + Fullscreen + PDF 16:9)
+
+### Objetivo
+- Tirar o deck de Osteoporose do monólito (HTML único) e habilitar viewer “palco” + export PDF em padrão apresentação.
+
+### O que foi feito (P0)
+- **Fonte de verdade do viewer**: confirmado total de **72 slides** (ordem definida pelo seletor do deck legado) e contador agora deriva do `_list.txt`.
+- **Modularização automática**:
+  - `OSTEOPOROSE/src/index-legacy.html` preservado (backup do monólito).
+  - Slides extraídos para `OSTEOPOROSE/src/slides/` (1 arquivo por slide) + `_list.txt` + `_meta.json`.
+- **Viewer novo (src + dist)**:
+  - Novo `OSTEOPOROSE/src/index.html` minimal + `OSTEOPOROSE/dist/index.html` apontando para `../src/`.
+  - Loader `src/js/slide-loader.js` carrega o deck modular por lista.
+  - Viewer `src/js/viewer.js`: navegação (teclas + clique), hash (`#S01`), fullscreen (F) e modo palco (auto-hide UI).
+- **PDF/Print 16:9**:
+  - `src/css/print.css` com `@page 13.333in × 7.5in`, 1 slide por página, `print-color-adjust: exact`.
+  - Modo impressão via `?print=1` (botão “PDF” no viewer).
+
+### O que NÃO foi feito (intencional)
+- Nenhuma alteração de conteúdo médico (texto, números, claims, referências).
+- Nenhuma reescrita de estilo dos slides (a maioria ainda tem inline styles do legado).
+- Nenhum pipeline de export automatizado via Puppeteer/Playwright (fica para próxima etapa).
+
+### Arquivos principais
+- `OSTEOPOROSE/src/index.html`, `OSTEOPOROSE/dist/index.html`
+- `OSTEOPOROSE/src/css/viewer.css`, `OSTEOPOROSE/src/css/print.css`, `OSTEOPOROSE/src/css/base.css`
+- `OSTEOPOROSE/src/js/slide-loader.js`, `OSTEOPOROSE/src/js/viewer.js`
+- `OSTEOPOROSE/src/slides/*`
+
 
 ## PATCH2_6 — 2026-01-25
 - Tipografia: títulos (h2) padronizados em **altura/line-height** via CSS (menos variação entre slides).

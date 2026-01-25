@@ -26,7 +26,7 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 - ❌ Modificar código sem plano aprovado
 - ❌ Inventar números, dados ou citações (use `[TBD]` se faltar)
 - ❌ Usar cores hardcoded (`#333`, `#666`) - SEMPRE use `var(--nome)`
-- ❌ Tocar em `OSTEOPOROSE/` (read-only até desbloqueado)
+- ❌ Tocar em `OSTEOPOROSE/` **no conteúdo médico** (texto/números/claims) sem aprovação explícita — *viewer/tooling* pode ser alterado na fase de modularização (limbo P0↔P1)
 
 **SEMPRE:**
 - ✅ Apresentar PLANO antes de executar
@@ -332,8 +332,8 @@ Migração completa será feita após MVP (10 Fevereiro).
 **SEMPRE use:** `var(--navy)`, `var(--gold)`, `var(--text)`, etc.
 
 ### 📖 TIPOGRAFIA:
-- **Títulos:** Georgia (serif) — autoridade acadêmica
-- **Corpo:** Lato (sans-serif) — legibilidade premium
+- **Títulos e corpo:** Inter (sans-serif) — legibilidade moderna (padrão)
+- **Serif:** usar apenas quando tiver um motivo claro (ex.: citação/epígrafe)
 
 ---
 
@@ -532,3 +532,31 @@ Se encontrar problemas durante auditoria:
 **Última atualização:** Janeiro 2026  
 **Versão da aula GRADE:** v0.2 (MVP em desenvolvimento)  
 **Score de qualidade:** 26/30 ✅
+
+
+---
+
+# 🎬 Guardrails de estética (benchmark TED / big-tech)
+
+> Objetivo: *conference-ready* (legível no fundo da sala, hierarquia clara, aparência “produto”).
+
+## Regras (aplicáveis a todos os decks)
+- **Uma mensagem por slide**: título = afirmação; corpo = evidência.
+- **Legibilidade de palco**: nada “importante” abaixo de ~24px no layout 1280×720.
+- **Densidade controlada**: se virou parágrafo, provavelmente são **2 slides**.
+- **Microtipografia**: preferir `≤ ≥ –` (não `<= >= --`), e evitar espaços antes de pontuação.
+- **Sem rascunho na tela**: remover/ocultar tokens como `[PLACEHOLDER]`, `ARRUMAR`, `[Insight]`, `[Dados]` no “final cut”.
+- **Emojis**: só se forem parte do estilo deliberado; caso contrário, trocar por ícones consistentes (mesma espessura).
+- **Citações**: sempre no rodapé, curtas (1–2 linhas) e nunca truncadas.
+- **Grid + safe margins**: alinhar tudo em uma grade; manter “margem segura” constante.
+- **Consistência visual**: mesma gramática de cards/tabelas/callouts em todo o deck.
+- **Print/PDF**: manter `print-color-adjust: exact`; 1 slide por página; proporção 16:9.
+
+## Regras específicas (OSTEOPOROSE - fase atual)
+- **Conteúdo médico congelado**: nesta fase, só viewer/modularização/print.
+- **Correções de encoding/truncamento** entram como P0 quando impedem leitura em projeção/PDF.
+- **Tipografia:** Inter (sans-serif) como padrão (títulos + corpo). Evitar misturar fontes.
+- **Cores:** preferir `var(--bg)`, `var(--navy)`, `var(--gold)`, `var(--teal)`, `var(--blue)` + tints via `rgba(var(--*-rgb), α)`.
+  - Evite hex hardcoded em estilos inline (principalmente cores fora da paleta).
+- **Anti-truncamento:** todo slide precisa caber em 1280×720 sem cortar conteúdo (teste em fullscreen + print).
+

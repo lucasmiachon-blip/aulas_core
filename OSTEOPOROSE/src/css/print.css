@@ -1,0 +1,98 @@
+/*
+  print.css
+  PDF/print em estilo PPT (16:9) com 1 slide por página.
+
+  Uso:
+  - Abrir: index.html?print=1
+  - Imprimir com "Plano de fundo" habilitado.
+*/
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Modo print via querystring (controlado pelo JS) */
+html.is-print .viewer__bar {
+  display: none !important;
+}
+
+html.is-print .stage {
+  padding: 0 !important;
+}
+
+html.is-print .stage__inner {
+  transform: none !important;
+}
+
+html.is-print .deck {
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+html.is-print .slide {
+  page-break-after: always;
+}
+
+html.is-print .slide:last-child {
+  page-break-after: auto;
+}
+@media print {
+  @page {
+    size: 13.333in 7.5in;
+    margin: 0;
+  }
+
+  html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+  }
+
+  .viewer__bar {
+    display: none !important;
+  }
+
+  .stage {
+    padding: 0 !important;
+    background: #fff !important;
+    height: auto !important;
+  }
+
+  /* Containers com altura auto e overflow visible: os 72 slides empilham;
+     cada .slide com page-break-after gera 1 página no PDF. */
+  .stage__inner {
+    width: 13.333in !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .deck {
+    width: 13.333in !important;
+    height: auto !important;
+    overflow: visible !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .slides {
+    height: auto !important;
+  }
+
+  .slide,
+  .slide[hidden] {
+    display: block !important;
+    width: 13.333in !important;
+    height: 7.5in !important;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .slide:last-child {
+    page-break-after: auto;
+  }
+}

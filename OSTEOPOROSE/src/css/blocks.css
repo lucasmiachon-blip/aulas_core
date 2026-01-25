@@ -1,24 +1,25 @@
 /*
-LOCK: OSTEOPOROSE is frozen. Do not edit until modularization phase. Only Lucas can authorize changes.
-*/
-/*
   blocks.css
-  Estilos para "blocos" reutilizáveis.
-  Mantido intencionalmente simples nesta fase (placeholder).
+  Componentes reutilizáveis (callouts, caixas, etc.)
+
+  Nota:
+  - Mantido simples nesta fase.
+  - Evitar hardcode de hex; usar tokens do base.css.
 */
 
-.block {
+.block{
   border-left: 4px solid var(--gold);
   padding: 12px 14px;
-  background: rgba(11, 31, 59, 0.03);
+  background: rgba(var(--navy-rgb), 0.03);
 }
 
-.block__title {
-  font-family: Georgia, "Times New Roman", Times, serif;
+.block__title{
+  font-family: var(--font-sans);
+  font-weight: 700;
   color: var(--navy);
   margin: 0 0 6px 0;
 }
 
-.block__body {
+.block__body{
   color: var(--text);
 }
