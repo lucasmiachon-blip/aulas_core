@@ -93,8 +93,9 @@ h1, h2, h3 {
 
 /* Title consistency (P0): unify size/line-height across slides */
 .slide h2 {
-  font-size: 3vw !important;
+  font-size: 2.85vw !important;
   line-height: 1.15 !important;
+  font-weight: 700;
 }
 
 p, li, span, div {

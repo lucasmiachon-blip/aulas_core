@@ -1,79 +1,23 @@
-# CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
+# CHANGELOG - GRADE Slides
 
-## OSTEOPOROSE_PATCH0_3 — 2026-01-25
-
-### P0: corte inferior / overflow (viewer + PDF)
-- Viewer: auto-fit do slide ativo quando o conteúdo excede a área útil (evita **corte inferior** sem editar cada slide).
-  - Implementado em `src/js/viewer.js` via `fitSlideOverflow()` (downscale leve com tolerância).
-- Print/PDF: `print.css` refeito para **1 slide por página 16:9** com múltiplas páginas de verdade.
-  - Removido “gargalo” de `overflow: hidden` do deck no print (causava PDFs com poucas páginas).
-
-### P0: encoding + unidades
-- Corrigidos restos de mojibake em múltiplos slides (ex.: **duração**, **Infusão**, **Evidência**, **µg/L**, acentos e símbolos).
-
-### P0: paleta profissional (sem hex)
-- Removidos **100%** dos `#hex` dos slides de OSTEOPOROSE.
-  - Substituídos por `var(--...)` e `rgba(var(--*-rgb), a)` conforme paleta oficial.
-
-### UI/UX polish (placeholders)
-- Substituído o emoji **📷** por ícone SVG monocromático (mais “enterprise”).
-- Slides 67/68: ajustes finos de padding/tipografia para reduzir densidade e evitar overflow.
-
-### Arquivos principais
-- `OSTEOPOROSE/src/js/viewer.js`
-- `OSTEOPOROSE/src/css/print.css`
-- `OSTEOPOROSE/src/css/base.css` (tokens usados pelos slides)
-- `OSTEOPOROSE/src/slides/*` (encoding + remoção de hex + placeholders)
-
-
-## OSTEOPOROSE_PATCH0_2 — 2026-01-25
-
-### Viewer (tela total + paddings)
-- Fit-to-screen agora permite **upscale** (até 300%) para ocupar telas grandes em fullscreen/projeção.
-- Adicionada classe `is-fullscreen` (remover padding/borda/sombra do deck) para maximizar área útil.
-- Ajuste fino de paddings do palco (`--stage-pad`) e tipografia do chrome do viewer.
-
-### Tipografia + tokens
-- `base.css` alinhado à **paleta oficial** (bg/navy/gold + teal/blue) com tokens `*-rgb`.
-- Inter (sans-serif) como fonte padrão (viewer + slides) + import via Google Fonts.
-
-### Encoding (P0)
-- Correção de caracteres quebrados (mojibake) em múltiplos slides (ex.: ✓ / ∅ / 📷 / acentos).
-
-### Slides com truncamento (P0)
-- Slide 67 (LSC) e Slide 68 (Rádio 33%): redução de margens/paddings e reorganização leve para evitar corte inferior.
-- Slides 67/68: cores migradas para tokens (`var(--bg/navy/gold/teal/blue)`) para consistência.
-
-
-## OSTEOPOROSE_PATCH0_1 — 2026-01-25 (Modularização + Fullscreen + PDF 16:9)
-
-### Objetivo
-- Tirar o deck de Osteoporose do monólito (HTML único) e habilitar viewer “palco” + export PDF em padrão apresentação.
-
-### O que foi feito (P0)
-- **Fonte de verdade do viewer**: confirmado total de **72 slides** (ordem definida pelo seletor do deck legado) e contador agora deriva do `_list.txt`.
-- **Modularização automática**:
-  - `OSTEOPOROSE/src/index-legacy.html` preservado (backup do monólito).
-  - Slides extraídos para `OSTEOPOROSE/src/slides/` (1 arquivo por slide) + `_list.txt` + `_meta.json`.
-- **Viewer novo (src + dist)**:
-  - Novo `OSTEOPOROSE/src/index.html` minimal + `OSTEOPOROSE/dist/index.html` apontando para `../src/`.
-  - Loader `src/js/slide-loader.js` carrega o deck modular por lista.
-  - Viewer `src/js/viewer.js`: navegação (teclas + clique), hash (`#S01`), fullscreen (F) e modo palco (auto-hide UI).
-- **PDF/Print 16:9**:
-  - `src/css/print.css` com `@page 13.333in × 7.5in`, 1 slide por página, `print-color-adjust: exact`.
-  - Modo impressão via `?print=1` (botão “PDF” no viewer).
-
-### O que NÃO foi feito (intencional)
-- Nenhuma alteração de conteúdo médico (texto, números, claims, referências).
-- Nenhuma reescrita de estilo dos slides (a maioria ainda tem inline styles do legado).
-- Nenhum pipeline de export automatizado via Puppeteer/Playwright (fica para próxima etapa).
-
-### Arquivos principais
-- `OSTEOPOROSE/src/index.html`, `OSTEOPOROSE/dist/index.html`
-- `OSTEOPOROSE/src/css/viewer.css`, `OSTEOPOROSE/src/css/print.css`, `OSTEOPOROSE/src/css/base.css`
-- `OSTEOPOROSE/src/js/slide-loader.js`, `OSTEOPOROSE/src/js/viewer.js`
-- `OSTEOPOROSE/src/slides/*`
-
+## PATCH2_7 — 2026-01-25
+- Navegação/ordem: `_list.txt` reorganizado para fluxo **main → metas → encerramento → apêndice** (encerramento não “reaparece” no meio).
+- JS (slides-simple.js): navegação sem loop (no fim/início) + `defaultSlideIds` alinhado ao `_list.txt`.
+- CSS:
+  - `base.css`: títulos (h2) padronizados em **2.85vw** + `font-weight: 700` (mais consistência e menos risco de overflow).
+  - `blocks.css`: `.chip` menos “pesado” (800), `.table-medium` (padding/legibilidade), `.ref` (estilo base).
+- Slides (P0/P1):
+  - **S08**: paleta/alinhamento (remoção de teal residual, ajustes de spacing).
+  - **S12**: ajustes finos de padding/compactação (reduz risco de corte).
+  - **S18**: marcador de IC 95% redesenhado (bracket mais limpo).
+  - **S22–S23**: redesign completo (cards consistentes) + densificação de conteúdo (diretrizes; TRIPOD/PROBAST; discriminação vs calibração).
+  - **S25**: header “Conceito” padronizado (navy + chip gold) + referência PREVENT/PCE.
+  - **S51**: tabela ipsis litteris (Extremo) + chip “novo” e nota em rodapé.
+  - **S53**: VESALIUS‑CV com HR/IC (3‑point e 4‑point MACE).
+  - **S55**: lembrete “rate up” (Core GRADE) adicionado.
+  - **S56**: linha AACE 2025 ajustada + refs completas (SBC/ESC/ACC/AACE).
+  - **S50–S59**: `data-slide-id` adicionado (hash/navegação mais robusta).
+- DASHBOARD.xlsx: atualização de status/linha do batch (Patch 2.7).
 
 ## PATCH2_6 — 2026-01-25
 - Tipografia: títulos (h2) padronizados em **altura/line-height** via CSS (menos variação entre slides).

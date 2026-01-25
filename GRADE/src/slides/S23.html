@@ -1,99 +1,104 @@
 <section class="slide" data-slide-id="S23">
-        <h2 style="font-family: var(--font-serif); font-size: 3.2vw; color: var(--navy); margin-bottom: 1.6vw; line-height: 1.15;">
-            GRADE: <span style="color: var(--gold);">Prognóstico</span> ≠ <span style="color: var(--teal);">Intervenção</span>
-        </h2>
+    <h2 style="margin-bottom: 1.1vw;">GRADE em prognóstico: quando a saída é <i>risco</i> (não “efeito”)</h2>
 
-        <p style="font-family: var(--font-sans); font-size: 1.25vw; color: var(--text); margin: 0 0 1.8vw 0; line-height: 1.45;">
-            <strong>Modelos prognósticos</strong> estimam risco (predição). <strong>Ensaios clínicos</strong> estimam efeito de intervenção.
-            Misturar as lógicas → erro comum na leitura crítica.
-        </p>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2.2vw; flex-grow: 1; align-items: start;">
-            <!-- Intervenções -->
-            <div class="card" style="padding: 0; overflow: hidden; border: 1px solid rgba(var(--navy-rgb),0.18);">
-                <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center;">
-                    <span>Intervenções (efeito)</span>
-                    <span class="chip chip--navy">GRADE clássico</span>
+    <div style="display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 1.6vw; flex-grow:1;">
+        <!-- COLUNA ESQUERDA -->
+        <div style="display:flex; flex-direction:column; gap: 1.3vw;">
+            <div class="card">
+                <div class="cardHeader" style="display:flex; justify-content:space-between; align-items:center;">
+                    <span class="chip chip--navy">Pergunta</span>
+                    <span class="chip chip--navy">Prognóstico ≠ Intervenção</span>
                 </div>
                 <div class="cardBody">
-                    <div style="display: flex; flex-direction: column; gap: 1vw;">
-                        <div>
-                            <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--muted); text-transform: uppercase; font-weight: 900; letter-spacing: 0.05vw; margin: 0 0 0.4vw 0;">
-                                Pergunta clínica
-                            </p>
-                            <p style="font-family: var(--font-serif); font-size: 1.1vw; margin: 0; line-height: 1.5;">
-                                “Esta intervenção reduz eventos?”
-                            </p>
-                        </div>
-
-                        <div>
-                            <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--muted); text-transform: uppercase; font-weight: 900; letter-spacing: 0.05vw; margin: 0 0 0.4vw 0;">
-                                Certeza inicial
-                            </p>
-                            <p style="font-family: var(--font-sans); font-size: 1.05vw; margin: 0; line-height: 1.5;">
-                                RCT → <span class="chip chip--teal">ALTA</span> &nbsp;|&nbsp; Observacional → <span class="chip chip--muted">BAIXA</span>
-                            </p>
-                        </div>
-
-                        <div>
-                            <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--muted); text-transform: uppercase; font-weight: 900; letter-spacing: 0.05vw; margin: 0 0 0.6vw 0;">
-                                Rebaixar por
-                            </p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 0.5vw;">
-                                <span class="chip chip--muted">Risco de viés</span>
-                                <span class="chip chip--muted">Inconsistência</span>
-                                <span class="chip chip--muted">Indireção</span>
-                                <span class="chip chip--muted">Imprecisão</span>
-                                <span class="chip chip--muted">Viés de publicação</span>
-                            </div>
-                        </div>
-                    </div>
+                    <ul style="margin:0; padding-left: 1.25vw; font-size: 1.12vw; line-height: 1.35;">
+                        <li>Modelos prognósticos estimam <b>probabilidade</b> de eventos (ex.: 10 anos), não um <b>efeito causal</b>.</li>
+                        <li>Evite “importar” ferramentas de ensaios (ex.: RoB 2) sem adaptação — o risco aqui é <b>viés do modelo</b>.</li>
+                        <li>O <b>impacto clínico</b> depende de <b>calibração local</b> (o risco previsto precisa “bater” com o observado).</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- Prognóstico -->
-            <div class="card" style="padding: 0; overflow: hidden; border: 1px solid rgba(var(--teal-rgb),0.25);">
-                <div class="cardHeader" style="background: var(--teal); display: flex; justify-content: space-between; align-items: center;">
-                    <span>Prognóstico (predição)</span>
-                    <span class="chip chip--navy">Modelos</span>
+            <div class="card" style="border-color: rgba(var(--gold-rgb),0.22);">
+                <div class="cardHeader" style="display:flex; justify-content:space-between; align-items:center;">
+                    <span class="chip chip--gold">Métricas‑chave</span>
+                    <span class="chip chip--navy">o que olhar</span>
                 </div>
                 <div class="cardBody">
-                    <div style="display: flex; flex-direction: column; gap: 1vw;">
-                        <div>
-                            <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--muted); text-transform: uppercase; font-weight: 900; letter-spacing: 0.05vw; margin: 0 0 0.4vw 0;">
-                                Pergunta clínica
-                            </p>
-                            <p style="font-family: var(--font-serif); font-size: 1.1vw; margin: 0; line-height: 1.5;">
-                                “Qual é o risco absoluto deste paciente?”
-                            </p>
-                        </div>
-
-                        <div>
-                            <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--muted); text-transform: uppercase; font-weight: 900; letter-spacing: 0.05vw; margin: 0 0 0.4vw 0;">
-                                O que avalia mais
-                            </p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 0.5vw;">
-                                <span class="chip chip--teal">PROBAST / viés do modelo</span>
-                                <span class="chip chip--teal">Calibração</span>
-                                <span class="chip chip--teal">Discriminação</span>
-                                <span class="chip chip--teal">Validação externa</span>
-                                <span class="chip chip--teal">Aplicabilidade</span>
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.0vw;">
+                        <div style="background:#f8fafc; border:1px solid var(--border); border-radius:0.9vw; padding: 0.95vw;">
+                            <div style="font-weight:700; color: var(--navy); margin-bottom:0.35vw;">Discriminação</div>
+                            <div style="font-size:1.05vw; color: var(--text); line-height:1.35;">
+                                <b>AUC / C‑statistic</b>: separa quem terá vs não terá evento (não garante boa calibração).
                             </div>
                         </div>
-
-                        <div class="note" style="margin-top: 0.6vw; border-left-color: var(--teal); background: rgba(var(--teal-rgb),0.08);">
-                            <p style="font-family: var(--font-sans); font-size: 0.98vw; color: var(--navy); margin: 0; line-height: 1.5;">
-                                <strong>Mensagem:</strong> em prognóstico, “certeza” não é sobre efeito causal — é sobre <strong>desempenho</strong> e <strong>generalização</strong> do modelo.
-                            </p>
+                        <div style="background:#f8fafc; border:1px solid var(--border); border-radius:0.9vw; padding: 0.95vw;">
+                            <div style="font-weight:700; color: var(--navy); margin-bottom:0.35vw;">Calibração</div>
+                            <div style="font-size:1.05vw; color: var(--text); line-height:1.35;">
+                                Concordância entre <b>risco previsto</b> e <b>observado</b> (plots / slope / intercept).
+                            </div>
+                        </div>
+                        <div style="background:#fff; border:1px solid rgba(var(--gold-rgb),0.20); border-radius:0.9vw; padding: 0.95vw;">
+                            <div style="font-weight:700; color: var(--navy); margin-bottom:0.35vw;">Validação</div>
+                            <div style="font-size:1.05vw; color: var(--text); line-height:1.35;">
+                                <b>Interna</b> (bootstrap/CV) ≠ <b>externa</b> (outra coorte/país/sistema).
+                            </div>
+                        </div>
+                        <div style="background:#fff; border:1px solid rgba(var(--gold-rgb),0.20); border-radius:0.9vw; padding: 0.95vw;">
+                            <div style="font-weight:700; color: var(--navy); margin-bottom:0.35vw;">Utilidade</div>
+                            <div style="font-size:1.05vw; color: var(--text); line-height:1.35;">
+                                Curvas de decisão / reclassificação podem ajudar, mas dependem de limiares e contexto.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div style="margin-top: auto; padding-top: 0.9vw; border-top: 1px solid var(--border);">
-            <p style="font-family: var(--font-sans); font-size: 0.75vw; color: var(--muted); margin: 0; line-height: 1.3;">
-                <strong>Fonte:</strong> Core GRADE (domínios) + boas práticas para modelos (TRIPOD/PROBAST).
-            </p>
+        <!-- COLUNA DIREITA -->
+        <div style="display:flex; flex-direction:column; gap: 1.3vw;">
+            <div class="card">
+                <div class="cardHeader" style="display:flex; justify-content:space-between; align-items:center;">
+                    <span class="chip chip--navy">TRIPOD</span>
+                    <span class="chip chip--navy">Relato</span>
+                </div>
+                <div class="cardBody">
+                    <div style="font-size: 1.10vw; line-height: 1.35; color: var(--text);">
+                        Checklist para ver se o estudo “conta a história inteira” do modelo:
+                    </div>
+                    <ul style="margin: 0.55vw 0 0 0; padding-left: 1.25vw; font-size: 1.08vw; line-height: 1.35;">
+                        <li>População, preditores e desfecho claramente definidos</li>
+                        <li>Tratamento de <b>missing data</b> e seleção de variáveis</li>
+                        <li>Especificação do modelo + performance + validação</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card" style="border-color: rgba(var(--gold-rgb),0.22);">
+                <div class="cardHeader" style="display:flex; justify-content:space-between; align-items:center;">
+                    <span class="chip chip--gold">PROBAST</span>
+                    <span class="chip chip--navy">Risco de viés</span>
+                </div>
+                <div class="cardBody">
+                    <div style="font-size: 1.10vw; line-height: 1.35; color: var(--text);">
+                        4 domínios (participantes, preditores, desfecho, análise). “Red flags” comuns:
+                    </div>
+                    <ul style="margin: 0.55vw 0 0 0; padding-left: 1.25vw; font-size: 1.08vw; line-height: 1.35;">
+                        <li><b>Overfitting</b> (poucos eventos por parâmetro)</li>
+                        <li>Sem <b>calibração</b> ou sem validação externa</li>
+                        <li>Missing data “ignorados” (complete‑case) sem justificativa</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background: rgba(var(--gold-rgb),0.08); border-left: 0.45vw solid var(--gold); border-radius: 0.9vw; padding: 0.95vw 1.1vw;">
+                <div style="font-size: 1.05vw; color: var(--navy); line-height: 1.35;">
+                    <b>Por que isso importa?</b> Um risco <b>mal calibrado</b> pode empurrar decisões (estatinas/aspirina/CAC) na direção errada.
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+
+    <div class="ref" style="position:absolute; left:6%; right:6%; bottom: 1.45vw; font-size: 0.80vw; color: var(--muted);">
+        Fontes: TRIPOD — Collins GS et al. <i>J Clin Epidemiol</i>. 2015;68(2):134‑143. DOI: 10.1016/j.jclinepi.2014.11.010 • PROBAST — Wolff RF et al. <i>Ann Intern Med</i>. 2019;170(1):51‑58. DOI: 10.7326/M18‑1376.
+    </div>
+</section>

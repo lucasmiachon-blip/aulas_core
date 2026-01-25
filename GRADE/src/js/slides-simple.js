@@ -14,11 +14,62 @@
     // Lista padrão (fallback) — preferimos carregar de ./slides/_list.txt
     // (S21 removido como duplicata)
     const defaultSlideIds = [
-        'S01','S02','S03','S04','S05','S06','S07','S08','S09','S10',
-        'S11','S12','S13','S14','S15','S16','S17','S18','S19','S20',
-        'S22','S23','S24','S25','S26','S27','S28','S29','S30',
-        'S31','S32','S33','S34','S35','S36','S37','S38','S39','S40',
-        'S41','S42','S43','S44','S45','S46','S47','S48','S49'
+        'S01',
+        'S02',
+        'S03',
+        'S04',
+        'S05',
+        'S06',
+        'S07',
+        'S08',
+        'S09',
+        'S10',
+        'S11',
+        'S12',
+        'S13',
+        'S43',
+        'S44',
+        'S45',
+        'S46',
+        'S14',
+        'S47',
+        'S17',
+        'S18',
+        'S19',
+        'S20',
+        'S48',
+        'S49',
+        'S50',
+        'S51',
+        'S52',
+        'S53',
+        'S54',
+        'S55',
+        'S56',
+        'S57',
+        'S59',
+        'S58',
+        'S22',
+        'S23',
+        'S24',
+        'S25',
+        'S26',
+        'S27',
+        'S28',
+        'S29',
+        'S30',
+        'S31',
+        'S32',
+        'S33',
+        'S34',
+        'S35',
+        'S36',
+        'S37',
+        'S38',
+        'S39',
+        'S40',
+        'S41',
+        'S42'
     ];
 
     // Compatível com:
@@ -81,8 +132,12 @@
     }
     
     // Navegação
-    function next() { show((current + 1) % slides.length); }
-    function prev() { show((current - 1 + slides.length) % slides.length); }
+    function next() {
+        show(Math.min(current + 1, slides.length - 1));
+    }
+    function prev() {
+        show(Math.max(current - 1, 0));
+    }
     
     // Teclado (handler nomeado para poder remover)
     function handleKey(e) {
@@ -150,8 +205,9 @@
 
         for (const file of files) {
             try {
+                // _list.txt vem como "S01","S02"...; fallback já traz "S01.html"
                 const name = (file || '').trim();
-                const path = name.endsWith('.html') ? name : name + '.html';
+                const path = /\.html?$/i.test(name) ? name : name + '.html';
                 const res = await fetch(`${basePath}${path}`, { cache: 'no-store' });
                 if (!res.ok) {
                     console.error(`❌ Falha ao carregar: ${basePath}${path}`);
