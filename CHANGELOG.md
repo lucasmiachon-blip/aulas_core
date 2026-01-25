@@ -1,5 +1,20 @@
 # CHANGELOG - GRADE Slides
 
+## PATCH2_6 — 2026-01-25
+- Tipografia: títulos (h2) padronizados em **altura/line-height** via CSS (menos variação entre slides).
+- Paleta/tokens: adicionado `--muted-rgb` + chips `.chip--teal` e `.chip--navy` (consistência e menos CSS ad hoc).
+- Slide 8: microvisual ajustado para paleta ouro (teal/navy removidos do bloco de severidade).
+- Slide 12: figura SCOT-HEART inserida + citação corrigida (Lancet 2025;405:329–337. DOI: 10.1016/S0140-6736(24)01899-5).
+- Slides com citações “ipsis litteris”: reescritos como **paráfrase** (evita blocos longos de texto citado).
+- Emojis removidos como semântica (títulos/boxes) em slides do fluxo e apêndice.
+- NOVO bloco “Metas lipídicas” (S50–S57) com:
+  - tabela de alvos LDL/não-HDL/ApoB (SBC 2025),
+  - força/certeza (GRADE),
+  - base de evidência (CTT + trials) e update (VESALIUS-CV),
+  - inconsistência e viés de publicação (Core GRADE).
+- Apêndice: divisor (S58) e “poesia” final (S59). PREVENT/CAC staging mantidos no fim via `_list.txt`.
+- Controle: DASHBOARD.xlsx atualizado com novos slides e status.
+
 ## PATCH2_5 — 2026-01-23
 - P0 polish (GRADE): S07 alinhamento/estrutura; S12 padding; S17–S20 refinados (imprecisão/RoB/EtD); S23–S26 harmonizados (PREVENT) + remoção de emojis como semântica.
 - Atualizações de controle: CHANGELOGs, ISSUES.md, DASHBOARD.xlsx.

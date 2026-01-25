@@ -1,14 +1,13 @@
 @echo off
 echo ========================================
-echo   Servidor Local - Slides GRADE
+echo   Ver slides GRADE no local
 echo ========================================
 echo.
-echo Iniciando servidor na pasta GRADE/src...
+echo Canal: http://localhost:8000/index.html
 echo.
-echo Abra no navegador:
-echo   http://localhost:8000/index.html
+echo Iniciando servidor... Abra o link acima (ou use ver-local.ps1 para abrir automaticamente).
+echo Ctrl+C para parar.
 echo.
-echo Pressione Ctrl+C para parar o servidor
-echo.
+cd /d "%~dp0"
 cd GRADE\src
 python -m http.server 8000

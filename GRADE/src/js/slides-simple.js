@@ -150,9 +150,11 @@
 
         for (const file of files) {
             try {
-                const res = await fetch(`${basePath}${file}`, { cache: 'no-store' });
+                const name = (file || '').trim();
+                const path = name.endsWith('.html') ? name : name + '.html';
+                const res = await fetch(`${basePath}${path}`, { cache: 'no-store' });
                 if (!res.ok) {
-                    console.error(`❌ Falha ao carregar: ${basePath}${file}`);
+                    console.error(`❌ Falha ao carregar: ${basePath}${path}`);
                     continue;
                 }
                 const html = await res.text();

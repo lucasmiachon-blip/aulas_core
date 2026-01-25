@@ -94,12 +94,36 @@
   color: var(--navy);
 }
 
+.cardHeader .chip--teal {
+  background: rgba(var(--teal-rgb), 0.92);
+  border-color: rgba(var(--teal-rgb), 0.96);
+  color: var(--white);
+}
+
+.cardHeader .chip--navy {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--white);
+}
+
 .chip--muted {
   background: rgba(var(--navy-rgb), 0.08);
   color: var(--navy);
   border-color: rgba(var(--navy-rgb), 0.16);
 }
 
+
+.chip--teal {
+  background: rgba(var(--teal-rgb), 0.12);
+  color: var(--teal);
+  border-color: rgba(var(--teal-rgb), 0.28);
+}
+
+.chip--navy {
+  background: rgba(var(--navy-rgb), 0.10);
+  color: var(--navy);
+  border-color: rgba(var(--navy-rgb), 0.22);
+}
 /* Notes */
 .note {
   border-left: 0.35vw solid var(--gold);
@@ -161,3 +185,5 @@
   font-size: 0.95vw;
   color: var(--text);
 }
+
+.

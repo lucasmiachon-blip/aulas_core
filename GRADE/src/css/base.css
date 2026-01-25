@@ -21,6 +21,8 @@
   --teal-rgb: 15, 118, 110;
   --blue-rgb: 37, 99, 235;
   --text-rgb: 15, 23, 42;
+  --muted-rgb: 71, 85, 105;
+  --border-rgb: 226, 232, 240;
 
   /* Alertas */
   --danger: #ef4444;
@@ -87,6 +89,12 @@ html, body {
 h1, h2, h3 {
   font-family: var(--font-serif);
   letter-spacing: -0.01em;
+}
+
+/* Title consistency (P0): unify size/line-height across slides */
+.slide h2 {
+  font-size: 3vw !important;
+  line-height: 1.15 !important;
 }
 
 p, li, span, div {
