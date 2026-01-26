@@ -8,12 +8,13 @@ async function exportPDF() {
   // Usar servidor local (fetch() não funciona com file:// por CORS)
   // Se servidor não estiver rodando, tentar iniciar ou usar URL
   // Tentar GitHub Pages primeiro, fallback para localhost
+  // Live Server (5500) em primeiro; 8000 = fallback (Python do exportar-pdf-e-zip.ps1).
   const urlCandidates = [
-    'http://127.0.0.1:5500/GRADE/src/index.html',  // Live Server
-    'http://localhost:5500/GRADE/src/index.html',  // Live Server alternativo
+    'http://127.0.0.1:5500/GRADE/src/index.html',
+    'http://localhost:5500/GRADE/src/index.html',
     'http://localhost:8000/GRADE/src/index.html',
     'https://lucasmiachon-blip.github.io/aulas_core/GRADE/src/index.html'
-];
+  ];
   let url = urlCandidates[0];
   
   // Pasta de saída

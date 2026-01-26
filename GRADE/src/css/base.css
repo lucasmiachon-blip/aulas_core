@@ -81,6 +81,11 @@ html, body {
   display: flex;
 }
 
+/* Slide 21 (S47): conteúdo denso — padding reduzido para o rodapé e bloco LDL-C não serem cortados */
+.slide[data-slide-id="S47"] {
+  padding: 3vw 5%;
+}
+
 .bg-navy {
   background: var(--navy) !important;
   color: var(--white) !important;
