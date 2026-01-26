@@ -64,3 +64,15 @@ docs/VERIFICACAO_ALINHAMENTO.md
 # Tokens e credenciais
 config/github-token.txt
 METRICAS_MVP.txt
+github-token.txt
+*github-token*
+*GITHUB_TOKEN*
+*.token
+*.key
+*.secret
+# Padrões de tokens GitHub
+ghp_*
+gho_*
+ghu_*
+ghs_*
+ghr_*
