@@ -1,39 +1,21 @@
 # CHANGELOG - GRADE Slides
 
-## PATCH2_7 — 2026-01-25
-- Navegação/ordem: `_list.txt` reorganizado para fluxo **main → metas → encerramento → apêndice** (encerramento não “reaparece” no meio).
-- JS (slides-simple.js): navegação sem loop (no fim/início) + `defaultSlideIds` alinhado ao `_list.txt`.
-- CSS:
-  - `base.css`: títulos (h2) padronizados em **2.85vw** + `font-weight: 700` (mais consistência e menos risco de overflow).
-  - `blocks.css`: `.chip` menos “pesado” (800), `.table-medium` (padding/legibilidade), `.ref` (estilo base).
-- Slides (P0/P1):
-  - **S08**: paleta/alinhamento (remoção de teal residual, ajustes de spacing).
-  - **S12**: ajustes finos de padding/compactação (reduz risco de corte).
-  - **S18**: marcador de IC 95% redesenhado (bracket mais limpo).
-  - **S22–S23**: redesign completo (cards consistentes) + densificação de conteúdo (diretrizes; TRIPOD/PROBAST; discriminação vs calibração).
-  - **S25**: header “Conceito” padronizado (navy + chip gold) + referência PREVENT/PCE.
-  - **S51**: tabela ipsis litteris (Extremo) + chip “novo” e nota em rodapé.
-  - **S53**: VESALIUS‑CV com HR/IC (3‑point e 4‑point MACE).
-  - **S55**: lembrete “rate up” (Core GRADE) adicionado.
-  - **S56**: linha AACE 2025 ajustada + refs completas (SBC/ESC/ACC/AACE).
-  - **S50–S59**: `data-slide-id` adicionado (hash/navegação mais robusta).
-- DASHBOARD.xlsx: atualização de status/linha do batch (Patch 2.7).
+## [PATCH 2.6] - 2026-01-25 (P0 polish: slides de abertura por bloco + ajustes de margem)
 
-## PATCH2_6 — 2026-01-25
-- Tipografia: títulos (h2) padronizados em **altura/line-height** via CSS (menos variação entre slides).
-- Paleta/tokens: adicionado `--muted-rgb` + chips `.chip--teal` e `.chip--navy` (consistência e menos CSS ad hoc).
-- Slide 8: microvisual ajustado para paleta ouro (teal/navy removidos do bloco de severidade).
-- Slide 12: figura SCOT-HEART inserida + citação corrigida (Lancet 2025;405:329–337. DOI: 10.1016/S0140-6736(24)01899-5).
-- Slides com citações “ipsis litteris”: reescritos como **paráfrase** (evita blocos longos de texto citado).
-- Emojis removidos como semântica (títulos/boxes) em slides do fluxo e apêndice.
-- NOVO bloco “Metas lipídicas” (S50–S57) com:
-  - tabela de alvos LDL/não-HDL/ApoB (SBC 2025),
-  - força/certeza (GRADE),
-  - base de evidência (CTT + trials) e update (VESALIUS-CV),
-  - inconsistência e viés de publicação (Core GRADE).
-- Apêndice: divisor (S58) e “poesia” final (S59). PREVENT/CAC staging mantidos no fim via `_list.txt`.
-- Controle: DASHBOARD.xlsx atualizado com novos slides e status.
+### Estrutura / Navegação
+- `_list.txt`: adicionados **cards de abertura** no padrão do bloco de metas (slide tipo “roteiro + mensagem-chave”):
+  - **S60** antes do bloco **CAC** (entra antes do S09).
+  - **S61** antes do bloco **ácido bempedóico** (entra antes do S14).
 
+### Slides
+- **S60 (novo)**: abertura do bloco **CAC** (mesma estética do S50) com roteiro didático + mensagem-chave (predição ≠ prescrição).
+- **S61 (novo)**: abertura do bloco **bempedóico** com roteiro (diretriz → RCT → EtD/BR) + mensagem-chave.
+- **S12**: re-layout para evitar overflow (cards inferiores em paralelo) + rodapé em posição absoluta (margem inferior consistente).
+  - Adicionado placeholder **esquemático** de Kaplan–Meier em `src/assets/figures/scot-heart-10y-km.png` (remove ícone quebrado; pronto para substituir pela figura do paper).
+- **S47**: reservado espaço inferior + rodapé em posição absoluta (evita corte em projeção).
+
+### Controle
+- Atualizado **DASHBOARD.xlsx** (registro das mudanças do batch).
 
 ## [PATCH 2.5] - 2026-01-23 (P0 polish: imprecisão/RoB + consistência PREVENT)
 
