@@ -1,6 +1,33 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
 
+## OSTEOPOROSE_PATCH0_5 — 2026-01-26
+
+### P0: Viewer (corte inferior + fit real na janela)
+- `viewer.css`: palco agora usa `100dvh` (fallback `100vh`) e bloqueia scroll da página (viewer = app). Reduz casos em que o slide “passa” 1–2px e é cortado embaixo.
+- `viewer.css`: adicionada folga inferior extra no `stage` (safe bottom) para projetores/overscan.
+- `viewer.js`: novo `scheduleFit()` (multi-pass) + listeners de assets do slide ativo (img/video/iframe) para refazer o fit após carregamento tardio.
+- `viewer.js`: resize agora usa `scheduleFit()` (inclui overflow-fit), não só `fitToScreen()`.
+
+### P0: Print/PDF (16:9 sem altura errada)
+- `print.css`: força `min-height: 0 !important` (corrige `min-height: 100vh` legado que quebrava o tamanho 16:9 no print).
+- Novo `print-fit.js`: aplica overflow-fit antes de imprimir (DOMContentLoaded/load/beforeprint) para reduzir cortes em slides densos.
+- `src/print.html` e `dist/print.html` regenerados a partir de `src/slides/_list.txt` para garantir consistência com os slides modulares.
+
+### Slides (estética/legibilidade – sem mudar claims)
+- Slide 8 (Utilidade): redução de densidade (padding/margens) + headings em navy (gold fica como acento) para contraste.
+- Slide 14 (Osteopenia): redução de densidade (padding/margens) + gráfico ajustado para caber sem encostar no rodapé.
+
+### Arquivos modificados
+- `OSTEOPOROSE/src/css/viewer.css`
+- `OSTEOPOROSE/src/js/viewer.js`
+- `OSTEOPOROSE/src/css/print.css`
+- `OSTEOPOROSE/src/js/print-fit.js` (novo)
+- `OSTEOPOROSE/src/print.html`, `OSTEOPOROSE/dist/print.html` (regenerados)
+- `OSTEOPOROSE/src/slides/S08_slide-10.html`, `OSTEOPOROSE/src/slides/S14_slide-9-osteopenia.html`
+- `README.md`
+
+
 ## OSTEOPOROSE_PATCH0_4 — 2026-01-25
 
 ### Viewer / Export

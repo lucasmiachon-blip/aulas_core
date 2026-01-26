@@ -62,10 +62,18 @@ html.is-print .slide {
   display: block !important;
   width: calc(var(--stage-w) * 1px) !important;
   height: calc(var(--stage-h) * 1px) !important;
+  min-height: 0 !important; /* overrides inline min-height:100vh */
   margin: 0 auto 24px;
   overflow: hidden;
   page-break-after: always;
   break-after: page;
+  /*
+   * FIX v2.1: Reduz padding vertical de 60px para 40px
+   * Sobrescreve style inline dos slides
+   * Ganha 40px de área útil (720 - 80 = 640px vs anterior 600px)
+   * Resolve cortes em: S14, S15, S16, S19, S20, S29, S30, S50
+   */
+  padding: 40px 55px !important;
 }
 
 
@@ -91,10 +99,18 @@ html.is-print .slide:last-child {
   html.is-print .slide {
     width: 13.333in !important;
     height: 7.5in !important;
+    min-height: 0 !important;
     margin: 0 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
     page-break-after: always;
     break-after: page;
+    /* FIX v2.1: Mantém padding reduzido no print real */
+    padding: 40px 55px !important;
   }
+}
+
+/* FIX: Ajustes mínimos - apenas reduz padding-bottom extremo */
+.slide[style*="padding-bottom: 100px"] {
+  padding-bottom: 75px !important;
 }

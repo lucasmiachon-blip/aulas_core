@@ -22,11 +22,26 @@
 }
 
 .viewer{
+  /* Evita cortes por rounding/viewport dinâmico (especialmente fullscreen) */
   min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   background: var(--navy);
 }
+
+.viewer.is-fullscreen{
+  /* Em fullscreen, garantir que o viewer ocupe 100% da tela */
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+}
+
+/* Viewer é um app (não deve scrollar) */
+html, body{ overflow: hidden; }
 
 .viewer__bar{
   height: var(--ui-h);
@@ -174,10 +189,25 @@
 
 .stage{
   flex: 1;
+  /* Fallback 100vh + melhoria em navegadores com viewport dinâmico */
+  height: calc(100vh - var(--ui-h));
+  height: calc(100dvh - var(--ui-h));
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--stage-pad);
+  /* Um pouco mais de respiro embaixo (projetor/overscan + corte inferior) */
+  padding: var(--stage-pad) var(--stage-pad) calc(var(--stage-pad) + 10px) var(--stage-pad);
+}
+
+/* Em modo palco, a barra vira overlay. Reservamos espaço quando a UI está visível
+   para não “comer” o topo do slide. Quando a UI some, devolvemos área útil. */
+.viewer.is-present .stage{
+  height: 100vh;
+  height: 100dvh;
+}
+
+.viewer.is-present:not(.is-ui-hidden) .stage{
+  padding-top: calc(var(--stage-pad) + var(--ui-h) + 8px);
 }
 
 .stage__inner{
@@ -250,15 +280,29 @@
   - Remove paddings e chrome do deck para maximizar área útil.
 */
 .viewer.is-fullscreen .stage{
-  /* Pequena margem de segurança (overscan / projetores) */
-  padding: max(10px, env(safe-area-inset-top))
-           max(10px, env(safe-area-inset-right))
-           max(10px, env(safe-area-inset-bottom))
-           max(10px, env(safe-area-inset-left));
+  /* Remover padding para maximizar área útil em fullscreen */
+  padding: 0 !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  /* Garantir que o stage ocupe toda a altura disponível */
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
 }
 
 .viewer.is-fullscreen .deck--fixed{
-  border-radius: 0;
-  border: none;
-  box-shadow: none;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.viewer.is-fullscreen .stage__inner{
+  /* Em fullscreen, permitir que o scale preencha a tela */
+  transform-origin: center center;
+}
+
+/* Esconder barra de navegação completamente em fullscreen */
+.viewer.is-fullscreen .viewer__bar{
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }

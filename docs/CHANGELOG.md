@@ -16,6 +16,150 @@
 
 ---
 
+## [2026-01-23] - OSTEOPOROSE Viewer: Correção de Cortes na Margem Inferior (Solução Final)
+
+### 🎯 OBJETIVO
+Resolver problema persistente de conteúdo cortado na margem inferior de vários slides no viewer OSTEOPOROSE, especialmente S03, S07, S09.
+
+### ❌ TENTATIVAS QUE NÃO FUNCIONARAM
+
+#### Tentativa 1: JavaScript Auto-Scale Robusto (`fitSlideOverflow`)
+**Abordagem:** Implementar função JavaScript que calcula scale dinamicamente com margens assimétricas (SAFE_TOP: 8px, SAFE_BOTTOM: 35px) e scale mínimo de 0.82.
+
+**Código implementado:**
+```javascript
+function fitSlideOverflow(slide) {
+  // Margens assimétricas + cálculo de scale baseado em getBoundingClientRect
+  // MIN_SCALE = 0.82 para evitar compressão excessiva
+}
+```
+
+**Resultado:** ❌ **FALHOU**
+- Alguns slides ficaram comprimidos demais (mal distribuídos no centro)
+- Outros ainda tinham corte na margem inferior
+- Inconsistente entre diferentes monitores/resoluções
+
+**Arquivo:** `OSTEOPOROSE/src/js/viewer.js` (função `fitSlideOverflow`)
+
+---
+
+#### Tentativa 2: CSS Agressivo Global
+**Abordagem:** Desabilitar `fitSlideOverflow` e aplicar regras CSS globais agressivas em `print.css`:
+- Reduzir padding de todos os slides: `padding: 40px 50px !important`
+- Reduzir gaps: `gap: 20px !important` (de 30px), `gap: 16px !important` (de 25px)
+- Reduzir margin-bottom de títulos: `margin-bottom: 25px !important` (de 40px)
+- Reduzir padding interno de cards: `padding: 20px !important` (de 30px), `padding: 16px !important` (de 25px)
+- Reduzir font-size e line-height em vários elementos
+- Adicionar `overflow: visible` em containers
+
+**Código implementado:**
+```css
+.slide {
+  padding: 40px 50px !important;
+}
+.slide > div[style*="gap: 30px"] {
+  gap: 20px !important;
+}
+/* ... muitas outras regras agressivas ... */
+```
+
+**Resultado:** ❌ **FALHOU COMPLETAMENTE**
+- Feedback do usuário: "perdemos mais que ganhamos pararece que ficaram mais cortados"
+- Slides que não cortavam passaram a cortar
+- Regras muito agressivas conflitaram com estilos inline dos slides individuais
+
+**Arquivo:** `OSTEOPOROSE/src/css/print.css`
+
+---
+
+### ✅ SOLUÇÃO FINAL (FUNCIONOU)
+
+**Abordagem:** CSS minimalista e conservador - apenas ajustes pontuais para casos extremos.
+
+**Estratégia:**
+1. **Desabilitar auto-scale JavaScript:** Função `fitSlideOverflow` apenas reseta transformações, não aplica scale
+2. **CSS conservador:** Apenas reduz `padding-bottom` de slides com valores muito altos (100px → 75px, 80px → 65px)
+
+**Código final:**
+
+**`OSTEOPOROSE/src/js/viewer.js`:**
+```javascript
+function fitSlideOverflow(slide) {
+  if (!slide) return;
+  
+  // RESET - remove qualquer scale anterior
+  slide.style.transform = '';
+  slide.style.transformOrigin = '';
+  delete slide.dataset.fitScale;
+  
+  // POR ENQUANTO: não faz auto-scale
+  // Os slides que cortam serão ajustados individualmente via CSS
+  return;
+}
+```
+
+**`OSTEOPOROSE/src/css/print.css`:**
+```css
+/* FIX: Ajustes mínimos - apenas reduz padding-bottom extremo */
+.slide[style*="padding-bottom: 100px"] {
+  padding-bottom: 75px !important;
+}
+
+.slide[style*="padding-bottom: 80px"] {
+  padding-bottom: 65px !important;
+}
+```
+
+**Resultado:** ✅ **SUCESSO**
+- Feedback do usuário: "essa eh a melhor versao ate agora"
+- Slides se adaptam bem ao tamanho da tela
+- Alguns slides ainda perdem margem inferior, mas situação melhorou significativamente
+- Abordagem não interfere com estilos inline dos slides individuais
+
+---
+
+### 📝 LIÇÕES APRENDIDAS
+
+1. **JavaScript auto-scale é problemático:** Cálculos dinâmicos de scale baseados em `getBoundingClientRect` são inconsistentes entre diferentes resoluções e podem comprimir slides desnecessariamente.
+
+2. **CSS global agressivo é perigoso:** Regras CSS com `!important` que sobrescrevem estilos inline podem quebrar layouts cuidadosamente ajustados em slides individuais.
+
+3. **Abordagem conservadora funciona melhor:** Ajustes mínimos e pontuais (apenas casos extremos) preservam o design original dos slides enquanto resolvem os problemas mais críticos.
+
+4. **Ajustes individuais podem ser necessários:** Para slides que ainda cortam após a solução conservadora, ajustes individuais via CSS ou modificação direta do HTML do slide são preferíveis a soluções globais.
+
+---
+
+### 🔄 PRÓXIMOS PASSOS SUGERIDOS
+
+1. **Identificar slides que ainda cortam:** Fazer uma passagem completa pelos 72 slides e listar quais ainda têm problemas de corte na margem inferior.
+
+2. **Ajustes técnicos (liberdade total):** Para cada slide problemático, ChatGPT pode tentar qualquer solução técnica:
+   - **CSS:** Qualquer tipo (global ou específico) - padding, margin, gap, font-size, position, transform, etc.
+   - **JavaScript:** Melhorar `fitSlideOverflow` ou criar nova abordagem
+   - **HTML:** Modificar estilos inline, estrutura, posicionamento
+   - **Posicionamento, estilo, tipografia:** Qualquer ajuste necessário
+   - **Cores:** Usar `var(--nome)` da paleta oficial
+
+3. **Alternativa com ChatGPT:** Usar ChatGPT para análise e experimentação de qualquer solução técnica. O código será commitado e se não funcionar pode ser revertido com `git pull`.
+
+**⚠️ ÚNICA RESTRIÇÃO:** Não modificar conteúdo médico (texto, números, claims, referências).
+
+---
+
+### 📁 ARQUIVOS MODIFICADOS
+
+- `OSTEOPOROSE/src/js/viewer.js` - Função `fitSlideOverflow` simplificada (desabilitada)
+- `OSTEOPOROSE/src/css/print.css` - Regras CSS conservadoras adicionadas
+
+---
+
+### 📚 DOCUMENTAÇÃO CRIADA
+
+- `docs/OSTEOPOROSE_VIEWER_FIX_ATTEMPTS.md` - Documento detalhado com todas as tentativas para referência futura e para ChatGPT
+
+---
+
 
 ## [2026-01-22] - Batch 3: Slides 16–26 + PREVENT (fontes) + Correções de contraste + Placeholders SCOT-HEART 10y
 

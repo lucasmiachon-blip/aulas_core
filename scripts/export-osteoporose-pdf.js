@@ -5,11 +5,17 @@ const fs = require('fs');
 async function exportPDF() {
   console.log('🚀 Iniciando exportação PDF Osteoporose...');
 
+  // Preferir print.html (estático, mais estável) ao invés de index.html?print=1
+  // Ordem: Live Server (5500) primeiro, depois 800, depois 8000, depois GitHub Pages
   const urlCandidates = [
+    'http://127.0.0.1:5500/OSTEOPOROSE/src/print.html',
+    'http://localhost:5500/OSTEOPOROSE/src/print.html',
+    'http://127.0.0.1:800/OSTEOPOROSE/src/print.html',
+    'http://localhost:800/OSTEOPOROSE/src/print.html',
     'http://127.0.0.1:5500/OSTEOPOROSE/src/index.html?print=1',
     'http://localhost:5500/OSTEOPOROSE/src/index.html?print=1',
     'http://localhost:8000/OSTEOPOROSE/src/index.html?print=1',
-    'https://lucasmiachon-blip.github.io/aulas_core/OSTEOPOROSE/src/index.html?print=1'
+    'https://lucasmiachon-blip.github.io/aulas_core/OSTEOPOROSE/src/print.html'
   ];
   // ?print=1: viewer.js isPrintMode() faz initDeck mostrar TODOS os slides (hidden=false, is-active em todos).
   // Sem isso só o ativo fica visível e o PDF sai com 1 página.
@@ -42,8 +48,9 @@ async function exportPDF() {
 
   await page.waitForLoadState('domcontentloaded');
 
-  // slide-loader injeta .slide via fetch; deck:loaded dispara initDeck que, com ?print=1, mostra todos
-  console.log('⏳ Aguardando slides (fetch + deck:loaded)...');
+  // print.html já tem todos os slides inline, não precisa de fetch
+  // Mas ainda precisa aguardar DOM e recursos carregarem
+  console.log('⏳ Aguardando slides (print.html já tem tudo inline)...');
   let slidesCount = 0;
   try {
     await page.waitForFunction(() => document.querySelectorAll('.slide').length >= 50, { timeout: 60000 });
@@ -54,13 +61,9 @@ async function exportPDF() {
   }
   console.log(`✅ ${slidesCount} slides no DOM`);
 
-  // Em ?print=1, initDeck remove [hidden] de todos. Garantir que já rodou antes do PDF.
-  try {
-    await page.waitForFunction(() => document.querySelectorAll('.slide[hidden]').length === 0, { timeout: 15000 });
-    console.log('✅ Modo print aplicado (todos visíveis)');
-  } catch (e) {
-    await page.waitForTimeout(2000);
-  }
+  // print.html já tem todos os slides visíveis (sem [hidden])
+  // Aguardar um pouco para garantir que CSS e recursos carregaram
+  await page.waitForTimeout(2000);
 
   await page.waitForTimeout(1500);
   await page.emulateMedia({ media: 'print' });
@@ -69,16 +72,19 @@ async function exportPDF() {
   const debug = await page.evaluate(() => ({
     slides: document.querySelectorAll('.slide').length,
     hidden: document.querySelectorAll('.slide[hidden]').length,
-    isPrint: document.documentElement.classList.contains('is-print')
+    isPrint: document.documentElement.classList.contains('is-print'),
+    url: window.location.href
   }));
   console.log('🔍 Pré-PDF:', JSON.stringify(debug));
 
   await page.pdf({
     path: outputPath,
-    preferCSSPageSize: true,
+    // Não usar format fixo - deixar preferCSSPageSize respeitar @page do CSS
+    preferCSSPageSize: true, // Respeitar @page { size: 13.333in 7.5in; } do print.css
     printBackground: true,
     margin: { top: 0, right: 0, bottom: 0, left: 0 },
     displayHeaderFooter: false
+    // width/height explícitos podem sobrescrever preferCSSPageSize, então removidos
   });
 
   await browser.close();

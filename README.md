@@ -133,9 +133,21 @@ Objetivo: deixar qualquer deck **conference-ready** (auditório, câmera, PDF) c
 - **Sombras/bordas:** bordas suaves (`rgba(var(--navy-rgb),0.14–0.22)`) e sombra leve (sem “glow”).
 - **PDF:** sempre testar `?print=1` e garantir **1 slide/página (16:9)**, com cores preservadas.
 
+**Guardrails extra (evitar retrabalho / bugs comuns):**
+- **Safe area real (P0):** considere um “safe bottom” de ~24px (projeção/overscan). Se algo encosta no rodapé, **vai cortar em algum viewer/PDF**.
+- **Gold não é cor de corpo:** em fundo claro, `var(--gold)` é **acento** (bordas, ícones, números) — evite usar gold como cor de parágrafo.
+- **Nada de `min-height: 100vh` em slides:** no viewer/print 16:9 isso interfere no sizing e costuma causar **altura errada** / cortes. Se veio do legado, o CSS de print deve zerar `min-height`.
+- **Emojis:** não usar emoji como semântica (warning/info/check). Preferir `[!]`/`[i]` ou SVG monocromático.
+
 ### OSTEOPOROSE (limbo P0 ↔ P1)
 **Permitido agora:** modularização, viewer/print, correções de encoding/ortografia, ajustes visuais (cores/fontes/espaçamento) **sem mudar claims/dados**.  
 **Proibido:** reescrever frases médicas, trocar números, adicionar/remover referências.
+
+**📋 Viewer - Correção de Cortes (2026-01-23):**
+- ✅ **Solução implementada:** CSS conservador e minimalista em `print.css` (ajustes pontuais apenas para casos extremos)
+- ✅ **JavaScript auto-scale desabilitado:** Função `fitSlideOverflow` apenas reseta transformações
+- ⚠️ **Status:** Alguns slides ainda podem precisar de ajustes individuais
+- 📖 **Documentação completa:** `docs/OSTEOPOROSE_VIEWER_FIX_ATTEMPTS.md` (histórico de tentativas e lições aprendidas)
 
 
 ---

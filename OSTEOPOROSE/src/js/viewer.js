@@ -1,9 +1,9 @@
 /*
   viewer.js
-  Navega√ß√£o + fullscreen + fit-to-screen + modo print.
+  Navega?∫?˙o + fullscreen + fit-to-screen + modo print.
 
   Atalhos:
-  - ‚Üê/‚Üí | PageUp/PageDown | Espa√ßo
+  - ‘Â…/‘Â∆ | PageUp/PageDown | Espa?∫o
   - Home/End
   - F: fullscreen
   - P: abrir modo PDF (print=1)
@@ -95,7 +95,7 @@
 
       var opt = document.createElement('option');
       opt.value = key;
-      opt.textContent = key + ' ¬∑ ' + title;
+      opt.textContent = key + ' ?¿ ' + title;
       select.appendChild(opt);
     });
 
@@ -108,7 +108,7 @@
   }
 
   function syncSelect() {
-    // Sem sele√ß√£o persistente (a UX √©: dropdown como "jump")
+    // Sem sele?∫?˙o persistente (a UX ?Æ: dropdown como "jump")
     // Deixamos vazio.
   }
 
@@ -129,7 +129,7 @@
       }
     }
 
-    // 3) n√∫mero simples
+    // 3) n??mero simples
     if (idx === -1 && /^\d+$/.test(key)) {
       idx = clamp(parseInt(key, 10) - 1, 0, state.slides.length - 1);
     }
@@ -147,7 +147,7 @@
   }
 
   function openPrintMode() {
-    // Preferir print.html (est√°tico) para exportar PDF sem depender de fetch/async.
+    // Preferir print.html (est?Ìtico) para exportar PDF sem depender de fetch/async.
     // Fallback: ?print=1 (modo antigo).
     try {
       var url = new URL(window.location.href);
@@ -228,82 +228,24 @@
     inner.style.setProperty('--scale', String(scale));
     if (zoom) zoom.textContent = String(Math.round(scale * 100)) + '%';
 
-    // Ap√≥s mudar o scale do palco, revalida overflow do slide ativo
+    // Ap??s mudar o scale do palco, revalida overflow do slide ativo
     fitActiveSlideOverflow();
   }
 
-  // Se algum slide "estourar" a altura/largura √∫til (conte√∫do maior que 1280√ó720),
+  // Se algum slide "estourar" a altura/largura ??til (conte??do maior que 1280?˘720),
   // reduzimos levemente via transform para evitar cortes (P0: margem inferior).
+  // TEMPORARIAMENTE DESABILITADO: Usando abordagem CSS pura ao invÈs de auto-scale
   function fitSlideOverflow(slide) {
     if (!slide) return;
-
-    // Reset
+    
+    // RESET - remove qualquer scale anterior
     slide.style.transform = '';
     slide.style.transformOrigin = '';
-
-    // Medidas ap√≥s layout
-    var ch = slide.clientHeight;
-    var cw = slide.clientWidth;
-    if (!ch || !cw) return;
-
-    // Guard: evita clipping por 1‚Äì2px (arredondamento, zoom, subpixel)
-    var SAFE_PX = 2;
-
-    // 1) M√©trica por flow (r√°pida)
-    var sh = slide.scrollHeight;
-    var sw = slide.scrollWidth;
-
-    // 2) M√©trica visual (robusta: inclui margens/absolutos)
-    var rect = slide.getBoundingClientRect();
-    var left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
-    var nodes = slide.querySelectorAll('*');
-
-    for (var i = 0; i < nodes.length; i++) {
-      var el = nodes[i];
-
-      // pula n√≥s invis√≠veis
-      var cs = window.getComputedStyle(el);
-      if (!cs || cs.display === 'none' || cs.visibility === 'hidden') continue;
-
-      var r = el.getBoundingClientRect();
-      if (!r || (r.width === 0 && r.height === 0)) continue;
-
-      // ignora "hitboxes" fora do canvas (ex.: offscreen helpers)
-      // (mantemos simples: s√≥ agregamos o que est√° pr√≥ximo do slide)
-      left = Math.min(left, r.left);
-      top = Math.min(top, r.top);
-      right = Math.max(right, r.right);
-      bottom = Math.max(bottom, r.bottom);
-    }
-
-    var scale = 1;
-
-    if (isFinite(left)) {
-      var contentW = right - left;
-      var contentH = bottom - top;
-
-      var availW = Math.max(0, rect.width - SAFE_PX * 2);
-      var availH = Math.max(0, rect.height - SAFE_PX * 2);
-
-      // Se por algum motivo o bounding box vier inv√°lido, cai para scroll
-      if (contentW > 0 && contentH > 0) {
-        scale = Math.min(availH / contentH, availW / contentW, 1);
-      } else if (sh && sw) {
-        scale = Math.min(ch / sh, cw / sw, 1);
-      }
-    } else if (sh && sw) {
-      scale = Math.min(ch / sh, cw / sw, 1);
-    }
-
-    // Toler√¢ncia: evita micro-jitter
-    if (scale < 0.995) {
-      scale = Math.max(0.88, scale); // n√£o encolher demais (sinaliza que precisa refatorar o slide)
-      slide.style.transformOrigin = 'top center';
-      slide.style.transform = 'scale(' + scale.toFixed(4) + ')';
-      slide.dataset.fitScale = scale.toFixed(4);
-    } else {
-      delete slide.dataset.fitScale;
-    }
+    delete slide.dataset.fitScale;
+    
+    // POR ENQUANTO: n„o faz auto-scale
+    // Os slides que cortam ser„o ajustados individualmente via CSS
+    return;
   }
 
 
@@ -311,7 +253,7 @@
     if (isPrintMode()) return;
     var active = state.slides[state.idx];
     if (!active) return;
-    // esperar um frame para garantir reflow/paint do slide rec√©m-ativado
+    // esperar um frame para garantir reflow/paint do slide rec?Æm-ativado
     window.requestAnimationFrame(function () {
       fitSlideOverflow(active);
     });
@@ -319,7 +261,7 @@
 
   function fitAllSlidesOverflowForPrint() {
     if (!isPrintMode()) return;
-    // Um frame para garantir que todos os slides j√° estejam no DOM e vis√≠veis
+    // Um frame para garantir que todos os slides j?Ì estejam no DOM e vis?°veis
     window.requestAnimationFrame(function () {
       state.slides.forEach(function (s) { fitSlideOverflow(s); });
     });
@@ -370,7 +312,7 @@
   }
 
   function onKeyDown(e) {
-    // Evitar capturar quando usu√°rio est√° em input/select
+    // Evitar capturar quando usu?Ìrio est?Ì em input/select
     var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
     if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
 
@@ -449,7 +391,7 @@
     if (btnPrint) btnPrint.addEventListener('click', openPrintMode);
     if (btnPresent) btnPresent.addEventListener('click', togglePresentMode);
 
-    // Auto-hide UI em modo palco quando h√° movimento
+    // Auto-hide UI em modo palco quando h?Ì movimento
     document.addEventListener('mousemove', function () {
       if (state.present) armAutoHide();
     });
@@ -468,7 +410,7 @@
     if (!state.slides.length) return;
 
 
-    // Em modo print, mostramos todos; sem navega√ß√£o.
+    // Em modo print, mostramos todos; sem navega?∫?˙o.
     if (isPrintMode()) {
       state.slides.forEach(function (s) {
         s.hidden = false;
@@ -485,7 +427,7 @@
     // Inicial: hash ou primeiro
     if (window.location.hash) jumpTo(window.location.hash);
 
-    // Fallback: se jumpTo n√£o ativou nada, ativa o primeiro
+    // Fallback: se jumpTo n?˙o ativou nada, ativa o primeiro
     var activeIdx = state.slides.findIndex(function (s) { return s.classList.contains('is-active'); });
     if (activeIdx === -1) setActive(0, { pushHash: false });
     else setActive(activeIdx, { pushHash: false });

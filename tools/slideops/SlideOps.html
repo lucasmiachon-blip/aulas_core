@@ -1,0 +1,1556 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SlideOps Lite v1.3 AutoSave (Local)</title>
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1b33;
+      --panel2:#0c1730;
+      --text:#e7eefc;
+      --muted:#a9b8d6;
+      --line:#1f2e4f;
+      --chip:#1a2a4d;
+      --warn:#ffcc66;
+      --crit:#ff6b6b;
+      --ok:#5ee7a2;
+      --fix:#7aa8ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 10% 0%, #162a55 0%, var(--bg) 55%);
+      color:var(--text);
+    }
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(180deg, rgba(11,18,32,.92), rgba(11,18,32,.70));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .wrap{max-width:1200px; margin:0 auto; padding:16px 18px;}
+    h1{font-size:18px; margin:0 0 6px 0; letter-spacing:.2px}
+    .mini{color:var(--muted); font-weight:500}
+    .sub{color:var(--muted); font-size:13px}
+    .row{display:flex; gap:12px; flex-wrap:wrap; align-items:stretch}
+    .card{
+      background: linear-gradient(180deg, rgba(15,27,51,.95), rgba(12,23,48,.95));
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:14px;
+      padding:12px;
+      flex:1 1 240px;
+      min-width:220px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    .metric{display:flex; align-items:baseline; justify-content:space-between; gap:10px}
+    .metric .k{color:var(--muted); font-size:12px}
+    .metric .v{font-size:18px; font-weight:650}
+    .metric small{color:var(--muted); font-weight:500}
+    .tabs{display:flex; gap:8px; margin-top:12px}
+    .tab{
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+      padding:8px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+    }
+    .tab.active{background:rgba(122,168,255,.20); border-color:rgba(122,168,255,.35)}
+    .subtabs{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap}
+    .subtabs .tab{padding:6px 9px; font-size:12px}
+    main{max-width:1200px; margin:0 auto; padding:16px 18px 40px;}
+    .panel{
+      background: rgba(15,27,51,.92);
+      border:1px solid rgba(255,255,255,.06);
+      border-radius:14px;
+      padding:12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.22);
+      margin-bottom:14px;
+    }
+    .panel h2{margin:0 0 10px 0; font-size:15px}
+    .grid{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    @media (max-width: 900px){.grid{grid-template-columns:1fr}}
+    .hint{color:var(--muted); font-size:12px; margin-top:6px}
+    label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px}
+    input, select, textarea{
+      width:100%;
+      padding:9px 10px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,.10);
+      background: var(--panel);
+      color:var(--text);
+      outline:none;
+    }
+    select option{
+      background: var(--panel);
+      color: var(--text);
+    }
+    input:focus, select:focus, textarea:focus{border-color: rgba(122,168,255,.60); box-shadow: 0 0 0 3px rgba(122,168,255,.15)}
+    textarea{min-height:108px; resize:vertical}
+    .actions{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
+    button{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      padding:9px 10px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+    }
+    button:hover{background: rgba(255,255,255,.10)}
+    .primary{background: rgba(122,168,255,.25); border-color: rgba(122,168,255,.40)}
+    .danger{background: rgba(255,107,107,.18); border-color: rgba(255,107,107,.40)}
+    .ghost{background: transparent}
+    button:disabled{opacity:.45; cursor:not-allowed}
+    table{width:100%; border-collapse: collapse; font-size:13px}
+    thead th{
+      position:sticky; top:0;
+      background: rgba(11,18,32,.92);
+      text-align:left; padding:10px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    tbody td{padding:9px 10px; border-bottom:1px solid rgba(255,255,255,.06); vertical-align:top}
+    tbody tr:hover{background: rgba(255,255,255,.03)}
+    .chip{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 8px; border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      font-size:12px;
+      white-space:nowrap;
+    }
+    .p0{background: rgba(255,107,107,.20); border-color: rgba(255,107,107,.35)}
+    .p1{background: rgba(255,204,102,.18); border-color: rgba(255,204,102,.32)}
+    .p2{background: rgba(122,168,255,.16); border-color: rgba(122,168,255,.28)}
+    .p3{background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.10)}
+    .p4{background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.08); opacity:.85}
+    .p5{background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.07); opacity:.75}
+    .conf-low{background: rgba(255,107,107,.14); border-color: rgba(255,107,107,.26)}
+    .conf-mod{background: rgba(255,204,102,.12); border-color: rgba(255,204,102,.24)}
+    .conf-high{background: rgba(94,231,162,.12); border-color: rgba(94,231,162,.24)}
+    .cog-low{background: rgba(94,231,162,.12); border-color: rgba(94,231,162,.24)}
+    .cog-mod{background: rgba(122,168,255,.12); border-color: rgba(122,168,255,.24)}
+    .cog-high{background: rgba(255,107,107,.12); border-color: rgba(255,107,107,.24)}
+    .state-critical{background: rgba(255,107,107,.20); border-color: rgba(255,107,107,.35)}
+    .state-fix{background: rgba(122,168,255,.16); border-color: rgba(122,168,255,.28)}
+    .state-done{background: rgba(94,231,162,.16); border-color: rgba(94,231,162,.28)}
+    .pillbar{display:flex; gap:8px; flex-wrap:wrap}
+    .pillbar button{padding:5px 8px; border-radius:999px}
+    .pillbar button.active{background: rgba(122,168,255,.22); border-color: rgba(122,168,255,.45)}
+    .muted{color:var(--muted)}
+    .two{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .footer{color:var(--muted); font-size:12px; text-align:center; margin-top:18px}
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.10); padding:2px 6px; border-radius:8px;}
+
+    /* Legend + backlog */
+    details{
+      border:1px solid rgba(255,255,255,.06);
+      background: rgba(12,23,48,.55);
+      border-radius:12px;
+      padding:10px;
+    }
+    details summary{cursor:pointer; color:var(--text); font-weight:650}
+    .legend{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px
+    }
+    .legend .item{
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:12px;
+      padding:8px 10px;
+      min-width:220px;
+      flex: 1 1 220px;
+    }
+    .legend .item .t{font-weight:650; margin-bottom:6px}
+    .board{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 1100px){.board{grid-template-columns: 1fr 1fr}}
+    @media (max-width: 700px){.board{grid-template-columns: 1fr}}
+    .col{
+      border:1px solid rgba(255,255,255,.08);
+      background: rgba(12,23,48,.55);
+      border-radius:14px;
+      padding:10px;
+      min-height:220px;
+    }
+    .colHeader{
+      display:flex; align-items:center; justify-content:space-between;
+      margin-bottom:8px;
+    }
+    .colHeader .name{font-weight:700}
+    .colHeader .count{color:var(--muted); font-size:12px}
+    .colBody{min-height:140px}
+    .cardItem{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      border-radius:12px;
+      padding:8px 9px;
+      margin-bottom:8px;
+      cursor:pointer;
+    }
+    .cardItem:hover{background: rgba(255,255,255,.06)}
+    .cardItem.dragging{opacity:.6}
+    .minirow{display:flex; gap:6px; align-items:center; flex-wrap:wrap}
+    .small{font-size:12px; color:var(--muted)}
+    .dropHint{
+      border:1px dashed rgba(122,168,255,.35);
+      background: rgba(122,168,255,.08);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>SlideOps Lite <span class="mini">— v1.3 AutoSave</span></h1>
+      <div class="sub">Foco: controle visual + auditabilidade. Salva no navegador; para 2 computadores, use “Vincular arquivo JSON” (aba Backup) em pasta sincronizada ou Git.</div>
+
+      <div class="row" style="margin-top:12px">
+        <div class="card">
+          <div class="metric"><div class="k">P0 done (GRADE)</div><div class="v" id="mGradeP0">—</div></div>
+          <div class="hint" id="mGradeHint">—</div>
+        </div>
+        <div class="card">
+          <div class="metric"><div class="k">P0 done (OSTEO)</div><div class="v" id="mOsteoP0">—</div></div>
+          <div class="hint" id="mOsteoHint">—</div>
+        </div>
+        <div class="card">
+          <div class="metric"><div class="k">Críticos abertos</div><div class="v" id="mCritical">—</div></div>
+          <div class="hint">Estado = Critical. É o que entra no bloco #1.</div>
+        </div>
+        <div class="card">
+          <div class="metric"><div class="k">Checado / Appraisal</div><div class="v" id="mQA">—</div></div>
+          <div class="hint">Boxes “Conteúdo checado” e “Critical appraisal”.</div>
+        </div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab active" data-tab="backlog">Backlog</button>
+        <button class="tab" data-tab="slides">Slides</button>
+        <button class="tab" data-tab="study">Estudo</button>
+        <button class="tab" data-tab="export">Backup</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- BACKLOG TAB -->
+    <section class="panel" id="tab-backlog">
+      <h2>0) Backlog visual (por dia + dificuldade) — arrastar e soltar</h2>
+
+      <details>
+        <summary>Legenda P0–P5 (para não misturar escopo com triagem)</summary>
+        <div class="legend">
+          <div class="item">
+            <div class="t"><span class="chip p0">P0</span> Entrega mínima defensável</div>
+            <div class="small">Precisa estar apresentável e correto. Sem “TBD” que impeça fala. Referência mínima quando há claim factual importante.</div>
+          </div>
+          <div class="item">
+            <div class="t"><span class="chip p1">P1</span> Qualidade / andragogia / teoria de slides</div>
+            <div class="small">Refino pedagógico, narrativa, ritmo, carga cognitiva, microdesign. Não deve bloquear o P0.</div>
+          </div>
+          <div class="item">
+            <div class="t"><span class="chip p2">P2</span> Melhorias úteis</div>
+            <div class="small">Melhora o produto, mas pode ficar para depois sem risco grande.</div>
+          </div>
+          <div class="item">
+            <div class="t"><span class="chip p3">P3</span> Backlog comum</div>
+            <div class="small">Ideias e pendências não críticas.</div>
+          </div>
+          <div class="item">
+            <div class="t"><span class="chip p4">P4</span> Nice-to-have</div>
+            <div class="small">Só entra se sobrar tempo (ou para aprender sem afetar o prazo).</div>
+          </div>
+          <div class="item">
+            <div class="t"><span class="chip p5">P5</span> Não fazer agora</div>
+            <div class="small">Congelado/ignorado. Evita looping.</div>
+          </div>
+        </div>
+        <div class="hint" style="margin-top:10px">Triagem operacional é o campo <span class="kbd">Estado</span> (Critical/NeedsFix/Done). P-level é escopo/qualidade.</div>
+      </details>
+
+      <div class="grid" style="margin-top:12px">
+        <div>
+          <label>Filtro de deck</label>
+          <select id="bDeck">
+            <option value="ALL">Todos</option>
+            <option value="GRADE">GRADE</option>
+            <option value="OSTEO">OSTEO</option>
+          </select>
+          <div class="hint">Dica: use <span class="kbd">ALL</span> para enxergar o sistema inteiro; use deck para executar.</div>
+        </div>
+        <div>
+          <label>Mostrar slides Done</label>
+          <select id="bShowDone">
+            <option value="No">Não</option>
+            <option value="Yes">Sim</option>
+          </select>
+          <div class="hint">Backlog geralmente é o que ainda exige trabalho. Done pode poluir.</div>
+        </div>
+      </div>
+
+      <div class="board" style="margin-top:12px">
+        <div class="col" data-plan="Today">
+          <div class="colHeader"><div class="name">Hoje</div><div class="count" id="cToday">—</div></div>
+          <div class="colBody" id="col-Today"></div>
+        </div>
+        <div class="col" data-plan="Tomorrow">
+          <div class="colHeader"><div class="name">Amanhã</div><div class="count" id="cTomorrow">—</div></div>
+          <div class="colBody" id="col-Tomorrow"></div>
+        </div>
+        <div class="col" data-plan="ThisWeek">
+          <div class="colHeader"><div class="name">Esta semana</div><div class="count" id="cThisWeek">—</div></div>
+          <div class="colBody" id="col-ThisWeek"></div>
+        </div>
+        <div class="col" data-plan="Later">
+          <div class="colHeader"><div class="name">Depois</div><div class="count" id="cLater">—</div></div>
+          <div class="colBody" id="col-Later"></div>
+        </div>
+      </div>
+      <div class="hint" style="margin-top:10px">Arraste cards entre colunas para planejar. Clique no card para editar. Dificuldade = 1 (fácil) a 5 (difícil).</div>
+    </section>
+
+    <!-- SLIDES TAB -->
+    <section class="panel" id="tab-slides" style="display:none">
+      <h2>1) Matriz de slides (auditável)</h2>
+
+      <div class="subtabs" aria-label="Deck tabs (slides)">
+        <button class="tab active" data-decktab="slides" data-deck="GRADE" type="button">GRADE</button>
+        <button class="tab" data-decktab="slides" data-deck="OSTEO" type="button">OSTEO</button>
+        <button class="tab" data-decktab="slides" data-deck="ALL" type="button">Todos</button>
+      </div>
+
+      <details>
+        <summary>Legenda rápida (DoD P0 + estados)</summary>
+        <div class="legend">
+          <div class="item">
+            <div class="t"><span class="chip p0">DoD P0 (slide)</span></div>
+            <div class="small">Mensagem clara • zero TBD impeditivo • referência mínima em claims importantes • layout sem quebras • dá para apresentar ao vivo.</div>
+          </div>
+          <div class="item">
+            <div class="t"><span class="chip state-critical">Critical</span></div>
+            <div class="small">Bloqueia apresentar. Vai para o bloco #1.</div>
+          </div>
+          <div class="item">
+            <div class="t"><span class="chip state-fix">NeedsFix</span></div>
+            <div class="small">Melhorável. Não deve impedir a apresentação se P0 está ok.</div>
+          </div>
+          <div class="item">
+            <div class="t"><span class="chip state-done">Done</span></div>
+            <div class="small">Congelado. Evite reabrir (a menos que seja erro factual).</div>
+          </div>
+        </div>
+      </details>
+
+      <div class="grid" style="margin-top:12px">
+        <div>
+          <label>Gerar esqueleto rápido (deck + intervalo de slides)</label>
+          <div class="two">
+            <select id="genDeck">
+              <option value="GRADE">GRADE</option>
+              <option value="OSTEO">OSTEO</option>
+            </select>
+            <input id="genRange" placeholder="Ex: 3 ou 1-35" />
+          </div>
+          <div class="actions" style="margin-top:10px">
+            <button id="btnGenerate" class="primary">Criar/Adicionar slides do intervalo</button>
+            <button id="btnClearAll" class="danger">Zerar tudo (cuidado)</button>
+          </div>
+          <div class="hint">Gere o intervalo completo, depois ajuste só o que importa (P0 e estado). Não cadastre “perfeito”, cadastre “útil”.</div>
+        </div>
+
+        <div>
+          <label>Filtros</label>
+          <div class="two">
+            <select id="fDeck" style="display:none">
+              <option value="ALL">Todos decks</option>
+              <option value="GRADE">GRADE</option>
+              <option value="OSTEO">OSTEO</option>
+            </select>
+            <select id="fState">
+              <option value="ALL">Todos estados</option>
+              <option value="Critical">Critical</option>
+              <option value="NeedsFix">NeedsFix</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
+          <div class="two" style="margin-top:10px">
+            <select id="fP">
+              <option value="ALL">Todos P</option>
+              <option value="P0">P0</option>
+              <option value="P1">P1</option>
+              <option value="P2">P2</option>
+              <option value="P3">P3</option>
+              <option value="P4">P4</option>
+              <option value="P5">P5</option>
+            </select>
+            <select id="fSort">
+              <option value="priority">Ordenar por: P + estado + modificação</option>
+              <option value="modified">Ordenar por: última modificação</option>
+              <option value="slide">Ordenar por: deck + número</option>
+            </select>
+          </div>
+          <div class="hint">Sugestão: use filtro <span class="kbd">P0</span> + <span class="kbd">Critical</span> para escolher seu bloco #1.</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; overflow:auto; max-height:380px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Deck</th>
+              <th>#</th>
+              <th>Título curto</th>
+              <th>P</th>
+              <th>Estado</th>
+              <th>Plano</th>
+              <th>Dif</th>
+              <th>Conf</th>
+              <th>Carga</th>
+              <th>Last mod</th>
+              <th>Checado</th>
+              <th>Appraisal</th>
+              <th>Editar</th>
+            </tr>
+          </thead>
+          <tbody id="slidesBody"></tbody>
+        </table>
+      </div>
+
+      <div class="panel" style="margin-top:12px; background: rgba(12,23,48,.85)">
+        <h2 style="margin-bottom:8px">Editor rápido</h2>
+        <div class="grid">
+          <div>
+            <div class="two">
+              <div>
+                <label>Slide selecionado</label>
+                <input id="eKey" disabled placeholder="Clique em Editar numa linha acima" />
+              </div>
+              <div>
+                <label>Título curto</label>
+                <input id="eTitle" placeholder="Ex: NNT por droga (primária vs secundária)" />
+              </div>
+            </div>
+
+            <div class="two" style="margin-top:10px">
+              <div>
+                <label>P-level (P0–P5)</label>
+                <select id="eP">
+                  <option>P0</option><option>P1</option><option>P2</option><option>P3</option><option>P4</option><option>P5</option>
+                </select>
+              </div>
+              <div>
+                <label>Estado (triagem)</label>
+                <div class="pillbar">
+                  <button id="eCritical">Critical</button>
+                  <button id="eNeedsFix">NeedsFix</button>
+                  <button id="eDone">Done</button>
+                </div>
+                <div class="hint">Critical = bloqueia apresentar • NeedsFix = melhora • Done = congelado.</div>
+              </div>
+            </div>
+
+            <div class="two" style="margin-top:10px">
+              <div>
+                <label>Plano (dia)</label>
+                <select id="ePlan">
+                  <option value="Today">Today</option>
+                  <option value="Tomorrow">Tomorrow</option>
+                  <option value="ThisWeek">ThisWeek</option>
+                  <option value="Later">Later</option>
+                </select>
+              </div>
+              <div>
+                <label>Dificuldade (1–5)</label>
+                <select id="eDiff">
+                  <option value="1">1 (fácil)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5 (difícil)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="two" style="margin-top:10px">
+              <div>
+                <label>Conteúdo checado (sim/não)</label>
+                <select id="eChecked"><option value="No">No</option><option value="Yes">Yes</option></select>
+              </div>
+              <div>
+                <label>Confrontado com critical appraisal (sim/não)</label>
+                <select id="eAppraisal"><option value="No">No</option><option value="Yes">Yes</option></select>
+              </div>
+            </div>
+
+            <div class="two" style="margin-top:10px">
+              <div>
+                <label>Confiança (baixa / moderada / alta)</label>
+                <div class="pillbar" id="confPills">
+                  <button id="eConfLow" type="button">Baixa</button>
+                  <button id="eConfMod" type="button">Moderada</button>
+                  <button id="eConfHigh" type="button">Alta</button>
+                </div>
+                <div class="hint">Seu nível de segurança no conteúdo/claim.</div>
+              </div>
+              <div>
+                <label>Carga cognitiva (baixa / moderada / alta)</label>
+                <div class="pillbar" id="cogPills">
+                  <button id="eCogLow" type="button">Baixa</button>
+                  <button id="eCogMod" type="button">Moderada</button>
+                  <button id="eCogHigh" type="button">Alta</button>
+                </div>
+                <div class="hint">Alta = provável dividir em 2 slides ou simplificar.</div>
+              </div>
+            </div>
+
+            <div style="margin-top:10px">
+              <label>Âncora EBM (1 linha)</label>
+              <input id="eAnchor" placeholder="Mensagem + número absoluto (NNT/ARR) + referência curta" />
+              <div class="hint">Serve para travar “conteúdo mínimo defensável” sem reescrever o deck inteiro.</div>
+            </div>
+
+            <div style="margin-top:10px">
+              <label>Objetivo do slide (1 linha)</label>
+              <input id="eObjective" placeholder="O que este slide precisa fazer na decisão do público?" />
+            </div>
+
+            <div style="margin-top:10px">
+              <label>Narrativa & interações (1–2 linhas)</label>
+              <input id="eNarrative" placeholder="Como você vai conduzir a fala + pergunta/checagem rápida?" />
+            </div>
+
+            <div class="actions" style="margin-top:10px">
+              <button id="btnCopyBrief" class="ghost" disabled>Copiar brief (para AI)</button>
+              <span class="hint" id="briefHint" style="margin:0">—</span>
+            </div>
+          </div>
+
+          <div>
+            <label>Comentários (você)</label>
+            <textarea id="eMyNotes" placeholder="Observações rápidas: o que falta / o que está bom / o que cortar"></textarea>
+
+            <div style="margin-top:10px">
+              <div class="actions" style="justify-content:space-between">
+                <label style="margin:0">Comentários (AI) — template de qualidade</label>
+                <button id="btnInsertAiTpl" class="ghost">Inserir template</button>
+              </div>
+              <textarea id="eAiNotes" placeholder="Cole aqui a revisão da AI seguindo o protocolo"></textarea>
+              <div class="hint">Template sugere: Claim → Evidence → Effect size → Certainty → Applicability → Suggested slide line.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions" style="margin-top:12px">
+          <button id="btnSave" class="primary" disabled>Salvar alterações</button>
+          <button id="btnCancel" class="ghost" disabled>Cancelar</button>
+          <span class="muted" id="saveStatus">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STUDY TAB -->
+    <section class="panel" id="tab-study" style="display:none">
+      <h2>2) Matriz de estudo (leitura → cartões → aplicação)</h2>
+
+      <div class="subtabs" aria-label="Deck tabs (study)">
+        <button class="tab active" data-decktab="study" data-deck="GRADE" type="button">GRADE</button>
+        <button class="tab" data-decktab="study" data-deck="OSTEO" type="button">OSTEO</button>
+        <button class="tab" data-decktab="study" data-deck="ALL" type="button">Todos</button>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>Novo item de estudo</label>
+          <div class="two">
+            <select id="sDeck">
+              <option value="GRADE">GRADE</option>
+              <option value="OSTEO">OSTEO</option>
+            </select>
+            <input id="sRange" placeholder="Slides (ex: 12-14) ou tópico (ex: NNT estatinas)" />
+          </div>
+          <div style="margin-top:10px">
+            <label>Material (link/arquivo/nota)</label>
+            <input id="sMaterial" placeholder="URL, nome do PDF, guideline, etc." />
+          </div>
+          <div class="two" style="margin-top:10px">
+            <div>
+              <label>Status</label>
+              <select id="sStatus">
+                <option>ToRead</option>
+                <option>Extracted</option>
+                <option>Applied</option>
+              </select>
+            </div>
+            <div>
+              <label>Cards gerados (número)</label>
+              <input id="sCards" type="number" min="0" value="0" />
+            </div>
+          </div>
+          <div class="actions" style="margin-top:10px">
+            <button id="btnAddStudy" class="primary">Adicionar</button>
+            <button id="btnClearStudy" class="danger">Zerar estudos</button>
+          </div>
+          <div class="hint">Regra: leitura só conta quando vira cartão ou vira slide. “ToRead” demais vira backlog.</div>
+        </div>
+
+        <div>
+          <label>Reflexões / critical appraisal / aplicação</label>
+          <textarea id="sNotes" placeholder="O que isso muda? Qual efeito absoluto? Qual certeza? Qual aplicabilidade?"></textarea>
+          <div class="hint">Dica: transforme reflexão em 1–2 “cards” aplicáveis (âncora EBM).</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; overflow:auto; max-height:360px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Deck</th>
+              <th>Alvo</th>
+              <th>Material</th>
+              <th>Status</th>
+              <th>Cards</th>
+              <th>Last mod</th>
+              <th>Editar</th>
+            </tr>
+          </thead>
+          <tbody id="studyBody"></tbody>
+        </table>
+      </div>
+
+      <div class="panel" style="margin-top:12px; background: rgba(12,23,48,.85)">
+        <h2 style="margin-bottom:8px">Editor de estudo</h2>
+        <div class="grid">
+          <div>
+            <label>ID selecionado</label>
+            <input id="seId" disabled />
+            <div class="two" style="margin-top:10px">
+              <div>
+                <label>Status</label>
+                <select id="seStatus">
+                  <option>ToRead</option><option>Extracted</option><option>Applied</option>
+                </select>
+              </div>
+              <div>
+                <label>Cards gerados</label>
+                <input id="seCards" type="number" min="0" />
+              </div>
+            </div>
+            <div style="margin-top:10px">
+              <label>Reflexões / aplicação</label>
+              <textarea id="seNotes"></textarea>
+            </div>
+          </div>
+          <div>
+            <label>Material</label>
+            <input id="seMaterial" />
+            <div style="margin-top:10px">
+              <label>Alvo (slides ou tópico)</label>
+              <input id="seRange" />
+            </div>
+            <div class="actions" style="margin-top:12px">
+              <button id="btnSaveStudy" class="primary" disabled>Salvar</button>
+              <button id="btnDeleteStudy" class="danger" disabled>Excluir</button>
+              <span class="muted" id="studyStatus">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPORT TAB -->
+    <section class="panel" id="tab-export" style="display:none">
+      <h2>3) Backup / 2 computadores (sem servidor)</h2>
+
+      <div class="grid">
+        <div>
+          <label>Backup manual</label>
+          <div class="actions">
+            <button id="btnExport" class="primary">Baixar JSON</button>
+            <input id="fileImport" type="file" accept="application/json" />
+          </div>
+          <div class="hint">Se for usar Git: exporte como <span class="kbd">slideops_data.json</span>, commit e push. No outro PC: pull e importe.</div>
+        </div>
+        <div>
+          <label>Vincular arquivo JSON (recomendado para 2 PCs)</label>
+          <div class="actions">
+            <button id="btnOpenData" class="primary">Abrir JSON existente</button>
+            <button id="btnCreateData" class="ghost">Criar JSON novo</button>
+            <button id="btnSaveData" class="ghost" disabled>Salvar agora</button>
+            <button id="btnDisconnect" class="ghost" disabled>Desconectar</button>
+          </div>
+          <div class="actions" style="margin-top:8px">
+            <label style="margin:0"><input type="checkbox" id="chkAutoSave" checked /> Auto-salvar</label>
+            <span class="muted" id="fileStatus">Sem arquivo vinculado.</span>
+          </div>
+          <div class="hint">Funciona melhor no Chrome/Edge (File System Access). Coloque o JSON numa pasta sincronizada (OneDrive/Dropbox/MEGA) ou no seu repositório Git.</div>
+        </div>
+      </div>
+
+      <div class="footer">SlideOps Lite v1.2 — local, rápido, auditável. Use para governar execução (P0 primeiro), não para “reformular” o projeto.</div>
+    </section>
+  </main>
+
+<script>
+(() => {
+  const LS_KEY = "slideops_lite_v1"; // mantém compatibilidade com v1
+  const nowISO = () => new Date().toISOString();
+  const fmt = (iso) => {
+    if(!iso) return "—";
+    const d = new Date(iso);
+    return d.toLocaleString(undefined, {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit"});
+  };
+
+  const DEFAULT = { slides: [], studies: [] };
+
+  const upgrade = (data) => {
+    // garante campos novos sem quebrar dados antigos
+    if(!data || typeof data !== "object") return structuredClone(DEFAULT);
+    if(!Array.isArray(data.slides)) data.slides = [];
+    if(!Array.isArray(data.studies)) data.studies = [];
+    for(const s of data.slides){
+      if(!s.key && s.deck && (s.num || s.num===0)) s.key = `${s.deck}#${s.num}`;
+      if(!s.p) s.p = "P1";
+      if(!s.state) s.state = "NeedsFix";
+      if(!s.checked) s.checked = "No";
+      if(!s.appraisal) s.appraisal = "No";
+      if(!s.objective) s.objective = "";
+      if(!s.narrative) s.narrative = "";
+      if(!s.myNotes) s.myNotes = "";
+      if(!s.aiNotes) s.aiNotes = "";
+      if(!s.title) s.title = "";
+      if(!s.lastModified) s.lastModified = nowISO();
+      // novos campos
+      if(!s.plan) s.plan = "ThisWeek";
+      if(!s.difficulty) s.difficulty = 3;
+      if(!s.anchor) s.anchor = "";
+      if(!s.confidence) s.confidence = "Moderate";
+      if(!s.cogLoad) s.cogLoad = "Moderate";
+    }
+    return data;
+  };
+
+  const load = () => {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      if(!raw) return upgrade(structuredClone(DEFAULT));
+      return upgrade(JSON.parse(raw));
+    } catch { return upgrade(structuredClone(DEFAULT)); }
+  };
+
+  let DATA = load();
+  let selectedKey = null;
+
+  // ---------- file sync (optional) ----------
+  let fileHandle = null;
+  let autoSaveFile = true;
+  let pendingWrite = null;
+
+  const supportsFSA = () => !!(window.showOpenFilePicker && window.showSaveFilePicker);
+  const setFileStatus = (msg) => { document.getElementById("fileStatus").textContent = msg; };
+
+  const writeToLinkedFile = async () => {
+    if(!fileHandle) return;
+    try{
+      const writable = await fileHandle.createWritable();
+      await writable.write(JSON.stringify(DATA, null, 2));
+      await writable.close();
+      setFileStatus(`Vinculado: ${fileHandle.name} • salvo ${new Date().toLocaleTimeString()}`);
+    } catch(err){
+      console.error(err);
+      setFileStatus("Falha ao salvar no arquivo. (Arquivo bloqueado? Permissão?)");
+    }
+  };
+
+  const scheduleWrite = () => {
+    if(!fileHandle || !autoSaveFile) return;
+    if(pendingWrite) clearTimeout(pendingWrite);
+    pendingWrite = setTimeout(() => { writeToLinkedFile(); pendingWrite = null; }, 700);
+  };
+
+  const save = () => {
+    localStorage.setItem(LS_KEY, JSON.stringify(DATA));
+    scheduleWrite();
+  };
+
+  // ---------- helpers ----------
+  const slideKey = (deck, num) => `${deck}#${num}`;
+  const findSlide = (key) => DATA.slides.find(s => s.key === key);
+  const upsertSlide = (slide) => {
+    const idx = DATA.slides.findIndex(s => s.key === slide.key);
+    if(idx >= 0) DATA.slides[idx] = slide;
+    else DATA.slides.push(slide);
+  };
+
+  const escapeHtml = (s) => (s||"").replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const classifyPChip = (p) => {
+    const n = (p||"").toLowerCase();
+    return ["p0","p1","p2","p3","p4","p5"].includes(n) ? n : "p3";
+  };
+  const stateChipClass = (state) => {
+    if(state === "Critical") return "state-critical";
+    if(state === "Done") return "state-done";
+    return "state-fix";
+  };
+  const planLabel = (plan) => ({Today:"Hoje", Tomorrow:"Amanhã", ThisWeek:"Semana", Later:"Depois"}[plan] || plan);
+
+  const normalizeTri = (v) => {
+    const x = (v||"").toLowerCase();
+    if(["low","baixa"].includes(x)) return "Low";
+    if(["high","alta"].includes(x)) return "High";
+    return "Moderate";
+  };
+  const confLabel = (v) => ({Low:"Baixa", Moderate:"Moderada", High:"Alta"}[normalizeTri(v)]);
+  const cogLabel = (v) => ({Low:"Baixa", Moderate:"Moderada", High:"Alta"}[normalizeTri(v)]);
+  const confChipClass = (v) => ({Low:"conf-low", Moderate:"conf-mod", High:"conf-high"}[normalizeTri(v)] || "conf-mod");
+  const cogChipClass = (v) => ({Low:"cog-low", Moderate:"cog-mod", High:"cog-high"}[normalizeTri(v)] || "cog-mod");
+
+  // ---------- tabs ----------
+  const tabs = Array.from(document.querySelectorAll(".tab[data-tab]"));
+  const showTab = (name) => {
+    for(const t of tabs) t.classList.toggle("active", t.dataset.tab===name);
+    for(const sec of ["backlog","slides","study","export"]){
+      document.getElementById(`tab-${sec}`).style.display = (sec===name) ? "" : "none";
+    }
+  };
+  tabs.forEach(btn => btn.addEventListener("click", () => showTab(btn.dataset.tab)));
+
+  // ---------- deck subtabs (per aula / per projeto) ----------
+  let studyDeckFilter = "GRADE";
+  const setDeckSubtab = (scope, deck) => {
+    document.querySelectorAll(`button[data-decktab="${scope}"]`).forEach(b => {
+      b.classList.toggle("active", b.dataset.deck===deck);
+    });
+    if(scope==="slides"){
+      fDeck.value = deck;
+      renderSlides();
+    } else if(scope==="study"){
+      studyDeckFilter = deck;
+      if(deck !== "ALL") document.getElementById("sDeck").value = deck;
+      renderStudy();
+    }
+  };
+  document.querySelectorAll('button[data-decktab="slides"]').forEach(b => {
+    b.addEventListener("click", () => setDeckSubtab("slides", b.dataset.deck));
+  });
+  document.querySelectorAll('button[data-decktab="study"]').forEach(b => {
+    b.addEventListener("click", () => setDeckSubtab("study", b.dataset.deck));
+  });
+
+  // ---------- metrics ----------
+  const renderMetrics = () => {
+    const byDeck = (deck) => DATA.slides.filter(s => s.deck===deck);
+    const p0Done = (deck) => {
+      const all = byDeck(deck).filter(s => s.p==="P0");
+      const done = all.filter(s => s.state==="Done");
+      return {done: done.length, all: all.length};
+    };
+    const grade = p0Done("GRADE");
+    const osteo = p0Done("OSTEO");
+    document.getElementById("mGradeP0").textContent = `${grade.done}/${grade.all}`;
+    document.getElementById("mOsteoP0").textContent = `${osteo.done}/${osteo.all}`;
+    document.getElementById("mGradeHint").textContent = grade.all ? `Faltam ${Math.max(0,grade.all-grade.done)} P0` : "Defina P0 (marque slides P0)";
+    document.getElementById("mOsteoHint").textContent = osteo.all ? `Faltam ${Math.max(0,osteo.all-osteo.done)} P0` : "Defina P0 (marque slides P0)";
+    const critical = DATA.slides.filter(s => s.state==="Critical").length;
+    document.getElementById("mCritical").textContent = critical;
+    const checked = DATA.slides.filter(s => s.checked==="Yes").length;
+    const appraisal = DATA.slides.filter(s => s.appraisal==="Yes").length;
+    const total = DATA.slides.length || 1;
+    document.getElementById("mQA").textContent = `${Math.round(100*checked/total)}% / ${Math.round(100*appraisal/total)}%`;
+  };
+
+  // ---------- priority ----------
+  const priorityScore = (s) => {
+    const pRank = {P0:0,P1:1,P2:2,P3:3,P4:4,P5:5}[s.p] ?? 9;
+    const stateRank = {Critical:0, NeedsFix:1, Done:2}[s.state] ?? 1;
+    const planRank = {Today:0, Tomorrow:1, ThisWeek:2, Later:3}[s.plan] ?? 2;
+    const diff = parseInt(s.difficulty||3,10) || 3;
+    const modRank = s.lastModified ? -new Date(s.lastModified).getTime() : 0;
+    // Lower is "more urgent": plan first, then P, then state, then difficulty (harder first inside bucket), then recency
+    return planRank*1000 + pRank*100 + stateRank*10 - diff + (modRank/1e15);
+  };
+
+  // ---------- slides render ----------
+  const slidesBody = document.getElementById("slidesBody");
+  const fDeck = document.getElementById("fDeck");
+  const fState = document.getElementById("fState");
+  const fP = document.getElementById("fP");
+  const fSort = document.getElementById("fSort");
+
+  const renderSlides = () => {
+    const deck = fDeck.value;
+    const state = fState.value;
+    const p = fP.value;
+
+    let list = DATA.slides.slice();
+    if(deck !== "ALL") list = list.filter(s => s.deck === deck);
+    if(state !== "ALL") list = list.filter(s => s.state === state);
+    if(p !== "ALL") list = list.filter(s => s.p === p);
+
+    if(fSort.value === "modified") {
+      list.sort((a,b) => (new Date(b.lastModified||0)) - (new Date(a.lastModified||0)));
+    } else if(fSort.value === "slide") {
+      list.sort((a,b) => (a.deck+a.num).localeCompare(b.deck+b.num));
+    } else {
+      list.sort((a,b) => priorityScore(a) - priorityScore(b));
+    }
+
+    slidesBody.innerHTML = "";
+    for(const s of list){
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${s.deck}</td>
+        <td>${s.num}</td>
+        <td>${escapeHtml(s.title||"")}</td>
+        <td><span class="chip ${classifyPChip(s.p)}">${s.p}</span></td>
+        <td><span class="chip ${stateChipClass(s.state)}">${s.state}</span></td>
+        <td>${planLabel(s.plan)}</td>
+        <td>${s.difficulty ?? 3}</td>
+        <td><span class="chip ${confChipClass(s.confidence)}">${confLabel(s.confidence)}</span></td>
+        <td><span class="chip ${cogChipClass(s.cogLoad)}">${cogLabel(s.cogLoad)}</span></td>
+        <td>${fmt(s.lastModified)}</td>
+        <td>${s.checked==="Yes" ? "✅" : "—"}</td>
+        <td>${s.appraisal==="Yes" ? "✅" : "—"}</td>
+        <td><button class="ghost" data-edit="${s.key}">Editar</button></td>
+      `;
+      slidesBody.appendChild(tr);
+    }
+
+    slidesBody.querySelectorAll("button[data-edit]").forEach(btn => {
+      btn.addEventListener("click", () => openEditor(btn.dataset.edit));
+    });
+  };
+
+  // ---------- backlog board ----------
+  const bDeck = document.getElementById("bDeck");
+  const bShowDone = document.getElementById("bShowDone");
+  const cols = ["Today","Tomorrow","ThisWeek","Later"];
+  const colEls = {
+    Today: document.getElementById("col-Today"),
+    Tomorrow: document.getElementById("col-Tomorrow"),
+    ThisWeek: document.getElementById("col-ThisWeek"),
+    Later: document.getElementById("col-Later"),
+  };
+
+  let draggingKey = null;
+
+  const makeCard = (s) => {
+    const div = document.createElement("div");
+    div.className = "cardItem";
+    div.draggable = true;
+    div.dataset.key = s.key;
+    div.innerHTML = `
+      <div class="minirow">
+        <span class="chip ${classifyPChip(s.p)}">${s.p}</span>
+        <span class="chip ${stateChipClass(s.state)}">${s.state}</span>
+        <span class="chip">Dif ${s.difficulty ?? 3}</span>
+        <span class="chip ${confChipClass(s.confidence)}">Conf ${confLabel(s.confidence)}</span>
+        <span class="chip ${cogChipClass(s.cogLoad)}">Cog ${cogLabel(s.cogLoad)}</span>
+      </div>
+      <div style="margin-top:6px; font-weight:650">${escapeHtml(s.deck)} #${s.num}</div>
+      <div class="small" style="margin-top:2px">${escapeHtml(s.title||"") || "<em>(sem título)</em>"}</div>
+      ${s.anchor ? `<div class="small" style="margin-top:6px">EBM: ${escapeHtml(s.anchor)}</div>` : ""}
+    `;
+    div.addEventListener("click", () => openEditor(s.key, true));
+    div.addEventListener("dragstart", (e) => {
+      draggingKey = s.key;
+      div.classList.add("dragging");
+      e.dataTransfer.setData("text/plain", s.key);
+      e.dataTransfer.effectAllowed = "move";
+    });
+    div.addEventListener("dragend", () => {
+      draggingKey = null;
+      div.classList.remove("dragging");
+      document.querySelectorAll(".colBody").forEach(el => el.classList.remove("dropHint"));
+    });
+    return div;
+  };
+
+  const renderBacklog = () => {
+    const deckFilter = bDeck.value;
+    const showDone = bShowDone.value === "Yes";
+
+    let list = DATA.slides.slice();
+    if(deckFilter !== "ALL") list = list.filter(s => s.deck === deckFilter);
+    if(!showDone) list = list.filter(s => s.state !== "Done");
+
+    // ensure plan
+    for(const s of list){ if(!s.plan) s.plan = "ThisWeek"; }
+
+    // clear columns
+    for(const c of cols) colEls[c].innerHTML = "";
+
+    // sort inside column by P/state/diff/mod
+    list.sort((a,b) => priorityScore(a) - priorityScore(b));
+
+    const counts = {Today:0, Tomorrow:0, ThisWeek:0, Later:0};
+    for(const s of list){
+      const p = cols.includes(s.plan) ? s.plan : "ThisWeek";
+      counts[p] += 1;
+      colEls[p].appendChild(makeCard(s));
+    }
+
+    document.getElementById("cToday").textContent = `${counts.Today}`;
+    document.getElementById("cTomorrow").textContent = `${counts.Tomorrow}`;
+    document.getElementById("cThisWeek").textContent = `${counts.ThisWeek}`;
+    document.getElementById("cLater").textContent = `${counts.Later}`;
+  };
+
+  // drop zones
+  document.querySelectorAll(".colBody").forEach(body => {
+    body.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      body.classList.add("dropHint");
+      e.dataTransfer.dropEffect = "move";
+    });
+    body.addEventListener("dragleave", () => body.classList.remove("dropHint"));
+    body.addEventListener("drop", (e) => {
+      e.preventDefault();
+      body.classList.remove("dropHint");
+      const key = e.dataTransfer.getData("text/plain") || draggingKey;
+      if(!key) return;
+      const s = findSlide(key);
+      if(!s) return;
+      const plan = body.id.replace("col-","");
+      s.plan = plan;
+      s.lastModified = nowISO();
+      upsertSlide(s);
+      save();
+      renderAll();
+    });
+  });
+
+  bDeck.addEventListener("change", renderBacklog);
+  bShowDone.addEventListener("change", renderBacklog);
+
+  // ---------- editor ----------
+  const eKey = document.getElementById("eKey");
+  const eTitle = document.getElementById("eTitle");
+  const eP = document.getElementById("eP");
+  const ePlan = document.getElementById("ePlan");
+  const eDiff = document.getElementById("eDiff");
+  const eChecked = document.getElementById("eChecked");
+  const eAppraisal = document.getElementById("eAppraisal");
+  const eConfLow = document.getElementById("eConfLow");
+  const eConfMod = document.getElementById("eConfMod");
+  const eConfHigh = document.getElementById("eConfHigh");
+  const eCogLow = document.getElementById("eCogLow");
+  const eCogMod = document.getElementById("eCogMod");
+  const eCogHigh = document.getElementById("eCogHigh");
+  const eAnchor = document.getElementById("eAnchor");
+  const eObjective = document.getElementById("eObjective");
+  const eNarrative = document.getElementById("eNarrative");
+  const eMyNotes = document.getElementById("eMyNotes");
+  const eAiNotes = document.getElementById("eAiNotes");
+  const btnSave = document.getElementById("btnSave");
+  const btnCancel = document.getElementById("btnCancel");
+  const saveStatus = document.getElementById("saveStatus");
+  const btnCopyBrief = document.getElementById("btnCopyBrief");
+  const briefHint = document.getElementById("briefHint");
+
+  let pendingConfidence = "Moderate";
+  let pendingCog = "Moderate";
+
+  const setPillActive = (group, value) => {
+    for(const [val, btn] of Object.entries(group)){
+      if(!btn) continue;
+      btn.classList.toggle("active", val===value);
+    }
+  };
+
+  const CONF_BTNS = {Low: eConfLow, Moderate: eConfMod, High: eConfHigh};
+  const COG_BTNS = {Low: eCogLow, Moderate: eCogMod, High: eCogHigh};
+
+  const enableEditor = (on) => {
+    btnSave.disabled = !on;
+    btnCancel.disabled = !on;
+    btnCopyBrief.disabled = !on;
+  };
+
+  const clearEditor = () => {
+    selectedKey = null;
+    eKey.value = "";
+    eTitle.value = "";
+    eP.value = "P1";
+    ePlan.value = "ThisWeek";
+    eDiff.value = "3";
+    eChecked.value = "No";
+    eAppraisal.value = "No";
+    eAnchor.value = "";
+    eObjective.value = "";
+    eNarrative.value = "";
+    eMyNotes.value = "";
+    eAiNotes.value = "";
+    pendingConfidence = "Moderate";
+    pendingCog = "Moderate";
+    setPillActive(CONF_BTNS, pendingConfidence);
+    setPillActive(COG_BTNS, pendingCog);
+    saveStatus.textContent = "—";
+    briefHint.textContent = "—";
+    enableEditor(false);
+  };
+
+  const openEditor = (key, fromBacklog=false) => {
+    const s = findSlide(key);
+    if(!s) return;
+    selectedKey = key;
+    eKey.value = s.key;
+    eTitle.value = s.title || "";
+    eP.value = s.p || "P1";
+    ePlan.value = s.plan || "ThisWeek";
+    eDiff.value = String(s.difficulty ?? 3);
+    eChecked.value = s.checked || "No";
+    eAppraisal.value = s.appraisal || "No";
+    pendingConfidence = s.confidence || "Moderate";
+    pendingCog = s.cogLoad || "Moderate";
+    setPillActive(CONF_BTNS, pendingConfidence);
+    setPillActive(COG_BTNS, pendingCog);
+    eAnchor.value = s.anchor || "";
+    eObjective.value = s.objective || "";
+    eNarrative.value = s.narrative || "";
+    eMyNotes.value = s.myNotes || "";
+    eAiNotes.value = s.aiNotes || "";
+    saveStatus.textContent = `Editando ${s.deck} #${s.num}`;
+    briefHint.textContent = "Use para pedir à AI: texto do slide + 1 número + referência.";
+    enableEditor(true);
+    if(fromBacklog) showTab("slides");
+  };
+
+  // state buttons
+  const setState = (state) => {
+    if(!selectedKey) return;
+    const s = findSlide(selectedKey);
+    if(!s) return;
+    s.state = state;
+    s.lastModified = nowISO();
+    upsertSlide(s);
+    save();
+    // NÃO chama renderAll() para evitar voltar ao Backlog
+    renderMetrics();
+    renderSlides();
+    // Reabre o editor no mesmo slide
+    openEditor(selectedKey);
+    saveStatus.textContent = `Estado → ${state} ✔`;
+  };
+  document.getElementById("eCritical").addEventListener("click", () => setState("Critical"));
+  document.getElementById("eNeedsFix").addEventListener("click", () => setState("NeedsFix"));
+  document.getElementById("eDone").addEventListener("click", () => setState("Done"));
+
+  // AUTO-SAVE: salva o slide atual com todos os valores do formulário
+  const autoSave = () => {
+    if(!selectedKey) return;
+    const s = findSlide(selectedKey);
+    if(!s) return;
+    s.title = eTitle.value.trim();
+    s.p = eP.value;
+    s.plan = ePlan.value;
+    s.difficulty = parseInt(eDiff.value,10) || 3;
+    s.checked = eChecked.value;
+    s.appraisal = eAppraisal.value;
+    s.confidence = pendingConfidence;
+    s.cogLoad = pendingCog;
+    s.anchor = eAnchor.value.trim();
+    s.objective = eObjective.value.trim();
+    s.narrative = eNarrative.value.trim();
+    s.myNotes = eMyNotes.value;
+    s.aiNotes = eAiNotes.value;
+    s.lastModified = nowISO();
+    upsertSlide(s);
+    save();
+    // Atualiza métricas e tabela de slides
+    renderMetrics();
+    renderSlides();
+    // Mantém editor aberto no mesmo slide
+    saveStatus.textContent = "Auto-salvo ✔";
+  };
+
+  // Debounce para campos de texto (espera 500ms após parar de digitar)
+  let debounceTimer = null;
+  const autoSaveDebounced = () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(autoSave, 500);
+  };
+
+  const setConfidence = (val) => {
+    pendingConfidence = val;
+    setPillActive(CONF_BTNS, val);
+    autoSave();
+  };
+  const setCog = (val) => {
+    pendingCog = val;
+    setPillActive(COG_BTNS, val);
+    autoSave();
+  };
+  eConfLow.addEventListener("click", () => setConfidence("Low"));
+  eConfMod.addEventListener("click", () => setConfidence("Moderate"));
+  eConfHigh.addEventListener("click", () => setConfidence("High"));
+  eCogLow.addEventListener("click", () => setCog("Low"));
+  eCogMod.addEventListener("click", () => setCog("Moderate"));
+  eCogHigh.addEventListener("click", () => setCog("High"));
+
+  // AUTO-SAVE em selects (change = imediato)
+  eP.addEventListener("change", autoSave);
+  ePlan.addEventListener("change", autoSave);
+  eDiff.addEventListener("change", autoSave);
+  eChecked.addEventListener("change", autoSave);
+  eAppraisal.addEventListener("change", autoSave);
+
+  // AUTO-SAVE em inputs de texto (com debounce)
+  eTitle.addEventListener("input", autoSaveDebounced);
+  eAnchor.addEventListener("input", autoSaveDebounced);
+  eObjective.addEventListener("input", autoSaveDebounced);
+  eNarrative.addEventListener("input", autoSaveDebounced);
+  eMyNotes.addEventListener("input", autoSaveDebounced);
+  eAiNotes.addEventListener("input", autoSaveDebounced);
+
+  // save slide edits (botão manual - backup do auto-save)
+  btnSave.addEventListener("click", () => {
+    autoSave();
+    saveStatus.textContent = "Salvo manualmente ✔";
+  });
+
+  btnCancel.addEventListener("click", () => {
+    if(!selectedKey) return;
+    openEditor(selectedKey);
+    saveStatus.textContent = "Revertido (sem salvar)";
+  });
+
+  // copy brief for AI
+  btnCopyBrief.addEventListener("click", async () => {
+    if(!selectedKey) return;
+    const s = findSlide(selectedKey);
+    if(!s) return;
+    const txt = `Slide: ${s.deck} #${s.num}
+Título: ${s.title || "(sem título)"}
+P-level: ${s.p} | Estado: ${s.state} | Plano: ${s.plan} | Dificuldade: ${s.difficulty ?? 3}
+Confiança: ${confLabel(s.confidence)} | Carga cognitiva: ${cogLabel(s.cogLoad)}
+
+Âncora EBM (se existir):
+${s.anchor || "—"}
+
+Objetivo:
+${s.objective || "—"}
+
+Narrativa & interação:
+${s.narrative || "—"}
+
+Tarefa para a AI:
+- Proponha o texto do slide (máx. 1–2 linhas grandes)
+- Inclua 1 número absoluto quando possível (ARR/NNT/NNH)
+- Sugira 1 referência curta (autor/ano ou guideline)
+- Sugira 1 frase de nota de fala (speaker note)
+- Se a carga cognitiva estiver alta: proponha versão simplificada ou divisão em 2 slides
+`;
+    try{
+      await navigator.clipboard.writeText(txt);
+      briefHint.textContent = "Brief copiado ✔ (cole na conversa com a AI)";
+    }catch{
+      briefHint.textContent = "Não consegui copiar automaticamente. Selecione e copie manualmente.";
+      alert(txt);
+    }
+  });
+
+  // AI template insert
+  document.getElementById("btnInsertAiTpl").addEventListener("click", () => {
+    const tpl = `[Claim]
+- ...
+
+[Evidence]
+- Fonte (autor/ano/PMID/DOI/guideline)
+
+[Effect size]
+- Absoluto (ARR/NNT/NNH) se possível
+- Relativo (RR/HR) se relevante
+
+[Certainty]
+- GRADE: alta/moderada/baixa + motivo dominante
+
+[Applicability]
+- População / cenário / trade-offs
+
+[Suggested slide line]
+- Mensagem + número + referência (1 linha)`;
+    if(eAiNotes.value.trim().length === 0) eAiNotes.value = tpl;
+    else eAiNotes.value = eAiNotes.value.trim() + "\n\n" + tpl;
+  });
+
+  // ---------- generate skeleton ----------
+  document.getElementById("btnGenerate").addEventListener("click", () => {
+    const deck = document.getElementById("genDeck").value;
+    const range = document.getElementById("genRange").value.trim();
+    
+    // Aceita: "3" (único) ou "1-35" (intervalo)
+    const m = range.match(/^(\d+)(?:\s*-\s*(\d+))?$/);
+    if(!m){
+      alert("Use: número único (ex: 3) ou intervalo (ex: 1-35)");
+      return;
+    }
+    let a = parseInt(m[1],10);
+    let b = m[2] ? parseInt(m[2],10) : a;  // Se não tem segundo número, b = a
+    if(b < a) [a,b] = [b,a];
+
+    for(let n=a; n<=b; n++){
+      const key = slideKey(deck, n);
+      const existing = findSlide(key);
+      if(existing) continue;
+      DATA.slides.push({
+        key, deck, num:n,
+        title:"",
+        p:"P1",
+        state:"NeedsFix",
+        plan:"ThisWeek",
+        difficulty:3,
+        confidence:"Moderate",
+        cogLoad:"Moderate",
+        anchor:"",
+        checked:"No",
+        appraisal:"No",
+        objective:"",
+        narrative:"",
+        myNotes:"",
+        aiNotes:"",
+        lastModified: nowISO()
+      });
+    }
+    save(); clearEditor(); renderAll();
+  });
+
+  document.getElementById("btnClearAll").addEventListener("click", () => {
+    if(!confirm("Isso apaga tudo (slides e estudos). Tem certeza?")) return;
+    DATA = structuredClone(DEFAULT);
+    save(); clearEditor(); renderAll();
+  });
+
+  // filters
+  [fDeck,fState,fP,fSort].forEach(el => el.addEventListener("change", renderSlides));
+
+  // ---------- study ----------
+  const studyBody = document.getElementById("studyBody");
+  const uid = () => Math.random().toString(16).slice(2) + "-" + Date.now().toString(16);
+
+  const renderStudy = () => {
+    studyBody.innerHTML = "";
+    let list = DATA.studies.slice();
+    if(studyDeckFilter !== "ALL") list = list.filter(it => it.deck === studyDeckFilter);
+    list = list.sort((a,b) => (new Date(b.lastModified||0))-(new Date(a.lastModified||0)));
+    for(const it of list){
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${it.deck}</td>
+        <td>${escapeHtml(it.range||"")}</td>
+        <td>${escapeHtml(it.material||"")}</td>
+        <td><span class="chip">${it.status}</span></td>
+        <td>${it.cards ?? 0}</td>
+        <td>${fmt(it.lastModified)}</td>
+        <td><button class="ghost" data-edit="${it.id}">Editar</button></td>
+      `;
+      studyBody.appendChild(tr);
+    }
+    studyBody.querySelectorAll("button[data-edit]").forEach(btn => btn.addEventListener("click", () => openStudy(btn.dataset.edit)));
+  };
+
+  document.getElementById("btnAddStudy").addEventListener("click", () => {
+    const deck = document.getElementById("sDeck").value;
+    const range = document.getElementById("sRange").value.trim();
+    const material = document.getElementById("sMaterial").value.trim();
+    const status = document.getElementById("sStatus").value;
+    const cards = parseInt(document.getElementById("sCards").value,10) || 0;
+    const notes = document.getElementById("sNotes").value;
+    if(!range && !material){ alert("Preencha ao menos alvo ou material."); return; }
+    DATA.studies.push({ id: uid(), deck, range, material, status, cards, notes, lastModified: nowISO() });
+    save(); renderAll();
+    document.getElementById("sRange").value = "";
+    document.getElementById("sMaterial").value = "";
+    document.getElementById("sNotes").value = "";
+    document.getElementById("sCards").value = 0;
+  });
+
+  document.getElementById("btnClearStudy").addEventListener("click", () => {
+    if(!confirm("Zerar estudos?")) return;
+    DATA.studies = [];
+    save(); renderAll();
+  });
+
+  // study editor
+  const seId = document.getElementById("seId");
+  const seStatus = document.getElementById("seStatus");
+  const seCards = document.getElementById("seCards");
+  const seNotes = document.getElementById("seNotes");
+  const seMaterial = document.getElementById("seMaterial");
+  const seRange = document.getElementById("seRange");
+  const btnSaveStudy = document.getElementById("btnSaveStudy");
+  const btnDeleteStudy = document.getElementById("btnDeleteStudy");
+  const studyStatus = document.getElementById("studyStatus");
+  let selectedStudy = null;
+
+  const openStudy = (id) => {
+    const it = DATA.studies.find(x => x.id===id);
+    if(!it) return;
+    selectedStudy = id;
+    seId.value = it.id;
+    seStatus.value = it.status;
+    seCards.value = it.cards ?? 0;
+    seNotes.value = it.notes || "";
+    seMaterial.value = it.material || "";
+    seRange.value = it.range || "";
+    btnSaveStudy.disabled = false;
+    btnDeleteStudy.disabled = false;
+    studyStatus.textContent = "Editando...";
+  };
+
+  btnSaveStudy.addEventListener("click", () => {
+    if(!selectedStudy) return;
+    const it = DATA.studies.find(x => x.id===selectedStudy);
+    if(!it) return;
+    it.status = seStatus.value;
+    it.cards = parseInt(seCards.value,10) || 0;
+    it.notes = seNotes.value;
+    it.material = seMaterial.value.trim();
+    it.range = seRange.value.trim();
+    it.lastModified = nowISO();
+    save(); renderAll();
+    studyStatus.textContent = "Salvo ✔";
+  });
+
+  btnDeleteStudy.addEventListener("click", () => {
+    if(!selectedStudy) return;
+    if(!confirm("Excluir item de estudo?")) return;
+    DATA.studies = DATA.studies.filter(x => x.id!==selectedStudy);
+    selectedStudy = null;
+    seId.value = "";
+    btnSaveStudy.disabled = true;
+    btnDeleteStudy.disabled = true;
+    studyStatus.textContent = "Excluído";
+    save(); renderAll();
+  });
+
+  // ---------- export/import ----------
+  document.getElementById("btnExport").addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(DATA, null, 2)], {type:"application/json"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "slideops_data.json";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  document.getElementById("fileImport").addEventListener("change", async (ev) => {
+    const f = ev.target.files?.[0];
+    if(!f) return;
+    const txt = await f.text();
+    try{
+      const parsed = upgrade(JSON.parse(txt));
+      DATA = parsed;
+      save();
+      clearEditor();
+      renderAll();
+      alert("Import OK.");
+    }catch{
+      alert("Falha ao importar. JSON inválido?");
+    }
+    ev.target.value = "";
+  });
+
+  // file linking controls
+  const btnOpenData = document.getElementById("btnOpenData");
+  const btnCreateData = document.getElementById("btnCreateData");
+  const btnSaveData = document.getElementById("btnSaveData");
+  const btnDisconnect = document.getElementById("btnDisconnect");
+  const chkAutoSave = document.getElementById("chkAutoSave");
+
+  chkAutoSave.addEventListener("change", () => {
+    autoSaveFile = chkAutoSave.checked;
+    setFileStatus(fileHandle ? `Vinculado: ${fileHandle.name} • auto-save ${autoSaveFile?"on":"off"}` : "Sem arquivo vinculado.");
+  });
+
+  const enableFileButtons = (linked) => {
+    btnSaveData.disabled = !linked;
+    btnDisconnect.disabled = !linked;
+  };
+
+  const readFromHandle = async (handle) => {
+    const file = await handle.getFile();
+    const txt = await file.text();
+    const parsed = upgrade(JSON.parse(txt || "{}"));
+    return parsed;
+  };
+
+  btnOpenData.addEventListener("click", async () => {
+    if(!supportsFSA()){
+      alert("Seu navegador não suporta vincular arquivo. Use Export/Import (Chrome/Edge recomendado).");
+      return;
+    }
+    try{
+      const [handle] = await window.showOpenFilePicker({
+        types: [{description: "JSON", accept: {"application/json": [".json"]}}],
+        multiple: false
+      });
+      const parsed = await readFromHandle(handle);
+      fileHandle = handle;
+      DATA = parsed;
+      save();
+      clearEditor();
+      renderAll();
+      enableFileButtons(true);
+      setFileStatus(`Vinculado: ${fileHandle.name} • carregado`);
+    }catch(err){
+      // user cancel
+    }
+  });
+
+  btnCreateData.addEventListener("click", async () => {
+    if(!supportsFSA()){
+      alert("Seu navegador não suporta criar/vincular arquivo. Use Export/Import (Chrome/Edge recomendado).");
+      return;
+    }
+    try{
+      const handle = await window.showSaveFilePicker({
+        suggestedName: "slideops_data.json",
+        types: [{description: "JSON", accept: {"application/json": [".json"]}}],
+      });
+      fileHandle = handle;
+      enableFileButtons(true);
+      setFileStatus(`Vinculado: ${fileHandle.name} • criado`);
+      await writeToLinkedFile();
+    }catch(err){
+      // cancel
+    }
+  });
+
+  btnSaveData.addEventListener("click", async () => {
+    await writeToLinkedFile();
+  });
+
+  btnDisconnect.addEventListener("click", () => {
+    fileHandle = null;
+    enableFileButtons(false);
+    setFileStatus("Sem arquivo vinculado.");
+  });
+
+  // ---------- render all ----------
+  const renderAll = () => {
+    renderMetrics();
+    renderBacklog();
+    renderSlides();
+    renderStudy();
+  };
+
+  // init
+  clearEditor();
+  enableFileButtons(false);
+  setFileStatus(supportsFSA() ? "Sem arquivo vinculado." : "Navegador sem File System Access (use Export/Import).");
+  // default: mostrar por aula (GRADE) tanto em Slides quanto em Estudo
+  try{ setDeckSubtab("slides","GRADE"); }catch{}
+  try{ setDeckSubtab("study","GRADE"); }catch{}
+  renderAll();
+})();
+</script>
+</body>
+</html>
