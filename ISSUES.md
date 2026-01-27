@@ -15,3 +15,27 @@
 - **Calculadoras**: manter como apêndice; refinar/expandir só após fechar “Metas/Recomendações”.
 - **Refatoração CSS**: reduzir inline styles em slides-chave (migrar para componentes `.card`, `.note`, `.chip`) quando estabilizar o MVP.
 - **Contexto BR (S48/S49)**: checar status SUS/CONITEC e disponibilidade (PCSK9i/bempedoic) para não ficar datado.
+
+## SLIDEOPS - Pendentes (2026-01-23)
+
+### P0 (Crítico - Bloqueia funcionalidade)
+- ⚠️ **Erro de importação**: "Cannot access 'renderAll' before initialization" ainda ocorre
+  - Verificar ordem de inicialização das funções
+  - Garantir que todas as dependências estejam definidas antes de uso
+  - Testar com diferentes cenários de importação
+
+- ⚠️ **Sort não funciona**: Botão de ordenação não está respondendo
+  - Verificar se event listeners estão sendo anexados corretamente
+  - Verificar se elemento `fSort` está sendo encontrado no DOM
+  - Testar lógica de ordenação para cada opção (prioridade, triagem, data, plano, número)
+
+### P1 (Melhorias de UX)
+- 🎨 **Hierarquia de cores da prioridade**: Inverter esquema de cores
+  - **Problema atual**: P0 usa vermelho (rgba(255,107,107,...)) que gera alarme/urgência visual
+  - **Proposta**: P0 deve usar cores mais tranquilas que não geram alarme, mas mantendo hierarquia visual clara
+  - **Sugestão**: 
+    - P0: Verde suave ou azul (alta prioridade, mas não alarmante)
+    - P1: Amarelo/dourado (atenção moderada)
+    - P2-P5: Gradiente de cores neutras (menos urgente)
+  - **Localização**: `tools/slideops/SlideOps.html` linhas ~127-132 (classes `.p0` a `.p5`)
+  - **Manter**: Hierarquia visual clara (P0 mais visível que P5) sem usar vermelho como "alerta"

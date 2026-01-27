@@ -1,6 +1,41 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
 
+## SLIDEOPS_UPDATE_2026_01_23 — 2026-01-23
+
+### SlideOps - Melhorias de Interface e Funcionalidades
+
+**Metadados dos Comentários HTML:**
+- Ajustada a extração de metadados dos comentários invisíveis HTML para ler apenas: `title`, `anchor`, e `aiTips` (comentários/boas práticas)
+- Removidos `p`, `state`, `plan`, `difficulty` dos comentários HTML - agora são editados apenas no SlideOps
+- Adicionada caixa visual "Dados do HTML" (verde) para mostrar metadados que vêm automaticamente dos comentários
+- Adicionada caixa visual "Comentários (AI)" (amarelo) para comentários preenchidos manualmente após usar no chat/Claude
+
+**Interface:**
+- Reorganização dos campos de comentários (um embaixo do outro) para melhor distribuição da página
+- Removido botão "Gerar esqueleto rápido" (slides agora são sincronizados, não criados manualmente)
+- Movido box de aviso para agentes IA e texto explicativo para antes dos botões de ação
+- Aumentado espaço do box de dados do HTML (min-height: 80px)
+- Adicionada opção de sort por "Plano (dia)" (Today, Tomorrow, ThisWeek, Later)
+
+**Correções de Código:**
+- Convertidas funções de render (`renderAll`, `renderMetrics`, `renderBacklog`, `renderSlides`, `renderStudy`) para function declarations (hoisting) para evitar erros de inicialização
+- Adicionadas verificações de segurança para elementos do DOM antes de anexar event listeners
+
+**Documentação:**
+- Atualizado `tools/slideops/README.md` com distinção clara entre metadados do HTML vs metadados do SlideOps
+- Atualizado `docs/AI_HANDOFF_RULES.md` com regras obrigatórias para comentários invisíveis
+
+**Arquivos modificados:**
+- `tools/slideops/SlideOps.html`
+- `tools/slideops/README.md`
+- `docs/AI_HANDOFF_RULES.md`
+
+**Pendentes (para amanhã):**
+- ⚠️ Erro de importação ainda ocorre (verificar inicialização de `renderAll` e dependências)
+- ⚠️ Sort não está funcionando corretamente (verificar event listeners e lógica de ordenação)
+- 🎨 **Hierarquia de cores da prioridade**: Inverter P0 de vermelho (alarme) para cores mais tranquilas que não geram alarme, mantendo hierarquia visual clara
+
 ## OSTEOPOROSE_PATCH0_5 — 2026-01-26
 
 ### P0: Viewer (corte inferior + fit real na janela)

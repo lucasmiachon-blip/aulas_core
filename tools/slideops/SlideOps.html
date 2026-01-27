@@ -91,6 +91,7 @@
     }
     input:focus, select:focus, textarea:focus{border-color: rgba(122,168,255,.60); box-shadow: 0 0 0 3px rgba(122,168,255,.15)}
     textarea{min-height:108px; resize:vertical}
+    textarea#eAiNotes:focus{border-color: rgba(255,204,102,.50); box-shadow: 0 0 0 3px rgba(255,204,102,.18)}
     .actions{display:flex; gap:8px; flex-wrap:wrap; align-items:center}
     button{
       border:1px solid rgba(255,255,255,.10);
@@ -377,27 +378,29 @@
         </div>
       </details>
 
-      <div class="grid" style="margin-top:12px">
-        <div>
-          <label>Gerar esqueleto rápido (deck + intervalo de slides)</label>
-          <div class="two">
-            <select id="genDeck">
-              <option value="GRADE">GRADE</option>
-              <option value="OSTEO">OSTEO</option>
-            </select>
-            <input id="genRange" placeholder="Ex: 3 ou 1-35" />
-          </div>
-          <div class="actions" style="margin-top:10px">
-            <button id="btnImportFromDeck" class="primary">Importar slides da apresentação</button>
-            <button id="btnSyncNumbers" class="ghost">Sincronizar números (mantém metadados)</button>
-            <button id="btnGenerate" class="ghost" style="display:none">Criar/Adicionar slides do intervalo</button>
-            <button id="btnClearAll" class="danger">Zerar tudo (cuidado)</button>
-          </div>
-          <div class="hint">
-            <strong>Importar:</strong> Cria slides novos do <span class="kbd">_list.txt</span>. Slides existentes são preservados (não perde metadados).<br>
-            <strong>Sincronizar:</strong> Atualiza <strong>apenas os números</strong> dos slides existentes para serem sequenciais (1, 2, 3...), mantendo todos os metadados (P, estado, notas, etc.). Não cria novos slides.
+      <div style="margin-top:12px">
+        <div class="hint" style="margin-bottom:10px;">
+          <strong>Importar:</strong> Cria slides novos do <span class="kbd">_list.txt</span>. Lê comentários HTML invisíveis para preencher apenas: título, anchor e comentários/boas práticas. Slides existentes são preservados (não perde metadados).<br>
+          <strong>Sincronizar:</strong> Atualiza números baseado no <span class="kbd">_list.txt</span> e lê comentários HTML para atualizar apenas: título, anchor e comentários/boas práticas. Mantém todos os outros metadados do SlideOps (P, estado, plan, difficulty, notas, confiança, etc.). Não cria novos slides.
+        </div>
+        <div class="panel" style="background: rgba(255,204,102,.15); border:1px solid rgba(255,204,102,.3); margin-bottom:10px;">
+          <div style="font-weight:600; margin-bottom:6px;">⚠️ Para Agentes IA:</div>
+          <div style="font-size:13px; line-height:1.5;">
+            <strong>SEMPRE adiciona comentário invisível</strong> nos slides HTML: <span class="kbd"><!-- SlideOps: title="..." anchor="..." aiTips="..." --></span><br>
+            Apenas <strong>title, anchor e aiTips</strong> vêm dos comentários HTML. P, state, plan, difficulty são editados no SlideOps.<br>
+            Sem comentário, os slides aparecem sem título. Ver <span class="kbd">tools/slideops/README.md</span> e <span class="kbd">docs/AI_HANDOFF_RULES.md</span>.
           </div>
         </div>
+        <div class="actions">
+          <select id="genDeck" style="width:auto;">
+            <option value="GRADE">GRADE</option>
+            <option value="OSTEO">OSTEO</option>
+          </select>
+          <button id="btnImportFromDeck" class="primary">Importar slides da apresentação</button>
+          <button id="btnSyncNumbers" class="ghost">Sincronizar números (mantém metadados)</button>
+          <button id="btnClearAll" class="danger">Zerar tudo (cuidado)</button>
+        </div>
+      </div>
 
         <div>
           <label>Filtros</label>
@@ -411,10 +414,11 @@
               <option value="priority">Prioridade</option>
               <option value="state">Triagem</option>
               <option value="modified">Última modificação</option>
+              <option value="plan">Plano (dia)</option>
               <option value="slide">Número do slide</option>
             </select>
           </div>
-          <div class="hint" style="margin-top:8px">Deck: use GRADE / OSTEO / Todos acima. Ordenar: prioridade, triagem, data ou número.</div>
+          <div class="hint" style="margin-top:8px">Deck: use GRADE / OSTEO / Todos acima. Ordenar: prioridade, triagem, data, plano ou número.</div>
         </div>
       </div>
 
@@ -554,13 +558,23 @@
             <label>Comentários (você)</label>
             <textarea id="eMyNotes" placeholder="Observações rápidas: o que falta / o que está bom / o que cortar"></textarea>
 
+            <div style="margin-top:10px; padding:12px; background:rgba(94,231,162,.08); border:1px solid rgba(94,231,162,.20); border-radius:4px;">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
+                <label style="margin:0; font-weight:600; color:rgba(94,231,162,.85);">📝 Dados do HTML (comentários invisíveis - automático)</label>
+              </div>
+              <div id="htmlCommentsBox" style="font-size:13px; line-height:1.5; color:rgba(255,255,255,.85); min-height:80px; padding:12px; background:rgba(94,231,162,.06); border:1px solid rgba(94,231,162,.15); border-radius:3px; white-space:pre-wrap;">
+                <em style="color:rgba(255,255,255,.5);">Nenhum comentário encontrado no HTML</em>
+              </div>
+              <div class="hint" style="margin-top:6px; font-size:12px;">Estes dados vêm <strong>automaticamente</strong> dos comentários invisíveis no ficheiro HTML do slide (title, anchor, aiTips).<br><strong>Nota:</strong> Prioridade, Estado, Plano, Dificuldade, Confiança, Checado e Appraisal são editados por você no SlideOps, não vêm do HTML.</div>
+            </div>
+
             <div style="margin-top:10px">
               <div class="actions" style="justify-content:space-between">
-                <label style="margin:0">Comentários (AI) — template de qualidade</label>
+                <label style="margin:0; color:rgba(255,204,102,.85);">💬 Comentários (AI) — template de qualidade (preenchido manualmente)</label>
                 <button id="btnInsertAiTpl" class="ghost">Inserir template</button>
               </div>
-              <textarea id="eAiNotes" placeholder="Cole aqui a revisão da AI seguindo o protocolo"></textarea>
-              <div class="hint">Template sugere: Claim → Evidence → Effect size → Certainty → Applicability → Suggested slide line.</div>
+              <textarea id="eAiNotes" placeholder="Cole aqui a revisão da AI seguindo o protocolo (após colar o slide no chat/Claude)" style="background: rgba(255,204,102,.08); border-color: rgba(255,204,102,.25); min-height: 140px;"></textarea>
+              <div class="hint">Template sugere: Claim → Evidence → Effect size → Certainty → Applicability → Suggested slide line.<br><strong>Diferente dos comentários invisíveis:</strong> Este campo é preenchido <strong>manualmente</strong> por você após colar o slide no chat/Claude.</div>
             </div>
           </div>
         </div>
@@ -796,6 +810,7 @@
       if(!s.plan) s.plan = "ThisWeek";
       if(!s.difficulty) s.difficulty = 3;
       if(!s.anchor) s.anchor = "";
+      if(!s.htmlComments) s.htmlComments = ""; // Comentários/boas práticas que vêm do HTML
       if(!s.confidence) s.confidence = "Moderate";
       if(!s.cogLoad) s.cogLoad = "Moderate";
     }
@@ -1144,7 +1159,7 @@
   });
 
   // ---------- metrics ----------
-  const renderMetrics = () => {
+  function renderMetrics() {
     const byDeck = (deck) => DATA.slides.filter(s => s.deck===deck);
     const p0Done = (deck) => {
       const all = byDeck(deck).filter(s => s.p==="P0");
@@ -1163,7 +1178,7 @@
     const appraisal = DATA.slides.filter(s => s.appraisal==="Yes").length;
     const total = DATA.slides.length || 1;
     document.getElementById("mQA").textContent = `${Math.round(100*checked/total)}% / ${Math.round(100*appraisal/total)}%`;
-  };
+  }
 
   // ---------- priority ----------
   const priorityScore = (s) => {
@@ -1180,22 +1195,34 @@
   const slidesBody = document.getElementById("slidesBody");
   const fDeck = document.getElementById("fDeck");
   const fSort = document.getElementById("fSort");
-  const renderSlides = () => {
-    const deck = fDeck.value;
+  if (!fSort) console.error("Elemento fSort não encontrado no DOM!");
+  function renderSlides() {
+    const deck = fDeck ? fDeck.value : "ALL";
 
     let list = DATA.slides.slice();
     if(deck !== "ALL") list = list.filter(s => s.deck === deck);
 
-    if(fSort.value === "modified") {
+    const sortValue = fSort ? fSort.value : "priority";
+    if(sortValue === "modified") {
       list.sort((a,b) => (new Date(b.lastModified||0)) - (new Date(a.lastModified||0)));
-    } else if(fSort.value === "slide") {
+    } else if(sortValue === "plan") {
+      // Ordenação por plano (Today, Tomorrow, ThisWeek, Later)
+      const planOrder = {Today: 0, Tomorrow: 1, ThisWeek: 2, Later: 3};
+      const planRank = (s) => planOrder[s.plan] ?? 2;
+      list.sort((a,b) => {
+        const d = planRank(a) - planRank(b);
+        if(d !== 0) return d;
+        // Se mesmo plano, ordenar por prioridade
+        return priorityScore(a) - priorityScore(b);
+      });
+    } else if(sortValue === "slide") {
       // Ordenação numérica: primeiro por deck, depois por número (numérico, não string)
       list.sort((a,b) => {
         const deckCmp = String(a.deck).localeCompare(String(b.deck));
         if(deckCmp !== 0) return deckCmp;
         return a.num - b.num; // Ordenação numérica correta
       });
-    } else if(fSort.value === "state") {
+    } else if(sortValue === "state") {
       const stateOrder = {Critical:0, NeedsFix:1, Done:2};
       const stateRank = (s) => stateOrder[s.state] ?? 1;
       list.sort((a,b) => {
@@ -1234,7 +1261,7 @@
     slidesBody.querySelectorAll("button[data-edit]").forEach(btn => {
       btn.addEventListener("click", () => openEditor(btn.dataset.edit));
     });
-  };
+  }
 
   // ---------- backlog board ----------
   const bDeck = document.getElementById("bDeck");
@@ -1281,7 +1308,7 @@
     return div;
   };
 
-  const renderBacklog = () => {
+  function renderBacklog() {
     const deckFilter = bDeck.value;
     const showDone = bShowDone.value === "Yes";
 
@@ -1309,7 +1336,7 @@
     document.getElementById("cTomorrow").textContent = `${counts.Tomorrow}`;
     document.getElementById("cThisWeek").textContent = `${counts.ThisWeek}`;
     document.getElementById("cLater").textContent = `${counts.Later}`;
-  };
+  }
 
   // drop zones
   document.querySelectorAll(".colBody").forEach(body => {
@@ -1353,6 +1380,7 @@
   const eCogMod = document.getElementById("eCogMod");
   const eCogHigh = document.getElementById("eCogHigh");
   const eAnchor = document.getElementById("eAnchor");
+  const htmlCommentsBox = document.getElementById("htmlCommentsBox");
   const eObjective = document.getElementById("eObjective");
   const eNarrative = document.getElementById("eNarrative");
   const eMyNotes = document.getElementById("eMyNotes");
@@ -1392,6 +1420,11 @@
     eChecked.value = "No";
     eAppraisal.value = "No";
     eAnchor.value = "";
+    if (htmlCommentsBox) {
+      htmlCommentsBox.textContent = 'Nenhum comentário encontrado no HTML';
+      htmlCommentsBox.style.color = 'rgba(255,255,255,.5)';
+      htmlCommentsBox.style.fontStyle = 'italic';
+    }
     eObjective.value = "";
     eNarrative.value = "";
     eMyNotes.value = "";
@@ -1421,6 +1454,16 @@
     setPillActive(CONF_BTNS, pendingConfidence);
     setPillActive(COG_BTNS, pendingCog);
     eAnchor.value = s.anchor || "";
+    // Atualizar caixa de comentários do HTML
+    if (htmlCommentsBox) {
+      const htmlData = [];
+      if (s.title) htmlData.push(`📌 Título: ${s.title}`);
+      if (s.anchor) htmlData.push(`🔗 Anchor: ${s.anchor}`);
+      if (s.htmlComments) htmlData.push(`💡 Comentários/Boas práticas:\n${s.htmlComments}`);
+      htmlCommentsBox.textContent = htmlData.length > 0 ? htmlData.join('\n\n') : 'Nenhum comentário encontrado no HTML';
+      htmlCommentsBox.style.color = htmlData.length > 0 ? 'rgba(255,255,255,.85)' : 'rgba(255,255,255,.5)';
+      htmlCommentsBox.style.fontStyle = htmlData.length > 0 ? 'normal' : 'italic';
+    }
     eObjective.value = s.objective || "";
     eNarrative.value = s.narrative || "";
     eMyNotes.value = s.myNotes || "";
@@ -1643,6 +1686,66 @@ Tarefa para a AI:
     });
   };
 
+  // ---------- extract metadata from HTML comments ----------
+  const extractSlideMetadata = async (slideFile, deck) => {
+    // Tentar múltiplos caminhos
+    const pathCandidates = deck === "GRADE" 
+      ? [
+          `/GRADE/src/slides/${slideFile}`,
+          `../GRADE/src/slides/${slideFile}`,
+          `../../GRADE/src/slides/${slideFile}`
+        ]
+      : [
+          `/OSTEOPOROSE/src/slides/${slideFile}`,
+          `../OSTEOPOROSE/src/slides/${slideFile}`,
+          `../../OSTEOPOROSE/src/slides/${slideFile}`
+        ];
+    
+    for (const path of pathCandidates) {
+      try {
+        const res = await fetch(path, { cache: 'no-store' });
+        if (res.ok) {
+          const html = await res.text();
+          
+          const metadata = {};
+          
+          // Procurar comentários no formato: <!-- SlideOps: title="..." anchor="..." aiTips="..." -->
+          const slideOpsComment = html.match(/<!--\s*SlideOps:\s*([^>]+)-->/i);
+          if (slideOpsComment) {
+            const attrs = slideOpsComment[1];
+            // Extrair apenas: title, anchor, aiTips
+            const attrRegex = /(\w+)="([^"]*)"/g;
+            let match;
+            while ((match = attrRegex.exec(attrs)) !== null) {
+              const key = match[1].toLowerCase();
+              if (key === "title" || key === "anchor" || key === "aitips") {
+                metadata[key] = match[2];
+              }
+            }
+          }
+          
+          // Fallback: procurar comentários individuais <!-- title: ... -->, <!-- anchor: ... -->, <!-- aiTips: ... -->
+          const singleCommentRegex = /<!--\s*(\w+):\s*([^->]+)-->/g;
+          let match;
+          while ((match = singleCommentRegex.exec(html)) !== null) {
+            const key = match[1].toLowerCase();
+            const value = match[2].trim();
+            if (key === "title") metadata.title = value;
+            else if (key === "anchor") metadata.anchor = value;
+            else if (key === "aitips" || key === "aitip" || key === "tips" || key === "comments") metadata.aiTips = value;
+          }
+          
+          if (Object.keys(metadata).length > 0) {
+            return metadata;
+          }
+        }
+      } catch (e) {
+        // Continuar tentando outros caminhos
+      }
+    }
+    return null;
+  };
+
   // ---------- import from _list.txt ----------
   document.getElementById("btnImportFromDeck").addEventListener("click", async () => {
     const deck = document.getElementById("genDeck").value;
@@ -1681,6 +1784,7 @@ Tarefa para a AI:
       
       let created = 0;
       let skipped = 0;
+      let withMetadata = 0;
       
       // IMPORTANTE: num começa em 1 (capa é slide 1)
       for (let i = 0; i < lines.length; i++) {
@@ -1692,16 +1796,21 @@ Tarefa para a AI:
           continue;
         }
         
+        // Tentar extrair metadados do ficheiro HTML
+        const slideFile = lines[i].includes('.html') ? lines[i] : `${lines[i]}.html`;
+        const metadata = await extractSlideMetadata(slideFile, deck);
+        
         const newSlide = {
           key, deck, num,
-          title: "",
-          p: "P1",
-          state: "NeedsFix",
-          plan: "ThisWeek",
-          difficulty: 3,
+          title: metadata?.title || "",
+          p: "P1", // Padrão - não vem do HTML
+          state: "NeedsFix", // Padrão - não vem do HTML
+          plan: "ThisWeek", // Padrão - não vem do HTML
+          difficulty: 3, // Padrão - não vem do HTML
           confidence: "Moderate",
           cogLoad: "Moderate",
-          anchor: "",
+          anchor: metadata?.anchor || "",
+          htmlComments: metadata?.aiTips || "", // Comentários/boas práticas do HTML
           checked: "No",
           appraisal: "No",
           objective: "",
@@ -1710,6 +1819,8 @@ Tarefa para a AI:
           aiNotes: "",
           lastModified: nowISO()
         };
+        
+        if (metadata) withMetadata++;
         DATA.slides.push(newSlide);
         logChange(key, null, "", "", "created");
         created++;
@@ -1717,7 +1828,7 @@ Tarefa para a AI:
       
       save();
       renderAll();
-      saveStatus.textContent = `Importados ${created} slides de ${deckName}${skipped > 0 ? ` (${skipped} já existiam e foram preservados)` : ''} ✔`;
+      saveStatus.textContent = `Importados ${created} slides de ${deckName}${skipped > 0 ? ` (${skipped} já existiam)` : ''}${withMetadata > 0 ? `, ${withMetadata} com metadados dos comentários` : ''} ✔`;
     } catch (err) {
       console.error(err);
       alert(`Erro ao importar: ${err.message}\n\nCertifique-se de que o SlideOps está sendo servido por um servidor HTTP (não file://)`);
@@ -1725,7 +1836,7 @@ Tarefa para a AI:
     }
   });
 
-  // ---------- sync numbers from _list.txt (preserves metadata) ----------
+  // ---------- sync numbers from _list.txt (preserves metadata, updates from HTML comments) ----------
   document.getElementById("btnSyncNumbers").addEventListener("click", async () => {
     const deck = document.getElementById("genDeck").value;
     const deckName = deck === "GRADE" ? "GRADE" : "OSTEOPOROSE";
@@ -1734,7 +1845,7 @@ Tarefa para a AI:
       ? ["/GRADE/src/slides/_list.txt", "../GRADE/src/slides/_list.txt", "../../GRADE/src/slides/_list.txt"]
       : ["/OSTEOPOROSE/src/slides/_list.txt", "../OSTEOPOROSE/src/slides/_list.txt", "../../OSTEOPOROSE/src/slides/_list.txt"];
     
-    saveStatus.textContent = "Sincronizando números...";
+    saveStatus.textContent = "Sincronizando números e metadados...";
     
     try {
       let res = null;
@@ -1761,21 +1872,72 @@ Tarefa para a AI:
         return;
       }
       
-      const existingSlides = DATA.slides.filter(s => s.deck === deck);
+      const existingSlides = DATA.slides.filter(s => s.deck === deck).sort((a, b) => a.num - b.num);
       if (existingSlides.length === 0) {
         alert(`Nenhum slide encontrado no SlideOps para ${deckName}. Use "Importar slides" primeiro.`);
         saveStatus.textContent = "Nenhum slide para sincronizar";
         return;
       }
       
-      // Renumerar todos os slides existentes para serem sequenciais (1, 2, 3...)
-      // IMPORTANTE: num começa em 1 (capa é slide 1)
+      let updatedMetadata = 0;
+      
+      // Para cada linha do _list.txt, atualizar slide correspondente
+      // Assumir que a ordem atual dos slides (por num) corresponde à ordem do _list.txt
+      for (let i = 0; i < Math.min(lines.length, existingSlides.length); i++) {
+        const newNum = i + 1;
+        const oldSlide = existingSlides[i];
+        if (!oldSlide) continue;
+        
+        // Tentar ler metadados do ficheiro HTML
+        const slideFile = lines[i].includes('.html') ? lines[i] : `${lines[i]}.html`;
+        const metadata = await extractSlideMetadata(slideFile, deck);
+        
+        if (metadata) {
+          // Atualizar apenas metadados que vêm do HTML: title, anchor, htmlComments (aiTips)
+          if (metadata.title && metadata.title.trim() && metadata.title !== oldSlide.title) {
+            const oldTitle = oldSlide.title || "";
+            oldSlide.title = metadata.title.trim();
+            logChange(oldSlide.key, "title", oldTitle, metadata.title.trim());
+            updatedMetadata++;
+          }
+          if (metadata.anchor !== undefined && metadata.anchor.trim() && metadata.anchor.trim() !== oldSlide.anchor) {
+            const oldAnchor = oldSlide.anchor || "";
+            oldSlide.anchor = metadata.anchor.trim();
+            logChange(oldSlide.key, "anchor", oldAnchor, metadata.anchor.trim());
+            updatedMetadata++;
+          }
+          if (metadata.aiTips !== undefined && metadata.aiTips.trim() && metadata.aiTips.trim() !== (oldSlide.htmlComments || "")) {
+            const oldComments = oldSlide.htmlComments || "";
+            oldSlide.htmlComments = metadata.aiTips.trim();
+            logChange(oldSlide.key, "htmlComments", oldComments, metadata.aiTips.trim());
+            updatedMetadata++;
+          }
+        }
+        
+        // Atualizar número se necessário
+        if (oldSlide.num !== newNum) {
+          const oldKey = oldSlide.key;
+          oldSlide.num = newNum;
+          oldSlide.key = slideKey(deck, newNum);
+          oldSlide.lastModified = nowISO();
+          
+          // Atualizar no array
+          const idx = DATA.slides.findIndex(s => s.key === oldKey);
+          if (idx >= 0) {
+            DATA.slides[idx] = oldSlide;
+          }
+        } else {
+          oldSlide.lastModified = nowISO();
+        }
+      }
+      
+      // Garantir que todos os slides estão sequenciais (caso haja mais slides do que linhas)
       renumerateDeck(deck);
       
       const updated = existingSlides.length;
       save();
       renderAll();
-      saveStatus.textContent = `Sincronizados ${updated} slides de ${deckName} ✔ (apenas números atualizados, todos os metadados preservados)`;
+      saveStatus.textContent = `Sincronizados ${updated} slides de ${deckName}${updatedMetadata > 0 ? `, ${updatedMetadata} com metadados atualizados` : ''} ✔`;
     } catch (err) {
       console.error(err);
       alert(`Erro ao sincronizar: ${err.message}\n\nCertifique-se de que o SlideOps está sendo servido por um servidor HTTP (não file://)`);
@@ -1833,13 +1995,26 @@ Tarefa para a AI:
   });
 
   // filters
-  [fDeck,fSort].forEach(el => el.addEventListener("change", renderSlides));
+  if (fDeck) {
+    fDeck.addEventListener("change", () => {
+      console.log("Deck mudou para:", fDeck.value);
+      renderSlides();
+    });
+  }
+  if (fSort) {
+    fSort.addEventListener("change", () => {
+      console.log("Sort mudou para:", fSort.value);
+      renderSlides();
+    });
+  } else {
+    console.error("fSort não encontrado! Elemento:", document.getElementById("fSort"));
+  }
 
   // ---------- study ----------
   const studyBody = document.getElementById("studyBody");
   const uid = () => Math.random().toString(16).slice(2) + "-" + Date.now().toString(16);
 
-  const renderStudy = () => {
+  function renderStudy() {
     studyBody.innerHTML = "";
     let list = DATA.studies.slice();
     if(studyDeckFilter !== "ALL") list = list.filter(it => it.deck === studyDeckFilter);
@@ -1858,7 +2033,7 @@ Tarefa para a AI:
       studyBody.appendChild(tr);
     }
     studyBody.querySelectorAll("button[data-edit]").forEach(btn => btn.addEventListener("click", () => openStudy(btn.dataset.edit)));
-  };
+  }
 
   document.getElementById("btnAddStudy").addEventListener("click", () => {
     const deck = document.getElementById("sDeck").value;
@@ -1881,6 +2056,14 @@ Tarefa para a AI:
     DATA.studies = [];
     save(); renderAll();
   });
+
+  // ---------- render all (usar function declaration para hoisting) ----------
+  function renderAll() {
+    renderMetrics();
+    renderBacklog();
+    renderSlides();
+    renderStudy();
+  }
 
   // study editor
   const seId = document.getElementById("seId");
@@ -2064,14 +2247,6 @@ Tarefa para a AI:
     setFileStatus("Sem arquivo vinculado.");
     updateFileIndicator('disconnected', 'Sem arquivo');
   });
-
-  // ---------- render all ----------
-  const renderAll = () => {
-    renderMetrics();
-    renderBacklog();
-    renderSlides();
-    renderStudy();
-  };
 
   // init
   clearEditor();
