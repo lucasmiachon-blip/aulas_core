@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SlideOps Lite v1.3 AutoSave (Local)</title>
+  <title>SlideOps</title>
   <style>
     :root{
       --bg:#0b1220;
@@ -204,13 +204,40 @@
       border:1px dashed rgba(122,168,255,.35);
       background: rgba(122,168,255,.08);
     }
+    /* Indicador de arquivo */
+    .file-indicator{
+      font-size:11px;
+      padding:4px 10px;
+      border-radius:6px;
+      display:inline-block;
+      margin-left:10px;
+      font-weight:600;
+    }
+    .file-indicator.connected{
+      background: rgba(94,231,162,.20);
+      color: var(--ok);
+      border: 1px solid rgba(94,231,162,.35);
+    }
+    .file-indicator.disconnected{
+      background: rgba(255,107,107,.20);
+      color: var(--crit);
+      border: 1px solid rgba(255,107,107,.35);
+    }
+    .file-indicator.saving{
+      background: rgba(122,168,255,.20);
+      color: var(--fix);
+      border: 1px solid rgba(122,168,255,.35);
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="wrap">
-      <h1>SlideOps Lite <span class="mini">— v1.3 AutoSave</span></h1>
-      <div class="sub">Foco: controle visual + auditabilidade. Salva no navegador; para 2 computadores, use “Vincular arquivo JSON” (aba Backup) em pasta sincronizada ou Git.</div>
+      <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px;">
+        <h1>SlideOps</h1>
+        <span id="fileIndicator" class="file-indicator disconnected">Sem arquivo</span>
+      </div>
+      <div class="sub">Ctrl+S salva no arquivo. Vincule um JSON em pasta sincronizada (OneDrive/Dropbox). Auto-save grava nele (~700 ms). Abra o <strong>mesmo</strong> arquivo no outro PC → mesma tela (ex.: 3 aqui → 3 lá; +5 lá → 8; volta aqui, sincroniza e abre → 8).</div>
 
       <div class="row" style="margin-top:12px">
         <div class="card">
@@ -227,15 +254,16 @@
         </div>
         <div class="card">
           <div class="metric"><div class="k">Checado / Appraisal</div><div class="v" id="mQA">—</div></div>
-          <div class="hint">Boxes “Conteúdo checado” e “Critical appraisal”.</div>
+          <div class="hint">Boxes "Conteúdo checado" e "Critical appraisal".</div>
         </div>
       </div>
 
       <div class="tabs">
-        <button class="tab active" data-tab="backlog">Backlog</button>
-        <button class="tab" data-tab="slides">Slides</button>
-        <button class="tab" data-tab="study">Estudo</button>
-        <button class="tab" data-tab="export">Backup</button>
+        <button class="tab active" data-tab="backlog" type="button">Backlog</button>
+        <button class="tab" data-tab="slides" type="button">Slides</button>
+        <button class="tab" data-tab="study" type="button">Estudo</button>
+        <button class="tab" data-tab="changelog" type="button">Changelog</button>
+        <button class="tab" data-tab="export" type="button">Backup</button>
       </div>
     </div>
   </header>
@@ -250,7 +278,7 @@
         <div class="legend">
           <div class="item">
             <div class="t"><span class="chip p0">P0</span> Entrega mínima defensável</div>
-            <div class="small">Precisa estar apresentável e correto. Sem “TBD” que impeça fala. Referência mínima quando há claim factual importante.</div>
+            <div class="small">Precisa estar apresentável e correto. Sem "TBD" que impeça fala. Referência mínima quando há claim factual importante.</div>
           </div>
           <div class="item">
             <div class="t"><span class="chip p1">P1</span> Qualidade / andragogia / teoria de slides</div>
@@ -360,44 +388,33 @@
             <input id="genRange" placeholder="Ex: 3 ou 1-35" />
           </div>
           <div class="actions" style="margin-top:10px">
-            <button id="btnGenerate" class="primary">Criar/Adicionar slides do intervalo</button>
+            <button id="btnImportFromDeck" class="primary">Importar slides da apresentação</button>
+            <button id="btnSyncNumbers" class="ghost">Sincronizar números (mantém metadados)</button>
+            <button id="btnGenerate" class="ghost" style="display:none">Criar/Adicionar slides do intervalo</button>
             <button id="btnClearAll" class="danger">Zerar tudo (cuidado)</button>
           </div>
-          <div class="hint">Gere o intervalo completo, depois ajuste só o que importa (P0 e estado). Não cadastre “perfeito”, cadastre “útil”.</div>
+          <div class="hint">
+            <strong>Importar:</strong> Cria slides novos do <span class="kbd">_list.txt</span>. Slides existentes são preservados (não perde metadados).<br>
+            <strong>Sincronizar:</strong> Atualiza <strong>apenas os números</strong> dos slides existentes para serem sequenciais (1, 2, 3...), mantendo todos os metadados (P, estado, notas, etc.). Não cria novos slides.
+          </div>
         </div>
 
         <div>
           <label>Filtros</label>
-          <div class="two">
-            <select id="fDeck" style="display:none">
-              <option value="ALL">Todos decks</option>
-              <option value="GRADE">GRADE</option>
-              <option value="OSTEO">OSTEO</option>
-            </select>
-            <select id="fState">
-              <option value="ALL">Todos estados</option>
-              <option value="Critical">Critical</option>
-              <option value="NeedsFix">NeedsFix</option>
-              <option value="Done">Done</option>
-            </select>
-          </div>
-          <div class="two" style="margin-top:10px">
-            <select id="fP">
-              <option value="ALL">Todos P</option>
-              <option value="P0">P0</option>
-              <option value="P1">P1</option>
-              <option value="P2">P2</option>
-              <option value="P3">P3</option>
-              <option value="P4">P4</option>
-              <option value="P5">P5</option>
-            </select>
+          <select id="fDeck" style="display:none">
+            <option value="ALL">Todos decks</option>
+            <option value="GRADE">GRADE</option>
+            <option value="OSTEO">OSTEO</option>
+          </select>
+          <div style="margin-top:6px">
             <select id="fSort">
-              <option value="priority">Ordenar por: P + estado + modificação</option>
-              <option value="modified">Ordenar por: última modificação</option>
-              <option value="slide">Ordenar por: deck + número</option>
+              <option value="priority">Prioridade</option>
+              <option value="state">Triagem</option>
+              <option value="modified">Última modificação</option>
+              <option value="slide">Número do slide</option>
             </select>
           </div>
-          <div class="hint">Sugestão: use filtro <span class="kbd">P0</span> + <span class="kbd">Critical</span> para escolher seu bloco #1.</div>
+          <div class="hint" style="margin-top:8px">Deck: use GRADE / OSTEO / Todos acima. Ordenar: prioridade, triagem, data ou número.</div>
         </div>
       </div>
 
@@ -449,9 +466,9 @@
               <div>
                 <label>Estado (triagem)</label>
                 <div class="pillbar">
-                  <button id="eCritical">Critical</button>
-                  <button id="eNeedsFix">NeedsFix</button>
-                  <button id="eDone">Done</button>
+                  <button id="eCritical" type="button">Critical</button>
+                  <button id="eNeedsFix" type="button">NeedsFix</button>
+                  <button id="eDone" type="button">Done</button>
                 </div>
                 <div class="hint">Critical = bloqueia apresentar • NeedsFix = melhora • Done = congelado.</div>
               </div>
@@ -514,7 +531,7 @@
             <div style="margin-top:10px">
               <label>Âncora EBM (1 linha)</label>
               <input id="eAnchor" placeholder="Mensagem + número absoluto (NNT/ARR) + referência curta" />
-              <div class="hint">Serve para travar “conteúdo mínimo defensável” sem reescrever o deck inteiro.</div>
+              <div class="hint">Serve para travar "conteúdo mínimo defensável" sem reescrever o deck inteiro.</div>
             </div>
 
             <div style="margin-top:10px">
@@ -598,13 +615,13 @@
             <button id="btnAddStudy" class="primary">Adicionar</button>
             <button id="btnClearStudy" class="danger">Zerar estudos</button>
           </div>
-          <div class="hint">Regra: leitura só conta quando vira cartão ou vira slide. “ToRead” demais vira backlog.</div>
+          <div class="hint">Regra: leitura só conta quando vira cartão ou vira slide. "ToRead" demais vira backlog.</div>
         </div>
 
         <div>
           <label>Reflexões / critical appraisal / aplicação</label>
           <textarea id="sNotes" placeholder="O que isso muda? Qual efeito absoluto? Qual certeza? Qual aplicabilidade?"></textarea>
-          <div class="hint">Dica: transforme reflexão em 1–2 “cards” aplicáveis (âncora EBM).</div>
+          <div class="hint">Dica: transforme reflexão em 1–2 "cards" aplicáveis (âncora EBM).</div>
         </div>
       </div>
 
@@ -665,6 +682,44 @@
       </div>
     </section>
 
+    <!-- CHANGELOG TAB -->
+    <section class="panel" id="tab-changelog" style="display:none">
+      <h2>Changelog</h2>
+
+      <div class="tabs" style="margin-bottom:16px;">
+        <button class="tab active" data-changelog-tab="by-day" type="button">Por dia</button>
+        <button class="tab" data-changelog-tab="by-slide" type="button">Por slide</button>
+      </div>
+
+      <!-- Por dia -->
+      <div id="changelog-by-day">
+        <div class="panel" style="background: rgba(12,23,48,.85);">
+          <div id="changelogDayBody"></div>
+        </div>
+      </div>
+
+      <!-- Por slide -->
+      <div id="changelog-by-slide" style="display:none;">
+        <div class="grid">
+          <div>
+            <label>Filtrar por deck</label>
+            <select id="changelogDeckFilter">
+              <option value="ALL">Todos</option>
+              <option value="GRADE">GRADE</option>
+              <option value="OSTEO">OSTEO</option>
+            </select>
+          </div>
+          <div>
+            <label>Filtrar por slide</label>
+            <input id="changelogSlideFilter" placeholder="Ex: GRADE#1 ou OSTEO#5" />
+          </div>
+        </div>
+        <div class="panel" style="background: rgba(12,23,48,.85); margin-top:12px;">
+          <div id="changelogSlideBody"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- EXPORT TAB -->
     <section class="panel" id="tab-export" style="display:none">
       <h2>3) Backup / 2 computadores (sem servidor)</h2>
@@ -679,6 +734,13 @@
           <div class="hint">Se for usar Git: exporte como <span class="kbd">slideops_data.json</span>, commit e push. No outro PC: pull e importe.</div>
         </div>
         <div>
+          <label>Sincronizar com slides HTML</label>
+          <div class="actions">
+            <button id="btnExportSyncPlan" class="primary">Exportar plano de sincronização</button>
+          </div>
+          <div class="hint">Gera JSON com a ordem atual. Execute <span class="kbd">scripts/sync-slides-from-slideops.js</span> para renomear ficheiros e atualizar <span class="kbd">_list.txt</span>.</div>
+        </div>
+        <div>
           <label>Vincular arquivo JSON (recomendado para 2 PCs)</label>
           <div class="actions">
             <button id="btnOpenData" class="primary">Abrir JSON existente</button>
@@ -690,11 +752,11 @@
             <label style="margin:0"><input type="checkbox" id="chkAutoSave" checked /> Auto-salvar</label>
             <span class="muted" id="fileStatus">Sem arquivo vinculado.</span>
           </div>
-          <div class="hint">Funciona melhor no Chrome/Edge (File System Access). Coloque o JSON numa pasta sincronizada (OneDrive/Dropbox/MEGA) ou no seu repositório Git.</div>
+          <div class="hint">Chrome/Edge (File System Access). Use <strong>um</strong> JSON numa pasta sincronizada: auto-save grava nele; abra o mesmo arquivo em cada PC para ver sempre os mesmos dados.</div>
         </div>
       </div>
 
-      <div class="footer">SlideOps Lite v1.2 — local, rápido, auditável. Use para governar execução (P0 primeiro), não para “reformular” o projeto.</div>
+      <div class="footer">SlideOps — Ctrl+S para salvar • local, rápido, auditável.</div>
     </section>
   </main>
 
@@ -708,10 +770,13 @@
     return d.toLocaleString(undefined, {year:"2-digit", month:"2-digit", day:"2-digit", hour:"2-digit", minute:"2-digit"});
   };
 
-  const DEFAULT = { slides: [], studies: [] };
+  const DEFAULT = { slides: [], studies: [], changelog: { byDay: [], bySlide: {} } };
 
   const upgrade = (data) => {
     // garante campos novos sem quebrar dados antigos
+    if (!data.changelog) {
+      data.changelog = { byDay: [], bySlide: {} };
+    }
     if(!data || typeof data !== "object") return structuredClone(DEFAULT);
     if(!Array.isArray(data.slides)) data.slides = [];
     if(!Array.isArray(data.studies)) data.studies = [];
@@ -748,6 +813,181 @@
   let DATA = load();
   let selectedKey = null;
 
+  // ---------- changelog ----------
+  const todayKey = () => new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+
+  const logChange = (slideKey, field, oldValue, newValue, action = "updated") => {
+    if (!DATA.changelog) {
+      DATA.changelog = { byDay: [], bySlide: {} };
+    }
+    const slide = findSlide(slideKey);
+    if (!slide) return;
+
+    const timestamp = nowISO();
+    const dateKey = todayKey();
+    const change = {
+      timestamp,
+      slideKey,
+      deck: slide.deck,
+      num: slide.num,
+      title: slide.title || "",
+      field,
+      oldValue: String(oldValue || ""),
+      newValue: String(newValue || ""),
+      action
+    };
+
+    // Adicionar ao changelog por dia
+    let dayEntry = DATA.changelog.byDay.find(d => d.date === dateKey);
+    if (!dayEntry) {
+      dayEntry = { date: dateKey, changes: [] };
+      DATA.changelog.byDay.push(dayEntry);
+      DATA.changelog.byDay.sort((a, b) => b.date.localeCompare(a.date));
+    }
+    dayEntry.changes.push(change);
+    dayEntry.changes.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
+
+    // Adicionar ao changelog por slide
+    if (!DATA.changelog.bySlide[slideKey]) {
+      DATA.changelog.bySlide[slideKey] = [];
+    }
+    DATA.changelog.bySlide[slideKey].push(change);
+    if (DATA.changelog.bySlide[slideKey].length > 50) {
+      DATA.changelog.bySlide[slideKey] = DATA.changelog.bySlide[slideKey].slice(-50);
+    }
+  };
+
+  const renderChangelogByDay = () => {
+    const body = document.getElementById("changelogDayBody");
+    if (!body) return;
+    if (!DATA.changelog || !DATA.changelog.byDay || DATA.changelog.byDay.length === 0) {
+      body.innerHTML = "<div class='hint'>Nenhuma mudança registrada ainda.</div>";
+      return;
+    }
+
+    let html = "";
+    for (const day of DATA.changelog.byDay) {
+      const date = new Date(day.date + "T00:00:00");
+      const dateStr = date.toLocaleDateString("pt-BR", { weekday: "long", year: "numeric", month: "long", day: "numeric" });
+      html += `<div style="margin-bottom:24px; padding-bottom:16px; border-bottom:1px solid var(--line);">`;
+      html += `<h3 style="margin:0 0 12px 0; font-size:16px; font-weight:650;">${dateStr}</h3>`;
+      html += `<div style="display:flex; flex-direction:column; gap:8px;">`;
+      
+      for (const change of day.changes) {
+        const time = new Date(change.timestamp).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+        const slideLabel = `${change.deck} #${change.num}${change.title ? `: ${escapeHtml(change.title)}` : ""}`;
+        let changeText = "";
+        
+        if (change.action === "created") {
+          changeText = `Criado: ${slideLabel}`;
+        } else if (change.field) {
+          const fieldLabels = {
+            title: "Título", p: "P-level", state: "Estado", plan: "Plano",
+            difficulty: "Dificuldade", confidence: "Confiança", cogLoad: "Carga cognitiva",
+            anchor: "Anchor", objective: "Objective", narrative: "Narrative",
+            myNotes: "My Notes", aiNotes: "AI Notes", checked: "Checked", appraisal: "Appraisal"
+          };
+          const fieldLabel = fieldLabels[change.field] || change.field;
+          changeText = `${slideLabel} → ${fieldLabel}: "${escapeHtml(change.oldValue)}" → "${escapeHtml(change.newValue)}"`;
+        } else {
+          changeText = `${slideLabel} → ${change.action}`;
+        }
+        
+        html += `<div style="padding:8px; background:rgba(255,255,255,.03); border-radius:6px; font-size:13px;">`;
+        html += `<span style="color:var(--muted); margin-right:8px;">${time}</span>`;
+        html += `<span>${changeText}</span>`;
+        html += `</div>`;
+      }
+      html += `</div></div>`;
+    }
+    body.innerHTML = html;
+  };
+
+  const renderChangelogBySlide = () => {
+    const body = document.getElementById("changelogSlideBody");
+    if (!body) return;
+    const deckFilter = document.getElementById("changelogDeckFilter")?.value || "ALL";
+    const slideFilter = (document.getElementById("changelogSlideFilter")?.value || "").trim().toUpperCase();
+
+    if (!DATA.changelog || !DATA.changelog.bySlide) {
+      body.innerHTML = "<div class='hint'>Nenhuma mudança registrada ainda.</div>";
+      return;
+    }
+
+    let slides = Object.keys(DATA.changelog.bySlide);
+    if (deckFilter !== "ALL") {
+      slides = slides.filter(key => key.startsWith(deckFilter + "#"));
+    }
+    if (slideFilter) {
+      slides = slides.filter(key => key.includes(slideFilter));
+    }
+
+    if (slides.length === 0) {
+      body.innerHTML = "<div class='hint'>Nenhum slide encontrado com os filtros selecionados.</div>";
+      return;
+    }
+
+    let html = "";
+    for (const slideKey of slides.sort()) {
+      const changes = DATA.changelog.bySlide[slideKey];
+      const slide = findSlide(slideKey);
+      const slideLabel = slide ? `${slide.deck} #${slide.num}${slide.title ? `: ${escapeHtml(slide.title)}` : ""}` : slideKey;
+      
+      html += `<div style="margin-bottom:24px; padding:16px; background:rgba(255,255,255,.03); border-radius:8px; border:1px solid var(--line);">`;
+      html += `<h3 style="margin:0 0 12px 0; font-size:15px; font-weight:650;">${slideLabel}</h3>`;
+      html += `<div style="display:flex; flex-direction:column; gap:6px;">`;
+      
+      for (const change of changes.slice().reverse()) {
+        const date = new Date(change.timestamp);
+        const dateStr = date.toLocaleDateString("pt-BR", { year: "numeric", month: "2-digit", day: "2-digit" });
+        const timeStr = date.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+        let changeText = "";
+        
+        if (change.action === "created") {
+          changeText = `Criado`;
+        } else if (change.field) {
+          const fieldLabels = {
+            title: "Título", p: "P-level", state: "Estado", plan: "Plano",
+            difficulty: "Dificuldade", confidence: "Confiança", cogLoad: "Carga cognitiva",
+            anchor: "Anchor", objective: "Objective", narrative: "Narrative",
+            myNotes: "My Notes", aiNotes: "AI Notes", checked: "Checked", appraisal: "Appraisal"
+          };
+          const fieldLabel = fieldLabels[change.field] || change.field;
+          changeText = `${fieldLabel}: "${escapeHtml(change.oldValue)}" → "${escapeHtml(change.newValue)}"`;
+        } else {
+          changeText = change.action;
+        }
+        
+        html += `<div style="padding:6px 10px; background:rgba(255,255,255,.02); border-radius:4px; font-size:12px; border-left:2px solid var(--fix);">`;
+        html += `<span style="color:var(--muted); margin-right:8px; font-size:11px;">${dateStr} ${timeStr}</span>`;
+        html += `<span>${changeText}</span>`;
+        html += `</div>`;
+      }
+      html += `</div></div>`;
+    }
+    body.innerHTML = html;
+  };
+
+  // Controles do changelog
+  document.querySelectorAll("button[data-changelog-tab]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll("button[data-changelog-tab]").forEach(b => b.classList.toggle("active", b === btn));
+      const tab = btn.dataset.changelogTab;
+      const dayDiv = document.getElementById("changelog-by-day");
+      const slideDiv = document.getElementById("changelog-by-slide");
+      if (dayDiv) dayDiv.style.display = tab === "by-day" ? "" : "none";
+      if (slideDiv) slideDiv.style.display = tab === "by-slide" ? "" : "none";
+      if (tab === "by-day") renderChangelogByDay();
+      else renderChangelogBySlide();
+    });
+  });
+
+  const changelogDeckFilter = document.getElementById("changelogDeckFilter");
+  const changelogSlideFilter = document.getElementById("changelogSlideFilter");
+  if (changelogDeckFilter) changelogDeckFilter.addEventListener("change", renderChangelogBySlide);
+  if (changelogSlideFilter) changelogSlideFilter.addEventListener("input", renderChangelogBySlide);
+
+
   // ---------- file sync (optional) ----------
   let fileHandle = null;
   let autoSaveFile = true;
@@ -756,16 +996,27 @@
   const supportsFSA = () => !!(window.showOpenFilePicker && window.showSaveFilePicker);
   const setFileStatus = (msg) => { document.getElementById("fileStatus").textContent = msg; };
 
+  // === INDICADOR VISUAL ===
+  const updateFileIndicator = (state, text) => {
+    const el = document.getElementById('fileIndicator');
+    el.className = 'file-indicator ' + state;
+    el.textContent = text;
+  };
+
   const writeToLinkedFile = async () => {
     if(!fileHandle) return;
     try{
+      updateFileIndicator('saving', '💾 Salvando...');
       const writable = await fileHandle.createWritable();
       await writable.write(JSON.stringify(DATA, null, 2));
       await writable.close();
-      setFileStatus(`Vinculado: ${fileHandle.name} • salvo ${new Date().toLocaleTimeString()}`);
+      const time = new Date().toLocaleTimeString();
+      setFileStatus(`Vinculado: ${fileHandle.name} • salvo ${time}`);
+      updateFileIndicator('connected', `🟢 ${fileHandle.name} • ${time}`);
     } catch(err){
       console.error(err);
       setFileStatus("Falha ao salvar no arquivo. (Arquivo bloqueado? Permissão?)");
+      updateFileIndicator('disconnected', 'Erro ao salvar');
     }
   };
 
@@ -779,6 +1030,20 @@
     localStorage.setItem(LS_KEY, JSON.stringify(DATA));
     scheduleWrite();
   };
+
+  // === ATALHO Ctrl+S ===
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.key === 's') {
+      e.preventDefault();
+      if (fileHandle) {
+        // Força salvamento imediato
+        if(pendingWrite) clearTimeout(pendingWrite);
+        writeToLinkedFile();
+      } else {
+        alert('⚠️ Nenhum arquivo vinculado!\n\nVá em Backup → Abrir JSON existente\n\nCaminho sugerido:\nC:\\Users\\lucas\\OneDrive\\LM\\Documentos\\Dev\\SlideOps\\slideops_data.json');
+      }
+    }
+  });
 
   // ---------- helpers ----------
   const slideKey = (deck, num) => `${deck}#${num}`;
@@ -814,13 +1079,47 @@
 
   // ---------- tabs ----------
   const tabs = Array.from(document.querySelectorAll(".tab[data-tab]"));
-  const showTab = (name) => {
-    for(const t of tabs) t.classList.toggle("active", t.dataset.tab===name);
-    for(const sec of ["backlog","slides","study","export"]){
-      document.getElementById(`tab-${sec}`).style.display = (sec===name) ? "" : "none";
+  if (tabs.length === 0) {
+    console.error("Nenhum botão de aba encontrado!");
+  }
+  let showTab = (name) => {
+    if (!name) {
+      console.error("showTab chamado sem nome");
+      return;
+    }
+    for(const t of tabs) {
+      if (t) t.classList.toggle("active", t.dataset.tab===name);
+    }
+    for(const sec of ["backlog","slides","study","changelog","export"]){
+      const el = document.getElementById(`tab-${sec}`);
+      if (el) {
+        el.style.display = (sec===name) ? "" : "none";
+      } else {
+        console.error(`Elemento tab-${sec} não encontrado!`);
+      }
+    }
+    // Renderizar changelog quando a aba é aberta
+    if (name === "changelog") {
+      const activeTab = document.querySelector("button[data-changelog-tab].active");
+      if (activeTab && activeTab.dataset.changelogTab === "by-slide") {
+        renderChangelogBySlide();
+      } else {
+        renderChangelogByDay();
+      }
     }
   };
-  tabs.forEach(btn => btn.addEventListener("click", () => showTab(btn.dataset.tab)));
+  tabs.forEach(btn => {
+    if (!btn) return;
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const tabName = btn.dataset.tab;
+      if (tabName) {
+        showTab(tabName);
+      } else {
+        console.error("Botão sem data-tab:", btn);
+      }
+    });
+  });
 
   // ---------- deck subtabs (per aula / per projeto) ----------
   let studyDeckFilter = "GRADE";
@@ -880,24 +1179,33 @@
   // ---------- slides render ----------
   const slidesBody = document.getElementById("slidesBody");
   const fDeck = document.getElementById("fDeck");
-  const fState = document.getElementById("fState");
-  const fP = document.getElementById("fP");
   const fSort = document.getElementById("fSort");
-
   const renderSlides = () => {
     const deck = fDeck.value;
-    const state = fState.value;
-    const p = fP.value;
 
     let list = DATA.slides.slice();
     if(deck !== "ALL") list = list.filter(s => s.deck === deck);
-    if(state !== "ALL") list = list.filter(s => s.state === state);
-    if(p !== "ALL") list = list.filter(s => s.p === p);
 
     if(fSort.value === "modified") {
       list.sort((a,b) => (new Date(b.lastModified||0)) - (new Date(a.lastModified||0)));
     } else if(fSort.value === "slide") {
-      list.sort((a,b) => (a.deck+a.num).localeCompare(b.deck+b.num));
+      // Ordenação numérica: primeiro por deck, depois por número (numérico, não string)
+      list.sort((a,b) => {
+        const deckCmp = String(a.deck).localeCompare(String(b.deck));
+        if(deckCmp !== 0) return deckCmp;
+        return a.num - b.num; // Ordenação numérica correta
+      });
+    } else if(fSort.value === "state") {
+      const stateOrder = {Critical:0, NeedsFix:1, Done:2};
+      const stateRank = (s) => stateOrder[s.state] ?? 1;
+      list.sort((a,b) => {
+        const d = stateRank(a) - stateRank(b);
+        if(d !== 0) return d;
+        // Ordenação numérica secundária
+        const deckCmp = String(a.deck).localeCompare(String(b.deck));
+        if(deckCmp !== 0) return deckCmp;
+        return a.num - b.num; // Ordenação numérica correta
+      });
     } else {
       list.sort((a,b) => priorityScore(a) - priorityScore(b));
     }
@@ -1123,31 +1431,59 @@
     if(fromBacklog) showTab("slides");
   };
 
-  // state buttons
+  // state buttons: autoSave primeiro (titulo etc), depois estado → save → render → reabre editor
   const setState = (state) => {
     if(!selectedKey) return;
+    autoSave();
     const s = findSlide(selectedKey);
     if(!s) return;
+    const oldState = s.state || "";
+    if (oldState !== state) {
+      logChange(selectedKey, "state", oldState, state);
+    }
     s.state = state;
     s.lastModified = nowISO();
     upsertSlide(s);
     save();
-    // NÃO chama renderAll() para evitar voltar ao Backlog
     renderMetrics();
     renderSlides();
-    // Reabre o editor no mesmo slide
     openEditor(selectedKey);
     saveStatus.textContent = `Estado → ${state} ✔`;
   };
-  document.getElementById("eCritical").addEventListener("click", () => setState("Critical"));
-  document.getElementById("eNeedsFix").addEventListener("click", () => setState("NeedsFix"));
-  document.getElementById("eDone").addEventListener("click", () => setState("Done"));
+  document.getElementById("eCritical").addEventListener("click", (e) => { e.preventDefault(); setState("Critical"); });
+  document.getElementById("eNeedsFix").addEventListener("click", (e) => { e.preventDefault(); setState("NeedsFix"); });
+  document.getElementById("eDone").addEventListener("click", (e) => { e.preventDefault(); setState("Done"); });
 
   // AUTO-SAVE: salva o slide atual com todos os valores do formulário
   const autoSave = () => {
     if(!selectedKey) return;
     const s = findSlide(selectedKey);
     if(!s) return;
+    
+    // Registrar mudanças antes de atualizar
+    const fields = [
+      { name: "title", old: s.title || "", new: eTitle.value.trim() },
+      { name: "p", old: s.p || "", new: eP.value },
+      { name: "plan", old: s.plan || "", new: ePlan.value },
+      { name: "difficulty", old: String(s.difficulty ?? 3), new: String(parseInt(eDiff.value,10) || 3) },
+      { name: "checked", old: s.checked || "", new: eChecked.value },
+      { name: "appraisal", old: s.appraisal || "", new: eAppraisal.value },
+      { name: "confidence", old: s.confidence || "", new: pendingConfidence },
+      { name: "cogLoad", old: s.cogLoad || "", new: pendingCog },
+      { name: "anchor", old: s.anchor || "", new: eAnchor.value.trim() },
+      { name: "objective", old: s.objective || "", new: eObjective.value.trim() },
+      { name: "narrative", old: s.narrative || "", new: eNarrative.value.trim() },
+      { name: "myNotes", old: s.myNotes || "", new: eMyNotes.value },
+      { name: "aiNotes", old: s.aiNotes || "", new: eAiNotes.value }
+    ];
+    
+    for (const field of fields) {
+      if (field.old !== field.new) {
+        logChange(selectedKey, field.name, field.old, field.new);
+      }
+    }
+    
+    // Atualizar slide
     s.title = eTitle.value.trim();
     s.p = eP.value;
     s.plan = ePlan.value;
@@ -1177,16 +1513,25 @@
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(autoSave, 500);
   };
+  const flushAndSave = () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = null;
+    autoSave();
+  };
 
   const setConfidence = (val) => {
     pendingConfidence = val;
     setPillActive(CONF_BTNS, val);
     autoSave();
+    save();
+    renderSlides();
   };
   const setCog = (val) => {
     pendingCog = val;
     setPillActive(COG_BTNS, val);
     autoSave();
+    save();
+    renderSlides();
   };
   eConfLow.addEventListener("click", () => setConfidence("Low"));
   eConfMod.addEventListener("click", () => setConfidence("Moderate"));
@@ -1195,24 +1540,25 @@
   eCogMod.addEventListener("click", () => setCog("Moderate"));
   eCogHigh.addEventListener("click", () => setCog("High"));
 
-  // AUTO-SAVE em selects (change = imediato)
-  eP.addEventListener("change", autoSave);
-  ePlan.addEventListener("change", autoSave);
-  eDiff.addEventListener("change", autoSave);
-  eChecked.addEventListener("change", autoSave);
-  eAppraisal.addEventListener("change", autoSave);
+  // AUTO-SAVE em selects (change = imediato) → atualiza linha na tabela
+  eP.addEventListener("change", () => { autoSave(); renderSlides(); });
+  ePlan.addEventListener("change", () => { autoSave(); renderSlides(); });
+  eDiff.addEventListener("change", () => { autoSave(); renderSlides(); });
+  eChecked.addEventListener("change", () => { autoSave(); renderSlides(); });
+  eAppraisal.addEventListener("change", () => { autoSave(); renderSlides(); });
 
-  // AUTO-SAVE em inputs de texto (com debounce)
-  eTitle.addEventListener("input", autoSaveDebounced);
-  eAnchor.addEventListener("input", autoSaveDebounced);
-  eObjective.addEventListener("input", autoSaveDebounced);
-  eNarrative.addEventListener("input", autoSaveDebounced);
-  eMyNotes.addEventListener("input", autoSaveDebounced);
-  eAiNotes.addEventListener("input", autoSaveDebounced);
+  // AUTO-SAVE em inputs de texto: debounce ao digitar + flush imediato ao sair (blur)
+  const textInputs = [eTitle, eAnchor, eObjective, eNarrative, eMyNotes, eAiNotes];
+  textInputs.forEach(el => {
+    el.addEventListener("input", autoSaveDebounced);
+    el.addEventListener("blur", flushAndSave);
+  });
 
   // save slide edits (botão manual - backup do auto-save)
   btnSave.addEventListener("click", () => {
     autoSave();
+    save();
+    renderSlides();
     saveStatus.textContent = "Salvo manualmente ✔";
   });
 
@@ -1281,6 +1627,162 @@ Tarefa para a AI:
     else eAiNotes.value = eAiNotes.value.trim() + "\n\n" + tpl;
   });
 
+  // ---------- reordenação e sincronização ----------
+  const getDeckSlides = (deck) => {
+    return DATA.slides.filter(s => s.deck === deck).sort((a,b) => a.num - b.num);
+  };
+
+  const renumerateDeck = (deck) => {
+    const slides = getDeckSlides(deck);
+    slides.forEach((s, idx) => {
+      const newNum = idx + 1; // Sempre começa em 1 (capa)
+      s.num = newNum;
+      s.key = `${deck}#${newNum}`;
+      s.lastModified = nowISO();
+      upsertSlide(s);
+    });
+  };
+
+  // ---------- import from _list.txt ----------
+  document.getElementById("btnImportFromDeck").addEventListener("click", async () => {
+    const deck = document.getElementById("genDeck").value;
+    const deckName = deck === "GRADE" ? "GRADE" : "OSTEOPOROSE";
+    
+    const pathCandidates = deck === "GRADE" 
+      ? ["/GRADE/src/slides/_list.txt", "../GRADE/src/slides/_list.txt", "../../GRADE/src/slides/_list.txt"]
+      : ["/OSTEOPOROSE/src/slides/_list.txt", "../OSTEOPOROSE/src/slides/_list.txt", "../../OSTEOPOROSE/src/slides/_list.txt"];
+    
+    saveStatus.textContent = "Importando...";
+    
+    try {
+      let res = null;
+      for (const path of pathCandidates) {
+        try {
+          res = await fetch(path, { cache: 'no-store' });
+          if (res.ok) break;
+        } catch (e) {}
+      }
+      
+      if (!res || !res.ok) {
+        throw new Error(`Não foi possível ler _list.txt. Tentou: ${pathCandidates.join(', ')}`);
+      }
+      
+      const text = await res.text();
+      const lines = text.split(/\r?\n/)
+        .map(l => l.trim())
+        .filter(Boolean)
+        .filter(l => !l.startsWith('#'));
+      
+      if (lines.length === 0) {
+        alert(`_list.txt está vazio para ${deckName}`);
+        saveStatus.textContent = "Nenhum slide encontrado";
+        return;
+      }
+      
+      let created = 0;
+      let skipped = 0;
+      
+      // IMPORTANTE: num começa em 1 (capa é slide 1)
+      for (let i = 0; i < lines.length; i++) {
+        const num = i + 1; // Posição 0 = slide 1 (capa), posição 1 = slide 2, etc.
+        const key = slideKey(deck, num);
+        const existing = findSlide(key);
+        if (existing) {
+          skipped++;
+          continue;
+        }
+        
+        const newSlide = {
+          key, deck, num,
+          title: "",
+          p: "P1",
+          state: "NeedsFix",
+          plan: "ThisWeek",
+          difficulty: 3,
+          confidence: "Moderate",
+          cogLoad: "Moderate",
+          anchor: "",
+          checked: "No",
+          appraisal: "No",
+          objective: "",
+          narrative: "",
+          myNotes: "",
+          aiNotes: "",
+          lastModified: nowISO()
+        };
+        DATA.slides.push(newSlide);
+        logChange(key, null, "", "", "created");
+        created++;
+      }
+      
+      save();
+      renderAll();
+      saveStatus.textContent = `Importados ${created} slides de ${deckName}${skipped > 0 ? ` (${skipped} já existiam e foram preservados)` : ''} ✔`;
+    } catch (err) {
+      console.error(err);
+      alert(`Erro ao importar: ${err.message}\n\nCertifique-se de que o SlideOps está sendo servido por um servidor HTTP (não file://)`);
+      saveStatus.textContent = "Erro ao importar";
+    }
+  });
+
+  // ---------- sync numbers from _list.txt (preserves metadata) ----------
+  document.getElementById("btnSyncNumbers").addEventListener("click", async () => {
+    const deck = document.getElementById("genDeck").value;
+    const deckName = deck === "GRADE" ? "GRADE" : "OSTEOPOROSE";
+    
+    const pathCandidates = deck === "GRADE" 
+      ? ["/GRADE/src/slides/_list.txt", "../GRADE/src/slides/_list.txt", "../../GRADE/src/slides/_list.txt"]
+      : ["/OSTEOPOROSE/src/slides/_list.txt", "../OSTEOPOROSE/src/slides/_list.txt", "../../OSTEOPOROSE/src/slides/_list.txt"];
+    
+    saveStatus.textContent = "Sincronizando números...";
+    
+    try {
+      let res = null;
+      for (const path of pathCandidates) {
+        try {
+          res = await fetch(path, { cache: 'no-store' });
+          if (res.ok) break;
+        } catch (e) {}
+      }
+      
+      if (!res || !res.ok) {
+        throw new Error(`Não foi possível ler _list.txt. Tentou: ${pathCandidates.join(', ')}`);
+      }
+      
+      const text = await res.text();
+      const lines = text.split(/\r?\n/)
+        .map(l => l.trim())
+        .filter(Boolean)
+        .filter(l => !l.startsWith('#'));
+      
+      if (lines.length === 0) {
+        alert(`_list.txt está vazio para ${deckName}`);
+        saveStatus.textContent = "Nenhum slide encontrado";
+        return;
+      }
+      
+      const existingSlides = DATA.slides.filter(s => s.deck === deck);
+      if (existingSlides.length === 0) {
+        alert(`Nenhum slide encontrado no SlideOps para ${deckName}. Use "Importar slides" primeiro.`);
+        saveStatus.textContent = "Nenhum slide para sincronizar";
+        return;
+      }
+      
+      // Renumerar todos os slides existentes para serem sequenciais (1, 2, 3...)
+      // IMPORTANTE: num começa em 1 (capa é slide 1)
+      renumerateDeck(deck);
+      
+      const updated = existingSlides.length;
+      save();
+      renderAll();
+      saveStatus.textContent = `Sincronizados ${updated} slides de ${deckName} ✔ (apenas números atualizados, todos os metadados preservados)`;
+    } catch (err) {
+      console.error(err);
+      alert(`Erro ao sincronizar: ${err.message}\n\nCertifique-se de que o SlideOps está sendo servido por um servidor HTTP (não file://)`);
+      saveStatus.textContent = "Erro ao sincronizar";
+    }
+  });
+
   // ---------- generate skeleton ----------
   document.getElementById("btnGenerate").addEventListener("click", () => {
     const deck = document.getElementById("genDeck").value;
@@ -1300,7 +1802,7 @@ Tarefa para a AI:
       const key = slideKey(deck, n);
       const existing = findSlide(key);
       if(existing) continue;
-      DATA.slides.push({
+      const newSlide = {
         key, deck, num:n,
         title:"",
         p:"P1",
@@ -1317,7 +1819,9 @@ Tarefa para a AI:
         myNotes:"",
         aiNotes:"",
         lastModified: nowISO()
-      });
+      };
+      DATA.slides.push(newSlide);
+      logChange(key, null, "", "", "created");
     }
     save(); clearEditor(); renderAll();
   });
@@ -1329,7 +1833,7 @@ Tarefa para a AI:
   });
 
   // filters
-  [fDeck,fState,fP,fSort].forEach(el => el.addEventListener("change", renderSlides));
+  [fDeck,fSort].forEach(el => el.addEventListener("change", renderSlides));
 
   // ---------- study ----------
   const studyBody = document.getElementById("studyBody");
@@ -1441,6 +1945,30 @@ Tarefa para a AI:
     URL.revokeObjectURL(a.href);
   });
 
+  document.getElementById("btnExportSyncPlan").addEventListener("click", () => {
+    const plan = { 
+      decks: {},
+      timestamp: nowISO(),
+      note: "Ordem atual dos slides no SlideOps. Execute scripts/sync-slides-from-slideops.js para sincronizar com ficheiros HTML."
+    };
+    for(const deck of ["GRADE", "OSTEO"]) {
+      const slides = getDeckSlides(deck);
+      plan.decks[deck] = slides.map((s, idx) => ({
+        num: s.num,
+        key: s.key,
+        title: s.title || "",
+        position: idx + 1
+      }));
+    }
+    const blob = new Blob([JSON.stringify(plan, null, 2)], {type:"application/json"});
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "slideops_sync_plan.json";
+    a.click();
+    URL.revokeObjectURL(a.href);
+    saveStatus.textContent = "Plano de sincronização exportado ✔";
+  });
+
   document.getElementById("fileImport").addEventListener("change", async (ev) => {
     const f = ev.target.files?.[0];
     if(!f) return;
@@ -1500,6 +2028,7 @@ Tarefa para a AI:
       renderAll();
       enableFileButtons(true);
       setFileStatus(`Vinculado: ${fileHandle.name} • carregado`);
+      updateFileIndicator('connected', `🟢 ${fileHandle.name}`);
     }catch(err){
       // user cancel
     }
@@ -1518,6 +2047,7 @@ Tarefa para a AI:
       fileHandle = handle;
       enableFileButtons(true);
       setFileStatus(`Vinculado: ${fileHandle.name} • criado`);
+      updateFileIndicator('connected', `🟢 ${fileHandle.name}`);
       await writeToLinkedFile();
     }catch(err){
       // cancel
@@ -1532,6 +2062,7 @@ Tarefa para a AI:
     fileHandle = null;
     enableFileButtons(false);
     setFileStatus("Sem arquivo vinculado.");
+    updateFileIndicator('disconnected', 'Sem arquivo');
   });
 
   // ---------- render all ----------
@@ -1546,6 +2077,7 @@ Tarefa para a AI:
   clearEditor();
   enableFileButtons(false);
   setFileStatus(supportsFSA() ? "Sem arquivo vinculado." : "Navegador sem File System Access (use Export/Import).");
+  updateFileIndicator('disconnected', 'Sem arquivo');
   // default: mostrar por aula (GRADE) tanto em Slides quanto em Estudo
   try{ setDeckSubtab("slides","GRADE"); }catch{}
   try{ setDeckSubtab("study","GRADE"); }catch{}
