@@ -1,121 +1,70 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## OSTEOPOROSE_PDF_FIX_2026_01_29 — 2026-01-29 (Tentativa de correção PDF)
 
-## OSTEOPOROSE_PATCH0_6 — 2026-01-27
+### Problema
+- PDF gerado não respeita estilos de print visíveis no DevTools
+- CSS `@media print` não está sendo aplicado corretamente pelo Playwright
+- Estilos aparecem corretos no DevTools mas não refletem no PDF final
 
-### P0: Viewer (fit realmente responsivo – sem cortes)
-- `viewer.js`: **rewrite/cleanup** (remove duplicações internas) e novo fit com:
-  - Cálculo de escala usando `getBoundingClientRect()` + *safe inset* + **floor** do scale (evita o clássico corte de 1–2px embaixo).
-  - Ajuste de overflow do slide ativo em **coordenadas do slide** (1280×720) com **translate + scale** para manter conteúdo dentro de uma “safe area” (especialmente borda inferior).
-  - `--vh` via `visualViewport` para corrigir `100vh` em mobile/address bar.
-- `viewer.css`: palco agora depende do **flex layout** (sem `height: calc(100vh - ...)`), reduzindo drift/rounding; padding inferior inclui `safe-area-inset-bottom`.
-- `src/index.html` e `dist/index.html`: UI agora separa **PDF player** vs **Exportar** e atualiza os atalhos.
+### Tentativas realizadas
+1. **Verificação de modo print**: Confirmado que `page.emulateMedia({ media: 'print' })` está ativo
+2. **Aguardar recursos**: Adicionado `waitForLoadState('networkidle')` e `document.fonts.ready`
+3. **Forçar CSS via JavaScript**: Injetado estilo `<style>` com regras `@media print` e `@page`
+4. **Aplicar estilos inline diretamente**: Usado `style.setProperty()` com `!important` em cada slide
+5. **Dimensões explícitas no PDF**: Mudado de `preferCSSPageSize: true` para `width: 1280px, height: 720px`
 
-### P0: PDF fallback em modo apresentação (teclado + fullscreen)
-- Novo `src/pdf.html` + `dist/pdf.html`: player de PDF em tela inteira com navegação por teclado (setas/space/PgUp/PgDn/Home/End) e fullscreen (F).
-- Novo `src/js/pdf-viewer.js` + `src/css/pdf-viewer.css`.
-- `assets/pdf/OSTEOPOROSE-slides.pdf`: placeholder incluído como fallback (substituir pelo PDF exportado 16:9 quando disponível).
-
-### P0: Print/PDF (evitar cortes ao exportar)
-- `print-fit.js`: refeito para usar bounding box real + translate/scale com safe area (mais robusto do que apenas downscale).
-
-### Arquivos modificados/novos
-- `OSTEOPOROSE/src/css/viewer.css`
-- `OSTEOPOROSE/src/js/viewer.js` (rewrite)
-- `OSTEOPOROSE/src/index.html`, `OSTEOPOROSE/dist/index.html`
-- `OSTEOPOROSE/src/pdf.html`, `OSTEOPOROSE/dist/pdf.html` (novos)
-- `OSTEOPOROSE/src/css/pdf-viewer.css`, `OSTEOPOROSE/src/js/pdf-viewer.js` (novos)
-- `OSTEOPOROSE/src/js/print-fit.js` (rewrite)
-- `OSTEOPOROSE/assets/pdf/OSTEOPOROSE-slides.pdf` (novo)
-
-
-## OSTEOPOROSE_PATCH0_5 — 2026-01-26
-
-### P0: Viewer (corte inferior + fit real na janela)
-- `viewer.css`: palco agora usa `100dvh` (fallback `100vh`) e bloqueia scroll da página (viewer = app). Reduz casos em que o slide “passa” 1–2px e é cortado embaixo.
-- `viewer.css`: adicionada folga inferior extra no `stage` (safe bottom) para projetores/overscan.
-- `viewer.js`: novo `scheduleFit()` (multi-pass) + listeners de assets do slide ativo (img/video/iframe) para refazer o fit após carregamento tardio.
-- `viewer.js`: resize agora usa `scheduleFit()` (inclui overflow-fit), não só `fitToScreen()`.
-
-### P0: Print/PDF (16:9 sem altura errada)
-- `print.css`: força `min-height: 0 !important` (corrige `min-height: 100vh` legado que quebrava o tamanho 16:9 no print).
-- Novo `print-fit.js`: aplica overflow-fit antes de imprimir (DOMContentLoaded/load/beforeprint) para reduzir cortes em slides densos.
-- `src/print.html` e `dist/print.html` regenerados a partir de `src/slides/_list.txt` para garantir consistência com os slides modulares.
-
-### Slides (estética/legibilidade – sem mudar claims)
-- Slide 8 (Utilidade): redução de densidade (padding/margens) + headings em navy (gold fica como acento) para contraste.
-- Slide 14 (Osteopenia): redução de densidade (padding/margens) + gráfico ajustado para caber sem encostar no rodapé.
+### Status
+- ✅ Estilos são aplicados corretamente (verificado via `getComputedStyle`)
+- ✅ Modo print está ativo (`window.matchMedia('print').matches === true`)
+- ⚠️ **Problema persiste**: PDF ainda não reflete as mudanças visíveis no DevTools
 
 ### Arquivos modificados
-- `OSTEOPOROSE/src/css/viewer.css`
-- `OSTEOPOROSE/src/js/viewer.js`
-- `OSTEOPOROSE/src/css/print.css`
-- `OSTEOPOROSE/src/js/print-fit.js` (novo)
-- `OSTEOPOROSE/src/print.html`, `OSTEOPOROSE/dist/print.html` (regenerados)
-- `OSTEOPOROSE/src/slides/S08_slide-10.html`, `OSTEOPOROSE/src/slides/S14_slide-9-osteopenia.html`
+- `scripts/export-osteoporose-pdf.js` - múltiplas tentativas de forçar aplicação de CSS
+
+### Próximos passos sugeridos
+1. **Verificar PDF gerado**: Confirmar quantas páginas foram geradas e se há quebras corretas
+2. **Testar Puppeteer**: Pode ter melhor suporte a `page-break-after` que Playwright
+3. **Gerar slides individualmente**: Usar `pdf-lib` para combinar PDFs de cada slide
+4. **Usar screenshots**: Capturar screenshot de cada slide e combinar em PDF
+
+---
+
+## OSTEOPOROSE_PATCH0_6 — 2026-01-29
+
+### P0: Overflow corrigido em 8 slides (10 arquivos, incluindo divisão)
+- **Slide 20** (S35_slide-32.html): **Dividir em 2 slides** (Estratégia 3) + compactação
+- **Slide 20b** (S35b_slide-32b.html): **Novo slide** (Parte 2/2) para completar conteúdo (Estratégia 3)
+- **Slide 44** (S45_slide-42.html): **Compactar** (Estratégia 1)
+- **Slide 12** (S09_slide-11.html): **Compactar** (Estratégia 1)
+- **Slide 59** (S50_slide-47.html): **Compactar** (Estratégia 1)
+- **Slide 72** (S49_slide-46.html): **Compactar** (Estratégia 1)
+- **Slide 48** (S69_slide-66.html): **Compactar** (Estratégia 1)
+- **Slide 26** (S38_slide-35.html): **Compactar** (Estratégia 1)
+- **Slide 47** (S48_slide-45.html): **Compactar** (Estratégia 1)
+
+### P0: Encoding UTF-8
+- **Slide 36** (S39_slide-36.html): verificado (sem mojibake)
+- Verificados todos os slides (busca por padrões `Ã¡`, `Ã©`, `Ã£`, `Ã§`, `â€“`)
+
+### Arquivos modificados
+- `OSTEOPOROSE/src/slides/_list.txt`
+- `OSTEOPOROSE/src/slides/S09_slide-11.html`
+- `OSTEOPOROSE/src/slides/S35_slide-32.html`
+- `OSTEOPOROSE/src/slides/S38_slide-35.html`
+- `OSTEOPOROSE/src/slides/S45_slide-42.html`
+- `OSTEOPOROSE/src/slides/S48_slide-45.html`
+- `OSTEOPOROSE/src/slides/S49_slide-46.html`
+- `OSTEOPOROSE/src/slides/S50_slide-47.html`
+- `OSTEOPOROSE/src/slides/S69_slide-66.html`
+- `CHANGELOG.md`
 - `README.md`
 
-
-## OSTEOPOROSE_PATCH0_4 — 2026-01-25
-
-### Viewer / Export
-- Melhor detecção de overflow por slide (inclui margens e elementos absolutos), reduzindo cortes de conteúdo em algumas telas/viewers.
-- Fullscreen com pequena margem de segurança (overscan / projetores) para evitar cortes nas bordas.
-- Export PDF mais estável: novo `dist/print.html` (slides inline, sem depender de `fetch`), e `print.css` revisado (preview 1280×720 + impressão 16:9).
-
-### Slides (estética / contraste / paleta)
-- Slide 8: rótulos da escala com contraste/tamanho melhor.
-- Slide 14: rótulos do gráfico com contraste correto (branco no navy, navy no gold).
-- Ajustes pontuais em slides com contraste muito baixo (texto quase invisível) e remoção de cores RGB fora da paleta (vermelho/verde/azuis custom).
-
 ### Arquivos novos
-- `OSTEOPOROSE/dist/print.html`
-- `OSTEOPOROSE/src/print.html`
+- `OSTEOPOROSE/src/slides/S35b_slide-32b.html`
+- `RELEASE_NOTES.md`
 
-## OSTEOPOROSE_PATCH0_3 — 2026-01-25
-
-### P0: corte inferior / overflow (viewer + PDF)
-- Viewer: auto-fit do slide ativo quando o conteúdo excede a área útil (evita **corte inferior** sem editar cada slide).
-  - Implementado em `src/js/viewer.js` via `fitSlideOverflow()` (downscale leve com tolerância).
-- Print/PDF: `print.css` refeito para **1 slide por página 16:9** com múltiplas páginas de verdade.
-  - Removido “gargalo” de `overflow: hidden` do deck no print (causava PDFs com poucas páginas).
-
-### P0: encoding + unidades
-- Corrigidos restos de mojibake em múltiplos slides (ex.: **duração**, **Infusão**, **Evidência**, **µg/L**, acentos e símbolos).
-
-### P0: paleta profissional (sem hex)
-- Removidos **100%** dos `#hex` dos slides de OSTEOPOROSE.
-  - Substituídos por `var(--...)` e `rgba(var(--*-rgb), a)` conforme paleta oficial.
-
-### UI/UX polish (placeholders)
-- Substituído o emoji **📷** por ícone SVG monocromático (mais “enterprise”).
-- Slides 67/68: ajustes finos de padding/tipografia para reduzir densidade e evitar overflow.
-
-### Arquivos principais
-- `OSTEOPOROSE/src/js/viewer.js`
-- `OSTEOPOROSE/src/css/print.css`
-- `OSTEOPOROSE/src/css/base.css` (tokens usados pelos slides)
-- `OSTEOPOROSE/src/slides/*` (encoding + remoção de hex + placeholders)
-
-
-## OSTEOPOROSE_PATCH0_2 — 2026-01-25
-
-### Viewer (tela total + paddings)
-- Fit-to-screen agora permite **upscale** (até 300%) para ocupar telas grandes em fullscreen/projeção.
-- Adicionada classe `is-fullscreen` (remover padding/borda/sombra do deck) para maximizar área útil.
-- Ajuste fino de paddings do palco (`--stage-pad`) e tipografia do chrome do viewer.
-
-### Tipografia + tokens
-- `base.css` alinhado à **paleta oficial** (bg/navy/gold + teal/blue) com tokens `*-rgb`.
-- Inter (sans-serif) como fonte padrão (viewer + slides) + import via Google Fonts.
-
-### Encoding (P0)
-- Correção de caracteres quebrados (mojibake) em múltiplos slides (ex.: ✓ / ∅ / 📷 / acentos).
-
-### Slides com truncamento (P0)
-- Slide 67 (LSC) e Slide 68 (Rádio 33%): redução de margens/paddings e reorganização leve para evitar corte inferior.
-- Slides 67/68: cores migradas para tokens (`var(--bg/navy/gold/teal/blue)`) para consistência.
-
+---
 
 ## OSTEOPOROSE_PATCH0_1 — 2026-01-25 (Modularização + Fullscreen + PDF 16:9)
 
