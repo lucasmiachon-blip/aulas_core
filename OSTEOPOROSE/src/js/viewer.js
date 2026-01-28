@@ -1,9 +1,9 @@
 /*
   viewer.js
-  Navega?º?úo + fullscreen + fit-to-screen + modo print.
+  Navega?Âº?Ãºo + fullscreen + fit-to-screen + modo print.
 
   Atalhos:
-  - ÔåÉ/ÔåÆ | PageUp/PageDown | Espa?ºo
+  - Ã”Ã¥Ã‰/Ã”Ã¥Ã† | PageUp/PageDown | Espa?Âºo
   - Home/End
   - F: fullscreen
   - P: abrir modo PDF (print=1)
@@ -95,7 +95,7 @@
 
       var opt = document.createElement('option');
       opt.value = key;
-      opt.textContent = key + ' ?À ' + title;
+      opt.textContent = key + ' ?Ã€ ' + title;
       select.appendChild(opt);
     });
 
@@ -108,7 +108,7 @@
   }
 
   function syncSelect() {
-    // Sem sele?º?úo persistente (a UX ?®: dropdown como "jump")
+    // Sem sele?Âº?Ãºo persistente (a UX ?Â®: dropdown como "jump")
     // Deixamos vazio.
   }
 
@@ -147,7 +147,7 @@
   }
 
   function openPrintMode() {
-    // Preferir print.html (est?ítico) para exportar PDF sem depender de fetch/async.
+    // Preferir print.html (est?Ã­tico) para exportar PDF sem depender de fetch/async.
     // Fallback: ?print=1 (modo antigo).
     try {
       var url = new URL(window.location.href);
@@ -232,20 +232,56 @@
     fitActiveSlideOverflow();
   }
 
-  // Se algum slide "estourar" a altura/largura ??til (conte??do maior que 1280?ù720),
+  // Se algum slide "estourar" a altura/largura ??til (conte??do maior que 1280?Ã¹720),
   // reduzimos levemente via transform para evitar cortes (P0: margem inferior).
-  // TEMPORARIAMENTE DESABILITADO: Usando abordagem CSS pura ao invés de auto-scale
+  // TEMPORARIAMENTE DESABILITADO: Usando abordagem CSS pura ao invÃ©s de auto-scale
   function fitSlideOverflow(slide) {
     if (!slide) return;
     
-    // RESET - remove qualquer scale anterior
+    // 1. RESET
     slide.style.transform = '';
     slide.style.transformOrigin = '';
     delete slide.dataset.fitScale;
+    void slide.offsetHeight;
     
-    // POR ENQUANTO: não faz auto-scale
-    // Os slides que cortam serão ajustados individualmente via CSS
-    return;
+    // 2. VERIFICAR VISIBILIDADE
+    var slideHeight = slide.clientHeight;
+    var slideWidth = slide.clientWidth;
+    if (!slideHeight || slideHeight < 100 || !slideWidth || slideWidth < 100) {
+      return;
+    }
+    
+    // 3. MEDIR CONTEÃšDO REAL
+    var slideRect = slide.getBoundingClientRect();
+    var maxBottom = 0;
+    var children = slide.children;
+    for (var i = 0; i < children.length; i++) {
+      var rect = children[i].getBoundingClientRect();
+      var bottom = rect.bottom - slideRect.top;
+      if (bottom > maxBottom) maxBottom = bottom;
+    }
+    
+    if (maxBottom < 100) return;
+    
+    // 4. TOLERÃ‚NCIA ALTA - sÃ³ aplica se overflow > 200px
+    var TOLERANCE = 200;
+    var overflow = maxBottom - slideHeight;
+    
+    if (overflow <= TOLERANCE) {
+      return; // NÃ£o comprime
+    }
+    
+    // 5. CALCULAR SCALE
+    var scale = slideHeight / maxBottom;
+    
+    // 6. SCALE MÃNIMO 0.55
+    var MIN_SCALE = 0.55;
+    scale = Math.max(MIN_SCALE, scale);
+    
+    // 7. APLICAR
+    slide.style.transformOrigin = 'top center';
+    slide.style.transform = 'scale(' + scale.toFixed(4) + ')';
+    slide.dataset.fitScale = scale.toFixed(4);
   }
 
 
@@ -253,7 +289,7 @@
     if (isPrintMode()) return;
     var active = state.slides[state.idx];
     if (!active) return;
-    // esperar um frame para garantir reflow/paint do slide rec?®m-ativado
+    // esperar um frame para garantir reflow/paint do slide rec?Â®m-ativado
     window.requestAnimationFrame(function () {
       fitSlideOverflow(active);
     });
@@ -261,7 +297,7 @@
 
   function fitAllSlidesOverflowForPrint() {
     if (!isPrintMode()) return;
-    // Um frame para garantir que todos os slides j?í estejam no DOM e vis?¡veis
+    // Um frame para garantir que todos os slides j?Ã­ estejam no DOM e vis?Â¡veis
     window.requestAnimationFrame(function () {
       state.slides.forEach(function (s) { fitSlideOverflow(s); });
     });
@@ -312,7 +348,7 @@
   }
 
   function onKeyDown(e) {
-    // Evitar capturar quando usu?írio est?í em input/select
+    // Evitar capturar quando usu?Ã­rio est?Ã­ em input/select
     var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
     if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
 
@@ -391,7 +427,7 @@
     if (btnPrint) btnPrint.addEventListener('click', openPrintMode);
     if (btnPresent) btnPresent.addEventListener('click', togglePresentMode);
 
-    // Auto-hide UI em modo palco quando h?í movimento
+    // Auto-hide UI em modo palco quando h?Ã­ movimento
     document.addEventListener('mousemove', function () {
       if (state.present) armAutoHide();
     });
@@ -410,7 +446,7 @@
     if (!state.slides.length) return;
 
 
-    // Em modo print, mostramos todos; sem navega?º?úo.
+    // Em modo print, mostramos todos; sem navega?Âº?Ãºo.
     if (isPrintMode()) {
       state.slides.forEach(function (s) {
         s.hidden = false;
@@ -427,7 +463,7 @@
     // Inicial: hash ou primeiro
     if (window.location.hash) jumpTo(window.location.hash);
 
-    // Fallback: se jumpTo n?úo ativou nada, ativa o primeiro
+    // Fallback: se jumpTo n?Ãºo ativou nada, ativa o primeiro
     var activeIdx = state.slides.findIndex(function (s) { return s.classList.contains('is-active'); });
     if (activeIdx === -1) setActive(0, { pushHash: false });
     else setActive(activeIdx, { pushHash: false });

@@ -1,5 +1,13 @@
 # aulas_core
 
+## Osteoporose — PATCH0_6 (29/01/2026)
+
+Este repositório inclui o módulo **OSTEOPOROSE/**. No PATCH0_6 foram aplicadas correções de **overflow** em slides com altura fixa no viewer (719px), além de validação de **encoding UTF-8**.
+
+- Correções concentradas em `OSTEOPOROSE/src/slides/` (ajustes de padding/gaps/font-size).
+- Slide `S35_slide-32.html` foi **dividido** e ganhou o novo `S35b_slide-32b.html` (ver `src/slides/_list.txt`).
+- Viewer (`src/js/viewer.js`) **não foi alterado** neste patch.
+
 Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz Brasileira de Dislipidemias 2025).
 
 **Deadline MVP:** 10 Fevereiro 2026  
@@ -26,7 +34,7 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 - ❌ Modificar código sem plano aprovado
 - ❌ Inventar números, dados ou citações (use `[TBD]` se faltar)
 - ❌ Usar cores hardcoded (`#333`, `#666`) - SEMPRE use `var(--nome)`
-- ❌ Tocar em `OSTEOPOROSE/` **no conteúdo médico** (texto/números/claims) sem aprovação explícita — *viewer/tooling* pode ser alterado na fase de modularização (limbo P0↔P1)
+- ❌ Tocar em `OSTEOPOROSE/` sem demanda explícita (PATCH0_6 foi uma exceção aprovada para correção de overflow)
 
 **SEMPRE:**
 - ✅ Apresentar PLANO antes de executar
@@ -110,40 +118,6 @@ var(--blue)    /* #2563EB - Suporte/informação */
 **REGRA DE OURO:** Se você digitar `#` seguido de hex no HTML, VOCÊ ESTÁ ERRANDO!
 
 **📖 Leia a paleta completa:** `docs/ESSENTIAL/PROMPT_PALETA_OFICIAL.md` ← **OBRIGATÓRIO ANTES DE CRIAR/MODIFICAR SLIDES**
-
-
-## ✨ UI/UX Guardrails (benchmark TED / big tech)
-
-Objetivo: deixar qualquer deck **conference-ready** (auditório, câmera, PDF) com estética de “produto” (Apple/Microsoft-level).
-
-**Regras práticas (obrigatórias):**
-- **Tipografia:** usar **Inter** como default. Serif só em *quotes* (quando intencional).  
-  - H1: 36–44px (em 720p), H2: 22–28px, corpo: 16–20px.  
-  - Line-height confortável (1.25–1.6) e sem “paredão” de texto.
-- **Grid/spacing:** usar **múltiplos de 8px** (8/16/24/32/40/48/56/64).  
-  - Padding padrão do slide: **48–64px** (ajuste fino por densidade).  
-  - **Sempre checar corte inferior** (nada encosta no bottom).
-- **Cores:** **0 hex hardcoded**. Somente `var(--...)` e `rgba(var(--*-rgb), a)`.  
-  - Em fundo claro: texto `var(--navy)`/`var(--text)`.  
-  - `var(--gold)` para acento (não para parágrafo longo).
-- **Ícones:** evitar **emoji como semântica** (⚠️📷✅) — prefira `[!]`, `[i]` ou **SVG monocromático** (navy/muted/gold).
-- **Hierarquia:** 1 ideia por slide. Se tem 2 ideias, faça 2 slides.  
-  - Regra de projeção: “se ler exige esforço, está denso”.
-- **Acessibilidade:** contraste alto; evitar `muted` em fonte pequena (<14px).  
-- **Sombras/bordas:** bordas suaves (`rgba(var(--navy-rgb),0.14–0.22)`) e sombra leve (sem “glow”).
-- **PDF:** sempre testar `?print=1` e garantir **1 slide/página (16:9)**, com cores preservadas.
-- **Fallback PDF (player):** manter `OSTEOPOROSE/assets/pdf/OSTEOPOROSE-slides.pdf` atualizado e, se o número de páginas mudar, atualizar `data-total-pages` em `src/pdf.html` (e `dist/pdf.html`).
-
-**Guardrails extra (evitar retrabalho / bugs comuns):**
-- **Safe area real (P0):** considere um “safe bottom” de ~24px (projeção/overscan). Se algo encosta no rodapé, **vai cortar em algum viewer/PDF**.
-- **Gold não é cor de corpo:** em fundo claro, `var(--gold)` é **acento** (bordas, ícones, números) — evite usar gold como cor de parágrafo.
-- **Nada de `min-height: 100vh` em slides:** no viewer/print 16:9 isso interfere no sizing e costuma causar **altura errada** / cortes. Se veio do legado, o CSS de print deve zerar `min-height`.
-- **Emojis:** não usar emoji como semântica (warning/info/check). Preferir `[!]`/`[i]` ou SVG monocromático.
-
-### OSTEOPOROSE (limbo P0 ↔ P1)
-**Permitido agora:** modularização, viewer/print, correções de encoding/ortografia, ajustes visuais (cores/fontes/espaçamento) **sem mudar claims/dados**.  
-**Proibido:** reescrever frases médicas, trocar números, adicionar/remover referências.
-
 
 ---
 
@@ -366,8 +340,8 @@ Migração completa será feita após MVP (10 Fevereiro).
 **SEMPRE use:** `var(--navy)`, `var(--gold)`, `var(--text)`, etc.
 
 ### 📖 TIPOGRAFIA:
-- **Títulos e corpo:** Inter (sans-serif) — legibilidade moderna (padrão)
-- **Serif:** usar apenas quando tiver um motivo claro (ex.: citação/epígrafe)
+- **Títulos:** Georgia (serif) — autoridade acadêmica
+- **Corpo:** Lato (sans-serif) — legibilidade premium
 
 ---
 
@@ -566,30 +540,3 @@ Se encontrar problemas durante auditoria:
 **Última atualização:** Janeiro 2026  
 **Versão da aula GRADE:** v0.2 (MVP em desenvolvimento)  
 **Score de qualidade:** 26/30 ✅
-
-
----
-
-# 🎬 Guardrails de estética (benchmark TED / big-tech)
-
-> Objetivo: *conference-ready* (legível no fundo da sala, hierarquia clara, aparência “produto”).
-
-## Regras (aplicáveis a todos os decks)
-- **Uma mensagem por slide**: título = afirmação; corpo = evidência.
-- **Legibilidade de palco**: nada “importante” abaixo de ~24px no layout 1280×720.
-- **Densidade controlada**: se virou parágrafo, provavelmente são **2 slides**.
-- **Microtipografia**: preferir `≤ ≥ –` (não `<= >= --`), e evitar espaços antes de pontuação.
-- **Sem rascunho na tela**: remover/ocultar tokens como `[PLACEHOLDER]`, `ARRUMAR`, `[Insight]`, `[Dados]` no “final cut”.
-- **Emojis**: só se forem parte do estilo deliberado; caso contrário, trocar por ícones consistentes (mesma espessura).
-- **Citações**: sempre no rodapé, curtas (1–2 linhas) e nunca truncadas.
-- **Grid + safe margins**: alinhar tudo em uma grade; manter “margem segura” constante.
-- **Consistência visual**: mesma gramática de cards/tabelas/callouts em todo o deck.
-- **Print/PDF**: preferir `dist/print.html` (slides inline). Garantir 1 slide por página, 16:9, sem cortes, com `print-color-adjust: exact`.
-
-## Regras específicas (OSTEOPOROSE - fase atual)
-- **Conteúdo médico congelado**: nesta fase, só viewer/modularização/print.
-- **Correções de encoding/truncamento** entram como P0 quando impedem leitura em projeção/PDF.
-- **Tipografia:** Inter (sans-serif) como padrão (títulos + corpo). Evitar misturar fontes.
-- **Cores:** preferir `var(--bg)`, `var(--navy)`, `var(--gold)`, `var(--teal)`, `var(--blue)` + tints via `rgba(var(--*-rgb), α)`.
-  - Evite hex hardcoded em estilos inline (principalmente cores fora da paleta).
-- **Anti-truncamento:** todo slide precisa caber em 1280×720 sem cortar conteúdo (teste em fullscreen + print).

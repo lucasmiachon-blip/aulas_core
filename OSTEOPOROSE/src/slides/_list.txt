@@ -33,6 +33,7 @@ S32_slide-29.html
 S33_slide-30.html
 S34_slide-31.html
 S35_slide-32.html
+S35b_slide-32b.html
 S36_slide-33.html
 S37_slide-34.html
 S38_slide-35.html
