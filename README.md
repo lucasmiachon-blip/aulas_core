@@ -132,6 +132,7 @@ Objetivo: deixar qualquer deck **conference-ready** (auditório, câmera, PDF) c
 - **Acessibilidade:** contraste alto; evitar `muted` em fonte pequena (<14px).  
 - **Sombras/bordas:** bordas suaves (`rgba(var(--navy-rgb),0.14–0.22)`) e sombra leve (sem “glow”).
 - **PDF:** sempre testar `?print=1` e garantir **1 slide/página (16:9)**, com cores preservadas.
+- **Fallback PDF (player):** manter `OSTEOPOROSE/assets/pdf/OSTEOPOROSE-slides.pdf` atualizado e, se o número de páginas mudar, atualizar `data-total-pages` em `src/pdf.html` (e `dist/pdf.html`).
 
 **Guardrails extra (evitar retrabalho / bugs comuns):**
 - **Safe area real (P0):** considere um “safe bottom” de ~24px (projeção/overscan). Se algo encosta no rodapé, **vai cortar em algum viewer/PDF**.
@@ -142,12 +143,6 @@ Objetivo: deixar qualquer deck **conference-ready** (auditório, câmera, PDF) c
 ### OSTEOPOROSE (limbo P0 ↔ P1)
 **Permitido agora:** modularização, viewer/print, correções de encoding/ortografia, ajustes visuais (cores/fontes/espaçamento) **sem mudar claims/dados**.  
 **Proibido:** reescrever frases médicas, trocar números, adicionar/remover referências.
-
-**📋 Viewer - Correção de Cortes (2026-01-23):**
-- ✅ **Solução implementada:** CSS conservador e minimalista em `print.css` (ajustes pontuais apenas para casos extremos)
-- ✅ **JavaScript auto-scale desabilitado:** Função `fitSlideOverflow` apenas reseta transformações
-- ⚠️ **Status:** Alguns slides ainda podem precisar de ajustes individuais
-- 📖 **Documentação completa:** `docs/OSTEOPOROSE_VIEWER_FIX_ATTEMPTS.md` (histórico de tentativas e lições aprendidas)
 
 
 ---

@@ -1,40 +1,33 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
 
-## SLIDEOPS_UPDATE_2026_01_23 — 2026-01-23
+## OSTEOPOROSE_PATCH0_6 — 2026-01-27
 
-### SlideOps - Melhorias de Interface e Funcionalidades
+### P0: Viewer (fit realmente responsivo – sem cortes)
+- `viewer.js`: **rewrite/cleanup** (remove duplicações internas) e novo fit com:
+  - Cálculo de escala usando `getBoundingClientRect()` + *safe inset* + **floor** do scale (evita o clássico corte de 1–2px embaixo).
+  - Ajuste de overflow do slide ativo em **coordenadas do slide** (1280×720) com **translate + scale** para manter conteúdo dentro de uma “safe area” (especialmente borda inferior).
+  - `--vh` via `visualViewport` para corrigir `100vh` em mobile/address bar.
+- `viewer.css`: palco agora depende do **flex layout** (sem `height: calc(100vh - ...)`), reduzindo drift/rounding; padding inferior inclui `safe-area-inset-bottom`.
+- `src/index.html` e `dist/index.html`: UI agora separa **PDF player** vs **Exportar** e atualiza os atalhos.
 
-**Metadados dos Comentários HTML:**
-- Ajustada a extração de metadados dos comentários invisíveis HTML para ler apenas: `title`, `anchor`, e `aiTips` (comentários/boas práticas)
-- Removidos `p`, `state`, `plan`, `difficulty` dos comentários HTML - agora são editados apenas no SlideOps
-- Adicionada caixa visual "Dados do HTML" (verde) para mostrar metadados que vêm automaticamente dos comentários
-- Adicionada caixa visual "Comentários (AI)" (amarelo) para comentários preenchidos manualmente após usar no chat/Claude
+### P0: PDF fallback em modo apresentação (teclado + fullscreen)
+- Novo `src/pdf.html` + `dist/pdf.html`: player de PDF em tela inteira com navegação por teclado (setas/space/PgUp/PgDn/Home/End) e fullscreen (F).
+- Novo `src/js/pdf-viewer.js` + `src/css/pdf-viewer.css`.
+- `assets/pdf/OSTEOPOROSE-slides.pdf`: placeholder incluído como fallback (substituir pelo PDF exportado 16:9 quando disponível).
 
-**Interface:**
-- Reorganização dos campos de comentários (um embaixo do outro) para melhor distribuição da página
-- Removido botão "Gerar esqueleto rápido" (slides agora são sincronizados, não criados manualmente)
-- Movido box de aviso para agentes IA e texto explicativo para antes dos botões de ação
-- Aumentado espaço do box de dados do HTML (min-height: 80px)
-- Adicionada opção de sort por "Plano (dia)" (Today, Tomorrow, ThisWeek, Later)
+### P0: Print/PDF (evitar cortes ao exportar)
+- `print-fit.js`: refeito para usar bounding box real + translate/scale com safe area (mais robusto do que apenas downscale).
 
-**Correções de Código:**
-- Convertidas funções de render (`renderAll`, `renderMetrics`, `renderBacklog`, `renderSlides`, `renderStudy`) para function declarations (hoisting) para evitar erros de inicialização
-- Adicionadas verificações de segurança para elementos do DOM antes de anexar event listeners
+### Arquivos modificados/novos
+- `OSTEOPOROSE/src/css/viewer.css`
+- `OSTEOPOROSE/src/js/viewer.js` (rewrite)
+- `OSTEOPOROSE/src/index.html`, `OSTEOPOROSE/dist/index.html`
+- `OSTEOPOROSE/src/pdf.html`, `OSTEOPOROSE/dist/pdf.html` (novos)
+- `OSTEOPOROSE/src/css/pdf-viewer.css`, `OSTEOPOROSE/src/js/pdf-viewer.js` (novos)
+- `OSTEOPOROSE/src/js/print-fit.js` (rewrite)
+- `OSTEOPOROSE/assets/pdf/OSTEOPOROSE-slides.pdf` (novo)
 
-**Documentação:**
-- Atualizado `tools/slideops/README.md` com distinção clara entre metadados do HTML vs metadados do SlideOps
-- Atualizado `docs/AI_HANDOFF_RULES.md` com regras obrigatórias para comentários invisíveis
-
-**Arquivos modificados:**
-- `tools/slideops/SlideOps.html`
-- `tools/slideops/README.md`
-- `docs/AI_HANDOFF_RULES.md`
-
-**Pendentes (para amanhã):**
-- ⚠️ Erro de importação ainda ocorre (verificar inicialização de `renderAll` e dependências)
-- ⚠️ Sort não está funcionando corretamente (verificar event listeners e lógica de ordenação)
-- 🎨 **Hierarquia de cores da prioridade**: Inverter P0 de vermelho (alarme) para cores mais tranquilas que não geram alarme, mantendo hierarquia visual clara
 
 ## OSTEOPOROSE_PATCH0_5 — 2026-01-26
 
