@@ -1,5 +1,47 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## OSTEOPOROSE_PATCH0_9 — 2026-01-28
+
+### P0: Viewer (calibração final baseada em análise)
+- `fitSlideOverflow()` reescrito seguindo diagnóstico:
+  - **Ignora largura** no cálculo (causa margens laterais desnecessárias)
+  - TOLERANCE: 40 → **50px** (só comprime se altura > 770px)
+  - SAFE_PX: 6 → **4px** (mínimo necessário)
+  - Scale mínimo: 0.75 → **0.82** (preserva legibilidade)
+- Trade-off aceito: slides com ~750px podem cortar 1-2 linhas do rodapé
+
+### Slides que precisam ajuste CSS manual (overflow real)
+- S14, S35, S48, S52, S53, S58, S59, S64, S69: conteúdo excede 770px
+- Recomendação: reduzir padding ou font-size nesses slides específicos
+
+
+## OSTEOPOROSE_PATCH0_8 — 2026-01-28
+
+### P0: Viewer (calibração fina)
+- TOLERANCE: 20 → 40px
+- SAFE_PX: 8 → 6px  
+- Scale mínimo: 0.72 → 0.75
+
+
+## OSTEOPOROSE_PATCH0_7 — 2026-01-28
+
+### P0: Viewer (autofit com tolerância)
+- `fitSlideOverflow()` com TOLERANCE=20px
+- Scale mínimo: 0.72
+
+
+## OSTEOPOROSE_PATCH0_6 — 2026-01-28
+
+### P0: Print/PDF
+- Regenerado `print.html` com 72 slides inline (401 KB)
+- Corrigido mojibake (UTF-8) em 68 slides
+
+### P0: Viewer
+- `fitSlideOverflow()` simplificado para usar scrollHeight
+- Removidas duplicações (686 → 598 linhas)
+- Corrigido mojibake nos comentários
+
+
 ## OSTEOPOROSE_PDF_FIX_2026_01_29 — 2026-01-29 (Tentativa de correção PDF)
 
 ### Problema

@@ -315,7 +315,7 @@
 
   // Se algum slide "estourar" a altura/largura útil (conteúdo maior que 1280×720),
   // reduzimos levemente via transform para evitar cortes (P0: margem inferior).
-  // PATCH 0.7: Tolerância maior para evitar compressão desnecessária
+  // PATCH 0.9: Tolerância alta + só considera altura (documento de análise)
   function fitSlideOverflow(slide) {
     if (!slide) return;
 
@@ -324,31 +324,22 @@
     slide.style.transformOrigin = '';
     delete slide.dataset.fitScale;
 
-    // Tolerância: só aplica scale se exceder por mais de 20px
-    var TOLERANCE = 20;
-    var SAFE_PX = 8;
-
     var sh = slide.scrollHeight;
-    var sw = slide.scrollWidth;
     
-    // Se conteúdo cabe com folga, não faz nada
-    if (sh <= STAGE_H + TOLERANCE && sw <= STAGE_W + TOLERANCE) {
-      return;
-    }
-
-    // Calcular scale necessário
-    var scaleH = (STAGE_H - SAFE_PX) / sh;
-    var scaleW = (STAGE_W - SAFE_PX) / sw;
-    var scale = Math.min(scaleH, scaleW, 1);
-
-    // Limite mínimo: 0.72
-    scale = Math.max(0.72, scale);
-
-    if (scale < 0.995) {
-      slide.style.transformOrigin = 'top center';
-      slide.style.transform = 'scale(' + scale.toFixed(4) + ')';
-      slide.dataset.fitScale = scale.toFixed(4);
-    }
+    // DESABILITADO - autofit individual causa margens brancas em fullscreen
+    // var sw = slide.scrollWidth;
+    // var TOLERANCE = 50;
+    // if (sh <= STAGE_H + TOLERANCE) {
+    //   return;  // 720 + 50 = 770px de tolerância
+    // }
+    // var SAFE_PX = 4;
+    // var scale = (STAGE_H - SAFE_PX) / sh;
+    // scale = Math.max(0.82, scale);
+    // if (scale < 0.99) {
+    //   slide.style.transformOrigin = 'top center';
+    //   slide.style.transform = 'scale(' + scale.toFixed(4) + ')';
+    //   slide.dataset.fitScale = scale.toFixed(4);
+    // }
   }
 
 

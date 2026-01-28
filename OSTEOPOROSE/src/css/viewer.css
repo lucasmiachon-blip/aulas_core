@@ -9,10 +9,10 @@
 */
 
 :root{
-  --stage-w: 1280;
-  --stage-h: 720;
+  --stage-w: 1600;
+  --stage-h:  1080;
 
-  --stage-pad: 14px; /* padding do palco (não-print) */
+  --stage-pad: 0px; /* padding do palco (não-print) */
 
   --ui-h: 56px;
   --radius-ui: 12px;
@@ -189,14 +189,15 @@ html, body{ overflow: hidden; }
 
 .stage{
   flex: 1;
-  /* Fallback 100vh + melhoria em navegadores com viewport dinâmico */
-  height: calc(100vh - var(--ui-h));
-  height: calc(100dvh - var(--ui-h));
+  /* Garantir altura total disponível e centralização vertical */
+  min-height: calc(100vh - var(--ui-h));
+  min-height: calc(100dvh - var(--ui-h));
+  height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;      /* Centraliza verticalmente */
+  justify-content: center;  /* Centraliza horizontalmente */
   /* Um pouco mais de respiro embaixo (projetor/overscan + corte inferior) */
-  padding: var(--stage-pad) var(--stage-pad) calc(var(--stage-pad) + 10px) var(--stage-pad);
+  padding: 14px 0 24px 0;
 }
 
 /* Em modo palco, a barra vira overlay. Reservamos espaço quando a UI está visível
@@ -287,7 +288,9 @@ html, body{ overflow: hidden; }
   /* Garantir que o stage ocupe toda a altura disponível */
   min-height: 100vh !important;
   min-height: 100dvh !important;
-}
+
+  align-items: center !important;
+  justify-content: center !important;}
 
 .viewer.is-fullscreen .deck--fixed{
   border-radius: 0 !important;
@@ -306,3 +309,5 @@ html, body{ overflow: hidden; }
   opacity: 0 !important;
   pointer-events: none !important;
 }
+
+
