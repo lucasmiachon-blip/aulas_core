@@ -1,9 +1,9 @@
 /*
   viewer.js
-  Navega?º?úo + fullscreen + fit-to-screen + modo print.
+  Navegação + fullscreen + fit-to-screen + modo print.
 
   Atalhos:
-  - ÔåÉ/ÔåÆ | PageUp/PageDown | Espa?ºo
+  - â†/â†’ | PageUp/PageDown | Espaço
   - Home/End
   - F: fullscreen
   - P: abrir modo PDF (print=1)
@@ -21,6 +21,7 @@
     present: false,
     uiHidden: false,
     hideTimer: null,
+    activeAssetHandlers: [],
   };
 
   function qs(sel, root) {
@@ -46,6 +47,7 @@
   function setActive(index, opts) {
     opts = opts || {};
     state.idx = clamp(index, 0, state.slides.length - 1);
+    console.log('[viewer] setActive chamado, índice:', state.idx, 'de', state.slides.length);
 
     for (var i = 0; i < state.slides.length; i++) {
       var s = state.slides[i];
@@ -53,18 +55,24 @@
       s.classList.toggle('is-active', active);
       s.hidden = !active;
       s.setAttribute('aria-hidden', active ? 'false' : 'true');
+      if (active) {
+        console.log('[viewer] Slide', i, 'ativado:', s.id || s.getAttribute('data-key') || 'sem ID');
+      }
     }
 
     updateCounter();
     syncSelect();
 
-    fitActiveSlideOverflow();
+    // (P0) Evita cortes por load tardio (fonts/imagens) e por arredondamento.
+    watchActiveSlideAssets();
+    scheduleFit('setActive');
 
     if (opts.pushHash !== false) {
       var key = state.slides[state.idx].getAttribute('data-key');
       if (key) window.location.hash = key;
     }
   }
+
 
   function updateCounter() {
     var el = qs('[data-counter]');
@@ -95,7 +103,7 @@
 
       var opt = document.createElement('option');
       opt.value = key;
-      opt.textContent = key + ' ?À ' + title;
+      opt.textContent = key + ' Â· ' + title;
       select.appendChild(opt);
     });
 
@@ -108,7 +116,7 @@
   }
 
   function syncSelect() {
-    // Sem sele?º?úo persistente (a UX ?®: dropdown como "jump")
+    // Sem seleção persistente (a UX é: dropdown como "jump")
     // Deixamos vazio.
   }
 
@@ -129,7 +137,7 @@
       }
     }
 
-    // 3) n??mero simples
+    // 3) número simples
     if (idx === -1 && /^\d+$/.test(key)) {
       idx = clamp(parseInt(key, 10) - 1, 0, state.slides.length - 1);
     }
@@ -147,7 +155,7 @@
   }
 
   function openPrintMode() {
-    // Preferir print.html (est?ítico) para exportar PDF sem depender de fetch/async.
+    // Preferir print.html (estático) para exportar PDF sem depender de fetch/async.
     // Fallback: ?print=1 (modo antigo).
     try {
       var url = new URL(window.location.href);
@@ -210,6 +218,72 @@
     };
   }
 
+  function cleanupActiveAssetHandlers() {
+    if (!state.activeAssetHandlers || !state.activeAssetHandlers.length) return;
+    state.activeAssetHandlers.forEach(function (off) {
+      try { off(); } catch (e) {}
+    });
+    state.activeAssetHandlers = [];
+  }
+
+  function watchActiveSlideAssets() {
+    if (isPrintMode()) return;
+    cleanupActiveAssetHandlers();
+
+    var active = state.slides[state.idx];
+    if (!active) return;
+
+    // Imagens e outros assets podem carregar depois do 1Âº fit,
+    // aumentando a altura e causando corte inferior.
+    var assets = active.querySelectorAll('img, video, iframe');
+    for (var i = 0; i < assets.length; i++) {
+      (function (el) {
+        // img já carregada não precisa listener
+        if (el.tagName === 'IMG' && el.complete) return;
+
+        var handler = function () {
+          scheduleFit('asset');
+        };
+
+        el.addEventListener('load', handler, { once: true });
+        el.addEventListener('error', handler, { once: true });
+
+        state.activeAssetHandlers.push(function () {
+          try { el.removeEventListener('load', handler); } catch (e) {}
+          try { el.removeEventListener('error', handler); } catch (e) {}
+        });
+      })(assets[i]);
+    }
+  }
+
+  var fitTimers = { raf: 0, t1: 0, t2: 0, t3: 0 };
+
+  function scheduleFit(reason) {
+    if (isPrintMode()) return;
+
+    if (fitTimers.raf) window.cancelAnimationFrame(fitTimers.raf);
+    if (fitTimers.t1) window.clearTimeout(fitTimers.t1);
+    if (fitTimers.t2) window.clearTimeout(fitTimers.t2);
+    if (fitTimers.t3) window.clearTimeout(fitTimers.t3);
+
+    // 1) Próximo frame (reflow do slide ativo)
+    fitTimers.raf = window.requestAnimationFrame(function () {
+      fitToScreen();
+    });
+
+    // 2) Re-rodar após fontes/ícones carregarem e o layout estabilizar
+    fitTimers.t1 = window.setTimeout(fitToScreen, 90);
+    fitTimers.t2 = window.setTimeout(fitToScreen, 260);
+    fitTimers.t3 = window.setTimeout(fitActiveSlideOverflow, 420);
+
+    // 3) Fontes web: podem alterar métricas (linha/altura)
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(function () {
+        fitToScreen();
+      });
+    }
+  }
+
   function fitToScreen() {
     if (isPrintMode()) return;
 
@@ -219,6 +293,13 @@
     if (!stage || !inner) return;
 
     var pad = getPaddingPx(stage);
+
+    // Em modo palco (barra overlay), a UI ocupa espaço enquanto visível.
+    // CSS já ajusta padding-top quando necessário, mas aqui mantemos um guard extra.
+    var viewer = qs('[data-viewer]');
+    if (viewer && viewer.classList.contains('is-present') && !viewer.classList.contains('is-ui-hidden')) {
+      pad.y += 4;
+    }
     var w = Math.max(0, stage.clientWidth - pad.x);
     var h = Math.max(0, stage.clientHeight - pad.y);
 
@@ -228,60 +309,47 @@
     inner.style.setProperty('--scale', String(scale));
     if (zoom) zoom.textContent = String(Math.round(scale * 100)) + '%';
 
-    // Ap??s mudar o scale do palco, revalida overflow do slide ativo
+    // Após mudar o scale do palco, revalida overflow do slide ativo
     fitActiveSlideOverflow();
   }
 
-  // Se algum slide "estourar" a altura/largura ??til (conte??do maior que 1280?ù720),
+  // Se algum slide "estourar" a altura/largura útil (conteúdo maior que 1280×720),
   // reduzimos levemente via transform para evitar cortes (P0: margem inferior).
-  // TEMPORARIAMENTE DESABILITADO: Usando abordagem CSS pura ao invés de auto-scale
+  // PATCH 0.6: Simplificado - usa scrollHeight (mais confiável que getBoundingClientRect)
   function fitSlideOverflow(slide) {
     if (!slide) return;
-    
-    // 1. RESET
+
+    // Reset anterior
     slide.style.transform = '';
     slide.style.transformOrigin = '';
     delete slide.dataset.fitScale;
-    void slide.offsetHeight;
+
+    // Constantes
+    var SAFE_PX = 12; // margem de segurança (aumentada de 8 para 12)
+
+    // Métrica por scrollHeight (funciona bem para flow content)
+    var sh = slide.scrollHeight;
+    var sw = slide.scrollWidth;
     
-    // 2. VERIFICAR VISIBILIDADE
-    var slideHeight = slide.clientHeight;
-    var slideWidth = slide.clientWidth;
-    if (!slideHeight || slideHeight < 100 || !slideWidth || slideWidth < 100) {
+    // Se conteúdo não excede, não precisa scale
+    if (sh <= STAGE_H && sw <= STAGE_W) {
       return;
     }
-    
-    // 3. MEDIR CONTEÚDO REAL
-    var slideRect = slide.getBoundingClientRect();
-    var maxBottom = 0;
-    var children = slide.children;
-    for (var i = 0; i < children.length; i++) {
-      var rect = children[i].getBoundingClientRect();
-      var bottom = rect.bottom - slideRect.top;
-      if (bottom > maxBottom) maxBottom = bottom;
+
+    // Calcular scale necessário
+    var scaleH = (STAGE_H - SAFE_PX * 2) / sh;
+    var scaleW = (STAGE_W - SAFE_PX * 2) / sw;
+    var scale = Math.min(scaleH, scaleW, 1);
+
+    // Limite mínimo: 0.65 (era 0.78) - permite redução maior para slides densos
+    scale = Math.max(0.65, scale);
+
+    // Tolerância: evita micro-jitter (scale > 0.99 = não precisa)
+    if (scale < 0.99) {
+      slide.style.transformOrigin = 'top center';
+      slide.style.transform = 'scale(' + scale.toFixed(4) + ')';
+      slide.dataset.fitScale = scale.toFixed(4);
     }
-    
-    if (maxBottom < 100) return;
-    
-    // 4. TOLERÂNCIA ALTA - só aplica se overflow > 200px
-    var TOLERANCE = 200;
-    var overflow = maxBottom - slideHeight;
-    
-    if (overflow <= TOLERANCE) {
-      return; // Não comprime
-    }
-    
-    // 5. CALCULAR SCALE
-    var scale = slideHeight / maxBottom;
-    
-    // 6. SCALE MÍNIMO 0.55
-    var MIN_SCALE = 0.55;
-    scale = Math.max(MIN_SCALE, scale);
-    
-    // 7. APLICAR
-    slide.style.transformOrigin = 'top center';
-    slide.style.transform = 'scale(' + scale.toFixed(4) + ')';
-    slide.dataset.fitScale = scale.toFixed(4);
   }
 
 
@@ -289,7 +357,7 @@
     if (isPrintMode()) return;
     var active = state.slides[state.idx];
     if (!active) return;
-    // esperar um frame para garantir reflow/paint do slide rec?®m-ativado
+    // esperar um frame para garantir reflow/paint do slide recém-ativado
     window.requestAnimationFrame(function () {
       fitSlideOverflow(active);
     });
@@ -297,7 +365,7 @@
 
   function fitAllSlidesOverflowForPrint() {
     if (!isPrintMode()) return;
-    // Um frame para garantir que todos os slides j?í estejam no DOM e vis?¡veis
+    // Um frame para garantir que todos os slides já estejam no DOM e visíveis
     window.requestAnimationFrame(function () {
       state.slides.forEach(function (s) { fitSlideOverflow(s); });
     });
@@ -317,6 +385,9 @@
 
     state.uiHidden = hidden;
     viewer.classList.toggle('is-ui-hidden', hidden);
+
+    // UI muda o padding/topo em modo palco -> refit
+    scheduleFit('uiHidden');
   }
 
   function armAutoHide() {
@@ -341,14 +412,16 @@
       if (state.hideTimer) window.clearTimeout(state.hideTimer);
       setUiHidden(false);
       fitAllSlidesOverflowForPrint();
+      scheduleFit('present:off');
       return;
     }
 
     armAutoHide();
+    scheduleFit('present:on');
   }
 
   function onKeyDown(e) {
-    // Evitar capturar quando usu?írio est?í em input/select
+    // Evitar capturar quando usuário está em input/select
     var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
     if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
 
@@ -427,7 +500,7 @@
     if (btnPrint) btnPrint.addEventListener('click', openPrintMode);
     if (btnPresent) btnPresent.addEventListener('click', togglePresentMode);
 
-    // Auto-hide UI em modo palco quando h?í movimento
+    // Auto-hide UI em modo palco quando há movimento
     document.addEventListener('mousemove', function () {
       if (state.present) armAutoHide();
     });
@@ -437,16 +510,34 @@
       syncFullscreenClass();
       window.setTimeout(fitToScreen, 50);
     });
+
+    // Refit quando o palco muda de tamanho (layout, zoom, sidebars)
+    if (window.ResizeObserver) {
+      var stage = document.getElementById('stage');
+      if (stage) {
+        var ro = new ResizeObserver(function () { scheduleFit('resizeObserver'); });
+        ro.observe(stage);
+      }
+    }
   }
 
   function initDeck() {
+    console.log('[viewer] initDeck chamado');
     setHtmlPrintMode();
 
     state.slides = qsa('[data-slide]');
-    if (!state.slides.length) return;
+    console.log('[viewer] Slides encontrados no DOM:', state.slides.length);
+    if (!state.slides.length) {
+      console.warn('[viewer] Nenhum slide encontrado com [data-slide]. Verificando container...');
+      var container = document.querySelector('[data-slides]');
+      if (container) {
+        console.log('[viewer] Container [data-slides] encontrado, filhos:', container.children.length);
+      }
+      return;
+    }
 
 
-    // Em modo print, mostramos todos; sem navega?º?úo.
+    // Em modo print, mostramos todos; sem navegação.
     if (isPrintMode()) {
       state.slides.forEach(function (s) {
         s.hidden = false;
@@ -463,17 +554,23 @@
     // Inicial: hash ou primeiro
     if (window.location.hash) jumpTo(window.location.hash);
 
-    // Fallback: se jumpTo n?úo ativou nada, ativa o primeiro
+    // Fallback: se jumpTo não ativou nada, ativa o primeiro
     var activeIdx = state.slides.findIndex(function (s) { return s.classList.contains('is-active'); });
-    if (activeIdx === -1) setActive(0, { pushHash: false });
-    else setActive(activeIdx, { pushHash: false });
+    console.log('[viewer] Ãndice do slide ativo encontrado:', activeIdx);
+    if (activeIdx === -1) {
+      console.log('[viewer] Nenhum slide ativo, ativando o primeiro (índice 0)');
+      setActive(0, { pushHash: false });
+    } else {
+      console.log('[viewer] Slide ativo encontrado no índice', activeIdx, ', mantendo ativo');
+      setActive(activeIdx, { pushHash: false });
+    }
 
     wireUI();
     updateCounter();
 
     syncFullscreenClass();
-    fitToScreen();
-    window.addEventListener('resize', fitToScreen);
+    scheduleFit('init');
+    window.addEventListener('resize', function () { scheduleFit('resize'); });
 
     document.addEventListener('keydown', onKeyDown);
     window.addEventListener('hashchange', onHashChange);
@@ -482,5 +579,20 @@
     if (stage) stage.addEventListener('click', onStageClick);
   }
 
-  document.addEventListener('deck:loaded', initDeck);
+  document.addEventListener('deck:loaded', function(e) {
+    console.log('[viewer] Evento deck:loaded recebido', e.detail);
+    initDeck();
+  });
+  
+  // Fallback: se o evento não disparar, tentar inicializar após um delay
+  setTimeout(function() {
+    if (state.slides.length === 0) {
+      console.log('[viewer] Fallback: tentando inicializar após delay');
+      var slides = qsa('[data-slide]');
+      if (slides.length > 0) {
+        console.log('[viewer] Fallback: encontrados', slides.length, 'slides, inicializando...');
+        initDeck();
+      }
+    }
+  }, 2000);
 })();

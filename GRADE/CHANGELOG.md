@@ -1,3 +1,25 @@
+## OSTEOPOROSE_PATCH0_6 — 2026-01-28
+
+### P0: Print/PDF (corrigido e funcional)
+- Regenerado `print.html` com todos os 72 slides inline (401 KB)
+- Corrigido mojibake (UTF-8) em 68 slides durante geração do print
+- CSS print corrigido:
+  - `page-break-after: always` para 1 slide/página
+  - Paleta oficial inline (--navy, --gold, --teal, --blue)
+  - Height fixo 720px com max-height para evitar sobreposição
+
+### P0: Viewer (overflow/autofit corrigido)
+- `fitSlideOverflow()` reescrito para usar `scrollHeight` (mais confiável que `getBoundingClientRect`)
+- Scale mínimo reduzido de 0.78 para 0.65 (acomoda slides densos como S08, S09)
+- SAFE_PX aumentado de 8 para 12 pixels (margem de segurança maior)
+- Removido código duplicado (versões antigas de scheduleFit/watchActiveSlideAssets)
+- Corrigido mojibake no código-fonte
+
+### Arquivos modificados
+- `print.html` (regenerado com correções UTF-8)
+- `viewer.js` (reescrito: função fitSlideOverflow + limpeza de duplicações)
+- `CHANGELOG.md` (nova entrada)
+
 # CHANGELOG - GRADE Slides
 
 ## [PATCH 2.7] - 2026-01-28 (P1 polish: linguagem + ranges + token cleanup)
