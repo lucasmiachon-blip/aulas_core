@@ -1,5 +1,20 @@
 # CHANGELOG - GRADE Slides
 
+## [PATCH 2.7] - 2026-01-28 (P1 polish: linguagem + ranges + token cleanup)
+
+### Slides
+- **S10**: padronizado **warranty period**; “Reassess” → **“Reavaliar”**; ranges com **en-dash** (3–7, 5–10).
+- **S11**: checklist — texto ajustado para “necessidade de reavaliar em 5–10 anos”.
+- **S29**: ranges numéricos com **en-dash** (5–20%, CAC 1–99, NNTs).
+- **S41**: range “5–10 anos” + pontuação final.
+- **S47**: badge de *Publication Bias* padronizado (**ALERTA**) + `rgba(var(--navy-rgb), …)` (sem hardcode).
+
+### Documentação
+- `README.md`: seção “GRADE — Diagnóstico + P1 pass (2026-01-28)” com backlog P0/P1.
+- `CHANGELOG.md` (raiz) e `GRADE/CHANGELOG.md` atualizados.
+
+---
+
 ## [PATCH 2.6] - 2026-01-25 (P0 polish: slides de abertura por bloco + ajustes de margem)
 
 ### Estrutura / Navegação

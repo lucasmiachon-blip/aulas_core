@@ -96,6 +96,31 @@
 - `OSTEOPOROSE/src/slides/*`
 
 
+## PATCH2_7 — 2026-01-28 (GRADE: P1 linguagem + ranges + token cleanup)
+
+### Contexto
+- Diagnóstico via viewer PDF (58 páginas) e ajuste de **P1** em pontos de consistência textual/visual.
+- **P0 permanece pendente** (ex.: S04 interação; S26 comparativo com nota interna).
+
+### O que foi feito (P1)
+- **GRADE/S10**: “Reassess” → **“Reavaliar”**; padronizado **warranty period**; ranges com **en-dash**.
+- **GRADE/S11**: checklist — wording ajustado (reavaliar em 5–10 anos).
+- **GRADE/S29**: ranges numéricos com **en-dash** (5–20%, 1–99, NNTs).
+- **GRADE/S41**: range 5–10 anos + pontuação.
+- **GRADE/S47**: badge *Publication Bias* padronizado (**ALERTA**) + cor via token (`rgba(var(--navy-rgb), …)`).
+
+### Arquivos modificados
+- `GRADE/src/slides/S10.html`
+- `GRADE/src/slides/S11.html`
+- `GRADE/src/slides/S29.html`
+- `GRADE/src/slides/S41.html`
+- `GRADE/src/slides/S47.html`
+- `README.md`
+- `CHANGELOG.md`
+- `GRADE/CHANGELOG.md`
+
+---
+
 ## PATCH2_6 — 2026-01-25
 - Tipografia: títulos (h2) padronizados em **altura/line-height** via CSS (menos variação entre slides).
 - Paleta/tokens: adicionado `--muted-rgb` + chips `.chip--teal` e `.chip--navy` (consistência e menos CSS ad hoc).

@@ -13,6 +13,25 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 **Deadline MVP:** 10 Fevereiro 2026  
 **Viewer:** https://lucasmiachon-blip.github.io/aulas_core/grade/
 
+
+## GRADE — Diagnóstico + P1 pass (2026-01-28)
+
+Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/slides/_list.txt`).
+
+### P0 (resolver antes de apresentar)
+- **S04 (p.4)** — *slide de interação*: placeholders `[QR CODE]` e sliders → **deixar para o final** (combinado).
+- **S26 (p.41)** — *Comparativo de calculadoras*: nota interna (“este slide fica como apêndice…”) + excesso de espaço em branco → precisa conteúdo/estrutura.
+
+### P1 aplicado nesta sessão (já feito)
+- **S10/S11**: PT-BR + consistência: “Reassess” → **“Reavaliar”**; padronizado **“warranty period”**; ranges com **en-dash** (`&ndash;`).
+- **S29/S41**: ranges numéricos com **en-dash** (ex.: `5–20%`, `5–10 anos`).
+- **S47**: badge “Publication Bias” padronizado (**ALERTA**) + cor via token (`rgba(var(--navy-rgb), …)`).
+
+### P1 pendente (backlog)
+- **S02 (p.2)**: revisar/confirmar % de recomendações por **LOE C vs LOE A** (JAMA 2019) e alinhar texto.
+- **S32 (p.47)**: “Validação brasileira já existe.” → **incluir referência** ou ajustar wording.
+- **S53 (p.31)**: VESALIUS‑CV (data/NEJM) → checar e/ou reescrever como “atualização/living evidence” sem data fixa.
+
 ---
 
 # 🤖 PARA ASSISTENTES DE IA (Claude, ChatGPT, Auto)
@@ -40,16 +59,16 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 - ✅ Apresentar PLANO antes de executar
 - ✅ Esperar aprovação explícita do usuário
 - ✅ Usar paleta oficial (`var(--navy)`, `var(--gold)`, etc)
-- ✅ **ATUALIZAR `docs/CHANGELOG.md` em CADA commit** ← **OBRIGATÓRIO!**
+- ✅ **ATUALIZAR `CHANGELOG.md` em CADA commit** ← **OBRIGATÓRIO!**
 
 ---
 
 ## 📝 REGRA ABSOLUTA: CHANGELOG
 
-**⚠️ CRÍTICO:** **TODA mudança DEVE ser documentada no `docs/CHANGELOG.md` ANTES do commit.**
+**⚠️ CRÍTICO:** **TODA mudança DEVE ser documentada no `CHANGELOG.md` ANTES do commit.**
 
 **Você (assistente) DEVE:**
-1. **SEMPRE** atualizar `docs/CHANGELOG.md` quando fizer QUALQUER mudança
+1. **SEMPRE** atualizar `CHANGELOG.md` quando fizer QUALQUER mudança
 2. **SEMPRE** ler a última entrada do CHANGELOG antes de começar a trabalhar
 3. **SEMPRE** documentar o que foi feito, por quê, e o que NÃO foi feito (para evitar alucinações)
 
@@ -61,7 +80,7 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 - Arquivos modificados
 - Commits relacionados
 
-**📖 Exemplo:** Veja `docs/CHANGELOG.md` - Seção `[2026-01-22] - Batch 1` como referência.
+**📖 Exemplo:** Veja `CHANGELOG.md` - Seção `[2026-01-22] - Batch 1` como referência.
 
 **NUNCA commite sem atualizar o CHANGELOG primeiro!**
 
@@ -69,7 +88,7 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 
 ## 📋 MUDANÇAS RECENTES (2026-01-22)
 
-**⚠️ IMPORTANTE:** Antes de trabalhar, leia a última entrada do `docs/CHANGELOG.md` para entender o contexto atual.
+**⚠️ IMPORTANTE:** Antes de trabalhar, leia a última entrada do `CHANGELOG.md` para entender o contexto atual.
 
 **Última sessão (Batch 1 - Slides 1-5):**
 - ✅ **PDF Safety:** `print-color-adjust: exact` adicionado (NUNCA remover!)
@@ -77,7 +96,7 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 - ✅ **Correções de conteúdo:** S02 (números), S03 (layout vertical), S04 (gramática)
 - ✅ **O que NÃO foi feito:** Documentado no CHANGELOG para evitar alucinações
 
-**📖 Leia:** `docs/CHANGELOG.md` - Seção `[2026-01-22] - Batch 1: Header Contrast + PDF Safety + Content Fixes`
+**📖 Leia:** `CHANGELOG.md` - Seção `[2026-01-22] - Batch 1: Header Contrast + PDF Safety + Content Fixes`
 
 ---
 
@@ -149,7 +168,7 @@ Este documento contém:
 2. `docs/ESSENTIAL/PROMPT_PALETA_OFICIAL.md` - Paleta de cores
 3. `docs/ESSENTIAL/TECHNICAL_QUALITY.md` - Critérios técnicos
 4. `docs/ESSENTIAL/AI_RULES.md` - Regras rígidas
-5. `docs/CHANGELOG.md` - Histórico (para contexto)
+5. `CHANGELOG.md` - Histórico (para contexto)
 
 **RESUMO RÁPIDO:**
 - ✅ Você resolve problemas técnicos
@@ -447,7 +466,7 @@ grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
 2. **Never request, print, store, or leak tokens/credentials**
 3. **`OSTEOPOROSE/` is LOCK (read-only)** - não tocar sem permissão
 4. **Changes must be small and auditable**
-5. **🚨 EVERY commit MUST update `docs/CHANGELOG.md` FIRST** ← **LEIA A SEÇÃO "REGRA ABSOLUTA: CHANGELOG" ACIMA**
+5. **🚨 EVERY commit MUST update `CHANGELOG.md` FIRST** ← **LEIA A SEÇÃO "REGRA ABSOLUTA: CHANGELOG" ACIMA**
 6. **Never invent numbers or citations** (use `[TBD]` if missing)
 7. **ALWAYS use `var(--nome)` for colors** (never hardcoded `#XXXXXX`)
 
@@ -479,7 +498,7 @@ grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
    - Se mudou `src/`, executou `npm run sync-grade`?
 
 4. **CHANGELOG atualizado?**
-   - `docs/CHANGELOG.md` foi atualizado?
+   - `CHANGELOG.md` foi atualizado?
 
 5. **Regras rígidas?**
    - Sem tokens/senhas?
@@ -506,11 +525,11 @@ Se encontrar problemas durante auditoria:
 
 **🔧 Claude Técnico (este projeto - estrutura):**
 - `docs/HANDOFF_SESSAO_2026_01_20.md` ← Último handoff técnico completo
-- `docs/CHANGELOG.md` ← Histórico completo de mudanças
+- `CHANGELOG.md` ← Histórico completo de mudanças
 
 **📚 Claude de Conteúdo (outro projeto - conteúdo médico):**
 - `docs/HANDOFF_CONTEUDO_2026_01_20.md` ← **Último handoff de conteúdo** (status atualizado)
-- `docs/CHANGELOG.md` ← Histórico completo de mudanças
+- `CHANGELOG.md` ← Histórico completo de mudanças
 - `GRADE/refs/sources.md` ← Fontes bibliográficas
 
 **O handoff técnico contém:**
