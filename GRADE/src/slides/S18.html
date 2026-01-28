@@ -27,16 +27,20 @@
                             </div>
                         </div>
 
-                        <!-- Linha do IC 95% -->
-                        <div style="position: absolute; top: 50%; left: 58%; width: 24%; height: 0.45vw; background: var(--gold); border-radius: 999px; transform: translateY(-50%); box-shadow: 0 0.1vw 0.4vw rgba(var(--gold-rgb),0.35);">
-                            <div style="position: absolute; left: 0; top: 50%; width: 1vw; height: 1vw; background: var(--gold); border-radius: 50%; transform: translate(-50%, -50%);"></div>
-                            <div style="position: absolute; right: 0; top: 50%; width: 1vw; height: 1vw; background: var(--gold); border-radius: 50%; transform: translate(50%, -50%);"></div>
+                        <!-- Linha do IC 95% (mais clean) -->
+                        <div style="position: absolute; top: 50%; left: 58%; width: 24%; height: 0; border-top: 0.34vw solid rgba(var(--gold-rgb),0.95); transform: translateY(-50%);">
+                            <!-- End caps -->
+                            <div style="position: absolute; left: 0; top: -0.75vw; width: 0.22vw; height: 1.5vw; background: rgba(var(--gold-rgb),0.95); border-radius: 999px;"></div>
+                            <div style="position: absolute; right: 0; top: -0.75vw; width: 0.22vw; height: 1.5vw; background: rgba(var(--gold-rgb),0.95); border-radius: 999px;"></div>
+
+                            <!-- Point estimate (HR 0,87 ~ 47% do IC) -->
+                            <div style="position: absolute; left: 47%; top: -0.65vw; width: 1.05vw; height: 1.05vw; background: var(--gold); border: 0.2vw solid white; border-radius: 50%; box-shadow: 0 0.15vw 0.6vw rgba(0,0,0,0.18);"></div>
                         </div>
 
                         <!-- Linha do MID -->
-                        <div style="position: absolute; top: -0.2vw; left: 66.7%; height: 4.2vw; width: 0.25vw; background: var(--navy);"></div>
+                        <div style="position: absolute; top: -0.2vw; left: 66.7%; height: 4.2vw; width: 0.25vw; background: var(--gold);"></div>
                         <div style="position: absolute; top: -1.15vw; left: 66.7%; transform: translateX(-50%);">
-                            <span style="background: var(--navy); color: white; padding: 0.25vw 0.6vw; border-radius: 0.35vw; font-size: 0.75vw; font-weight: 900; font-family: var(--font-sans);">MID</span>
+                            <span style="background: rgba(var(--gold-rgb),0.18); color: var(--navy); border: 2px solid rgba(var(--gold-rgb),0.55); padding: 0.25vw 0.6vw; border-radius: 0.35vw; font-size: 0.75vw; font-weight: 900; font-family: var(--font-sans);">MID</span>
                         </div>
                     </div>
 
@@ -114,7 +118,7 @@
             <!-- COLUNA DIREITA -->
             <div style="display: flex; flex-direction: column; gap: 1.3vw;">
 
-                <div style="background: var(--navy); color: white; padding: 1.6vw; border-radius: 0.8vw;">
+                <div style="background: rgba(var(--gold-rgb),0.18); color: var(--navy); border: 2px solid rgba(var(--gold-rgb),0.55); padding: 1.6vw; border-radius: 0.8vw;">
                     <p style="font-family: var(--font-sans); font-size: 0.95vw; color: rgba(255,255,255,0.75); text-transform: uppercase; font-weight: 900; letter-spacing: 0.05vw; margin: 0 0 1vw 0;">
                         Contexto (MACE-4)
                     </p>

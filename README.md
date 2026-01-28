@@ -559,3 +559,12 @@ Se encontrar problemas durante auditoria:
 **Última atualização:** Janeiro 2026  
 **Versão da aula GRADE:** v0.2 (MVP em desenvolvimento)  
 **Score de qualidade:** 26/30 ✅
+
+## GRADE — PATCH 2.8 (28/01/2026)
+
+Ajustes do **P1** (revisão visual/narrativa) nos slides 1–36:
+
+- **Ordem:** S07 e S08 movidos para depois do S09 (fluxo do bloco CAC).
+- **Slides 21–23:** CLEAR Outcomes + MID + Imprecisão com melhor contraste e símbolos mais “clean”.
+- **Slide 27:** fechamento SAMS com menos texto, mais respiro e dourado menos agressivo.
+- **Docs:** CHANGELOG e README atualizados.

@@ -406,3 +406,31 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - Sempre usar `align-items: start` em grids
 - Sempre usar `height: fit-content` em cards
 - Testar PDF após cada mudança estrutural
+## [PATCH 2.8] - 2026-01-28
+
+### P1 — ajustes de fluxo + refinamentos visuais (slides 1–36)
+
+#### Ordem / narrativa
+- Mover **S07** e **S08** para depois de **S09** (bloco CAC), ajustando `GRADE/src/slides/_list.txt`
+
+#### Tipografia (títulos)
+- Padronizar títulos dos slides **S07** e **S08** para usar `var(--font-serif)` / `var(--font-sans)` (evita fonte “desconfigurada”)
+
+#### Slide 21 (S47) — CLEAR Outcomes
+- Redução de conteúdo mantendo objetivo (n, follow-up, HR/IC, ARR/NNT, LDL-C)
+- Reorganização em 2 colunas com hierarquia “talk-ready”
+- Rodapé deixou de ser `position:absolute` para evitar overflow no PDF
+
+#### Slide 22 (S17) — MID (contraste)
+- Régua com mais contraste (zonas + linhas RR 1.0 / MID) e labels mais legíveis
+- Ajuste de espaçamento e pesos tipográficos
+
+#### Slide 23 (S18) — Imprecisão (símbolo do IC)
+- Substituir o “bastão com bolinhas” por **error bar** com caps + ponto estimado (mais limpo)
+- Linha/label do MID com destaque dourado
+
+#### Slide 27 (S49) — Fechamento SAMS
+- Menos texto e mais respiro (bullets em vez de parágrafo longo)
+- “Certeza final” com dourado mais suave (tint), sem bloco chapado
+- Conteúdo de Brasil/EtD em linhas mais curtas
+
