@@ -72,7 +72,7 @@
     }
 
     if (scale < 0.995) {
-      scale = clamp(scale, 0.78, 1);
+      scale = clamp(scale, 0.55, 1);
       slide.style.transformOrigin = 'top center';
       slide.style.transform = 'scale(' + scale.toFixed(4) + ')';
       slide.dataset.fitScale = scale.toFixed(4);
