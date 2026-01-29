@@ -71,7 +71,8 @@ h1, h2, h3{
 p{ margin: 0 0 0.8rem 0; }
 
 .deck{
-  width: min(100vw, 1280px);
+  width: 100%;
+  max-width: 100%;
   aspect-ratio: 16 / 9;
   margin: 0 auto;
   border: 1px solid var(--border);
@@ -109,7 +110,42 @@ p{ margin: 0 0 0.8rem 0; }
 
 .slide{
   height: 100%;
-  padding: 56px 72px; /* safe margins */
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 32px 48px; /* safe margins - reduzido para ocupar melhor a tela */
+  overflow: hidden;
+}
+
+/* Proteção global contra overflow */
+.slide * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.slide > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Mídia responsiva */
+.slide img,
+.slide video,
+.slide iframe,
+.slide svg {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Tabelas responsivas */
+.slide table {
+  max-width: 100%;
+  width: 100%;
+  table-layout: auto;
 }
 
 .slide[hidden]{ display: none !important; }

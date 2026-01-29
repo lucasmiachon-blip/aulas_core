@@ -1,5 +1,18 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## OSTEOPOROSE — 2026-01-23 (Viewer estável + overflow)
+
+### Viewer (estrutura consistente, manter esta versão)
+- Stage **1600×900** (16:9) alinhado em JS e CSS
+- **Anti-shrink**: preserva dimensões máximas do viewport ao abrir DevTools (não encolhe)
+- Paddings mínimos (stage, fullscreen) para melhor ocupação de tela
+- **Auditoria de overflow**: `__auditSlideOverflow()` no console identifica slides que violam a borda inferior (`scrollHeight` > `clientHeight`); resultado em `__auditSlideOverflowResult` e envio para debug.log
+
+### Slides — ajustes para evitar violação da borda inferior
+- **S07** (Utilidade comparada), **S08** (Utilidade em saúde), **S09** (QALY), **S12** (QALY limiar), **S13** (Risco ao longo da vida), **S26** (Refratura 12m), **S54** (DIOP 1/2), **S55** (DIOP 2/2), **S56** (PPI): redução de padding e margens (títulos, blocos) sem alterar conteúdo.
+
+---
+
 ## OSTEOPOROSE_PATCH0_9 — 2026-01-28
 
 ### P0: Viewer (calibração final baseada em análise)

@@ -12,8 +12,8 @@
 (function () {
   'use strict';
 
-  var STAGE_W = 1280;
-  var STAGE_H = 720;
+  var STAGE_W = 1600;
+  var STAGE_H = 900;
 
   var state = {
     slides: [],
@@ -257,35 +257,44 @@
   }
 
   var fitTimers = { raf: 0, t1: 0, t2: 0, t3: 0 };
+  var _fitToScreenCallCount = 0;
+  
+  // Preserva dimensões máximas para não encolher quando DevTools abre
+  var _maxViewportW = 0;
+  var _maxViewportH = 0;
 
   function scheduleFit(reason) {
     if (isPrintMode()) return;
+
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/f8bcf885-06e8-4a1f-a1c9-b4011068c7dc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'viewer.js:scheduleFit',message:'scheduleFit called',data:{reason:reason},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H1'})}).catch(function(){});
+    // #endregion
 
     if (fitTimers.raf) window.cancelAnimationFrame(fitTimers.raf);
     if (fitTimers.t1) window.clearTimeout(fitTimers.t1);
     if (fitTimers.t2) window.clearTimeout(fitTimers.t2);
     if (fitTimers.t3) window.clearTimeout(fitTimers.t3);
 
-    // 1) Próximo frame (reflow do slide ativo)
-    fitTimers.raf = window.requestAnimationFrame(function () {
-      fitToScreen();
-    });
+    // FIX: Uma única execução após layout estável (evita race: 1707→1151 e scale 1→0.899)
+    fitTimers.t1 = window.setTimeout(function () {
+      window.requestAnimationFrame(function () {
+        fitToScreen();
+        fitTimers.t2 = window.setTimeout(fitActiveSlideOverflow, 80);
+      });
+    }, 120);
 
-    // 2) Re-rodar após fontes/ícones carregarem e o layout estabilizar
-    fitTimers.t1 = window.setTimeout(fitToScreen, 90);
-    fitTimers.t2 = window.setTimeout(fitToScreen, 260);
-    fitTimers.t3 = window.setTimeout(fitActiveSlideOverflow, 420);
-
-    // 3) Fontes web: podem alterar métricas (linha/altura)
+    // Fontes web: podem alterar métricas
     if (document.fonts && document.fonts.ready) {
       document.fonts.ready.then(function () {
-        fitToScreen();
+        window.requestAnimationFrame(fitToScreen);
       });
     }
   }
 
   function fitToScreen() {
     if (isPrintMode()) return;
+    _fitToScreenCallCount += 1;
+    var callNum = _fitToScreenCallCount;
 
     var stage = document.getElementById('stage');
     var inner = qs('[data-stage-inner]');
@@ -295,21 +304,73 @@
     var pad = getPaddingPx(stage);
 
     // Em modo palco (barra overlay), a UI ocupa espaço enquanto visível.
-    // CSS já ajusta padding-top quando necessário, mas aqui mantemos um guard extra.
     var viewer = qs('[data-viewer]');
     if (viewer && viewer.classList.contains('is-present') && !viewer.classList.contains('is-ui-hidden')) {
       pad.y += 4;
     }
     var w = Math.max(0, stage.clientWidth - pad.x);
     var h = Math.max(0, stage.clientHeight - pad.y);
+    // Em fullscreen não limitar pelo viewer para o slide ocupar mais a tela (evita 50–60%)
+    var isFullscreen = viewer && viewer.classList.contains('is-fullscreen');
+    if (!isFullscreen && viewer) {
+      if (viewer.clientWidth) w = Math.min(w, Math.max(0, viewer.clientWidth - pad.x));
+      if (viewer.clientHeight) h = Math.min(h, Math.max(0, viewer.clientHeight - pad.y));
+    }
+    
+    // ANTI-SHRINK: Preserva dimensões máximas para não encolher quando DevTools abre
+    // Só em modo normal (não fullscreen) - fullscreen sempre recalcula
+    if (!isFullscreen) {
+      // Atualiza máximo apenas se viewport cresceu (DevTools fechou, janela aumentou)
+      if (w > _maxViewportW) _maxViewportW = w;
+      if (h > _maxViewportH) _maxViewportH = h;
+      // Usa o máximo para calcular scale (não encolhe)
+      w = _maxViewportW;
+      h = _maxViewportH;
+    }
 
-    var scale = Math.min(w / STAGE_W, h / STAGE_H);
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/f8bcf885-06e8-4a1f-a1c9-b4011068c7dc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'viewer.js:fitToScreen:entry',message:'dims before scale',data:{callNum:callNum,stageW:stage.clientWidth,stageH:stage.clientHeight,padX:pad.x,padY:pad.y,w:w,h:h},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H3',runId:'post-fix'})}).catch(function(){});
+    // #endregion
+
+    // Permitir scale > 1 para ocupar mais a tela quando viewport é maior que STAGE_W x STAGE_H
+    // Em fullscreen, permitir até 1.5x; em normal até 1.2x
+    var maxScale = isFullscreen ? 1.5 : 1.2;
+    var scale = Math.min(w / STAGE_W, h / STAGE_H, maxScale);
+    var scaleBeforeClamp = scale;
     scale = Math.max(0.1, Math.min(scale, 3));
 
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/f8bcf885-06e8-4a1f-a1c9-b4011068c7dc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'viewer.js:fitToScreen:scale',message:'scale calc',data:{callNum:callNum,scaleBeforeClamp:scaleBeforeClamp,scaleAfterClamp:scale,wOverW:(w/STAGE_W),hOverH:(h/STAGE_H)},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H1',runId:'post-fix'})}).catch(function(){});
+    // #endregion
+    // DEBUG VISUAL - mostra valores reais
+    console.log('%c[fitToScreen #' + callNum + ']', 'background:#0B1320;color:#DDB944;padding:4px 8px;border-radius:4px;font-weight:bold;');
+    console.log('  STAGE_W/H (JS):', STAGE_W, 'x', STAGE_H);
+    console.log('  stage.client:', stage.clientWidth, 'x', stage.clientHeight);
+    console.log('  padding:', pad.x, 'x', pad.y);
+    console.log('  w,h usado (com anti-shrink):', w, 'x', h);
+    console.log('  _maxViewport:', _maxViewportW, 'x', _maxViewportH);
+    console.log('  isFullscreen:', isFullscreen);
+    console.log('  w/STAGE_W:', (w/STAGE_W).toFixed(4), '| h/STAGE_H:', (h/STAGE_H).toFixed(4));
+    console.log('  scale calculado:', scaleBeforeClamp.toFixed(4), '-> aplicado:', scale.toFixed(4));
+    console.log('  inner real (scaled):', Math.round(STAGE_W * scale), 'x', Math.round(STAGE_H * scale));
+
     inner.style.setProperty('--scale', String(scale));
+
+    // #region agent log
+    var readback = inner && window.getComputedStyle(inner).getPropertyValue('--scale');
+    fetch('http://127.0.0.1:7242/ingest/f8bcf885-06e8-4a1f-a1c9-b4011068c7dc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'viewer.js:fitToScreen:set',message:'setProperty and readback',data:{callNum:callNum,scaleSet:scale,readback:readback,innerId:inner.id,innerClass:inner.className},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H2',runId:'post-fix'})}).catch(function(){});
+    // #endregion
+    
+    // Log das dimensões reais após aplicar scale
+    var deck = qs('[data-deck]');
+    var slides = qs('[data-slides]');
+    console.log('  -> inner.getBoundingClientRect:', Math.round(inner.getBoundingClientRect().width), 'x', Math.round(inner.getBoundingClientRect().height));
+    if (deck) console.log('  -> deck.getBoundingClientRect:', Math.round(deck.getBoundingClientRect().width), 'x', Math.round(deck.getBoundingClientRect().height));
+    if (slides) console.log('  -> slides.getBoundingClientRect:', Math.round(slides.getBoundingClientRect().width), 'x', Math.round(slides.getBoundingClientRect().height));
+    console.log('  -> window.innerWidth x innerHeight:', window.innerWidth, 'x', window.innerHeight);
+
     if (zoom) zoom.textContent = String(Math.round(scale * 100)) + '%';
 
-    // Após mudar o scale do palco, revalida overflow do slide ativo
     fitActiveSlideOverflow();
   }
 
@@ -361,10 +422,63 @@
     });
   }
 
+  /**
+   * Auditoria: identifica slides cujo conteúdo viola a borda inferior (scrollHeight > altura útil).
+   * Chamar no console: __auditSlideOverflow()
+   * Resultado em __auditSlideOverflowResult e envio para debug.log.
+   */
+  function auditSlideOverflow() {
+    if (isPrintMode() || !state.slides.length) return;
+    var origIdx = state.idx;
+    var overflow = [];
+    var okCount = 0;
+    var i = 0;
+
+    function next() {
+      if (i >= state.slides.length) {
+        setActive(origIdx, { pushHash: false });
+        var msg = overflow.length
+          ? 'Slides que violam borda inferior: ' + overflow.map(function (o) { return o.key || '#' + (o.idx + 1); }).join(', ')
+          : 'Nenhum slide viola a borda inferior.';
+        console.log('%c[audit] ' + msg, 'background:#1F766E;color:#fff;padding:6px 10px;border-radius:6px;');
+        if (overflow.length) console.table(overflow);
+        fetch('http://127.0.0.1:7242/ingest/f8bcf885-06e8-4a1f-a1c9-b4011068c7dc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'viewer.js:auditSlideOverflow',message:'audit result',data:{overflow:overflow,ok:okCount,total:state.slides.length},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'overflow-audit'})}).catch(function(){});
+        if (typeof window.__auditSlideOverflowResult !== 'undefined') window.__auditSlideOverflowResult = { overflow: overflow, ok: okCount };
+        return;
+      }
+      setActive(i, { pushHash: false });
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+          var s = state.slides[i];
+          var sh = s.scrollHeight;
+          var ch = s.clientHeight;
+          var key = s.getAttribute('data-key') || ('#' + (i + 1));
+          if (sh > ch) {
+            overflow.push({ idx: i, key: key, scrollHeight: sh, clientHeight: ch, diff: sh - ch });
+          } else {
+            okCount += 1;
+          }
+          i += 1;
+          setTimeout(next, 60);
+        });
+      });
+    }
+    next();
+  }
+
   function syncFullscreenClass() {
     var viewer = qs('[data-viewer]');
     if (!viewer) return;
-    viewer.classList.toggle('is-fullscreen', !!document.fullscreenElement);
+    var wasFullscreen = viewer.classList.contains('is-fullscreen');
+    var isNowFullscreen = !!document.fullscreenElement;
+    viewer.classList.toggle('is-fullscreen', isNowFullscreen);
+    
+    // Ao sair de fullscreen, reset os máximos para recalcular com base no viewport atual
+    if (wasFullscreen && !isNowFullscreen) {
+      _maxViewportW = 0;
+      _maxViewportH = 0;
+      console.log('%c[fullscreen] Saiu de fullscreen, resetando _maxViewport', 'color:#1F766E;');
+    }
   }
 
 
@@ -514,6 +628,7 @@
   function initDeck() {
     console.log('[viewer] initDeck chamado');
     setHtmlPrintMode();
+    window.__auditSlideOverflow = auditSlideOverflow;
 
     state.slides = qsa('[data-slide]');
     console.log('[viewer] Slides encontrados no DOM:', state.slides.length);
