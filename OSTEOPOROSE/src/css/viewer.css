@@ -198,16 +198,15 @@ html, body{
 
 .stage{
   flex: 1;
-  /* Barra é pill flutuante: stage usa 100% da altura */
+  /* Barra é pill flutuante: stage usa 100% da altura; padding 0 para ocupar a borda toda */
   min-height: 100vh;
   min-height: 100dvh;
   height: 100%;
   display: flex;
-  align-items: center;      /* Centraliza verticalmente */
-  justify-content: center;  /* Centraliza horizontalmente */
-  overflow: hidden;         /* Evita scroll dentro do stage */
-  /* Paddings mínimos para não desperdiçar espaço */
-  padding: 16px 24px;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
 }
 
 .stage > * {
@@ -305,11 +304,10 @@ html, body{
 
 /*
   Fullscreen refinements
-  - Remove paddings e chrome do deck para maximizar área útil.
+  - Sem padding no stage para o slide ocupar 100% da tela (zero margens pretas).
 */
 .viewer.is-fullscreen .stage{
-  /* Em fullscreen, padding mínimo para maximizar área do slide */
-  padding: 8px 16px !important;
+  padding: 0 !important;
   height: 100vh !important;
   height: 100dvh !important;
   min-height: 100vh !important;
@@ -327,10 +325,9 @@ html, body{
 
 .viewer.is-fullscreen .stage__inner{
   transform-origin: center center;
-  max-width: 100% !important;
-  /* Reserva espaço para padding do .stage (8+8=16px) */
-  max-height: calc(100vh - 16px) !important;
-  max-height: calc(100dvh - 16px) !important;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  max-height: 100dvh !important;
 }
 
 /* Esconder barra de navegação completamente em fullscreen */

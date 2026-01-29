@@ -313,9 +313,8 @@
     fetch('http://127.0.0.1:7242/ingest/f8bcf885-06e8-4a1f-a1c9-b4011068c7dc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'viewer.js:fitToScreen:entry',message:'dims before scale',data:{callNum:callNum,stageW:stage.clientWidth,stageH:stage.clientHeight,padX:pad.x,padY:pad.y,w:w,h:h},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H3',runId:'post-fix'})}).catch(function(){});
     // #endregion
 
-    // Permitir scale > 1 para ocupar mais a tela quando viewport é maior que STAGE_W x STAGE_H
-    // Em fullscreen, permitir até 1.5x; em normal até 1.2x
-    var maxScale = isFullscreen ? 1.5 : 1.2;
+    // Scale até preencher o stage (formato apresentação: ocupa a borda toda); teto 3x em ambos os modos
+    var maxScale = 3;
     var scale = Math.min(w / STAGE_W, h / STAGE_H, maxScale);
     var scaleBeforeClamp = scale;
     scale = Math.max(0.1, Math.min(scale, 3));

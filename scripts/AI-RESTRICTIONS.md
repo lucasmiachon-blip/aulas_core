@@ -41,6 +41,7 @@
 
 ### 2.1 `OSTEOPOROSE/src/js/viewer.js`
 
+- **Formato apresentação:** Não reduzir `maxScale` em `fitToScreen()` (deve permitir até 3x em qualquer modo). Limitar a 1.2x em janela normal voltava a criar margens pretas em monitores grandes.
 - Não remover nem alterar: dimensões do stage (16:9), navegação por teclado/setas, integração com slide-loader, lógica de overflow/scale (fitSlideOverflow ou equivalente).
 
 ### 2.2 `OSTEOPOROSE/src/js/slide-loader.js`

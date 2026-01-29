@@ -1,5 +1,29 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## OSTEOPOROSE — 2026-01-23 (Viewer formato apresentação + pendências)
+
+### Objetivo
+Restaurar e fixar o index em “formato apresentação” (slide ocupa a borda toda) e documentar para não reverter.
+
+### O que foi feito
+- **viewer.css:** `.stage { padding: 0 }` (antes 16px 24px); `.viewer.is-fullscreen .stage { padding: 0 !important }`; `.viewer.is-fullscreen .stage__inner` com `max-width: 100vw`, `max-height: 100vh/100dvh` (sem reservar 16px). Sem padding no stage o deck encosta na borda da tela.
+- **viewer.js:** Em `fitToScreen()`, `maxScale = 3` em qualquer modo (antes 1.2 em janela normal); evita margens pretas em monitores grandes.
+- **print.css:** Regras de layout (stage, deck, slides, overflow) só em `@media print`; fora disso só barra e #utilidade-grid, para o index com ?print=1 continuar ocupando a tela.
+- **AI-RESTRICTIONS.md:** Incluída regra explícita: não reintroduzir padding no .stage nem reduzir maxScale (formato apresentação).
+
+### Pendências (não feitas nesta sessão)
+- **PDF:** Ajustes finos (margens/scroll no PDF) se necessário; multi-página e 16:9 já funcionam.
+- **Slide 8 (Utilidade em Saúde):** Caixas à direita da régua no viewer/PDF; grid já existe, layout pode precisar de revisão em outra sessão.
+
+### Arquivos modificados
+- OSTEOPOROSE/src/css/viewer.css
+- OSTEOPOROSE/src/js/viewer.js
+- OSTEOPOROSE/src/css/print.css
+- scripts/AI-RESTRICTIONS.md
+- CHANGELOG.md
+
+---
+
 ## Documentação — 2026-01-23 (Guardrails CSS/JS para IA)
 
 ### Objetivo

@@ -2,6 +2,9 @@
  * export-osteoporose-pdf.js
  * Gera PDF dos slides OSTEOPOROSE (index.html?print=1) com 16.667×9.375in por página.
  *
+ * Uso: na RAIZ do projeto (Aulas2), não dentro de OSTEOPOROSE:
+ *   node scripts/export-osteoporose-pdf.js
+ *
  * ASSISTENTES DE IA (ChatGPT, Claude, etc.): Antes de modificar este script,
  * leia scripts/AI-RESTRICTIONS.md e a seção "Restrições CSS/JS" no README.md.
  * Não remova: preferCSSPageSize, bloco #utilidade-grid nos estilos injetados,
@@ -155,8 +158,13 @@ async function exportPDF() {
         margin: 0 !important;
         padding: 0 !important;
         background: #fff !important;
-        overflow: hidden !important;
-        overflow-x: clip !important;
+        overflow: visible !important;
+        overflow-x: visible !important;
+      }
+      html.is-print, html.is-print body {
+        overflow: visible !important;
+        overflow-x: visible !important;
+        overflow-y: visible !important;
       }
       .stage, .stage__inner {
         width: 16.667in !important;
@@ -193,8 +201,9 @@ async function exportPDF() {
         display: block !important;
         overflow: hidden !important;
         margin: 0 !important;
-        padding: 0 !important;
+        padding: 32px 48px !important;
         border: none !important;
+        box-sizing: border-box !important;
         box-shadow: none !important;
         outline: none !important;
         box-sizing: border-box !important;
@@ -349,12 +358,9 @@ async function exportPDF() {
   });
   console.log('🎨 Estilos aplicados no primeiro slide:', JSON.stringify(stylesCheck, null, 2));
 
-  // Forçar sem scroll horizontal (apresentação 16:9)
+  // Não forçar overflow hidden aqui: no print o fluxo precisa ser visível para
+  // page-break-after gerar múltiplas páginas; 16:9 vem de @page e .slide.
   await page.evaluate(() => {
-    document.documentElement.style.setProperty('overflow-x', 'hidden', 'important');
-    document.documentElement.style.setProperty('overflow', 'hidden', 'important');
-    document.body.style.setProperty('overflow-x', 'hidden', 'important');
-    document.body.style.setProperty('overflow', 'hidden', 'important');
     document.body.style.setProperty('max-width', '16.667in', 'important');
   });
 
@@ -395,7 +401,39 @@ async function exportPDF() {
   console.log('🔬 Slide 8 grid debug:', JSON.stringify(slide8Debug, null, 2));
   // #endregion
 
+  // #region agent log (PDF multipage — por que gera 1 página?)
+  const pdfMultipageDebug = await page.evaluate(async () => {
+    const endpoint = 'http://127.0.0.1:7242/ingest/f8bcf885-06e8-4a1f-a1c9-b4011068c7dc';
+    const slides = document.querySelectorAll('.slide');
+    const fixEl = document.getElementById('playwright-print-fix');
+    const fixContent = fixEl ? fixEl.textContent || '' : '';
+    const slide0 = slides[0];
+    const slide1 = slides[1];
+    const cs0 = slide0 ? window.getComputedStyle(slide0) : null;
+    const cs1 = slide1 ? window.getComputedStyle(slide1) : null;
+    const data = {
+      hypothesisId: 'pdf-multipage',
+      slideCount: slides.length,
+      url: window.location.href,
+      hasPlaywrightFix: !!fixEl,
+      fixContainsAtPage: fixContent.includes('@page'),
+      fixContainsPageBreakAfter: fixContent.includes('page-break-after'),
+      slide0PageBreakAfter: cs0 ? cs0.pageBreakAfter : null,
+      slide0BreakAfter: cs0 ? cs0.breakAfter : null,
+      slide1PageBreakAfter: cs1 ? cs1.pageBreakAfter : null,
+      slide1BreakAfter: cs1 ? cs1.breakAfter : null
+    };
+    await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'export-osteoporose-pdf.js:pdfMultipage', message: 'pre-pdf state', data, timestamp: Date.now(), sessionId: 'debug-session', hypothesisId: 'pdf-multipage' }) }).catch(() => {});
+    return data;
+  });
+  console.log('🔬 PDF multipage debug:', JSON.stringify(pdfMultipageDebug, null, 2));
+  try {
+    fs.appendFileSync(logPath, JSON.stringify({ location: 'export-osteoporose-pdf.js', message: 'pdf options', data: { usedUrl, slideCount: pdfMultipageDebug.slideCount, preferCSSPageSize: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } }, timestamp: Date.now(), sessionId: 'debug-session', hypothesisId: 'pdf-multipage' }) + '\n');
+  } catch (_) {}
+  // #endregion
+
   // preferCSSPageSize: true para Chromium usar @page e page-break-after (múltiplas páginas)
+  // margin 0: margens visuais vêm do padding no .slide (mesma estratégia do index)
   await page.pdf({
     path: outputPath,
     printBackground: true,

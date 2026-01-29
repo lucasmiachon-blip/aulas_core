@@ -32,7 +32,7 @@ html.is-print .slide *::after {
   -webkit-backdrop-filter: none !important;
 }
 
-/* Slide 8 (Utilidade): forçar grid 2 colunas para régua + 4 caixas ficarem lado a lado no print */
+/* Slide 8 (Utilidade): forçar grid 2 colunas no print (também em @media print). */
 html.is-print #utilidade-grid,
 html.is-print .utilidade-grid {
   display: grid !important;
@@ -42,95 +42,9 @@ html.is-print .utilidade-grid {
   width: 100% !important;
 }
 
-/* Modo print: sem scroll horizontal nem vertical; slide preenche 100% da página. */
-html.is-print,
-html.is-print body {
-  overflow: hidden !important;
-  overflow-x: hidden !important;
-  overflow-y: hidden !important;
-}
-
+/* Esconder barra ao visualizar ?print=1; layout de stage/slides só em @media print para index ocupar full screen na tela. */
 html.is-print .viewer__bar {
   display: none !important;
-}
-
-html.is-print .stage {
-  padding: 0 !important;
-  height: auto !important;
-  min-height: 0 !important;
-}
-
-html.is-print .stage__inner {
-  transform: none !important;
-  width: 16.667in !important;
-  height: auto !important;
-  max-height: none !important;
-  display: block !important;
-  overflow: visible !important;
-  overflow-x: hidden !important;
-}
-
-html.is-print .deck {
-  box-shadow: none !important;
-  border: none !important;
-  border-radius: 0 !important;
-  width: 16.667in !important;
-  height: auto !important;
-  overflow: visible !important;
-  display: block !important;
-}
-
-html.is-print .slides {
-  display: block !important;
-  height: auto !important;
-  overflow: visible !important;
-}
-
-/* Um slide = uma página; altura 9.375in (completa); overflow hidden evita scroll que come largura */
-html.is-print .slide {
-  display: block !important;
-  width: 16.667in !important;
-  height: 9.375in !important;
-  min-height: 9.375in !important;
-  max-height: 9.375in !important;
-  overflow: hidden !important;
-  box-sizing: border-box !important;
-  margin: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  outline: none !important;
-  break-inside: avoid !important;
-  page-break-inside: avoid !important;
-  page-break-before: always !important;
-  break-before: page !important;
-  page-break-after: always !important;
-  break-after: page !important;
-  position: relative !important;
-}
-
-html.is-print .slide:first-child {
-  page-break-before: auto !important;
-  break-before: auto !important;
-  /* Capa: mesmo background e alinhamento do index */
-  background: linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.88) 50%, rgba(var(--navy-rgb), 0.78) 100%) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-}
-
-/* Contracapa = 2º slide (Rilke): mesmo navy da capa */
-html.is-print .slide:nth-child(2) {
-  background: linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.88) 50%, rgba(var(--navy-rgb), 0.78) 100%) !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-}
-
-html.is-print .slide:last-child {
-  page-break-after: auto !important;
-  break-after: auto !important;
 }
 
 @media print {

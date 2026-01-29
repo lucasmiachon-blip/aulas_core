@@ -1,5 +1,13 @@
 # ISSUES (P0/P1) — GRADE Slides
 
+## OSTEOPOROSE — Pendências (2026-01-23)
+
+- **PDF:** Ajustes finos (margens/scroll no PDF) se necessário; multi-página e 16:9 já funcionam.
+- **Slide 8 (Utilidade em Saúde):** Caixas à direita da régua no viewer/PDF; grid já existe, layout pode precisar de revisão em outra sessão.
+- **Não reverter:** Viewer formato apresentação (`.stage { padding: 0 }`, `maxScale = 3` em viewer.js) — ver `scripts/AI-RESTRICTIONS.md`.
+
+---
+
 ## P0 (MVP)
 - **Bloco “Metas / Recomendações (SBC 2025)”**: criar após **SAMS** (após S49), mantendo paralelismo do P0:
   - recomendações (idealmente ipsis litteris → checar licença/uso; senão, **paráfrase + referência**),
