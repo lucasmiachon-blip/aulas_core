@@ -155,40 +155,21 @@
   }
 
   function openPrintMode() {
-    // Preferir print.html (estático) para exportar PDF sem depender de fetch/async.
-    // Fallback: ?print=1 (modo antigo).
+    // PDF em formato de apresentação: mesmo viewer, modo print (?print=1).
+    // Um slide = uma página no PDF; teclado no leitor (setas) = próximo/anterior slide.
+    // Mudanças no viewer refletem no PDF quando for gerado. print.html é fallback opcional.
     try {
       var url = new URL(window.location.href);
       url.hash = '';
+      url.searchParams.set('print', '1');
 
       var p = url.pathname || '';
-      // casos comuns:
-      // /dist/index.html -> /dist/print.html
-      // /src/index.html  -> /src/print.html
-      if (p.endsWith('/index.html')) {
-        url.pathname = p.replace(/index\.html$/, 'print.html');
-        url.search = '';
-        window.open(url.toString(), '_blank', 'noopener,noreferrer');
-        return;
-      }
-
       if (p.endsWith('/index-legacy.html')) {
-        url.pathname = p.replace(/index-legacy\.html$/, 'print.html');
-        url.search = '';
-        window.open(url.toString(), '_blank', 'noopener,noreferrer');
-        return;
+        url.pathname = p.replace(/index-legacy\.html$/, 'index.html');
+      } else if (p.endsWith('/') || (p.includes('/src') || p.includes('/dist')) && !p.endsWith('.html')) {
+        var base = p.replace(/\/$/, '');
+        url.pathname = base ? base + '/index.html' : '/OSTEOPOROSE/src/index.html';
       }
-
-      // Se estiver em /dist/ ou /src/ sem nome de arquivo
-      if (p.endsWith('/dist/') || p.endsWith('/src/')) {
-        url.pathname = p + 'print.html';
-        url.search = '';
-        window.open(url.toString(), '_blank', 'noopener,noreferrer');
-        return;
-      }
-
-      // fallback legacy
-      url.searchParams.set('print', '1');
       window.open(url.toString(), '_blank', 'noopener,noreferrer');
     } catch (e) {
       var fallback = new URL(window.location.href);

@@ -5,20 +5,20 @@ const fs = require('fs');
 async function exportPDF() {
   console.log('🚀 Iniciando exportação PDF Osteoporose...');
 
-  // Preferir print.html (estático, mais estável) ao invés de index.html?print=1
-  // Ordem: Live Server (5500) primeiro, depois 800, depois 8000, depois GitHub Pages
+  // Preferir index.html?print=1 (mesmo viewer, sempre em sync). print.html é fallback.
+  // PDF: um slide = uma página; teclado no leitor (setas) = próximo/anterior slide.
   const urlCandidates = [
-    'http://127.0.0.1:5500/OSTEOPOROSE/src/print.html',
-    'http://localhost:5500/OSTEOPOROSE/src/print.html',
-    'http://127.0.0.1:800/OSTEOPOROSE/src/print.html',
-    'http://localhost:800/OSTEOPOROSE/src/print.html',
     'http://127.0.0.1:5500/OSTEOPOROSE/src/index.html?print=1',
     'http://localhost:5500/OSTEOPOROSE/src/index.html?print=1',
+    'http://127.0.0.1:800/OSTEOPOROSE/src/index.html?print=1',
+    'http://localhost:800/OSTEOPOROSE/src/index.html?print=1',
     'http://localhost:8000/OSTEOPOROSE/src/index.html?print=1',
+    'https://lucasmiachon-blip.github.io/aulas_core/OSTEOPOROSE/src/index.html?print=1',
+    'http://127.0.0.1:5500/OSTEOPOROSE/src/print.html',
+    'http://localhost:5500/OSTEOPOROSE/src/print.html',
     'https://lucasmiachon-blip.github.io/aulas_core/OSTEOPOROSE/src/print.html'
   ];
-  // ?print=1: viewer.js isPrintMode() faz initDeck mostrar TODOS os slides (hidden=false, is-active em todos).
-  // Sem isso só o ativo fica visível e o PDF sai com 1 página.
+  const MIN_SLIDES = 70; // deck carregado (index?print=1 usa slide-loader; print.html já vem com todos)
 
   const outputDir = path.join(__dirname, '..', 'exports');
   const outputPath = path.join(outputDir, 'OSTEOPOROSE-slides.pdf');
@@ -48,12 +48,11 @@ async function exportPDF() {
 
   await page.waitForLoadState('domcontentloaded');
 
-  // print.html já tem todos os slides inline, não precisa de fetch
-  // Mas ainda precisa aguardar DOM e recursos carregarem
-  console.log('⏳ Aguardando slides (print.html já tem tudo inline)...');
+  // index?print=1: slide-loader carrega slides async; print.html já vem com todos inline
+  console.log('⏳ Aguardando deck (slides carregados)...');
   let slidesCount = 0;
   try {
-    await page.waitForFunction(() => document.querySelectorAll('.slide').length >= 50, { timeout: 60000 });
+    await page.waitForFunction(() => document.querySelectorAll('.slide').length >= 70, { timeout: 90000 });
     slidesCount = await page.evaluate(() => document.querySelectorAll('.slide').length);
   } catch (e) {
     await page.waitForTimeout(5000);
@@ -117,26 +116,35 @@ async function exportPDF() {
   }
 
   // Forçar aplicação do CSS de print via JavaScript (workaround para Playwright)
-  // Aplicar estilos DIRETAMENTE nos elementos para garantir que sejam respeitados
-  await page.evaluate(() => {
+  // Incluir .stage e .stage__inner com height: auto para fluxo multi-página
+  const layoutResult = await page.evaluate(() => {
     // 1. Adicionar estilo global
     const style = document.createElement('style');
     style.id = 'playwright-print-fix';
     style.textContent = `
       @page {
-        size: 13.333in 7.5in;
+        size: 16.667in 9.35in;
         margin: 0;
       }
       html, body {
         width: 100% !important;
         height: auto !important;
+        min-height: 0 !important;
         margin: 0 !important;
         padding: 0 !important;
         background: #fff !important;
         overflow: visible !important;
       }
+      .stage, .stage__inner {
+        width: 16.667in !important;
+        height: auto !important;
+        max-height: none !important;
+        display: block !important;
+        overflow: visible !important;
+        position: static !important;
+      }
       .deck {
-        width: 13.333in !important;
+        width: 16.667in !important;
         height: auto !important;
         display: block !important;
         overflow: visible !important;
@@ -150,23 +158,37 @@ async function exportPDF() {
       }
       .slide {
         position: relative !important;
-        width: 13.333in !important;
-        height: 7.5in !important;
-        min-height: 7.5in !important;
-        max-height: 7.5in !important;
+        width: 16.667in !important;
+        height: 9.35in !important;
+        min-height: 9.35in !important;
+        max-height: 9.35in !important;
         display: block !important;
-        page-break-after: always !important;
-        page-break-inside: avoid !important;
-        break-after: page !important;
-        break-inside: avoid !important;
         overflow: hidden !important;
         margin: 0 !important;
-        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
         box-sizing: border-box !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+      .slide:first-child {
+        page-break-before: auto !important;
+        break-before: auto !important;
       }
       .slide:last-child {
         page-break-after: auto !important;
         break-after: auto !important;
+      }
+      .slide * {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
       }
     `;
     
@@ -174,45 +196,52 @@ async function exportPDF() {
     if (existing) existing.remove();
     document.head.appendChild(style);
     
-    // 2. Aplicar estilos INLINE diretamente em cada slide (força absoluta)
+    // 2. Aplicar estilos de print em cada slide (não remover style: preserva padding/background do viewer)
     const slides = document.querySelectorAll('.slide');
     slides.forEach((slide, index) => {
-      // Remover estilos inline que podem conflitar
-      slide.removeAttribute('style');
-      
-      // Aplicar estilos críticos via setProperty (mais forte que style.xxx)
-      slide.style.setProperty('width', '13.333in', 'important');
-      slide.style.setProperty('height', '7.5in', 'important');
-      slide.style.setProperty('min-height', '7.5in', 'important');
-      slide.style.setProperty('max-height', '7.5in', 'important');
+      // Dimensões e page-break; NÃO sobrescrever padding (preserva padding inline do slide)
+      slide.style.setProperty('width', '16.667in', 'important');
+      slide.style.setProperty('height', '9.35in', 'important');
+      slide.style.setProperty('min-height', '9.35in', 'important');
+      slide.style.setProperty('max-height', '9.35in', 'important');
       slide.style.setProperty('display', 'block', 'important');
       slide.style.setProperty('position', 'relative', 'important');
       slide.style.setProperty('overflow', 'hidden', 'important');
       slide.style.setProperty('margin', '0', 'important');
-      slide.style.setProperty('padding', '0', 'important');
+      slide.style.setProperty('border', 'none', 'important');
+      slide.style.setProperty('box-shadow', 'none', 'important');
+      slide.style.setProperty('outline', 'none', 'important');
       slide.style.setProperty('box-sizing', 'border-box', 'important');
-      slide.style.setProperty('page-break-after', 'always', 'important');
+      slide.style.setProperty('page-break-before', index === 0 ? 'auto' : 'always', 'important');
+      slide.style.setProperty('break-before', index === 0 ? 'auto' : 'page', 'important');
+      slide.style.setProperty('page-break-after', index === slides.length - 1 ? 'auto' : 'always', 'important');
+      slide.style.setProperty('break-after', index === slides.length - 1 ? 'auto' : 'page', 'important');
       slide.style.setProperty('page-break-inside', 'avoid', 'important');
-      slide.style.setProperty('break-after', 'page', 'important');
       slide.style.setProperty('break-inside', 'avoid', 'important');
-      
-      // Último slide não deve ter page-break-after
-      if (index === slides.length - 1) {
-        slide.style.setProperty('page-break-after', 'auto', 'important');
-        slide.style.setProperty('break-after', 'auto', 'important');
-      }
+      slide.style.setProperty('-webkit-print-color-adjust', 'exact', 'important');
+      slide.style.setProperty('print-color-adjust', 'exact', 'important');
     });
     
-    // 3. Ajustar deck e slides container
+    // 3. Ajustar stage, stage__inner, deck e slides (todos height: auto para fluxo multi-página)
+    const stage = document.querySelector('.stage');
+    const stageInner = document.querySelector('.stage__inner');
+    [stage, stageInner].forEach(el => {
+      if (!el) return;
+      el.style.setProperty('width', '16.667in', 'important');
+      el.style.setProperty('height', 'auto', 'important');
+      el.style.setProperty('max-height', 'none', 'important');
+      el.style.setProperty('display', 'block', 'important');
+      el.style.setProperty('overflow', 'visible', 'important');
+      el.style.setProperty('position', 'static', 'important');
+    });
     const deck = document.querySelector('.deck');
     if (deck) {
-      deck.style.setProperty('width', '13.333in', 'important');
+      deck.style.setProperty('width', '16.667in', 'important');
       deck.style.setProperty('height', 'auto', 'important');
       deck.style.setProperty('display', 'block', 'important');
       deck.style.setProperty('overflow', 'visible', 'important');
       deck.style.setProperty('position', 'static', 'important');
     }
-    
     const slidesContainer = document.querySelector('.slides');
     if (slidesContainer) {
       slidesContainer.style.setProperty('height', 'auto', 'important');
@@ -231,12 +260,21 @@ async function exportPDF() {
     document.body.style.setProperty('padding', '0', 'important');
     document.body.style.setProperty('overflow', 'visible', 'important');
     
+    // 5. Forçar reflow para layout multi-página
+    void document.body.offsetHeight;
+    const slidesEl = document.querySelector('.slides');
+    const bodyScroll = document.body.scrollHeight;
+    const slidesScroll = slidesEl ? slidesEl.scrollHeight : 0;
     return {
       slidesCount: slides.length,
       deckWidth: deck ? window.getComputedStyle(deck).width : 'N/A',
-      firstSlideHeight: slides.length > 0 ? window.getComputedStyle(slides[0]).height : 'N/A'
+      firstSlideHeight: slides.length > 0 ? window.getComputedStyle(slides[0]).height : 'N/A',
+      bodyScrollHeight: bodyScroll,
+      slidesScrollHeight: slidesScroll,
+      stageHeight: stageInner ? window.getComputedStyle(stageInner).height : 'N/A'
     };
   });
+  console.log('📐 Layout pós-fix:', JSON.stringify(layoutResult, null, 2));
   
   await page.waitForTimeout(2000);
   
@@ -257,20 +295,13 @@ async function exportPDF() {
   });
   console.log('🎨 Estilos aplicados no primeiro slide:', JSON.stringify(stylesCheck, null, 2));
 
-  // 13.333in x 7.5in em pixels (96 DPI padrão)
-  // 13.333 * 96 = 1279.968px ≈ 1280px
-  // 7.5 * 96 = 720px
-  const pageWidth = 1280; // pixels
-  const pageHeight = 720; // pixels
-  
+  // preferCSSPageSize: true para Chromium usar @page e page-break-after (múltiplas páginas)
   await page.pdf({
     path: outputPath,
-    width: `${pageWidth}px`,
-    height: `${pageHeight}px`,
     printBackground: true,
     margin: { top: 0, right: 0, bottom: 0, left: 0 },
     displayHeaderFooter: false,
-    preferCSSPageSize: false // Usar dimensões explícitas ao invés de CSS
+    preferCSSPageSize: true
   });
 
   await browser.close();

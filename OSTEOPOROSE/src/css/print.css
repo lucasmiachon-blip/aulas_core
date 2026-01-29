@@ -12,44 +12,111 @@ html {
   print-color-adjust: exact;
 }
 
-/* Modo print via querystring (controlado pelo JS) */
+/* Forçar fundos e cores no print (boxes não sumirem) */
+html.is-print .slide,
+html.is-print .slide * {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+/* backdrop-filter não renderiza no PDF e faz boxes internos sumirem — desligar no print */
+html.is-print .slide *,
+html.is-print .slide *::before,
+html.is-print .slide *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Modo print: um slide = uma página. Containers em fluxo (height: auto). */
 html.is-print .viewer__bar {
   display: none !important;
 }
 
 html.is-print .stage {
   padding: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
 }
 
 html.is-print .stage__inner {
   transform: none !important;
+  width: 16.667in !important;  /* 1600px @96dpi = viewer */
+  height: auto !important;
+  max-height: none !important;
+  display: block !important;
+  overflow: visible !important;
 }
 
 html.is-print .deck {
   box-shadow: none !important;
   border: none !important;
   border-radius: 0 !important;
+  width: 16.667in !important;
+  height: auto !important;
+  overflow: visible !important;
+  display: block !important;
 }
 
+html.is-print .slides {
+  display: block !important;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+/* Um slide = uma página; altura 9.35in para quebra estrita (evita linha/borda e vazar próximo slide) */
 html.is-print .slide {
-  page-break-after: always;
+  display: block !important;
+  width: 16.667in !important;
+  height: 9.35in !important;
+  min-height: 9.35in !important;
+  max-height: 9.35in !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+  page-break-before: always !important;
+  break-before: page !important;
+  page-break-after: always !important;
+  break-after: page !important;
+  position: relative !important;
+  contain: layout !important;
+}
+
+html.is-print .slide:first-child {
+  page-break-before: auto !important;
+  break-before: auto !important;
 }
 
 html.is-print .slide:last-child {
-  page-break-after: auto;
+  page-break-after: auto !important;
+  break-after: auto !important;
 }
+
 @media print {
   @page {
-    size: 13.333in 7.5in;
+    size: 16.667in 9.35in;
     margin: 0;
   }
 
   html, body {
     width: 100%;
-    height: 100%;
+    height: auto !important;
+    min-height: 0 !important;
     margin: 0;
     padding: 0;
     background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .slide, .slide * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   .viewer__bar {
@@ -59,34 +126,59 @@ html.is-print .slide:last-child {
   .stage {
     padding: 0 !important;
     background: #fff !important;
+    height: auto !important;
   }
 
   .stage__inner {
-    width: 13.333in !important;
-    height: 7.5in !important;
+    width: 16.667in !important;
+    height: auto !important;
+    max-height: none !important;
     transform: none !important;
+    display: block !important;
+    overflow: visible !important;
   }
 
   .deck {
-    width: 13.333in !important;
-    height: 7.5in !important;
+    width: 16.667in !important;
+    height: auto !important;
     border: none !important;
     border-radius: 0 !important;
     box-shadow: none !important;
-    overflow: hidden;
+    overflow: visible !important;
+    display: block !important;
   }
 
   .slides {
-    height: 100% !important;
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
   }
 
   .slide {
-    height: 100% !important;
-    overflow: hidden;
-    page-break-after: always;
+    display: block !important;
+    width: 16.667in !important;
+    height: 9.35in !important;
+    min-height: 9.35in !important;
+    max-height: 9.35in !important;
+    overflow: hidden !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    box-sizing: border-box !important;
   }
 
+  .slide:first-child {
+    page-break-before: auto !important;
+    break-before: auto !important;
+  }
   .slide:last-child {
-    page-break-after: auto;
+    page-break-after: auto !important;
+    break-after: auto !important;
   }
 }

@@ -1,6 +1,13 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
-## OSTEOPOROSE — 2026-01-23 (Viewer estável + overflow)
+## OSTEOPOROSE — 2026-01-23 (Viewer estável + overflow + PDF)
+
+### PDF em formato de apresentação
+- **Fonte do PDF**: botão "PDF" abre **index.html?print=1** (mesmo viewer, modo print). Um slide = uma página; no leitor de PDF, setas = próximo/anterior slide.
+- **Sync com o viewer**: mudanças no viewer refletem no PDF quando for gerado; print.html opcional/fallback.
+- **Script de export** (`scripts/export-osteoporose-pdf.js`): prioriza index?print=1, espera deck (≥70 slides), injeta .stage/.stage__inner height:auto, slide 16.667×9.35in, border/box-shadow none, backdrop-filter none, print-color-adjust exact, preferCSSPageSize.
+- **print.css**: multi-página (stage/deck/slides height:auto), slide 16.667×9.35in, border/box-shadow/outline none, break-before/after, backdrop-filter none nos filhos, print-color-adjust exact. Altura 9.35in para reduzir vazamento do próximo slide na página.
+- **Pendência**: em alguns leitores pode ainda aparecer linha/borda inferior ou um trecho do próximo slide; validar e ajustar se necessário.
 
 ### Viewer (estrutura consistente, manter esta versão)
 - Stage **1600×900** (16:9) alinhado em JS e CSS
