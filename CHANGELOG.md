@@ -12,7 +12,7 @@ Restaurar e fixar o index em “formato apresentação” (slide ocupa a borda t
 - **AI-RESTRICTIONS.md:** Incluída regra explícita: não reintroduzir padding no .stage nem reduzir maxScale (formato apresentação).
 
 ### Pendências (não feitas nesta sessão)
-- **PDF:** Ajustes finos (margens/scroll no PDF) se necessário; multi-página e 16:9 já funcionam.
+- **PDF:** Ajustes finos (fit, proporção, delay, margens/scroll) — fazer **somente** em `scripts/export-osteoporose-pdf.js`; não alterar index nem print.
 - **Slide 8 (Utilidade em Saúde):** Caixas à direita da régua no viewer/PDF; grid já existe, layout pode precisar de revisão em outra sessão.
 
 ### Arquivos modificados

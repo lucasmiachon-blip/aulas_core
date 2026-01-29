@@ -82,6 +82,7 @@ Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/s
 
 3. **Scripts de export/build (scripts/export-osteoporose-pdf.js, scripts/build-osteoporose-print-html.js)**  
    - **NUNCA** remover ou alterar: dimensões 16.667in × 9.375in; `preferCSSPageSize: true`; bloco de estilos injetados que inclui `#utilidade-grid` e regras de slide/stage/deck; margem 0 em `@page`.  
+   - **Ajustes de fit/proporção/delay/margens no PDF:** fazer **somente** no script de export (`export-osteoporose-pdf.js`); não alterar index nem print para corrigir o PDF.
    - Qualquer alteração deve ser documentada no CHANGELOG.
 
 **Referência detalhada:** `scripts/AI-RESTRICTIONS.md` e última entrada do `CHANGELOG.md`.

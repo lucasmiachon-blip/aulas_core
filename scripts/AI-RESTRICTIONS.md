@@ -3,6 +3,8 @@
 **Público:** ChatGPT, Claude, Cursor e outros assistentes que possam editar este repositório.  
 **Objetivo:** Evitar que mudanças em CSS, JS ou scripts de export desfaçam o trabalho já estabilizado (viewer, PDF 16:9, slide 8 “Utilidade em Saúde”, overflow, capa/contracapa).
 
+**Regra PDF vs index/print:** Ajustes de fit, proporção, delay ou margens que afetem o **resultado do PDF** devem ser feitos **somente** em `scripts/export-osteoporose-pdf.js`. **Não alterar** `OSTEOPOROSE/src/index.html`, `OSTEOPOROSE/src/print.html`, nem o CSS/JS do viewer (viewer.css, viewer.js, print.css, base.css) para corrigir comportamento do PDF.
+
 ---
 
 ## Regra geral

@@ -2,7 +2,7 @@
 
 ## OSTEOPOROSE — Pendências (2026-01-23)
 
-- **PDF:** Ajustes finos (margens/scroll no PDF) se necessário; multi-página e 16:9 já funcionam.
+- **PDF:** Ajustes finos (fit, proporção, delay, margens/scroll no PDF) — fazer **somente** em `scripts/export-osteoporose-pdf.js`; não alterar index nem print.
 - **Slide 8 (Utilidade em Saúde):** Caixas à direita da régua no viewer/PDF; grid já existe, layout pode precisar de revisão em outra sessão.
 - **Não reverter:** Viewer formato apresentação (`.stage { padding: 0 }`, `maxScale = 3` em viewer.js) — ver `scripts/AI-RESTRICTIONS.md`.
 
