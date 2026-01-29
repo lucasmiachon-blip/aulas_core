@@ -63,6 +63,31 @@ Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/s
 
 ---
 
+## 🚫 RESTRIÇÕES CSS/JS PARA ASSISTENTES DE IA (ChatGPT, Claude, etc.)
+
+**Objetivo:** Evitar que mudanças em CSS ou JS desfaçam o trabalho já estabilizado (viewer, PDF, slide 8 grid, overflow, etc.).
+
+**Regra geral:** **NÃO altere** arquivos em `OSTEOPOROSE/src/css/` nem em `OSTEOPOROSE/src/js/` nem em `scripts/export-osteoporose-pdf.js` (e scripts de build/print OSTEOPOROSE) **a menos que** tenha demanda explícita do usuário e plano aprovado.
+
+**Se for autorizado a modificar CSS ou JS, restrições obrigatórias:**
+
+1. **CSS (base.css, print.css, blocks.css, viewer.css)**  
+   - **NUNCA** remover ou alterar: `#utilidade-grid` / `.utilidade-grid` (grid 2 colunas: 300px 1fr); regras de `@page` e dimensões de `.slide` em print (16.667in × 9.375in); `overflow: hidden` / `overflow-x: clip` em html/body/stage/deck/slide no print; `print-color-adjust: exact`; `page-break-after: always` nos slides.  
+   - **NUNCA** trocar `display: grid` por `display: block` (ou flex) no container do slide 8 (Utilidade em Saúde).  
+   - Qualquer alteração deve preservar paleta (`var(--navy)`, `var(--gold)`, etc.) e documentar no CHANGELOG.
+
+2. **JS (viewer.js, slide-loader.js, navigation.js, print-fit.js, blocks.js)**  
+   - **NUNCA** remover ou alterar: lógica de stage/deck 16:9; carregamento de slides a partir de `_list.txt`; ajustes de overflow/scale para slides altos; listeners de teclado/navegação.  
+   - Qualquer alteração deve ser documentada no CHANGELOG.
+
+3. **Scripts de export/build (scripts/export-osteoporose-pdf.js, scripts/build-osteoporose-print-html.js)**  
+   - **NUNCA** remover ou alterar: dimensões 16.667in × 9.375in; `preferCSSPageSize: true`; bloco de estilos injetados que inclui `#utilidade-grid` e regras de slide/stage/deck; margem 0 em `@page`.  
+   - Qualquer alteração deve ser documentada no CHANGELOG.
+
+**Referência detalhada:** `scripts/AI-RESTRICTIONS.md` e última entrada do `CHANGELOG.md`.
+
+---
+
 ## 📝 REGRA ABSOLUTA: CHANGELOG
 
 **⚠️ CRÍTICO:** **TODA mudança DEVE ser documentada no `CHANGELOG.md` ANTES do commit.**

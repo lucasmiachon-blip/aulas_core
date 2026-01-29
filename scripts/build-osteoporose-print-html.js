@@ -4,6 +4,9 @@
  * - Mesma fonte que o index (slide-loader): sempre em sync, UTF-8, sem mojibakes
  * - Configuração alinhada ao viewer: 1600×900 (16.667in × 9.375in)
  * Uso: node scripts/build-osteoporose-print-html.js
+ *
+ * ASSISTENTES DE IA: Antes de modificar, leia scripts/AI-RESTRICTIONS.md.
+ * Não remova a geração a partir de _list.txt nem a configuração 16:9.
  */
 
 const fs = require('fs');
@@ -46,17 +49,25 @@ p{margin:0 0 .8rem}
   min-height:900px!important;max-height:900px!important;
   margin:0 auto 24px!important;
   overflow:hidden!important;position:relative!important;
-  background:var(--bg)!important;
   border:none!important;border-radius:0!important;
   box-shadow:none!important;
   page-break-after:always!important;break-after:page!important;
   page-break-inside:avoid!important;break-inside:avoid!important;
 }
+/* Capa (1º) e contracapa (2º = Rilke): navy. Demais slides: fundo padrão. */
+.slide:not(:first-child):not(:nth-child(2)){background:var(--bg)!important}
+.slide:first-child,.slide:nth-child(2){
+  background:linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.88) 50%, rgba(var(--navy-rgb), 0.78) 100%)!important;
+  display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;
+}
 .slide:last-child{page-break-after:auto!important;break-after:auto!important;margin-bottom:0!important}
 .slide[hidden]{display:block!important}
+/* Slide 8 (Utilidade): forçar grid 2 colunas para régua + 4 caixas lado a lado no print */
+#utilidade-grid,.utilidade-grid{display:grid!important;grid-template-columns:300px 1fr!important;gap:24px!important;align-items:start!important;width:100%!important}
 @media print{
   @page{size:16.667in 9.375in;margin:0}
-  body{background:white!important}
+  body{background:white!important;overflow:hidden!important}
+  html{overflow:hidden!important}
   .slides-container{padding:0!important;max-width:none!important}
   .slide{width:16.667in!important;height:9.375in!important;margin:0!important;border:none!important;box-shadow:none!important}
 }</style>

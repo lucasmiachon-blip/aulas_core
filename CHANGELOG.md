@@ -1,10 +1,34 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## Documentação — 2026-01-23 (Guardrails CSS/JS para IA)
+
+### Objetivo
+Garantir que assistentes de IA (ChatGPT, Claude, etc.) não desfaçam o trabalho estabilizado em CSS/JS ao editar conteúdo ou fazer outras alterações.
+
+### O que foi feito
+- **README.md**: Nova seção "Restrições CSS/JS para assistentes de IA" com regra geral (não alterar CSS/JS de OSTEOPOROSE/scripts de export sem demanda explícita) e restrições explícitas se for autorizado: não remover/alterar grid #utilidade-grid, @page/dimensões slide 16.667×9.375in, overflow/print-color-adjust, lógica de viewer/slide-loader/export PDF; referência a `scripts/AI-RESTRICTIONS.md`.
+- **CHANGELOG.md**: Esta entrada.
+- **scripts/AI-RESTRICTIONS.md**: Criado com lista detalhada de blocos e regras que não devem ser removidos ou alterados (CSS base/print, JS viewer/loader, export-osteoporose-pdf.js).
+- **Comentários nos arquivos críticos**: Em `OSTEOPOROSE/src/css/base.css`, `OSTEOPOROSE/src/css/print.css` e `scripts/export-osteoporose-pdf.js` foi adicionado cabeçalho/aviso para IA: "Leia scripts/AI-RESTRICTIONS.md antes de modificar".
+
+### O que NÃO foi feito
+- Nenhuma alteração de comportamento em CSS ou JS; apenas documentação e avisos.
+
+### Arquivos modificados
+- README.md
+- CHANGELOG.md
+- scripts/AI-RESTRICTIONS.md (novo)
+- OSTEOPOROSE/src/css/base.css (comentário)
+- OSTEOPOROSE/src/css/print.css (comentário)
+- scripts/export-osteoporose-pdf.js (comentário)
+
+---
+
 ## OSTEOPOROSE — 2026-01-23 (Viewer estável + overflow + PDF)
 
-### Estado do PDF (parada por hoje — retomar amanhã)
-- **Conteúdo**: 100% fiel ao viewer; slides e texto corretos.
-- **Problema em aberto**: o PDF ainda exibe "um slide + um pedaço do próximo" na mesma página (bleeding). Tentativas feitas: altura 9.35in, break-before/after, remoção de padding agressivo, backdrop-filter none. **Amanhã**: testar outra estratégia (ex.: divs breaker com altura exata, ou geração página a página).
+### PDF — modo apresentação e margem direita
+- **Modo apresentação**: funciona bem no leitor de PDF (um slide por página, setas navegam).
+- **Margem direita**: restaurada com `@page { margin: 0 10mm 0 0 }` e largura do slide/deck/stage `calc(16.667in - 10mm)` em `print.css` e no script `export-osteoporose-pdf.js`.
 
 ### PDF em formato de apresentação (implementado)
 - **Fonte do PDF**: botão "PDF" abre **index.html?print=1** (mesmo viewer, modo print). Um slide = uma página; no leitor de PDF, setas = próximo/anterior slide.
