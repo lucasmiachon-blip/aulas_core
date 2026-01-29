@@ -15,7 +15,36 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SLIDES_DIR = path.join(ROOT, 'OSTEOPOROSE', 'src', 'slides');
 const LIST_FILE = path.join(SLIDES_DIR, '_list.txt');
+const META_FILE = path.join(SLIDES_DIR, '_meta.json');
 const OUT_FILE = path.join(ROOT, 'OSTEOPOROSE', 'src', 'print.html');
+
+/** Valida _list.txt vs _meta.json e arquivos em disco. Sai com código 1 se inconsistente. */
+function validateListMetaAndFiles(files) {
+  let meta = [];
+  try {
+    meta = JSON.parse(fs.readFileSync(META_FILE, 'utf8'));
+  } catch (e) {
+    console.error('ERRO: _meta.json não encontrado ou inválido.', e.message);
+    process.exit(1);
+  }
+  if (meta.length !== files.length) {
+    console.error('ERRO: _list.txt tem', files.length, 'itens; _meta.json tem', meta.length, '. Mantenha em sync (rename-osteoporose-slides-by-order.js).');
+    process.exit(1);
+  }
+  for (let i = 0; i < files.length; i++) {
+    if (meta[i].file !== files[i]) {
+      console.error('ERRO: Ordem divergente em índice', i + 1, '- list:', files[i], 'meta:', meta[i].file);
+      process.exit(1);
+    }
+  }
+  for (const file of files) {
+    const filePath = path.join(SLIDES_DIR, file);
+    if (!fs.existsSync(filePath)) {
+      console.error('ERRO: Arquivo da lista não encontrado:', file);
+      process.exit(1);
+    }
+  }
+}
 
 const PRINT_HEAD = `<!DOCTYPE html>
 <!--
@@ -89,13 +118,11 @@ function main() {
     .map((l) => l.trim())
     .filter((l) => l && !l.startsWith('#') && l.endsWith('.html'));
 
+  validateListMetaAndFiles(files);
+
   const sections = [];
   for (const file of files) {
     const filePath = path.join(SLIDES_DIR, file);
-    if (!fs.existsSync(filePath)) {
-      console.warn('Skip (not found):', file);
-      continue;
-    }
     const html = fs.readFileSync(filePath, 'utf8');
     sections.push(html.trim());
   }

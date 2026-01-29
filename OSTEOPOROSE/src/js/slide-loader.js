@@ -68,6 +68,25 @@
       var files = parseList(listTxt);
       console.log('[slide-loader] Arquivos encontrados:', files.length);
 
+    // Validar _list vs _meta.json para evitar propagação de erro (index e print usam a mesma fonte)
+    var metaUrl = base + 'slides/_meta.json';
+    try {
+      var metaTxt = await fetchText(metaUrl);
+      var metaList = JSON.parse(metaTxt);
+      if (metaList.length !== files.length) {
+        console.warn('[slide-loader] SEGURANÇA: _list.txt tem', files.length, 'itens; _meta.json tem', metaList.length, '. Mantenha em sync (scripts/rename-osteoporose-slides-by-order.js).');
+      } else {
+        for (var mi = 0; mi < files.length; mi++) {
+          if (metaList[mi].file !== files[mi]) {
+            console.warn('[slide-loader] SEGURANÇA: ordem divergente em índice', mi + 1, '- list:', files[mi], 'meta:', metaList[mi].file);
+            break;
+          }
+        }
+      }
+    } catch (metaErr) {
+      console.warn('[slide-loader] _meta.json não carregado ou inválido (não bloqueia):', metaErr.message);
+    }
+
     // Expor para outras partes do sistema
     window.__OSTEOPOROSE_DECK = window.__OSTEOPOROSE_DECK || {};
     window.__OSTEOPOROSE_DECK.base = base;
