@@ -2,12 +2,20 @@
 
 ## OSTEOPOROSE — 2026-01-23 (Viewer estável + overflow + PDF)
 
-### PDF em formato de apresentação
+### Estado do PDF (parada por hoje — retomar amanhã)
+- **Conteúdo**: 100% fiel ao viewer; slides e texto corretos.
+- **Problema em aberto**: o PDF ainda exibe "um slide + um pedaço do próximo" na mesma página (bleeding). Tentativas feitas: altura 9.35in, break-before/after, remoção de padding agressivo, backdrop-filter none. **Amanhã**: testar outra estratégia (ex.: divs breaker com altura exata, ou geração página a página).
+
+### PDF em formato de apresentação (implementado)
 - **Fonte do PDF**: botão "PDF" abre **index.html?print=1** (mesmo viewer, modo print). Um slide = uma página; no leitor de PDF, setas = próximo/anterior slide.
 - **Sync com o viewer**: mudanças no viewer refletem no PDF quando for gerado; print.html opcional/fallback.
 - **Script de export** (`scripts/export-osteoporose-pdf.js`): prioriza index?print=1, espera deck (≥70 slides), injeta .stage/.stage__inner height:auto, slide 16.667×9.35in, border/box-shadow none, backdrop-filter none, print-color-adjust exact, preferCSSPageSize.
-- **print.css**: multi-página (stage/deck/slides height:auto), slide 16.667×9.35in, border/box-shadow/outline none, break-before/after, backdrop-filter none nos filhos, print-color-adjust exact. Altura 9.35in para reduzir vazamento do próximo slide na página.
-- **Pendência**: em alguns leitores pode ainda aparecer linha/borda inferior ou um trecho do próximo slide; validar e ajustar se necessário.
+- **print.css**: multi-página (stage/deck/slides height:auto), slide 16.667×9.35in, border/box-shadow/outline none, break-before/after, backdrop-filter none nos filhos, print-color-adjust exact. Altura 9.35in para reduzir vazamento (bleeding ainda persiste).
+
+### print.html — regenerado a partir dos slides (sync com index, UTF-8)
+- **Problema**: print.html era cópia estática desatualizada (1280×720), com mojibakes (61 ocorrências) e configuração diferente do index; slide "O que é Utilidade em Saúde?" no index já tinha conteúdo completo (S08_slide-10.html), mas print.html estava fora de sync.
+- **Solução**: Script `scripts/build-osteoporose-print-html.js` regenera `OSTEOPOROSE/src/print.html` a partir dos mesmos arquivos em `slides/` que o index usa. Resultado: UTF-8 (sem mojibakes), mesma configuração 1600×900, conteúdo idêntico ao index.
+- **Uso**: `node scripts/build-osteoporose-print-html.js` sempre que quiser atualizar print.html. Para PDF, index.html?print=1 continua preferido (sempre em sync sem precisar rodar o script).
 
 ### Viewer (estrutura consistente, manter esta versão)
 - Stage **1600×900** (16:9) alinhado em JS e CSS
