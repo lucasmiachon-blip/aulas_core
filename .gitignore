@@ -36,6 +36,10 @@ $RECYCLE.BIN/
 *.temp
 ~*
 
+# Backups locais
+*.ORIGINAL
+*.backup
+
 # OneDrive
 *.cloud
 
