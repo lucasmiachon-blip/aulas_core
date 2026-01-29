@@ -10,6 +10,10 @@
 
 ### Slides — ajustes para evitar violação da borda inferior
 - **S07** (Utilidade comparada), **S08** (Utilidade em saúde), **S09** (QALY), **S12** (QALY limiar), **S13** (Risco ao longo da vida), **S26** (Refratura 12m), **S54** (DIOP 1/2), **S55** (DIOP 2/2), **S56** (PPI): redução de padding e margens (títulos, blocos) sem alterar conteúdo.
+- **S35** (Zoledronato mortalidade): boxes e fontes reduzidos (h1 38px, números 48px, blocos 20px) mantendo legibilidade pptx.
+- **S48** (ACR 2022): h1/h2/h3 e padding dos boxes reduzidos (h1 38px, h3 24px, boxes 14–16px).
+- **S53** (DIOP osso vs quedas): paleta alinhada (FRATURA e “Desfecho” com var(--navy)/var(--teal)); boxes e margens reduzidos.
+- **S64** (AFF e MRONJ): padding e fontes mínimos (h1 38px, h2 24px, texto 15px, boxes 18–22px).
 
 ---
 
