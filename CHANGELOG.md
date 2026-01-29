@@ -14,6 +14,8 @@
 - **S48** (ACR 2022): h1/h2/h3 e padding dos boxes reduzidos (h1 38px, h3 24px, boxes 14–16px).
 - **S53** (DIOP osso vs quedas): paleta alinhada (FRATURA e “Desfecho” com var(--navy)/var(--teal)); boxes e margens reduzidos.
 - **S64** (AFF e MRONJ): padding e fontes mínimos (h1 38px, h2 24px, texto 15px, boxes 18–22px).
+- **S52** (TBS): refinamento distâncias/boxes/espaço branco — padding 20/32px, gap 12px, h1 38px, h2 20px, boxes 10–12px, blocos inferiores e rodapé compactos (evitar texto escondido).
+- **S53** (DIOP): grid 1 (coluna esquerda) e Framework (direita) com boxes/fontes reduzidos — h2 22px, padding 10px, texto 12–14px, gap/margens menores.
 
 ---
 
