@@ -268,3 +268,26 @@ html.is-print .slide {
     zoom: var(--print-preview-zoom, 1) !important;
   }
 }
+
+@media screen {
+  html.is-print { --print-preview-zoom: 1; }
+
+  html.is-print body {
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+  }
+
+  /* garantir que não é carrossel/flex */
+  html.is-print .slides,
+  html.is-print [data-slides],
+  html.is-print .deck,
+  html.is-print .stage__inner {
+    display: block !important;
+  }
+
+  /* o truque: escalar o SLIDE em layout (zoom afeta layout no Chromium) */
+  html.is-print .slide {
+    zoom: var(--print-preview-zoom, 1) !important;
+    transform: none !important;
+  }
+}

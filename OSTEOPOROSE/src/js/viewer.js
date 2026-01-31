@@ -632,11 +632,68 @@
       fitAllSlidesOverflowForPrint();
       var _printPreviewRaf = 0;
       function updatePrintPreviewZoom() {
-        var STAGE_W = 1600;
+        if (window.matchMedia && window.matchMedia('print').matches) return;
+        var CANVAS_W = 1600;
         var gutter = 24;
         var vw = Math.max(320, window.innerWidth - gutter);
-        var z = Math.min(1, vw / STAGE_W);
+        var z = Math.min(1, vw / CANVAS_W);
         document.documentElement.style.setProperty('--print-preview-zoom', z.toFixed(4));
+
+        window.requestAnimationFrame(function () {
+          var de = document.documentElement;
+          var scrollW = de.scrollWidth;
+          var innerW = window.innerWidth;
+          console.log('[print-preview] zoom aplicado:', z.toFixed(4));
+          console.log('[print-preview] scrollWidth/innerWidth:', scrollW, '/', innerW);
+
+          var total = state.slides.length;
+          var sampleCount = Math.min(20, total);
+          var idxs = [];
+          for (var i = 0; i < total; i++) idxs.push(i);
+          for (var j = total - 1; j > 0; j--) {
+            var k = Math.floor(Math.random() * (j + 1));
+            var tmp = idxs[j];
+            idxs[j] = idxs[k];
+            idxs[k] = tmp;
+          }
+          var sample = idxs.slice(0, sampleCount).map(function (idx) {
+            var s = state.slides[idx];
+            var rect = s.getBoundingClientRect();
+            return {
+              idx: idx,
+              id: s.id || s.getAttribute('data-key') || '',
+              right: Math.round(rect.right),
+              ok: rect.right <= innerW
+            };
+          });
+          console.log('[print-preview] sample(20):', sample);
+
+          if (scrollW > innerW + 2) {
+            var first = state.slides[0];
+            var worst = null;
+            var worstRight = -Infinity;
+            if (first) {
+              var elements = [first].concat(Array.prototype.slice.call(first.querySelectorAll('*')));
+              elements.forEach(function (el) {
+                var r = el.getBoundingClientRect();
+                if (r.right > worstRight) {
+                  worstRight = r.right;
+                  worst = el;
+                }
+              });
+            }
+            var label = '';
+            if (worst) {
+              label = (worst.tagName || 'EL') + (worst.id ? '#' + worst.id : '') + (worst.className ? '.' + String(worst.className).trim().split(/\s+/).join('.') : '');
+            }
+            console.warn('[print-preview] overflow-x detectado', {
+              scrollW: scrollW,
+              innerW: innerW,
+              worst: label,
+              worstRight: Math.round(worstRight)
+            });
+          }
+        });
       }
       updatePrintPreviewZoom();
       window.addEventListener('resize', function () {
