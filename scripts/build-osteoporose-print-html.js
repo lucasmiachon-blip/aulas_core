@@ -60,6 +60,7 @@ const PRINT_HEAD = `<!DOCTYPE html>
   --bg: #F9F8F4; --white: #FFFFFF; --navy: #0B1320; --gold: #DDB944;
   --teal: #1F766E; --blue: #2563EB; --text: #222222; --muted: #666666;
   --border: #E9ECEF;
+  --text-rgb: 34,34,34; --muted-rgb: 102,102,102; --border-rgb: 233,236,239;
   --bg-rgb: 249,248,244; --navy-rgb: 11,19,32; --gold-rgb: 221,185,68;
   --teal-rgb: 31,118,110; --blue-rgb: 37,99,235;
   --stage-w: 1600; --stage-h: 900;
@@ -92,7 +93,12 @@ p{margin:0 0 .8rem}
 .slide:last-child{page-break-after:auto!important;break-after:auto!important;margin-bottom:0!important}
 .slide[hidden]{display:block!important}
 /* Slide 8 (Utilidade): forçar grid 2 colunas para régua + 4 caixas lado a lado no print */
-#utilidade-grid,.utilidade-grid{display:grid!important;grid-template-columns:300px 1fr!important;gap:24px!important;align-items:start!important;width:100%!important}
+#utilidade-grid,.utilidade-grid{display:grid!important;grid-template-columns:300px minmax(0,1fr)!important;gap:24px!important;align-items:start!important;width:100%!important}
+/* polish.css sync: fonte/referência footer fixo */
+.slide__source,.slide .source,.slide [data-role="source"]{position:absolute!important;bottom:20px!important;left:48px!important;right:48px!important;margin:0!important}
+.slide>p:last-of-type[style*="font-style: italic"]{position:absolute!important;bottom:20px!important;left:48px!important;right:48px!important;margin:0!important}
+/* polish.css sync: proteção texto longo */
+.slide p,.slide h1,.slide h2,.slide h3,.slide span{word-wrap:break-word;overflow-wrap:break-word}
 @media print{
   @page{size:16.667in 9.375in;margin:0}
   body{background:white!important;overflow:hidden!important}

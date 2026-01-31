@@ -10,15 +10,48 @@
  * Não remova: preferCSSPageSize, bloco #utilidade-grid nos estilos injetados,
  * dimensões 16.667in×9.375in, margem 0 em @page e em page.pdf().
  */
+
 const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
 
+const PAGE_W_IN = '16.667in';
+const PAGE_H_IN = '9.375in';
+const VIEWPORT_W = 1600;
+const VIEWPORT_H = 900;
+
+function readExpectedSlidesCount() {
+  // Preferimos ler do _meta.json para ser determinístico
+  let fromMeta = 0;
+  try {
+    const metaFile = path.join(__dirname, '..', 'OSTEOPOROSE', 'src', 'slides', '_meta.json');
+    const meta = JSON.parse(fs.readFileSync(metaFile, 'utf8'));
+    if (Array.isArray(meta) && meta.length > 0) fromMeta = meta.length;
+  } catch (_) {}
+
+  let fromList = 0;
+  try {
+    const listFile = path.join(__dirname, '..', 'OSTEOPOROSE', 'src', 'slides', '_list.txt');
+    const raw = fs.readFileSync(listFile, 'utf8');
+    fromList = raw
+      .split(/\r?\n/)
+      .map((l) => l.trim())
+      .filter((l) => l && !l.startsWith('#') && l.endsWith('.html'))
+      .length;
+  } catch (_) {}
+
+  const expected = Math.max(fromMeta || 0, fromList || 0, 70);
+  return { fromMeta, fromList, expected };
+}
+
 async function exportPDF() {
   console.log('🚀 Iniciando exportação PDF Osteoporose...');
 
+  const expectedInfo = readExpectedSlidesCount();
+  const EXPECTED_SLIDES = expectedInfo.expected;
+  console.log('🧾 Slides esperados (meta/list/max):', expectedInfo.fromMeta, expectedInfo.fromList, EXPECTED_SLIDES);
+
   // Preferir index.html?print=1 (mesmo viewer, sempre em sync). print.html é fallback.
-  // PDF: um slide = uma página; teclado no leitor (setas) = próximo/anterior slide.
   const urlCandidates = [
     'http://127.0.0.1:5500/OSTEOPOROSE/src/index.html?print=1',
     'http://localhost:5500/OSTEOPOROSE/src/index.html?print=1',
@@ -26,427 +59,457 @@ async function exportPDF() {
     'http://localhost:800/OSTEOPOROSE/src/index.html?print=1',
     'http://localhost:8000/OSTEOPOROSE/src/index.html?print=1',
     'https://lucasmiachon-blip.github.io/aulas_core/OSTEOPOROSE/src/index.html?print=1',
+    // fallback (gerado)
     'http://127.0.0.1:5500/OSTEOPOROSE/src/print.html',
     'http://localhost:5500/OSTEOPOROSE/src/print.html',
-    'https://lucasmiachon-blip.github.io/aulas_core/OSTEOPOROSE/src/print.html'
+    'https://lucasmiachon-blip.github.io/aulas_core/OSTEOPOROSE/src/print.html',
   ];
-  const MIN_SLIDES = 70; // deck carregado (index?print=1 usa slide-loader; print.html já vem com todos)
 
   const outputDir = path.join(__dirname, '..', 'exports');
   const outputPath = path.join(outputDir, 'OSTEOPOROSE-slides.pdf');
 
-  if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-  }
+  if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
   const browser = await chromium.launch({ headless: true });
-  // Viewport 16:9 (1600×900) para evitar scroll horizontal no PDF — mesmo que @page
   const page = await browser.newPage({
-    viewport: { width: 1600, height: 900 }
+    viewport: { width: VIEWPORT_W, height: VIEWPORT_H },
   });
 
-  let loaded = false;
   let usedUrl = '';
+  let loaded = false;
+
   for (const candidate of urlCandidates) {
     try {
       console.log('📄 Carregando:', candidate);
-      await page.goto(candidate, { waitUntil: 'networkidle', timeout: 60000 });
-      loaded = true;
+      const resp = await page.goto(candidate, { waitUntil: 'domcontentloaded', timeout: 60000 });
+      // resp pode ser null em alguns casos; quando existir, validamos status
+      if (resp && !resp.ok()) throw new Error(`HTTP ${resp.status()}`);
       usedUrl = candidate;
+      loaded = true;
       break;
     } catch (e) {
-      console.warn('⚠️ Falhou:', candidate);
+      console.warn('⚠️ Falhou:', candidate, '|', e.message);
     }
   }
+
   if (!loaded) {
     await browser.close();
-    throw new Error('Nenhuma URL funcionou. Inicie um servidor (ex: Live Server ou python -m http.server 8000 na raiz).');
+    throw new Error(
+      'Nenhuma URL funcionou. Inicie um servidor na raiz (ex: Live Server) ' +
+      'ou python -m http.server 8000 e tente novamente.'
+    );
   }
 
-  // #region agent log
-  const logPath = path.join(__dirname, '..', '.cursor', 'debug.log');
-  try {
-    fs.appendFileSync(logPath, JSON.stringify({ location: 'export-osteoporose-pdf.js', message: 'run started', data: { url: usedUrl }, timestamp: Date.now(), sessionId: 'debug-session', hypothesisId: 'C' }) + '\n');
-  } catch (_) {}
-  // #endregion
+  console.log('✅ URL usada:', usedUrl);
+  console.log('[export] using url:', usedUrl);
 
-  await page.waitForLoadState('domcontentloaded');
+  // Esperar slides carregarem (index?print=1 carrega async; print.html já vem pronto)
+  console.log('⏳ Aguardando deck no DOM...');
+  await page.waitForFunction(
+    (min) => document.querySelectorAll('.slide').length >= min,
+    EXPECTED_SLIDES,
+    { timeout: 90000 }
+  );
 
-  // index?print=1: slide-loader carrega slides async; print.html já vem com todos inline
-  console.log('⏳ Aguardando deck (slides carregados)...');
-  let slidesCount = 0;
-  try {
-    await page.waitForFunction(() => document.querySelectorAll('.slide').length >= 70, { timeout: 90000 });
-    slidesCount = await page.evaluate(() => document.querySelectorAll('.slide').length);
-  } catch (e) {
-    await page.waitForTimeout(5000);
-    slidesCount = await page.evaluate(() => document.querySelectorAll('.slide').length);
-  }
+  const slidesCount = await page.evaluate(() => document.querySelectorAll('.slide').length);
   console.log(`✅ ${slidesCount} slides no DOM`);
 
-  // Aguardar recursos carregarem (CSS, fontes, imagens)
+  // Esperar recursos (CSS/imagens) e fontes
   await page.waitForLoadState('networkidle');
-  await page.waitForTimeout(3000);
-  
-  // Aguardar fontes carregarem (importante para renderização correta)
+  await page.waitForTimeout(1200);
+
   try {
     await page.evaluate(async () => {
-      if (document.fonts && document.fonts.ready) {
-        await document.fonts.ready;
-      }
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
     });
-  } catch (e) {
-    console.log('⚠️ Fontes podem não estar prontas, continuando...');
+  } catch (_) {
+    console.warn('⚠️ Fontes: document.fonts.ready não disponível; seguindo...');
   }
 
-  // Ativar modo print ANTES de gerar PDF
+  // Ativar print media
   await page.emulateMedia({ media: 'print' });
-  await page.waitForTimeout(2000);
-  
-  // Verificar se modo print está ativo e forçar aplicação do CSS
-  const mediaCheck = await page.evaluate(() => {
-    const isPrint = window.matchMedia('print').matches;
-    const hasPrintClass = document.documentElement.classList.contains('is-print');
-    
-    // Forçar classe is-print se não estiver presente
-    if (!hasPrintClass && window.location.pathname.includes('print.html')) {
-      document.documentElement.classList.add('is-print');
-    }
-    
-    // Verificar se CSS de print está carregado
-    const printCSS = Array.from(document.styleSheets).some(sheet => {
-      try {
-        return Array.from(sheet.cssRules || []).some(rule => 
-          rule.media && rule.media.mediaText.includes('print')
-        );
-      } catch (e) {
-        return false;
-      }
-    });
-    
+  await page.waitForTimeout(600);
+
+  // Diagnóstico curto (pré-fix): displays e tops
+  const preFixStacking = await page.evaluate(() => {
+    const deck = document.querySelector('.deck');
+    const slidesEl = document.querySelector('.slides');
+    const container = document.querySelector('[data-slides]');
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const tops = slides.slice(0, 5).map((s) => Math.round(s.getBoundingClientRect().top));
     return {
-      isPrint,
-      hasPrintClass: document.documentElement.classList.contains('is-print'),
-      printCSSLoaded: printCSS,
-      slides: document.querySelectorAll('.slide').length,
-      hidden: document.querySelectorAll('.slide[hidden]').length
+      displayDeck: deck ? getComputedStyle(deck).display : null,
+      displaySlides: slidesEl ? getComputedStyle(slidesEl).display : null,
+      displayContainer: container ? getComputedStyle(container).display : null,
+      tops,
     };
   });
-  
-  console.log('🔍 Pré-PDF:', JSON.stringify(mediaCheck, null, 2));
-  
-  if (!mediaCheck.printCSSLoaded) {
-    console.warn('⚠️ CSS de print pode não estar carregado!');
+  console.log('[export] pre-fix stacking sample:', JSON.stringify(preFixStacking));
+
+  // Aplicar fix determinístico para multipágina (sem destruir padding / full-bleed)
+  const layoutResult = await page.evaluate(
+    ({ PAGE_W_IN, PAGE_H_IN }) => {
+      // Remover fix anterior se existir
+      const prev = document.getElementById('playwright-print-fix');
+      if (prev) prev.remove();
+
+      // Estilo global (ordem final vence base/viewer/print.css)
+      const style = document.createElement('style');
+      style.id = 'playwright-print-fix';
+      style.textContent = `
+@page{ size:${PAGE_W_IN} ${PAGE_H_IN} !important; margin:0 !important; }
+
+/* Fallback de tokens RGB caso a fonte seja print.html (PRINT_HEAD não define alguns) */
+:root{
+  --text-rgb: 34, 34, 34;
+  --muted-rgb: 102, 102, 102;
+  --border-rgb: 233, 236, 239;
+}
+
+html, body{
+  margin:0 !important;
+  padding:0 !important;
+  width:100% !important;
+  height:auto !important;
+  min-height:0 !important;
+  background:#fff !important;
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+  overflow: visible !important;
+  overflow-x: visible !important;
+}
+
+.slides-container{
+  margin:0 !important;
+  padding:0 !important;
+}
+
+/* Garantir fluxo nos containers */
+.slides, [data-slides]{
+  display:block !important;
+  height:auto !important;
+  overflow: visible !important;
+  flex:none !important;
+}
+
+/* Nunca exportar UI */
+.viewer__bar{ display:none !important; }
+
+/* Neutralizar app shell */
+.viewer{
+  display:block !important;
+  height:auto !important;
+  min-height:0 !important;
+}
+.stage{
+  flex:none !important;
+  min-height:0 !important;
+  height:auto !important;
+}
+
+/* Quebrar a lógica de “palco” e virar fluxo vertical paginável */
+.stage, .stage__inner, .deck, .slides{
+  width:${PAGE_W_IN} !important;
+  max-width:${PAGE_W_IN} !important;
+  height:auto !important;
+  max-height:none !important;
+  display:block !important;
+  position:static !important;
+  transform:none !important;
+  overflow:visible !important;
+  overflow-x:hidden !important;
+  padding:0 !important;
+  margin:0 !important;
+  box-shadow:none !important;
+  border:none !important;
+  border-radius:0 !important;
+}
+
+/* Mostrar TODOS os slides (slide-loader marca hidden por padrão) */
+.slide{
+  display:block !important;
+}
+.slide[hidden]{
+  display:block !important;
+}
+
+/* 1 slide = 1 página */
+.slide{
+  width:${PAGE_W_IN} !important;
+  max-width:${PAGE_W_IN} !important;
+  height:${PAGE_H_IN} !important;
+  min-height:${PAGE_H_IN} !important;
+  max-height:${PAGE_H_IN} !important;
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+  overflow:hidden !important;
+  margin:0 !important;
+  border:none !important;
+  box-shadow:none !important;
+  outline:none !important;
+  box-sizing:border-box !important;
+
+  page-break-before: always !important;
+  break-before: page !important;
+  page-break-after: always !important;
+  break-after: page !important;
+  page-break-inside: avoid !important;
+  break-inside: avoid !important;
+
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+/* Primeira página não precisa break-before */
+.slide:first-child{
+  page-break-before:auto !important;
+  break-before:auto !important;
+}
+
+/* Capa e contracapa (garante layout mesmo se CSS do viewer falhar) */
+.slide:first-child,
+.slide:nth-child(2){
+  background: linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.88) 50%, rgba(var(--navy-rgb), 0.78) 100%) !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+}
+
+/* Última página: sem break-after */
+.slide:last-child{
+  page-break-after:auto !important;
+  break-after:auto !important;
+}
+
+/* PDF: backdrop-filter costuma “sumir” elementos internos */
+.slide *,
+.slide *::before,
+.slide *::after{
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+
+/* Slide Utilidade: manter grid 2 colunas (OBRIGATÓRIO no export) */
+#utilidade-grid,
+.utilidade-grid{
+  display:grid !important;
+  grid-template-columns: 300px minmax(0, 1fr) !important;
+  gap:24px !important;
+  align-items:start !important;
+  width:100% !important;
+}
+#utilidade-grid > *,
+.utilidade-grid > *{
+  min-width:0 !important;
+}
+      `.trim();
+
+      document.head.appendChild(style);
+
+      // Reaplicar padding inline de cada slide como !important
+      // (neutraliza qualquer print.css que tenha zerado padding com !important)
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      for (const s of slides) {
+        const styleAttr = s.getAttribute('style') || '';
+
+        // Captura "padding: X;" do atributo style
+        const m = styleAttr.match(/padding\s*:\s*([^;]+)\s*;/i) || styleAttr.match(/padding\s*:\s*([^;]+)\s*$/i);
+        if (m && m[1]) {
+          const paddingVal = m[1].trim();
+          s.style.setProperty('padding', paddingVal, 'important');
+        }
+
+        // Forçar dimensões/paginacao no nível inline também (última camada)
+        s.style.setProperty('width', PAGE_W_IN, 'important');
+        s.style.setProperty('height', PAGE_H_IN, 'important');
+        s.style.setProperty('min-height', PAGE_H_IN, 'important');
+        s.style.setProperty('max-height', PAGE_H_IN, 'important');
+        s.style.setProperty('overflow', 'hidden', 'important');
+        s.style.setProperty('margin', '0', 'important');
+        s.style.setProperty('border', 'none', 'important');
+        s.style.setProperty('box-shadow', 'none', 'important');
+        s.style.setProperty('box-sizing', 'border-box', 'important');
+      }
+
+      // Reflow
+      void document.body.offsetHeight;
+
+      const deck = document.querySelector('.deck');
+      const stageInner = document.querySelector('.stage__inner');
+      const first = slides[0];
+
+      return {
+        slidesCount: slides.length,
+        firstSlideComputed: first ? {
+          width: getComputedStyle(first).width,
+          height: getComputedStyle(first).height,
+          padding: getComputedStyle(first).padding,
+          display: getComputedStyle(first).display
+        } : null,
+        deckWidth: deck ? getComputedStyle(deck).width : null,
+        stageInnerHeight: stageInner ? getComputedStyle(stageInner).height : null,
+        bodyScrollHeight: document.body.scrollHeight
+      };
+    },
+    { PAGE_W_IN, PAGE_H_IN }
+  );
+
+  console.log('📐 Layout pós-fix:', JSON.stringify(layoutResult, null, 2));
+  await page.waitForTimeout(600);
+
+  // Healthcheck (fail-fast)
+  const health = await page.evaluate(() => {
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const hiddenCount = slides.filter((s) => s.hidden || getComputedStyle(s).display === 'none').length;
+    const stageInner = document.querySelector('.stage__inner');
+    const stageTransform = stageInner ? getComputedStyle(stageInner).transform : null;
+    const bodyCS = getComputedStyle(document.body);
+    const bodyMargin = {
+      top: bodyCS.marginTop,
+      right: bodyCS.marginRight,
+      bottom: bodyCS.marginBottom,
+      left: bodyCS.marginLeft,
+    };
+    const bodyPadding = {
+      top: bodyCS.paddingTop,
+      right: bodyCS.paddingRight,
+      bottom: bodyCS.paddingBottom,
+      left: bodyCS.paddingLeft,
+    };
+
+    const container =
+      document.querySelector('.slides-container') ||
+      document.querySelector('.slides') ||
+      document.body;
+    const ccs = getComputedStyle(container);
+    const containerMargin = {
+      top: ccs.marginTop,
+      right: ccs.marginRight,
+      bottom: ccs.marginBottom,
+      left: ccs.marginLeft,
+    };
+    const containerPadding = {
+      top: ccs.paddingTop,
+      right: ccs.paddingRight,
+      bottom: ccs.paddingBottom,
+      left: ccs.paddingLeft,
+    };
+
+    const bodyScrollHeight = document.body.scrollHeight;
+    const docScrollHeight = document.documentElement.scrollHeight;
+    return {
+      slideCount: slides.length,
+      hiddenCount,
+      stageTransform,
+      bodyMargin,
+      bodyPadding,
+      containerMargin,
+      containerPadding,
+      containerSelector: container.className || container.tagName,
+      bodyScrollHeight,
+      docScrollHeight,
+    };
+  });
+
+  console.log('[export] health:', JSON.stringify(health));
+  const anyBodyMargin = Object.values(health.bodyMargin).some((v) => v !== '0px');
+  const anyBodyPadding = Object.values(health.bodyPadding).some((v) => v !== '0px');
+  const anyContainerPadding = Object.values(health.containerPadding).some((v) => v !== '0px');
+  const hasStageTransform = health.stageTransform && health.stageTransform !== 'none';
+
+  if (
+    health.slideCount < EXPECTED_SLIDES ||
+    health.hiddenCount > 0 ||
+    hasStageTransform ||
+    anyBodyMargin ||
+    anyBodyPadding ||
+    anyContainerPadding
+  ) {
+    throw new Error('[export] healthcheck failed: ' + JSON.stringify(health));
   }
 
-  // Forçar aplicação do CSS de print via JavaScript (workaround para Playwright)
-  // Incluir .stage e .stage__inner com height: auto para fluxo multi-página
-  const layoutResult = await page.evaluate(() => {
-    // 1. Adicionar estilo global
-    const style = document.createElement('style');
-    style.id = 'playwright-print-fix';
-    style.textContent = `
-      @page {
-        size: 16.667in 9.375in;
-        margin: 0;
-      }
-      html, body {
-        width: 100% !important;
-        max-width: 16.667in !important;
-        height: auto !important;
-        min-height: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        background: #fff !important;
-        overflow: visible !important;
-        overflow-x: visible !important;
-      }
-      html.is-print, html.is-print body {
-        overflow: visible !important;
-        overflow-x: visible !important;
-        overflow-y: visible !important;
-      }
-      .stage, .stage__inner {
-        width: 16.667in !important;
-        max-width: 16.667in !important;
-        height: auto !important;
-        max-height: none !important;
-        display: block !important;
-        overflow: visible !important;
-        overflow-x: hidden !important;
-        position: static !important;
-      }
-      .deck {
-        width: 16.667in !important;
-        max-width: 16.667in !important;
-        height: auto !important;
-        display: block !important;
-        overflow: visible !important;
-        overflow-x: hidden !important;
-        position: static !important;
-      }
-      .slides {
-        height: auto !important;
-        display: block !important;
-        position: static !important;
-        overflow: visible !important;
-      }
-      .slide {
-        position: relative !important;
-        width: 16.667in !important;
-        max-width: 16.667in !important;
-        height: 9.375in !important;
-        min-height: 9.375in !important;
-        max-height: 9.375in !important;
-        display: block !important;
-        overflow: hidden !important;
-        margin: 0 !important;
-        padding: 32px 48px !important;
-        border: none !important;
-        box-sizing: border-box !important;
-        box-shadow: none !important;
-        outline: none !important;
-        box-sizing: border-box !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        page-break-before: always !important;
-        break-before: page !important;
-        page-break-after: always !important;
-        break-after: page !important;
-        page-break-inside: avoid !important;
-        break-inside: avoid !important;
-      }
-      .slide:first-child {
-        page-break-before: auto !important;
-        break-before: auto !important;
-        background: linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.88) 50%, rgba(var(--navy-rgb), 0.78) 100%) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 0 !important;
-      }
-      .slide:nth-child(2) {
-        background: linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.88) 50%, rgba(var(--navy-rgb), 0.78) 100%) !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding: 0 !important;
-      }
-      .slide:last-child {
-        page-break-after: auto !important;
-        break-after: auto !important;
-      }
-      .slide * {
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-      }
-      #utilidade-grid,
-      .utilidade-grid {
-        display: grid !important;
-        grid-template-columns: 300px 1fr !important;
-        gap: 24px !important;
-        align-items: start !important;
-        width: 100% !important;
-      }
-    `;
-    
-    const existing = document.getElementById('playwright-print-fix');
-    if (existing) existing.remove();
-    document.head.appendChild(style);
-    
-    // 2. Aplicar estilos de print em cada slide (não remover style: preserva padding/background do viewer)
-    const slides = document.querySelectorAll('.slide');
-    slides.forEach((slide, index) => {
-      // Dimensões e page-break; NÃO sobrescrever padding (preserva padding inline do slide)
-      slide.style.setProperty('width', '16.667in', 'important');
-      slide.style.setProperty('height', '9.375in', 'important');
-      slide.style.setProperty('min-height', '9.375in', 'important');
-      slide.style.setProperty('max-height', '9.375in', 'important');
-      slide.style.setProperty('display', (index === 0 || index === 1) ? 'flex' : 'block', 'important');
-      if (index === 0 || index === 1) {
-        slide.style.setProperty('align-items', 'center', 'important');
-        slide.style.setProperty('justify-content', 'center', 'important');
-        slide.style.setProperty('padding', '0', 'important');
-      }
-      slide.style.setProperty('position', 'relative', 'important');
-      slide.style.setProperty('overflow', 'hidden', 'important');
-      slide.style.setProperty('margin', '0', 'important');
-      slide.style.setProperty('border', 'none', 'important');
-      slide.style.setProperty('box-shadow', 'none', 'important');
-      slide.style.setProperty('outline', 'none', 'important');
-      slide.style.setProperty('box-sizing', 'border-box', 'important');
-      slide.style.setProperty('page-break-before', index === 0 ? 'auto' : 'always', 'important');
-      slide.style.setProperty('break-before', index === 0 ? 'auto' : 'page', 'important');
-      slide.style.setProperty('page-break-after', index === slides.length - 1 ? 'auto' : 'always', 'important');
-      slide.style.setProperty('break-after', index === slides.length - 1 ? 'auto' : 'page', 'important');
-      slide.style.setProperty('page-break-inside', 'avoid', 'important');
-      slide.style.setProperty('break-inside', 'avoid', 'important');
-      slide.style.setProperty('-webkit-print-color-adjust', 'exact', 'important');
-      slide.style.setProperty('print-color-adjust', 'exact', 'important');
-    });
-    
-    // 3. Ajustar stage, stage__inner, deck e slides (todos height: auto para fluxo multi-página)
-    const stage = document.querySelector('.stage');
-    const stageInner = document.querySelector('.stage__inner');
-    [stage, stageInner].forEach(el => {
-      if (!el) return;
-      el.style.setProperty('width', '16.667in', 'important');
-      el.style.setProperty('height', 'auto', 'important');
-      el.style.setProperty('max-height', 'none', 'important');
-      el.style.setProperty('display', 'block', 'important');
-      el.style.setProperty('overflow', 'visible', 'important');
-      el.style.setProperty('position', 'static', 'important');
-    });
+  // Fail-fast: altura total muito pequena indica 1 página
+  const approxExpectedPx = health.slideCount * 900;
+  const maxScroll = Math.max(health.bodyScrollHeight || 0, health.docScrollHeight || 0);
+  if (health.slideCount >= 10 && maxScroll < approxExpectedPx * 0.7) {
+    throw new Error('[export] pagination height too small; likely 1-page clamp');
+  }
+
+  // Stacking check (fail-fast)
+  const stackingSample = await page.evaluate(() => {
+    const slides = Array.from(document.querySelectorAll('.slide'));
     const deck = document.querySelector('.deck');
-    if (deck) {
-      deck.style.setProperty('width', '16.667in', 'important');
-      deck.style.setProperty('height', 'auto', 'important');
-      deck.style.setProperty('display', 'block', 'important');
-      deck.style.setProperty('overflow', 'visible', 'important');
-      deck.style.setProperty('position', 'static', 'important');
-    }
-    const slidesContainer = document.querySelector('.slides');
-    if (slidesContainer) {
-      slidesContainer.style.setProperty('height', 'auto', 'important');
-      slidesContainer.style.setProperty('display', 'block', 'important');
-      slidesContainer.style.setProperty('position', 'static', 'important');
-      slidesContainer.style.setProperty('overflow', 'visible', 'important');
-    }
-    
-    // 4. Ajustar html e body
-    document.documentElement.style.setProperty('width', '100%', 'important');
-    document.documentElement.style.setProperty('height', 'auto', 'important');
-    document.documentElement.style.setProperty('overflow', 'visible', 'important');
-    document.body.style.setProperty('width', '100%', 'important');
-    document.body.style.setProperty('height', 'auto', 'important');
-    document.body.style.setProperty('margin', '0', 'important');
-    document.body.style.setProperty('padding', '0', 'important');
-    document.body.style.setProperty('overflow', 'visible', 'important');
-    
-    // 5. Forçar reflow para layout multi-página
-    void document.body.offsetHeight;
-    const slidesEl = document.querySelector('.slides');
-    const bodyScroll = document.body.scrollHeight;
-    const slidesScroll = slidesEl ? slidesEl.scrollHeight : 0;
+    const container = document.querySelector('[data-slides]');
+    const sample = slides.slice(0, 8).map((s) => {
+      const cs = getComputedStyle(s);
+      const rect = s.getBoundingClientRect();
+      return {
+        position: cs.position,
+        display: cs.display,
+        offsetTop: s.offsetTop,
+        rectTop: Math.round(rect.top),
+      };
+    });
+    const tops = sample.map((s) => s.rectTop);
+    const deltas = tops.slice(1).map((t, i) => t - tops[i]);
+    const stackingOk = deltas.every((d) => d > 5);
     return {
-      slidesCount: slides.length,
-      deckWidth: deck ? window.getComputedStyle(deck).width : 'N/A',
-      firstSlideHeight: slides.length > 0 ? window.getComputedStyle(slides[0]).height : 'N/A',
-      bodyScrollHeight: bodyScroll,
-      slidesScrollHeight: slidesScroll,
-      stageHeight: stageInner ? window.getComputedStyle(stageInner).height : 'N/A'
-    };
-  });
-  console.log('📐 Layout pós-fix:', JSON.stringify(layoutResult, null, 2));
-  
-  await page.waitForTimeout(2000);
-  
-  // Verificar estilos aplicados antes de gerar PDF
-  const stylesCheck = await page.evaluate(() => {
-    const firstSlide = document.querySelector('.slide');
-    if (!firstSlide) return { error: 'Nenhum slide encontrado' };
-    
-    const computed = window.getComputedStyle(firstSlide);
-    return {
-      pageBreakAfter: computed.pageBreakAfter,
-      height: computed.height,
-      width: computed.width,
-      display: computed.display,
-      overflow: computed.overflow,
-      position: computed.position
-    };
-  });
-  console.log('🎨 Estilos aplicados no primeiro slide:', JSON.stringify(stylesCheck, null, 2));
-
-  // Não forçar overflow hidden aqui: no print o fluxo precisa ser visível para
-  // page-break-after gerar múltiplas páginas; 16:9 vem de @page e .slide.
-  await page.evaluate(() => {
-    document.body.style.setProperty('max-width', '16.667in', 'important');
-  });
-
-  // #region agent log
-  const slide8Debug = await page.evaluate(async () => {
-    const endpoint = 'http://127.0.0.1:7242/ingest/f8bcf885-06e8-4a1f-a1c9-b4011068c7dc';
-    const grid = document.getElementById('utilidade-grid');
-    const out = { found: !!grid, hypothesisId: ['A','B','C'] };
-    if (!grid) {
-      await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'export-osteoporose-pdf.js:slide8', message: 'utilidade-grid not found', data: out, timestamp: Date.now(), sessionId: 'debug-session', hypothesisId: 'A' }) }).catch(() => {});
-      return out;
-    }
-    const cs = window.getComputedStyle(grid);
-    const parent = grid.parentElement;
-    const pcs = parent ? window.getComputedStyle(parent) : null;
-    const rect = grid.getBoundingClientRect();
-    const child0 = grid.children[0];
-    const child1 = grid.children[1];
-    const r0 = child0 ? child0.getBoundingClientRect() : null;
-    const r1 = child1 ? child1.getBoundingClientRect() : null;
-    const data = {
-      display: cs.display,
-      gridTemplateColumns: cs.gridTemplateColumns,
-      width: cs.width,
-      height: cs.height,
-      parentDisplay: pcs ? pcs.display : null,
-      parentWidth: pcs ? pcs.width : null,
-      gridRect: { top: rect.top, left: rect.left, width: rect.width, height: rect.height },
-      child0Rect: r0 ? { top: r0.top, left: r0.left, width: r0.width, height: r0.height } : null,
-      child1Rect: r1 ? { top: r1.top, left: r1.left, width: r1.width, height: r1.height } : null,
-      hypothesisId: 'A'
-    };
-    await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'export-osteoporose-pdf.js:slide8', message: 'utilidade-grid computed', data, timestamp: Date.now(), sessionId: 'debug-session', hypothesisId: 'A' }) }).catch(() => {});
-    const dataB = { gridHeight: rect.height, slideHeight: 9.375 * 96, overflow: cs.overflow, hypothesisId: 'B' };
-    await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'export-osteoporose-pdf.js:slide8', message: 'constraints', data: dataB, timestamp: Date.now(), sessionId: 'debug-session', hypothesisId: 'B' }) }).catch(() => {});
-    return { ...out, ...data, dataB };
-  });
-  console.log('🔬 Slide 8 grid debug:', JSON.stringify(slide8Debug, null, 2));
-  // #endregion
-
-  // #region agent log (PDF multipage — por que gera 1 página?)
-  const pdfMultipageDebug = await page.evaluate(async () => {
-    const endpoint = 'http://127.0.0.1:7242/ingest/f8bcf885-06e8-4a1f-a1c9-b4011068c7dc';
-    const slides = document.querySelectorAll('.slide');
-    const fixEl = document.getElementById('playwright-print-fix');
-    const fixContent = fixEl ? fixEl.textContent || '' : '';
-    const slide0 = slides[0];
-    const slide1 = slides[1];
-    const cs0 = slide0 ? window.getComputedStyle(slide0) : null;
-    const cs1 = slide1 ? window.getComputedStyle(slide1) : null;
-    const data = {
-      hypothesisId: 'pdf-multipage',
       slideCount: slides.length,
-      url: window.location.href,
-      hasPlaywrightFix: !!fixEl,
-      fixContainsAtPage: fixContent.includes('@page'),
-      fixContainsPageBreakAfter: fixContent.includes('page-break-after'),
-      slide0PageBreakAfter: cs0 ? cs0.pageBreakAfter : null,
-      slide0BreakAfter: cs0 ? cs0.breakAfter : null,
-      slide1PageBreakAfter: cs1 ? cs1.pageBreakAfter : null,
-      slide1BreakAfter: cs1 ? cs1.breakAfter : null
+      displayDeck: deck ? getComputedStyle(deck).display : null,
+      displayContainer: container ? getComputedStyle(container).display : null,
+      tops,
+      deltas,
+      sample,
+      stackingOk,
     };
-    await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ location: 'export-osteoporose-pdf.js:pdfMultipage', message: 'pre-pdf state', data, timestamp: Date.now(), sessionId: 'debug-session', hypothesisId: 'pdf-multipage' }) }).catch(() => {});
-    return data;
   });
-  console.log('🔬 PDF multipage debug:', JSON.stringify(pdfMultipageDebug, null, 2));
-  try {
-    fs.appendFileSync(logPath, JSON.stringify({ location: 'export-osteoporose-pdf.js', message: 'pdf options', data: { usedUrl, slideCount: pdfMultipageDebug.slideCount, preferCSSPageSize: true, margin: { top: 0, right: 0, bottom: 0, left: 0 } }, timestamp: Date.now(), sessionId: 'debug-session', hypothesisId: 'pdf-multipage' }) + '\n');
-  } catch (_) {}
-  // #endregion
 
-  // preferCSSPageSize: true para Chromium usar @page e page-break-after (múltiplas páginas)
-  // margin 0: margens visuais vêm do padding no .slide (mesma estratégia do index)
+  console.log('[export] stacking sample:', JSON.stringify(stackingSample));
+  if (!stackingSample.stackingOk) {
+    throw new Error('[export] slides not stacked; will print as 1 page ' + JSON.stringify({
+      tops: stackingSample.tops,
+      displayDeck: stackingSample.displayDeck,
+      displayContainer: stackingSample.displayContainer,
+    }));
+  }
+
+  // FAIL FAST (P0): utilidade-grid precisa ter 2 filhos (coluna 1 e coluna 2)
+  const utilidadeCheck = await page.evaluate(() => {
+    const slide = document.getElementById('slide-10');
+    const grid = slide ? slide.querySelector('#utilidade-grid') : null;
+    const children = grid ? Array.from(grid.children || []) : [];
+    return {
+      hasSlide: !!slide,
+      hasGrid: !!grid,
+      gridChildrenCount: children.length,
+      child1Rect: children[1] ? children[1].getBoundingClientRect() : null,
+    };
+  });
+
+  console.log('🧪 Utilidade check:', JSON.stringify(utilidadeCheck, null, 2));
+
+  if (!utilidadeCheck.hasSlide || !utilidadeCheck.hasGrid || utilidadeCheck.gridChildrenCount < 2) {
+    console.warn(
+      '⚠️ P0: #utilidade-grid com', utilidadeCheck.gridChildrenCount, 'filho(s). Slide 8 pode aparecer sem coluna 2 no PDF. Continuando...'
+    );
+  }
+
+  // Gerar PDF
   await page.pdf({
     path: outputPath,
     printBackground: true,
     margin: { top: 0, right: 0, bottom: 0, left: 0 },
     displayHeaderFooter: false,
-    preferCSSPageSize: true
+    preferCSSPageSize: true,
   });
 
   await browser.close();
   console.log('✅ PDF gerado:', outputPath);
 }
 
-exportPDF().catch(e => {
+exportPDF().catch((e) => {
   console.error('❌ Erro:', e.message);
   process.exit(1);
 });

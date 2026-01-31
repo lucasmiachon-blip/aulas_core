@@ -1,6 +1,5 @@
 # Lista de slides - Osteoporose
-# 73 slides total (ordem 1-73, nomes S01_slide-01.html ... S73_slide-73.html)
-# Gerado por rename-osteoporose-slides-by-order.js
+# 72 slides total (S09 "O que é QALY" removido, reordenado)
 S01_slide-01.html
 S02_slide-02.html
 S03_slide-03.html
@@ -73,4 +72,3 @@ S69_slide-69.html
 S70_slide-70.html
 S71_slide-71.html
 S72_slide-72.html
-S73_slide-73.html

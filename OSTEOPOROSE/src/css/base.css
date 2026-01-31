@@ -142,7 +142,7 @@ p{ margin: 0 0 0.8rem 0; }
 #utilidade-grid,
 .utilidade-grid {
   display: grid !important;
-  grid-template-columns: 300px 1fr !important;
+  grid-template-columns: 300px minmax(0, 1fr) !important;
   gap: 24px !important;
   align-items: start !important;
   width: 100% !important;

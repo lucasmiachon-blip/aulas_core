@@ -44,9 +44,21 @@
       .filter(function (l) { return l !== '' && !l.startsWith('#'); }); // Filtra vazios e comentários
   }
 
-  function elementFromHTML(html) {
+  function elementFromHTML(html, label) {
     var tpl = document.createElement('template');
     tpl.innerHTML = html.trim();
+    if (tpl.content && tpl.content.children && tpl.content.children.length > 1) {
+      console.warn('[slide-loader] multi-root ignored extras:' + (label ? ' ' + label : ''));
+    }
+    if (tpl.content && tpl.content.childNodes) {
+      for (var i = 0; i < tpl.content.childNodes.length; i++) {
+        var node = tpl.content.childNodes[i];
+        if (node && node.nodeType === Node.TEXT_NODE && node.textContent && node.textContent.trim() !== '') {
+          console.warn('[slide-loader] top-level text nodes ignored:' + (label ? ' ' + label : ''));
+          break;
+        }
+      }
+    }
     return tpl.content.firstElementChild;
   }
 
@@ -107,7 +119,7 @@
       
       try {
         var html = await fetchText(slideUrl);
-        var el = elementFromHTML(html);
+        var el = elementFromHTML(html, slideUrl);
         if (!el) {
           console.warn('[slide-loader] Slide não pôde ser parseado:', file);
           failedSlides.push(file);

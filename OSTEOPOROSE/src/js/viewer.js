@@ -630,6 +630,19 @@
         s.setAttribute('aria-hidden', 'false');
       });
       fitAllSlidesOverflowForPrint();
+      var _printPreviewRaf = 0;
+      function updatePrintPreviewZoom() {
+        var STAGE_W = 1600;
+        var gutter = 24;
+        var vw = Math.max(320, window.innerWidth - gutter);
+        var z = Math.min(1, vw / STAGE_W);
+        document.documentElement.style.setProperty('--print-preview-zoom', z.toFixed(4));
+      }
+      updatePrintPreviewZoom();
+      window.addEventListener('resize', function () {
+        if (_printPreviewRaf) window.cancelAnimationFrame(_printPreviewRaf);
+        _printPreviewRaf = window.requestAnimationFrame(updatePrintPreviewZoom);
+      });
       return;
     }
 
