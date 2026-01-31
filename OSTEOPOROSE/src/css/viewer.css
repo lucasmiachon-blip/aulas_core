@@ -254,7 +254,7 @@ html, body{
   background: var(--bg);
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
 }
 
@@ -265,13 +265,26 @@ html, body{
   max-width: 100%;
   box-sizing: border-box;
   margin: 0;
-  min-height: 0 !important; /* vence min-height inline */
   overflow: hidden;  /* Evita overflow horizontal */
   display: none;
   position: relative;
 }
 
-.slide.is-active{ display: block; }
+.slide.is-active{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Auto-expand: primeiro container após título preenche espaço */
+.slide.is-active > *:first-child:not(h1):not(h2) {
+  flex: 1;
+}
+
+.slide.is-active > h1 + *,
+.slide.is-active > h2 + * {
+  flex: 1;
+}
 
 /* Modo palco: esconde a UI após inatividade */
 .viewer.is-ui-hidden .viewer__bar{

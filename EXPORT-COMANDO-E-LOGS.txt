@@ -1,0 +1,100 @@
+================================================================================
+P0 REPRO — Comando exato e log do export PDF Osteoporose
+================================================================================
+
+COMANDO EXATO (rodar na raiz do projeto, onde estão OSTEOPOROSE/ e scripts/):
+
+  node scripts/export-osteoporose-pdf.js
+
+Pré-requisitos:
+- Node 18+
+- O ZIP inclui scripts/node_modules; não é preciso rodar npm install
+- Servidor HTTP servindo a raiz do projeto (ex.: Live Server porta 5500)
+  A URL preferida é: http://127.0.0.1:5500/OSTEOPOROSE/src/index.html?print=1
+
+--------------------------------------------------------------------------------
+LOG DO TERMINAL (saída completa 2>&1)
+--------------------------------------------------------------------------------
+
+🚀 Iniciando exportação PDF Osteoporose...
+📄 Carregando: http://127.0.0.1:5500/OSTEOPOROSE/src/index.html?print=1
+⏳ Aguardando deck (slides carregados)...
+✅ 70 slides no DOM
+🔍 Pré-PDF: {
+  "isPrint": true,
+  "hasPrintClass": true,
+  "printCSSLoaded": true,
+  "slides": 73,
+  "hidden": 0
+}
+📐 Layout pós-fix: {
+  "slidesCount": 73,
+  "deckWidth": "1600.03px",
+  "firstSlideHeight": "900px",
+  "bodyScrollHeight": 65700,
+  "slidesScrollHeight": 65700,
+  "stageHeight": "65700px"
+}
+🎨 Estilos aplicados no primeiro slide: {
+  "pageBreakAfter": "always",
+  "height": "900px",
+  "width": "1600.03px",
+  "display": "flex",
+  "overflow": "hidden",
+  "position": "relative"
+}
+🔬 Slide 8 grid debug: {
+  "found": true,
+  "hypothesisId": "A",
+  "display": "grid",
+  "gridTemplateColumns": "300px 1180.03px",
+  "width": "1504.03px",
+  "height": "280px",
+  "parentDisplay": "block",
+  "parentWidth": "1600.03px",
+  "gridRect": {
+    "top": 6433.53125,
+    "left": 48,
+    "width": 1504.03125,
+    "height": 280
+  },
+  "child0Rect": {
+    "top": 6433.53125,
+    "left": 48,
+    "width": 300,
+    "height": 280
+  },
+  "child1Rect": null,
+  "dataB": {
+    "gridHeight": 280,
+    "slideHeight": 900,
+    "overflow": "visible",
+    "hypothesisId": "B"
+  }
+}
+🔬 PDF multipage debug: {
+  "hypothesisId": "pdf-multipage",
+  "slideCount": 73,
+  "url": "http://127.0.0.1:5500/OSTEOPOROSE/src/index.html?print=1",
+  "hasPlaywrightFix": true,
+  "fixContainsAtPage": true,
+  "fixContainsPageBreakAfter": true,
+  "slide0PageBreakAfter": "always",
+  "slide0BreakAfter": "page",
+  "slide1PageBreakAfter": "always",
+  "slide1BreakAfter": "page"
+}
+✅ PDF gerado: C:\Dev\Projetos\Aulas2\exports\OSTEOPOROSE-slides.pdf
+
+--------------------------------------------------------------------------------
+OBSERVAÇÃO P0 — Utilidade “sem coluna 2”
+--------------------------------------------------------------------------------
+No debug do Slide 8, "child1Rect": null indica que o segundo filho do
+#utilidade-grid (coluna das 4 caixas) não tem retângulo no DOM no momento do
+export. Isso pode refletir:
+- export apontando para HTML/view diferente do esperado;
+- layout ainda não estabilizado (slide-loader async, etc.);
+- overflow/corte ou não-renderização da coluna 2 no viewport de impressão.
+
+URL usada neste run: index.html?print=1 (Live Server 5500). O script tenta
+também print.html e outras portas como fallback.

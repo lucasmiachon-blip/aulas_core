@@ -1,0 +1,162 @@
+/*
+  print.css
+  PDF/print em estilo PPT (16:9) com 1 slide por página.
+
+  Uso:
+  - Abrir: index.html?print=1
+  - Imprimir com "Plano de fundo" habilitado.
+
+  ASSISTENTES DE IA (ChatGPT, Claude, etc.): Antes de modificar este arquivo,
+  leia scripts/AI-RESTRICTIONS.md e a seção "Restrições CSS/JS" no README.md.
+  Não remova @page 16.667×9.375in, #utilidade-grid, overflow hidden, nem
+  regras de page-break/print-color-adjust.
+*/
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Forçar fundos e cores no print (boxes não sumirem) */
+html.is-print .slide,
+html.is-print .slide * {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+/* backdrop-filter não renderiza no PDF e faz boxes internos sumirem — desligar no print */
+html.is-print .slide *,
+html.is-print .slide *::before,
+html.is-print .slide *::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Slide 8 (Utilidade): forçar grid 2 colunas no print (também em @media print). */
+html.is-print #utilidade-grid,
+html.is-print .utilidade-grid {
+  display: grid !important;
+  grid-template-columns: 300px 1fr !important;
+  gap: 24px !important;
+  align-items: start !important;
+  width: 100% !important;
+}
+
+/* Esconder barra ao visualizar ?print=1; layout de stage/slides só em @media print para index ocupar full screen na tela. */
+html.is-print .viewer__bar {
+  display: none !important;
+}
+
+@media print {
+  @page {
+    size: 16.667in 9.375in;
+    margin: 0;
+  }
+
+  html, body {
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .slide, .slide * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .viewer__bar {
+    display: none !important;
+  }
+
+  .stage {
+    padding: 0 !important;
+    background: #fff !important;
+    height: auto !important;
+  }
+
+  .stage__inner {
+    width: 16.667in !important;
+    max-width: 16.667in !important;
+    height: auto !important;
+    max-height: none !important;
+    transform: none !important;
+    display: block !important;
+    overflow: visible !important;
+    overflow-x: hidden !important;
+  }
+
+  .deck {
+    width: 16.667in !important;
+    height: auto !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  .slides {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .slide {
+    display: block !important;
+    width: 16.667in !important;
+    max-width: 16.667in !important;
+    height: 9.375in !important;
+    min-height: 9.375in !important;
+    max-height: 9.375in !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    box-sizing: border-box !important;
+  }
+
+  .slide:first-child {
+    page-break-before: auto !important;
+    break-before: auto !important;
+    background: linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.88) 50%, rgba(var(--navy-rgb), 0.78) 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+  }
+  .slide:nth-child(2) {
+    background: linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.88) 50%, rgba(var(--navy-rgb), 0.78) 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+  }
+  #utilidade-grid,
+  .utilidade-grid {
+    display: grid !important;
+    grid-template-columns: 300px 1fr !important;
+    gap: 24px !important;
+    align-items: start !important;
+    width: 100% !important;
+  }
+  .slide:last-child {
+    page-break-after: auto !important;
+    break-after: auto !important;
+  }
+}

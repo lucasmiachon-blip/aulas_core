@@ -1,0 +1,49 @@
+/* ============================================
+   POLISH.CSS v2 - Utilitários OPT-IN
+   NÃO aplica nada globalmente.
+   Slides precisam adicionar classes explicitamente.
+   ============================================ */
+
+/* 1. Container para fonte absoluta */
+.slide--has-footer {
+  position: relative !important;
+}
+
+.slide--has-footer > .slide__source,
+.slide--has-footer > p:last-child[style*="font-style: italic"] {
+  position: absolute !important;
+  bottom: 20px !important;
+  left: 48px !important;
+  right: 48px !important;
+}
+
+/* 2. Centralização vertical (OPT-IN) */
+.slide--vcenter {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+}
+
+/* 3. Grid com stretch (OPT-IN) */
+.slide--grid-stretch [style*="display: grid"] {
+  align-items: stretch;
+}
+
+/* 4. Boxes com altura mínima (OPT-IN) */
+.slide--min-height-boxes [style*="border-radius"] {
+  min-height: 120px;
+}
+
+/* 5. NENHUM padding global */
+/* Cada slide define seu próprio padding */
+
+/* 6. Centralização total - para slides de título/citação/arte */
+.slide--center {
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center;
+}
+
+/* ============================================
+   FIM - Tudo acima é opt-in via classes
+   ============================================ */

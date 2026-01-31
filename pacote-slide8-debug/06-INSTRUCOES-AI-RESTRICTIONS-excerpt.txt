@@ -1,0 +1,16 @@
+=== INSTRUCOES.md (scripts) - trecho ===
+- Assistentes de IA: ler AI-RESTRICTIONS.md e "Restrições CSS/JS" no README.md.
+- Não altere CSS, JS ou scripts de export OSTEOPOROSE sem restrições documentadas.
+- Export GRADE: npm run export-grade (GRADE-slides.pdf). OSTEOPOROSE usa script separado: node scripts/export-osteoporose-pdf.js.
+
+=== AI-RESTRICTIONS.md - trecho (Export / Print / CSS) ===
+
+Regra PDF vs index/print: Ajustes de fit, proporção, delay ou margens que afetem o resultado do PDF devem ser feitos SOMENTE em scripts/export-osteoporose-pdf.js. NÃO alterar index.html, print.html, nem CSS/JS do viewer para corrigir comportamento do PDF.
+
+base.css: Não remover #utilidade-grid, .utilidade-grid (display: grid; grid-template-columns: 300px 1fr; gap; align-items: start; width: 100%). Não alterar .slide, .stage, .deck de forma a quebrar 16:9 ou overflow.
+
+print.css: Não remover @page { size: 16.667in 9.375in; margin: 0; }. Não remover bloco #utilidade-grid, .utilidade-grid em print. Não remover overflow hidden em html/body, regras de .slide (16.667in × 9.375in, page-break, overflow: hidden, print-color-adjust), capa/contracapa, backdrop-filter: none.
+
+export-osteoporose-pdf.js: Não remover viewport 1600×900, preferCSSPageSize: true, bloco #utilidade-grid nos estilos injetados (playwright-print-fix), margin 0 em page.pdf().
+
+Slide 8 HTML: Container deve manter id="utilidade-grid" e class="utilidade-grid" e os dois filhos diretos (coluna da régua + coluna das 4 caixas). Layout: régua à esquerda, 4 caixas à direita.

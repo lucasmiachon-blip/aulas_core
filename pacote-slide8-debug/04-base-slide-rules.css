@@ -1,0 +1,51 @@
+/*
+  base.css — trecho que manda no .slide e no grid do slide 8 (modo tela)
+*/
+.deck{
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.slides{
+  position: relative;
+  flex: 1;
+}
+
+.slide{
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 32px 48px;
+  overflow: hidden;
+}
+
+/* Slide com conteúdo alto (ex.: S08 Utilidade): permite scroll vertical para ver todos os boxes */
+.slide[data-overflow="allow"] {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.slide * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Slide 8 (Utilidade): grid 2 colunas (régua + 4 caixas) — garantir no index e evitar override */
+#utilidade-grid,
+.utilidade-grid {
+  display: grid !important;
+  grid-template-columns: 300px 1fr !important;
+  gap: 24px !important;
+  align-items: start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
