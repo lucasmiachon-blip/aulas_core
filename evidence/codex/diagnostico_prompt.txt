@@ -1,0 +1,47 @@
+PROMPT — Diagnóstico (read-only) para Cursor → GPT‑5.2 Codex (Ask)
+
+Você é GPT‑5.2 Codex atuando como diagnosticador. NÃO edite nada.
+
+OBJETIVO
+- Reconstruir a verdade do sistema (viewer, print preview, export PDF)
+- Mapear conflitos reais de CSS (cascata + winners com arquivo:linha)
+- Avaliar “cabe no slide?” (geométrico + legibilidade)
+- Produzir Evidence Pack com PASS/FAIL para B1–B3
+
+TAREFAS
+1) Descoberta no repo (terminal, no root):
+   - rode:
+     find . -maxdepth 4 -iname "index.html" -o -iname "viewer*.js" -o -iname "*print*.css" -o -iname "*export*pdf*.js"
+     rg -n "print=1|is-print|@media print|emulateMedia|page\.pdf\(" .
+     rg -n "data-slides|slides/_list|fetch\(|appendChild\(|template\.innerHTML" .
+   - identifique entrypoints e ordem de CSS carregada
+
+2) Rodar local:
+   python -m http.server 5500
+   abra:
+   - viewer: .../index.html
+   - print preview: .../index.html?print=1
+
+3) Métricas (cole o output do console) em viewer e print=1:
+   - rode as probes da pasta evidence/2026-01-31_baseline/probes/
+     (01_overflow.js, 02_stacking.js, 03_sample20.js)
+   - cole outputs no Evidence Pack
+
+4) Matriz de conflitos (winners):
+   Para html/body, .viewer, .stage__inner, .deck, container de slides, .slide:
+   - capture computed final de: display/position/overflow/transform/width/height/margin/padding
+   - para cada propriedade estrutural importante, traga seletor vencedor + arquivo:linha (DevTools)
+
+5) Export PDF:
+   - encontre e rode o script de export
+   - obtenha slideCount e pageCount do PDF (com evidência: comando + output)
+   - confirme se existe transform no palco durante print/export (computed style)
+
+OUTPUT
+Entregue um Evidence Pack em markdown preenchendo:
+evidence/2026-01-31_baseline/evidence.md
+
+REGRAS
+- Não propor patch ainda.
+- Se algo não existir, diga “não encontrei”.
+- Sem chain-of-thought; só fatos, métricas e conclusões.
