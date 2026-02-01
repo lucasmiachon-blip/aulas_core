@@ -1,9 +1,5 @@
 # Instruções Detalhadas - Exportar GRADE para PDF
 
-**Assistentes de IA (ChatGPT, Claude, etc.):** Se for editar qualquer script ou CSS/JS do projeto, leia **`AI-RESTRICTIONS.md`** (nesta pasta) e a seção "Restrições CSS/JS" no **README.md** da raiz. Não altere CSS, JS ou scripts de export OSTEOPOROSE sem restrições explícitas documentadas lá.
-
----
-
 ## Passo 1: Instalar Node.js
 
 1. Acesse: https://nodejs.org/

@@ -27,6 +27,14 @@ Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/s
 - **S29/S41**: ranges numéricos com **en-dash** (ex.: `5–20%`, `5–10 anos`).
 - **S47**: badge “Publication Bias” padronizado (**ALERTA**) + cor via token (`rgba(var(--navy-rgb), …)`).
 
+**P1 v2 (2026-01-28):**
+- **Ordem (viewer):** S51 logo após S09; S07/S08 após S10; S59 (poesia) após S57.
+- **S18 (Imprecisão):** régua refeita como forest plot (escala linear + MID + RR 1,0).
+- **S19/S20:** RoB 2.0 e EtD redesenhados para formato talk-ready (cards + síntese).
+- **S49:** compactação de tipografia/espaçamento para caber com folga.
+- **PDF safety:** rodapés sem `position:absolute` (flex + `margin-top:auto`) nos slides até o viewer 40.
+
+
 ### P1 pendente (backlog)
 - **S02 (p.2)**: revisar/confirmar % de recomendações por **LOE C vs LOE A** (JAMA 2019) e alinhar texto.
 - **S32 (p.47)**: “Validação brasileira já existe.” → **incluir referência** ou ajustar wording.
@@ -60,32 +68,6 @@ Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/s
 - ✅ Esperar aprovação explícita do usuário
 - ✅ Usar paleta oficial (`var(--navy)`, `var(--gold)`, etc)
 - ✅ **ATUALIZAR `CHANGELOG.md` em CADA commit** ← **OBRIGATÓRIO!**
-
----
-
-## 🚫 RESTRIÇÕES CSS/JS PARA ASSISTENTES DE IA (ChatGPT, Claude, etc.)
-
-**Objetivo:** Evitar que mudanças em CSS ou JS desfaçam o trabalho já estabilizado (viewer, PDF, slide 8 grid, overflow, etc.).
-
-**Regra geral:** **NÃO altere** arquivos em `OSTEOPOROSE/src/css/` nem em `OSTEOPOROSE/src/js/` nem em `scripts/export-osteoporose-pdf.js` (e scripts de build/print OSTEOPOROSE) **a menos que** tenha demanda explícita do usuário e plano aprovado.
-
-**Se for autorizado a modificar CSS ou JS, restrições obrigatórias:**
-
-1. **CSS (base.css, print.css, blocks.css, viewer.css)**  
-   - **NUNCA** remover ou alterar: `#utilidade-grid` / `.utilidade-grid` (grid 2 colunas: 300px 1fr); regras de `@page` e dimensões de `.slide` em print (16.667in × 9.375in); `overflow: hidden` / `overflow-x: clip` em html/body/stage/deck/slide no print; `print-color-adjust: exact`; `page-break-after: always` nos slides.  
-   - **NUNCA** trocar `display: grid` por `display: block` (ou flex) no container do slide 8 (Utilidade em Saúde).  
-   - Qualquer alteração deve preservar paleta (`var(--navy)`, `var(--gold)`, etc.) e documentar no CHANGELOG.
-
-2. **JS (viewer.js, slide-loader.js, navigation.js, print-fit.js, blocks.js)**  
-   - **NUNCA** remover ou alterar: lógica de stage/deck 16:9; carregamento de slides a partir de `_list.txt`; ajustes de overflow/scale para slides altos; listeners de teclado/navegação.  
-   - Qualquer alteração deve ser documentada no CHANGELOG.
-
-3. **Scripts de export/build (scripts/export-osteoporose-pdf.js, scripts/build-osteoporose-print-html.js)**  
-   - **NUNCA** remover ou alterar: dimensões 16.667in × 9.375in; `preferCSSPageSize: true`; bloco de estilos injetados que inclui `#utilidade-grid` e regras de slide/stage/deck; margem 0 em `@page`.  
-   - **Ajustes de fit/proporção/delay/margens no PDF:** fazer **somente** no script de export (`export-osteoporose-pdf.js`); não alterar index nem print para corrigir o PDF.
-   - Qualquer alteração deve ser documentada no CHANGELOG.
-
-**Referência detalhada:** `scripts/AI-RESTRICTIONS.md` e última entrada do `CHANGELOG.md`.
 
 ---
 
@@ -594,3 +576,12 @@ Ajustes do **P1** (revisão visual/narrativa) nos slides 1–36:
 - **Slides 21–23:** CLEAR Outcomes + MID + Imprecisão com melhor contraste e símbolos mais “clean”.
 - **Slide 27:** fechamento SAMS com menos texto, mais respiro e dourado menos agressivo.
 - **Docs:** CHANGELOG e README atualizados.
+
+
+## GRADE — PATCH 2.10 (2026-01-31)
+
+Batch de **refino visual** nos slides **26–36 (viewer)**, mantendo o texto: hierarquia tipográfica, espaçamentos, contraste, paleta e consistência dos cards/tabelas.
+
+Também fiz um ajuste pequeno no CSS global: removi `!important` do tamanho de `h2` para permitir controle por slide, e removi um token inválido em `blocks.css` para evitar comportamento imprevisível do parser.
+
+Slides mexidos neste batch: S20, S48, S49, S50, S52, S53, S54, S55, S56, S57, S59.

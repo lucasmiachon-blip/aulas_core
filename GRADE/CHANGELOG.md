@@ -1,25 +1,3 @@
-## OSTEOPOROSE_PATCH0_6 — 2026-01-28
-
-### P0: Print/PDF (corrigido e funcional)
-- Regenerado `print.html` com todos os 72 slides inline (401 KB)
-- Corrigido mojibake (UTF-8) em 68 slides durante geração do print
-- CSS print corrigido:
-  - `page-break-after: always` para 1 slide/página
-  - Paleta oficial inline (--navy, --gold, --teal, --blue)
-  - Height fixo 720px com max-height para evitar sobreposição
-
-### P0: Viewer (overflow/autofit corrigido)
-- `fitSlideOverflow()` reescrito para usar `scrollHeight` (mais confiável que `getBoundingClientRect`)
-- Scale mínimo reduzido de 0.78 para 0.65 (acomoda slides densos como S08, S09)
-- SAFE_PX aumentado de 8 para 12 pixels (margem de segurança maior)
-- Removido código duplicado (versões antigas de scheduleFit/watchActiveSlideAssets)
-- Corrigido mojibake no código-fonte
-
-### Arquivos modificados
-- `print.html` (regenerado com correções UTF-8)
-- `viewer.js` (reescrito: função fitSlideOverflow + limpeza de duplicações)
-- `CHANGELOG.md` (nova entrada)
-
 # CHANGELOG - GRADE Slides
 
 ## [PATCH 2.7] - 2026-01-28 (P1 polish: linguagem + ranges + token cleanup)
@@ -357,3 +335,75 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - “Certeza final” com dourado mais suave (tint), sem bloco chapado
 - Conteúdo de Brasil/EtD em linhas mais curtas
 
+
+## [PATCH 2.9] - 2026-01-28 (P1: ordem + estética + PDF safety — viewer 1 a 40)
+
+### Ordem / narrativa
+- `_list.txt`: mover **S51** para logo após **S09** (entra no bloco de CAC com padrão “bonito”).
+- `_list.txt`: mover **S07** e **S08** para após **S10**.
+- `_list.txt`: mover **S59** para após **S57** (poesia no meio do fluxo), removendo rótulos.
+
+### Slides ajustados
+- **S18**: régua do IC/MID refeita como **forest plot** com escala linear e marcadores coerentes (MID e RR 1,0).
+- **S19**: RoB 2.0 reformatado para **cards** (talk‑ready), mantendo a decisão GRADE.
+- **S20**: EtD reformatado para **cards + síntese**, com contraste e hierarquia.
+- **S49**: compactação de tipografia/espaçamentos para evitar overflow.
+- **S59**: limpeza total do slide (sem “encerramento”/“para terminar”/“obrigado”).
+
+### PDF safety (rodapé)
+- Removidos rodapés com `position:absolute` e substituídos por layout flex (`margin-top:auto`) em slides do range até o viewer 40 (ex.: S50–S56, S22, S23, S12, S60, S61, etc.).
+
+### Arquivos modificados
+- `GRADE/src/slides/_list.txt`
+- `GRADE/src/slides/S18.html`
+- `GRADE/src/slides/S19.html`
+- `GRADE/src/slides/S20.html`
+- `GRADE/src/slides/S49.html`
+- `GRADE/src/slides/S51.html`
+- `GRADE/src/slides/S59.html`
+- `GRADE/src/slides/S12.html`
+- `GRADE/src/slides/S22.html`
+- `GRADE/src/slides/S23.html`
+- `GRADE/src/slides/S50.html`
+- `GRADE/src/slides/S52.html`
+- `GRADE/src/slides/S53.html`
+- `GRADE/src/slides/S55.html`
+- `GRADE/src/slides/S56.html`
+- `CHANGELOG.md`
+- `README.md`
+
+
+## [PATCH 2.10] - 2026-01-31
+
+### P1 — batch 26–36 (UI/UX + hierarquia visual; sem mudar conteúdo)
+
+#### Objetivo
+- Refinar paleta, contraste, tipografia, espaçamentos e consistência visual dos slides **26–36** (viewer), mantendo o texto.
+
+#### CSS (global, pequeno)
+- `GRADE/src/css/base.css`: remover `!important` do tamanho/line-height de `h2` (permite ajuste por slide sem “brigar” com o CSS).
+- `GRADE/src/css/blocks.css`: remover token inválido (linha com `.`) e manter parser CSS limpo.
+
+#### Slides ajustados (viewer 26–36)
+- **S20**: título alinhado ao padrão do bloco (hierarquia e tamanho).
+- **S48**: refatoração visual (tipografia via tokens, tabelas/grades mais limpas, cards coerentes).
+- **S49**: compactação fina para caber com folga (paddings/gaps/font-size) mantendo o conteúdo; PCSK9i com cor de alerta mais sóbria.
+- **S50**: “slide de bloco” (navy) com títulos/spacing consistentes e rodapé com contraste correto.
+- **S52–S57**: padronização de headers (navy + chips), remoção de cabeçalhos chapados em dourado/teal, zebra/colunas em tabelas, acentos por borda superior.
+- **S54**: rodapé sem `position:absolute` (PDF-safe) + visual didático mais limpo.
+- **S59**: poesia com card central mais elegante (acento dourado lateral e sombra suave).
+
+#### Arquivos modificados
+- `GRADE/src/css/base.css`
+- `GRADE/src/css/blocks.css`
+- `GRADE/src/slides/S20.html`
+- `GRADE/src/slides/S48.html`
+- `GRADE/src/slides/S49.html`
+- `GRADE/src/slides/S50.html`
+- `GRADE/src/slides/S52.html`
+- `GRADE/src/slides/S53.html`
+- `GRADE/src/slides/S54.html`
+- `GRADE/src/slides/S55.html`
+- `GRADE/src/slides/S56.html`
+- `GRADE/src/slides/S57.html`
+- `GRADE/src/slides/S59.html`

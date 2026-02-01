@@ -1,129 +1,5 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
-## OSTEOPOROSE — 2026-01-23 (Viewer formato apresentação + pendências)
-
-### Objetivo
-Restaurar e fixar o index em “formato apresentação” (slide ocupa a borda toda) e documentar para não reverter.
-
-### O que foi feito
-- **viewer.css:** `.stage { padding: 0 }` (antes 16px 24px); `.viewer.is-fullscreen .stage { padding: 0 !important }`; `.viewer.is-fullscreen .stage__inner` com `max-width: 100vw`, `max-height: 100vh/100dvh` (sem reservar 16px). Sem padding no stage o deck encosta na borda da tela.
-- **viewer.js:** Em `fitToScreen()`, `maxScale = 3` em qualquer modo (antes 1.2 em janela normal); evita margens pretas em monitores grandes.
-- **print.css:** Regras de layout (stage, deck, slides, overflow) só em `@media print`; fora disso só barra e #utilidade-grid, para o index com ?print=1 continuar ocupando a tela.
-- **AI-RESTRICTIONS.md:** Incluída regra explícita: não reintroduzir padding no .stage nem reduzir maxScale (formato apresentação).
-
-### Pendências (não feitas nesta sessão)
-- **PDF:** Ajustes finos (fit, proporção, delay, margens/scroll) — fazer **somente** em `scripts/export-osteoporose-pdf.js`; não alterar index nem print.
-- **Slide 8 (Utilidade em Saúde):** Caixas à direita da régua no viewer/PDF; grid já existe, layout pode precisar de revisão em outra sessão.
-
-### Arquivos modificados
-- OSTEOPOROSE/src/css/viewer.css
-- OSTEOPOROSE/src/js/viewer.js
-- OSTEOPOROSE/src/css/print.css
-- scripts/AI-RESTRICTIONS.md
-- CHANGELOG.md
-
----
-
-## Documentação — 2026-01-23 (Guardrails CSS/JS para IA)
-
-### Objetivo
-Garantir que assistentes de IA (ChatGPT, Claude, etc.) não desfaçam o trabalho estabilizado em CSS/JS ao editar conteúdo ou fazer outras alterações.
-
-### O que foi feito
-- **README.md**: Nova seção "Restrições CSS/JS para assistentes de IA" com regra geral (não alterar CSS/JS de OSTEOPOROSE/scripts de export sem demanda explícita) e restrições explícitas se for autorizado: não remover/alterar grid #utilidade-grid, @page/dimensões slide 16.667×9.375in, overflow/print-color-adjust, lógica de viewer/slide-loader/export PDF; referência a `scripts/AI-RESTRICTIONS.md`.
-- **CHANGELOG.md**: Esta entrada.
-- **scripts/AI-RESTRICTIONS.md**: Criado com lista detalhada de blocos e regras que não devem ser removidos ou alterados (CSS base/print, JS viewer/loader, export-osteoporose-pdf.js).
-- **Comentários nos arquivos críticos**: Em `OSTEOPOROSE/src/css/base.css`, `OSTEOPOROSE/src/css/print.css` e `scripts/export-osteoporose-pdf.js` foi adicionado cabeçalho/aviso para IA: "Leia scripts/AI-RESTRICTIONS.md antes de modificar".
-
-### O que NÃO foi feito
-- Nenhuma alteração de comportamento em CSS ou JS; apenas documentação e avisos.
-
-### Arquivos modificados
-- README.md
-- CHANGELOG.md
-- scripts/AI-RESTRICTIONS.md (novo)
-- OSTEOPOROSE/src/css/base.css (comentário)
-- OSTEOPOROSE/src/css/print.css (comentário)
-- scripts/export-osteoporose-pdf.js (comentário)
-
----
-
-## OSTEOPOROSE — 2026-01-23 (Viewer estável + overflow + PDF)
-
-### PDF — modo apresentação e margem direita
-- **Modo apresentação**: funciona bem no leitor de PDF (um slide por página, setas navegam).
-- **Margem direita**: restaurada com `@page { margin: 0 10mm 0 0 }` e largura do slide/deck/stage `calc(16.667in - 10mm)` em `print.css` e no script `export-osteoporose-pdf.js`.
-
-### PDF em formato de apresentação (implementado)
-- **Fonte do PDF**: botão "PDF" abre **index.html?print=1** (mesmo viewer, modo print). Um slide = uma página; no leitor de PDF, setas = próximo/anterior slide.
-- **Sync com o viewer**: mudanças no viewer refletem no PDF quando for gerado; print.html opcional/fallback.
-- **Script de export** (`scripts/export-osteoporose-pdf.js`): prioriza index?print=1, espera deck (≥70 slides), injeta .stage/.stage__inner height:auto, slide 16.667×9.35in, border/box-shadow none, backdrop-filter none, print-color-adjust exact, preferCSSPageSize.
-- **print.css**: multi-página (stage/deck/slides height:auto), slide 16.667×9.35in, border/box-shadow/outline none, break-before/after, backdrop-filter none nos filhos, print-color-adjust exact. Altura 9.35in para reduzir vazamento (bleeding ainda persiste).
-
-### print.html — regenerado a partir dos slides (sync com index, UTF-8)
-- **Problema**: print.html era cópia estática desatualizada (1280×720), com mojibakes (61 ocorrências) e configuração diferente do index; slide "O que é Utilidade em Saúde?" no index já tinha conteúdo completo (S08_slide-10.html), mas print.html estava fora de sync.
-- **Solução**: Script `scripts/build-osteoporose-print-html.js` regenera `OSTEOPOROSE/src/print.html` a partir dos mesmos arquivos em `slides/` que o index usa. Resultado: UTF-8 (sem mojibakes), mesma configuração 1600×900, conteúdo idêntico ao index.
-- **Uso**: `node scripts/build-osteoporose-print-html.js` sempre que quiser atualizar print.html. Para PDF, index.html?print=1 continua preferido (sempre em sync sem precisar rodar o script).
-
-### Viewer (estrutura consistente, manter esta versão)
-- Stage **1600×900** (16:9) alinhado em JS e CSS
-- **Anti-shrink**: preserva dimensões máximas do viewport ao abrir DevTools (não encolhe)
-- Paddings mínimos (stage, fullscreen) para melhor ocupação de tela
-- **Auditoria de overflow**: `__auditSlideOverflow()` no console identifica slides que violam a borda inferior (`scrollHeight` > `clientHeight`); resultado em `__auditSlideOverflowResult` e envio para debug.log
-
-### Slides — ajustes para evitar violação da borda inferior
-- **S07** (Utilidade comparada), **S08** (Utilidade em saúde), **S09** (QALY), **S12** (QALY limiar), **S13** (Risco ao longo da vida), **S26** (Refratura 12m), **S54** (DIOP 1/2), **S55** (DIOP 2/2), **S56** (PPI): redução de padding e margens (títulos, blocos) sem alterar conteúdo.
-- **S35** (Zoledronato mortalidade): boxes e fontes reduzidos (h1 38px, números 48px, blocos 20px) mantendo legibilidade pptx.
-- **S48** (ACR 2022): h1/h2/h3 e padding dos boxes reduzidos (h1 38px, h3 24px, boxes 14–16px).
-- **S53** (DIOP osso vs quedas): paleta alinhada (FRATURA e “Desfecho” com var(--navy)/var(--teal)); boxes e margens reduzidos.
-- **S64** (AFF e MRONJ): padding e fontes mínimos (h1 38px, h2 24px, texto 15px, boxes 18–22px).
-- **S52** (TBS): refinamento distâncias/boxes/espaço branco — padding 20/32px, gap 12px, h1 38px, h2 20px, boxes 10–12px, blocos inferiores e rodapé compactos (evitar texto escondido).
-- **S53** (DIOP): grid 1 (coluna esquerda) e Framework (direita) com boxes/fontes reduzidos — h2 22px, padding 10px, texto 12–14px, gap/margens menores.
-
----
-
-## OSTEOPOROSE_PATCH0_9 — 2026-01-28
-
-### P0: Viewer (calibração final baseada em análise)
-- `fitSlideOverflow()` reescrito seguindo diagnóstico:
-  - **Ignora largura** no cálculo (causa margens laterais desnecessárias)
-  - TOLERANCE: 40 → **50px** (só comprime se altura > 770px)
-  - SAFE_PX: 6 → **4px** (mínimo necessário)
-  - Scale mínimo: 0.75 → **0.82** (preserva legibilidade)
-- Trade-off aceito: slides com ~750px podem cortar 1-2 linhas do rodapé
-
-### Slides que precisam ajuste CSS manual (overflow real)
-- S14, S35, S48, S52, S53, S58, S59, S64, S69: conteúdo excede 770px
-- Recomendação: reduzir padding ou font-size nesses slides específicos
-
-
-## OSTEOPOROSE_PATCH0_8 — 2026-01-28
-
-### P0: Viewer (calibração fina)
-- TOLERANCE: 20 → 40px
-- SAFE_PX: 8 → 6px  
-- Scale mínimo: 0.72 → 0.75
-
-
-## OSTEOPOROSE_PATCH0_7 — 2026-01-28
-
-### P0: Viewer (autofit com tolerância)
-- `fitSlideOverflow()` com TOLERANCE=20px
-- Scale mínimo: 0.72
-
-
-## OSTEOPOROSE_PATCH0_6 — 2026-01-28
-
-### P0: Print/PDF
-- Regenerado `print.html` com 72 slides inline (401 KB)
-- Corrigido mojibake (UTF-8) em 68 slides
-
-### P0: Viewer
-- `fitSlideOverflow()` simplificado para usar scrollHeight
-- Removidas duplicações (686 → 598 linhas)
-- Corrigido mojibake nos comentários
-
-
 ## OSTEOPOROSE_PDF_FIX_2026_01_29 — 2026-01-29 (Tentativa de correção PDF)
 
 ### Problema
@@ -219,6 +95,35 @@ Garantir que assistentes de IA (ChatGPT, Claude, etc.) não desfaçam o trabalho
 - `OSTEOPOROSE/src/js/slide-loader.js`, `OSTEOPOROSE/src/js/viewer.js`
 - `OSTEOPOROSE/src/slides/*`
 
+
+
+## PATCH2_9 — 2026-01-28 (GRADE: P1 refinamento visual + ordem + segurança de rodapé)
+
+### O que foi feito (P1)
+- **Ordem (viewer):**
+  - **S51** (Metas por categoria de risco) movido para **logo após S09** (bloco CAC).
+  - **S07 e S08** movidos para **após S10** (narrativa mais limpa).
+  - **S59** (poesia) movido para **após S57** e removidos rótulos “(encerramento)”/“Para terminar…”/“Obrigado”.
+- **S18 (Imprecisão):** régua refeita como **forest plot** com escala linear (0,4–1,5), marcadores de **MID (0,80)** e **RR 1,0**, e IC 0,79–0,96 com ponto estimado.
+- **S19 (RoB 2.0):** redesenho para formato **talk‑ready** (cards) com a decisão GRADE explícita.
+- **S20 (EtD):** redesenho “TED‑style” (cards + síntese) com bloco de recomendação.
+- **S49 (Fechamento SAMS):** redução de densidade (tipografia/espaçamentos) para evitar overflow.
+- **Rodapés (PDF safety):** substituição de `position:absolute` por layout em `flex` com `margin-top:auto` em vários slides do range até o viewer 40.
+
+### Arquivos modificados
+- `GRADE/src/slides/_list.txt`
+- `GRADE/src/slides/S18.html`
+- `GRADE/src/slides/S19.html`
+- `GRADE/src/slides/S20.html`
+- `GRADE/src/slides/S49.html`
+- `GRADE/src/slides/S51.html`
+- `GRADE/src/slides/S59.html`
+- `GRADE/src/slides/S12.html`, `S22.html`, `S23.html`, `S50.html`, `S52.html`, `S53.html`, `S55.html`, `S56.html`, `S60.html`, `S61.html` (ajuste de rodapé)
+- `README.md`
+- `CHANGELOG.md`
+- `GRADE/CHANGELOG.md`
+
+---
 
 ## PATCH2_7 — 2026-01-28 (GRADE: P1 linguagem + ranges + token cleanup)
 
@@ -558,3 +463,39 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - “Certeza final” com dourado mais suave (tint), sem bloco chapado
 - Conteúdo de Brasil/EtD em linhas mais curtas
 
+
+
+## [PATCH 2.10] - 2026-01-31
+
+### P1 — batch 26–36 (UI/UX + hierarquia visual; sem mudar conteúdo)
+
+#### Objetivo
+- Refinar paleta, contraste, tipografia, espaçamentos e consistência visual dos slides **26–36** (viewer), mantendo o texto.
+
+#### CSS (global, pequeno)
+- `GRADE/src/css/base.css`: remover `!important` do tamanho/line-height de `h2` (permite ajuste por slide sem “brigar” com o CSS).
+- `GRADE/src/css/blocks.css`: remover token inválido (linha com `.`) e manter parser CSS limpo.
+
+#### Slides ajustados (viewer 26–36)
+- **S20**: título alinhado ao padrão do bloco (hierarquia e tamanho).
+- **S48**: refatoração visual (tipografia via tokens, tabelas/grades mais limpas, cards coerentes).
+- **S49**: compactação fina para caber com folga (paddings/gaps/font-size) mantendo o conteúdo; PCSK9i com cor de alerta mais sóbria.
+- **S50**: “slide de bloco” (navy) com títulos/spacing consistentes e rodapé com contraste correto.
+- **S52–S57**: padronização de headers (navy + chips), remoção de cabeçalhos chapados em dourado/teal, zebra/colunas em tabelas, acentos por borda superior.
+- **S54**: rodapé sem `position:absolute` (PDF-safe) + visual didático mais limpo.
+- **S59**: poesia com card central mais elegante (acento dourado lateral e sombra suave).
+
+#### Arquivos modificados
+- `GRADE/src/css/base.css`
+- `GRADE/src/css/blocks.css`
+- `GRADE/src/slides/S20.html`
+- `GRADE/src/slides/S48.html`
+- `GRADE/src/slides/S49.html`
+- `GRADE/src/slides/S50.html`
+- `GRADE/src/slides/S52.html`
+- `GRADE/src/slides/S53.html`
+- `GRADE/src/slides/S54.html`
+- `GRADE/src/slides/S55.html`
+- `GRADE/src/slides/S56.html`
+- `GRADE/src/slides/S57.html`
+- `GRADE/src/slides/S59.html`

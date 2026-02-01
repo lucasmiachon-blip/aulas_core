@@ -286,6 +286,18 @@ html, body{
   flex: 1;
 }
 
+/* Fix: quando há <p> subtítulo entre h1 e container, aplicar flex:1 ao container */
+.slide.is-active > h1 + p + *,
+.slide.is-active > h2 + p + * {
+  flex: 1;
+}
+
+/* Fix: <p> subtítulo não deve expandir, manter altura natural */
+.slide.is-active > h1 + p,
+.slide.is-active > h2 + p {
+  flex: none;
+}
+
 /* Modo palco: esconde a UI após inatividade */
 .viewer.is-ui-hidden .viewer__bar{
   opacity: 0;
