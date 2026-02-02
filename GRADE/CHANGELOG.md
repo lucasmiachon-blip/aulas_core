@@ -1,18 +1,23 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
-## GRADE_SLIDE_ORDER_2026_02_02 — 2026-02-02
+## GRADE_P1_TITLES_POLISH_2026_02_02 — 2026-02-02
 
-### Ordem dos slides ajustada (posições 29-31)
-- Posição 29: S51
-- Posição 30: S52
-- Posição 31: S53
+### Problema
+- Nos **10 primeiros slides**, alguns títulos apareciam com “peso” diferente (partes mais grossas) quando havia **spans/ênfases** dentro de `h1/h2` (ex.: destaque em ouro). Isso acontecia porque o reset `.slide * { font-family: ... !important; }` forçava **Inter** nos elementos internos do título.
 
-Nova sequência: S51 → S52 → S53 (ordem numérica restaurada)
+### O que foi feito
+- `GRADE/src/css/base.css`
+  - `h1/h2/h3 *` agora também usa **Georgia** com `!important` → título inteiro fica consistente mesmo com `<span>`, `<em>`, etc.
+  - `blockquote *` também forçado para serif (evita citações com mistura de fontes).
+  - `font-weight` de `h1/h2` padronizado em **700** (peso nativo do Georgia), reduzindo variação de renderização.
+
+### O que NÃO foi feito
+- Nenhuma mudança de conteúdo (texto, números, claims, referências).
 
 ### Arquivos modificados
-- `GRADE/src/slides/_list.txt`
-
----
+- `GRADE/src/css/base.css`
+- `CHANGELOG.md`
+- `README.md`
 
 ## GRADE_P1_TYPO_GRID_POLISH_2026_02_02 — 2026-02-02
 
