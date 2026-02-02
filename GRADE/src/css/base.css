@@ -15,6 +15,16 @@
   --white: #ffffff;
   --border: #e2e8f0;
 
+  /* Aliases usados nos slides (evita var() inválido) */
+  --ink: var(--text);
+  --panel2: rgba(var(--navy-rgb), 0.03);
+
+  /* Estados (usados em chips/escadas NNT/NNH) */
+  --red: #dc2626;
+  --red-rgb: 220, 38, 38;
+  --green: #12b886;
+  --green-rgb: 18, 184, 134;
+
   /* Helpers RGB */
   --navy-rgb: 11, 19, 32;
   --gold-rgb: 210, 181, 91;

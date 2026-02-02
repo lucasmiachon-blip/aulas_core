@@ -1,173 +1,89 @@
-<section class="slide" data-slide-id="S11" style="background: var(--bg); padding: 2vw 3vw;">
-        
-        <!-- CABE&Aacute;â€¡ALHO -->
-        <div style="margin-bottom: 1.8vw;">
-            <h2 style="font-family: Georgia, serif; font-size: 3.5vw; color: var(--navy); margin: 0 0 0.6vw 0; font-weight: 600; line-height: 1.2;">
-                CAC = 0: estatina reduz eventos?
-            </h2>
-            <p style="font-family: 'Inter', sans-serif; font-size: 1.7vw; color: var(--navy); margin: 0; line-height: 1.3; font-weight: 400;">
-                CAC modifica o benef&iacute;cio absoluto da estatina (NNT em 10 anos)
-            </p>
+<section class="slide" data-slide-id="S11" style="background: var(--bg);">
+  <div class="label-gold" style="margin-bottom: 0.6vw;">EVIDÊNCIA — CAC</div>
+
+  <h2 style="margin-bottom: 0.55vw;">CAC muda o benefício absoluto da estatina</h2>
+  <div class="lead" style="max-width: 92%;">
+    Mesmo com benefício relativo parecido, o <b>NNT</b> depende do <b>risco basal</b> (CAC).
+  </div>
+
+  <div style="display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 1.8vw; margin-top: 1.35vw;">
+
+    <!-- Left: NNT ladder -->
+    <div class="card" style="padding: 1.55vw;">
+      <div class="small-title">NNT em 10 anos (prevenção primária)</div>
+
+      <div style="margin-top: 1.05vw; border: 1px solid var(--border); border-radius: 1.1vw; overflow: hidden;">
+        <div style="display:grid; grid-template-columns: 1fr 0.8fr; gap: 0; padding: 1.1vw 1.2vw; background: #fff;">
+          <div style="font-size: 1.05vw; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 800;">Categoria CAC</div>
+          <div style="font-size: 1.05vw; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; font-weight: 800; text-align:right;">NNT (10 a)</div>
         </div>
 
-        <!-- LAYOUT: 60% Tiles+Callout / 40% GRADE+Decis&atilde;o -->
-        <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.2vw; align-items: start;">
-            
-            <!-- COLUNA ESQUERDA: RANKED TILES + CALLOUT -->
-            <div style="display: flex; flex-direction: column; gap: 1.2vw;">
-                
-                <!-- TILES EMPILHADOS (NNT por estrato CAC) -->
-                <div style="display: flex; flex-direction: column; gap: 0.9vw;">
-
-                    <!-- CAC = 0 -->
-                    <div class="card" style="padding: 1.25vw 1.5vw; border-left: 6px solid rgba(var(--text-rgb),0.16);">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.2vw;">
-                            <div style="flex: 1;">
-                                <p class="kpi-label" style="margin: 0 0 0.45vw 0;">CAC = 0</p>
-                                <p style="font-family: var(--font-sans); font-size: 1.08vw; color: var(--navy); margin: 0; font-weight: 600;">
-                                    aSHR 1.01 (IC 0.94–1.09), p=0.94
-                                </p>
-                                <p style="font-family: var(--font-sans); font-size: 1.02vw; color: var(--muted); margin: 0.25vw 0 0 0; font-style: italic;">
-                                    ≈ sem benefício absoluto
-                                </p>
-                            </div>
-
-                            <div style="text-align: right;">
-                                <p class="kpi-label" style="margin: 0 0 0.25vw 0;">NNT (10 anos)</p>
-                                <div class="kpi kpi--lg" style="color: var(--muted);">3571</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CAC 1–100 -->
-                    <div class="card card--soft" style="padding: 1.25vw 1.5vw; border-left: 6px solid var(--teal); background: rgba(var(--teal-rgb),0.08);">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.2vw;">
-                            <div style="flex: 1;">
-                                <p class="kpi-label" style="margin: 0 0 0.45vw 0;">CAC 1–100</p>
-                                <p style="font-family: var(--font-sans); font-size: 1.08vw; color: var(--navy); margin: 0; font-weight: 600;">
-                                    aSHR 0.75 (IC 0.53–1.06), p=0.095
-                                </p>
-                                <p style="font-family: var(--font-sans); font-size: 1.02vw; color: var(--muted); margin: 0.25vw 0 0 0; font-style: italic;">
-                                    Tendência (não significativo)
-                                </p>
-                            </div>
-
-                            <div style="text-align: right;">
-                                <p class="kpi-label" style="margin: 0 0 0.25vw 0;">NNT</p>
-                                <div class="kpi kpi--lg" style="color: var(--navy);">100</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CAC ≥ 101 -->
-                    <div class="card" style="padding: 1.25vw 1.5vw; border-left: 6px solid var(--gold); background: rgba(var(--gold-rgb),0.10);">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1.2vw;">
-                            <div style="flex: 1;">
-                                <p class="kpi-label" style="margin: 0 0 0.45vw 0;">CAC ≥ 101</p>
-                                <p style="font-family: var(--font-sans); font-size: 1.08vw; color: var(--navy); margin: 0; font-weight: 700;">
-                                    aSHR 0.38 (IC 0.27–0.55), p&lt;0.0001
-                                </p>
-                                <p style="font-family: var(--font-sans); font-size: 1.02vw; color: var(--navy); margin: 0.25vw 0 0 0; font-style: italic; opacity: 0.85;">
-                                    Benefício claro e robusto
-                                </p>
-                            </div>
-
-                            <div style="text-align: right;">
-                                <p class="kpi-label" style="margin: 0 0 0.25vw 0;">NNT</p>
-                                <div class="kpi kpi--lg" style="color: var(--navy);">12</div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- CALLOUT: MENSAGEM PRINCIPAL -->
-                <div style="background: rgba(var(--gold-rgb),0.08); border-left: 3px solid var(--gold); border-radius: 0.4vw; padding: 1vw 1.3vw;">
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.1vw; color: var(--navy); margin: 0; line-height: 1.4; font-weight: 500;">
-                        <strong style="color: var(--navy);">Gradiente dose–resposta:</strong> Quanto maior o CAC, menor o NNT (mais eficiência terapêutica)
-                    </p>
-                </div>
-                
-                <!-- REFER&Aacute;Å NCIA PRINCIPAL -->
-                <div style="margin-top: 0.6vw; padding-top: 0.8vw; border-top: 1px solid var(--border);">
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.9vw; color: var(--muted); margin: 0; line-height: 1.3;">
-                        Mitchell JD et al. Impact of Statins on Cardiovascular Outcomes Following Coronary Artery Calcium Scoring. <em>J Am Coll Cardiol.</em> 2018;72(25):3233&mdash;3242. DOI: 10.1016/j.jacc.2018.09.051 (Tabela 3).
-                    </p>
-                </div>
-                
-            </div>
-
-            <!-- COLUNA DIREITA: GRADE + DECIS&Aacute;Æ’O -->
-            <div style="display: flex; flex-direction: column; gap: 1.6vw;">
-                
-                <!-- CARD 1: GRADE (mais legível, menos “preto total”) -->
-                <div class="card" style="padding: 0; overflow: hidden; border: 1px solid rgba(var(--navy-rgb),0.18);">
-                    <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center;">
-                        <span>ANÁLISE GRADE</span>
-                        <span class="chip chip--gold">⊕⊕◯◯ BAIXA</span>
-                    </div>
-
-                    <div class="cardBody">
-                        <div style="display: flex; flex-direction: column; gap: 0.9vw;">
-                            <p style="font-family: var(--font-sans); font-size: 1.05vw; color: var(--text); margin: 0; line-height: 1.55;">
-                                <strong style="color: var(--gold);">Tipo:</strong> Coorte observacional + ajuste (IPTW/Fine-Gray) — não é RCT
-                            </p>
-
-                            <p style="font-family: var(--font-sans); font-size: 1.05vw; color: var(--text); margin: 0; line-height: 1.55;">
-                                <strong style="color: var(--gold);">Força:</strong> Gradiente dose–resposta marcante (NNT 3571 → 12)
-                                <span style="display: block; font-size: 0.95vw; color: var(--muted); margin-top: 0.25vw;">
-                                    (+1 upgrade GRADE por gradiente)
-                                </span>
-                            </p>
-
-                            <p style="font-family: var(--font-sans); font-size: 1.05vw; color: var(--text); margin: 0; line-height: 1.55;">
-                                <strong style="color: var(--gold);">Limite:</strong> Confusão residual / viés do “usuário saudável”; prescrição ≠ aderência
-                            </p>
-                        </div>
-
-                        <div class="note" style="margin-top: 1.1vw; border-left-color: var(--gold); background: rgba(var(--gold-rgb),0.10);">
-                            <p style="font-family: var(--font-serif); font-size: 1.03vw; color: var(--navy); font-style: italic; margin: 0; text-align: right;">
-                                Predição ≠ prescrição — exige julgamento clínico.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- CARD 2: DECIS&Aacute;Æ’O COMPARTILHADA -->
-                <div style="background: white; border: 2px solid var(--gold); border-radius: 0.6vw; padding: 1.5vw;">
-                    <div style="display: flex; align-items: center; gap: 0.8vw; margin-bottom: 1vw;">
-                        <span style="font-size: 1.5vw;">&#128172;</span>
-                        <h3 style="font-family: 'Inter', sans-serif; font-size: 1.15vw; color: var(--navy); font-weight: 700; margin: 0;">
-                            Quando considerar diferir estatina (CAC=0)
-                        </h3>
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 0.6vw; margin-bottom: 1vw;">
-                        <p style="font-family: 'Inter', sans-serif; font-size: 1.05vw; color: var(--navy); margin: 0; line-height: 1.4;">
-                            <strong style="color: var(--gold);">1.</strong> CAC = 0 confirmado
-                        </p>
-                        <p style="font-family: 'Inter', sans-serif; font-size: 1.05vw; color: var(--navy); margin: 0; line-height: 1.4;">
-                            <strong style="color: var(--gold);">2.</strong> Risco intermedi&aacute;rio/lim&iacute;trofe (n&atilde;o muito alto)
-                        </p>
-                        <p style="font-family: 'Inter', sans-serif; font-size: 1.05vw; color: var(--navy); margin: 0; line-height: 1.4;">
-                            <strong style="color: var(--gold);">3.</strong> LDL-c &lt;190 mg/dL
-                        </p>
-                        <p style="font-family: 'Inter', sans-serif; font-size: 1.05vw; color: var(--navy); margin: 0; line-height: 1.4;">
-                            <strong style="color: var(--gold);">4.</strong> Sem diabetes
-                        </p>
-                        <p style="font-family: 'Inter', sans-serif; font-size: 1.05vw; color: var(--navy); margin: 0; line-height: 1.4;">
-                            <strong style="color: var(--gold);">5.</strong> Paciente entende a necessidade de reavaliar em 5&ndash;10 anos<br>
-                            <span style="font-size: 0.9vw; color: var(--muted);">(warranty period varia por fatores)</span>
-                        </p>
-                    </div>
-                    <div style="margin-top: 1vw; padding-top: 0.8vw; border-top: 1px solid var(--border);">
-                        <p style="font-family: 'Inter', sans-serif; font-size: 0.95vw; color: var(--muted); margin: 0; line-height: 1.3;">
-                            <strong style="color: var(--gold);">Exce&ccedil;&atilde;o:</strong> CAC=0 + ASCVD risk &gt;20% pode ainda se beneficiar (an&aacute;lise explorat&oacute;ria; considerar outros risk enhancers).
-                        </p>
-                    </div>
-                </div>
-                
-            </div>
-
+        <div style="padding: 1.15vw 1.2vw; border-top: 1px solid var(--border); display:grid; grid-template-columns: 1fr 0.8fr; align-items:center; background: rgba(11,20,37,.01);">
+          <div>
+            <div style="font-size: 1.20vw; font-weight: 900;">CAC = 0</div>
+            <div style="font-size: 0.98vw; color: var(--muted); margin-top: 0.25vw;">aSHR 1,01 (IC 95% 0,94–1,09)</div>
+          </div>
+          <div style="text-align:right; font-size: 2.10vw; font-weight: 950; color: var(--muted);">3571</div>
         </div>
-        
-    </section>
+
+        <div style="padding: 1.15vw 1.2vw; border-top: 1px solid var(--border); display:grid; grid-template-columns: 1fr 0.8fr; align-items:center; background: rgba(198,165,93,.06);">
+          <div>
+            <div style="font-size: 1.20vw; font-weight: 900;">CAC 1–100</div>
+            <div style="font-size: 0.98vw; color: var(--muted); margin-top: 0.25vw;">aSHR 0,92 (0,78–1,08)</div>
+          </div>
+          <div style="text-align:right; font-size: 2.10vw; font-weight: 950;">100</div>
+        </div>
+
+        <div style="padding: 1.15vw 1.2vw; border-top: 1px solid var(--border); display:grid; grid-template-columns: 1fr 0.8fr; align-items:center; background: rgba(18,184,134,.06);">
+          <div>
+            <div style="font-size: 1.20vw; font-weight: 900;">CAC ≥ 101</div>
+            <div style="font-size: 0.98vw; color: var(--muted); margin-top: 0.25vw;">aSHR 0,60 (0,43–0,83)</div>
+          </div>
+          <div style="text-align:right; font-size: 2.10vw; font-weight: 950; color: var(--green);">12</div>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 0.95vw;">
+        <p><b>Leitura clínica:</b> CAC “mede o risco”; o risco “mede o benefício absoluto”.</p>
+      </div>
+
+      <div class="ref" style="margin-top: 0.85vw;">Fonte: Mitchell JD et al. <i>JACC</i> 2018;72:3233–3242.</div>
+    </div>
+
+    <!-- Right: GRADE + decision -->
+    <div style="display:flex; flex-direction:column; gap: 1.1vw;">
+
+      <div class="card" style="padding: 1.45vw; border-left: 6px solid var(--navy);">
+        <div class="small-title">Análise GRADE (em 20s)</div>
+
+        <div style="margin-top: 0.95vw; display:grid; gap: 0.55vw; font-size: 1.06vw; line-height: 1.35;">
+          <div><b>Tipo:</b> coorte (baseline CAC estratifica risco).</div>
+          <div><b>Upgrade:</b> +1 por <b>dose–resposta</b> (CAC ↑ → risco ↑).</div>
+          <div><b>Limites:</b> possível <b>confusão residual</b> e decisões clínicas não randomizadas.</div>
+        </div>
+
+        <div class="grade-final" style="margin-top: 1.0vw;">
+          <div>certeza</div>
+          <div class="grade-dots"><span class="dot">⊕</span><span class="dot">⊕</span><span class="dot">⊖</span><span class="dot">⊖</span></div>
+          <div class="grade-label">MODERADA</div>
+        </div>
+      </div>
+
+      <div class="card card--soft" style="padding: 1.45vw;">
+        <div class="small-title">Regra prática (quando diferir estatina)</div>
+
+        <div style="margin-top: 0.95vw; display:grid; gap: 0.6vw; font-size: 1.06vw; line-height: 1.35;">
+          <div>✅ <b>CAC=0</b> confirmado</div>
+          <div>✅ Risco <b>borderline/intermediário</b></div>
+          <div>✅ <b>LDL-c &lt; 190</b> e <b>sem diabetes</b></div>
+          <div>✅ Concorda com <b>reavaliação</b> (5–10 anos)</div>
+        </div>
+
+        <div style="margin-top: 0.85vw; padding: 0.95vw; border-radius: 1.0vw; border: 1px solid rgba(220,38,38,.25); background: rgba(220,38,38,.06); font-size: 1.00vw; line-height: 1.32;">
+          <b>Exceção:</b> risco muito alto (ex.: diabetes + múltiplos fatores, HF, etc.) tende a exigir intensificação <b>independente</b> do CAC.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

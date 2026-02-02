@@ -1,5 +1,28 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## GRADE_P2_CAC_POLISH_S10_S13_2026_02_02 — 2026-02-02
+
+### Objetivo
+Ajustes finos finais do **bloco CAC** após revisão em viewer: garantir que os slides **cabem na janela**, e alinhar estética (tabelas/boxes) ao padrão profissional já aplicado.
+
+### O que mudou
+- **Tokens CSS corrigidos:** adicionados `--ink`, `--panel2`, `--red/--green` (e RGBs) para evitar `var()` inválido e estabilizar cores.
+- **Componente novo:** `.card--soft` (variante de card com baixo contraste) para regras práticas.
+- **S10 (CAC=0 / warranty):** layout mais compacto + figura com altura fixa (evita overflow) + arquivo `mesa_cac_warranty.png` garantido em `src/assets/figures/`.
+- **S11 (estatina por CAC):** micro-ajustes de padding/margens para caber em viewport sem perder hierarquia.
+- **S08 (dose–resposta):** adicionado mini‑visual de monotonicidade (dual coding) + espaçamento mais eficiente.
+- **S13 (AAS por CAC):** trocado de tabela tradicional para **“escada” NNT/NNH** (estilo do slide de estatina) com chips de balanço.
+
+### Arquivos modificados
+- `src/css/base.css`
+- `src/css/blocks.css`
+- `src/slides/S08.html`
+- `src/slides/S10.html`
+- `src/slides/S11.html`
+- `src/slides/S13.html`
+- `src/assets/figures/mesa_cac_warranty.png`
+- `CHANGELOG.md`
+
 ## GRADE_P2_CONTENT_BATCH2_S10_S15_2026_02_02 — 2026-02-02
 
 ### Objetivo
@@ -20,7 +43,7 @@ Continuar a fase **P2 (conteúdo + forma)** nos slides **10–15** (contador do 
 - `src/slides/S11.html`
 - `src/slides/S13.html`
 - `src/slides/S61.html`
-- `assets/figures/mesa_cac_warranty.png` *(novo)*
+- `src/assets/figures/mesa_cac_warranty.png` *(novo)*
 - `CHANGELOG.md`
 - `README.md`
 

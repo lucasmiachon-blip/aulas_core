@@ -1,131 +1,89 @@
-<section class="slide" data-slide-id="S08">
-        <h2 style="margin-bottom: 1.6vw; font-size: 3.1vw; font-family: var(--font-serif); line-height: 1.1;">
-            <span style="color: var(--navy);">GRADE Domain:</span>
-            <span style="color: var(--gold);">Dose-Response Gradient</span>
-        </h2>
-        
-        <!-- Tese (uma frase, Lato 26-28px) -->
-        <div style="margin-bottom: 3vw;">
-            <p style="font-family: var(--font-sans); font-size: 1.6vw; line-height: 1.4; color: var(--text); font-weight: 400;">
-                Aumento sistem&aacute;tico do efeito com maior exposi&ccedil;&atilde;o (dose, dura&ccedil;&atilde;o ou severidade).
-            </p>
-        </div>
-        
-        <!-- Layout 2 colunas: Microprovas (esquerda) + Regra (direita) -->
-        <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 3vw; flex-grow: 1; align-items: start;">
-            
-            <!-- Coluna Esquerda: Três Microprovas -->
-            <div style="display: flex; flex-direction: column; gap: 2vw;">
-                
-                <!-- Microprova 1: Dose -->
-                <div style="background: white; border-left: 0.25vw solid var(--gold); padding: 1.5vw 2vw; border-radius: 0.5vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.06);">
-                    <div style="display: flex; align-items: center; gap: 1vw; margin-bottom: 1vw;">
-                        <span style="background: var(--gold); color: var(--navy); width: 1.6vw; height: 1.6vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-weight: 900; font-size: 1vw; flex-shrink: 0;">1</span>
-                        <p style="font-family: var(--font-sans); font-size: 1.4vw; font-weight: 700; color: var(--navy); margin: 0;">Dose</p>
-                    </div>
-                    
-                    <!-- Micro-visual: 3 barras crescentes -->
-                    <div style="display: flex; align-items: flex-end; gap: 0.4vw; height: 2vw; margin-bottom: 1vw;">
-                        <div style="width: 1.5vw; height: 40%; background: var(--gold); border-radius: 0.2vw 0.2vw 0 0;"></div>
-                        <div style="width: 1.5vw; height: 70%; background: var(--gold); border-radius: 0.2vw 0.2vw 0 0;"></div>
-                        <div style="width: 1.5vw; height: 100%; background: var(--gold); border-radius: 0.2vw 0.2vw 0 0;"></div>
-                        <p style="font-family: var(--font-sans); font-size: 1.05vw; color: var(--muted); margin: 0 0 0 0.5vw; align-self: flex-end; line-height: 1;">&rarr; dose &rarr; efeito</p>
-                    </div>
-                    
-                    <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--muted); margin: 0; font-style: italic;">
-                        &Acirc;ncora: CTT 2010 (meta-an&aacute;lise estatinas)
-                    </p>
-                </div>
-                
-                <!-- Microprova 2: Dura&ccedil;&atilde;o -->
-                <div style="background: white; border-left: 0.25vw solid var(--gold); padding: 1.5vw 2vw; border-radius: 0.5vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.06);">
-                    <div style="display: flex; align-items: center; gap: 1vw; margin-bottom: 1vw;">
-                        <span style="background: var(--gold); color: var(--navy); width: 1.6vw; height: 1.6vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-weight: 900; font-size: 1vw; flex-shrink: 0;">2</span>
-                        <p style="font-family: var(--font-sans); font-size: 1.4vw; font-weight: 700; color: var(--navy); margin: 0;">Dura&ccedil;&atilde;o</p>
-                    </div>
-                    
-                    <!-- Micro-visual: 3 c&iacute;rculos crescentes -->
-                    <div style="display: flex; align-items: center; gap: 0.6vw; height: 2vw; margin-bottom: 1vw;">
-                        <div style="width: 1vw; height: 1vw; background: var(--gold); border-radius: 50%;"></div>
-                        <div style="width: 1.4vw; height: 1.4vw; background: var(--gold); border-radius: 50%;"></div>
-                        <div style="width: 1.8vw; height: 1.8vw; background: var(--gold); border-radius: 50%;"></div>
-                        <p style="font-family: var(--font-sans); font-size: 1.05vw; color: var(--muted); margin: 0 0 0 0.5vw; line-height: 1;">&rarr; tempo &rarr; risco</p>
-                    </div>
-                    
-                    <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--muted); margin: 0; font-style: italic;">
-                        &Acirc;ncora: WHI 2002 (TRH e CA mama)
-                    </p>
-                </div>
-                
-                <!-- Microprova 3: Severidade -->
-                <div style="background: white; border-left: 0.25vw solid var(--gold); padding: 1.5vw 2vw; border-radius: 0.5vw; box-shadow: 0 0.2vw 0.8vw rgba(0,0,0,0.06);">
-                    <div style="display: flex; align-items: center; gap: 1vw; margin-bottom: 1vw;">
-                        <span style="background: var(--gold); color: var(--navy); width: 1.6vw; height: 1.6vw; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-weight: 900; font-size: 1vw; flex-shrink: 0;">3</span>
-                        <p style="font-family: var(--font-sans); font-size: 1.4vw; font-weight: 700; color: var(--navy); margin: 0;">Severidade</p>
-                    </div>
-                    
-                    <!-- Micro-visual: 3 n&iacute;veis em escada -->
-                    <div style="display: flex; align-items: flex-end; gap: 0.3vw; height: 2vw; margin-bottom: 1vw;">
-                        <div style="display: flex; flex-direction: column; gap: 0.2vw; justify-content: flex-end;">
-                            <div style="width: 1.2vw; height: 0.5vw; background: rgba(var(--gold-rgb),0.30);"></div>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 0.2vw; justify-content: flex-end;">
-                            <div style="width: 1.2vw; height: 0.5vw; background: var(--gold);"></div>
-                            <div style="width: 1.2vw; height: 0.5vw; background: rgba(var(--gold-rgb),0.52);"></div>
-                        </div>
-                        <div style="display: flex; flex-direction: column; gap: 0.2vw; justify-content: flex-end;">
-                            <div style="width: 1.2vw; height: 0.5vw; background: rgba(var(--gold-rgb),0.86);"></div>
-                            <div style="width: 1.2vw; height: 0.5vw; background: var(--gold);"></div>
-                            <div style="width: 1.2vw; height: 0.5vw; background: rgba(var(--gold-rgb),0.72);"></div>
-                        </div>
-                        <p style="font-family: var(--font-sans); font-size: 1.05vw; color: var(--muted); margin: 0 0 0 0.5vw; line-height: 1;">leve &rarr; grave</p>
-                    </div>
-                    
-                    <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--muted); margin: 0; font-style: italic;">
-                        &Acirc;ncora: Copenhagen City 2013 (tabagismo)
-                    </p>
-                </div>
-                
-            </div>
+<section class="slide" data-slide-id="S08" style="background: var(--bg);">
+  <div class="label-gold" style="margin-bottom: 0.6vw;">DOMÍNIO GRADE</div>
 
-            <!-- Coluna Direita: Regra de Decis&atilde;o (DOMINANTE) -->
-            <div style="display: flex; flex-direction: column; gap: 2vw;">
-                
-                <!-- Regra de Decis&atilde;o -->
-                <div style="background: white; border: 2px solid var(--gold); border-radius: 0.8vw; padding: 2.1vw;">
-                    <p style="font-family: var(--font-sans); font-size: 1vw; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2.5vw;">Regra de Decis&atilde;o</p>
-                    
-                    <!-- +1: DOMINANTE (44-52px = ~3vw) -->
-                    <div style="margin-bottom: 3vw;">
-                        <div style="display: flex; align-items: baseline; gap: 1.2vw; margin-bottom: 1vw;">
-                            <span style="font-family: var(--font-sans); font-size: 3vw; font-weight: 900; color: var(--gold); line-height: 1;">+1</span>
-                            <p style="font-family: var(--font-sans); font-size: 1.3vw; color: var(--navy); font-weight: 700; line-height: 1.2; margin: 0;">Gradiente claro</p>
-                        </div>
-                        <p style="font-family: var(--font-sans); font-size: 1.1vw; color: var(--muted); line-height: 1.5; margin: 0 0 0 4.2vw;">
-                            Considerar upgrade de 1 n&iacute;vel<br>
-                            <span style="color: var(--muted);">(BAIXA &#8594; MODERADA)</span>
-                        </p>
-                    </div>
-                    
-                    <!-- +2: menor, raro -->
-                    <div style="border-top: 1px solid var(--border); padding-top: 2vw;">
-                        <div style="display: flex; align-items: baseline; gap: 1.2vw; margin-bottom: 0.8vw;">
-                            <span style="font-family: var(--font-sans); font-size: 2vw; font-weight: 900; color: var(--muted); line-height: 1;">+2</span>
-                            <p style="font-family: var(--font-sans); font-size: 1.1vw; color: var(--muted); font-weight: 700; line-height: 1.2; margin: 0;">Raro</p>
-                        </div>
-                        <p style="font-family: var(--font-sans); font-size: 1vw; color: var(--muted); line-height: 1.5; margin: 0 0 0 3.2vw;">
-                            Exige padr&atilde;o excepcionalmente consistente + considera&ccedil;&otilde;es adicionais
-                        </p>
-                    </div>
-                </div>
+  <h2>Dose–resposta: quando o gradiente “empurra” a certeza para cima</h2>
+  <div class="lead" style="max-width: 92%; margin-top: 0.6vw;">
+    Se <b>↑ exposição</b> → <b>↑ efeito</b> de forma monotônica e plausível, a hipótese de <b>confusão residual</b> perde força.
+  </div>
 
-            </div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.8vw; margin-top: 1.35vw;">
+
+    <!-- Left: What counts -->
+    <div class="card" style="padding: 1.55vw;">
+      <div class="small-title">O que conta como gradiente?</div>
+
+      <!-- Mini‑visual (dual coding): monotonicidade -->
+      <div style="margin-top: 0.95vw; padding: 1.0vw; border-radius: 1.0vw; background: var(--panel2); border: 1px solid var(--border);">
+        <div style="font-size: 0.88vw; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 800; margin-bottom: 0.55vw;">
+          Visual rápido: exposição ↑ → efeito ↑ (sem “zig‑zag”)
         </div>
-        
-        <!-- Rodap&eacute; discreto (1 linha, 16-18px) -->
-        <div style="margin-top: 2.5vw; padding-top: 1.2vw; border-top: 1px solid var(--border);">
-            <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--muted); line-height: 1.4; text-align: center;">
-                Gradientes monot&ocirc;nicos reduzem a plausibilidade de confus&atilde;o residual explicar todo o efeito.
-            </p>
+        <div style="display:flex; align-items:flex-end; gap: 0.85vw; height: 8.2vw;">
+          <div style="flex:1;">
+            <div style="height: 2.0vw; border-radius: 0.55vw; background: rgba(var(--gold-rgb), 0.20); border: 1px solid rgba(var(--gold-rgb), 0.32);"></div>
+            <div style="margin-top: 0.45vw; font-size: 0.88vw; color: var(--muted); text-align:center;">baixo</div>
+          </div>
+          <div style="flex:1;">
+            <div style="height: 3.4vw; border-radius: 0.55vw; background: rgba(var(--gold-rgb), 0.26); border: 1px solid rgba(var(--gold-rgb), 0.36);"></div>
+            <div style="margin-top: 0.45vw; font-size: 0.88vw; color: var(--muted); text-align:center;">médio</div>
+          </div>
+          <div style="flex:1;">
+            <div style="height: 4.8vw; border-radius: 0.55vw; background: rgba(var(--gold-rgb), 0.32); border: 1px solid rgba(var(--gold-rgb), 0.42);"></div>
+            <div style="margin-top: 0.45vw; font-size: 0.88vw; color: var(--muted); text-align:center;">alto</div>
+          </div>
+          <div style="flex:1;">
+            <div style="height: 6.2vw; border-radius: 0.55vw; background: rgba(var(--gold-rgb), 0.40); border: 1px solid rgba(var(--gold-rgb), 0.52);"></div>
+            <div style="margin-top: 0.45vw; font-size: 0.88vw; color: var(--muted); text-align:center;">muito alto</div>
+          </div>
         </div>
-    </section>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap: 0.7vw; margin-top: 0.95vw;">
+        <div style="display:flex; gap: 0.9vw; align-items:flex-start;">
+          <div style="width: 0.85vw; height: 0.85vw; border-radius: 0.25vw; background: var(--gold); margin-top: 0.35vw;"></div>
+          <div style="font-size: 1.08vw; line-height: 1.35;"><b>Dose/intensidade</b> ↑ → efeito ↑</div>
+        </div>
+        <div style="display:flex; gap: 0.9vw; align-items:flex-start;">
+          <div style="width: 0.85vw; height: 0.85vw; border-radius: 0.25vw; background: var(--gold); margin-top: 0.35vw;"></div>
+          <div style="font-size: 1.08vw; line-height: 1.35;"><b>Duração</b> ↑ → risco/evento ↑</div>
+        </div>
+        <div style="display:flex; gap: 0.9vw; align-items:flex-start;">
+          <div style="width: 0.85vw; height: 0.85vw; border-radius: 0.25vw; background: var(--gold); margin-top: 0.35vw;"></div>
+          <div style="font-size: 1.08vw; line-height: 1.35;"><b>Severidade/carga</b> ↑ → efeito ↑</div>
+        </div>
+      </div>
+
+      <div class="note" style="margin-top: 0.9vw;">
+        <p><b>Frase‑âncora:</b> “Quanto mais gradiente, menos ‘é só viés’.”</p>
+      </div>
+    </div>
+
+    <!-- Right: How to apply -->
+    <div class="card" style="padding: 1.55vw; border-left: 6px solid var(--green);">
+      <div class="small-title">Como usar no GRADE</div>
+
+      <div style="display:flex; gap: 0.9vw; align-items:flex-start; margin-top: 1.0vw;">
+        <div style="font-weight: 900; font-size: 1.8vw; line-height: 1; color: var(--green);">+1</div>
+        <div style="font-size: 1.12vw; line-height: 1.35;">
+          <b>Upgrade</b> quando o gradiente é <b>claro</b>, <b>consistente</b> e <b>plausível</b>.
+        </div>
+      </div>
+
+      <div class="card card--soft" style="padding: 1.15vw; margin-top: 0.95vw;">
+        <div style="font-size: 0.92vw; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 800;">
+          Checklist rápido
+        </div>
+        <ul style="margin: 0.75vw 0 0 1.2vw; font-size: 1.06vw; line-height: 1.35;">
+          <li>Monotônico (sem “zig‑zag”)</li>
+          <li>Reproduzível (em análises/estratos diferentes)</li>
+          <li>Sem explicação mais provável por viés</li>
+        </ul>
+      </div>
+
+      <div style="margin-top: 0.95vw; padding: 1.05vw; border-radius: 1.0vw; background: rgba(198,165,93,.12); border: 1px solid rgba(198,165,93,.28); font-size: 1.03vw; line-height: 1.35;">
+        <b>Exemplo do bloco CAC:</b> quanto maior o <b>CAC</b>, maior o risco basal — e maior o <b>benefício absoluto</b> esperado de intensificar prevenção.
+      </div>
+    </div>
+  </div>
+
+  <div class="ref" style="margin-top: 1.35vw;">Fonte: GRADE Handbook — Upgrading: dose‑response gradient.</div>
+</section>

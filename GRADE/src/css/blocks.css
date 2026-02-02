@@ -60,6 +60,12 @@
   box-shadow: var(--shadow-sm);
 }
 
+/* Card “soft”: menos contraste, mais respiro (bom para regras práticas) */
+.card--soft {
+  background: rgba(var(--navy-rgb), 0.02);
+  border-color: rgba(var(--navy-rgb), 0.12);
+}
+
 .cardHeader {
   background: var(--navy);
   color: var(--white);
