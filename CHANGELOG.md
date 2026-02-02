@@ -1,5 +1,29 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## OSTEOPOROSE_BATCH1_SLIDES01_10 — 2026-02-02 (Polish de abertura)
+
+### Objetivo
+- Melhorar **ritmo visual** e **distribuição vertical** nos 10 primeiros slides, sem mudanças sistêmicas em CSS.
+
+### O que foi feito
+- **S01/S02**: centralização vertical robusta (wrapper `height:100%`), mantendo o gradiente e evitando “top-heavy” no PDF.
+- **S03**: centralização vertical do bloco + subtítulo (“Mapa da aula”), preservando a timeline/estrutura.
+- **S04**: troca de separadores por bullets, subtítulo de convergência e box de “tradução prática” no rodapé.
+- **S05/S06**: subtítulo contextual + callout inferior; ajustes tipográficos (≤, −, en-dash) e seta (→).
+- **S10**: barra inferior com fórmulas (ARR, NNT, ICER) para ocupar espaço útil e reforçar o raciocínio.
+- **Export**: screenshot de amostra não-fatal (tenta 1º slide e cai para viewport), e viewport 1600×900 para consistência com o stage.
+
+### Arquivos modificados
+- `scripts/export-osteoporose-pdf.js`
+- `OSTEOPOROSE/src/slides/S01_slide-01.html`
+- `OSTEOPOROSE/src/slides/S02_slide-02.html`
+- `OSTEOPOROSE/src/slides/S03_slide-03.html`
+- `OSTEOPOROSE/src/slides/S04_slide-04.html`
+- `OSTEOPOROSE/src/slides/S05_slide-05.html`
+- `OSTEOPOROSE/src/slides/S06_slide-06.html`
+- `OSTEOPOROSE/src/slides/S10_slide-10.html`
+- `CHANGELOG.md`
+
 ## OSTEOPOROSE_PDF_FIX_2026_01_29 — 2026-01-29 (Tentativa de correção PDF)
 
 ### Problema

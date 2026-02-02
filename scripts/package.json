@@ -39,5 +39,8 @@
   "bin": {
     "playwright-core": "cli.js"
   },
-  "types": "types/types.d.ts"
+  "types": "types/types.d.ts",
+  "dependencies": {
+    "playwright": "^1.58.1"
+  }
 }
