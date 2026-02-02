@@ -1,5 +1,29 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## GRADE_P2_CONTENT_BATCH2_S10_S15_2026_02_02 — 2026-02-02
+
+### Objetivo
+Continuar a fase **P2 (conteúdo + forma)** nos slides **10–15** (contador do viewer), refinando **hierarquia atencional**, **carga cognitiva** e **padding/legibilidade** (sala/auditório).
+
+### Alterações (slide a slide)
+- **S10** — CAC=0 (“warranty”): reescrita para leitura mais direta + **imagem externalizada** (antes base64) para melhorar manutenção/estabilidade em exportações.
+- **S07** — Indireção: redesign com **checklist PICO** (cards) + regra mental (“ponte”) + exemplos no bloco CAC.
+- **S08** — Dose–resposta: versão mais “teach‑able” (o que conta / como usar / checklist) + exemplo de CAC como risco basal.
+- **S11** — Estatina por CAC: transformado em **tabela‑escada** (NNT 10a) + regra prática mais curta + GRADE em “20s”.
+- **S13** — AAS por CAC: consolidado em **tabela NNT vs NNH** com rótulo de balanço (dano>benefício vs benefício>dano) + fechamento clínico.
+- **S61** — Abertura bloco bempedóico: polimento visual e rodapé **em fluxo (sem absolute)** para evitar sobreposição e melhorar contraste.
+
+### Arquivos modificados/criados
+- `src/slides/S07.html`
+- `src/slides/S08.html`
+- `src/slides/S10.html`
+- `src/slides/S11.html`
+- `src/slides/S13.html`
+- `src/slides/S61.html`
+- `assets/figures/mesa_cac_warranty.png` *(novo)*
+- `CHANGELOG.md`
+- `README.md`
+
 ## GRADE_P2_CAC_IPSIS_LITTERIS_2026_02_02 — 2026-02-02
 
 ### Objetivo
@@ -660,4 +684,3 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - `GRADE/src/slides/S54.html`
 - `GRADE/src/slides/S55.html`
 - `GRADE/src/slides/S56.html`
-
