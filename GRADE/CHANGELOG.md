@@ -1,60 +1,245 @@
-# CHANGELOG - GRADE Slides
+# CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
-## [PATCH 2.7] - 2026-01-28 (P1 polish: linguagem + ranges + token cleanup)
+## GRADE_SLIDE_ORDER_2026_02_02 — 2026-02-02
 
-### Slides
-- **S10**: padronizado **warranty period**; “Reassess” → **“Reavaliar”**; ranges com **en-dash** (3–7, 5–10).
-- **S11**: checklist — texto ajustado para “necessidade de reavaliar em 5–10 anos”.
-- **S29**: ranges numéricos com **en-dash** (5–20%, CAC 1–99, NNTs).
-- **S41**: range “5–10 anos” + pontuação final.
-- **S47**: badge de *Publication Bias* padronizado (**ALERTA**) + `rgba(var(--navy-rgb), …)` (sem hardcode).
+### Ordem dos slides ajustada (posições 29-31)
+- Posição 29: S51
+- Posição 30: S52
+- Posição 31: S53
 
-### Documentação
-- `README.md`: seção “GRADE — Diagnóstico + P1 pass (2026-01-28)” com backlog P0/P1.
-- `CHANGELOG.md` (raiz) e `GRADE/CHANGELOG.md` atualizados.
+Nova sequência: S51 → S52 → S53 (ordem numérica restaurada)
+
+### Arquivos modificados
+- `GRADE/src/slides/_list.txt`
 
 ---
 
-## [PATCH 2.6] - 2026-01-25 (P0 polish: slides de abertura por bloco + ajustes de margem)
+## GRADE_P1_TYPO_GRID_POLISH_2026_02_02 — 2026-02-02
 
-### Estrutura / Navegação
-- `_list.txt`: adicionados **cards de abertura** no padrão do bloco de metas (slide tipo “roteiro + mensagem-chave”):
-  - **S60** antes do bloco **CAC** (entra antes do S09).
-  - **S61** antes do bloco **ácido bempedóico** (entra antes do S14).
+### Objetivo
+- Padronizar **altura de header**, escala tipográfica e “safe footer” (sem mudar conteúdo) para leitura em sala.
 
-### Slides
-- **S60 (novo)**: abertura do bloco **CAC** (mesma estética do S50) com roteiro didático + mensagem-chave (predição ≠ prescrição).
-- **S61 (novo)**: abertura do bloco **bempedóico** com roteiro (diretriz → RCT → EtD/BR) + mensagem-chave.
-- **S12**: re-layout para evitar overflow (cards inferiores em paralelo) + rodapé em posição absoluta (margem inferior consistente).
-  - Adicionado placeholder **esquemático** de Kaplan–Meier em `src/assets/figures/scot-heart-10y-km.png` (remove ícone quebrado; pronto para substituir pela figura do paper).
-- **S47**: reservado espaço inferior + rodapé em posição absoluta (evita corte em projeção).
+### Tipografia / grid (global)
+- `GRADE/src/css/base.css`
+  - Tokens de escala (`--h1`, `--h2`, `--lead`, etc.) + tokens de layout (`--slide-pad-*`, `--footer-safe`).
+  - `padding` do `.slide` agora usa `!important` para vencer *inline styles* e manter alinhamento entre slides.
+  - Força de fonte: **Inter** (corpo) / **Georgia** (h1/h2/h3) com `!important` para corrigir slides com fontes hardcoded.
+  - `.ref`: `top:auto` + `left/right/bottom` padronizados (evita referência “subir” e sobrepor header).
 
-### Controle
-- Atualizado **DASHBOARD.xlsx** (registro das mudanças do batch).
+### Componentes
+- `GRADE/src/css/blocks.css`
+  - `.cardHeader`: altura mínima + alinhamento vertical consistente; tipografia unificada.
 
-## [PATCH 2.5] - 2026-01-23 (P0 polish: imprecisão/RoB + consistência PREVENT)
+### Arquivos modificados
+- `GRADE/src/css/base.css`
+- `GRADE/src/css/blocks.css`
+- `GRADE/README.md`
 
-### Slides (P0)
-- **S07**: layout mais simétrico (2×2) + “Key concept” em largura total (melhor alinhamento em projeção).
-- **S12**: ajustes finos de padding/altura (reduz risco de overflow sem perder hierarquia).
-- **S17**: acrescentado bloco “Além do MID” (OIS/eventos + IC incluindo benefício e dano).
-- **S18**: refeito como checklist Core GRADE (limiar, nulidade, OIS/eventos) — removidos ícones/emoji como semântica.
-- **S19**: redesign completo em formato tabela (RoB 2.0) com chips consistentes + decisão GRADE explícita.
-- **S20**: badge de certeza padronizado + linha de recomendação com melhor contraste (navy) e tamanho mais contido.
-- **S23–S26**: bloco PREVENT harmonizado com o restante do deck (cards/chips, padding, sem emojis de bandeira; mensagens em alto nível).
+---
 
-### Documentação / Controle
-- Atualizados **CHANGELOGs**, **ISSUES.md** e **DASHBOARD.xlsx** (registro do batch e progresso).
+## GRADE_P1_ORDER_STYLE_2026_02_02 — 2026-02-02
 
-## [PATCH 2.4] - 2026-01-23 (Polish P0: alinhamento + ordem SAMS)
+### Slides (ordem)
+- Reorganizada a sequência principal para fechar em **Camões** (slide 36).
+- **S36 (SBC 2025: CAC reclassifica risco → meta LDL-c)** movido para logo após **S09 (Aplicação GRADE: CAC)**.
+- **S12 (CAC=0 não exclui placa não calcificada)** movido para o apêndice (após S38).
 
-- `_list.txt`: SAMS (S43–S49) movido para após S14; S15–S16 suprimidos do fluxo.
-- **S07**: alinhamento (PICO box) corrigido.
-- **S12**: padding/altura do placeholder ajustados.
-- **S12**: números SCOT-HEART 10y preenchidos (Lancet 2025); figura segue placeholder.
-- **S14**: restyle para ficar paralelo ao S09.
-- **S17–S20**: removidos emojis como semântica; labels/chips consistentes; texto BR mais explícito.
+### Slides (design)
+- **S36**: tabela redesenhada para seguir o benchmark visual de **S51 (Metas por categoria de risco)**.
+- **S17 (MID)**: régua refinada com linhas para **nulidade (RR=1.0)**, **MID benefício (0.8)** e **MID dano (1.25)**.
+- **S60** e **S61**: referências ancoradas com `bottom` para evitar sobreposição.
 
+### Viewer / scripts
+- Hash da URL passou a seguir o **contador do slide** (ex.: `#9`), mantendo suporte a `#Sxx` para acesso direto por ID.
+
+### Organização de pasta
+- Removida duplicação de repositório dentro de `GRADE/GRADE` (estrutura unificada).
+
+---
+
+## OSTEOPOROSE_PDF_FIX_2026_01_29 — 2026-01-29 (Tentativa de correção PDF)
+
+### Problema
+- PDF gerado não respeita estilos de print visíveis no DevTools
+- CSS `@media print` não está sendo aplicado corretamente pelo Playwright
+- Estilos aparecem corretos no DevTools mas não refletem no PDF final
+
+### Tentativas realizadas
+1. **Verificação de modo print**: Confirmado que `page.emulateMedia({ media: 'print' })` está ativo
+2. **Aguardar recursos**: Adicionado `waitForLoadState('networkidle')` e `document.fonts.ready`
+3. **Forçar CSS via JavaScript**: Injetado estilo `<style>` com regras `@media print` e `@page`
+4. **Aplicar estilos inline diretamente**: Usado `style.setProperty()` com `!important` em cada slide
+5. **Dimensões explícitas no PDF**: Mudado de `preferCSSPageSize: true` para `width: 1280px, height: 720px`
+
+### Status
+- ✅ Estilos são aplicados corretamente (verificado via `getComputedStyle`)
+- ✅ Modo print está ativo (`window.matchMedia('print').matches === true`)
+- ⚠️ **Problema persiste**: PDF ainda não reflete as mudanças visíveis no DevTools
+
+### Arquivos modificados
+- `scripts/export-osteoporose-pdf.js` - múltiplas tentativas de forçar aplicação de CSS
+
+### Próximos passos sugeridos
+1. **Verificar PDF gerado**: Confirmar quantas páginas foram geradas e se há quebras corretas
+2. **Testar Puppeteer**: Pode ter melhor suporte a `page-break-after` que Playwright
+3. **Gerar slides individualmente**: Usar `pdf-lib` para combinar PDFs de cada slide
+4. **Usar screenshots**: Capturar screenshot de cada slide e combinar em PDF
+
+---
+
+## OSTEOPOROSE_PATCH0_6 — 2026-01-29
+
+### P0: Overflow corrigido em 8 slides (10 arquivos, incluindo divisão)
+- **Slide 20** (S35_slide-32.html): **Dividir em 2 slides** (Estratégia 3) + compactação
+- **Slide 20b** (S35b_slide-32b.html): **Novo slide** (Parte 2/2) para completar conteúdo (Estratégia 3)
+- **Slide 44** (S45_slide-42.html): **Compactar** (Estratégia 1)
+- **Slide 12** (S09_slide-11.html): **Compactar** (Estratégia 1)
+- **Slide 59** (S50_slide-47.html): **Compactar** (Estratégia 1)
+- **Slide 72** (S49_slide-46.html): **Compactar** (Estratégia 1)
+- **Slide 48** (S69_slide-66.html): **Compactar** (Estratégia 1)
+- **Slide 26** (S38_slide-35.html): **Compactar** (Estratégia 1)
+- **Slide 47** (S48_slide-45.html): **Compactar** (Estratégia 1)
+
+### P0: Encoding UTF-8
+- **Slide 36** (S39_slide-36.html): verificado (sem mojibake)
+- Verificados todos os slides (busca por padrões `Ã¡`, `Ã©`, `Ã£`, `Ã§`, `â€“`)
+
+### Arquivos modificados
+- `OSTEOPOROSE/src/slides/_list.txt`
+- `OSTEOPOROSE/src/slides/S09_slide-11.html`
+- `OSTEOPOROSE/src/slides/S35_slide-32.html`
+- `OSTEOPOROSE/src/slides/S38_slide-35.html`
+- `OSTEOPOROSE/src/slides/S45_slide-42.html`
+- `OSTEOPOROSE/src/slides/S48_slide-45.html`
+- `OSTEOPOROSE/src/slides/S49_slide-46.html`
+- `OSTEOPOROSE/src/slides/S50_slide-47.html`
+- `OSTEOPOROSE/src/slides/S69_slide-66.html`
+- `CHANGELOG.md`
+- `README.md`
+
+### Arquivos novos
+- `OSTEOPOROSE/src/slides/S35b_slide-32b.html`
+- `RELEASE_NOTES.md`
+
+---
+
+## OSTEOPOROSE_PATCH0_1 — 2026-01-25 (Modularização + Fullscreen + PDF 16:9)
+
+### Objetivo
+- Tirar o deck de Osteoporose do monólito (HTML único) e habilitar viewer “palco” + export PDF em padrão apresentação.
+
+### O que foi feito (P0)
+- **Fonte de verdade do viewer**: confirmado total de **72 slides** (ordem definida pelo seletor do deck legado) e contador agora deriva do `_list.txt`.
+- **Modularização automática**:
+  - `OSTEOPOROSE/src/index-legacy.html` preservado (backup do monólito).
+  - Slides extraídos para `OSTEOPOROSE/src/slides/` (1 arquivo por slide) + `_list.txt` + `_meta.json`.
+- **Viewer novo (src + dist)**:
+  - Novo `OSTEOPOROSE/src/index.html` minimal + `OSTEOPOROSE/dist/index.html` apontando para `../src/`.
+  - Loader `src/js/slide-loader.js` carrega o deck modular por lista.
+  - Viewer `src/js/viewer.js`: navegação (teclas + clique), hash (`#S01`), fullscreen (F) e modo palco (auto-hide UI).
+- **PDF/Print 16:9**:
+  - `src/css/print.css` com `@page 13.333in × 7.5in`, 1 slide por página, `print-color-adjust: exact`.
+  - Modo impressão via `?print=1` (botão “PDF” no viewer).
+
+### O que NÃO foi feito (intencional)
+- Nenhuma alteração de conteúdo médico (texto, números, claims, referências).
+- Nenhuma reescrita de estilo dos slides (a maioria ainda tem inline styles do legado).
+- Nenhum pipeline de export automatizado via Puppeteer/Playwright (fica para próxima etapa).
+
+### Arquivos principais
+- `OSTEOPOROSE/src/index.html`, `OSTEOPOROSE/dist/index.html`
+- `OSTEOPOROSE/src/css/viewer.css`, `OSTEOPOROSE/src/css/print.css`, `OSTEOPOROSE/src/css/base.css`
+- `OSTEOPOROSE/src/js/slide-loader.js`, `OSTEOPOROSE/src/js/viewer.js`
+- `OSTEOPOROSE/src/slides/*`
+
+
+
+## PATCH2_9 — 2026-01-28 (GRADE: P1 refinamento visual + ordem + segurança de rodapé)
+
+### O que foi feito (P1)
+- **Ordem (viewer):**
+  - **S51** (Metas por categoria de risco) movido para **logo após S09** (bloco CAC).
+  - **S07 e S08** movidos para **após S10** (narrativa mais limpa).
+  - **S59** (poesia) movido para **após S57** e removidos rótulos “(encerramento)”/“Para terminar…”/“Obrigado”.
+- **S18 (Imprecisão):** régua refeita como **forest plot** com escala linear (0,4–1,5), marcadores de **MID (0,80)** e **RR 1,0**, e IC 0,79–0,96 com ponto estimado.
+- **S19 (RoB 2.0):** redesenho para formato **talk‑ready** (cards) com a decisão GRADE explícita.
+- **S20 (EtD):** redesenho “TED‑style” (cards + síntese) com bloco de recomendação.
+- **S49 (Fechamento SAMS):** redução de densidade (tipografia/espaçamentos) para evitar overflow.
+- **Rodapés (PDF safety):** substituição de `position:absolute` por layout em `flex` com `margin-top:auto` em vários slides do range até o viewer 40.
+
+### Arquivos modificados
+- `GRADE/src/slides/_list.txt`
+- `GRADE/src/slides/S18.html`
+- `GRADE/src/slides/S19.html`
+- `GRADE/src/slides/S20.html`
+- `GRADE/src/slides/S49.html`
+- `GRADE/src/slides/S51.html`
+- `GRADE/src/slides/S59.html`
+- `GRADE/src/slides/S12.html`, `S22.html`, `S23.html`, `S50.html`, `S52.html`, `S53.html`, `S55.html`, `S56.html`, `S60.html`, `S61.html` (ajuste de rodapé)
+- `README.md`
+- `CHANGELOG.md`
+- `GRADE/CHANGELOG.md`
+
+---
+
+## PATCH2_7 — 2026-01-28 (GRADE: P1 linguagem + ranges + token cleanup)
+
+### Contexto
+- Diagnóstico via viewer PDF (58 páginas) e ajuste de **P1** em pontos de consistência textual/visual.
+- **P0 permanece pendente** (ex.: S04 interação; S26 comparativo com nota interna).
+
+### O que foi feito (P1)
+- **GRADE/S10**: “Reassess” → **“Reavaliar”**; padronizado **warranty period**; ranges com **en-dash**.
+- **GRADE/S11**: checklist — wording ajustado (reavaliar em 5–10 anos).
+- **GRADE/S29**: ranges numéricos com **en-dash** (5–20%, 1–99, NNTs).
+- **GRADE/S41**: range 5–10 anos + pontuação.
+- **GRADE/S47**: badge *Publication Bias* padronizado (**ALERTA**) + cor via token (`rgba(var(--navy-rgb), …)`).
+
+### Arquivos modificados
+- `GRADE/src/slides/S10.html`
+- `GRADE/src/slides/S11.html`
+- `GRADE/src/slides/S29.html`
+- `GRADE/src/slides/S41.html`
+- `GRADE/src/slides/S47.html`
+- `README.md`
+- `CHANGELOG.md`
+- `GRADE/CHANGELOG.md`
+
+---
+
+## PATCH2_6 — 2026-01-25
+- Tipografia: títulos (h2) padronizados em **altura/line-height** via CSS (menos variação entre slides).
+- Paleta/tokens: adicionado `--muted-rgb` + chips `.chip--teal` e `.chip--navy` (consistência e menos CSS ad hoc).
+- Slide 8: microvisual ajustado para paleta ouro (teal/navy removidos do bloco de severidade).
+- Slide 12: figura SCOT-HEART inserida + citação corrigida (Lancet 2025;405:329–337. DOI: 10.1016/S0140-6736(24)01899-5).
+- Slides com citações “ipsis litteris”: reescritos como **paráfrase** (evita blocos longos de texto citado).
+- Emojis removidos como semântica (títulos/boxes) em slides do fluxo e apêndice.
+- NOVO bloco “Metas lipídicas” (S50–S57) com:
+  - tabela de alvos LDL/não-HDL/ApoB (SBC 2025),
+  - força/certeza (GRADE),
+  - base de evidência (CTT + trials) e update (VESALIUS-CV),
+  - inconsistência e viés de publicação (Core GRADE).
+- Apêndice: divisor (S58) e “poesia” final (S59). PREVENT/CAC staging mantidos no fim via `_list.txt`.
+- Controle: DASHBOARD.xlsx atualizado com novos slides e status.
+
+## PATCH2_5 — 2026-01-23
+- P0 polish (GRADE): S07 alinhamento/estrutura; S12 padding; S17–S20 refinados (imprecisão/RoB/EtD); S23–S26 harmonizados (PREVENT) + remoção de emojis como semântica.
+- Atualizações de controle: CHANGELOGs, ISSUES.md, DASHBOARD.xlsx.
+
+## [PATCH 2.4] - 2026-01-23 (Polish P0: alinhamento + SAMS no lugar certo)
+
+### Ordem / Sequência didática (SAMS)
+- `_list.txt`: **SAMS (S43–S49)** agora entra logo após **S14**, substituindo **S15–S16** (suprimidos do fluxo).
+- Mantido **S42** como fechamento do bloco CAC (Q&A curto).
+
+### Ajustes de slides (P0)
+- **S07**: removido `margin-top: auto` do box PICO e reduzido gap para alinhar blocos verticalmente.
+- **S12**: padding interno levemente aumentado; números do **SCOT-HEART 10y** preenchidos (Lancet 2025) e figura ficou como placeholder.
+- **S14**: refeito para ficar **paralelo ao S09** (mesma gramática: card com faixa navy + card GRADE à direita).
+- **S17–S20**: removidos emojis como semântica; adicionadas chips/labels consistentes e texto BR mais explícito (ANVISA vs SUS).
+
+### Operação
+- **DASHBOARD.xlsx** e **ISSUES.md** atualizados no fim do batch.
 
 ## [PATCH 2.3] - 2026-01-23 (Batch SAMS MVP P0: nocebo tier-1 + EtD aplicado)
 
@@ -336,42 +521,6 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - Conteúdo de Brasil/EtD em linhas mais curtas
 
 
-## [PATCH 2.9] - 2026-01-28 (P1: ordem + estética + PDF safety — viewer 1 a 40)
-
-### Ordem / narrativa
-- `_list.txt`: mover **S51** para logo após **S09** (entra no bloco de CAC com padrão “bonito”).
-- `_list.txt`: mover **S07** e **S08** para após **S10**.
-- `_list.txt`: mover **S59** para após **S57** (poesia no meio do fluxo), removendo rótulos.
-
-### Slides ajustados
-- **S18**: régua do IC/MID refeita como **forest plot** com escala linear e marcadores coerentes (MID e RR 1,0).
-- **S19**: RoB 2.0 reformatado para **cards** (talk‑ready), mantendo a decisão GRADE.
-- **S20**: EtD reformatado para **cards + síntese**, com contraste e hierarquia.
-- **S49**: compactação de tipografia/espaçamentos para evitar overflow.
-- **S59**: limpeza total do slide (sem “encerramento”/“para terminar”/“obrigado”).
-
-### PDF safety (rodapé)
-- Removidos rodapés com `position:absolute` e substituídos por layout flex (`margin-top:auto`) em slides do range até o viewer 40 (ex.: S50–S56, S22, S23, S12, S60, S61, etc.).
-
-### Arquivos modificados
-- `GRADE/src/slides/_list.txt`
-- `GRADE/src/slides/S18.html`
-- `GRADE/src/slides/S19.html`
-- `GRADE/src/slides/S20.html`
-- `GRADE/src/slides/S49.html`
-- `GRADE/src/slides/S51.html`
-- `GRADE/src/slides/S59.html`
-- `GRADE/src/slides/S12.html`
-- `GRADE/src/slides/S22.html`
-- `GRADE/src/slides/S23.html`
-- `GRADE/src/slides/S50.html`
-- `GRADE/src/slides/S52.html`
-- `GRADE/src/slides/S53.html`
-- `GRADE/src/slides/S55.html`
-- `GRADE/src/slides/S56.html`
-- `CHANGELOG.md`
-- `README.md`
-
 
 ## [PATCH 2.10] - 2026-01-31
 
@@ -407,3 +556,48 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - `GRADE/src/slides/S56.html`
 - `GRADE/src/slides/S57.html`
 - `GRADE/src/slides/S59.html`
+
+## [PATCH 2.11] - 2026-02-01
+
+### P1 — correções pedidas (ordem + alinhamentos + tipografia; slides 1–36)
+
+#### Ordem (viewer)
+- `S52` movido para **posição 16**
+- `S51` (tabela benchmark) movido para **posição 31**
+- Ajuste aplicado em `GRADE/src/slides/_list.txt`
+
+#### Tipografia / consistência (global)
+- `GRADE/src/css/base.css`: adicionadas classes utilitárias para padronizar **header/eyebrow/title/subtitle/ref** e reforçar escala tipográfica “conference-first”.
+- Rodapés (`.ref`) agora padronizados (sem `position:absolute`).
+
+#### Refinos visuais (slides-chave)
+- **S52**: tabela e hierarquia ajustadas para ficar **no padrão do benchmark (S51)**; removido “border-top” que desalinhava cards; faixa dourada agora é overlay (sem alterar altura).
+- **S60 / S61**: cards agora **esticam e alinham** topo/base; rodapé padronizado.
+- **S17 / S18 / S19 / S20**: redesenho e limpeza de UI (régua/IC mais elegante, ticks alinhados, bordas e contrastes harmonizados).
+- **S04 / S09 / S10 / S11**: títulos e subtítulos ajustados para manter escala consistente e liberar espaço.
+
+#### Pequenas correções
+- **S03**: correção de token inválido `var(--r-sm)` → `var(--radius-sm)`; nota final convertida para `.ref`.
+- Redução de `border: 2px` → `border: 1px` em diversos cards (harmonia e alinhamento).
+
+#### Arquivos modificados
+- `GRADE/src/slides/_list.txt`
+- `GRADE/src/css/base.css`
+- `GRADE/src/slides/S03.html`
+- `GRADE/src/slides/S04.html`
+- `GRADE/src/slides/S09.html`
+- `GRADE/src/slides/S10.html`
+- `GRADE/src/slides/S11.html`
+- `GRADE/src/slides/S17.html`
+- `GRADE/src/slides/S18.html`
+- `GRADE/src/slides/S19.html`
+- `GRADE/src/slides/S20.html`
+- `GRADE/src/slides/S50.html`
+- `GRADE/src/slides/S52.html`
+- `GRADE/src/slides/S53.html`
+- `GRADE/src/slides/S60.html`
+- `GRADE/src/slides/S61.html`
+- `GRADE/src/slides/S54.html`
+- `GRADE/src/slides/S55.html`
+- `GRADE/src/slides/S56.html`
+
