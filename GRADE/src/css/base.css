@@ -32,6 +32,19 @@
   --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;
   --font-serif: Georgia, "Times New Roman", Times, serif;
 
+  /* Escala tipográfica (conference-first) */
+  --h1: 6.2vw;
+  --h2: 3.10vw;
+  --h3: 1.85vw;
+  --lead: 1.35vw;
+  --body: 1.12vw;
+  --small: 0.92vw;
+
+  /* Layout base do slide */
+  --slide-pad-x: 6%;
+  --slide-pad-y: 4vw;
+  --footer-safe: 2.0vw;
+
   /* UI tokens */
   --radius-sm: 0.5vw;
   --radius-md: 0.8vw;
@@ -44,6 +57,9 @@ html, body {
   padding: 0;
   background: #0a0f1a;
   font-family: var(--font-sans);
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Viewer container */
@@ -73,18 +89,27 @@ html, body {
   overflow: hidden;
   display: none;
   flex-direction: column;
-  padding: 4vw 6%;
+  /* Importante: alguns slides tinham padding inline.
+     Usamos !important para manter headers/footers alinhados na mesma "linha". */
+  padding: var(--slide-pad-y) var(--slide-pad-x) calc(var(--slide-pad-y) + var(--footer-safe)) var(--slide-pad-x) !important;
   box-sizing: border-box;
+}
+
+/* Exceções */
+.slide[data-slide-id="S01"] {
+  padding: 0 !important;
+}
+
+/* S47 é propositalmente denso */
+.slide[data-slide-id="S47"] {
+  padding: 3vw 5% calc(3vw + var(--footer-safe)) 5% !important;
 }
 
 .slide.active {
   display: flex;
 }
 
-/* Slide 21 (S47): conteúdo denso — padding reduzido para o rodapé e bloco LDL-C não serem cortados */
-.slide[data-slide-id="S47"] {
-  padding: 3vw 5%;
-}
+/* (evitar duplicatas de regras do S47) */
 
 .bg-navy {
   background: var(--navy) !important;
@@ -96,11 +121,67 @@ h1, h2, h3 {
   letter-spacing: -0.01em;
 }
 
-/* Title consistency (P0): unify size/line-height across slides */
+/* ============================================================
+   Tipografia — padronização (h1/h2 + alinhamento do header)
+   Objetivo: consistência em projetor e leitura a distância.
+   ============================================================ */
+
+/* Força Inter/Georgia (corrige slides com fonts hardcoded) */
+.slide * { font-family: var(--font-sans) !important; }
+.slide h1,
+.slide h2,
+.slide h3 { font-family: var(--font-serif) !important; }
+.slide blockquote { font-family: var(--font-serif) !important; }
+.slide .note * { font-family: var(--font-sans) !important; }
+.slide .note p,
+.slide .note em { font-family: var(--font-serif) !important; }
+
+/* KPIs: manter "display" com serif para contraste (quando usado) */
+.slide .kpi,
+.slide .kpi * {
+  font-family: var(--font-serif) !important;
+}
+
+.slide h1 {
+  font-size: var(--h1) !important;
+  line-height: 0.95 !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.03em !important;
+}
+
 .slide h2 {
-  font-size: 2.85vw;
-  line-height: 1.15;
-  font-weight: 700;
+  font-size: var(--h2) !important;
+  line-height: 1.10 !important;
+  font-weight: 800 !important;
+  margin: 0 0 1.35vw 0 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.slide h3 {
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Lead text (quando usado como subtítulo) */
+.slide .lead {
+  font-family: var(--font-sans) !important;
+  font-size: var(--lead);
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+/* Rodapé/referência: evitar sobreposição no topo */
+.slide .ref {
+  top: auto !important;
+  left: var(--slide-pad-x) !important;
+  right: var(--slide-pad-x) !important;
+  bottom: 1.85vw !important;
+  font-size: 0.80vw !important;
+  color: rgba(var(--text-rgb), 0.60);
+}
+
+.bg-navy .ref {
+  color: rgba(255,255,255,0.72) !important;
 }
 
 p, li, span, div {

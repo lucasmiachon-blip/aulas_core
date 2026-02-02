@@ -120,13 +120,11 @@
 
         // Persist slide in URL (no history spam)
         if (!opts.silent) {
-            const id = slides[index].getAttribute('data-slide-id');
-            if (id) {
-                try {
-                    history.replaceState(null, '', `#${id}`);
-                } catch (_) {
-                    // ignore
-                }
+            try {
+                // Counter-friendly hash (matches the slide number shown in the UI).
+                history.replaceState(null, '', `#${index + 1}`);
+            } catch (_) {
+                /* ignore */
             }
         }
     }

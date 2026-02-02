@@ -13,7 +13,7 @@
 - Tokens revisados + **RGB helpers** para transparências (`rgba(var(--gold-rgb), 0.x)`).
 - **Fonte principal Inter** (Georgia fica opcional para quotes/ênfase).
 - **Exportação PDF em 16:9** (1 slide/página), preservando layout do slide.
-- Viewer com: `_list.txt` (menos manutenção), hash `#Sxx`, clique, swipe, Home/End.
+- Viewer com: `_list.txt` (menos manutenção), hash por contador `#n` (mantém suporte a `#Sxx`), clique, swipe, Home/End.
 
 ## Checklist P0 (MVP)
 - [x] Nenhum slide com **cores hex hardcoded** em `style=""` (cores → tokens).

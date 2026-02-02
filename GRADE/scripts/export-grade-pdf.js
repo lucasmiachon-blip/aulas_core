@@ -10,11 +10,9 @@ async function exportPDF() {
   // Tentar GitHub Pages primeiro, fallback para localhost
   // Live Server (5500) em primeiro; 8000 = fallback (Python do exportar-pdf-e-zip.ps1).
   const urlCandidates = [
-    'http://127.0.0.1:9000/GRADE/src/index.html',
-    'http://localhost:9000/GRADE/src/index.html',
-    'http://localhost:8000/GRADE/src/index.html',
     'http://127.0.0.1:5500/GRADE/src/index.html',
     'http://localhost:5500/GRADE/src/index.html',
+    'http://localhost:8000/GRADE/src/index.html',
     'https://lucasmiachon-blip.github.io/aulas_core/GRADE/src/index.html'
   ];
   let url = urlCandidates[0];

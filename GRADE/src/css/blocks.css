@@ -64,10 +64,24 @@
   background: var(--navy);
   color: var(--white);
   padding: 0.95vw 1.15vw;
+  min-height: 3.15vw;
+  display: flex;
+  align-items: center;
+  gap: 0.8vw;
 }
 
 .cardBody {
   padding: 1.15vw;
+}
+
+/* Header typography consistency */
+.cardHeader,
+.cardHeader span,
+.cardHeader div {
+  font-family: var(--font-sans) !important;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  font-size: 0.82vw;
 }
 
 /* Chips */
