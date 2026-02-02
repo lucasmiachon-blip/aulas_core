@@ -1,5 +1,12 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-02 — P2 (Bempedoico): evidência + polimento
+
+- **Slide CLEAR Outcomes (bempedoico)**: ajuste de evidência/numeração — seguimento **mediano 40,6 meses** e **NNT ≈ 63** (com ARR 1,6%).
+- **Slide SAMS**: correção de ortografia (“rechallenge”).
+- Micro-ajustes de consistência visual (sem alterar a identidade do bloco 1).
+
+
 ## GRADE_P2_CAC_POLISH_S10_S13_2026_02_02 — 2026-02-02
 
 ### Objetivo
