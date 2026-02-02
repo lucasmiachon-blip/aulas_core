@@ -18,7 +18,7 @@ async function exportPDF() {
   let url = urlCandidates[0];
   
   // Pasta de saída
-  const outputDir = path.join(__dirname, '..', 'exports');
+  const outputDir = path.join(__dirname, '..', 'GRADE', 'exports');
   const outputPath = path.join(outputDir, 'GRADE-slides.pdf');
   
   // Criar pasta exports se não existir

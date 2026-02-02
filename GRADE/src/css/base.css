@@ -27,6 +27,8 @@
   /* Alertas */
   --danger: #ef4444;
   --danger-rgb: 239, 68, 68;
+  --amber: #a16207;
+  --amber-rgb: 161, 98, 7;
 
   /* Tipografia */
   --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;

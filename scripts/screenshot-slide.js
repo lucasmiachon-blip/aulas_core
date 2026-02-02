@@ -5,7 +5,7 @@ const fs = require('fs');
 
 async function run() {
   const url = 'http://localhost:8000/GRADE/src/index.html#21';
-  const out = path.join(__dirname, '..', 'exports', 'slide-21-debug.png');
+  const out = path.join(__dirname, '..', 'GRADE', 'exports', 'slide-21-debug.png');
   const outDir = path.dirname(out);
   if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true });
 

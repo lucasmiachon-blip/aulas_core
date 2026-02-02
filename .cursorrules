@@ -1,0 +1,71 @@
+# Cursor Rules for Aulas2 Project
+
+## 🔴 HARD CONSTRAINTS (MUST READ FIRST)
+
+Before making ANY changes, read: `HARD_CONSTRAINTS.md`
+
+### HC1: Documentation Required
+- Every code change MUST update `CHANGELOG.md`
+- Structure changes MUST update `README.md`
+- NO task is complete without documentation
+
+### HC2: Minimal CSS
+- Maximum 5-10 lines of CSS per task
+- Prefer existing classes over new ones
+- NEVER create new CSS files
+- If more CSS needed: STOP and ASK
+
+### HC3: No !important
+- NEVER add new `!important` declarations
+- Only exception: existing rules in `print.css`
+- If seems necessary: refactor selectors instead
+
+### HC4: Post-Change Verification
+After CSS changes, count !important - if increased: REVERT
+
+### HC5: No New Dependencies
+- NEVER add npm/pip packages without approval
+- Vanilla JS/CSS preferred
+
+### HC6: Git Checkpoint
+- Commit BEFORE changes affecting 3+ files
+- Commit BEFORE any CSS refactor
+
+### HC7: No Refactoring Without Permission
+- NEVER rewrite entire files
+- NEVER rename classes/functions in use
+- NEVER reorganize folder structure
+
+### HC8: Relative Paths Only
+- Always use `path.join(__dirname, ...)
+- NEVER hardcode absolute paths
+
+### HC9: No Inline Styles
+- Zero `style="..."` in HTML
+- Create CSS class instead
+
+### HC10: Test Before Done
+- Viewer works in browser?
+- Print mode works (Ctrl+P)?
+- PDF export works?
+- No console errors?
+
+## Active Projects (BOTH are equally important)
+
+| Project | Source | Exports | Export Script |
+|---------|--------|---------|---------------|
+| OSTEOPOROSE | `OSTEOPOROSE/src/` | `OSTEOPOROSE/exports/` | `scripts/export-osteoporose-pdf.js` |
+| GRADE | `GRADE/src/` | `GRADE/exports/` | `scripts/export-grade-pdf.js` |
+
+## Project Structure
+
+- `scripts/` - Shared scripts (DO NOT duplicate)
+- `OSTEOPOROSE/` - Osteoporose presentation project
+- `GRADE/` - GRADE presentation project
+- `docs/AI/` - AI rules and guardrails
+
+## Key Files
+
+- `HARD_CONSTRAINTS.md` - MUST READ (10 constraints)
+- `scripts/AI-RESTRICTIONS.md` - Detailed restrictions
+- `docs/AI/GUARDRAILS.md` - Full guardrails

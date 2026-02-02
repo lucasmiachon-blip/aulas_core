@@ -1,5 +1,122 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## DOCUMENTACAO_FUTURO_STACK — 2026-02-02
+
+### Adicionado
+- `docs/FUTURO_STACK_MODERNO.md` — Plano completo para projetos futuros
+- Template de Hard Constraints para projeto novo
+- Ferramentas de qualidade: ESLint, Prettier, Husky
+- Guia de testes E2E com Playwright
+- ADRs (Architecture Decision Records)
+- Git workflow e convenção de commits
+- GitHub Actions CI básico
+- Checklist de maturidade do projeto
+- `PROMPT_INICIAL.md` — Prompt para iniciar sessões com AI
+
+### Decisão documentada
+- **NÃO migrar** OSTEOPOROSE/GRADE para stack moderno (funciona bem)
+- Usar novo stack apenas em **projetos futuros**
+
+---
+
+## GRADE_CORES_NORMALIZADAS — 2026-02-02
+
+### Mudanças
+- Substituídas 7 cores hardcoded por CSS vars no GRADE:
+  - `#f8fafc` → `var(--bg)` (S22, S23)
+  - `#fff` → `var(--white)` (S12, S23)
+  - `#a16207` → `var(--amber)` (S51) — variável nova criada
+  - `#0f172a` → `var(--text)` (S51)
+- Removido arquivo backup `S51.html.orig`
+- Adicionada variável `--amber: #a16207` em `base.css`
+
+### Arquivos modificados
+- `GRADE/src/css/base.css` (nova var --amber)
+- `GRADE/src/slides/S12.html`
+- `GRADE/src/slides/S22.html`
+- `GRADE/src/slides/S23.html`
+- `GRADE/src/slides/S51.html`
+- `GRADE/src/slides/S51.html.orig` (deletado)
+
+### Impacto visual
+Zero — todas as substituições são equivalentes exatos.
+
+---
+
+## HARD_CONSTRAINTS_V2_E_DIAGNOSTICO — 2026-02-02
+
+### Hard Constraints expandidos (10 total)
+- **HC1-HC4**: Documentação, CSS mínimo, !important proibido, verificação
+- **HC5**: Zero dependências novas sem aprovação
+- **HC6**: Git checkpoint antes de mudança grande
+- **HC7**: Não refatorar/renomear sem pedir
+- **HC8**: Paths relativos sempre
+- **HC9**: Inline styles proibido
+- **HC10**: Testar viewer + print + export antes de "pronto"
+
+### Diagnóstico de melhorias gerado
+- `DIAGNOSTICO_MELHORIAS.md` criado com análise completa
+- Identificados: 220 !important, 4.298 inline styles, gaps de acessibilidade
+- Plano de ação em 5 sprints sugerido
+
+### Arquivos modificados
+- `HARD_CONSTRAINTS.md` - Expandido para 10 constraints
+- `.cursorrules` - Atualizado com todos os HCs
+- `DIAGNOSTICO_MELHORIAS.md` (novo)
+- `CHANGELOG.md`
+
+---
+
+## REORGANIZAÇÃO_E_HARD_CONSTRAINTS — 2026-02-02
+
+### Objetivo
+- Limpar estrutura do projeto removendo duplicações e arquivos obsoletos
+- Estabelecer Hard Constraints para evitar regressões futuras
+- Mover exports para dentro de cada projeto (OSTEOPOROSE/exports, GRADE/exports)
+
+### Reorganização executada
+1. **Scripts consolidados**: Removido `GRADE/scripts/` e `OSTEOPOROSE/scripts/` duplicados → usar apenas `scripts/` na raiz
+2. **Exports por projeto**: `exports/` raiz → `OSTEOPOROSE/exports/` e `GRADE/exports/`
+3. **Documentação**: HANDOFFs datados e CHANGELOGs duplicados → `docs/archive/`
+4. **Archive expandido**: ZIPs temporários, pacotes de debug, screenshots antigos → `archive/`
+
+### Hard Constraints criados (INVIOLÁVEIS)
+- **HC1**: Toda mudança DEVE atualizar CHANGELOG.md
+- **HC2**: CSS mínimo (5-10 linhas max por tarefa)
+- **HC3**: Zero `!important` novo (exceto print.css existente)
+- **HC4**: Verificar count de !important antes/depois de CSS
+
+### Arquivos criados/modificados
+- `HARD_CONSTRAINTS.md` (novo) - Referência rápida
+- `.cursorrules` (novo) - Regras para Cursor AI
+- `scripts/AI-RESTRICTIONS.md` - Hard Constraints adicionados
+- `docs/AI/GUARDRAILS.md` - Parte 9 com Hard Constraints
+- `scripts/export-osteoporose-pdf.js` - Caminho atualizado para OSTEOPOROSE/exports
+- `scripts/export-grade-pdf.js` - Caminho atualizado para GRADE/exports
+
+### Testes executados
+- 20/20 verificações passaram
+- Scripts principais funcionando
+- PDFs gerados nos novos locais
+
+---
+
+## OSTEOPOROSE_CONTENT_NORMALIZATION — 2026-02-02
+
+### Objetivo
+- Normalizar tokens de conteúdo nos slides (intervalos numéricos, placeholders)
+
+### Mudanças
+- Substituição de `--` por en-dash `–` em intervalos numéricos (17 slides)
+- Substituição de `[PLACEHOLDER]` por texto descritivo (S68-S71)
+- Screenshot de amostra não-fatal no export
+
+### Arquivos modificados
+- 17 slides em `OSTEOPOROSE/src/slides/`
+- `scripts/export-osteoporose-pdf.js`
+
+---
+
 ## OSTEOPOROSE_BATCH1_SLIDES01_10 — 2026-02-02 (Polish de abertura)
 
 ### Objetivo

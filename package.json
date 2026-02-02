@@ -1,0 +1,27 @@
+{
+  "name": "aulas2",
+  "version": "1.0.0",
+  "description": "Apresentações OSTEOPOROSE e GRADE - Sistema de slides HTML/CSS/JS",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "export:osteoporose": "node scripts/export-osteoporose-pdf.js",
+    "export:grade": "node scripts/export-grade-pdf.js",
+    "serve": "python -m http.server 5500"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasmiachon-blip/aulas_core.git"
+  },
+  "keywords": ["slides", "apresentacao", "osteoporose", "grade"],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasmiachon-blip/aulas_core/issues"
+  },
+  "homepage": "https://github.com/lucasmiachon-blip/aulas_core#readme",
+  "devDependencies": {
+    "eslint": "^9.39.2"
+  }
+}

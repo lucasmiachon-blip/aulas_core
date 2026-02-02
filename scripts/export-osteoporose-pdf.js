@@ -16,7 +16,7 @@ async function exportPDF() {
         `${exportBase}/OSTEOPOROSE/src/print.html`,
       ];
 
-  const outputDir = path.join(__dirname, '..', 'exports');
+  const outputDir = path.join(__dirname, '..', 'OSTEOPOROSE', 'exports');
   const outputPath = path.join(outputDir, 'OSTEOPOROSE-slides.pdf');
   const samplePath = path.join(outputDir, 'export-sample.png');
   const debugPng = path.join(outputDir, 'export-debug.png');

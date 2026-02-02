@@ -84,3 +84,37 @@
 1. Ler a última entrada do `CHANGELOG.md`.
 2. Documentar no CHANGELOG o que foi alterado e o que foi preservado.
 3. Não remover os blocos listados neste arquivo; apenas acrescentar ou ajustar dentro desses limites, se combinado com o usuário.
+
+---
+
+## 🔴 HARD CONSTRAINTS (INVIOLÁVEIS)
+
+### HC1: DOCUMENTAÇÃO OBRIGATÓRIA
+Toda mudança em código (CSS, JS, HTML de slides, scripts) **DEVE** ser acompanhada de:
+- [ ] Atualização do `CHANGELOG.md` na raiz (o que mudou, por quê)
+- [ ] Se estrutura/arquitetura mudar: atualizar `README.md`
+- [ ] Se for GRADE: atualizar `GRADE/CHANGELOG.md`
+
+**NUNCA** finalizar uma tarefa de código sem atualizar a documentação.
+
+### HC2: CSS MÍNIMO
+- **Preferir** usar classes existentes a criar novas
+- **Preferir** ajustar valores em `:root` a criar novos tokens
+- **Máximo 5-10 linhas de CSS** por tarefa, a menos que explicitamente autorizado
+- Se precisar de mais CSS, **PARE e pergunte** antes de continuar
+
+### HC3: !important PROIBIDO
+- **NUNCA** usar `!important` em CSS novo
+- **Exceções únicas:** `print.css` para forçar regras de impressão (já existentes)
+- Se parecer necessário `!important`, significa que a especificidade está errada → **refatorar seletores**
+- Cada `!important` novo requer **aprovação explícita** do usuário
+
+### HC4: VERIFICAÇÃO PÓS-MUDANÇA
+Após qualquer mudança em CSS:
+1. Contar quantos `!important` existem: `grep -c "!important" OSTEOPOROSE/src/css/*.css`
+2. Se aumentou → **reverter e refazer**
+3. Testar visualmente no viewer E no print mode
+
+---
+
+*Atualizado: 2026-02-02*

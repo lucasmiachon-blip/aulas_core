@@ -1,0 +1,264 @@
+/*
+  viewer.css
+  UI do viewer + scaling para palco.
+
+  Metas (P0/P1 limbo):
+  - Deck fixo 1280×720 (16:9), escala automática (fit).
+  - Fullscreen (F) + modo palco (UI auto-hide).
+  - Não altera conteúdo médico (apenas chrome + comportamento).
+*/
+
+:root{
+  --stage-w: 1280;
+  --stage-h: 720;
+
+  --stage-pad: 14px; /* padding do palco (não-print) */
+
+  --ui-h: 56px;
+  --radius-ui: 12px;
+
+  --shadow-ui: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-deck: 0 14px 60px rgba(0, 0, 0, 0.45);
+}
+
+.viewer{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--navy);
+}
+
+.viewer__bar{
+  height: var(--ui-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  gap: 14px;
+
+  color: var(--bg);
+  background: rgba(var(--navy-rgb), 0.92);
+  border-bottom: 1px solid rgba(var(--bg-rgb), 0.10);
+  backdrop-filter: blur(10px);
+
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.viewer__left{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 220px;
+}
+
+.viewer__title{
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.viewer__hint{
+  font-size: 12px;
+  color: rgba(var(--bg-rgb), 0.72);
+  line-height: 1.1;
+  user-select: none;
+}
+
+.viewer__center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.viewer__select{
+  width: min(520px, 42vw);
+  padding: 8px 10px;
+  border-radius: var(--radius-ui);
+  border: 1px solid rgba(var(--bg-rgb), 0.18);
+  background: rgba(var(--navy-rgb), 0.35);
+  color: var(--bg);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.viewer__select:focus{
+  outline: 2px solid rgba(var(--gold-rgb), 0.85);
+  outline-offset: 2px;
+}
+
+.viewer__right{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.viewer__btn{
+  border: 1px solid rgba(var(--bg-rgb), 0.18);
+  background: rgba(var(--navy-rgb), 0.35);
+  color: var(--bg);
+  padding: 8px 10px;
+  border-radius: var(--radius-ui);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.viewer__btn:hover{
+  border-color: rgba(var(--bg-rgb), 0.26);
+  background: rgba(var(--navy-rgb), 0.48);
+}
+
+.viewer__btn--gold{
+  border-color: transparent;
+  background: rgba(var(--gold-rgb), 0.95);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.viewer__btn--gold:hover{
+  background: rgba(var(--gold-rgb), 1);
+}
+
+.nav{
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav button{
+  border: 1px solid rgba(var(--bg-rgb), 0.18);
+  background: rgba(var(--navy-rgb), 0.35);
+  color: var(--bg);
+  padding: 8px 10px;
+  border-radius: var(--radius-ui);
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.nav button:hover{
+  border-color: rgba(var(--bg-rgb), 0.26);
+  background: rgba(var(--navy-rgb), 0.48);
+}
+
+.nav button:disabled{
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.counter{
+  font-size: 12px;
+  color: rgba(var(--bg-rgb), 0.72);
+  min-width: 64px;
+  text-align: center;
+  user-select: none;
+}
+
+.viewer__zoom{
+  font-size: 12px;
+  color: rgba(var(--bg-rgb), 0.72);
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--bg-rgb), 0.14);
+  background: rgba(var(--navy-rgb), 0.35);
+  user-select: none;
+  font-family: var(--font-sans);
+}
+
+.stage{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--stage-pad);
+}
+
+.stage__inner{
+  width: calc(var(--stage-w) * 1px);
+  height: calc(var(--stage-h) * 1px);
+  transform: scale(var(--scale, 1));
+  transform-origin: center;
+  will-change: transform;
+}
+
+.deck--fixed{
+  width: calc(var(--stage-w) * 1px);
+  height: calc(var(--stage-h) * 1px);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-deck);
+  border: 1px solid rgba(var(--bg-rgb), 0.10);
+}
+
+.slides{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+}
+
+/* Compat: slides vindos do legado usam .slide + inline styles */
+.slide{
+  width: 100%;
+  height: 100%;
+  min-height: 0 !important; /* vence min-height inline */
+  overflow: hidden;
+  display: none;
+  position: relative;
+}
+
+.slide.is-active{ display: block; }
+
+/* Modo palco: esconde a UI após inatividade */
+.viewer.is-ui-hidden .viewer__bar{
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+
+.viewer.is-ui-hidden{ cursor: none; }
+
+@media (max-width: 720px){
+  .viewer__left{ display: none; }
+  .viewer__select{ width: 42vw; }
+}
+
+/*
+  Present mode
+  - Barra vira overlay (não reduz área do slide no fullscreen).
+*/
+.viewer.is-present .viewer__bar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  box-shadow: var(--shadow-ui);
+}
+
+.viewer.is-present.is-ui-hidden{ cursor: none; }
+
+/*
+  Fullscreen refinements
+  - Remove paddings e chrome do deck para maximizar área útil.
+*/
+.viewer.is-fullscreen .stage{
+  /* Pequena margem de segurança (overscan / projetores) */
+  padding: max(10px, env(safe-area-inset-top))
+           max(10px, env(safe-area-inset-right))
+           max(10px, env(safe-area-inset-bottom))
+           max(10px, env(safe-area-inset-left));
+}
+
+.viewer.is-fullscreen .deck--fixed{
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}

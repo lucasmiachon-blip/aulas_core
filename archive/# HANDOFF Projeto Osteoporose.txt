@@ -1,0 +1,256 @@
+# HANDOFF: Projeto Osteoporose
+**Última atualização:** 31/01/2026  
+**Deadline:** 12/02/2026
+
+---
+
+## CONTEXTO
+
+Apresentação médica sobre osteoporose (72 slides HTML/CSS).
+Projeto tem problemas de CSS acumulados (whitespace, centralização, conflitos de especificidade).
+Missão: deixar profissional.
+
+---
+
+## HIERARQUIA DE DECISÃO
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│  ONDE COLOCAR O FIX?                                        │
+│                                                             │
+│  1º  viewer.css / base.css  →  Comportamento GLOBAL         │
+│  2º  HTML                   →  Estrutura SEMÂNTICA errada   │
+│  3º  Inline style           →  Exceção ÚNICA                │
+│  4º  polish.css             →  ÚLTIMO RECURSO               │
+│                                                             │
+│  NUNCA:                                                     │
+│  - Inline para problema sistêmico                           │
+│  - CSS novo se já existe regra que resolve                  │
+│  - Polish.css como primeira opção                           │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## FLUXO DE TRABALHO
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                                                             │
+│  1. RECEBER PROBLEMA / OUTPUT                               │
+│     ↓                                                       │
+│  2. CHECKLIST: Entendimento                                 │
+│     ↓                                                       │
+│  3. CHECKLIST: Dev Senior Frontend                          │
+│     ↓                                                       │
+│  4. CHECKLIST: Onde colocar fix (hierarquia)                │
+│     ↓                                                       │
+│  5. CHECKLIST: Design Visual                                │
+│     ↓                                                       │
+│  6. CHECKLIST: Prompt Engineering                           │
+│     ↓                                                       │
+│  7. ENVIAR PROMPT AO CURSOR                                 │
+│     ↓                                                       │
+│  (volta ao passo 1)                                         │
+│                                                             │
+│  REGRA: Cursor só diagnostica ou implementa.                │
+│         Claude decide.                                      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## CHECKLIST 1: ENTENDIMENTO DO PROBLEMA
+
+```
+□ O que exatamente o output me diz?
+□ Qual é o SINTOMA?
+□ Qual é a CAUSA sugerida?
+□ Tenho DADOS CONCRETOS ou só hipóteses?
+□ O que ainda NÃO SEI?
+```
+
+---
+
+## CHECKLIST 2: DEV SENIOR FRONTEND
+
+```
+□ CASCATA
+  - Ordem dos arquivos CSS no index.html?
+  - Especificidade de cada regra?
+  - Qual regra VENCE?
+
+□ COMPUTED STYLE
+  - Valor FINAL da propriedade?
+  - DevTools confirma?
+
+□ BOX MODEL
+  - Height definida em toda cadeia (pai → filho)?
+  - Elemento quebra fluxo? (position, float)
+
+□ FLEX/GRID
+  - Container tem display correto?
+  - Filhos expandem? (flex:1)
+
+□ INLINE VS EXTERNO
+  - Inline sobrescrevendo?
+  - Especificidade inline (1,0,0,0) vence tudo
+
+□ ISOLAMENTO
+  - Problema neste elemento ou herdado?
+```
+
+---
+
+## CHECKLIST 3: ONDE COLOCAR O FIX
+
+```
+□ QUANDO CSS EXTERNO (viewer.css, base.css):
+  - Padrão se repete em múltiplos elementos?
+  - É comportamento padrão do sistema?
+  - Regra já existe mas não funciona?
+  → Corrigir no CSS global
+
+□ QUANDO HTML:
+  - Estrutura semântica errada?
+  - Ordem dos elementos incorreta?
+  - Classe faltando ou errada?
+  → Ajustar estrutura
+
+□ QUANDO INLINE:
+  - Exceção ÚNICA que não se repete?
+  - Override temporário para teste?
+  → Último caso antes de polish
+
+□ QUANDO POLISH.CSS:
+  - Nenhuma opção acima resolve?
+  - Precisa de classe utilitária nova?
+  → ÚLTIMO RECURSO
+```
+
+---
+
+## CHECKLIST 4: DESIGN VISUAL
+
+```
+□ HIERARQUIA VISUAL
+  - Olho sabe onde começar?
+  - Ordem de leitura clara?
+
+□ TIPOGRAFIA
+  - Escala consistente? (12/14/16/20/24/32/40)
+  - Máximo 2-3 tamanhos por slide?
+
+□ COR
+  - Destaca o importante?
+  - Máximo 3 cores ativas por slide?
+  - Regra 60-30-10?
+
+□ ESPAÇAMENTO
+  - Whitespace é INTENCIONAL ou SOBRA?
+  - Proximidade: relacionados juntos?
+  - Padding consistente?
+
+□ EQUILÍBRIO
+  - Peso visual distribuído?
+  - Centro de gravidade estável?
+```
+
+---
+
+## CHECKLIST 5: PROMPT ENGINEERING
+
+```
+□ CONTEXTO: O que já foi tentado?
+□ UMA TAREFA SÓ: Dividir se necessário
+□ DIAGNÓSTICO ANTES DE AÇÃO: Pedir dados primeiro
+□ OUTPUT DEFINIDO: Tabela? Lista? Código?
+□ SEM ASSUMIR SOLUÇÃO: Espaço para descoberta
+□ VERIFICÁVEL: Como saber se funcionou?
+```
+
+---
+
+## TEMPLATES DE PROMPT
+
+**DIAGNÓSTICO:**
+```
+CONTEXTO: [situação atual]
+
+TAREFA: [verificar/inspecionar/listar]
+
+OUTPUT: [formato específico]
+
+NÃO FAÇA NENHUMA ALTERAÇÃO.
+```
+
+**IMPLEMENTAÇÃO:**
+```
+CONTEXTO: [diagnóstico confirmado]
+
+DECISÃO: [o que foi decidido e POR QUÊ]
+
+AÇÃO: [arquivo, linha, mudança exata]
+
+VERIFICAÇÃO: [como testar]
+```
+
+---
+
+## ARQUITETURA CSS
+
+```
+Ordem de carregamento (index.html):
+
+1. base.css     →  Tokens, reset, regras base de .slide
+2. blocks.css   →  Componentes reutilizáveis
+3. viewer.css   →  UI do viewer, estados .is-active
+4. print.css    →  Regras de impressão
+5. polish.css   →  Classes utilitárias OPT-IN (último recurso)
+```
+
+---
+
+## REGRAS INVIOLÁVEIS
+
+```
+1. Cursor só executa, Claude decide
+2. Diagnóstico ANTES de ação
+3. Hierarquia: CSS > HTML > Inline > Polish
+4. Sistêmico > Pontual (resolver causa raiz)
+5. Menos código = melhor
+6. Design intencional ≠ bug
+7. Sempre rodar checklists (nunca automático)
+```
+
+---
+
+## PRIMEIRO PASSO NA JANELA NOVA
+
+Pedir diagnóstico geral:
+
+```
+CONTEXTO:
+Projeto de apresentação osteoporose, 72 slides HTML/CSS.
+Preciso entender estado atual antes de qualquer mudança.
+
+TAREFA:
+1. Liste a ordem dos <link> CSS no index.html
+2. Mostre as regras principais de viewer.css que afetam .slide
+3. Identifique 3 slides com whitespace excessivo (amostra visual ou código)
+
+OUTPUT:
+Tabela resumida.
+
+NÃO FAÇA NENHUMA ALTERAÇÃO.
+```
+
+---
+
+## NOTAS
+
+- Existem problemas de whitespace em alguns slides
+- Existem conflitos de especificidade CSS
+- Alguns inline styles duplicam regras globais
+- Objetivo: resolver sistematicamente, não com band-aids

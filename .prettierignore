@@ -1,0 +1,8 @@
+node_modules/
+*.min.js
+*.min.css
+archive/
+exports/
+*.pdf
+*.png
+*.jpg
