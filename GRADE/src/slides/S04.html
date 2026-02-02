@@ -1,54 +1,89 @@
-<section class="slide" data-slide-id="S04" id="slide-interativo">
-        <div style="text-align: center; margin-bottom: 3.5vw;">
-            <p style="color: var(--gold); font-weight: 900; font-size: 1.1vw; letter-spacing: 0.3vw; text-transform: uppercase; margin-bottom: 0.8vw;">CALIBRAGEM DA SALA</p>
-            <h2 style="font-family: 'Georgia', serif; font-size: 3.8vw; color: var(--navy); margin-top: 0.5vw;">Onde a sala est&aacute;?</h2>
+<section class="slide bg-navy" data-slide-id="S04">
+  <div class="label-gold" style="font-size:0.90vw;">INTERAÇÃO — CALIBRAR A SALA (EtD)</div>
+
+  <h2 style="color: var(--white); margin-top: 0.8vw;">Calibragem rápida: como você decide?</h2>
+
+  <div class="lead" style="color: rgba(255,255,255,0.76); max-width: 86%;">
+    2 perguntas em 20–30 segundos. <strong style="color: rgba(255,255,255,0.92);">Não existe certo/errado</strong> — o objetivo é revelar variabilidade.
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:1.5vw; margin-top:1.8vw; max-width: 92%;">
+    <!-- Pergunta 1 -->
+    <div style="display:flex; gap:1.4vw; align-items:stretch;">
+      <div style="flex:1; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:1vw; padding:1.6vw;">
+        <div style="font-size:1.05vw; font-weight:900; letter-spacing:0.12em; text-transform:uppercase; color: rgba(255,255,255,0.72);">
+          Pergunta 1
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5vw; flex-grow: 1; align-items: start;">
-            
-            <!-- POLL 1: CAC -->
-            <div class="qr-card" style="background: var(--white); padding: 3vw; border-radius: 0.5vw; text-align: center; border-top: 0.7vw solid var(--navy);">
-                <div style="width: 15vw; height: 15vw; background: var(--bg); border: 1px solid var(--border); border-radius: 0.5vw; margin: 0 auto 1vw; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1vw; box-shadow: inset 0 0.2vw 0.4vw rgba(0,0,0,0.06);">
-                    [QR CODE 1]
-                </div>
-                <p style="font-size: 0.9vw; color: var(--muted); margin-bottom: 1.5vw; font-weight: 600;">Abra a câmera e responda em 10s</p>
-                
-                <h3 style="font-family: 'Georgia', serif; font-size: 2vw; color: var(--text); margin-bottom: 0.8vw;">Frequência de Uso (CAC)</h3>
-                
-                <p style="font-size: 1.15vw; color: var(--text); margin-bottom: 2vw; line-height: 1.4;">0 = nunca uso<br>100 = uso como regra em casos eleg&iacute;veis</p>
-                
-                <div style="position: relative; margin-top: 1.5vw;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3vw;">
-                        <span style="font-size: 0.75vw; color: var(--muted);">0</span>
-                        <span style="font-size: 0.75vw; color: var(--muted);">50</span>
-                        <span style="font-size: 0.75vw; color: var(--muted);">100</span>
-                    </div>
-                    <div style="height: 0.8vw; background: var(--border); border-radius: 1vw; position: relative; overflow: hidden;">
-                        <div id="bar-cac" style="height: 100%; background: var(--navy); width: 0%; transition: width 2s cubic-bezier(0.16, 1, 0.3, 1);"></div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- POLL 2: GRADE -->
-            <div class="qr-card" style="background: var(--white); padding: 3vw; border-radius: 0.5vw; text-align: center; border-top: 0.7vw solid var(--gold);">
-                <div style="width: 15vw; height: 15vw; background: var(--bg); border: 1px solid var(--border); border-radius: 0.5vw; margin: 0 auto 1vw; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 1vw; box-shadow: inset 0 0.2vw 0.4vw rgba(0,0,0,0.06);">
-                    [QR CODE 2]
-                </div>
-                <p style="font-size: 0.9vw; color: var(--muted); margin-bottom: 1.5vw; font-weight: 600;">Abra a câmera e responda em 10s</p>
-                
-                <h3 style="font-family: 'Georgia', serif; font-size: 2vw; color: var(--text); margin-bottom: 0.8vw;">Dom&iacute;nio do GRADE</h3>
-                
-                <p style="font-size: 1.15vw; color: var(--text); margin-bottom: 2vw; line-height: 1.4;">0 = n&atilde;o sei interpretar<br>100 = consigo justificar no prontu&aacute;rio</p>
-                
-                <div style="position: relative; margin-top: 1.5vw;">
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.3vw;">
-                        <span style="font-size: 0.75vw; color: var(--muted);">0</span>
-                        <span style="font-size: 0.75vw; color: var(--muted);">50</span>
-                        <span style="font-size: 0.75vw; color: var(--muted);">100</span>
-                    </div>
-                    <div style="height: 0.8vw; background: var(--border); border-radius: 1vw; position: relative; overflow: hidden;">
-                        <div id="bar-grade" style="height: 100%; background: var(--gold); width: 0%; transition: width 2s cubic-bezier(0.16, 1, 0.3, 1) 0.5s;"></div>
-                    </div>
-                </div>
-            </div>
+        <div style="margin-top:0.7vw; font-size:1.5vw; font-weight:800; color: rgba(255,255,255,0.94); line-height:1.25;">
+          Em prevenção primária, você tende a <span style="color: var(--gold);">intensificar</span> mais cedo?
         </div>
-    </section>
+
+        <!-- Slider placeholder -->
+        <div style="margin-top:1.2vw;">
+          <div style="display:flex; justify-content:space-between; font-size:0.95vw; color: rgba(255,255,255,0.70); font-weight:700;">
+            <span>Mais conservador</span>
+            <span>Mais agressivo</span>
+          </div>
+          <div style="margin-top:0.55vw; height:0.55vw; background: rgba(255,255,255,0.18); border-radius: 999px; position:relative;">
+            <div style="width:55%; height:0.55vw; background: rgba(var(--gold-rgb),0.92); border-radius: 999px;"></div>
+            <div style="position:absolute; top:50%; left:55%; transform:translate(-50%,-50%); width:1.05vw; height:1.05vw; border-radius:50%; background: var(--gold); box-shadow: 0 0.15vw 0.55vw rgba(0,0,0,0.25);"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.15vw; font-size:1.0vw; color: rgba(255,255,255,0.68); line-height:1.35;">
+          Pense em: risco basal, preferências, adesão, custo.
+        </div>
+      </div>
+
+      <div style="width:16.5vw; background: rgba(255,255,255,0.05); border:1px dashed rgba(var(--gold-rgb),0.55); border-radius:1vw; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1.2vw;">
+        <div style="font-size:0.95vw; color: rgba(255,255,255,0.70); font-weight:800;">QR (1)</div>
+        <div style="margin-top:0.65vw; width:9.2vw; height:9.2vw; background: rgba(255,255,255,0.06); border-radius:0.8vw;"></div>
+        <div style="margin-top:0.75vw; font-size:0.9vw; color: rgba(255,255,255,0.62);">Escaneie e responda</div>
+      </div>
+    </div>
+
+    <!-- Pergunta 2 -->
+    <div style="display:flex; gap:1.4vw; align-items:stretch;">
+      <div style="flex:1; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:1vw; padding:1.6vw;">
+        <div style="font-size:1.05vw; font-weight:900; letter-spacing:0.12em; text-transform:uppercase; color: rgba(255,255,255,0.72);">
+          Pergunta 2
+        </div>
+        <div style="margin-top:0.7vw; font-size:1.5vw; font-weight:800; color: rgba(255,255,255,0.94); line-height:1.25;">
+          Se o benefício absoluto é <span style="color: var(--gold);">pequeno</span>, você ainda recomendaria para quase todos?
+        </div>
+
+        <!-- Slider placeholder -->
+        <div style="margin-top:1.2vw;">
+          <div style="display:flex; justify-content:space-between; font-size:0.95vw; color: rgba(255,255,255,0.70); font-weight:700;">
+            <span>Depende muito</span>
+            <span>Recomendo quase sempre</span>
+          </div>
+          <div style="margin-top:0.55vw; height:0.55vw; background: rgba(255,255,255,0.18); border-radius: 999px; position:relative;">
+            <div style="width:38%; height:0.55vw; background: rgba(var(--gold-rgb),0.92); border-radius: 999px;"></div>
+            <div style="position:absolute; top:50%; left:38%; transform:translate(-50%,-50%); width:1.05vw; height:1.05vw; border-radius:50%; background: var(--gold); box-shadow: 0 0.15vw 0.55vw rgba(0,0,0,0.25);"></div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.15vw; font-size:1.0vw; color: rgba(255,255,255,0.68); line-height:1.35;">
+          Pense em: valores, preferências, recursos, equidade.
+        </div>
+      </div>
+
+      <div style="width:16.5vw; background: rgba(255,255,255,0.05); border:1px dashed rgba(var(--gold-rgb),0.55); border-radius:1vw; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1.2vw;">
+        <div style="font-size:0.95vw; color: rgba(255,255,255,0.70); font-weight:800;">QR (2)</div>
+        <div style="margin-top:0.65vw; width:9.2vw; height:9.2vw; background: rgba(255,255,255,0.06); border-radius:0.8vw;"></div>
+        <div style="margin-top:0.75vw; font-size:0.9vw; color: rgba(255,255,255,0.62);">Escaneie e responda</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1.8vw; border-left:0.35vw solid var(--gold); padding:0.85vw 1.15vw; background: rgba(var(--gold-rgb),0.10); border-radius:0.85vw; max-width: 92%;">
+    <div style="font-size:1.08vw; color: rgba(255,255,255,0.86); line-height:1.35;">
+      <strong>Por quê isso importa?</strong> Variabilidade de decisão é inevitável — o GRADE torna os motivos <strong>visíveis</strong>.
+    </div>
+  </div>
+
+  <div class="ref" style="position:absolute; bottom: 4%; left: 6%; font-size: 0.85vw; color: rgba(255,255,255,0.55);">
+    Sugestão: usar Mentimeter/Slido (2 perguntas rápidas) para evidenciar variabilidade (EtD).
+  </div>
+</section>

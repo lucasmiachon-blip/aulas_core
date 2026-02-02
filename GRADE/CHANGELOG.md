@@ -1,5 +1,60 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## GRADE_P2_CAC_IPSIS_LITTERIS_2026_02_02 — 2026-02-02
+
+### Objetivo
+- Reintroduzir as **recomendações ipsis litteris da diretriz** no bloco CAC (para ancorar a discussão e facilitar citação/ponte com estudos).
+- Manter o padrão visual profissional já aplicado no bloco de bempedóico.
+
+### O que mudou
+- **S09**: substituído o conteúdo “texto → conduta” por um layout 60/40 com:
+  - coluna de **recomendações (ipsis litteris)** + força/certidão;
+  - coluna de **leitura GRADE** (baseline, upgrade por gradiente, downgrade por indireção) + frase de 10s.
+
+### Arquivos modificados
+- `src/slides/S09.html`
+- `CHANGELOG.md`
+- `README.md`
+
+## GRADE_P2_CONTENT_BATCH1_2026_02_02 — 2026-02-02
+
+### Objetivo
+- Iniciar o **P2 (conteúdo + forma)** aplicando boas práticas de apresentação (Duarte, hierarquia atencional, chunking/sinalização), sem mexer na ordem.
+- Foco: **slides 1–10 (viewer)** — abertura + início do bloco CAC.
+
+### O que mudou (conteúdo + forma)
+- **Headlines em formato de mensagem** (1 ideia por slide).
+- **Menos carga cognitiva:** frases mais curtas, paralelismo, números em destaque, mais respiro.
+- **Dual coding leve:** stepper/fluxos (risco → meta → benefício absoluto) e caixas de take‑home.
+- **Padronização local:** cards, bordas, espaçamento e alinhamentos (sem criar “ruído” visual).
+- **CAC=0:** take‑home mais direto + “warranty” em duas janelas (3–7 / 5–10 anos) + regra explícita.
+
+### Slides revisados neste batch
+- `S01` (capa)
+- `S02` (problema)
+- `S03` (caso‑âncora CAC + gramática GRADE)
+- `S04` (interação: calibrar a sala)
+- `S05` (divisor: certeza ≠ força)
+- `S06` (motor do GRADE: stepper + listas)
+- `S60` (abertura do bloco CAC)
+- `S09` (aplicação: diretriz vs GRADE)
+- `S36` (tabela: CAC → categoria → meta)
+- `S10` (CAC=0: janela de reavaliação)
+
+### Arquivos modificados
+- `src/slides/S01.html`
+- `src/slides/S02.html`
+- `src/slides/S03.html`
+- `src/slides/S04.html`
+- `src/slides/S05.html`
+- `src/slides/S06.html`
+- `src/slides/S60.html`
+- `src/slides/S09.html`
+- `src/slides/S36.html`
+- `src/slides/S10.html`
+- `CHANGELOG.md`
+- `README.md`
+
 ## GRADE_P1_TITLES_POLISH_2026_02_02 — 2026-02-02
 
 ### Problema

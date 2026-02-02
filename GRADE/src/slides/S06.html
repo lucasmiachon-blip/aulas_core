@@ -1,89 +1,72 @@
-<section class="slide" data-slide-id="S06" style="background: var(--bg);">
-        
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5vw;">
-            <div>
-                <p class="label-gold" style="color: var(--navy); font-size: 0.6vw;">METODOLOGIA</p>
-                <h2 style="font-size: 2.8vw; margin: 0; color: var(--navy);">O Motor do GRADE</h2>
-            </div>
-            <div style="text-align: right;">
-                <p style="font-size: 0.8vw; color: var(--muted);">Adaptação: Guyatt et al. BMJ 2008</p>
-            </div>
-        </div>
+<section class="slide" data-slide-id="S06">
+  <div class="label-gold" style="font-size:0.90vw;">MÉTODO — DO ESTUDO À CERTEZA</div>
 
-        <div style="display: grid; grid-template-columns: 0.8fr 1.2fr 0.9fr; gap: 2.5vw; align-items: start;">
-            
-            <!-- Coluna 1: Ponto de Partida -->
-            <div style="display: flex; flex-direction: column; gap: 2vw;">
-                <div class="card-magna" style="border-left: 0.35vw solid var(--teal); padding: 2vw; text-align: center;">
-                    <p style="font-size: 0.7vw; font-weight: 900; color: var(--muted); margin-bottom: 0.7vw;">START HIGH</p>
-                    <h3 style="font-family: Georgia; font-size: 1.75vw; color: var(--navy); margin: 0;">RCT</h3>
-                    <p style="font-size: 0.75vw; color: var(--muted); margin-top: 0.6vw;">⊕⊕⊕⊕</p>
-                </div>
-                <div class="card-magna" style="border-left: 0.35vw solid var(--muted); padding: 2vw; text-align: center; opacity: 0.7;">
-                    <p style="font-size: 0.7vw; font-weight: 900; color: var(--muted); margin-bottom: 0.7vw;">START LOW</p>
-                    <h3 style="font-family: Georgia; font-size: 1.75vw; color: var(--navy); margin: 0;">Observacional</h3>
-                    <p style="font-size: 0.75vw; color: var(--muted); margin-top: 0.6vw;">⊕⊕◯◯</p>
-                </div>
-            </div>
+  <h2 style="margin-top:0.8vw;">O motor do GRADE</h2>
 
-            <!-- Coluna 2: Fatores (Rebaixam + Elevam) -->
-            <div style="display: flex; flex-direction: column; gap: 2.2vw;">
-                <!-- Card Rebaixam (Downgrade) -->
-                <div style="background: white; border: 1px solid rgba(0,0,0,0.05); border-radius: 0.6vw; padding: 2vw; box-shadow: 0 0.5vw 1.5vw rgba(0,0,0,0.03); display: flex; flex-direction: column; height: fit-content;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5vw; border-bottom: 2px solid var(--border); padding-bottom: 0.9vw;">
-                        <h3 style="font-size: 0.9vw; color: var(--navy); margin: 0; font-weight: 700;">Fatores que rebaixam</h3>
-                        <span style="font-size: 0.75vw; color: var(--navy); font-weight: 700;">(downgrade)</span>
-                    </div>
-                    <ul style="list-style: none; font-size: 0.9vw; color: var(--text); line-height: 2.2; padding: 0; margin: 0;">
-                        <li style="font-weight: 600;">1. Risco de viés</li>
-                        <li style="font-weight: 600;">2. Inconsistência</li>
-                        <li style="font-weight: 600;">3. Indireticidade (PICO)</li>
-                        <li style="font-weight: 600;">4. Imprecisão</li>
-                        <li style="font-weight: 600;">5. Viés de publicação</li>
-                    </ul>
-                </div>
+  <div class="lead" style="max-width: 92%;">
+    Regra prática: comece pelo desenho do estudo — e ajuste a confiança com critérios explícitos.
+  </div>
 
-                <!-- Card Elevam (Upgrade) -->
-                <div style="background: white; border: 1px solid rgba(0,0,0,0.05); border-radius: 0.6vw; padding: 2vw; box-shadow: 0 0.5vw 1.5vw rgba(0,0,0,0.03); display: flex; flex-direction: column; height: fit-content;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5vw; border-bottom: 2px solid var(--border); padding-bottom: 0.9vw;">
-                        <h3 style="font-size: 0.9vw; color: var(--teal); margin: 0; font-weight: 700;">Fatores que elevam</h3>
-                        <span style="font-size: 0.75vw; color: var(--teal); font-weight: 700;">(upgrade)</span>
-                    </div>
-                    <ul style="list-style: none; font-size: 0.9vw; color: var(--text); line-height: 2.2; padding: 0; margin: 0;">
-                        <li style="font-weight: 600;">1. Grande magnitude de efeito</li>
-                        <li style="font-weight: 600;">2. Gradiente dose-resposta</li>
-                        <li style="font-weight: 600;">3. Confundidor residual reduziria efeito</li>
-                    </ul>
-                </div>
-            </div>
+  <!-- Stepper -->
+  <div style="display:flex; align-items:stretch; gap:1.1vw; margin-top:1.7vw;">
+    <div style="flex: 1; background: white; border:1px solid var(--border); border-radius:1.0vw; padding:1.2vw 1.4vw;">
+      <div style="font-size:0.90vw; letter-spacing:0.14em; text-transform:uppercase; color: rgba(var(--text-rgb),0.60); font-weight:800;">PASSO 1</div>
+      <div style="margin-top:0.6vw; font-size:1.25vw; font-weight:900; color: var(--navy);">Defina o desenho</div>
+      <div style="margin-top:0.45vw; font-size:1.05vw; color: var(--muted); line-height:1.35;">
+        <strong>RCT</strong> começa “alto”. <strong>Observacional</strong> começa “baixo”.
+      </div>
+    </div>
 
-            <!-- Coluna 3: Termômetro de Certeza -->
-            <div style="background: var(--navy); border-radius: 0.6vw; padding: 2.2vw; display: flex; flex-direction: column; text-align: center; color: white; box-shadow: 0 1vw 3vw rgba(11,19,32,0.2); height: fit-content; align-self: start;">
-                <div>
-                    <p style="font-size: 0.65vw; letter-spacing: 0.2vw; color: var(--gold); font-weight: 900; margin-bottom: 1.2vw;">RESULTADO</p>
-                    <h3 style="font-family: Georgia; font-size: 1.75vw; line-height: 1.1; margin-bottom: 2vw; color: white;">Certeza Final</h3>
-                </div>
-                
-                <!-- Termômetro 4 níveis -->
-                <div style="display: flex; flex-direction: column; gap: 1.1vw; margin: 1.7vw 0;">
-                    <div style="background: var(--teal); padding: 1.1vw; border-radius: 0.3vw; font-weight: 700; font-size: 0.75vw; position: relative;">
-                        ⊕⊕⊕⊕ ALTA
-                    </div>
-                    <div style="background: rgba(255,255,255,0.15); padding: 1.1vw; border-radius: 0.3vw; font-size: 0.75vw; position: relative;">
-                        ⊕⊕⊕◯ MODERADA
-                        <span style="position: absolute; right: -0.9vw; top: 50%; transform: translateY(-50%); font-size: 1vw; color: var(--gold);">→</span>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.1); padding: 1.1vw; border-radius: 0.3vw; font-size: 0.75vw;">
-                        ⊕⊕◯◯ BAIXA
-                    </div>
-                    <div style="background: rgba(255,255,255,0.05); padding: 1.1vw; border-radius: 0.3vw; font-size: 0.75vw;">
-                        ⊕◯◯◯ MUITO BAIXA
-                    </div>
-                </div>
-                
-                <p style="font-size: 0.75vw; opacity: 0.85; line-height: 1.7; margin-top: 1.7vw;">
-                    A certeza <strong>informa</strong> a força da recomendação, mas não a determina sozinha.
-                </p>
-            </div>
-        </div>
-    </section>
+    <div style="width:3.0vw; display:flex; align-items:center; justify-content:center; font-size:2.0vw; color: rgba(var(--text-rgb),0.35);">→</div>
+
+    <div style="flex: 1.15; background: white; border:1px solid var(--border); border-radius:1.0vw; padding:1.2vw 1.4vw;">
+      <div style="font-size:0.90vw; letter-spacing:0.14em; text-transform:uppercase; color: rgba(var(--text-rgb),0.60); font-weight:800;">PASSO 2</div>
+      <div style="margin-top:0.6vw; font-size:1.25vw; font-weight:900; color: var(--navy);">Ajuste a confiança</div>
+      <div style="margin-top:0.45vw; font-size:1.05vw; color: var(--muted); line-height:1.35;">
+        Procure motivos para <strong>↓</strong> (dúvida) ou <strong>↑</strong> (confiança).
+      </div>
+    </div>
+
+    <div style="width:3.0vw; display:flex; align-items:center; justify-content:center; font-size:2.0vw; color: rgba(var(--text-rgb),0.35);">→</div>
+
+    <div style="flex: 1; background: rgba(var(--teal-rgb),0.07); border:1px solid rgba(var(--teal-rgb),0.20); border-radius:1.0vw; padding:1.2vw 1.4vw;">
+      <div style="font-size:0.90vw; letter-spacing:0.14em; text-transform:uppercase; color: rgba(var(--text-rgb),0.60); font-weight:800;">PASSO 3</div>
+      <div style="margin-top:0.6vw; font-size:1.25vw; font-weight:900; color: var(--navy);">Declare a certeza</div>
+      <div style="margin-top:0.45vw; font-size:1.05vw; color: var(--muted); line-height:1.35;">
+        Alta → Moderada → Baixa → Muito baixa.
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:2.0vw; margin-top:2.0vw; align-items:flex-start;">
+    <div class="card" style="flex:1; padding:1.6vw 1.7vw;">
+      <div class="chip chip--navy" style="margin-bottom:1.0vw;">DOWGRADES (↓)</div>
+      <ul style="margin:0; padding-left:1.2em; font-size:1.08vw; line-height:1.45;">
+        <li>Risco de viés</li>
+        <li>Inconsistência</li>
+        <li>Indireção</li>
+        <li>Imprecisão</li>
+        <li>Viés de publicação</li>
+      </ul>
+      <div style="margin-top:0.9vw; font-size:0.95vw; color: var(--muted);">
+        Regra mental: descer é mais comum do que subir.
+      </div>
+    </div>
+
+    <div class="card" style="flex:1; padding:1.6vw 1.7vw;">
+      <div class="chip chip--teal" style="margin-bottom:1.0vw;">UPGRADES (↑)</div>
+      <ul style="margin:0; padding-left:1.2em; font-size:1.08vw; line-height:1.45;">
+        <li>Grande efeito</li>
+        <li>Gradiente dose–resposta</li>
+        <li>Confundimento plausível que reduziria o efeito</li>
+      </ul>
+      <div style="margin-top:0.9vw; font-size:0.95vw; color: var(--muted);">
+        O objetivo não é “pontuar”, é <strong>explicar</strong> por que confiamos (ou não) no efeito.
+      </div>
+    </div>
+  </div>
+
+  <div class="ref" style="position:absolute; bottom:4%; left:6%; font-size:0.75vw; color: rgba(var(--text-rgb),0.50);">
+    Baseado no framework GRADE (BMJ 2004; J Clin Epidemiol 2011).
+  </div>
+</section>
