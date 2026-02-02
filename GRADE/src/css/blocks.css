@@ -52,6 +52,84 @@
   color: var(--gold);
 }
 
+/* Small section title (used inside cards) */
+.small-title {
+  font-family: var(--font-sans);
+  font-size: 0.86vw;
+  color: rgba(var(--navy-rgb), 0.70);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Bullet rows (consistent spacing + alignment) */
+.bulletRow {
+  display: flex;
+  gap: 0.6vw;
+  align-items: flex-start;
+}
+
+/* Icon circles (avoid emoji, keep semantics) */
+.iconCircle {
+  width: 1.15vw;
+  height: 1.15vw;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82vw;
+  font-weight: 900;
+  line-height: 1;
+  flex: 0 0 auto;
+  border: 1px solid rgba(var(--navy-rgb), 0.22);
+  background: rgba(var(--navy-rgb), 0.06);
+  color: var(--navy);
+}
+
+.iconCircle--gold {
+  border-color: rgba(var(--gold-rgb), 0.36);
+  background: rgba(var(--gold-rgb), 0.18);
+  color: var(--navy);
+}
+
+.iconCircle--teal {
+  border-color: rgba(var(--teal-rgb), 0.36);
+  background: rgba(var(--teal-rgb), 0.16);
+  color: var(--teal);
+}
+
+.iconCircle--danger {
+  border-color: rgba(var(--danger-rgb), 0.36);
+  background: rgba(var(--danger-rgb), 0.14);
+  color: rgba(var(--danger-rgb), 0.95);
+}
+
+/* Contrast fixes for dark slides */
+.bg-navy .iconCircle {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.bg-navy .iconCircle--teal {
+  border-color: rgba(var(--teal-rgb), 0.45);
+  background: rgba(var(--teal-rgb), 0.28);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.bg-navy .iconCircle--gold {
+  border-color: rgba(var(--gold-rgb), 0.45);
+  background: rgba(var(--gold-rgb), 0.28);
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.bg-navy .iconCircle--danger {
+  border-color: rgba(var(--danger-rgb), 0.45);
+  background: rgba(var(--danger-rgb), 0.26);
+  color: rgba(255, 255, 255, 0.95);
+}
+
 /* Cards */
 .card {
   background: var(--white);

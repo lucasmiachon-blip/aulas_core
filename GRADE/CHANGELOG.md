@@ -1,5 +1,26 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-02 — P2 (Bempedóico): UX pass (até o slide 28)
+
+- **Sem emoji (mais “enterprise”)**: removidos marcadores emoji nos slides do contador 1–28; substituídos por ícones tipográficos consistentes.
+- **Componentes novos (UI)**: `.small-title`, `.bulletRow`, `.iconCircle` (+ variações e contraste em fundos escuros).
+- **S43–S46 (thread SAMS)**: reescritos para reduzir carga cognitiva (chunking, sinalização, 1 ideia por bloco), com layout consistente (cards + stepper).
+- **S47 (CLEAR Outcomes)**: removido ⚠ e padronizado o bloco navy para aplicar contraste dos ícones.
+- **S10/S11 (CAC)**: troca de ícones emoji por ícones tipográficos (sem mudar a mensagem).
+- **S17 (MID)**: rodapé em fluxo (removido `position:absolute`) para evitar sobreposição e garantir “safe footer”.
+
+### Arquivos modificados
+- `src/css/blocks.css`
+- `src/slides/S10.html`
+- `src/slides/S11.html`
+- `src/slides/S17.html`
+- `src/slides/S43.html`
+- `src/slides/S44.html`
+- `src/slides/S45.html`
+- `src/slides/S46.html`
+- `src/slides/S47.html`
+- `scripts/sync-grade-dist.js`
+
 ## 2026-02-02 — P2 (Bempedoico): evidência + polimento
 
 - **Slide CLEAR Outcomes (bempedoico)**: ajuste de evidência/numeração — seguimento **mediano 40,6 meses** e **NNT ≈ 63** (com ARR 1,6%).

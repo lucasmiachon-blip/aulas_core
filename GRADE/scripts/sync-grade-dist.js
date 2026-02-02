@@ -10,8 +10,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const srcPath = path.join(__dirname, '..', 'GRADE', 'src', 'index.html');
-const distPath = path.join(__dirname, '..', 'GRADE', 'dist', 'index.html');
+// Repo structure is unified: GRADE/ (no nested GRADE/GRADE)
+const srcPath = path.join(__dirname, '..', 'src', 'index.html');
+const distPath = path.join(__dirname, '..', 'dist', 'index.html');
 
 console.log('🔄 Sincronizando GRADE/src/index.html → GRADE/dist/index.html...');
 
@@ -34,6 +35,9 @@ if (!content.includes('slides-simple.js')) {
 } else {
   console.log('✅ slides-simple.js encontrado');
 }
+
+// Ensure dist dir exists
+fs.mkdirSync(path.dirname(distPath), { recursive: true });
 
 // Escrever em dist
 fs.writeFileSync(distPath, content, 'utf8');
