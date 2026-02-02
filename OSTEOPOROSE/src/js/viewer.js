@@ -12,10 +12,10 @@
 (function () {
   'use strict';
 
-  var STAGE_W = 1600;
-  var STAGE_H = 900;
+  const STAGE_W = 1600;
+  const STAGE_H = 900;
 
-  var state = {
+  const state = {
     slides: [],
     idx: 0,
     present: false,
@@ -49,9 +49,9 @@
     state.idx = clamp(index, 0, state.slides.length - 1);
     console.log('[viewer] setActive chamado, índice:', state.idx, 'de', state.slides.length);
 
-    for (var i = 0; i < state.slides.length; i++) {
-      var s = state.slides[i];
-      var active = i === state.idx;
+    for (let i = 0; i < state.slides.length; i++) {
+      const s = state.slides[i];
+      const active = i === state.idx;
       s.classList.toggle('is-active', active);
       s.hidden = !active;
       s.setAttribute('aria-hidden', active ? 'false' : 'true');
@@ -68,24 +68,24 @@
     scheduleFit('setActive');
 
     if (opts.pushHash !== false) {
-      var key = state.slides[state.idx].getAttribute('data-key');
+      const key = state.slides[state.idx].getAttribute('data-key');
       if (key) window.location.hash = key;
     }
   }
 
 
   function updateCounter() {
-    var el = qs('[data-counter]');
+    const el = qs('[data-counter]');
     if (el) el.textContent = String(state.idx + 1) + '/' + String(state.slides.length);
 
-    var prev = qs('[data-nav="prev"]');
-    var next = qs('[data-nav="next"]');
+    const prev = qs('[data-nav="prev"]');
+    const next = qs('[data-nav="next"]');
     if (prev) prev.disabled = state.idx <= 0;
     if (next) next.disabled = state.idx >= state.slides.length - 1;
   }
 
   function buildSelect() {
-    var select = qs('[data-select]');
+    const select = qs('[data-select]');
     if (!select) return;
 
     // Limpa mantendo o primeiro option
@@ -94,14 +94,14 @@
     });
 
     state.slides.forEach(function (s, i) {
-      var key = s.getAttribute('data-key') || String(i + 1);
-      var title = s.getAttribute('data-title');
+      const key = s.getAttribute('data-key') || String(i + 1);
+      let title = s.getAttribute('data-title');
       if (!title) {
-        var h = s.querySelector('h1,h2');
+        const h = s.querySelector('h1,h2');
         title = h ? h.textContent.trim() : 'Slide ' + (i + 1);
       }
 
-      var opt = document.createElement('option');
+      const opt = document.createElement('option');
       opt.value = key;
       opt.textContent = key + ' Â· ' + title;
       select.appendChild(opt);
@@ -122,16 +122,16 @@
 
   function jumpTo(hashOrId) {
     if (!hashOrId) return;
-    var key = String(hashOrId).replace(/^#/, '');
+    const key = String(hashOrId).replace(/^#/, '');
 
     // 1) Sxx
-    var idx = state.slides.findIndex(function (s) {
+    let idx = state.slides.findIndex(function (s) {
       return s.getAttribute('data-key') === key;
     });
 
     // 2) id legado
     if (idx === -1) {
-      var el = document.getElementById(key);
+      const el = document.getElementById(key);
       if (el) {
         idx = state.slides.indexOf(el);
       }
@@ -159,20 +159,20 @@
     // Um slide = uma página no PDF; teclado no leitor (setas) = próximo/anterior slide.
     // Mudanças no viewer refletem no PDF quando for gerado. print.html é fallback opcional.
     try {
-      var url = new URL(window.location.href);
+      const url = new URL(window.location.href);
       url.hash = '';
       url.searchParams.set('print', '1');
 
-      var p = url.pathname || '';
+      const p = url.pathname || '';
       if (p.endsWith('/index-legacy.html')) {
         url.pathname = p.replace(/index-legacy\.html$/, 'index.html');
       } else if (p.endsWith('/') || (p.includes('/src') || p.includes('/dist')) && !p.endsWith('.html')) {
-        var base = p.replace(/\/$/, '');
+        const base = p.replace(/\/$/, '');
         url.pathname = base ? base + '/index.html' : '/OSTEOPOROSE/src/index.html';
       }
       window.open(url.toString(), '_blank', 'noopener,noreferrer');
     } catch (e) {
-      var fallback = new URL(window.location.href);
+      const fallback = new URL(window.location.href);
       fallback.searchParams.set('print', '1');
       window.open(fallback.toString(), '_blank', 'noopener,noreferrer');
     }
@@ -180,8 +180,8 @@
 
 
   function toggleFullscreen() {
-    var doc = document;
-    var el = document.documentElement;
+    const doc = document;
+    const el = document.documentElement;
 
     if (!doc.fullscreenElement) {
       if (el.requestFullscreen) el.requestFullscreen();
@@ -192,7 +192,7 @@
   }
 
   function getPaddingPx(el) {
-    var cs = window.getComputedStyle(el);
+    const cs = window.getComputedStyle(el);
     return {
       x: parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight),
       y: parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom),
@@ -211,18 +211,18 @@
     if (isPrintMode()) return;
     cleanupActiveAssetHandlers();
 
-    var active = state.slides[state.idx];
+    const active = state.slides[state.idx];
     if (!active) return;
 
     // Imagens e outros assets podem carregar depois do 1Âº fit,
     // aumentando a altura e causando corte inferior.
-    var assets = active.querySelectorAll('img, video, iframe');
-    for (var i = 0; i < assets.length; i++) {
+    const assets = active.querySelectorAll('img, video, iframe');
+    for (let i = 0; i < assets.length; i++) {
       (function (el) {
         // img já carregada não precisa listener
         if (el.tagName === 'IMG' && el.complete) return;
 
-        var handler = function () {
+        const handler = function () {
           scheduleFit('asset');
         };
 
@@ -237,12 +237,12 @@
     }
   }
 
-  var fitTimers = { raf: 0, t1: 0, t2: 0, t3: 0 };
-  var _fitToScreenCallCount = 0;
+  const fitTimers = { raf: 0, t1: 0, t2: 0, t3: 0 };
+  let _fitToScreenCallCount = 0;
   
   // Preserva dimensões máximas para não encolher quando DevTools abre
-  var _maxViewportW = 0;
-  var _maxViewportH = 0;
+  let _maxViewportW = 0;
+  let _maxViewportH = 0;
 
   function scheduleFit(reason) {
     if (isPrintMode()) return;
@@ -275,24 +275,24 @@
   function fitToScreen() {
     if (isPrintMode()) return;
     _fitToScreenCallCount += 1;
-    var callNum = _fitToScreenCallCount;
+    const callNum = _fitToScreenCallCount;
 
-    var stage = document.getElementById('stage');
-    var inner = qs('[data-stage-inner]');
-    var zoom = qs('[data-zoom]');
+    const stage = document.getElementById('stage');
+    const inner = qs('[data-stage-inner]');
+    const zoom = qs('[data-zoom]');
     if (!stage || !inner) return;
 
-    var pad = getPaddingPx(stage);
+    const pad = getPaddingPx(stage);
 
     // Em modo palco (barra overlay), a UI ocupa espaço enquanto visível.
-    var viewer = qs('[data-viewer]');
+    const viewer = qs('[data-viewer]');
     if (viewer && viewer.classList.contains('is-present') && !viewer.classList.contains('is-ui-hidden')) {
       pad.y += 4;
     }
-    var w = Math.max(0, stage.clientWidth - pad.x);
-    var h = Math.max(0, stage.clientHeight - pad.y);
+    let w = Math.max(0, stage.clientWidth - pad.x);
+    let h = Math.max(0, stage.clientHeight - pad.y);
     // Em fullscreen não limitar pelo viewer para o slide ocupar mais a tela (evita 50–60%)
-    var isFullscreen = viewer && viewer.classList.contains('is-fullscreen');
+    const isFullscreen = viewer && viewer.classList.contains('is-fullscreen');
     if (!isFullscreen && viewer) {
       if (viewer.clientWidth) w = Math.min(w, Math.max(0, viewer.clientWidth - pad.x));
       if (viewer.clientHeight) h = Math.min(h, Math.max(0, viewer.clientHeight - pad.y));
@@ -314,9 +314,9 @@
     // #endregion
 
     // Scale até preencher o stage (formato apresentação: ocupa a borda toda); teto 3x em ambos os modos
-    var maxScale = 3;
-    var scale = Math.min(w / STAGE_W, h / STAGE_H, maxScale);
-    var scaleBeforeClamp = scale;
+    const maxScale = 3;
+    let scale = Math.min(w / STAGE_W, h / STAGE_H, maxScale);
+    const scaleBeforeClamp = scale;
     scale = Math.max(0.1, Math.min(scale, 3));
 
     // #region agent log
@@ -337,13 +337,13 @@
     inner.style.setProperty('--scale', String(scale));
 
     // #region agent log
-    var readback = inner && window.getComputedStyle(inner).getPropertyValue('--scale');
+    const readback = inner && window.getComputedStyle(inner).getPropertyValue('--scale');
     fetch('http://127.0.0.1:7242/ingest/f8bcf885-06e8-4a1f-a1c9-b4011068c7dc',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'viewer.js:fitToScreen:set',message:'setProperty and readback',data:{callNum:callNum,scaleSet:scale,readback:readback,innerId:inner.id,innerClass:inner.className},timestamp:Date.now(),sessionId:'debug-session',hypothesisId:'H2',runId:'post-fix'})}).catch(function(){});
     // #endregion
     
     // Log das dimensões reais após aplicar scale
-    var deck = qs('[data-deck]');
-    var slides = qs('[data-slides]');
+    const deck = qs('[data-deck]');
+    const slides = qs('[data-slides]');
     console.log('  -> inner.getBoundingClientRect:', Math.round(inner.getBoundingClientRect().width), 'x', Math.round(inner.getBoundingClientRect().height));
     if (deck) console.log('  -> deck.getBoundingClientRect:', Math.round(deck.getBoundingClientRect().width), 'x', Math.round(deck.getBoundingClientRect().height));
     if (slides) console.log('  -> slides.getBoundingClientRect:', Math.round(slides.getBoundingClientRect().width), 'x', Math.round(slides.getBoundingClientRect().height));
@@ -365,7 +365,7 @@
     slide.style.transformOrigin = '';
     delete slide.dataset.fitScale;
 
-    var sh = slide.scrollHeight;
+    const sh = slide.scrollHeight;
     
     // DESABILITADO - autofit individual causa margens brancas em fullscreen
     // var sw = slide.scrollWidth;
@@ -386,7 +386,7 @@
 
   function fitActiveSlideOverflow() {
     if (isPrintMode()) return;
-    var active = state.slides[state.idx];
+    const active = state.slides[state.idx];
     if (!active) return;
     // esperar um frame para garantir reflow/paint do slide recém-ativado
     window.requestAnimationFrame(function () {
@@ -409,15 +409,15 @@
    */
   function auditSlideOverflow() {
     if (isPrintMode() || !state.slides.length) return;
-    var origIdx = state.idx;
-    var overflow = [];
-    var okCount = 0;
-    var i = 0;
+    const origIdx = state.idx;
+    const overflow = [];
+    let okCount = 0;
+    let i = 0;
 
     function next() {
       if (i >= state.slides.length) {
         setActive(origIdx, { pushHash: false });
-        var msg = overflow.length
+        const msg = overflow.length
           ? 'Slides que violam borda inferior: ' + overflow.map(function (o) { return o.key || '#' + (o.idx + 1); }).join(', ')
           : 'Nenhum slide viola a borda inferior.';
         console.log('%c[audit] ' + msg, 'background:#1F766E;color:#fff;padding:6px 10px;border-radius:6px;');
@@ -429,10 +429,10 @@
       setActive(i, { pushHash: false });
       window.requestAnimationFrame(function () {
         window.requestAnimationFrame(function () {
-          var s = state.slides[i];
-          var sh = s.scrollHeight;
-          var ch = s.clientHeight;
-          var key = s.getAttribute('data-key') || ('#' + (i + 1));
+          const s = state.slides[i];
+          const sh = s.scrollHeight;
+          const ch = s.clientHeight;
+          const key = s.getAttribute('data-key') || ('#' + (i + 1));
           if (sh > ch) {
             overflow.push({ idx: i, key: key, scrollHeight: sh, clientHeight: ch, diff: sh - ch });
           } else {
@@ -447,10 +447,10 @@
   }
 
   function syncFullscreenClass() {
-    var viewer = qs('[data-viewer]');
+    const viewer = qs('[data-viewer]');
     if (!viewer) return;
-    var wasFullscreen = viewer.classList.contains('is-fullscreen');
-    var isNowFullscreen = !!document.fullscreenElement;
+    const wasFullscreen = viewer.classList.contains('is-fullscreen');
+    const isNowFullscreen = !!document.fullscreenElement;
     viewer.classList.toggle('is-fullscreen', isNowFullscreen);
     
     // Ao sair de fullscreen, reset os máximos para recalcular com base no viewport atual
@@ -463,7 +463,7 @@
 
 
   function setUiHidden(hidden) {
-    var viewer = qs('[data-viewer]');
+    const viewer = qs('[data-viewer]');
 
     if (!viewer) return;
 
@@ -487,7 +487,7 @@
 
   function togglePresentMode() {
     state.present = !state.present;
-    var viewer = qs('[data-viewer]');
+    const viewer = qs('[data-viewer]');
     if (!viewer) return;
 
     viewer.classList.toggle('is-present', state.present);
@@ -506,10 +506,10 @@
 
   function onKeyDown(e) {
     // Evitar capturar quando usuário está em input/select
-    var tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
+    const tag = (e.target && e.target.tagName) ? e.target.tagName.toLowerCase() : '';
     if (tag === 'input' || tag === 'textarea' || tag === 'select') return;
 
-    var key = e.key;
+    const key = e.key;
 
     if (key === 'ArrowRight' || key === 'PageDown' || key === ' ') {
       e.preventDefault();
@@ -562,21 +562,21 @@
     // Clique para navegar (metade esquerda/direita). Ignora clique no UI.
     if (qs('[data-ui]') && qs('[data-ui]').contains(e.target)) return;
 
-    var stage = document.getElementById('stage');
+    const stage = document.getElementById('stage');
     if (!stage) return;
 
-    var r = stage.getBoundingClientRect();
-    var x = e.clientX - r.left;
+    const r = stage.getBoundingClientRect();
+    const x = e.clientX - r.left;
     if (x < r.width * 0.45) move(-1);
     else if (x > r.width * 0.55) move(1);
   }
 
   function wireUI() {
-    var prev = qs('[data-nav="prev"]');
-    var next = qs('[data-nav="next"]');
-    var btnFs = qs('[data-action="toggleFullscreen"]');
-    var btnPrint = qs('[data-action="openPrint"]');
-    var btnPresent = qs('[data-action="togglePresent"]');
+    const prev = qs('[data-nav="prev"]');
+    const next = qs('[data-nav="next"]');
+    const btnFs = qs('[data-action="toggleFullscreen"]');
+    const btnPrint = qs('[data-action="openPrint"]');
+    const btnPresent = qs('[data-action="togglePresent"]');
 
     if (prev) prev.addEventListener('click', function () { move(-1); });
     if (next) next.addEventListener('click', function () { move(1); });
@@ -597,9 +597,9 @@
 
     // Refit quando o palco muda de tamanho (layout, zoom, sidebars)
     if (window.ResizeObserver) {
-      var stage = document.getElementById('stage');
+      const stage = document.getElementById('stage');
       if (stage) {
-        var ro = new ResizeObserver(function () { scheduleFit('resizeObserver'); });
+        const ro = new ResizeObserver(function () { scheduleFit('resizeObserver'); });
         ro.observe(stage);
       }
     }
@@ -614,7 +614,7 @@
     console.log('[viewer] Slides encontrados no DOM:', state.slides.length);
     if (!state.slides.length) {
       console.warn('[viewer] Nenhum slide encontrado com [data-slide]. Verificando container...');
-      var container = document.querySelector('[data-slides]');
+      const container = document.querySelector('[data-slides]');
       if (container) {
         console.log('[viewer] Container [data-slides] encontrado, filhos:', container.children.length);
       }
@@ -630,35 +630,35 @@
         s.setAttribute('aria-hidden', 'false');
       });
       fitAllSlidesOverflowForPrint();
-      var _printPreviewRaf = 0;
+      let _printPreviewRaf = 0;
       function updatePrintPreviewZoom() {
         if (window.matchMedia && window.matchMedia('print').matches) return;
-        var CANVAS_W = 1600;
-        var gutter = 24;
-        var vw = Math.max(320, window.innerWidth - gutter);
-        var z = Math.min(1, vw / CANVAS_W);
+        const CANVAS_W = 1600;
+        const gutter = 24;
+        const vw = Math.max(320, window.innerWidth - gutter);
+        const z = Math.min(1, vw / CANVAS_W);
         document.documentElement.style.setProperty('--print-preview-zoom', z.toFixed(4));
 
         window.requestAnimationFrame(function () {
-          var de = document.documentElement;
-          var scrollW = de.scrollWidth;
-          var innerW = window.innerWidth;
+          const de = document.documentElement;
+          const scrollW = de.scrollWidth;
+          const innerW = window.innerWidth;
           console.log('[print-preview] zoom aplicado:', z.toFixed(4));
           console.log('[print-preview] scrollWidth/innerWidth:', scrollW, '/', innerW);
 
-          var total = state.slides.length;
-          var sampleCount = Math.min(20, total);
-          var idxs = [];
-          for (var i = 0; i < total; i++) idxs.push(i);
-          for (var j = total - 1; j > 0; j--) {
-            var k = Math.floor(Math.random() * (j + 1));
-            var tmp = idxs[j];
+          const total = state.slides.length;
+          const sampleCount = Math.min(20, total);
+          const idxs = [];
+          for (let i = 0; i < total; i++) idxs.push(i);
+          for (let j = total - 1; j > 0; j--) {
+            const k = Math.floor(Math.random() * (j + 1));
+            const tmp = idxs[j];
             idxs[j] = idxs[k];
             idxs[k] = tmp;
           }
-          var sample = idxs.slice(0, sampleCount).map(function (idx) {
-            var s = state.slides[idx];
-            var rect = s.getBoundingClientRect();
+          const sample = idxs.slice(0, sampleCount).map(function (idx) {
+            const s = state.slides[idx];
+            const rect = s.getBoundingClientRect();
             return {
               idx: idx,
               id: s.id || s.getAttribute('data-key') || '',
@@ -669,20 +669,20 @@
           console.log('[print-preview] sample(20):', sample);
 
           if (scrollW > innerW + 2) {
-            var first = state.slides[0];
-            var worst = null;
-            var worstRight = -Infinity;
+            const first = state.slides[0];
+            let worst = null;
+            let worstRight = -Infinity;
             if (first) {
-              var elements = [first].concat(Array.prototype.slice.call(first.querySelectorAll('*')));
+              const elements = [first].concat(Array.prototype.slice.call(first.querySelectorAll('*')));
               elements.forEach(function (el) {
-                var r = el.getBoundingClientRect();
+                const r = el.getBoundingClientRect();
                 if (r.right > worstRight) {
                   worstRight = r.right;
                   worst = el;
                 }
               });
             }
-            var label = '';
+            let label = '';
             if (worst) {
               label = (worst.tagName || 'EL') + (worst.id ? '#' + worst.id : '') + (worst.className ? '.' + String(worst.className).trim().split(/\s+/).join('.') : '');
             }
@@ -710,7 +710,7 @@
     if (window.location.hash) jumpTo(window.location.hash);
 
     // Fallback: se jumpTo não ativou nada, ativa o primeiro
-    var activeIdx = state.slides.findIndex(function (s) { return s.classList.contains('is-active'); });
+    const activeIdx = state.slides.findIndex(function (s) { return s.classList.contains('is-active'); });
     console.log('[viewer] Ãndice do slide ativo encontrado:', activeIdx);
     if (activeIdx === -1) {
       console.log('[viewer] Nenhum slide ativo, ativando o primeiro (índice 0)');
@@ -730,7 +730,7 @@
     document.addEventListener('keydown', onKeyDown);
     window.addEventListener('hashchange', onHashChange);
 
-    var stage = document.getElementById('stage');
+    const stage = document.getElementById('stage');
     if (stage) stage.addEventListener('click', onStageClick);
   }
 
@@ -743,7 +743,7 @@
   setTimeout(function() {
     if (state.slides.length === 0) {
       console.log('[viewer] Fallback: tentando inicializar após delay');
-      var slides = qsa('[data-slide]');
+      const slides = qsa('[data-slide]');
       if (slides.length > 0) {
         console.log('[viewer] Fallback: encontrados', slides.length, 'slides, inicializando...');
         initDeck();

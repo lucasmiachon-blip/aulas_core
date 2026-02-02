@@ -1,183 +1,157 @@
-# 📚 DOCUMENTAÇÃO DO PROJETO AULAS_CORE
+# 📚 DOCUMENTAÇÃO DO PROJETO AULAS
 
-**Última atualização:** 2026-01-19  
-**Versão:** 1.0
-
----
-
-## 🎯 COMEÇAR AQUI
-
-Se você é uma IA (Claude/ChatGPT) trabalhando neste projeto, **leia primeiro**:
-
-1. **`../README.md`** ← README da raiz (protocolo de 3 atores)
-2. **Identifique seu papel:**
-   - 🔧 Claude Técnico? → Leia `CLAUDE_ROLE.md`
-   - 📚 Claude Conteúdo? → Leia `CLAUDE_ROLE.md` + `QUALITY.md`
-   - 🎯 ChatGPT Auditor? → Leia `CLAUDE_SLIDES_CHECKLIST.md` + `QUALITY.md`
-
-3. **Depois leia os documentos do SEU papel** (veja abaixo)
+**Última atualização:** 2026-02-02  
+**Projetos ativos:** OSTEOPOROSE (72 slides) + GRADE (61 slides)
 
 ---
 
-## 📖 ÍNDICE POR CATEGORIA
+## 🔴 LEIA PRIMEIRO
 
-### 🤖 INSTRUÇÕES PARA IAs
+Se você é uma IA (Claude/ChatGPT/Cursor), **antes de qualquer ação**:
 
-| Documento | Tamanho | Para quem | Propósito |
-|-----------|---------|-----------|-----------|
-| **CLAUDE_ROLE.md** | 13 KB | Claude Técnico | Define responsabilidades e workflows |
-| **CLAUDE_SLIDES_CHECKLIST.md** | 7 KB | Claude Técnico + ChatGPT | Checklist antes de criar slides |
-| **AI_RULES.md** | 1.5 KB | TODOS | Regras rígidas (NUNCA quebrar) |
-| **PROTOCOL_MAP.md** | 6.7 KB | TODOS | Mapa de responsabilidades (3 atores) |
+1. **`../HARD_CONSTRAINTS.md`** ← 10 regras INVIOLÁVEIS
+2. **`../scripts/AI-RESTRICTIONS.md`** ← Restrições técnicas CSS/JS
+3. **`AI/GUARDRAILS.md`** ← Guardrails completos
+
+**Confirme que leu antes de começar.**
+
+---
+
+## 📂 ESTRUTURA ATUAL DO PROJETO
+
+```
+Aulas2/
+├── OSTEOPOROSE/          # Apresentação Osteoporose (72 slides)
+│   ├── src/slides/       # Slides HTML
+│   ├── src/css/          # Estilos
+│   ├── src/js/           # JavaScript
+│   └── exports/          # PDFs gerados
+│
+├── GRADE/                # Apresentação GRADE (61 slides)
+│   ├── src/slides/       # Slides HTML
+│   ├── src/css/          # Estilos
+│   ├── src/js/           # JavaScript
+│   └── exports/          # PDFs gerados
+│
+├── scripts/              # Scripts compartilhados (ÚNICO local)
+├── docs/                 # Documentação
+├── archive/              # Arquivos obsoletos
+│
+├── HARD_CONSTRAINTS.md   # 🔴 REGRAS INVIOLÁVEIS
+├── CHANGELOG.md          # Histórico de mudanças
+└── README.md             # README principal
+```
+
+---
+
+## 📖 DOCUMENTOS POR CATEGORIA
+
+### 🔴 OBRIGATÓRIOS (ler primeiro)
+
+| Documento | Local | Propósito |
+|-----------|-------|-----------|
+| **HARD_CONSTRAINTS.md** | Raiz | 10 regras invioláveis (HC1-HC10) |
+| **AI-RESTRICTIONS.md** | scripts/ | Restrições CSS/JS/Export |
+| **GUARDRAILS.md** | docs/AI/ | Guardrails completos |
 
 ### 🎨 DESIGN & VISUAL
 
-| Documento | Tamanho | Para quem | Propósito |
-|-----------|---------|-----------|-----------|
-| **QUICK_PALETTE_REFERENCE.md** | 2 KB | TODOS | 🔥 **Referência rápida da paleta** |
-| **PROMPT_PALETA_OFICIAL.md** | 8.5 KB | TODOS | Paleta completa com explicações |
-| **STYLEGUIDE.md** | 635 B | TODOS | Regras de slide (1 mensagem, 10-sec rule) |
-| **PRESENTATION_TECH.md** | 8 KB | Claude Técnico | Aspectos técnicos de apresentação |
+| Documento | Local | Propósito |
+|-----------|-------|-----------|
+| **QUICK_PALETTE_REFERENCE.md** | docs/ | Referência rápida de cores |
+| **VISUAL_DESIGN_GUIDE.md** | docs/ESSENTIAL/ | Guia visual completo |
+| **STYLEGUIDE.md** | docs/ESSENTIAL/ | Regras de estilo |
 
-### 📐 QUALIDADE & PADRÕES
+### 📐 TÉCNICO
 
-| Documento | Tamanho | Para quem | Propósito |
-|-----------|---------|-----------|-----------|
-| **QUALITY.md** | 756 B | Claude Conteúdo + ChatGPT | Benchmarks (NEJM, JACC) + EBM |
-| **TECHNICAL_QUALITY.md** | 6.7 KB | Claude Técnico + ChatGPT | WCAG, acessibilidade, performance |
+| Documento | Local | Propósito |
+|-----------|-------|-----------|
+| **TECHNICAL_QUALITY.md** | docs/ESSENTIAL/ | Qualidade técnica |
+| **PRESENTATION_TECH.md** | docs/ESSENTIAL/ | Aspectos técnicos |
+| **FUTURO_STACK_MODERNO.md** | docs/ | Plano para projetos futuros |
 
-### 🔄 WORKFLOW & PROCESSOS
+### 📚 GUIAS
 
-| Documento | Tamanho | Para quem | Propósito |
-|-----------|---------|-----------|-----------|
-| **WORKFLOW.md** | 588 B | Claude Técnico | Git flow, commits, convenções |
-| **CHANGELOG.md** | 18 KB | TODOS | Histórico completo de mudanças |
-| **HANDOFF.md** | 17 KB | Claude Técnico | Último handoff (contexto sessão anterior) |
-
----
-
-## 🚦 LEITURA OBRIGATÓRIA POR PAPEL
-
-### 🔧 Claude Técnico (estrutura HTML/CSS/JS)
-
-**Ordem de leitura:**
-1. `CLAUDE_ROLE.md` ← Seu papel completo
-2. `QUICK_PALETTE_REFERENCE.md` ← Paleta (SEMPRE use!)
-3. `CLAUDE_SLIDES_CHECKLIST.md` ← Checklist ANTES de criar
-4. `TECHNICAL_QUALITY.md` ← Qualidade técnica
-5. `PRESENTATION_TECH.md` ← Aspectos técnicos
-6. `AI_RULES.md` ← Regras rígidas
-7. `WORKFLOW.md` ← Git, commits
-8. `CHANGELOG.md` ← Histórico (para contexto)
-9. `HANDOFF.md` ← Contexto da sessão anterior
-
-**Tempo estimado:** ~20-25 min
+| Documento | Local | Propósito |
+|-----------|-------|-----------|
+| **README-SERVIDOR.md** | docs/GUIDES/ | Como iniciar servidor local |
+| **WORKFLOW.md** | docs/GUIDES/ | Git workflow |
 
 ---
 
-### 📚 Claude Conteúdo (conteúdo médico/educacional)
+## 🚦 HARD CONSTRAINTS (Resumo)
 
-**Ordem de leitura:**
-1. `CLAUDE_ROLE.md` ← Seu papel (seção "Claude Conteúdo")
-2. `QUICK_PALETTE_REFERENCE.md` ← **OBRIGATÓRIO** - você DEVE usar essa paleta
-3. `QUALITY.md` ← Benchmarks EBM, educação adultos
-4. `STYLEGUIDE.md` ← Design visual, hierarquia
-5. `AI_RULES.md` ← Regras rígidas
-6. `../GRADE/refs/sources.md` ← Fontes bibliográficas
+| HC | Regra |
+|----|-------|
+| **HC1** | Sempre atualizar CHANGELOG/README |
+| **HC2** | CSS mínimo (5-10 linhas max) |
+| **HC3** | Zero `!important` novo |
+| **HC4** | Verificar !important count |
+| **HC5** | Zero dependências novas |
+| **HC6** | Git checkpoint antes de mudança grande |
+| **HC7** | Não refatorar sem pedir |
+| **HC8** | Paths relativos sempre |
+| **HC9** | Inline styles proibido |
+| **HC10** | Testar viewer + print + export |
 
-**Tempo estimado:** ~15 min
-
-**IMPORTANTE:** Você cria CONTEÚDO, mas usa a PALETA oficial (var(--navy), var(--gold), etc)!
-
----
-
-### 🎯 ChatGPT Auditor (validação final)
-
-**Ordem de leitura:**
-1. `PROTOCOL_MAP.md` ← Entenda o workflow de 3 atores
-2. `QUICK_PALETTE_REFERENCE.md` ← Paleta que deve ter sido usada
-3. `QUALITY.md` ← Benchmarks EBM
-4. `STYLEGUIDE.md` ← Regras de design
-5. `TECHNICAL_QUALITY.md` ← Critérios técnicos
-6. `CLAUDE_SLIDES_CHECKLIST.md` ← O que Claude deveria ter seguido
-
-**Tempo estimado:** ~15 min
+**Detalhes completos:** `../HARD_CONSTRAINTS.md`
 
 ---
 
-## 📋 CHEAT SHEET - REFERÊNCIAS RÁPIDAS
+## 🎨 PALETA DE CORES (Referência Rápida)
 
-### Paleta de Cores
 ```css
---bg: #F9F8F4      /* Off-white */
---navy: #0B1320    /* Títulos */
---gold: #DDB944    /* Destaques */
---teal: #1F766E    /* Clínico */
---text: #222       /* Texto principal */
---muted: #666      /* Legendas */
+/* OSTEOPOROSE */
+--navy: #152432;    /* Títulos */
+--gold: #DDB944;    /* Destaques */
+--teal: #1F766E;    /* Clínico */
+--bg: #F9F8F4;      /* Fundo */
+
+/* GRADE */
+--navy: #0b1320;    /* Títulos */
+--gold: #d2b55b;    /* Destaques */
+--teal: #0f766e;    /* Clínico */
+--bg: #f8fafc;      /* Fundo */
 ```
-👉 **Detalhes:** `QUICK_PALETTE_REFERENCE.md`
 
-### Tipografia
-- **Títulos:** Georgia (serif)
-- **Corpo:** Lato (sans-serif)
-
-👉 **Detalhes:** `STYLEGUIDE.md`
-
-### Regras de Slide
-- ✅ 1 mensagem por slide
-- ✅ 10-second rule
-- ✅ Fontes auditáveis
-- ✅ NNT/NNH quando aplicável
-
-👉 **Detalhes:** `QUALITY.md`, `STYLEGUIDE.md`
-
-### Git Workflow
-- Branch: `main` (sem branches paralelas)
-- Commits: pequenos, frequentes, convenção `feat:`, `fix:`, `docs:`, `chore:`
-- SEMPRE atualizar `CHANGELOG.md`
-
-👉 **Detalhes:** `WORKFLOW.md`
+**NUNCA usar cores hardcoded. Sempre `var(--nome)`.**
 
 ---
 
-## ❓ PERGUNTAS FREQUENTES
+## ⚡ COMANDOS ÚTEIS
 
-### "Qual paleta devo usar?"
-→ `QUICK_PALETTE_REFERENCE.md` (versão rápida) ou `PROMPT_PALETA_OFICIAL.md` (completa)
+```bash
+# Servidor local
+npm run serve
+# ou: python -m http.server 5500
 
-### "Como faço commits?"
-→ `WORKFLOW.md`
+# Lint
+npm run lint          # Ver problemas
+npm run lint:fix      # Corrigir automaticamente
 
-### "Quais são os benchmarks de qualidade?"
-→ `QUALITY.md` (EBM + educação) + `TECHNICAL_QUALITY.md` (acessibilidade)
-
-### "Posso criar conteúdo médico?"
-→ Depende do seu papel! Veja `CLAUDE_ROLE.md` ou `PROTOCOL_MAP.md`
-
-### "Posso inventar cores?"
-→ **NÃO!** Leia `AI_RULES.md` + `QUICK_PALETTE_REFERENCE.md`
-
----
-
-## 🔄 MANUTENÇÃO DESTE DOCUMENTO
-
-**Atualizar quando:**
-- Novos documentos forem adicionados em `/docs`
-- Estrutura de responsabilidades mudar
-- Novos benchmarks ou padrões forem estabelecidos
-
-**Responsável:** Claude Técnico
+# Export PDF
+npm run export:osteoporose
+npm run export:grade
+```
 
 ---
 
-## 📌 LINKS ÚTEIS
+## 📝 CHECKLIST ANTES DE COMMITAR
 
-- **Repositório:** https://github.com/lucasmiachon-blip/aulas_core
-- **HTML Preview (GRADE):** https://htmlpreview.github.io/?https://raw.githubusercontent.com/lucasmiachon-blip/aulas_core/main/GRADE/src/index.html
-- **GRADE Working Group:** https://www.gradeworkinggroup.org
-- **Diretriz SBC 2025:** https://abc.cardiol.br/
+- [ ] CHANGELOG.md atualizado?
+- [ ] Sem novos `!important`?
+- [ ] Testou no viewer?
+- [ ] Testou print mode (Ctrl+P)?
+- [ ] Export PDF funciona?
 
 ---
 
-**FIM DO ÍNDICE**
+## 🔗 LINKS
+
+- **Repo:** https://github.com/lucasmiachon-blip/aulas_core
+- **OSTEOPOROSE local:** http://127.0.0.1:5500/OSTEOPOROSE/src/index.html
+- **GRADE local:** http://127.0.0.1:5500/GRADE/src/index.html
+
+---
+
+*Última atualização: 2026-02-02*

@@ -1,73 +1,101 @@
-# 🎨 PALETA OFICIAL - COLE ISTO NO CHATGPT
+# 🎨 PALETA OFICIAL — Referência Rápida
 
-## ⚠️ ANTES DE CRIAR SLIDES, COLE ISTO:
+**Última atualização:** 2026-02-02
 
-```
-🎨 PALETA PROFISSIONAL OBRIGATÓRIA (aulas_core / GRADE):
-
-CORES (use APENAS estas via var(--)):
---bg: #F8FAFC        (fundo)
---navy: #0B1320      (base escura)
---gold: #D2B55B      (acento quente — use com parcimônia)
---teal: #0F766E      (clínico)
---blue: #2563EB      (acento frio)
---text: #0F172A      (texto principal)
---muted: #475569     (legendas)
---white: #FFFFFF     (cards)
---border: #E2E8F0    (bordas)
-
-RGB HELPERS (para transparência):
---gold-rgb: 210,181,91 | --teal-rgb: 15,118,110 | --blue-rgb: 37,99,235 | --navy-rgb: 11,19,32
-
-TIPOGRAFIA:
-- Principal (slides): Inter (sans)
-- Serif opcional (quotes): Georgia
-
-REGRAS:
-✅ SEMPRE use var(--nome) no HTML inline
-✅ Para fundos “tint”: use rgba(var(--*-rgb), 0.x) (ex: rgba(var(--gold-rgb),0.12))
-✅ Fundo slide: var(--bg) ou var(--navy) (capa)
-✅ Títulos H2: var(--navy)
-✅ Destaques: var(--gold) ou var(--teal)
-✅ Cards: var(--white) com borda var(--border)
-❌ NUNCA use cores hardcoded (#333, #000, etc)
-❌ NUNCA invente cores fora desta lista
-
-TEMPLATE BÁSICO:
-<section class="slide">
-    <h2 style="color: var(--navy);">Título</h2>
-    <div style="background: var(--white); border: 1px solid var(--border); border-radius: 0.8vw; padding: 2vw;">
-        <p style="color: var(--text);">Conteúdo</p>
-    </div>
-    <div style="position: absolute; bottom: 2vw; left: 6%; font-size: 0.75vw; color: var(--muted);">
-        Fonte: [Referência]
-    </div>
-</section>
-
-SE VOCÊ USAR QUALQUER COR FORA DESTA LISTA, O SLIDE SERÁ REJEITADO.
-```
-
-## 📋 VERSÃO AINDA MAIS CURTA:
-
-```
-CORES OBRIGATÓRIAS:
-Navy #0B1320 | Gold #D2B55B | Teal #0F766E | Blue #2563EB
-Bg #F8FAFC | Text #0F172A | Muted #475569 | White #FFF | Border #E2E8F0
-
-USE: var(--navy) var(--gold) etc
-NUNCA: #333 #000 ou cores aleatórias
-
-Fonte principal: Inter
-```
-
-## 🚀 COMO USAR:
-
-1. **Abra ChatGPT/outro assistente**
-2. **Cole a paleta acima PRIMEIRO**
-3. **Depois peça:** "Crie slide sobre X usando a paleta oficial"
-4. **Valide:** Confira se usou var(--nome) corretamente
-5. **Se errar:** Mostre este documento e peça correção
+> **HC3:** Zero `!important` novo  
+> **HC9:** Zero inline styles com cores hardcoded
 
 ---
 
-**Link completo:** `docs/PROMPT_PALETA_OFICIAL.md`
+## GRADE — Paleta
+
+```css
+:root {
+  --bg: #f8fafc;        /* Fundo claro */
+  --navy: #0b1320;      /* Títulos, base escura */
+  --gold: #d2b55b;      /* Acento quente */
+  --teal: #0f766e;      /* Clínico */
+  --blue: #2563eb;      /* Acento frio */
+  --text: #0f172a;      /* Texto principal */
+  --muted: #475569;     /* Legendas */
+  --white: #ffffff;     /* Cards */
+  --border: #e2e8f0;    /* Bordas */
+  --amber: #a16207;     /* Alertas (Lp(a)) */
+  --danger: #ef4444;    /* Erros */
+}
+```
+
+### RGB Helpers (para transparência)
+```css
+rgba(var(--gold-rgb), 0.12)   /* Gold 12% */
+rgba(var(--navy-rgb), 0.08)   /* Navy 8% */
+```
+
+---
+
+## OSTEOPOROSE — Paleta
+
+```css
+:root {
+  --bg: #F9F8F4;        /* Off-white */
+  --navy: #152432;      /* Títulos */
+  --gold: #DDB944;      /* Destaques */
+  --teal: #1F766E;      /* Clínico */
+  --text: #222220;      /* Texto principal */
+  --muted: #666;        /* Legendas */
+  --white: #ffffff;     /* Cards */
+}
+```
+
+---
+
+## ✅ USAR ASSIM
+
+```html
+<!-- CORRETO -->
+<h2 style="color: var(--navy);">Título</h2>
+<div style="background: var(--bg);">Conteúdo</div>
+<p style="color: var(--muted);">Legenda</p>
+```
+
+## ❌ NUNCA ASSIM
+
+```html
+<!-- ERRADO - cor hardcoded -->
+<h2 style="color: #0b1320;">Título</h2>
+<div style="background: #f8fafc;">Conteúdo</div>
+<p style="color: #475569;">Legenda</p>
+```
+
+---
+
+## 📋 TEMPLATE BÁSICO
+
+```html
+<section class="slide">
+  <h2 style="color: var(--navy);">Título do Slide</h2>
+  
+  <div class="card">
+    <p style="color: var(--text);">Conteúdo principal</p>
+  </div>
+  
+  <div class="ref">
+    Fonte: [Referência]
+  </div>
+</section>
+```
+
+---
+
+## REGRAS (HC3, HC9)
+
+| ✅ Fazer | ❌ Não Fazer |
+|----------|--------------|
+| `var(--navy)` | `#0b1320` |
+| `var(--gold)` | `#d2b55b` |
+| Usar classes CSS | Inline styles novos |
+| Consultar base.css | Inventar cores |
+
+---
+
+*Se precisar de cor nova → adicionar em `:root` do base.css (com aprovação)*

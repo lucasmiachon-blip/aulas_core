@@ -1,5 +1,33 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## LINT_FIX_E_DOCS_CLEANUP — 2026-02-02
+
+### ESLint Fix
+- Executado `npm run lint:fix` 
+- Reduzido de 174 para 15 avisos (var → let/const corrigidos automaticamente)
+- Restantes são variáveis não usadas (inofensivo)
+
+### Documentação Atualizada
+- `docs/README.md` — Reescrito para estado atual do projeto
+- `docs/ESSENTIAL/AI_RULES.md` — Atualizado com referência a HARD_CONSTRAINTS
+- `docs/GUIDES/WORKFLOW.md` — Atualizado com ESLint/Prettier/comandos npm
+- `docs/QUICK_PALETTE_REFERENCE.md` — Atualizado com ambas as paletas
+
+### Documentação Arquivada (obsoleta)
+Movidos para `docs/archive/`:
+- ESTRUTURA_FINAL.md (2024-12)
+- ESTRUTURA_PROPOSTA.md (2024-12)
+- PLANO_ORGANIZACAO.md (2024-12)
+- STATUS.md (2026-01-22)
+- BUGS.md (2026-01-22)
+- HANDOFF.md (2026-01-22)
+- PROMPT_CHATGPT_OSTEOPOROSE_FIX.md
+- QUALITY.md
+- PAPEIS.md
+- AI_HANDOFF_RULES.md
+
+---
+
 ## DOCUMENTACAO_FUTURO_STACK — 2026-02-02
 
 ### Adicionado

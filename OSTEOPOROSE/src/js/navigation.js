@@ -24,7 +24,7 @@ LOCK: OSTEOPOROSE is frozen. Do not edit until modularization phase. Only Lucas 
   }
 
   function setCounter(current, total) {
-    var el = document.querySelector('[data-counter]');
+    const el = document.querySelector('[data-counter]');
     if (!el) return;
     el.textContent = String(current) + '/' + String(total);
   }
@@ -42,20 +42,20 @@ LOCK: OSTEOPOROSE is frozen. Do not edit until modularization phase. Only Lucas 
   }
 
   function move(delta) {
-    var slides = getSlides();
+    const slides = getSlides();
     if (!slides.length) return;
 
-    var current = getActiveIndex(slides);
+    let current = getActiveIndex(slides);
     if (current === -1) current = 0;
 
-    var next = clamp(current + delta, 0, slides.length - 1);
+    const next = clamp(current + delta, 0, slides.length - 1);
     if (next === current) return;
 
     showSlide(slides, next);
   }
 
   function onKeyDown(e) {
-    var key = e.key;
+    const key = e.key;
 
     if (key === 'ArrowRight' || key === 'PageDown' || key === ' ') {
       e.preventDefault();
@@ -71,18 +71,18 @@ LOCK: OSTEOPOROSE is frozen. Do not edit until modularization phase. Only Lucas 
   }
 
   function wireButtons() {
-    var prev = document.querySelector('[data-nav="prev"]');
-    var next = document.querySelector('[data-nav="next"]');
+    const prev = document.querySelector('[data-nav="prev"]');
+    const next = document.querySelector('[data-nav="next"]');
 
     if (prev) prev.addEventListener('click', function () { move(-1); });
     if (next) next.addEventListener('click', function () { move(1); });
   }
 
   function init() {
-    var slides = getSlides();
+    const slides = getSlides();
     if (!slides.length) return;
 
-    var active = getActiveIndex(slides);
+    let active = getActiveIndex(slides);
     if (active === -1) {
       slides[0].classList.add('is-active');
       active = 0;

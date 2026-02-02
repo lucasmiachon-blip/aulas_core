@@ -13,8 +13,8 @@
 
   function computeBase() {
     // Se estamos em .../dist/, as assets vivem em ../src/
-    var path = window.location.pathname;
-    var base = path.includes('/dist/') ? '../src/' : './';
+    const path = window.location.pathname;
+    const base = path.includes('/dist/') ? '../src/' : './';
     console.log('[slide-loader] Pathname:', path);
     console.log('[slide-loader] Base calculado:', base);
     return base;
@@ -23,12 +23,12 @@
   async function fetchText(url) {
     console.log('[slide-loader] Fetch:', url);
     try {
-      var res = await fetch(url, { cache: 'no-store' });
+      const res = await fetch(url, { cache: 'no-store' });
       console.log('[slide-loader] Response status:', res.status, res.statusText);
       if (!res.ok) {
         throw new Error('Falha ao carregar: ' + url + ' (status: ' + res.status + ')');
       }
-      var text = await res.text();
+      const text = await res.text();
       console.log('[slide-loader] Response size:', text.length, 'bytes');
       return text;
     } catch (err) {
@@ -45,14 +45,14 @@
   }
 
   function elementFromHTML(html, label) {
-    var tpl = document.createElement('template');
+    const tpl = document.createElement('template');
     tpl.innerHTML = html.trim();
     if (tpl.content && tpl.content.children && tpl.content.children.length > 1) {
       console.warn('[slide-loader] multi-root ignored extras:' + (label ? ' ' + label : ''));
     }
     if (tpl.content && tpl.content.childNodes) {
-      for (var i = 0; i < tpl.content.childNodes.length; i++) {
-        var node = tpl.content.childNodes[i];
+      for (let i = 0; i < tpl.content.childNodes.length; i++) {
+        const node = tpl.content.childNodes[i];
         if (node && node.nodeType === Node.TEXT_NODE && node.textContent && node.textContent.trim() !== '') {
           console.warn('[slide-loader] top-level text nodes ignored:' + (label ? ' ' + label : ''));
           break;
@@ -63,32 +63,32 @@
   }
 
   async function loadSlides() {
-    var container = document.querySelector('[data-slides]');
+    const container = document.querySelector('[data-slides]');
     if (!container) {
       console.error('[slide-loader] Container [data-slides] não encontrado');
       return;
     }
 
-    var base = computeBase();
-    var listUrl = base + 'slides/_list.txt';
+    const base = computeBase();
+    const listUrl = base + 'slides/_list.txt';
     console.log('[slide-loader] Base path:', base);
     console.log('[slide-loader] Tentando carregar:', listUrl);
     
     try {
-      var listTxt = await fetchText(listUrl);
+      const listTxt = await fetchText(listUrl);
       console.log('[slide-loader] _list.txt carregado, tamanho:', listTxt.length);
-      var files = parseList(listTxt);
+      const files = parseList(listTxt);
       console.log('[slide-loader] Arquivos encontrados:', files.length);
 
     // Validar _list vs _meta.json para evitar propagação de erro (index e print usam a mesma fonte)
-    var metaUrl = base + 'slides/_meta.json';
+    const metaUrl = base + 'slides/_meta.json';
     try {
-      var metaTxt = await fetchText(metaUrl);
-      var metaList = JSON.parse(metaTxt);
+      const metaTxt = await fetchText(metaUrl);
+      const metaList = JSON.parse(metaTxt);
       if (metaList.length !== files.length) {
         console.warn('[slide-loader] SEGURANÇA: _list.txt tem', files.length, 'itens; _meta.json tem', metaList.length, '. Mantenha em sync (scripts/rename-osteoporose-slides-by-order.js).');
       } else {
-        for (var mi = 0; mi < files.length; mi++) {
+        for (let mi = 0; mi < files.length; mi++) {
           if (metaList[mi].file !== files[mi]) {
             console.warn('[slide-loader] SEGURANÇA: ordem divergente em índice', mi + 1, '- list:', files[mi], 'meta:', metaList[mi].file);
             break;
@@ -104,12 +104,12 @@
     window.__OSTEOPOROSE_DECK.base = base;
     window.__OSTEOPOROSE_DECK.files = files;
 
-    var loadedCount = 0;
-    var failedSlides = [];
+    let loadedCount = 0;
+    const failedSlides = [];
     
-    for (var i = 0; i < files.length; i++) {
-      var file = files[i];
-      var slideUrl = base + 'slides/' + file;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const slideUrl = base + 'slides/' + file;
       console.log('[slide-loader] Carregando slide', i + 1, '/', files.length, ':', file);
       
       // Pequeno delay para evitar sobrecarregar o servidor (especialmente Live Server)
@@ -118,8 +118,8 @@
       }
       
       try {
-        var html = await fetchText(slideUrl);
-        var el = elementFromHTML(html, slideUrl);
+        const html = await fetchText(slideUrl);
+        const el = elementFromHTML(html, slideUrl);
         if (!el) {
           console.warn('[slide-loader] Slide não pôde ser parseado:', file);
           failedSlides.push(file);
@@ -127,7 +127,7 @@
         }
 
       // Derivar chave Sxx_ a partir do nome do arquivo
-      var m = file.match(/^(S\d{2})_/);
+      const m = file.match(/^(S\d{2})_/);
       if (m) el.setAttribute('data-key', m[1]);
 
       // Estado inicial: oculto (respeita display inline do slide)
@@ -156,7 +156,7 @@
       console.warn('[slide-loader] ATENÇÃO:', failedSlides.length, 'slide(s) falharam:', failedSlides.join(', '));
       
       // Mostrar notificação visual discreta
-      var notification = document.createElement('div');
+      const notification = document.createElement('div');
       notification.style.cssText = 'position:fixed;top:60px;right:20px;background:rgba(239,68,68,0.9);color:white;padding:12px 16px;border-radius:8px;font-family:Inter,sans-serif;font-size:13px;z-index:10000;box-shadow:0 4px 12px rgba(0,0,0,0.2);max-width:300px;';
       notification.innerHTML = '<strong>⚠️ ' + failedSlides.length + ' slide(s) não carregaram</strong><br><span style="font-size:11px;opacity:0.9;">' + failedSlides.slice(0, 2).join(', ') + (failedSlides.length > 2 ? '...' : '') + '</span>';
       document.body.appendChild(notification);
@@ -190,7 +190,7 @@
     console.log('[slide-loader] URL atual:', window.location.href);
     console.log('[slide-loader] Pathname:', window.location.pathname);
     
-    var container = document.querySelector('[data-slides]');
+    const container = document.querySelector('[data-slides]');
     if (!container) {
       console.error('[slide-loader] Container [data-slides] não encontrado no DOM');
       setTimeout(startLoading, 100); // Retry após 100ms
@@ -203,7 +203,7 @@
       console.error('[slide-loader] Stack:', err.stack);
       console.error('[slide-loader] Tipo do erro:', err.constructor.name);
       
-      var container = document.querySelector('[data-slides]');
+      const container = document.querySelector('[data-slides]');
       if (!container) {
         console.error('[slide-loader] Container não encontrado para exibir erro');
         return;

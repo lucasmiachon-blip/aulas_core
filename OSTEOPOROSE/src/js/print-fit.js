@@ -28,24 +28,24 @@
     slide.style.transform = '';
     slide.style.transformOrigin = '';
 
-    var ch = slide.clientHeight;
-    var cw = slide.clientWidth;
+    const ch = slide.clientHeight;
+    const cw = slide.clientWidth;
     if (!ch || !cw) return;
 
-    var SAFE_PX = 8;
-    var sh = slide.scrollHeight;
-    var sw = slide.scrollWidth;
+    const SAFE_PX = 8;
+    const sh = slide.scrollHeight;
+    const sw = slide.scrollWidth;
 
-    var rect = slide.getBoundingClientRect();
-    var left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
-    var nodes = slide.querySelectorAll('*');
+    const rect = slide.getBoundingClientRect();
+    let left = Infinity, top = Infinity, right = -Infinity, bottom = -Infinity;
+    const nodes = slide.querySelectorAll('*');
 
-    for (var i = 0; i < nodes.length; i++) {
-      var el = nodes[i];
-      var cs = window.getComputedStyle(el);
+    for (let i = 0; i < nodes.length; i++) {
+      const el = nodes[i];
+      const cs = window.getComputedStyle(el);
       if (!cs || cs.display === 'none' || cs.visibility === 'hidden') continue;
 
-      var r = el.getBoundingClientRect();
+      const r = el.getBoundingClientRect();
       if (!r || (r.width === 0 && r.height === 0)) continue;
 
       left = Math.min(left, r.left);
@@ -54,13 +54,13 @@
       bottom = Math.max(bottom, r.bottom);
     }
 
-    var scale = 1;
+    let scale = 1;
     if (isFinite(left)) {
-      var contentW = right - left;
-      var contentH = bottom - top;
+      const contentW = right - left;
+      const contentH = bottom - top;
 
-      var availW = Math.max(0, rect.width - SAFE_PX * 2);
-      var availH = Math.max(0, rect.height - SAFE_PX * 2);
+      const availW = Math.max(0, rect.width - SAFE_PX * 2);
+      const availH = Math.max(0, rect.height - SAFE_PX * 2);
 
       if (contentW > 0 && contentH > 0) {
         scale = Math.min(availH / contentH, availW / contentW, 1);
@@ -82,8 +82,8 @@
   }
 
   function fitAll() {
-    var slides = document.querySelectorAll('.slide');
-    for (var i = 0; i < slides.length; i++) fitSlideOverflow(slides[i]);
+    const slides = document.querySelectorAll('.slide');
+    for (let i = 0; i < slides.length; i++) fitSlideOverflow(slides[i]);
   }
 
   function schedule() {
