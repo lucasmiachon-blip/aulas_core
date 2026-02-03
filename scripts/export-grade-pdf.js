@@ -6,22 +6,18 @@ async function exportPDF() {
   console.log('🚀 Iniciando exportação de PDF...');
   
   // Usar servidor local (fetch() não funciona com file:// por CORS)
-  // Se servidor não estiver rodando, tentar iniciar ou usar URL
-  // Tentar GitHub Pages primeiro, fallback para localhost
-  // Live Server (5500) em primeiro; 8000 = fallback (Python do exportar-pdf-e-zip.ps1).
+  // Python http.server (8000) primeiro - funciona melhor com Playwright
   const urlCandidates = [
-    'http://localhost:8889/GRADE/src/index.html',
-    'http://localhost:8888/GRADE/src/index.html',
-    'http://127.0.0.1:8888/GRADE/src/index.html',
+    'http://localhost:8000/GRADE/src/index.html',
+    'http://127.0.0.1:8000/GRADE/src/index.html',
     'http://127.0.0.1:5500/GRADE/src/index.html',
     'http://localhost:5500/GRADE/src/index.html',
-    'http://localhost:8000/GRADE/src/index.html',
     'https://lucasmiachon-blip.github.io/aulas_core/GRADE/src/index.html'
   ];
   let url = urlCandidates[0];
   
   // Pasta de saída
-  const outputDir = path.join(__dirname, '..', 'GRADE', 'exports');
+  const outputDir = path.join(__dirname, '..', 'exports');
   const outputPath = path.join(outputDir, 'GRADE-slides.pdf');
   
   // Criar pasta exports se não existir
