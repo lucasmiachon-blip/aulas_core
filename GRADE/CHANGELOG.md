@@ -1,5 +1,23 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-03 — P2 (SAMS/Bempedóico + Metas): condensação SAMS + recomendação em metas
+
+- **SAMS (menos ruído, mesma mensagem):** consolidado em 2 slides-chave (S43 + S46), trazendo a evidência N-of-1 (SAMSON/StatinWISE) para dentro do slide-resumo (S43).
+- **Bempedóico (clareza):** S44 refeito como “sinal do efeito” (relativo vs absoluto) e S45 refeito como **EtD** em formato inspirado no slide-âncora do CAC.
+- **Metas (ordem + recomendação):** invertida a ordem **S52 ↔ S53** no `_list` para que o slide 30 traga a recomendação por categoria; S52 redesenhado em cards para leitura rápida.
+- **Domínios (menos repetição):** S55 enxugado para “3 sinais, 3 ações” (publicação), preservando rigor sem perder o foco.
+- **Robustez:** `slides-simple.js` (fallback) sincronizado com `src/slides/_list.txt`.
+
+### Arquivos modificados
+- `src/slides/_list.txt`
+- `src/slides/S43.html`
+- `src/slides/S44.html`
+- `src/slides/S45.html`
+- `src/slides/S52.html`
+- `src/slides/S55.html`
+- `src/js/slides-simple.js`
+- `CHANGELOG.md`
+
 
 ## 2026-02-03 — P2 (CAC): âncora com recomendação (S03)
 
