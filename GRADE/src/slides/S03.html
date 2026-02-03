@@ -47,38 +47,60 @@
 
     <div class="card" style="flex:0.95; padding:2.0vw 2.1vw;">
       <div style="font-size:1.0vw; letter-spacing:0.14em; text-transform:uppercase; color: rgba(var(--text-rgb),0.55); font-weight:900;">
-        A gramática do GRADE
+        SBC 2025 — recomendações (ipsis litteris)
       </div>
 
-      <div style="margin-top:1.35vw; display:flex; flex-direction:column; gap:1.2vw;">
-        <div style="padding:1.25vw 1.35vw; border-radius:1.0vw; background: rgba(var(--navy-rgb),0.03); border:1px solid rgba(var(--border-rgb),0.85);">
-          <div style="font-weight:900; color: var(--navy);">Certeza da evidência</div>
-          <div style="margin-top:0.4vw; font-size:1.05vw; color: rgba(var(--text-rgb),0.78); line-height:1.35;">
-            Confiança no efeito (alta → muito baixa). Depende de <strong>domínios</strong> como imprecisão, viés, indireção.
+      <div style="margin-top:1.25vw; display:flex; flex-direction:column; gap:1.05vw;">
+
+        <!-- Recomendação 1 -->
+        <div style="padding:1.15vw 1.25vw; border-radius:1.0vw; background: rgba(var(--navy-rgb),0.03); border:1px solid rgba(var(--border-rgb),0.85);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1.0vw;">
+            <div style="font-size:0.85vw; font-weight:900; color: rgba(var(--navy-rgb),0.72); text-transform:uppercase; letter-spacing:0.06em;">Risco intermediário</div>
+            <div style="display:flex; gap:0.45vw; flex-wrap:wrap; justify-content:flex-end;">
+              <span class="chip chip--muted" style="font-size:0.70vw;">FORTE</span>
+              <span class="chip chip--gold" style="font-size:0.70vw;">CERTEZA MODERADA</span>
+            </div>
+          </div>
+
+          <div style="margin-top:0.65vw; border-left:0.28vw solid var(--gold); background: rgba(var(--gold-rgb),0.08); border-radius:0.85vw; padding:0.85vw 0.95vw;">
+            <div style="font-size:1.05vw; line-height:1.40; color: var(--text);">
+              “O CAC pode ser útil para decidir sobre a necessidade e a intensidade da terapia hipolipemiante.”
+            </div>
           </div>
         </div>
 
-        <div style="padding:1.25vw 1.35vw; border-radius:1.0vw; background: rgba(var(--navy-rgb),0.03); border:1px solid rgba(var(--border-rgb),0.85);">
-          <div style="font-weight:900; color: var(--navy);">Força da recomendação</div>
-          <div style="margin-top:0.4vw; font-size:1.05vw; color: rgba(var(--text-rgb),0.78); line-height:1.35;">
-            Quão firme é o “faça/não faça” (forte/fraca; a favor/contra). Depende do <strong>EtD</strong>.
+        <!-- Recomendação 2 -->
+        <div style="padding:1.15vw 1.25vw; border-radius:1.0vw; background: rgba(var(--navy-rgb),0.03); border:1px solid rgba(var(--border-rgb),0.85);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1.0vw;">
+            <div style="font-size:0.85vw; font-weight:900; color: rgba(var(--navy-rgb),0.72); text-transform:uppercase; letter-spacing:0.06em;">Baixo risco + história familiar</div>
+            <div style="display:flex; gap:0.45vw; flex-wrap:wrap; justify-content:flex-end;">
+              <span class="chip chip--muted" style="font-size:0.70vw;">CONDICIONAL</span>
+              <span class="chip chip--gold" style="font-size:0.70vw;">CERTEZA MODERADA</span>
+            </div>
+          </div>
+
+          <div style="margin-top:0.65vw; border-left:0.28vw solid var(--gold); background: rgba(var(--gold-rgb),0.08); border-radius:0.85vw; padding:0.85vw 0.95vw;">
+            <div style="font-size:1.05vw; line-height:1.40; color: var(--text);">
+              “Em indivíduos com histórico familiar de DCVA prematura… o escore de cálcio é razoável.”
+            </div>
           </div>
         </div>
 
-        <div style="padding:1.0vw 1.2vw; border-radius:1.0vw; background: rgba(var(--teal-rgb),0.08); border:1px solid rgba(var(--teal-rgb),0.26);">
-          <div style="font-size:1.05vw; line-height:1.35; color: rgba(var(--text-rgb),0.82);">
-            <strong>EtD</strong> = valores, preferências, custos, acesso, equidade, aceitabilidade e viabilidade.
+        <!-- Como ler (micro) -->
+        <div style="padding:1.0vw 1.15vw; border-radius:1.0vw; background: rgba(var(--teal-rgb),0.08); border:1px solid rgba(var(--teal-rgb),0.26);">
+          <div style="font-size:1.02vw; line-height:1.35; color: rgba(var(--text-rgb),0.82);">
+            <strong>Leitura GRADE:</strong> <strong>certeza</strong> fala da confiança no efeito; <strong>força</strong> depende do <strong>EtD</strong> (valores, custos, acesso, viabilidade).
           </div>
         </div>
+
       </div>
 
-      <div style="margin-top:1.55vw; display:flex; gap:0.7vw; flex-wrap:wrap;">
+      <div style="margin-top:1.25vw; display:flex; gap:0.7vw; flex-wrap:wrap;">
         <span class="chip chip--gold">SBC 2025</span>
-        <span class="chip chip--teal">Exemplo: CAC em prevenção</span>
-        <span class="chip chip--navy">Diretrizes podem divergir</span>
+        <span class="chip chip--navy">recomendação + grau</span>
+        <span class="chip chip--teal">EtD explícito</span>
       </div>
-    </div>
-  </div>
+    </div>  </div>
 
   <div class="ref" style="position:absolute; bottom:4%; left:6%; font-size:0.85vw;">
     Fonte: Diretriz Brasileira de Dislipidemias e Prevenção da Aterosclerose — SBC 2025.

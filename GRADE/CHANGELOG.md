@@ -1,5 +1,28 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+
+## 2026-02-03 — P2 (CAC): âncora com recomendação (S03)
+
+- **S03 (CAC para decidir sob incerteza)**: painel direito agora traz **recomendações ipsis litteris da SBC 2025** com **força** e **certeza** (chips), mantendo coerência visual com o bloco CAC.
+- **Sem mudança de evidência**: apenas reorganização para reforçar a ponte **recomendação → metas por categoria → benefício absoluto**.
+- **Higiene visual (sem emoji)**: removidos ícones emoji em **S28 (PREVENT)** para manter padrão “enterprise”.
+
+### Arquivos modificados
+- `src/slides/S03.html`
+- `src/slides/S28.html`
+- `CHANGELOG.md`
+
+
+## 2026-02-03 — P2 (SAMS/Bempedóico → Metas): EtD + ordem (25–36)
+
+- **EtD (bempedóico)**: slide redesenhado para bater com o padrão visual do bloco CAC (2 cards, hierarquia mais clara, menos ruído).
+- **Ordem didática**: **Metas por categoria de risco** agora vem *antes* de **Base de evidência: dose‑resposta + trials**.
+
+### Arquivos modificados
+- `src/slides/S20.html`
+- `src/slides/_list.txt`
+- `CHANGELOG.md`
+
 ## 2026-02-03 — P2 (CAC): paleta mais sóbria (1–27)
 
 - **NNT/NNH (CAC)**: removido “traffic-light” vermelho/verde; agora usa **ouro (cautela)** + **teal (benefício)** com opacidades baixas.
