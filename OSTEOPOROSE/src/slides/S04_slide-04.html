@@ -7,57 +7,67 @@
     <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 10px 0;">Fontes e premissas</h1>
     <p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 600; color: rgba(var(--navy-rgb), 0.78); line-height: 1.35; margin: 0 0 22px 0;">Guidelines dizem <strong>o que</strong> fazer. Modelos (QALY/ICER) ajudam a decidir <strong>quando vale</strong> fazer.</p>
 
-    <!-- Cards container: flex-start para manter no topo, flex:1 para take-home ficar embaixo -->
-    <div style="flex: 0 0 auto; display: flex; align-items: flex-start; margin-top: 4px;">
-      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; width: 100%;">
+    <!-- Cards container: flex:1 para ocupar espaço disponível -->
+    <div style="flex: 1; display: flex; align-items: stretch; margin-top: 8px;">
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch; width: 100%;">
 
         <!-- Card 1 -->
-        <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.14); border-radius: 16px; padding: 30px 26px 26px 26px; box-shadow: 0 6px 16px rgba(0,0,0,0.05);">
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom: 18px;">
-            <div style="background: rgba(var(--navy-rgb), 0.85); color: var(--white); font-family: Inter, sans-serif; font-weight: 700; font-size: 15px; padding: 6px 10px; border-radius: 999px;">Internacional</div>
+        <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.14); border-radius: 16px; padding: 28px 24px 24px 24px; box-shadow: 0 6px 16px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom: 20px;">
+            <div style="background: rgba(var(--navy-rgb), 0.85); color: var(--white); font-family: Inter, sans-serif; font-weight: 700; font-size: 14px; padding: 7px 12px; border-radius: 999px;">Internacional</div>
             <div style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--navy);">Guidelines</div>
           </div>
-          <ul style="margin: 0; padding-left: 18px; font-family: Inter, sans-serif; font-size: 17px; line-height: 1.5; color: var(--navy);">
-            <li style="margin-bottom: 8px;"><strong>NOGG 2024</strong>: limiares por idade + categoria <em>very high risk</em>.</li>
-            <li style="margin-bottom: 8px;"><strong>ACR 2022</strong>: estratificacao sob glicocorticoide; anabolico em <em>very high risk</em>.</li>
+          <ul style="margin: 0; padding-left: 20px; font-family: Inter, sans-serif; font-size: 16px; line-height: 1.65; color: var(--navy); flex: 1;">
+            <li style="margin-bottom: 16px;"><strong>NOGG 2024</strong>: limiares por idade + categoria <em>very high risk</em>.</li>
+            <li style="margin-bottom: 16px;"><strong>ACR 2022</strong>: estratificação sob glicocorticoide; anabólico em <em>very high risk</em>.</li>
             <li><strong>ASBMR/BHOF 2024</strong>: <em>treat-to-target</em> (Cosman) + algoritmo <em>goal-directed</em>.</li>
           </ul>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(var(--navy-rgb), 0.1);">
+            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; color: rgba(var(--navy-rgb), 0.5); text-transform: uppercase; letter-spacing: 0.05em;">UK · EUA · Global</span>
+          </div>
         </div>
 
         <!-- Card 2 -->
-        <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.14); border-radius: 16px; padding: 30px 26px 26px 26px; box-shadow: 0 6px 16px rgba(0,0,0,0.05);">
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom: 18px;">
-            <div style="background: var(--teal); color: var(--white); font-family: Inter, sans-serif; font-weight: 700; font-size: 15px; padding: 6px 10px; border-radius: 999px;">Brasil</div>
+        <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.14); border-radius: 16px; padding: 28px 24px 24px 24px; box-shadow: 0 6px 16px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom: 20px;">
+            <div style="background: var(--teal); color: var(--white); font-family: Inter, sans-serif; font-weight: 700; font-size: 14px; padding: 7px 12px; border-radius: 999px;">Brasil</div>
             <div style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--navy);">Risco basal</div>
           </div>
-          <ul style="margin: 0; padding-left: 18px; font-family: Inter, sans-serif; font-size: 17px; line-height: 1.5; color: var(--navy);">
-            <li style="margin-bottom: 8px;"><strong>FRAX-Brasil 2.0</strong>: recalibracao (Albergaria 2024 - BRAVOS).</li>
-            <li style="margin-bottom: 8px;"><strong>SPAH</strong>: referencia populacional (aprox 8% MOF; aprox 3% quadril em idosos).</li>
-            <li style="margin-bottom: 8px;"><strong>SBD 2025</strong> (DM2): fratura, FRAX alto, ou T-score menor ou igual a -2,0.</li>
-            <li><strong>SBEM/ABRASSO</strong>: definicao + posicao sobre <em>anabolic-first</em>.</li>
+          <ul style="margin: 0; padding-left: 20px; font-family: Inter, sans-serif; font-size: 16px; line-height: 1.65; color: var(--navy); flex: 1;">
+            <li style="margin-bottom: 14px;"><strong>FRAX-Brasil 2.0</strong>: recalibração (Albergaria 2024 - BRAVOS).</li>
+            <li style="margin-bottom: 14px;"><strong>SPAH</strong>: referência populacional (~8% MOF; ~3% quadril em idosos).</li>
+            <li style="margin-bottom: 14px;"><strong>SBD 2025</strong> (DM2): fratura, FRAX alto, ou T-score ≤ −2,0.</li>
+            <li><strong>SBEM/ABRASSO</strong>: definição + posição sobre <em>anabolic-first</em>.</li>
           </ul>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(var(--navy-rgb), 0.1);">
+            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; color: rgba(var(--navy-rgb), 0.5); text-transform: uppercase; letter-spacing: 0.05em;">Dados nacionais</span>
+          </div>
         </div>
 
         <!-- Card 3 -->
-        <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.14); border-radius: 16px; padding: 30px 26px 26px 26px; box-shadow: 0 6px 16px rgba(0,0,0,0.05);">
-          <div style="display:flex; align-items:center; gap:10px; margin-bottom: 18px;">
-            <div style="background: rgba(var(--navy-rgb), 0.12); color: var(--navy); font-family: Inter, sans-serif; font-weight: 900; font-size: 15px; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(var(--navy-rgb), 0.18);">Evidencia</div>
+        <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.14); border-radius: 16px; padding: 28px 24px 24px 24px; box-shadow: 0 6px 16px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom: 20px;">
+            <div style="background: rgba(var(--navy-rgb), 0.12); color: var(--navy); font-family: Inter, sans-serif; font-weight: 900; font-size: 14px; padding: 7px 12px; border-radius: 999px; border: 1px solid rgba(var(--navy-rgb), 0.18);">Evidência</div>
             <div style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--navy);">Ensaios pivotais</div>
           </div>
-          <ul style="margin: 0; padding-left: 18px; font-family: Inter, sans-serif; font-size: 17px; line-height: 1.5; color: var(--navy);">
-            <li style="margin-bottom: 8px;"><strong>Antiresortivos</strong>: FIT (alendronato), FREEDOM (denosumabe), HORIZON (zoledronato).</li>
-            <li style="margin-bottom: 8px;"><strong>Anabolicos</strong>: VERO (teriparatida), ACTIVE (abaloparatida), FRAME/ARCH (romosozumabe).</li>
-            <li>Sequencia e <em>residual risk</em> sustentam estrategia <em>goal-directed</em>.</li>
+          <ul style="margin: 0; padding-left: 20px; font-family: Inter, sans-serif; font-size: 16px; line-height: 1.65; color: var(--navy); flex: 1;">
+            <li style="margin-bottom: 16px;"><strong>Antirreabsortivos</strong>: FIT (alendronato), FREEDOM (denosumabe), HORIZON (zoledronato).</li>
+            <li style="margin-bottom: 16px;"><strong>Anabólicos</strong>: VERO (teriparatida), ACTIVE (abaloparatida), FRAME/ARCH (romosozumabe).</li>
+            <li>Sequência e <em>residual risk</em> sustentam estratégia <em>goal-directed</em>.</li>
           </ul>
+          <div style="margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(var(--navy-rgb), 0.1);">
+            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; color: rgba(var(--navy-rgb), 0.5); text-transform: uppercase; letter-spacing: 0.05em;">RCTs de referência</span>
+          </div>
         </div>
 
       </div>
     </div>
 
     <!-- Take-home (ancorado no rodape) -->
-    <div style="margin-top: 14px; padding-top: 14px;">
-      <div style="padding: 12px 14px; border-radius: 12px; background: rgba(var(--navy-rgb), 0.05); border: 1px solid rgba(var(--navy-rgb), 0.12);">
-        <p style="margin: 0; font-family: Inter, sans-serif; font-size: 16px; color: rgba(var(--navy-rgb), 0.75);">Regra da casa: sempre que eu disser um numero "importante", ele tem uma fonte <strong>nomeada</strong> no canto do slide ou nesta lista.</p>
+    <div style="margin-top: 16px;">
+      <div style="padding: 14px 18px; border-radius: 12px; background: var(--navy); display: flex; align-items: center; gap: 12px;">
+        <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 5px 10px; border-radius: 999px; white-space: nowrap;">Regra da casa</span>
+        <p style="margin: 0; font-family: Inter, sans-serif; font-size: 15px; font-weight: 500; color: var(--white); line-height: 1.4;">Sempre que eu disser um número "importante", ele tem uma fonte <strong style="color: var(--gold);">nomeada</strong> no canto do slide ou nesta lista.</p>
       </div>
     </div>
 

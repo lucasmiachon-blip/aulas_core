@@ -1,5 +1,37 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## OSTEOPOROSE_BATCH01_S01-S05 — 2026-02-03
+
+### Contexto
+Melhoria visual batch S01-S05. Foco em ocupar espaço branco, balancear hierarquia (Duarte), e adicionar conteúdo onde necessário.
+
+### Ajustes aplicados
+
+#### S03 (Objetivos Educacionais)
+- Adicionado item 6 "Sequenciamento" no card Aplicar (balancear 3x3 com Compreender)
+- Aumentado ícones de 48px para 56px
+- Aumentado fontes dos títulos de 18px para 20px
+- Adicionado `justify-content: space-between` para distribuir itens verticalmente
+- Removido connector visual (redundante com take-home)
+
+#### S04 (Fontes e premissas)
+- Adicionado footer informativo em cada card (UK·EUA·GLOBAL, DADOS NACIONAIS, RCTS DE REFERÊNCIA)
+- Aumentado line-height das listas de 1.5 para 1.65
+- Aumentado margin-bottom dos itens de 8px para 14-16px
+- Take-home redesenhado: fundo navy com badge dourado "Regra da casa"
+- Corrigido acentuação (estratificação, recalibração, etc.)
+
+### Arquivos modificados
+- `OSTEOPOROSE/src/slides/S03_slide-03.html`
+- `OSTEOPOROSE/src/slides/S04_slide-04.html`
+
+### Constraints
+- !important adicionados: NÃO
+- Slides >S50 tocados: NÃO
+- CSS global alterado: NÃO
+
+---
+
 ## VISUAL_AUDIT_BATCH_A_S01_S04 — 2026-02-02
 
 ### Contexto
