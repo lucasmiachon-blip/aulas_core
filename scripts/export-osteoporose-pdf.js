@@ -1,6 +1,21 @@
 const { chromium } = require('playwright');
 const path = require('path');
 const fs = require('fs');
+const { execSync } = require('child_process');
+
+function resolveChromiumExecutable() {
+  const fromEnv = process.env.CHROMIUM_PATH || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
+  if (fromEnv) return fromEnv;
+  try {
+    const p = execSync('command -v chromium || command -v chromium-browser || command -v google-chrome || command -v google-chrome-stable', {
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'ignore'],
+    }).trim();
+    return p || null;
+  } catch (e) {
+    return null;
+  }
+}
 
 async function exportPDF() {
   console.log('🚀 Iniciando exportação PDF Osteoporose...');
@@ -26,7 +41,12 @@ async function exportPDF() {
     fs.mkdirSync(outputDir, { recursive: true });
   }
 
-  const browser = await chromium.launch({ headless: true });
+  const executablePath = resolveChromiumExecutable();
+  const browser = await chromium.launch({
+    headless: true,
+    executablePath: executablePath || undefined,
+    args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
+  });
   let finalUrl = null;
   let httpStatus = null;
 

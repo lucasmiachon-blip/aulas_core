@@ -1,5 +1,117 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## OSTEOPOROSE_BATCH01_S01-S13_hotfix-order — 2026-02-03
+
+### Contexto
+Ajustes rápidos de conteúdo/hierarquia nos slides iniciais, com **reordenação** para cumprir o roteiro (S09–S11 vão para apêndice) e correção do gráfico do paradoxo (S13).
+
+### Ajustes aplicados
+
+#### S01 (Capa)
+- Removido prefixo "Dr." e removida menção de profissão/especialidade na assinatura (mantido apenas "Lucas Miachon").
+
+#### S02 (Citação Rilke)
+- Removido o box **BRIDGE**; permaneceu apenas o poema (citação + atribuição).
+
+#### S03 (Objetivos Educacionais)
+- Ajustado espaçamento vertical dos itens (removido `space-between`; pilha centralizada com `gap` consistente).
+
+#### S07 (Mini-definição de QALY)
+- Evitado “pills” esticarem: adicionados `inline-flex`, `flex: 0 0 auto`, `white-space: nowrap` e `align-items: center`.
+
+#### S09–S11 (Apêndice)
+- Reordenados para o bloco de apêndice (após S50) conforme orientação do roteiro.
+
+#### S12–S13 (Risco ao Longo da Vida + Paradoxo Osteopenia)
+- Ordem invertida (S13 vem antes de S12).
+- S13: gráfico refeito com `conic-gradient` (sem SVG) e rótulos 70%/30% corrigidos para bater com legenda.
+- S13: suavizado box "Por que isso importa?" (borda 2px → 1px e ouro menos saturado via rgba).
+
+### Arquivos modificados
+- `OSTEOPOROSE/src/slides/S01_slide-01.html`
+- `OSTEOPOROSE/src/slides/S02_slide-02.html`
+- `OSTEOPOROSE/src/slides/S03_slide-03.html`
+- `OSTEOPOROSE/src/slides/S07_slide-07.html`
+- `OSTEOPOROSE/src/slides/S13_slide-13.html`
+- `OSTEOPOROSE/src/slides/_list.txt`
+- `OSTEOPOROSE/src/slides/_meta.json`
+- `OSTEOPOROSE/src/print.html`
+- `CHANGELOG.md`
+
+### Constraints
+- CSS global alterado: NÃO
+- !important adicionados: NÃO
+- Novas dependências: NÃO
+
+---
+
+## OSTEOPOROSE_BATCH01_S01-S05_v2 — 2026-02-03
+
+### Contexto
+Revisão completa do Batch 1 (S01-S05) com foco em princípios Duarte: hierarquia visual, ponto focal, ocupação ~70-80%, scanning em 3 segundos.
+
+### Ajustes aplicados
+
+#### S01 (Slide de Título)
+- Adicionado círculos concêntricos decorativos (conecta visualmente com S02 Rilke)
+- Adicionado badge "ATUALIZAÇÃO 2024-2025" para contexto temporal
+- Adicionado linha decorativa dourada entre título e subtítulo
+- Adicionado referências às guidelines (NOGG · ASBMR · BHOF · FRAX-Brasil 2.0)
+- Assinatura reformulada: avatar "LM" + nome + especialidade em duas linhas
+
+#### S02 (Citação Rilke)
+- Adicionado aspas tipográficas decorativas (120px, gold com opacidade)
+- Adicionado **BRIDGE** conectando citação ao tema: "A osteoporose é uma doença de círculos — risco, fratura, refratura. Quebrá-los exige metas claras e tratamento precoce."
+- Círculos concêntricos decorativos (mesma linguagem visual do S01)
+- Melhor ocupação do espaço vertical
+
+#### S03 (Objetivos Educacionais)
+- Header compacto: badge "6 tópicos" para meta-informação
+- Labels COMPREENDER/APLICAR com indicador visual (quadrado colorido)
+- Spacing vertical otimizado: justify-content: space-between
+- Ícones reduzidos para 48px (mais compacto)
+- Subtítulos com melhor contraste (rgba 0.65)
+- Badges do footer aumentados para 13px
+
+#### S04 (Fontes e premissas)
+- Card Brasil destacado: borda 2px teal + gradiente sutil + badge "CONTEXTO LOCAL"
+- Labels de categoria reformulados: badges retangulares uppercase (INTERNACIONAL, BRASIL, EVIDÊNCIA)
+- Footers dos cards: badges coloridos (UK, EUA, Global, Dados nacionais, RCTs)
+- Hierarquia clara: Brasil é o ponto focal (contexto local para audiência brasileira)
+
+#### S05 (Timeline)
+- Container expandido: max-width 1450px (era 1280px)
+- Linha horizontal com gradiente navy→gold (indicando progresso/mudança de paradigma)
+- Anos 2008/2010+/2024 em dourado (paradigma shift) vs navy (histórico)
+- Caixas de descrição com background e border (melhor legibilidade)
+- 2024 com destaque máximo: círculo maior (48px) + box dourado sólido
+- Footer reformulado: badge "Mensagem" + "3 eixos" explícitos
+
+### Arquivos modificados
+- `OSTEOPOROSE/src/slides/S01_slide-01.html`
+- `OSTEOPOROSE/src/slides/S02_slide-02.html`
+- `OSTEOPOROSE/src/slides/S03_slide-03.html`
+- `OSTEOPOROSE/src/slides/S04_slide-04.html`
+- `OSTEOPOROSE/src/slides/S05_slide-05.html`
+
+### Verificação de constraints (HC)
+| Constraint | Verificado |
+|------------|------------|
+| HC2: CSS mínimo | ✅ Zero CSS global (só inline) |
+| HC3: !important | ✅ Zero adicionados |
+| HC9: Inline verificado | ✅ Variáveis CSS usadas |
+| HC10: Testado | ✅ Screenshots gerados |
+| HC11: Conteúdo médico | ✅ Bridge S02 não inventa dados, só metáfora |
+
+### Screenshots
+- `screenshots/osteoporose/batch1-review/S01-AFTER.png`
+- `screenshots/osteoporose/batch1-review/S02-AFTER.png`
+- `screenshots/osteoporose/batch1-review/S03-AFTER.png`
+- `screenshots/osteoporose/batch1-review/S04-AFTER.png`
+- `screenshots/osteoporose/batch1-review/S05-AFTER.png`
+
+---
+
 ## OSTEOPOROSE_BATCH01_S01-S05 — 2026-02-03
 
 ### Contexto
