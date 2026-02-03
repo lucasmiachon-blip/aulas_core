@@ -1,0 +1,16 @@
+{
+  "baselineCommit": "9f8d9909cdf1b2cf9bdeea018adc99e837d6ec76",
+  "currentCommit": "9f8d9909cdf1b2cf9bdeea018adc99e837d6ec76",
+  "generatedAt": "2026-02-03T01:54:22.109Z",
+  "baseUrl": "http://127.0.0.1:5501/OSTEOPOROSE/src/index.html",
+  "batchRange": {
+    "from": 1,
+    "to": 14
+  },
+  "slides": [],
+  "results": [],
+  "failures": {
+    "beforeMissing": [],
+    "afterMissing": []
+  }
+}

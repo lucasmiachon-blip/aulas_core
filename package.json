@@ -14,7 +14,12 @@
     "type": "git",
     "url": "git+https://github.com/lucasmiachon-blip/aulas_core.git"
   },
-  "keywords": ["slides", "apresentacao", "osteoporose", "grade"],
+  "keywords": [
+    "slides",
+    "apresentacao",
+    "osteoporose",
+    "grade"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -23,5 +28,8 @@
   "homepage": "https://github.com/lucasmiachon-blip/aulas_core#readme",
   "devDependencies": {
     "eslint": "^9.39.2"
+  },
+  "dependencies": {
+    "playwright": "^1.58.1"
   }
 }

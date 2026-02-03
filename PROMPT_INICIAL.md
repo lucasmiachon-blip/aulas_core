@@ -38,5 +38,5 @@ Só então pergunte a tarefa.
 | HC6 | Git checkpoint antes de mudança grande |
 | HC7 | Não refatorar/renomear sem pedir |
 | HC8 | Paths relativos sempre |
-| HC9 | Inline styles proibido |
+| HC9 | Inline em slides: verificar CSS antes |
 | HC10 | Testar viewer + print + export |

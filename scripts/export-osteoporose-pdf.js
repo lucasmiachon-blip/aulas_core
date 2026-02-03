@@ -149,6 +149,17 @@ async function exportPDF() {
       };
     });
 
+
+    // --- Sample screenshot (optional, non-fatal) ---
+    // Captura do viewport (sem locator) para auditoria visual rápida.
+    try {
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await page.waitForTimeout(100);
+      await page.screenshot({ path: samplePath, fullPage: false });
+    } catch (e) {
+      console.warn('⚠️ sample screenshot skipped:', e.message);
+    }
+
     // --- Generate PDF (rely on CSS @page, no width/height override) ---
     await page.pdf({
       path: outputPath,
@@ -157,22 +168,6 @@ async function exportPDF() {
       displayHeaderFooter: false,
       preferCSSPageSize: true
     });
-
-    // --- Sample screenshot (optional, non-fatal) ---
-    // Preferimos capturar só o primeiro slide (mais útil) e nunca falhar o export.
-    try {
-      const first = page.locator('.slide').first();
-      await first.waitFor({ state: 'attached', timeout: 3000 });
-      await first.screenshot({ path: samplePath });
-    } catch (e1) {
-      try {
-        await page.evaluate(() => window.scrollTo(0, 0));
-        await page.waitForTimeout(100);
-        await page.screenshot({ path: samplePath, fullPage: false });
-      } catch (e2) {
-        console.warn('⚠️ sample screenshot skipped:', e2.message || e1.message);
-      }
-    }
 
     // --- Parseable logs ---
     console.log(`EXPORT_URL_USED=${finalUrl}`);

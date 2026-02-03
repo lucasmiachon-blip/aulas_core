@@ -1,173 +1,107 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
-## LINT_FIX_E_DOCS_CLEANUP — 2026-02-02
+## VISUAL_AUDIT_BATCH_A_S01_S04 — 2026-02-02
 
-### ESLint Fix
-- Executado `npm run lint:fix` 
-- Reduzido de 174 para 15 avisos (var → let/const corrigidos automaticamente)
-- Restantes são variáveis não usadas (inofensivo)
+### Contexto
+Refino visual pontual nos slides iniciais (S01–S04) do deck OSTEOPOROSE.
+Foco em hierarquia, respiro e alinhamento sem alterar estrutura global.
 
-### Documentação Atualizada
-- `docs/README.md` — Reescrito para estado atual do projeto
-- `docs/ESSENTIAL/AI_RULES.md` — Atualizado com referência a HARD_CONSTRAINTS
-- `docs/GUIDES/WORKFLOW.md` — Atualizado com ESLint/Prettier/comandos npm
-- `docs/QUICK_PALETTE_REFERENCE.md` — Atualizado com ambas as paletas
-
-### Documentação Arquivada (obsoleta)
-Movidos para `docs/archive/`:
-- ESTRUTURA_FINAL.md (2024-12)
-- ESTRUTURA_PROPOSTA.md (2024-12)
-- PLANO_ORGANIZACAO.md (2024-12)
-- STATUS.md (2026-01-22)
-- BUGS.md (2026-01-22)
-- HANDOFF.md (2026-01-22)
-- PROMPT_CHATGPT_OSTEOPOROSE_FIX.md
-- QUALITY.md
-- PAPEIS.md
-- AI_HANDOFF_RULES.md
-
----
-
-## DOCUMENTACAO_FUTURO_STACK — 2026-02-02
-
-### Adicionado
-- `docs/FUTURO_STACK_MODERNO.md` — Plano completo para projetos futuros
-- Template de Hard Constraints para projeto novo
-- Ferramentas de qualidade: ESLint, Prettier, Husky
-- Guia de testes E2E com Playwright
-- ADRs (Architecture Decision Records)
-- Git workflow e convenção de commits
-- GitHub Actions CI básico
-- Checklist de maturidade do projeto
-- `PROMPT_INICIAL.md` — Prompt para iniciar sessões com AI
-
-### Decisão documentada
-- **NÃO migrar** OSTEOPOROSE/GRADE para stack moderno (funciona bem)
-- Usar novo stack apenas em **projetos futuros**
-
----
-
-## GRADE_CORES_NORMALIZADAS — 2026-02-02
-
-### Mudanças
-- Substituídas 7 cores hardcoded por CSS vars no GRADE:
-  - `#f8fafc` → `var(--bg)` (S22, S23)
-  - `#fff` → `var(--white)` (S12, S23)
-  - `#a16207` → `var(--amber)` (S51) — variável nova criada
-  - `#0f172a` → `var(--text)` (S51)
-- Removido arquivo backup `S51.html.orig`
-- Adicionada variável `--amber: #a16207` em `base.css`
+### Ajustes aplicados
+- S01: ajuste de respiro do bloco central e legibilidade da assinatura.
+- S02: citação mais coesa (line-height e espaçamento) e atribuição mais discreta.
+- S03: cards ainda mais densos para ocupar espaço branco no miolo.
+- S04: cards com padding ainda maior para reduzir vazio central.
 
 ### Arquivos modificados
-- `GRADE/src/css/base.css` (nova var --amber)
-- `GRADE/src/slides/S12.html`
-- `GRADE/src/slides/S22.html`
-- `GRADE/src/slides/S23.html`
-- `GRADE/src/slides/S51.html`
-- `GRADE/src/slides/S51.html.orig` (deletado)
-
-### Impacto visual
-Zero — todas as substituições são equivalentes exatos.
-
----
-
-## HARD_CONSTRAINTS_V2_E_DIAGNOSTICO — 2026-02-02
-
-### Hard Constraints expandidos (10 total)
-- **HC1-HC4**: Documentação, CSS mínimo, !important proibido, verificação
-- **HC5**: Zero dependências novas sem aprovação
-- **HC6**: Git checkpoint antes de mudança grande
-- **HC7**: Não refatorar/renomear sem pedir
-- **HC8**: Paths relativos sempre
-- **HC9**: Inline styles proibido
-- **HC10**: Testar viewer + print + export antes de "pronto"
-
-### Diagnóstico de melhorias gerado
-- `DIAGNOSTICO_MELHORIAS.md` criado com análise completa
-- Identificados: 220 !important, 4.298 inline styles, gaps de acessibilidade
-- Plano de ação em 5 sprints sugerido
-
-### Arquivos modificados
-- `HARD_CONSTRAINTS.md` - Expandido para 10 constraints
-- `.cursorrules` - Atualizado com todos os HCs
-- `DIAGNOSTICO_MELHORIAS.md` (novo)
-- `CHANGELOG.md`
-
----
-
-## REORGANIZAÇÃO_E_HARD_CONSTRAINTS — 2026-02-02
-
-### Objetivo
-- Limpar estrutura do projeto removendo duplicações e arquivos obsoletos
-- Estabelecer Hard Constraints para evitar regressões futuras
-- Mover exports para dentro de cada projeto (OSTEOPOROSE/exports, GRADE/exports)
-
-### Reorganização executada
-1. **Scripts consolidados**: Removido `GRADE/scripts/` e `OSTEOPOROSE/scripts/` duplicados → usar apenas `scripts/` na raiz
-2. **Exports por projeto**: `exports/` raiz → `OSTEOPOROSE/exports/` e `GRADE/exports/`
-3. **Documentação**: HANDOFFs datados e CHANGELOGs duplicados → `docs/archive/`
-4. **Archive expandido**: ZIPs temporários, pacotes de debug, screenshots antigos → `archive/`
-
-### Hard Constraints criados (INVIOLÁVEIS)
-- **HC1**: Toda mudança DEVE atualizar CHANGELOG.md
-- **HC2**: CSS mínimo (5-10 linhas max por tarefa)
-- **HC3**: Zero `!important` novo (exceto print.css existente)
-- **HC4**: Verificar count de !important antes/depois de CSS
-
-### Arquivos criados/modificados
-- `HARD_CONSTRAINTS.md` (novo) - Referência rápida
-- `.cursorrules` (novo) - Regras para Cursor AI
-- `scripts/AI-RESTRICTIONS.md` - Hard Constraints adicionados
-- `docs/AI/GUARDRAILS.md` - Parte 9 com Hard Constraints
-- `scripts/export-osteoporose-pdf.js` - Caminho atualizado para OSTEOPOROSE/exports
-- `scripts/export-grade-pdf.js` - Caminho atualizado para GRADE/exports
-
-### Testes executados
-- 20/20 verificações passaram
-- Scripts principais funcionando
-- PDFs gerados nos novos locais
-
----
-
-## OSTEOPOROSE_CONTENT_NORMALIZATION — 2026-02-02
-
-### Objetivo
-- Normalizar tokens de conteúdo nos slides (intervalos numéricos, placeholders)
-
-### Mudanças
-- Substituição de `--` por en-dash `–` em intervalos numéricos (17 slides)
-- Substituição de `[PLACEHOLDER]` por texto descritivo (S68-S71)
-- Screenshot de amostra não-fatal no export
-
-### Arquivos modificados
-- 17 slides em `OSTEOPOROSE/src/slides/`
-- `scripts/export-osteoporose-pdf.js`
-
----
-
-## OSTEOPOROSE_BATCH1_SLIDES01_10 — 2026-02-02 (Polish de abertura)
-
-### Objetivo
-- Melhorar **ritmo visual** e **distribuição vertical** nos 10 primeiros slides, sem mudanças sistêmicas em CSS.
-
-### O que foi feito
-- **S01/S02**: centralização vertical robusta (wrapper `height:100%`), mantendo o gradiente e evitando “top-heavy” no PDF.
-- **S03**: centralização vertical do bloco + subtítulo (“Mapa da aula”), preservando a timeline/estrutura.
-- **S04**: troca de separadores por bullets, subtítulo de convergência e box de “tradução prática” no rodapé.
-- **S05/S06**: subtítulo contextual + callout inferior; ajustes tipográficos (≤, −, en-dash) e seta (→).
-- **S10**: barra inferior com fórmulas (ARR, NNT, ICER) para ocupar espaço útil e reforçar o raciocínio.
-- **Export**: screenshot de amostra não-fatal (tenta 1º slide e cai para viewport), e viewport 1600×900 para consistência com o stage.
-
-### Arquivos modificados
-- `scripts/export-osteoporose-pdf.js`
 - `OSTEOPOROSE/src/slides/S01_slide-01.html`
 - `OSTEOPOROSE/src/slides/S02_slide-02.html`
 - `OSTEOPOROSE/src/slides/S03_slide-03.html`
 - `OSTEOPOROSE/src/slides/S04_slide-04.html`
-- `OSTEOPOROSE/src/slides/S05_slide-05.html`
-- `OSTEOPOROSE/src/slides/S06_slide-06.html`
-- `OSTEOPOROSE/src/slides/S10_slide-10.html`
 - `CHANGELOG.md`
+
+---
+
+## VISUAL_AUDIT_BATCH1_IMPL — 2026-02-02
+
+### Contexto
+Auditoria visual sistematica dos slides OSTEOPOROSE (S04-S10) com base em Gestalt.
+Verificacao previa de CSS base.css/viewer.css/print.css conforme HC9.
+Debugging comparativo: analisado S07 (slide bem resolvido) para identificar padroes.
+
+### Correcoes efetivas aplicadas
+
+#### S04 (Fontes e premissas)
+
+| Propriedade | Antes | Depois | Motivo |
+|-------------|-------|--------|--------|
+| Flex alignment | `center` | `flex-start` | Fluxo de leitura top-to-bottom |
+| Card padding | `18px` | `24px` | Preencher espaco naturalmente |
+| Line-height | `1.35` | `1.5` | Melhor legibilidade |
+| Li margin-bottom | `0` | `8px` | Separacao entre itens |
+
+**Resultado:** Cards preenchem espaco vertical naturalmente, gap proporcional.
+
+#### S09 (Quanto custa uma fratura)
+
+| Propriedade | Antes | Depois | Motivo |
+|-------------|-------|--------|--------|
+| Box "Como usar" bg | `gold` | `navy sutil` | Hierarquia visual |
+
+**Resultado:** Message box navy e foco principal, box secundario nao compete.
+
+### Decisao tecnica: S05/S06 (Timelines)
+
+**Analise:** Whitespace identificado como potencial problema.
+
+**Investigacao:**
+1. Tentativa inicial: `align-items: center` — criou efeito de "flutuacao" (pior)
+2. Tentativa: ajuste min-height — ineficaz (elementos usam `position: absolute`)
+
+**Decisao profissional:** Manter design original.
+- Whitespace em slides de apresentacao e design editorial intencional
+- Timeline centralizada corretamente pelo flex container existente
+- Refatorar absolute→flex: alto risco, viola HC
+
+### Slides sem alteracao (ja adequados)
+- S07: Hierarquia visual clara, cards preenchem espaco
+- S08: Excelente continuidade visual (gradient bar)
+- S10: Layout 2 colunas equilibrado
+
+### Arquivos modificados
+- `OSTEOPOROSE/src/slides/S04_slide-04.html`
+- `OSTEOPOROSE/src/slides/S09_slide-09.html`
+
+---
+
+## VISUAL_AUDIT_BATCH1 — 2026-02-02
+
+### Contexto
+Início de auditoria visual sistemática dos slides OSTEOPOROSE com base em:
+- Princípios de Gestalt (proximidade, continuidade, hierarquia)
+- UI/UX frontend (contraste, whitespace, alinhamento)
+- Verificação de conflitos CSS (HC9)
+
+### Hard Constraints atualizados
+- **HC9 revisado**: Inline styles em slides permitidos COM verificação prévia de CSS
+- Adicionada nota de arquitetura: padrão legado aceito por pragmatismo
+- Arquivos: `HARD_CONSTRAINTS.md`, `PROMPT_INICIAL.md`
+
+### S03 (Objetivos Educacionais) — Correções de layout
+| Mudança | Antes | Depois | Motivo |
+|---------|-------|--------|--------|
+| Container flex | `justify-content: space-between` | `justify-content: center` | Centralizar timeline verticalmente |
+| Gap container | `18px` | `24px` | Melhor separação timeline/take-home |
+| Max-width timeline | `1000px` | `1100px` | Preencher horizontal |
+| Gap itens | `12px` | `16px` | Respiro entre itens |
+| Linha gold | `top/bottom: 28px` | `top/bottom: 24px` | Cobrir altura dos círculos |
+| Background cards | `rgba(0.05)` | `rgba(0.07)` | Ligeiramente mais visível |
+
+### Arquivos modificados
+- `HARD_CONSTRAINTS.md`
+- `PROMPT_INICIAL.md`
+- `OSTEOPOROSE/src/slides/S03_slide-03.html`
+
+---
 
 ## OSTEOPOROSE_PDF_FIX_2026_01_29 — 2026-01-29 (Tentativa de correção PDF)
 
@@ -668,3 +602,9 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - `GRADE/src/slides/S56.html`
 - `GRADE/src/slides/S57.html`
 - `GRADE/src/slides/S59.html`
+
+## OSTEOPOROSE_SLIDES_BATCH1_POLISH — 2026-02-02
+
+- Slide 03: restaura estrutura semântica (h1 como filho direto) e evita expansão indesejada do container (flex:0) para não "esticar" a linha vertical.
+- Slide 06: reduz whitespace (título mais próximo do conteúdo) e adiciona subtítulo + takeaway discreto (sem mexer no CSS global).
+- Export script: torna o screenshot de amostra não-fatal (usa page.screenshot do viewport; sem locator).

@@ -1,14 +1,21 @@
 <!-- 11. Slide 12A - QALY por risco: por que o risco basal muda tudo -->
-<section class="slide" data-slide="" data-title="Slide 12A - QALY por risco: por que o risco basal muda tudo" id="slide-qaly-por-risco" style="padding: 50px; background: var(--bg);">
-<h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); margin: 0 0 18px 0; text-align: center;">
+<section class="slide" data-slide="" data-title="Slide 12A - QALY por risco: por que o risco basal muda tudo" id="slide-qaly-por-risco" style="padding: 40px 48px; background: var(--bg);">
+
+  <!-- Inner wrapper (print-safe): garante ancoragem vertical em @media print (onde .slide vira block) -->
+  <div style="height: 100%; display: flex; flex-direction: column;">
+
+<h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); margin: 0 0 18px 0; text-align: left;">
         QALY por risco: por que o risco basal muda tudo?
     </h1>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 600; color: rgba(var(--navy-rgb), 0.78); text-align: center; margin: 0 0 28px 0;">
+<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 600; color: rgba(var(--navy-rgb), 0.78); text-align: left; margin: 0 0 24px 0;">
         Quanto maior o risco, maior o benefício absoluto → menor custo por QALY
     </p>
-<div style="display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px; align-items: center;">
+  <!-- Conteúdo principal (flex:1) + mensagem-chave no rodapé -->
+  <div style="flex: 1 1 auto; display: flex; flex-direction: column;">
+
+<div style="display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 24px; align-items: center;">
 <!-- ESQUERDA: lógica -->
-<div style="background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: 0 4px 14px rgba(0,0,0,0.06);">
+<div style="background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 18px; box-shadow: 0 3px 10px rgba(0,0,0,0.05);">
 <h2 style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 700; color: var(--navy); margin: 0 0 12px 0;">
                 A conta por trás do “value”
             </h2>
@@ -40,7 +47,7 @@
 </div>
 <!-- DIREITA: exemplo real -->
 <div>
-<div style="background: var(--navy); border-radius: 16px; padding: 20px; color: var(--white); box-shadow: 0 6px 18px rgba(0,0,0,0.12);">
+<div style="background: var(--navy); border-radius: 16px; padding: 18px; color: var(--white); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
 <h2 style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 700; margin: 0 0 12px 0;">
                     Exemplo (modelo NOF/USA)
                 </h2>
@@ -68,22 +75,24 @@
 </div>
 </div>
 </div>
+</div>
 
-<!-- Barra inferior (matemática do benefício absoluto) -->
-<div style="margin-top: 26px; background: rgba(var(--border-rgb), 0.55); border: 1px solid var(--border); border-radius: 14px; padding: 14px 18px;">
-  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; align-items: start;">
-    <div style="border-left: 6px solid rgba(var(--navy-rgb), 0.78); padding-left: 12px;">
-      <p style="font-family: Inter, sans-serif; font-size: 13px; color: var(--muted); margin: 0 0 4px 0;">Benefício absoluto</p>
-      <p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--navy); margin: 0;"><strong>ARR</strong> ≈ risco basal × <strong>RRR</strong></p>
-    </div>
-    <div style="border-left: 6px solid var(--gold); padding-left: 12px;">
-      <p style="font-family: Inter, sans-serif; font-size: 13px; color: var(--muted); margin: 0 0 4px 0;">Tradução clínica</p>
-      <p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--navy); margin: 0;"><strong>NNT</strong> ≈ 1 ÷ ARR</p>
-    </div>
-    <div style="border-left: 6px solid rgba(var(--navy-rgb), 0.55); padding-left: 12px;">
-      <p style="font-family: Inter, sans-serif; font-size: 13px; color: var(--muted); margin: 0 0 4px 0;">Economia da decisão</p>
-      <p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--navy); margin: 0;"><strong>ICER</strong> ≈ custo ÷ (QALYs ganhos)</p>
+  <!-- Mensagem-chave (ancorada no rodapé, reduz o vazio visual sem mudar CSS global) -->
+  <div style="margin-top: auto; padding-top: 16px; display: flex; justify-content: center;">
+    <div style="width: 100%; max-width: 1100px; background: rgba(var(--gold-rgb), 0.12); border: 1px solid rgba(var(--gold-rgb), 0.30); border-radius: 14px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+      <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 800; color: var(--navy);">Regra de bolso:</div>
+      <div style="flex: 1; display: flex; align-items: center; gap: 10px;">
+        <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); background: rgba(var(--navy-rgb), 0.06); border: 1px solid rgba(var(--navy-rgb), 0.14); padding: 6px 10px; border-radius: 999px; white-space: nowrap;">Risco basal ↑</span>
+        <span style="font-family: Inter, sans-serif; font-size: 14px; color: rgba(var(--navy-rgb), 0.7);">→</span>
+        <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); background: rgba(var(--navy-rgb), 0.06); border: 1px solid rgba(var(--navy-rgb), 0.14); padding: 6px 10px; border-radius: 999px; white-space: nowrap;">QALYs ganhos ↑</span>
+        <span style="font-family: Inter, sans-serif; font-size: 14px; color: rgba(var(--navy-rgb), 0.7);">→</span>
+        <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 800; color: var(--navy); background: rgba(var(--gold-rgb), 0.20); border: 1px solid rgba(var(--gold-rgb), 0.40); padding: 6px 10px; border-radius: 999px; white-space: nowrap;">ICER ↓</span>
+      </div>
+      <div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; color: rgba(var(--navy-rgb), 0.68); text-align: right;">O “value” nasce do benefício absoluto.<br/>A mesma eficácia rende mais quando o risco é alto.</div>
     </div>
   </div>
+
+  </div>
+
 </div>
 </section>

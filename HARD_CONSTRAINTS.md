@@ -123,19 +123,43 @@ const outputDir = 'c:\\Dev\\Projetos\\Aulas2\\exports';
 
 ---
 
-## HC9: INLINE STYLES PROIBIDO
+## HC9: INLINE STYLES — VERIFICAÇÃO OBRIGATÓRIA
 
-```html
-<!-- ❌ NUNCA -->
-<div style="display: flex; margin: 20px;">
+**Contexto:** Os slides HTML usam inline styles (padrão legado do projeto).  
+**Regra:** Inline styles são permitidos em slides, **MAS** requerem verificação prévia.
 
-<!-- ✅ CORRETO -->
-<div class="card">
+> ⚠️ **Nota de arquitetura:** Inline styles em slides é **padrão LEGADO** deste projeto, aceito por pragmatismo (72 slides existentes, refatoração custosa). Para **NOVOS projetos**, preferir CSS classes com variáveis `:root`.
+
+### Antes de adicionar/modificar inline style:
+
+```bash
+# 1. Verificar CSS do projeto para evitar conflitos:
+
+# OSTEOPOROSE:
+cat OSTEOPOROSE/src/css/base.css    # tokens :root, .slide, .stage
+cat OSTEOPOROSE/src/css/viewer.css  # regras de viewer/stage
+cat OSTEOPOROSE/src/css/print.css   # regras de impressão
+
+# GRADE:
+cat GRADE/src/css/base.css
+cat GRADE/src/css/viewer.css
+cat GRADE/src/css/print.css
 ```
 
-- Zero `style="..."` em HTML
-- Se precisar de estilo único → criar classe em CSS existente
-- Exceção: geração dinâmica de posição (JS calculado)
+### Checklist de conflito:
+
+| Verificar | Risco |
+|-----------|-------|
+| Propriedade já definida em `.slide`? | Conflito de especificidade |
+| Usa variável CSS (var(--x))? | OK, preferível |
+| Afeta layout flex/grid do viewer? | Alto risco — testar print |
+| Usa unidades absolutas (px)? | Verificar em diferentes viewports |
+
+### Regra final:
+
+- ✅ Inline style em slide **com verificação prévia** = OK
+- ❌ Inline style **sem verificar CSS** = PROIBIDO
+- ❌ Inline style em **componentes JS/estruturais** = PROIBIDO (usar classes)
 
 ---
 
@@ -160,6 +184,45 @@ GRADE:       http://127.0.0.1:5500/GRADE/src/index.html
 
 ---
 
+## HC11: CONTEÚDO MÉDICO — VERIFICAÇÃO OBRIGATÓRIA
+
+**Conteúdo médico PODE ser modificado**, mas com regras estritas:
+
+### Permitido:
+- ✅ Reduzir texto para melhorar legibilidade
+- ✅ Reorganizar informação para clareza visual
+- ✅ Adicionar contexto explicativo (subtítulos, labels)
+- ✅ Correções de ortografia/formatação
+
+### Obrigatório:
+1. **Comunicar** ao usuário ANTES de modificar conteúdo clínico
+2. **Verificar** que informação está correta (literatura, guidelines)
+3. **Documentar** mudança no CHANGELOG com justificativa
+
+### PROIBIDO (tolerância zero):
+- ❌ **NUNCA** inventar dados, estatísticas ou referências
+- ❌ **NUNCA** adicionar claims não verificados
+- ❌ **NUNCA** modificar números/percentuais sem fonte
+- ❌ **NUNCA** alterar nome de trials/estudos sem verificar
+
+### Checklist de verificação:
+
+| Mudança | Verificar |
+|---------|-----------|
+| Número/estatística | Fonte primária existe? |
+| Nome de trial | Acrônimo correto? Ano correto? |
+| Droga/fármaco | Nome genérico correto? |
+| Guideline | Organização + ano corretos? |
+
+### Regra final:
+
+```
+Conteúdo verificado + comunicado = OK
+Conteúdo inventado = INACEITÁVEL (violação grave)
+```
+
+---
+
 ## RESUMO
 
 | Constraint | Regra |
@@ -172,11 +235,13 @@ GRADE:       http://127.0.0.1:5500/GRADE/src/index.html
 | **HC6** | Git commit checkpoint antes de mudança grande |
 | **HC7** | Não refatorar/renomear sem pedir |
 | **HC8** | Paths relativos sempre (nunca hardcoded) |
-| **HC9** | Inline styles proibido |
+| **HC9** | Inline em slides: verificar CSS antes |
 | **HC10** | Testar viewer + print + export antes de "pronto" |
+| **HC11** | Conteúdo médico: verificar + comunicar, NUNCA inventar |
 
 **Violação de qualquer HC = PARE e pergunte ao usuário**
 
 ---
 
-*Criado: 2026-02-02*
+*Criado: 2026-02-02*  
+*Atualizado: 2026-02-02 — HC11 adicionado para conteúdo médico*
