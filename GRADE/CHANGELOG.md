@@ -1,5 +1,20 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-03 — P2 (CAC): paleta mais sóbria (1–27)
+
+- **NNT/NNH (CAC)**: removido “traffic-light” vermelho/verde; agora usa **ouro (cautela)** + **teal (benefício)** com opacidades baixas.
+- **Consistência do bloco CAC ↔ bempedóico**: padronização de destaque positivo (`--green` → `--teal`) nos slides do CAC.
+- **Avisos clínicos**: caixas “exceção/evite” migraram para ouro suave (menos gritante), preservando hierarquia visual.
+
+### Arquivos modificados
+- `src/slides/S07.html`
+- `src/slides/S08.html`
+- `src/slides/S10.html`
+- `src/slides/S11.html`
+- `src/slides/S13.html`
+- `CHANGELOG.md`
+
+
 ## 2026-02-02 — P2 (Bempedóico): UX pass (até o slide 28)
 
 - **Sem emoji (mais “enterprise”)**: removidos marcadores emoji nos slides do contador 1–28; substituídos por ícones tipográficos consistentes.
