@@ -52,10 +52,58 @@
   color: var(--gold);
 }
 
+/* Layout utilities (used across slides) */
+.grid {
+  display: grid;
+}
+
+.chip-row {
+  display: flex;
+  align-items: center;
+}
+
+.bullets {
+  margin: 0;
+  padding-left: 1.15em;
+  line-height: 1.45;
+}
+
+.bullets li {
+  margin-bottom: 0.55vw;
+}
+
+.bullets li:last-child {
+  margin-bottom: 0;
+}
+
+.muted {
+  color: rgba(var(--text-rgb), 0.65);
+}
+
+.rule {
+  height: 1px;
+  background: rgba(var(--navy-rgb), 0.12);
+}
+
+.badge {
+  width: 2.1vw;
+  height: 2.1vw;
+  border-radius: 0.7vw;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: clamp(12px, 0.9vw, 16px);
+  background: rgba(var(--navy-rgb), 0.08);
+  border: 1px solid rgba(var(--navy-rgb), 0.18);
+  color: var(--navy);
+}
+
 /* Small section title (used inside cards) */
 .small-title {
   font-family: var(--font-sans);
-  font-size: 0.86vw;
+  font-size: clamp(14px, 0.86vw, 18px);
   color: rgba(var(--navy-rgb), 0.70);
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -72,13 +120,13 @@
 
 /* Icon circles (avoid emoji, keep semantics) */
 .iconCircle {
-  width: 1.15vw;
-  height: 1.15vw;
+  width: clamp(16px, 1.15vw, 22px);
+  height: clamp(16px, 1.15vw, 22px);
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.82vw;
+  font-size: clamp(12px, 0.82vw, 16px);
   font-weight: 900;
   line-height: 1;
   flex: 0 0 auto;
@@ -165,7 +213,7 @@
   font-family: var(--font-sans) !important;
   font-weight: 800;
   letter-spacing: 0.04em;
-  font-size: 0.82vw;
+  font-size: clamp(12px, 0.82vw, 16px);
 }
 
 /* Chips */
@@ -173,7 +221,7 @@
   display: inline-block;
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: 0.78vw;
+  font-size: clamp(12px, 0.80vw, 16px);
   letter-spacing: 0.06em;
   border-radius: 0.55vw;
   padding: 0.28vw 0.55vw;

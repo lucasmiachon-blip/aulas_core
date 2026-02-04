@@ -1,3 +1,12 @@
+# GRADE • Deck (HTML/CSS/JS)
+
+## Nota rápida (projeção)
+
+- A escala tipográfica global usa **clamp()** para evitar que **Georgia (serifa)** e **Inter (sans)** fiquem pequenas em projetores (ex.: 1280×720).
+- Checklist de legibilidade: texto principal ≥18px, secundário ≥16px, referências ≥12px.
+
+---
+
 # Figuras do GRADE
 
 Esta pasta contém figuras extraídas de papers para uso nos slides.

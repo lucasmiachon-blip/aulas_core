@@ -1,0 +1,16 @@
+src/css/base.css
+src/css/blocks.css
+src/slides/S10.html
+src/slides/S18.html
+src/slides/S20.html
+src/slides/S43.html
+src/slides/S44.html
+src/slides/S45.html
+src/slides/S47.html
+src/slides/S48.html
+src/slides/S49.html
+src/slides/S53.html
+docs/quality_checklist_v2.md
+audit/SLIDE_REVIEW_01-36.md
+README.md
+CHANGELOG.md

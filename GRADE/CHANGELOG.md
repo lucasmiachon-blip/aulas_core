@@ -1,5 +1,42 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-04 — P2 (Legibilidade em projetor + arco do bempedóico mais limpo)
+
+### Tipografia (projetor)
+- **base.css:** escala global agora usa `clamp()` (Inter/Georgia não colapsam em 1280×720); `.ref` padronizada via token `--ref`.
+- **blocks.css:** `chip`, `small-title`, `iconCircle` e `cardHeader` com tamanhos mínimos (clamp) para manter legibilidade.
+
+### CAC (S10)
+- **CAC=0:** janela agora explicitada como **função do risco basal** (faixas como referência, não regra fixa).
+
+### Bempedóico/SAMS (menos ruído, menos repetição)
+- **S43:** SAMS reescrito sem “script do apresentador”; foco em proteger o PICO + ponte para indireção.
+- **S18:** imprecisão aplicada ao CLEAR simplificada (sem tabela longa; decisão “IC toca MID → −1”).
+- **S20:** síntese enxuta (domínios → certeza; EtD → força) com 1 regra de plantão.
+- **S47:** removido “objetivo do slide” e card de “10s”; fechado com síntese curta.
+- **S48/S49:** mapa/fechamento redesenhados para decisão (3 opções, trade-offs, viabilidade BR) com texto reduzido.
+
+### Docs/Auditoria
+- Checklist v2 ganhou gatilho explícito de **teste de projeção** (Inter/Georgia: 18/16/12px).
+- Adicionadas capturas do PDF (220dpi para 1–36 + 440dpi em slides densos) para revisão rápida.
+
+#### Arquivos modificados
+- `src/css/base.css`
+- `src/css/blocks.css`
+- `src/slides/S10.html`
+- `src/slides/S18.html`
+- `src/slides/S20.html`
+- `src/slides/S43.html`
+- `src/slides/S47.html`
+- `src/slides/S48.html`
+- `src/slides/S49.html`
+- `src/slides/S53.html`
+- `docs/quality_checklist_v2.md`
+- `audit/pdf_screens/220dpi/*`
+- `audit/pdf_screens/440dpi_focus/*`
+- `README.md`
+- `CHANGELOG.md`
+
 ## 2026-02-04 — P2 (Bempedóico): reduzir redundância + pós-hoc/limitações (SAMS como pano de fundo)
 
 - **S43 (SAMS):** reframing para *“por que isso importa”* (PICO e decisão) com menos ruído; referências ajustadas (StatinWISE **BMJ 2021**).
