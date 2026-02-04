@@ -44,6 +44,28 @@ Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/s
 
 # 🤖 PARA ASSISTENTES DE IA (Claude, ChatGPT, Auto)
 
+## 📝 DOCUMENTOS DE APRENDIZADO CONTÍNUO
+
+**Estes documentos DEVEM ser atualizados a cada sessão:**
+
+| Documento | Responsável | Propósito |
+|-----------|-------------|-----------|
+| `CLAUDE.md` | Claude | Persona frontend/design + registro de erros + aprendizados |
+| `chatgpt.md` | ChatGPT | Contexto de auditoria + decisões + feedback |
+
+**Regras:**
+- **CLAUDE.md**: Atualizar com erros cometidos, aprendizados, e melhorias de processo
+- **chatgpt.md**: Atualizar com contexto de auditoria, decisões tomadas, e feedback
+
+**Transferência de conhecimento:**
+- Erros em um projeto previnem erros em outros
+- Padrões identificados viram regras permanentes
+- 3 erros similares = nova seção de referência criada
+
+**Leia estes documentos no início de cada sessão para entender o contexto e evitar erros já cometidos.**
+
+---
+
 ## ⚠️ LEIA PRIMEIRO - PROTOCOLO OBRIGATÓRIO
 
 **Você está entrando neste projeto. ANTES de fazer QUALQUER coisa:**
