@@ -1,5 +1,5 @@
 # Lista de slides - Osteoporose
-# 72 slides total (S09 "O que é QALY" removido, reordenado)
+# 72 slides total (S09-S11 movidos para apêndice; S12/S13 invertidos)
 S01_slide-01.html
 S02_slide-02.html
 S03_slide-03.html
@@ -8,13 +8,9 @@ S05_slide-05.html
 S06_slide-06.html
 S07_slide-07.html
 S08_slide-08.html
-S09_slide-09.html
-S10_slide-10.html
-S11_slide-11.html
-S12_slide-12.html
 S13_slide-13.html
+S12_slide-12.html
 S14_slide-14.html
-S15_slide-15.html
 S16_slide-16.html
 S17_slide-17.html
 S18_slide-18.html
@@ -50,6 +46,10 @@ S47_slide-47.html
 S48_slide-48.html
 S49_slide-49.html
 S50_slide-50.html
+S15_slide-15.html
+S09_slide-09.html
+S10_slide-10.html
+S11_slide-11.html
 S51_slide-51.html
 S52_slide-52.html
 S53_slide-53.html

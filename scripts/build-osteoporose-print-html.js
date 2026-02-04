@@ -46,7 +46,7 @@ function validateListMetaAndFiles(files) {
   }
 }
 
-const PRINT_HEAD = `<!DOCTYPE html>
+const printHead = (count) => `<!DOCTYPE html>
 <!--
   print.html: gerado por build-osteoporose-print-html.js a partir dos slides.
   Mesma fonte que o index (sync, UTF-8). Para PDF: index.html?print=1 é preferido.
@@ -54,7 +54,7 @@ const PRINT_HEAD = `<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Osteoporose - 73 slides</title>
+<title>Osteoporose - ${count} slides</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>:root {
   --bg: #F9F8F4; --white: #FFFFFF; --navy: #0B1320; --gold: #DDB944;
@@ -133,7 +133,7 @@ function main() {
     sections.push(html.trim());
   }
 
-  const out = PRINT_HEAD + sections.join('\n\n') + PRINT_TAIL;
+  const out = printHead(sections.length) + sections.join('\n\n') + PRINT_TAIL;
   fs.writeFileSync(OUT_FILE, out, 'utf8');
   console.log('OK:', OUT_FILE, '|', sections.length, 'slides');
 }
