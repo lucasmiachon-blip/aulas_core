@@ -8,65 +8,63 @@
   </p>
 
   <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1.2vw;">
-    <!-- Coluna esquerda: PICO + definição -->
+    <!-- Coluna esquerda: por que importa para o GRADE -->
     <div>
       <div class="card" style="padding: 1.2vw 1.3vw; margin-bottom: 1.1vw;">
-        <div class="small-title" style="margin-bottom: .7vw;">Pergunta‑chave (PICO)</div>
-        <div class="bulletRow" style="margin-bottom: .6vw;">
-          <span class="badge">P</span>
-          <div><strong>Intolerância a estatina confirmada</strong> + alto risco CV</div>
+        <div class="small-title" style="margin-bottom: .7vw;">Por que isso importa (para o GRADE)</div>
+
+        <ul class="bullets" style="margin: 0;">
+          <li><b>SAMS relatado</b> &ne; <b>intolerância documentada</b> &rarr; risco de errar o <b>P</b> do PICO.</li>
+          <li>Sem testar causalidade, você pode trocar uma terapia com grande benefício por uma decisão baseada em <b>atribuição</b>.</li>
+          <li>Em alto risco, o “custo” do rótulo é maior: o <b>EtD</b> passa a girar em torno de <b>alternativas viáveis</b>.</li>
+        </ul>
+
+        <div class="note" style="margin-top: 0.9vw; border-left-color: var(--teal); background: rgba(var(--teal-rgb),0.10);">
+          <b>Take‑home:</b> trate “SAMS” como hipótese &rarr; teste curto &rarr; então decida.
         </div>
-        <div class="bulletRow" style="margin-bottom: .6vw;">
-          <span class="badge">I</span>
-          <div><strong>Ácido bempedóico</strong> (via oral)</div>
+      </div>
+
+      <div class="card" style="padding: 1.2vw 1.3vw; border-color: rgba(var(--gold-rgb),0.45); background: linear-gradient(180deg, #fff, #fffaf0);">
+        <div class="small-title" style="margin-bottom: .7vw;">PICO do CLEAR (para lembrar)</div>
+        <div style="display:grid; grid-template-columns: 2.2vw 1fr; gap: .65vw; align-items:start;">
+          <span class="badge">P</span><div><b>Intolerância a estatina confirmada</b></div>
+          <span class="badge">I</span><div>Ácido bempedóico (VO)</div>
+          <span class="badge">O</span><div><b>MACE‑4</b> (desfecho duro)</div>
         </div>
-        <div class="bulletRow" style="margin-bottom: .6vw;">
-          <span class="badge">C</span>
-          <div><strong>Placebo</strong> / cuidado usual</div>
+      </div>
+    </div>
+
+    <!-- Coluna direita: por que testar (nocebo) -->
+    <div>
+      <div class="card" style="padding: 1.2vw 1.3vw; margin-bottom: 1.1vw;">
+        <div class="small-title" style="margin-bottom: .7vw;">Por que testar causalidade? (N‑of‑1)</div>
+        <div style="display:grid; grid-template-columns: 1.05fr 2fr; gap: .9vw;">
+          <div style="font-weight: 800; color: var(--navy);">SAMSON</div>
+          <div>
+            Sintomas (0&ndash;100): <b>8,0</b> sem comprimido; <b>15,4</b> placebo; <b>16,3</b> estatina &rarr; <b>diferença ~0</b> (nocebo grande).
+          </div>
+          <div style="font-weight: 800; color: var(--navy);">StatinWISE</div>
+          <div>
+            Efeito médio em grupo &approx; <b>zero</b> &rarr; vale insistir com teste estruturado antes de abandonar.
+          </div>
         </div>
-        <div class="bulletRow">
-          <span class="badge">O</span>
-          <div><strong>MACE‑4</strong> (desfechos duros)</div>
+
+        <div class="note" style="margin-top: 1.0vw;">
+          <b>Como falar (30s):</b> “Vamos diferenciar sintoma de efeito do remédio. Fazemos um teste curto e seguro; se repetir, tratamos como intolerância real.”
         </div>
       </div>
 
       <div class="card" style="padding: 1.2vw 1.3vw;">
-        <div class="small-title" style="margin-bottom: .7vw;">O que chamamos de SAMS (neste curso)</div>
+        <div class="small-title" style="margin-bottom: .7vw;">Objetivo didático no bloco do bempedóico</div>
         <ul class="bullets" style="margin: 0;">
-          <li><strong>S</strong>intomas musculares atribuídos à estatina (mialgia, cãibra, fadiga)</li>
-          <li><strong>Não é diagnóstico</strong>: precisa de <em>teste de causalidade</em> (parar → observar → reintroduzir)</li>
-          <li>Classifique o impacto: <strong>parcial</strong> (aceita dose) vs <strong>completo</strong> (não tolera)</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Coluna direita: evidência nocebo + consequência prática -->
-    <div>
-      <div class="card" style="padding: 1.2vw 1.3vw; margin-bottom: 1.1vw;">
-        <div class="small-title" style="margin-bottom: .7vw;">Evidência em 1 minuto (N‑of‑1): nocebo é grande</div>
-        <div style="display: grid; grid-template-columns: 1.1fr 2fr; gap: .9vw;">
-          <div style="font-weight: 800; color: var(--navy);">SAMSON</div>
-          <div>Intensidade de sintomas foi <strong>semelhante</strong> com estatina e placebo (nocebo ≈ <strong>90%</strong>).</div>
-          <div style="font-weight: 800; color: var(--navy);">StatinWISE</div>
-          <div>Em média, <strong>não houve diferença</strong> de dor entre estatina e placebo (efeito ≈ 0).</div>
-        </div>
-        <div class="note" style="margin-top: 1.0vw;">
-          Tradução: se você não testa causalidade, tende a trocar prevenção baseada em evidência por “exceções” — e o custo (clínico) pode ser alto.
-        </div>
-      </div>
-
-      <div class="card" style="padding: 1.2vw 1.3vw; border-color: rgba(207, 170, 76, .55); background: linear-gradient(180deg, #fff, #fffaf0);">
-        <div class="small-title" style="margin-bottom: .7vw;">Consequência prática</div>
-        <ul class="bullets" style="margin: 0;">
-          <li><strong>Evite “etiquetar”</strong> antes de re‑desafio: muitas queixas são inespecíficas.</li>
-          <li><strong>Se risco basal é alto</strong>, a decisão exige plano para atingir meta (EtD pesa mais).</li>
-          <li><strong>Se intolerância é real</strong>, alternativas orais/injetáveis entram — com trade‑offs.</li>
+          <li>Usar o caso para ensinar <b>indireção</b> (PICO) e <b>imprecisão</b> (IC vs MID).</li>
+          <li>SAMS é <b>pano de fundo</b>: só o suficiente para não errar a premissa da diretriz.</li>
         </ul>
       </div>
     </div>
   </div>
 
   <p class="source" style="margin-top: 1.2vw;">
-    Fontes: Howard JP et al. <em>J Am Coll Cardiol</em> 2021 (SAMSON). Herrett E et al. <em>JAMA</em> 2021 (StatinWISE).
+    Fontes: Howard JP et al. <em>J Am Coll Cardiol</em> 2021 (SAMSON). StatinWISE: <em>BMJ</em> 2021.
   </p>
 </section>

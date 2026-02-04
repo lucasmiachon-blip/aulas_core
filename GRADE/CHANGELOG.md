@@ -1,5 +1,19 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-04 — P2 (Bempedóico): reduzir redundância + pós-hoc/limitações (SAMS como pano de fundo)
+
+- **S43 (SAMS):** reframing para *“por que isso importa”* (PICO e decisão) com menos ruído; referências ajustadas (StatinWISE **BMJ 2021**).
+- **S44 (CLEAR Outcomes):** incorporado *snapshot* (chips) para evitar repetição entre slides; MACE-4 explicitado.
+- **S47 (CLEAR Outcomes):** substituído por um slide de **limitações + pós-hoc** (indireção, imprecisão e regra mental de subgrupos) com script de 10s.
+- **S14 (diretriz):** mantidas recomendações **ipsis litteris** (sem nota de reticências) e reforçada a leitura por indireção.
+
+### Arquivos modificados
+- `src/slides/S14.html`
+- `src/slides/S43.html`
+- `src/slides/S44.html`
+- `src/slides/S47.html`
+- `CHANGELOG.md`
+
 ## 2026-02-04 — P2 (Bempedóico): foco em GRADE + recomendações (SBC 2025)
 
 - **Mensagem do bloco (S61):** reframing explícito: *o bempedóico é o exemplo; o foco é GRADE* (indireção → imprecisão → EtD).
