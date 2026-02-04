@@ -9,11 +9,7 @@ Meta do produto: **≥ 7,5/10** (consistência e previsibilidade, sem ruído).
 
 1) **Overflow/viewport:** qualquer elemento que vaze no viewer ou na exportação PDF.
 2) **Ilegível em sala:** fonte pequena / baixo contraste / quadro denso.
-   - Teste mínimo: simular projetor **1280×720** (ou export PDF) e verificar:
-     - Texto principal (Inter/Georgia) **≥ 18px**
-     - Texto secundário **≥ 16px**
-     - Referências/rodapé **≥ 12px**
-     - Sem depender de zoom do navegador.
+   - Regra prática: texto “útil” (não rodapé) raramente deve cair abaixo de ~0,95vw. Serif e sans precisam ser legíveis no projetor.
 3) **>1 ideia central:** duas mensagens competindo na mesma tela.
 4) **Texto de fala do apresentador:** frases em tom de tutorial, primeira pessoa, ou “conversa” dentro do slide.
 5) **Números sem contexto:** sem denominador, horizonte de tempo ou desfecho.
@@ -76,16 +72,8 @@ Meta do produto: **≥ 7,5/10** (consistência e previsibilidade, sem ruído).
 ## Micro-regras práticas (para edição rápida)
 
 - **Headline:** 12–18 palavras. Se passar disso, está virando parágrafo.
+- **Projetor (tipografia):** valide em tela cheia (16:9) e a 2–3 metros. Se o corpo estiver pequeno, suba a escala antes de enxugar conteúdo.
 - **Números:** no máximo 2 por slide. Se precisar de mais, é outro slide.
 - **Citações/“ipsis litteris”:** preferir trechos curtos + atribuição clara.
 - **EtD:** uma vez no bloco (slide “definitivo”). O resto referencia.
 - **SAMS:** pano de fundo do PICO; se virar protagonista, o bloco perdeu o foco.
-
----
-
-## Checklist rápido de tipografia (serifa vs sans)
-
-- Se houver mistura de **serifa (Georgia)** e **sans (Inter)** no mesmo slide, confira:
-  - A serifa não ficou menor do que a sans (especialmente em projetor).
-  - Linhas de serifa mantêm **line-height** confortável (≥ 1.25).
-  - Chips e notas não caem abaixo do mínimo (ver gate acima).

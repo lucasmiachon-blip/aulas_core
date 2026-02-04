@@ -52,58 +52,10 @@
   color: var(--gold);
 }
 
-/* Layout utilities (used across slides) */
-.grid {
-  display: grid;
-}
-
-.chip-row {
-  display: flex;
-  align-items: center;
-}
-
-.bullets {
-  margin: 0;
-  padding-left: 1.15em;
-  line-height: 1.45;
-}
-
-.bullets li {
-  margin-bottom: 0.55vw;
-}
-
-.bullets li:last-child {
-  margin-bottom: 0;
-}
-
-.muted {
-  color: rgba(var(--text-rgb), 0.65);
-}
-
-.rule {
-  height: 1px;
-  background: rgba(var(--navy-rgb), 0.12);
-}
-
-.badge {
-  width: 2.1vw;
-  height: 2.1vw;
-  border-radius: 0.7vw;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-sans);
-  font-weight: 900;
-  font-size: clamp(12px, 0.9vw, 16px);
-  background: rgba(var(--navy-rgb), 0.08);
-  border: 1px solid rgba(var(--navy-rgb), 0.18);
-  color: var(--navy);
-}
-
 /* Small section title (used inside cards) */
 .small-title {
   font-family: var(--font-sans);
-  font-size: clamp(14px, 0.86vw, 18px);
+  font-size: 0.86vw;
   color: rgba(var(--navy-rgb), 0.70);
   font-weight: 900;
   letter-spacing: 0.08em;
@@ -120,13 +72,13 @@
 
 /* Icon circles (avoid emoji, keep semantics) */
 .iconCircle {
-  width: clamp(16px, 1.15vw, 22px);
-  height: clamp(16px, 1.15vw, 22px);
+  width: 1.15vw;
+  height: 1.15vw;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: clamp(12px, 0.82vw, 16px);
+  font-size: 0.82vw;
   font-weight: 900;
   line-height: 1;
   flex: 0 0 auto;
@@ -213,7 +165,7 @@
   font-family: var(--font-sans) !important;
   font-weight: 800;
   letter-spacing: 0.04em;
-  font-size: clamp(12px, 0.82vw, 16px);
+  font-size: 0.82vw;
 }
 
 /* Chips */
@@ -221,7 +173,7 @@
   display: inline-block;
   font-family: var(--font-sans);
   font-weight: 800;
-  font-size: clamp(12px, 0.80vw, 16px);
+  font-size: 0.78vw;
   letter-spacing: 0.06em;
   border-radius: 0.55vw;
   padding: 0.28vw 0.55vw;
@@ -362,4 +314,74 @@
 .ref {
   font-family: var(--font-sans);
   line-height: 1.35;
+}
+
+/* ============================================
+   Layout helpers (used across multiple slides)
+   Several slides set grid-template/gap inline and rely on these.
+   ============================================ */
+
+.grid {
+  display: grid;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55vw;
+}
+
+.rule {
+  height: 1px;
+  background: rgba(var(--navy-rgb), 0.12);
+}
+
+.bg-navy .rule {
+  background: rgba(255,255,255, 0.18);
+}
+
+/* Bullets: consistent indent + spacing (keeps content legible in projector) */
+ul.bullets {
+  margin: 0;
+  padding-left: 1.2vw;
+  line-height: 1.35;
+  font-size: 1.05vw;
+  color: inherit;
+}
+
+ul.bullets li {
+  margin: 0.35vw 0;
+}
+
+/* Small PICO badge (P/I/O) */
+.badge {
+  width: 2.0vw;
+  height: 2.0vw;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 0.95vw;
+  color: var(--navy);
+  background: rgba(var(--gold-rgb), 0.18);
+  border: 1px solid rgba(var(--gold-rgb), 0.38);
+}
+
+/* Defaults: many slides rely on label-gold without inline font-size */
+.label-gold {
+  font-size: 0.82vw;
+}
+
+/* Source line helper */
+.source {
+  font-family: var(--font-sans) !important;
+  font-size: 0.80vw;
+  color: rgba(var(--text-rgb), 0.60);
+  line-height: 1.35;
+}
+
+.bg-navy .source {
+  color: rgba(255,255,255,0.70);
 }

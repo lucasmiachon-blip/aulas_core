@@ -1,9 +1,9 @@
 <section class="slide" data-slide-id="S10" style="background: var(--bg);">
   <div class="label-gold" style="margin-bottom: 0.6vw;">APLICAÇÃO — CAC=0</div>
 
-  <h2 style="margin-bottom: 0.45vw;">CAC=0: por quanto tempo rebaixa risco?</h2>
+  <h2 style="margin-bottom: 0.45vw;">CAC=0 rebaixa risco por uma janela &mdash; que encurta com risco basal</h2>
   <div class="lead" style="max-width: 92%;">
-    <b>“Warranty period”</b> não é imunidade: é a <b>janela</b> em que o risco tende a permanecer baixo.
+    <b>“Warranty period”</b> não é regra fixa nem imunidade: é a <b>janela</b> em que o risco tende a permanecer baixo.
   </div>
 
   <div style="display:grid; grid-template-columns: 1.55fr 1fr; gap: 1.8vw; margin-top: 1.25vw;">
@@ -48,27 +48,40 @@
       </div>
 
       <div class="card" style="padding: 1.35vw; border-left: 6px solid var(--gold);">
-        <div class="small-title">Janela prática: <b>função do risco basal</b></div>
+        <div class="small-title">Janela prática (quando repetir CAC)</div>
 
-        <div style="margin-top: 0.95vw; display:grid; gap: 0.75vw;">
-          <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.8vw 0.95vw; border-radius: 1vw; background: rgba(11,20,37,.03); border: 1px solid var(--border);">
-            <div style="font-size: 1.06vw;"><b>Baixo risco</b> (sem mudanças)</div>
-            <div style="font-size: 1.12vw; font-weight: 900; color: var(--ink);">~7–10 anos</div>
+        <!-- Função do risco basal (evita parecer “regra fixa”) -->
+        <div style="margin-top: 0.9vw; padding: 0.85vw 0.95vw; border-radius: 1vw; background: rgba(var(--navy-rgb),0.03); border: 1px solid rgba(var(--navy-rgb),0.14);">
+          <div style="display:flex; justify-content:space-between; font-size: 0.78vw; font-weight: 900; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(var(--navy-rgb),0.70);">
+            <span>Risco basal baixo</span>
+            <span>Risco basal alto</span>
+          </div>
+          <div style="height: 0.70vw; border-radius: 999px; margin-top: 0.55vw; border: 1px solid rgba(var(--navy-rgb),0.14);
+                      background: linear-gradient(90deg, rgba(var(--teal-rgb),0.34), rgba(var(--gold-rgb),0.34), rgba(var(--danger-rgb),0.34));"></div>
+          <div style="margin-top: 0.55vw; font-size: 0.98vw; color: rgba(var(--text-rgb),0.72); line-height: 1.35;">
+            A janela encurta conforme o risco basal sobe.
+          </div>
+        </div>
+
+        <div style="margin-top: 0.95vw; display:grid; gap: 0.85vw;">
+          <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.85vw 1.0vw; border-radius: 1vw; background: rgba(11,20,37,.03); border: 1px solid var(--border);">
+            <div style="font-size: 1.06vw;"><b>Risco intermediário</b></div>
+            <div style="font-size: 1.12vw; font-weight: 900; color: var(--ink);">3–7 anos</div>
           </div>
 
-          <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.8vw 0.95vw; border-radius: 1vw; background: rgba(11,20,37,.03); border: 1px solid var(--border);">
-            <div style="font-size: 1.06vw;"><b>Intermediário</b></div>
-            <div style="font-size: 1.12vw; font-weight: 900; color: var(--ink);">~3–7 anos</div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.85vw 1.0vw; border-radius: 1vw; background: rgba(11,20,37,.03); border: 1px solid var(--border);">
+            <div style="font-size: 1.06vw;"><b>Risco baixo</b></div>
+            <div style="font-size: 1.12vw; font-weight: 900; color: var(--ink);">5–10 anos</div>
           </div>
 
-          <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.8vw 0.95vw; border-radius: 1vw; background: rgba(var(--gold-rgb),0.08); border: 1px solid rgba(var(--gold-rgb),0.22);">
-            <div style="font-size: 1.06vw;"><b>Risco alto</b> / DM / tabagismo</div>
-            <div style="font-size: 1.06vw; font-weight: 900; color: var(--navy);">não tratar como “garantia”</div>
+          <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.85vw 1.0vw; border-radius: 1vw; background: rgba(var(--danger-rgb),0.06); border: 1px solid rgba(var(--danger-rgb),0.22);">
+            <div style="font-size: 1.06vw;"><b>Risco alto / DM / tabagismo</b></div>
+            <div style="font-size: 1.05vw; font-weight: 900; color: rgba(var(--danger-rgb),0.92);">janela menor</div>
           </div>
         </div>
 
         <div class="note" style="margin-top: 0.85vw;">
-          <p><b>Regra:</b> repetir CAC só se a resposta puder <b>mudar conduta</b>; quanto maior o risco basal, menor a janela.</p>
+          <p><b>Take‑home:</b> CAC=0 orienta <b>timing</b> de reavaliação &mdash; não “alta” e não zera risco.</p>
         </div>
       </div>
 
