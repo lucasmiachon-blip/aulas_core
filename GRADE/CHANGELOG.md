@@ -1,20 +1,36 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-04 — P2 (Bempedóico): foco em GRADE + recomendações (SBC 2025)
 
-## 2026-02-03 — P2 (SAMS/Bempedóico): menos ruído + EtD mais “decidível” (até slide 36)
-
-- **S44 (SAMS — N-of-1):** consolidado em uma leitura única **SAMSON + StatinWISE** (dual‑coding: KPIs + take‑home) e com ponte explícita para “testar antes de rotular”.
-- **S45 (SAMS — ponte):** slide refeito para focar no que muda conduta: **definição prática de intolerância** + **parcial vs completa** + transição direta para CLEAR Outcomes.
-- **S46 (SAMS — algoritmo):** simplificado para **3 passos** + **red flags** + “script anti‑nocebo” (menos texto, mais hierarquia).
-- **S20 (EtD bempedóico):** reestruturado em chunks (efeito relativo/absoluto, NNT, LDL) + EtD (certeza/trade‑offs/viabilidade) e **correção do NNT (≈63 em 40,6 meses)**.
-- **S55 (viés de publicação):** reduzido “branco” com fundo suave + lead para orientar a leitura.
+- **Mensagem do bloco (S61):** reframing explícito: *o bempedóico é o exemplo; o foco é GRADE* (indireção → imprecisão → EtD).
+- **Recomendações da diretriz (S14):** slide redesenhado no padrão do slide‑âncora (cards + chips) e com **trechos ipsis litteris abreviados** (com supressões) para manter legibilidade.
+- **SAMS (pano de fundo, não protagonista):** S43 renomeado para qualificar PICO; S46 simplificado para um **checklist de 30s** (o algoritmo completo fica como material de apoio).
+- **Coerência de evidência (S20):** correção de **NNT ~63** (ARR 1,6% em ~3,4 anos) e ajuste do box de “resultado” para evitar ruído entre força, certeza e EtD.
 
 ### Arquivos modificados
-- `src/slides/S44.html`
-- `src/slides/S45.html`
+- `src/slides/S61.html`
+- `src/slides/S14.html`
+- `src/slides/S43.html`
 - `src/slides/S46.html`
 - `src/slides/S20.html`
+- `CHANGELOG.md`
+
+## 2026-02-03 — P2 (SAMS/Bempedóico + Metas): condensação SAMS + recomendação em metas
+
+- **SAMS (menos ruído, mesma mensagem):** consolidado em 2 slides-chave (S43 + S46), trazendo a evidência N-of-1 (SAMSON/StatinWISE) para dentro do slide-resumo (S43).
+- **Bempedóico (clareza):** S44 refeito como “sinal do efeito” (relativo vs absoluto) e S45 refeito como **EtD** em formato inspirado no slide-âncora do CAC.
+- **Metas (ordem + recomendação):** invertida a ordem **S52 ↔ S53** no `_list` para que o slide 30 traga a recomendação por categoria; S52 redesenhado em cards para leitura rápida.
+- **Domínios (menos repetição):** S55 enxugado para “3 sinais, 3 ações” (publicação), preservando rigor sem perder o foco.
+- **Robustez:** `slides-simple.js` (fallback) sincronizado com `src/slides/_list.txt`.
+
+### Arquivos modificados
+- `src/slides/_list.txt`
+- `src/slides/S43.html`
+- `src/slides/S44.html`
+- `src/slides/S45.html`
+- `src/slides/S52.html`
 - `src/slides/S55.html`
+- `src/js/slides-simple.js`
 - `CHANGELOG.md`
 
 
