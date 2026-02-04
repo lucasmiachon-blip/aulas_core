@@ -1,0 +1,33 @@
+# Template de ordem (_list.txt) — bloco Bempedoico + SAMS
+# Objetivo: cada batida aparece UMA vez. O que não acrescentar vira apêndice.
+
+# ... slides anteriores (até CAC) ...
+
+# [SAMS-1] pano de fundo do PICO (obrigatório)
+SLIDE_SAMS_01.html
+
+# [BEMP-1] Diretriz (ipsis litteris)
+SLIDE_BEMP_01.html
+
+# [BEMP-2] PICO + Indireção
+SLIDE_BEMP_02.html
+
+# [BEMP-3] CLEAR Outcomes — o que aconteceu
+SLIDE_BEMP_03.html
+
+# [BEMP-4] Imprecisão (MID) — ganho absoluto depende do risco basal
+SLIDE_BEMP_04.html
+
+# [BEMP-5] EtD (único slide de EtD do bloco)
+SLIDE_BEMP_05.html
+
+# [BEMP-6] Fechamento clínico (1 regra)
+SLIDE_BEMP_06.html
+
+# [SAMS-2] (opcional) algoritmo resumido — só se necessário
+# SLIDE_SAMS_02.html
+
+# ... até o slide 36 (Camões) ...
+
+# Tudo que for detalhe extra (mecanismo, listas longas, subtipos de SAMS etc.)
+# vai para apêndice (após o slide 36).

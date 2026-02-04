@@ -9,8 +9,11 @@
       <p style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 500; color: rgba(var(--navy-rgb), 0.7); line-height: 1.4; margin: 0;">Guidelines dizem <strong style="color: var(--navy);">o que</strong> fazer · Modelos (QALY/ICER) ajudam a decidir <strong style="color: var(--navy);">quando vale</strong></p>
     </div>
 
+    <!-- Conteúdo (cards + take-home) centralizado para evitar grande vazio vertical -->
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px; padding-top: 6px;">
+
     <!-- Cards container -->
-    <div style="flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start;">
 
       <!-- Card 1: Internacional -->
       <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.12); border-radius: 14px; padding: 20px 20px 16px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
@@ -67,9 +70,11 @@
     </div>
 
     <!-- Take-home -->
-    <div style="margin-top: 14px; padding: 14px 20px; border-radius: 12px; background: var(--navy); display: flex; align-items: center; gap: 14px;">
+    <div style="padding: 14px 20px; border-radius: 12px; background: var(--navy); display: flex; align-items: center; gap: 14px;">
       <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 6px 12px; border-radius: 6px; white-space: nowrap;">Regra da casa</span>
       <p style="margin: 0; font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.4;">Todo número "importante" tem fonte <strong style="color: var(--gold);">nomeada</strong> no slide ou nesta lista.</p>
+    </div>
+
     </div>
 
   </div>

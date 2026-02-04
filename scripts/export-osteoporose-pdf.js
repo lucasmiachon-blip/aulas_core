@@ -3,6 +3,40 @@ const path = require('path');
 const fs = require('fs');
 const { execSync } = require('child_process');
 
+function stripExternalFontLinks(html) {
+  // In some locked-down environments, external requests (fonts.googleapis.com) can hang or be blocked.
+  // The slides are designed to gracefully fall back to system fonts.
+  return html
+    .replace(/<link[^>]+rel=["']preconnect["'][^>]*>\s*/gi, '')
+    .replace(/<link[^>]+href=["']https:\/\/fonts\.googleapis\.com[^"']+["'][^>]*>\s*/gi, '');
+}
+
+function inlineLocalImages(html, baseDir) {
+  // Rewrites <img src="relative/path.png"> into data URIs so that exports don't depend on file/http access.
+  const mimeByExt = {
+    '.png': 'image/png',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg',
+    '.webp': 'image/webp',
+    '.gif': 'image/gif',
+    '.svg': 'image/svg+xml',
+  };
+
+  return html.replace(/<img\b([^>]*?)\ssrc=(["'])([^"']+)\2([^>]*)>/gi, (m, pre, quote, src, post) => {
+    // Skip already-inlined or remote assets
+    if (/^(data:|https?:|blob:)/i.test(src)) return m;
+
+    const abs = path.resolve(baseDir, src);
+    if (!fs.existsSync(abs) || !fs.statSync(abs).isFile()) return m;
+
+    const ext = path.extname(abs).toLowerCase();
+    const mime = mimeByExt[ext] || 'application/octet-stream';
+    const b64 = fs.readFileSync(abs).toString('base64');
+    const data = `data:${mime};base64,${b64}`;
+    return `<img${pre} src=${quote}${data}${quote}${post}>`;
+  });
+}
+
 function resolveChromiumExecutable() {
   const fromEnv = process.env.CHROMIUM_PATH || process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH;
   if (fromEnv) return fromEnv;
@@ -51,12 +85,13 @@ async function exportPDF() {
   let httpStatus = null;
 
   try {
-    const page = await browser.newPage();
+    let page = await browser.newPage();
     // Mantém consistência com o palco 16:9 do viewer (1600×900) e reduz variações por viewport.
     await page.setViewportSize({ width: 1600, height: 900 });
 
     // --- URL loading ---
     let loaded = false;
+    let usedSetContentFallback = false;
     const attempts = [];
     for (const candidate of urlCandidates) {
       try {
@@ -72,12 +107,38 @@ async function exportPDF() {
         httpStatus = status;
         break;
       } catch (e) {
-        attempts.push({ url: candidate, status: null });
-        console.warn('⚠️ Falhou:', candidate);
+        attempts.push({ url: candidate, status: null, error: e?.message || String(e) });
+        console.warn('⚠️ Falhou:', candidate, e?.message || '');
       }
     }
+
+    // Fallback for locked-down Chromium policies (ERR_BLOCKED_BY_ADMINISTRATOR) where navigation is denied.
     if (!loaded) {
-      throw new Error(`Nenhuma URL funcionou. Tentativas: ${JSON.stringify(attempts)}`);
+      const printHtmlPath = path.join(__dirname, '..', 'OSTEOPOROSE', 'src', 'print.html');
+      if (!fs.existsSync(printHtmlPath)) {
+        throw new Error(`Nenhuma URL funcionou e print.html não foi encontrado. Tentativas: ${JSON.stringify(attempts)}`);
+      }
+
+      console.log('🛟 Fallback: carregando print.html via page.setContent (sem navegação)...');
+
+      // Some failed navigations can leave the execution context in a bad state;
+      // create a fresh page for a reliable setContent() path.
+      try {
+        await page.close();
+      } catch {}
+      page = await browser.newPage();
+      await page.setViewportSize({ width: 1600, height: 900 });
+
+      const baseDir = path.dirname(printHtmlPath);
+      let html = fs.readFileSync(printHtmlPath, 'utf8');
+      html = stripExternalFontLinks(html);
+      html = inlineLocalImages(html, baseDir);
+      await page.setContent(html, { waitUntil: 'domcontentloaded', timeout: 60000 });
+
+      usedSetContentFallback = true;
+      loaded = true;
+      finalUrl = `SET_CONTENT:${printHtmlPath}`;
+      httpStatus = 'SET_CONTENT';
     }
 
     // --- Wait for at least one slide (fix: use waitForSelector) ---
@@ -199,6 +260,18 @@ async function exportPDF() {
     console.log(`FIRST_SLIDE_RATIO=${slideMetrics.ratio}`);
     console.log(`PDF_PATH_ABS=${outputPath}`);
     console.log('✅ PDF gerado com sucesso.');
+
+    // --- Cleanup stale duplicate PDFs (avoid confusion between exports vs assets/pdf) ---
+    // NOTE: the canonical artifact lives in /OSTEOPOROSE/exports.
+    try {
+      const stalePdf = path.join(__dirname, '..', 'OSTEOPOROSE', 'assets', 'pdf', 'OSTEOPOROSE-slides.pdf');
+      if (fs.existsSync(stalePdf)) {
+        fs.unlinkSync(stalePdf);
+        console.log(`🧹 Removed stale PDF duplicate: ${stalePdf}`);
+      }
+    } catch (e) {
+      console.warn('⚠️ stale pdf cleanup skipped:', e.message);
+    }
 
   } finally {
     await browser.close();

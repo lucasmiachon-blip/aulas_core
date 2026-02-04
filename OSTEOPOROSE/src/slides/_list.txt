@@ -13,7 +13,6 @@ S12_slide-12.html
 S14_slide-14.html
 S16_slide-16.html
 S17_slide-17.html
-S18_slide-18.html
 S19_slide-19.html
 S20_slide-20.html
 S21_slide-21.html

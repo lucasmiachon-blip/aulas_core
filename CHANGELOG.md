@@ -1,5 +1,31 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## OSTEOPOROSE_LAYOUT_ROUND2_S03-S13 — 2026-02-04
+
+### Contexto
+Nova rodada rápida para melhorar **ocupação/ritmo vertical** (alguns slides pareciam “vazios” no miolo) e refinar detalhes que apareciam diferentes entre viewer/print/PDF.
+
+### Ajustes aplicados
+- **S03 / S04:** bloco principal (cards + take-home) centralizado verticalmente para reduzir vazio no miolo sem esticar cards.
+- **S07:** pills de fórmula um pouco maiores + correção de espaçamento no PDF (uso de `&nbsp;` para evitar “grudar” em números).
+- **S13 (pizza):** rotação do `conic-gradient` (`from -90deg`) + ajuste fino de posição/tamanho de 70%/30% e ouro mais suave.
+- **Docs:** adicionado `chatgpt.md` (playbook + checklist de auditoria).
+
+### Arquivos modificados
+- `OSTEOPOROSE/src/slides/S03_slide-03.html`
+- `OSTEOPOROSE/src/slides/S04_slide-04.html`
+- `OSTEOPOROSE/src/slides/S07_slide-07.html`
+- `OSTEOPOROSE/src/slides/S13_slide-13.html`
+- `chatgpt.md`
+- `CHANGELOG.md`
+
+### Constraints
+- CSS global alterado: NÃO
+- !important adicionados: NÃO
+- Conteúdo médico alterado: NÃO
+
+---
+
 ## OSTEOPOROSE_BATCH01_S01-S13_hotfix-order — 2026-02-03
 
 ### Contexto
@@ -752,3 +778,13 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - Slide 03: restaura estrutura semântica (h1 como filho direto) e evita expansão indesejada do container (flex:0) para não "esticar" a linha vertical.
 - Slide 06: reduz whitespace (título mais próximo do conteúdo) e adiciona subtítulo + takeaway discreto (sem mexer no CSS global).
 - Export script: torna o screenshot de amostra não-fatal (usa page.screenshot do viewport; sem locator).
+
+## OSTEOPOROSE_PDF_CLEANUP_PIE_FRAX_MERGE — 2026-02-04
+
+- Remove PDF duplicado (Letter/portrait) em `OSTEOPOROSE/assets/pdf` para evitar confusão; o artefato canônico fica em `OSTEOPOROSE/exports` (16:9).
+- Slide 03: evita “boxes” esticados (alinha o bloco principal em `align-items: start`) para reduzir espaço vazio *dentro* dos cards.
+- Slide 04: cards não esticam (grid `align-items: start`) para remover grandes áreas vazias internas.
+- Slide 13 (pizza): paleta mais suave e reposicionamento dos percentuais (70/30) para melhor leitura/estética.
+- Slide 17+18: conteúdo consolidado em um único slide (adição de callout “Pérola clínica” com SPAH) e remoção de `S18_slide-18.html` do passador via `_list.txt`.
+- `dist/index.html`: inclui `polish.css` para reduzir divergência visual entre builds.
+- Export script: adiciona limpeza automática de PDFs duplicados e fallback `page.setContent()` com imagens inline quando navegação via `page.goto()` é bloqueada.

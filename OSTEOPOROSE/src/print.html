@@ -6,7 +6,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Osteoporose - 72 slides</title>
+<title>Osteoporose - 71 slides</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>:root {
   --bg: #F9F8F4; --white: #FFFFFF; --navy: #0B1320; --gold: #DDB944;
@@ -139,8 +139,8 @@ p{margin:0 0 .8rem}
       <p style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 500; color: rgba(var(--navy-rgb), 0.6); margin: 0;">Do risco ao tratamento guiado por metas</p>
     </div>
 
-    <!-- Conteúdo principal: 2 colunas -->
-    <div style="flex: 1; display: flex; align-items: stretch;">
+    <!-- Conteúdo (cards + take-home) centralizado para evitar grande vazio vertical -->
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px; padding-top: 6px;">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;">
 
         <!-- Coluna 1: COMPREENDER -->
@@ -231,10 +231,9 @@ p{margin:0 0 .8rem}
         </div>
 
       </div>
-    </div>
 
-    <!-- Take-home melhorado -->
-    <div style="margin-top: 16px; background: var(--navy); border-radius: 14px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
+      <!-- Take-home melhorado -->
+      <div style="background: var(--navy); border-radius: 14px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
       <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 500; color: var(--white); line-height: 1.45;">
         Ao final: um mapa mental para decidir <strong style="color: var(--gold);">quem</strong>, <strong style="color: var(--gold);">como</strong> e <strong style="color: var(--gold);">com qual meta</strong> tratar.
       </div>
@@ -243,6 +242,8 @@ p{margin:0 0 .8rem}
         <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 7px 14px; border-radius: 999px;">Valor</span>
         <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 7px 14px; border-radius: 999px;">Meta</span>
       </div>
+      </div>
+
     </div>
 
   </div>
@@ -260,8 +261,11 @@ p{margin:0 0 .8rem}
       <p style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 500; color: rgba(var(--navy-rgb), 0.7); line-height: 1.4; margin: 0;">Guidelines dizem <strong style="color: var(--navy);">o que</strong> fazer · Modelos (QALY/ICER) ajudam a decidir <strong style="color: var(--navy);">quando vale</strong></p>
     </div>
 
+    <!-- Conteúdo (cards + take-home) centralizado para evitar grande vazio vertical -->
+    <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 14px; padding-top: 6px;">
+
     <!-- Cards container -->
-    <div style="flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start;">
 
       <!-- Card 1: Internacional -->
       <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.12); border-radius: 14px; padding: 20px 20px 16px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
@@ -318,9 +322,11 @@ p{margin:0 0 .8rem}
     </div>
 
     <!-- Take-home -->
-    <div style="margin-top: 14px; padding: 14px 20px; border-radius: 12px; background: var(--navy); display: flex; align-items: center; gap: 14px;">
+    <div style="padding: 14px 20px; border-radius: 12px; background: var(--navy); display: flex; align-items: center; gap: 14px;">
       <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 6px 12px; border-radius: 6px; white-space: nowrap;">Regra da casa</span>
       <p style="margin: 0; font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.4;">Todo número "importante" tem fonte <strong style="color: var(--gold);">nomeada</strong> no slide ou nesta lista.</p>
+    </div>
+
     </div>
 
   </div>
@@ -537,9 +543,9 @@ Utilidade (0–1) é o <strong>peso de qualidade</strong> usado no QALY. Ela cap
 </p>
 
 <!-- Fórmula compacta (menos ruído, mesma informação) -->
-    <div style="max-width: 980px; margin: 0 auto 22px auto; display: flex; justify-content: center; align-items: center; gap: 12px; flex-wrap: wrap;">
-      <div style="background: rgba(var(--navy-rgb), 0.06); border: 1px solid rgba(var(--navy-rgb), 0.16); border-radius: 999px; padding: 10px 16px; font-family: Inter, sans-serif; font-size: 14px; color: var(--navy); display: inline-flex; align-items: center; flex: 0 0 auto; white-space: nowrap; box-shadow: 0 2px 10px rgba(0,0,0,0.06);"><strong>QALY</strong> = anos × utilidade</div>
-      <div style="background: rgba(var(--gold-rgb), 0.14); border: 1px solid rgba(var(--gold-rgb), 0.30); border-radius: 999px; padding: 10px 16px; font-family: Inter, sans-serif; font-size: 14px; color: var(--navy); display: inline-flex; align-items: center; flex: 0 0 auto; white-space: nowrap; box-shadow: 0 2px 10px rgba(0,0,0,0.06);"><strong>Ex.:</strong> 10 anos com utilidade <strong>0,39</strong> ≈ <strong>3,9 QALYs</strong></div>
+    <div style="max-width: 1020px; margin: 0 auto 22px auto; display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap;">
+      <div style="background: rgba(var(--navy-rgb), 0.06); border: 1px solid rgba(var(--navy-rgb), 0.16); border-radius: 999px; padding: 11px 18px; font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); display: inline-flex; align-items: center; flex: 0 0 auto; white-space: nowrap; box-shadow: 0 2px 10px rgba(0,0,0,0.06);"><strong>QALY</strong> = anos × utilidade</div>
+      <div style="background: rgba(var(--gold-rgb), 0.14); border: 1px solid rgba(var(--gold-rgb), 0.30); border-radius: 999px; padding: 11px 18px; font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); display: inline-flex; align-items: center; flex: 0 0 auto; white-space: nowrap; box-shadow: 0 2px 10px rgba(0,0,0,0.06);"><strong>Ex.:</strong> 10 anos com utilidade&nbsp;<strong>0,39</strong> ≈&nbsp;<strong>3,9 QALYs</strong></div>
 </div>
 <!-- Três colunas de comparação -->
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 26px;">
@@ -746,16 +752,16 @@ Utilidade (0–1) é o <strong>peso de qualidade</strong> usado no QALY. Ela cap
             <!-- Pizza (CSS conic-gradient) + labels posicionados -->
             <div style="position: relative; width: 340px; height: 340px; overflow: visible;">
                 <div role="img" aria-label="Distribuição: 70% osteopenia, 30% osteoporose"
-                    style="position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(rgba(var(--gold-rgb), 0.72) 0 70%, rgba(var(--navy-rgb), 0.95) 70% 100%); border: 1px solid rgba(var(--navy-rgb), 0.12); box-shadow: 0 6px 22px rgba(0,0,0,0.12);"></div>
+                    style="position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from -90deg, rgba(var(--gold-rgb), 0.46) 0 70%, rgba(var(--navy-rgb), 0.92) 70% 100%); border: 1px solid rgba(var(--navy-rgb), 0.12); box-shadow: 0 6px 22px rgba(0,0,0,0.12);"></div>
 
                 <!-- Label 70% (gold / osteopenia) -->
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translate(96px, 74px); text-align: center;">
-                    <p style="font-family: Inter, sans-serif; font-size: 48px; font-weight: 800; color: var(--navy); margin: 0; line-height: 1; text-shadow: 0 2px 4px rgba(255,255,255,0.75);">70%</p>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translate(72px, 56px); text-align: center;">
+                    <p style="font-family: Inter, sans-serif; font-size: 44px; font-weight: 800; color: var(--navy); margin: 0; line-height: 1; text-shadow: 0 2px 4px rgba(255,255,255,0.75);">70%</p>
                 </div>
 
                 <!-- Label 30% (navy / osteoporose) -->
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translate(-92px, -92px); text-align: center;">
-                    <p style="font-family: Inter, sans-serif; font-size: 36px; font-weight: 800; color: var(--white); margin: 0; line-height: 1; text-shadow: 0 2px 6px rgba(0,0,0,0.5);">30%</p>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translate(-84px, 66px); text-align: center;">
+                    <p style="font-family: Inter, sans-serif; font-size: 34px; font-weight: 800; color: var(--white); margin: 0; line-height: 1; text-shadow: 0 2px 6px rgba(0,0,0,0.5);">30%</p>
                 </div>
 
             </div>
@@ -763,7 +769,7 @@ Utilidade (0–1) é o <strong>peso de qualidade</strong> usado no QALY. Ela cap
             <!-- Legenda ABAIXO da pizza (não sobre) -->
             <div style="display: flex; justify-content: center; gap: 32px; margin-top: 20px;">
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <div style="width: 20px; height: 20px; border-radius: 4px; background: rgba(var(--gold-rgb), 0.72); border: 1px solid rgba(var(--gold-rgb), 0.55);"></div>
+                    <div style="width: 20px; height: 20px; border-radius: 4px; background: rgba(var(--gold-rgb), 0.46); border: 1px solid rgba(var(--gold-rgb), 0.45);"></div>
                     <div>
                         <p style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 700; color: var(--navy); margin: 0;">Osteopenia (70%)</p>
                         <p style="font-family: Inter, sans-serif; font-size: 13px; color: var(--muted); margin: 2px 0 0 0;">T-score −1.0 a −2.5</p>
@@ -1163,8 +1169,8 @@ Utilidade (0–1) é o <strong>peso de qualidade</strong> usado no QALY. Ela cap
             </div>
         </div>
     </div>
-    
-    <!-- ROW 2: FRAX-Brasil 2.0 com imagem -->
+
+	<!-- ROW 2: FRAX-Brasil 2.0 com imagem -->
     <div style="background: var(--white); border: 2px solid rgba(var(--border-rgb), 0.85); border-radius: 10px; padding: 20px; border-top: 4px solid var(--blue);">
         <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 24px; align-items: center;">
             
@@ -1188,49 +1194,19 @@ Utilidade (0–1) é o <strong>peso de qualidade</strong> usado no QALY. Ela cap
         </div>
     </div>
     
-    <!-- Rodapé -->
-    <p style="font-family: Inter, sans-serif; font-size: 13px; font-style: italic; color: var(--muted); line-height: 1.5; margin: 14px 0 0 0;">Garvan: opção quando você quer quantificar número de quedas e fraturas prévias (grandes caidores)</p>
-</section>
+	<!-- Pérola clínica: SPAH (condensa o slide seguinte) -->
+	<div style="margin-top: 14px; background: rgba(var(--gold-rgb), 0.12); border-left: 4px solid var(--gold); border-radius: 12px; padding: 12px 16px;">
+	  <p style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 800; color: var(--navy); margin: 0 0 6px 0; display: flex; align-items: center; gap: 10px;">
+	    <span style="display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 6px; background: rgba(var(--gold-rgb), 0.18); border: 1px solid rgba(var(--gold-rgb), 0.35);">!</span>
+	    Pérola clínica
+	  </p>
+	  <p style="font-family: Inter, sans-serif; font-size: 14px; color: rgba(var(--navy-rgb), 0.85); margin: 0; line-height: 1.4;">
+	    Use <strong>FRAX-Brasil 2.0</strong> para cálculos de risco no Brasil. Em idosos vulneráveis, considere que <strong>limiares podem ser mais baixos</strong>: ~8% MOF e ~3% quadril (SPAH).
+	  </p>
+	</div>
 
-<!-- 19. Slide 14 - FRAX-Brasil 2.0 e SPAH: calibração brasileira -->
-<section class="slide" data-slide="" data-title="Slide 14 - FRAX-Brasil 2.0 e SPAH: calibração brasileira" id="slide-14" style="padding: 50px 60px 60px 60px;">
-<h1 style="font-family: Inter, sans-serif; font-size: 40px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 10px 0;">FRAX-Brasil 2.0 e SPAH: calibração brasileira</h1>
-<p style="font-family: Inter, sans-serif; font-size: 21px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0 0 35px 0;">recalibração nacional (Albergaria 2024 - BRAVOS)</p>
-<div style="display: grid; grid-template-columns: 1fr 4px 1fr; gap: 28px; margin-bottom: 30px;">
-<!-- Coluna 1: FRAX-Brasil 2.0 -->
-<div>
-<h2 style="font-family: Inter, sans-serif; font-size: 30px; font-weight: 700; color: var(--navy); line-height: 1.3; margin: 0 0 12px 0;">FRAX-Brasil 2.0</h2>
-<p style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.5; margin: 0 0 22px 0;">recalibração nacional (Albergaria 2024 - BRAVOS)</p>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.5; margin: 0 0 12px 0;">Recalibrado em julho/2024 com dados brasileiros</p>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: rgba(var(--navy-rgb), 0.78); line-height: 1.5; margin: 0 0 8px 0;">Probabilidades <strong style="font-weight: 700;">26-44% menores</strong> vs FRAX original</p>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--navy); line-height: 1.5; margin: 0 0 8px 0;">Correlação com modelo original preservada <strong style="font-weight: 700;">(r &gt; 0,99)</strong></p>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: rgba(var(--navy-rgb), 0.78); line-height: 1.5; margin: 0 0 22px 0;">Disponível em <strong style="font-weight: 700;">abrasso.org.br/frax-brasil</strong></p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.5; margin: 0;">Por que importa: o FRAX original superestimava risco no Brasil; o FRAX-Brasil 2.0 é mais preciso para nossa população.</p>
-</div>
-<!-- Divisor vertical -->
-<div style="background: var(--gold); border-radius: 2px;"></div>
-<!-- Coluna 2: Estudo SPAH -->
-<div>
-<h2 style="font-family: Inter, sans-serif; font-size: 30px; font-weight: 700; color: var(--navy); line-height: 1.3; margin: 0 0 12px 0;">Estudo SPAH (São Paulo)</h2>
-<p style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.5; margin: 0 0 22px 0;">coorte comunitária, baixa renda, Butantã</p>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--navy); line-height: 1.5; margin: 0 0 8px 0;">Idade <strong style="font-weight: 700;">&gt;=65 anos</strong>, n ~ 700, seguimento ~4,3 anos</p>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--navy); line-height: 1.5; margin: 0 0 8px 0;">Cut-offs: <strong style="font-weight: 700;">8% MOF</strong> e <strong style="font-weight: 700;">3% fratura de quadril</strong> (vs 20%/3% tradicionais)</p>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--navy); line-height: 1.5; margin: 0 0 22px 0;">Alta incidência de fraturas vertebrais e quadril</p>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: rgba(var(--navy-rgb), 0.78); line-height: 1.5; margin: 0 0 22px 0;"><strong style="font-weight: 700;">Talvez realidade de muitos pacientes do ACMG</strong></p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.5; margin: 0;">Reforça que <strong style="font-weight: 700;">limiares mais baixos</strong> são adequados em idosos brasileiros vulneráveis.</p>
-</div>
-</div>
-<!-- Callout -->
-<div style="background: rgba(var(--gold-rgb), 0.14); border-left: 4px solid var(--gold); border-radius: 8px; padding: 20px; margin-bottom: 30px;">
-<div style="display: flex; align-items: flex-start; gap: 10px;">
-<span style="font-size: 22px; line-height: 1;">[!]</span>
-<div>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 8px 0;">Pérola clínica</p>
-<p style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 400; color: var(--navy); line-height: 1.5; margin: 0;">Use FRAX-Brasil 2.0 para cálculos de risco no Brasil. Em idosos, considere limiares ~8% MOF e ~3% fratura de quadril (SPAH). Cut-offs fixos de 20%/3% podem superestimar ou subestimar risco em diferentes idades.</p>
-</div>
-</div>
-</div>
-<p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0;">Albergaria BH et al. Arch Osteoporos 2023; SPAH 2024</p>
+    <!-- Rodapé -->
+    <p style="font-family: Inter, sans-serif; font-size: 13px; font-style: italic; color: var(--muted); line-height: 1.5; margin: 10px 0 0 0;">Garvan: opção quando você quer quantificar número de quedas e fraturas prévias (grandes caidores)</p>
 </section>
 
 <!-- 20. Slide 15 - DM2 e obesidade: quando o FRAX subestima -->
