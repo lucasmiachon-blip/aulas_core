@@ -788,3 +788,11 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - Slide 17+18: conteúdo consolidado em um único slide (adição de callout “Pérola clínica” com SPAH) e remoção de `S18_slide-18.html` do passador via `_list.txt`.
 - `dist/index.html`: inclui `polish.css` para reduzir divergência visual entre builds.
 - Export script: adiciona limpeza automática de PDFs duplicados e fallback `page.setContent()` com imagens inline quando navegação via `page.goto()` é bloqueada.
+
+## OSTEOPOROSE_ROUND4_DONUT_DM2_NNT_LAYOUT — 2026-02-04
+
+- Slide 01 + Slide 02 (capa/poesia): gradiente inline alinhado ao `print.css` (reduz divergência entre index/print/PDF).
+- Slide 03 + Slide 04: centralização do bloco principal (`justify-content: center`) para que o “vazio” pareça intencional (sem esticar cards).
+- Slide 13 (pizza → donut): substitui conic-gradient por **donut SVG** com hierarquia (70% no centro + 30% em tag/legenda) para melhor estética e consistência no PDF.
+- Slide 14 (DM2): remove obesidade e reestrutura em duas colunas (por que subestima / ajuste prático + conduta) com foco total em DM2.
+- Slide 15 (NNT): refaz paleta e hierarquia; destaca NNT por cenário (baixo vs alto risco), adiciona “âncora” (HORIZON-PFT) e números por classe (RRR) de trials pivotais.

@@ -86,3 +86,20 @@ Checklist:
 ### 2026-02-04
 - Slides com “header no topo + rodapé no fundo” podem parecer bugados por criar um vazio enorme no meio; **centralizar o bloco principal** resolve sem esticar cards.
 - Pills/labels com números precisam de `&nbsp;` em pontos críticos para não “colar” no PDF (ex.: `utilidade&nbsp;<strong>0,39</strong>`).
+
+### 2026-02-04 (export vs apresentação)
+- **PDF no Chrome sempre “rola”** (o viewer é contínuo). Isso não é (necessariamente) bug de CSS.
+  - Para apresentar sem scroll: use `dist/index.html` (viewer com ←/→, Space, F) **ou** o `*.pptx`.
+  - PDF fica como artefato de distribuição/backup.
+
+### 2026-02-04 (rodada: slides 1–15)
+- **Capa/contracapa consistentes**: alinhar o gradiente inline do slide com o gradiente do `print.css` evita a sensação de “3 versões” (index/print/PDF).
+- **Slides 3–4 com muito vazio**: quando o conteúdo principal ocupa só o terço superior, o vazio parece bug. Fix simples e limpo: `justify-content: center` no bloco principal (sem esticar cards).
+- **Gráficos (pizza → donut)**:
+  - Preferir **SVG donut** a `conic-gradient` quando o objetivo é export/print consistente.
+  - Hierarquia: colocar o número-chave (ex.: **70%**) no centro e mover o outro número para legenda/tag evita “número perdido na fatia”.
+- **DM2 (sem obesidade)**: organizar em 2 colunas ("por que subestima" + "ajuste prático/conduta") reduz redundância e melhora scanabilidade.
+- **Slide de NNT**: manter “ordem de grandeza” explícita para baixo risco (quando não há NNT único) e ancorar o restante com:
+  - NNT alto risco (meta-análise) +
+  - um NNT real de trial grande (ex.: HORIZON-PFT) +
+  - RRR por classe (trials pivotais) para dar contexto.

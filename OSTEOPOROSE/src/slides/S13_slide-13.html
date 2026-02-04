@@ -10,45 +10,60 @@
 
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; max-width: 1200px; margin: 0 auto;">
 
-        <!-- COLUNA ESQUERDA: Pizza + Labels externos -->
+        <!-- COLUNA ESQUERDA: Donut (mais limpo) + legenda -->
         <div style="display: flex; flex-direction: column; align-items: center;">
-            
-            <!-- Pizza (CSS conic-gradient) + labels posicionados -->
-            <div style="position: relative; width: 340px; height: 340px; overflow: visible;">
-                <div role="img" aria-label="Distribuição: 70% osteopenia, 30% osteoporose"
-                    style="position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from -90deg, rgba(var(--gold-rgb), 0.46) 0 70%, rgba(var(--navy-rgb), 0.92) 70% 100%); border: 1px solid rgba(var(--navy-rgb), 0.12); box-shadow: 0 6px 22px rgba(0,0,0,0.12);"></div>
 
-                <!-- Label 70% (gold / osteopenia) -->
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translate(72px, 56px); text-align: center;">
-                    <p style="font-family: Inter, sans-serif; font-size: 44px; font-weight: 800; color: var(--navy); margin: 0; line-height: 1; text-shadow: 0 2px 4px rgba(255,255,255,0.75);">70%</p>
+            <!-- Donut em SVG (mais consistente que conic-gradient no print/PDF) -->
+            <div role="img" aria-label="Distribuição das fraturas: 70% em osteopenia e 30% em osteoporose" style="position: relative; width: 340px; height: 340px; display: flex; align-items: center; justify-content: center;">
+                <!-- Card de fundo (para dar acabamento) -->
+                <div style="position: absolute; inset: 0; border-radius: 999px; background: white; border: 1px solid rgba(var(--navy-rgb), 0.10); box-shadow: 0 10px 26px rgba(0,0,0,0.10);"></div>
+
+                <!-- Donut -->
+                <svg width="340" height="340" viewBox="0 0 200 200" style="position: relative; z-index: 1; overflow: visible;">
+                    <g transform="rotate(-90 100 100)">
+                        <!-- 70% (Osteopenia) -->
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(var(--gold-rgb), 0.46)" stroke-width="28" stroke-linecap="butt" stroke-dasharray="351.86 150.80" />
+                        <!-- 30% (Osteoporose) -->
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(var(--navy-rgb), 0.92)" stroke-width="28" stroke-linecap="butt" stroke-dasharray="150.80 351.86" stroke-dashoffset="-351.86" />
+                    </g>
+                    <!-- furo central -->
+                    <circle cx="100" cy="100" r="54" fill="var(--bg)" />
+                </svg>
+
+                <!-- Texto central (hierarquia: 70% é a mensagem) -->
+                <div style="position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 22px;">
+                    <div style="font-family: Inter, sans-serif; font-size: 58px; font-weight: 800; color: var(--navy); line-height: 1;">70%</div>
+                    <div style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 700; color: rgba(var(--navy-rgb), 0.72); letter-spacing: 0.02em; margin-top: 2px;">das fraturas em</div>
+                    <div style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 800; color: var(--navy); margin-top: 4px;">osteopenia</div>
+
+                    <!-- 30% como “tag” (evita números perdidos na fatia) -->
+                    <div style="margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; background: rgba(var(--navy-rgb), 0.06); border: 1px solid rgba(var(--navy-rgb), 0.14); border-radius: 999px; padding: 7px 12px;">
+                        <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 700; color: rgba(var(--navy-rgb), 0.72);">restantes</span>
+                        <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 800; color: var(--navy);">30%</span>
+                        <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 700; color: rgba(var(--navy-rgb), 0.72);">em osteoporose</span>
+                    </div>
                 </div>
-
-                <!-- Label 30% (navy / osteoporose) -->
-                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translate(-84px, 66px); text-align: center;">
-                    <p style="font-family: Inter, sans-serif; font-size: 34px; font-weight: 800; color: var(--white); margin: 0; line-height: 1; text-shadow: 0 2px 6px rgba(0,0,0,0.5);">30%</p>
-                </div>
-
             </div>
 
-            <!-- Legenda ABAIXO da pizza (não sobre) -->
-            <div style="display: flex; justify-content: center; gap: 32px; margin-top: 20px;">
+            <!-- Legenda -->
+            <div style="display: flex; justify-content: center; gap: 28px; margin-top: 18px;">
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <div style="width: 20px; height: 20px; border-radius: 4px; background: rgba(var(--gold-rgb), 0.46); border: 1px solid rgba(var(--gold-rgb), 0.45);"></div>
+                    <div style="width: 18px; height: 18px; border-radius: 5px; background: rgba(var(--gold-rgb), 0.46); border: 1px solid rgba(var(--gold-rgb), 0.42);"></div>
                     <div>
-                        <p style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 700; color: var(--navy); margin: 0;">Osteopenia (70%)</p>
+                        <p style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 800; color: var(--navy); margin: 0;">Osteopenia</p>
                         <p style="font-family: Inter, sans-serif; font-size: 13px; color: var(--muted); margin: 2px 0 0 0;">T-score −1.0 a −2.5</p>
                     </div>
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px;">
-                    <div style="width: 20px; height: 20px; border-radius: 4px; background: var(--navy);"></div>
+                    <div style="width: 18px; height: 18px; border-radius: 5px; background: rgba(var(--navy-rgb), 0.92);"></div>
                     <div>
-                        <p style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 700; color: var(--navy); margin: 0;">Osteoporose (30%)</p>
+                        <p style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 800; color: var(--navy); margin: 0;">Osteoporose</p>
                         <p style="font-family: Inter, sans-serif; font-size: 13px; color: var(--muted); margin: 2px 0 0 0;">T-score ≤ −2.5</p>
                     </div>
                 </div>
             </div>
 
-            <p style="font-family: Inter, sans-serif; font-size: 12px; font-style: italic; color: var(--muted); margin: 16px 0 0 0;">
+            <p style="font-family: Inter, sans-serif; font-size: 12px; font-style: italic; color: var(--muted); margin: 14px 0 0 0;">
                 Fonte: Siris ES et al. Osteoporos Int 2004; PMID: 14666399
             </p>
 
