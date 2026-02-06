@@ -35,40 +35,42 @@
   --border-rgb: 226, 232, 240;
 
   /* Títulos — dourado profissional (contraste ≥ 3:1 em bg claro p/ large text) */
-  --gold-title: #8B6F30;
+  --gold-title: #8b6f30;
 
   /* Alertas */
   --danger: #ef4444;
   --danger-rgb: 239, 68, 68;
 
   /* Tipografia */
-  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  --font-serif: Georgia, "Times New Roman", Times, serif;
+  --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, 'Noto Sans', 'Liberation Sans',
+    sans-serif;
+  --font-serif: Georgia, 'Times New Roman', Times, serif;
 
   /* Escala tipográfica (conference-first)
      clamp() evita que Inter/Georgia fiquem pequenas em projetores (ex.: 1280×720)
      e limita “gigantismo” em telas muito grandes.
   */
   --h1: clamp(54px, 6.2vw, 118px);
-  --h2: clamp(34px, 3.10vw, 66px);
+  --h2: clamp(34px, 3.1vw, 66px);
   --h3: clamp(24px, 1.85vw, 44px);
   --lead: clamp(20px, 1.35vw, 32px);
   --body: clamp(18px, 1.12vw, 26px);
   --small: clamp(16px, 0.92vw, 22px);
-  --ref: clamp(12px, 0.80vw, 16px);
+  --ref: clamp(12px, 0.8vw, 16px);
 
   /* Layout base do slide */
   --slide-pad-x: 6%;
   --slide-pad-y: 4vw;
-  --footer-safe: 2.0vw;
+  --footer-safe: 2vw;
 
   /* UI tokens */
   --radius-sm: 0.5vw;
   --radius-md: 0.8vw;
-  --shadow-sm: 0 0.35vw 1.2vw rgba(var(--navy-rgb), 0.10);
+  --shadow-sm: 0 0.35vw 1.2vw rgba(var(--navy-rgb), 0.1);
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -99,7 +101,7 @@ html, body {
   background: var(--bg);
   color: var(--text);
   border-radius: 0.6vw;
-  box-shadow: 0 0.8vw 3vw rgba(0,0,0,0.35);
+  box-shadow: 0 0.8vw 3vw rgba(0, 0, 0, 0.35);
   position: absolute;
   inset: 0;
   margin: auto;
@@ -113,17 +115,17 @@ html, body {
 }
 
 /* Exceções */
-.slide[data-slide-id="S01"] {
+.slide[data-slide-id='S01'] {
   padding: 0 !important;
 }
 
 /* S10: garantir respiro inferior (evita corte em projetor/print) */
-.slide[data-slide-id="S10"] {
+.slide[data-slide-id='S10'] {
   padding-bottom: calc(var(--slide-pad-y) + var(--footer-safe) + 1.6vw) !important;
 }
 
 /* S47 é propositalmente denso */
-.slide[data-slide-id="S47"] {
+.slide[data-slide-id='S47'] {
   padding: 3vw 5% calc(3vw + var(--footer-safe)) 5% !important;
 }
 
@@ -138,7 +140,9 @@ html, body {
   color: var(--white) !important;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-serif);
   letter-spacing: -0.01em;
 }
@@ -149,20 +153,30 @@ h1, h2, h3 {
    ============================================================ */
 
 /* Força Inter/Georgia (corrige slides com fonts hardcoded) */
-.slide * { font-family: var(--font-sans) !important; }
+.slide * {
+  font-family: var(--font-sans) !important;
+}
 .slide h1,
 .slide h2,
 .slide h3,
 .slide h1 *,
 .slide h2 *,
-.slide h3 * { font-family: var(--font-serif) !important; }
+.slide h3 * {
+  font-family: var(--font-serif) !important;
+}
 
 /* Se houver spans/ênfases dentro de citações, manter serif também */
 .slide blockquote,
-.slide blockquote * { font-family: var(--font-serif) !important; }
-.slide .note * { font-family: var(--font-sans) !important; }
+.slide blockquote * {
+  font-family: var(--font-serif) !important;
+}
+.slide .note * {
+  font-family: var(--font-sans) !important;
+}
 .slide .note p,
-.slide .note em { font-family: var(--font-serif) !important; }
+.slide .note em {
+  font-family: var(--font-serif) !important;
+}
 
 /* KPIs: manter "display" com serif para contraste (quando usado) */
 .slide .kpi,
@@ -180,7 +194,7 @@ h1, h2, h3 {
 
 .slide h2 {
   font-size: var(--h2) !important;
-  line-height: 1.10 !important;
+  line-height: 1.1 !important;
   /* Padronização do peso do título (evita variação entre slides) */
   font-weight: 700 !important;
   margin: 0 0 1.35vw 0 !important;
@@ -189,9 +203,9 @@ h1, h2, h3 {
   color: var(--navy) !important;
 }
 
-/* Slides com fundo escuro: título em dourado profissional */
+/* Slides com fundo escuro: título no mesmo dourado do corpo */
 .slide.bg-navy h2 {
-  color: var(--gold-title) !important;
+  color: var(--gold) !important;
 }
 
 .slide h3 {
@@ -214,16 +228,21 @@ h1, h2, h3 {
   right: var(--slide-pad-x) !important;
   bottom: 1.85vw !important;
   font-size: var(--ref) !important;
-  color: rgba(var(--text-rgb), 0.60);
+  color: rgba(var(--text-rgb), 0.6);
 }
 
 .bg-navy .ref {
-  color: rgba(255,255,255,0.72) !important;
+  color: rgba(255, 255, 255, 0.72) !important;
 }
 
-p, li, span, div {
+p,
+li,
+span,
+div {
   font-family: var(--font-sans);
 }
 
 /* Minimal anchor reset */
-a { color: inherit; }
+a {
+  color: inherit;
+}
