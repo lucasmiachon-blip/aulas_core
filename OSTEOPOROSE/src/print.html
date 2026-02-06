@@ -9,14 +9,15 @@
 <title>Osteoporose - 72 slides</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>:root {
-  --bg: #F9F8F4; --white: #FFFFFF; --navy: #0B1320; --gold: #DDB944;
+  --bg: #F9F8F4; --white: #FFFFFF; --navy: #0B1320; --gold: #DDB944; --gold-dark: #A07D1C;
   --teal: #1F766E; --blue: #2563EB; --text: #222222; --muted: #666666;
   --border: #E9ECEF;
   --text-rgb: 34,34,34; --muted-rgb: 102,102,102; --border-rgb: 233,236,239;
-  --bg-rgb: 249,248,244; --navy-rgb: 11,19,32; --gold-rgb: 221,185,68;
+  --bg-rgb: 249,248,244; --navy-rgb: 11,19,32; --gold-rgb: 221,185,68; --gold-dark-rgb: 160,125,28;
   --teal-rgb: 31,118,110; --blue-rgb: 37,99,235;
   --stage-w: 1600; --stage-h: 900;
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: Georgia, "Times New Roman", Times, serif;
 }
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -55,49 +56,187 @@ p{margin:0 0 .8rem}
   @page{size:16.667in 9.375in;margin:0}
   body{background:white!important;overflow:hidden!important}
   html{overflow:hidden!important}
-  .slides-container{padding:0!important;max-width:none!important}
-  .slide{width:16.667in!important;height:9.375in!important;margin:0!important;border:none!important;box-shadow:none!important}
+  .slides-container{padding:0!important;margin:0!important;max-width:none!important;overflow:hidden!important}
+  .slide{width:16.667in!important;height:9.375in!important;min-height:9.375in!important;max-height:9.375in!important;overflow:hidden!important;margin:0!important;padding:0!important;border:none!important;box-shadow:none!important;page-break-after:always!important;break-after:page!important;page-break-inside:avoid!important;break-inside:avoid!important;box-sizing:border-box!important;isolation:isolate!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .slide:first-child{page-break-before:auto!important;break-before:auto!important}
+  .slide:last-child{page-break-after:auto!important;break-after:auto!important}
 }</style>
 </head>
 <body>
 <div class="slides-container">
 <!-- 1. Slide 1 - Mudancas de Paradigma no Tratamento da Osteoporose -->
-<section class="slide slide--center" data-slide="" data-title="Slide 1 - Mudancas de Paradigma no Tratamento da Osteoporose" id="slide-1" style="padding: 0; background: linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.88) 50%, rgba(var(--navy-rgb), 0.78) 100%); min-height: 0; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-
-<!-- Elemento decorativo: círculos concêntricos (conecta com Rilke S02) -->
-<div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; pointer-events: none;">
-  <div style="width: 700px; height: 700px; border: 1px solid rgba(var(--gold-rgb), 0.08); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
-  <div style="width: 500px; height: 500px; border: 1px solid rgba(var(--gold-rgb), 0.12); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
-  <div style="width: 300px; height: 300px; border: 1px solid rgba(var(--gold-rgb), 0.18); border-radius: 50%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></div>
-</div>
-
-<!-- Conteudo principal -->
-<div style="position: relative; z-index: 1; text-align: center; padding: 48px 80px; max-width: 1200px;">
-  <!-- Kicker/tag de contexto -->
-  <div style="margin-bottom: 20px;">
-    <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: rgba(var(--gold-rgb), 0.15); padding: 8px 16px; border-radius: 999px;">Atualização 2024–2025</span>
+<section
+  class="slide slide--center"
+  data-slide=""
+  data-title="Slide 1 - Mudancas de Paradigma no Tratamento da Osteoporose"
+  id="slide-1"
+  style="
+    padding: 0;
+    background: linear-gradient(
+      135deg,
+      var(--navy) 0%,
+      rgba(var(--navy-rgb), 0.88) 50%,
+      rgba(var(--navy-rgb), 0.78) 100%
+    );
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  "
+>
+  <!-- Elemento decorativo: círculos concêntricos (conecta com Rilke S02) -->
+  <div
+    style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 0; pointer-events: none"
+  >
+    <div
+      style="
+        width: 700px;
+        height: 700px;
+        border: 1px solid rgba(var(--gold-rgb), 0.08);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      "
+    ></div>
+    <div
+      style="
+        width: 500px;
+        height: 500px;
+        border: 1px solid rgba(var(--gold-rgb), 0.12);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      "
+    ></div>
+    <div
+      style="
+        width: 300px;
+        height: 300px;
+        border: 1px solid rgba(var(--gold-rgb), 0.18);
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      "
+    ></div>
   </div>
-  
-  <h1 style="font-family: Inter, sans-serif; font-size: 58px; font-weight: 700; color: var(--white); line-height: 1.15; margin: 0 0 20px 0; text-shadow: 0 3px 8px rgba(0,0,0,0.3);">Mudanças de Paradigma<br/>no Tratamento da Osteoporose</h1>
-  
-  <!-- Linha decorativa -->
-  <div style="width: 80px; height: 4px; background: var(--gold); margin: 0 auto 20px auto; border-radius: 2px;"></div>
-  
-  <p style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 500; color: var(--gold); margin: 0 0 8px 0; line-height: 1.3; text-shadow: 0 2px 4px rgba(0,0,0,0.2);">Do T-score ao Treat-to-Target</p>
-  <p style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.7); margin: 0; line-height: 1.4;">NOGG · ASBMR · BHOF · FRAX-Brasil 2.0</p>
-</div>
 
-<!-- Assinatura melhorada -->
-<div style="position: absolute; bottom: 36px; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 24px; z-index: 2;">
-  <div style="display: flex; align-items: center; gap: 12px;">
-    <div style="width: 40px; height: 40px; background: rgba(var(--gold-rgb), 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-      <span style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 700; color: var(--gold);">LM</span>
+  <!-- Conteudo principal -->
+  <div style="position: relative; z-index: 1; text-align: center; padding: 48px 80px; max-width: 1200px">
+    <!-- Kicker/tag de contexto -->
+    <div style="margin-bottom: 20px">
+      <span
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--gold);
+          background: rgba(var(--gold-rgb), 0.15);
+          padding: 8px 16px;
+          border-radius: 999px;
+        "
+      >
+        Atualização 2024–2025
+      </span>
     </div>
-    <div>
-      <p style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 600; color: var(--white); margin: 0; line-height: 1.2;">Lucas Miachon</p>
+
+    <h1
+      style="
+        font-family: Inter, sans-serif;
+        font-size: 58px;
+        font-weight: 700;
+        color: var(--white);
+        line-height: 1.15;
+        margin: 0 0 24px 0;
+        text-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+      "
+    >
+      Mudanças de Paradigma
+      <br />
+      no Tratamento da Osteoporose
+    </h1>
+
+    <p
+      style="
+        font-family: Inter, sans-serif;
+        font-size: 28px;
+        font-weight: 500;
+        color: var(--gold);
+        margin: 0 0 8px 0;
+        line-height: 1.3;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      "
+    >
+      Do T-score ao Treat-to-Target
+    </p>
+    <p
+      style="
+        font-family: Inter, sans-serif;
+        font-size: 17px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.7);
+        margin: 0;
+        line-height: 1.4;
+      "
+    >
+      NOGG · ASBMR · BHOF · FRAX-Brasil 2.0
+    </p>
+  </div>
+
+  <!-- Assinatura melhorada -->
+  <div
+    style="
+      position: absolute;
+      bottom: 36px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      z-index: 2;
+    "
+  >
+    <div style="display: flex; align-items: center; gap: 12px">
+      <div
+        style="
+          width: 40px;
+          height: 40px;
+          background: rgba(var(--gold-rgb), 0.2);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <span style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 700; color: var(--gold)">LM</span>
+      </div>
+      <div>
+        <p
+          style="
+            font-family: Inter, sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0;
+            line-height: 1.2;
+          "
+        >
+          Lucas Miachon
+        </p>
+      </div>
     </div>
   </div>
-</div>
 </section>
 
 <!-- 2. Slide 2 - Citação Rilke -->
@@ -126,430 +265,2096 @@ p{margin:0 0 .8rem}
 </section>
 
 <!-- 3. Slide 3 - Objetivos Educacionais -->
-<section class="slide" data-slide="" data-title="Slide 3 - Objetivos Educacionais" id="slide-3" style="padding: 36px 48px; background: var(--bg);">
-
-  <div style="height: 100%; display: flex; flex-direction: column;">
-
-    <!-- Header compacto -->
-    <div style="margin-bottom: 16px;">
-      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 6px;">
-        <h1 style="font-family: Inter, sans-serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.1; margin: 0;">Objetivos Educacionais</h1>
-        <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 600; color: var(--white); background: var(--teal); padding: 5px 12px; border-radius: 999px;">6 tópicos</span>
+<section
+  class="slide"
+  data-slide=""
+  data-title="Slide 3 - Objetivos Educacionais"
+  id="slide-3"
+  style="padding: 36px 48px; background: var(--bg)"
+>
+  <!-- Outer grid: title / cards centered / take-home -->
+  <div style="display: grid; grid-template-rows: auto 1fr auto; height: 100%; row-gap: 0">
+    <!-- ═══ TITLE — anchored top ═══ -->
+    <div style="padding-bottom: 8px">
+      <div style="display: flex; align-items: baseline; gap: 14px">
+        <h1
+          style="
+            font-family: Inter, sans-serif;
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.1;
+            margin: 0;
+            letter-spacing: -0.01em;
+          "
+        >
+          Objetivos Educacionais
+        </h1>
+        <span
+          style="
+            font-family: Inter, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--white);
+            background: var(--teal);
+            padding: 5px 12px;
+            border-radius: 999px;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+          "
+        >
+          7 TÓPICOS
+        </span>
       </div>
-      <p style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 500; color: rgba(var(--navy-rgb), 0.6); margin: 0;">Do risco ao tratamento guiado por metas</p>
+      <p
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: rgba(var(--navy-rgb), 0.42);
+          margin: 6px 0 0 0;
+          line-height: 1.3;
+        "
+      >
+        Do paradoxo ao tratamento guiado por metas
+      </p>
     </div>
 
-    <!-- Conteúdo (cards + take-home) com distribuição vertical (evita topo "vazio" e mantém o take-home no rodapé) -->
-    <div style="flex: 1; display: flex; flex-direction: column; gap: 16px; padding-top: 10px; min-height: 0;">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%;">
-
-        <!-- Coluna 1: COMPREENDER -->
-        <div style="background: rgba(var(--navy-rgb), 0.04); border-radius: 18px; padding: 24px 28px; display: flex; flex-direction: column;">
-          <div style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-            <span style="width: 8px; height: 8px; background: var(--navy); border-radius: 2px;"></span>
-            Compreender
+    <!-- ═══ CARDS — all 7 equal, centered vertically ═══ -->
+    <div style="display: grid; place-content: center; min-height: 0">
+      <div style="display: flex; flex-direction: column; gap: 16px; width: calc(1600px - 96px)">
+        <!-- Section: COMPREENDER (items 1-4) -->
+        <div>
+          <div style="padding-bottom: 10px">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--navy);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                opacity: 0.35;
+              "
+            >
+              Compreender
+            </span>
           </div>
-          
-          <!-- Items com spacing otimizado -->
-          <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px;">
-            <!-- Item 1 -->
-            <div style="display: flex; gap: 14px; align-items: flex-start;">
-              <div style="width: 48px; height: 48px; background: var(--navy); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 700; color: var(--white);">1</span>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px">
+            <!-- Card 1: O Paradoxo -->
+            <div
+              style="
+                background: var(--white);
+                border: 1px solid rgba(var(--navy-rgb), 0.08);
+                border-radius: 14px;
+                padding: 24px 22px;
+                display: flex;
+                gap: 14px;
+                align-items: flex-start;
+              "
+            >
+              <div
+                style="
+                  width: 46px;
+                  height: 46px;
+                  background: var(--navy);
+                  border-radius: 12px;
+                  display: grid;
+                  place-items: center;
+                  flex-shrink: 0;
+                "
+              >
+                <span style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--white)">
+                  1
+                </span>
               </div>
               <div>
-                <div style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.2;">Modelos de Risco</div>
-                <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: rgba(var(--navy-rgb), 0.65); margin-top: 3px; line-height: 1.35;">FRAX, limiares e limitações do T-score isolado</div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: var(--navy);
+                    line-height: 1.2;
+                  "
+                >
+                  O Paradoxo
+                </div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: rgba(var(--navy-rgb), 0.45);
+                    margin-top: 5px;
+                    line-height: 1.5;
+                  "
+                >
+                  Fraturas em pacientes sem diagnóstico densitométrico
+                </div>
               </div>
             </div>
 
-            <!-- Item 2 -->
-            <div style="display: flex; gap: 14px; align-items: flex-start;">
-              <div style="width: 48px; height: 48px; background: var(--navy); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 700; color: var(--white);">2</span>
+            <!-- Card 2 -->
+            <div
+              style="
+                background: var(--white);
+                border: 1px solid rgba(var(--navy-rgb), 0.08);
+                border-radius: 14px;
+                padding: 24px 22px;
+                display: flex;
+                gap: 14px;
+                align-items: flex-start;
+              "
+            >
+              <div
+                style="
+                  width: 46px;
+                  height: 46px;
+                  background: var(--navy);
+                  border-radius: 12px;
+                  display: grid;
+                  place-items: center;
+                  flex-shrink: 0;
+                "
+              >
+                <span style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--white)">
+                  2
+                </span>
               </div>
               <div>
-                <div style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.2;">Nova Era dos Limiares</div>
-                <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: rgba(var(--navy-rgb), 0.65); margin-top: 3px; line-height: 1.35;">Transição de densitometria para risco absoluto</div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: var(--navy);
+                    line-height: 1.2;
+                  "
+                >
+                  Modelos de Risco
+                </div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: rgba(var(--navy-rgb), 0.45);
+                    margin-top: 5px;
+                    line-height: 1.5;
+                  "
+                >
+                  FRAX integra fatores clínicos ao T-score
+                </div>
               </div>
             </div>
 
-            <!-- Item 3 -->
-            <div style="display: flex; gap: 14px; align-items: flex-start;">
-              <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 700; color: var(--white);">3</span>
+            <!-- Card 3 -->
+            <div
+              style="
+                background: var(--white);
+                border: 1px solid rgba(var(--navy-rgb), 0.08);
+                border-radius: 14px;
+                padding: 24px 22px;
+                display: flex;
+                gap: 14px;
+                align-items: flex-start;
+              "
+            >
+              <div
+                style="
+                  width: 46px;
+                  height: 46px;
+                  background: var(--navy);
+                  border-radius: 12px;
+                  display: grid;
+                  place-items: center;
+                  flex-shrink: 0;
+                "
+              >
+                <span style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--white)">
+                  3
+                </span>
               </div>
               <div>
-                <div style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.2;">Fratura Iminente</div>
-                <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: rgba(var(--navy-rgb), 0.65); margin-top: 3px; line-height: 1.35;">Janela crítica de 1-2 anos pós-fratura</div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: var(--navy);
+                    line-height: 1.2;
+                  "
+                >
+                  Nova Era dos Limiares
+                </div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: rgba(var(--navy-rgb), 0.45);
+                    margin-top: 5px;
+                    line-height: 1.5;
+                  "
+                >
+                  Da densitometria ao risco absoluto
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              style="
+                background: var(--white);
+                border: 1px solid rgba(var(--navy-rgb), 0.08);
+                border-radius: 14px;
+                padding: 24px 22px;
+                display: flex;
+                gap: 14px;
+                align-items: flex-start;
+              "
+            >
+              <div
+                style="
+                  width: 46px;
+                  height: 46px;
+                  background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+                  border-radius: 12px;
+                  display: grid;
+                  place-items: center;
+                  flex-shrink: 0;
+                "
+              >
+                <span style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--white)">
+                  4
+                </span>
+              </div>
+              <div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: var(--navy);
+                    line-height: 1.2;
+                  "
+                >
+                  Fratura Iminente
+                </div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: rgba(var(--navy-rgb), 0.45);
+                    margin-top: 5px;
+                    line-height: 1.5;
+                  "
+                >
+                  Janela de 1–2 anos pós-fratura
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Coluna 2: APLICAR -->
-        <div style="background: rgba(var(--gold-rgb), 0.1); border-radius: 18px; padding: 24px 28px; display: flex; flex-direction: column;">
-          <div style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(var(--gold-rgb), 0.9); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-            <span style="width: 8px; height: 8px; background: var(--gold); border-radius: 2px;"></span>
-            Aplicar
+        <!-- Section: APLICAR (items 5-7) -->
+        <div>
+          <div style="padding-bottom: 10px">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--gold-dark);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                opacity: 0.7;
+              "
+            >
+              Aplicar
+            </span>
           </div>
-          
-          <div style="flex: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px;">
-            <!-- Item 4 -->
-            <div style="display: flex; gap: 14px; align-items: flex-start;">
-              <div style="width: 48px; height: 48px; background: var(--gold); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 700; color: var(--navy);">4</span>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px">
+            <!-- Card 5 -->
+            <div
+              style="
+                background: rgba(var(--gold-dark-rgb), 0.06);
+                border: 1px solid rgba(var(--gold-dark-rgb), 0.16);
+                border-radius: 14px;
+                padding: 24px 22px;
+                display: flex;
+                gap: 14px;
+                align-items: flex-start;
+              "
+            >
+              <div
+                style="
+                  width: 46px;
+                  height: 46px;
+                  background: var(--gold-dark);
+                  border-radius: 12px;
+                  display: grid;
+                  place-items: center;
+                  flex-shrink: 0;
+                "
+              >
+                <span style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--white)">
+                  5
+                </span>
               </div>
               <div>
-                <div style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.2;">Anabolic First</div>
-                <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: rgba(var(--navy-rgb), 0.65); margin-top: 3px; line-height: 1.35;">Quando iniciar com formadores ósseos</div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: var(--navy);
+                    line-height: 1.2;
+                  "
+                >
+                  Anabolic First
+                </div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: rgba(var(--navy-rgb), 0.45);
+                    margin-top: 5px;
+                    line-height: 1.5;
+                  "
+                >
+                  Formadores ósseos como 1ª linha no alto risco
+                </div>
               </div>
             </div>
 
-            <!-- Item 5 -->
-            <div style="display: flex; gap: 14px; align-items: flex-start;">
-              <div style="width: 48px; height: 48px; background: var(--gold); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 700; color: var(--navy);">5</span>
+            <!-- Card 6 -->
+            <div
+              style="
+                background: rgba(var(--gold-dark-rgb), 0.06);
+                border: 1px solid rgba(var(--gold-dark-rgb), 0.16);
+                border-radius: 14px;
+                padding: 24px 22px;
+                display: flex;
+                gap: 14px;
+                align-items: flex-start;
+              "
+            >
+              <div
+                style="
+                  width: 46px;
+                  height: 46px;
+                  background: var(--gold-dark);
+                  border-radius: 12px;
+                  display: grid;
+                  place-items: center;
+                  flex-shrink: 0;
+                "
+              >
+                <span style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--white)">
+                  6
+                </span>
               </div>
               <div>
-                <div style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.2;">Treat-to-Target</div>
-                <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: rgba(var(--navy-rgb), 0.65); margin-top: 3px; line-height: 1.35;">Metas individualizadas de T-score (−1,5 a −2,0)</div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: var(--navy);
+                    line-height: 1.2;
+                  "
+                >
+                  Treat-to-Target
+                </div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: rgba(var(--navy-rgb), 0.45);
+                    margin-top: 5px;
+                    line-height: 1.5;
+                  "
+                >
+                  Metas de T-score entre −1,5 e −2,0
+                </div>
               </div>
             </div>
 
-            <!-- Item 6 -->
-            <div style="display: flex; gap: 14px; align-items: flex-start;">
-              <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--gold) 0%, rgba(var(--navy-rgb), 0.6) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                <span style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 700; color: var(--white);">6</span>
+            <!-- Card 7 -->
+            <div
+              style="
+                background: rgba(var(--gold-dark-rgb), 0.06);
+                border: 1px solid rgba(var(--gold-dark-rgb), 0.16);
+                border-radius: 14px;
+                padding: 24px 22px;
+                display: flex;
+                gap: 14px;
+                align-items: flex-start;
+              "
+            >
+              <div
+                style="
+                  width: 46px;
+                  height: 46px;
+                  background: linear-gradient(135deg, var(--gold-dark) 0%, rgba(var(--navy-rgb), 0.5) 100%);
+                  border-radius: 12px;
+                  display: grid;
+                  place-items: center;
+                  flex-shrink: 0;
+                "
+              >
+                <span style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--white)">
+                  7
+                </span>
               </div>
               <div>
-                <div style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); line-height: 1.2;">Sequenciamento</div>
-                <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: rgba(var(--navy-rgb), 0.65); margin-top: 3px; line-height: 1.35;">Transição anabólico → antirreabsortivo</div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: var(--navy);
+                    line-height: 1.2;
+                  "
+                >
+                  Sequenciamento
+                </div>
+                <div
+                  style="
+                    font-family: Inter, sans-serif;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: rgba(var(--navy-rgb), 0.45);
+                    margin-top: 5px;
+                    line-height: 1.5;
+                  "
+                >
+                  Anabólico → antirreabsortivo
+                </div>
               </div>
             </div>
           </div>
         </div>
-
       </div>
-
-      <!-- Bloco final (usa o espaço inferior sem virar "frankenstein") -->
-      <div style="margin-top: auto; display: flex; flex-direction: column; gap: 12px;">
-        <!-- Micro-dinâmica (adulto: problema → regra → aplicação) -->
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
-          <div style="background: rgba(var(--navy-rgb), 0.03); border: 1px solid rgba(var(--navy-rgb), 0.10); border-radius: 12px; padding: 12px 14px;">
-            <div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 800; color: rgba(var(--navy-rgb), 0.70);">Como vamos trabalhar</div>
-            <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 900; color: var(--navy); margin-top: 4px;">Caso → escolha</div>
-          </div>
-          <div style="background: rgba(var(--navy-rgb), 0.03); border: 1px solid rgba(var(--navy-rgb), 0.10); border-radius: 12px; padding: 12px 14px;">
-            <div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 800; color: rgba(var(--navy-rgb), 0.70);">Depois</div>
-            <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 900; color: var(--navy); margin-top: 4px;">Regra prática</div>
-          </div>
-          <div style="background: rgba(var(--navy-rgb), 0.03); border: 1px solid rgba(var(--navy-rgb), 0.10); border-radius: 12px; padding: 12px 14px;">
-            <div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 800; color: rgba(var(--navy-rgb), 0.70);">Fechamento</div>
-            <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 900; color: var(--navy); margin-top: 4px;">Take-home</div>
-          </div>
-        </div>
-
-        <!-- Take-home -->
-        <div style="background: var(--navy); border-radius: 14px; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px;">
-          <div style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 500; color: var(--white); line-height: 1.45;">
-            Ao final: um mapa mental para decidir <strong style="color: var(--gold);">quem</strong>, <strong style="color: var(--gold);">como</strong> e <strong style="color: var(--gold);">com qual meta</strong> tratar.
-          </div>
-          <div style="display: flex; gap: 8px; flex-shrink: 0;">
-            <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 7px 14px; border-radius: 999px;">Risco</span>
-            <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 7px 14px; border-radius: 999px;">Valor</span>
-            <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 7px 14px; border-radius: 999px;">Meta</span>
-          </div>
-        </div>
-      </div>
-
     </div>
 
+    <!-- ═══ TAKE-HOME — anchored bottom ═══ -->
+    <div
+      style="
+        background: var(--navy);
+        border-radius: 14px;
+        padding: 20px 28px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      "
+    >
+      <div
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: var(--white);
+          line-height: 1.45;
+          flex: 1;
+        "
+      >
+        Ao final: um mapa mental para decidir
+        <strong style="color: var(--gold)">quem</strong>
+        ,
+        <strong style="color: var(--gold)">como</strong>
+        e
+        <strong style="color: var(--gold)">com qual meta</strong>
+        tratar.
+      </div>
+      <div style="display: flex; gap: 7px; flex-shrink: 0">
+        <span
+          style="
+            font-family: Inter, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--navy);
+            background: var(--gold);
+            padding: 7px 14px;
+            border-radius: 999px;
+          "
+        >
+          Risco
+        </span>
+        <span
+          style="
+            font-family: Inter, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--navy);
+            background: var(--gold);
+            padding: 7px 14px;
+            border-radius: 999px;
+          "
+        >
+          Valor
+        </span>
+        <span
+          style="
+            font-family: Inter, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--navy);
+            background: var(--gold);
+            padding: 7px 14px;
+            border-radius: 999px;
+          "
+        >
+          Meta
+        </span>
+      </div>
+    </div>
   </div>
-
 </section>
 
-<!-- 4. Slide 4 - De onde vem estas recomendacoes? -->
-<section class="slide" data-slide="" data-title="Slide 4 - De onde vem estas recomendacoes?" id="slide-4" style="padding: 36px 48px; background: var(--bg);">
-
-  <div style="height: 100%; display: flex; flex-direction: column;">
-
-    <!-- Header compacto -->
-    <div style="margin-bottom: 14px;">
-      <h1 style="font-family: Inter, sans-serif; font-size: 36px; font-weight: 700; color: var(--navy); line-height: 1.15; margin: 0 0 6px 0;">Fontes e premissas</h1>
-      <p style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 500; color: rgba(var(--navy-rgb), 0.7); line-height: 1.4; margin: 0;">Guidelines dizem <strong style="color: var(--navy);">o que</strong> fazer · Modelos (QALY/ICER) ajudam a decidir <strong style="color: var(--navy);">quando vale</strong></p>
+<!-- 4. Slide 4 - De onde vem estas recomendações? -->
+<section
+  class="slide"
+  data-slide=""
+  data-title="Slide 4 - De onde vem estas recomendacoes?"
+  id="slide-4"
+  style="padding: 36px 48px; background: var(--bg)"
+>
+  <!-- Outer grid: title (top) / cards centered / take-home (bottom) -->
+  <div style="display: grid; grid-template-rows: auto 1fr auto; height: 100%; row-gap: 0">
+    <!-- ═══ TITLE — anchored at top ═══ -->
+    <div style="padding-bottom: 8px">
+      <h1
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 38px;
+          font-weight: 800;
+          color: var(--navy);
+          line-height: 1.1;
+          margin: 0 0 6px 0;
+          letter-spacing: -0.01em;
+        "
+      >
+        Fontes e premissas
+      </h1>
+      <p
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: rgba(var(--navy-rgb), 0.42);
+          line-height: 1.35;
+          margin: 0;
+        "
+      >
+        Guidelines dizem
+        <strong style="color: var(--navy); font-weight: 600">o que</strong>
+        fazer · Modelos (QALY/ICER) ajudam a decidir
+        <strong style="color: var(--navy); font-weight: 600">quando vale</strong>
+      </p>
     </div>
 
-    <!-- Conteúdo (cards + take-home) com distribuição vertical (evita topo "vazio" e mantém take-home no rodapé) -->
-    <div style="flex: 1; display: flex; flex-direction: column; gap: 16px; padding-top: 10px; min-height: 0;">
-
-    <!-- Cards container -->
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch;">
-
-      <!-- Card 1: Internacional -->
-      <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.12); border-radius: 14px; padding: 20px 20px 16px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-          <div style="background: var(--navy); color: var(--white); font-family: Inter, sans-serif; font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 6px; letter-spacing: 0.02em;">INTERNACIONAL</div>
+    <!-- ═══ CARDS — centered vertically in available space ═══ -->
+    <div style="display: grid; place-content: center; min-height: 0">
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 18px;
+          width: calc(1600px - 96px);
+          align-items: stretch;
+        "
+      >
+        <!-- Card 1: Internacional -->
+        <div
+          style="
+            background: var(--white);
+            border: 1px solid rgba(var(--navy-rgb), 0.08);
+            border-radius: 16px;
+            padding: 28px 28px 22px 28px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <!-- Tag -->
+          <div style="margin-bottom: 20px">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--white);
+                background: var(--navy);
+                padding: 6px 14px;
+                border-radius: 6px;
+                letter-spacing: 0.05em;
+              "
+            >
+              INTERNACIONAL
+            </span>
+          </div>
+          <!-- Title -->
+          <div
+            style="
+              font-family: Inter, sans-serif;
+              font-size: 26px;
+              font-weight: 700;
+              color: var(--navy);
+              margin-bottom: 22px;
+              line-height: 1.15;
+            "
+          >
+            Guidelines
+          </div>
+          <!-- Bullets -->
+          <div style="display: flex; flex-direction: column; gap: 16px; flex: 1">
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--navy);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>NOGG 2024</strong>
+                : limiares por idade +
+                <em>very high risk</em>
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--navy);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>ACR 2022</strong>
+                : estratificação GC; anabólico em alto risco
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--navy);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>ASBMR/BHOF 2024</strong>
+                :
+                <em>treat-to-target</em>
+                +
+                <em>goal-directed</em>
+              </span>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div
+            style="
+              margin-top: 22px;
+              padding-top: 16px;
+              border-top: 1px solid rgba(var(--navy-rgb), 0.06);
+              display: flex;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--white);
+                background: var(--navy);
+                padding: 5px 11px;
+                border-radius: 5px;
+              "
+            >
+              UK
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--white);
+                background: var(--navy);
+                padding: 5px 11px;
+                border-radius: 5px;
+              "
+            >
+              EUA
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--white);
+                background: var(--navy);
+                padding: 5px 11px;
+                border-radius: 5px;
+              "
+            >
+              Global
+            </span>
+          </div>
         </div>
-        <div style="font-family: Inter, sans-serif; font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Guidelines</div>
-        <ul style="margin: 0; padding-left: 18px; font-family: Inter, sans-serif; font-size: 14px; line-height: 1.55; color: var(--navy);">
-          <li style="margin-bottom: 10px;"><strong>NOGG 2024</strong>: limiares por idade + <em>very high risk</em></li>
-          <li style="margin-bottom: 10px;"><strong>ACR 2022</strong>: estratificação GC; anabólico em alto risco</li>
-          <li><strong>ASBMR/BHOF 2024</strong>: <em>treat-to-target</em> + <em>goal-directed</em></li>
-        </ul>
-        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(var(--navy-rgb), 0.08); display: flex; align-items: center; gap: 6px;">
-          <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--white); background: var(--navy); padding: 3px 8px; border-radius: 4px;">UK</span>
-          <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--white); background: var(--navy); padding: 3px 8px; border-radius: 4px;">EUA</span>
-          <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--white); background: var(--navy); padding: 3px 8px; border-radius: 4px;">Global</span>
+
+        <!-- Card 2: Brasil (highlight) -->
+        <div
+          style="
+            background: linear-gradient(180deg, rgba(var(--teal-rgb), 0.05) 0%, var(--white) 100%);
+            border: 2px solid var(--teal);
+            border-radius: 16px;
+            padding: 28px 28px 22px 28px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <!-- Tags -->
+          <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 8px">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--white);
+                background: var(--teal);
+                padding: 6px 14px;
+                border-radius: 6px;
+                letter-spacing: 0.05em;
+              "
+            >
+              BRASIL
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 10px;
+                font-weight: 700;
+                color: var(--teal);
+                background: rgba(var(--teal-rgb), 0.1);
+                padding: 5px 10px;
+                border-radius: 5px;
+                letter-spacing: 0.02em;
+              "
+            >
+              CONTEXTO LOCAL
+            </span>
+          </div>
+          <!-- Title -->
+          <div
+            style="
+              font-family: Inter, sans-serif;
+              font-size: 26px;
+              font-weight: 700;
+              color: var(--navy);
+              margin-bottom: 22px;
+              line-height: 1.15;
+            "
+          >
+            Risco basal
+          </div>
+          <!-- Bullets -->
+          <div style="display: flex; flex-direction: column; gap: 16px; flex: 1">
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--teal);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>FRAX-Brasil 2.0</strong>
+                : recalibração BRAVOS 2024
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--teal);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>SPAH</strong>
+                : ~8% MOF; ~3% quadril em idosos
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--teal);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>SBD 2025</strong>
+                : DM2 com fratura ou T &le; &minus;2,0
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--teal);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>SBEM/ABRASSO</strong>
+                : posição
+                <em>anabolic-first</em>
+              </span>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div
+            style="
+              margin-top: 22px;
+              padding-top: 16px;
+              border-top: 1px solid rgba(var(--teal-rgb), 0.1);
+              display: flex;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--white);
+                background: var(--teal);
+                padding: 5px 11px;
+                border-radius: 5px;
+              "
+            >
+              Dados nacionais
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 3: Evidência -->
+        <div
+          style="
+            background: var(--white);
+            border: 1px solid rgba(var(--navy-rgb), 0.08);
+            border-radius: 16px;
+            padding: 28px 28px 22px 28px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <!-- Tag -->
+          <div style="margin-bottom: 20px">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--white);
+                background: var(--gold-dark);
+                padding: 6px 14px;
+                border-radius: 6px;
+                letter-spacing: 0.05em;
+              "
+            >
+              EVIDÊNCIA
+            </span>
+          </div>
+          <!-- Title -->
+          <div
+            style="
+              font-family: Inter, sans-serif;
+              font-size: 26px;
+              font-weight: 700;
+              color: var(--navy);
+              margin-bottom: 22px;
+              line-height: 1.15;
+            "
+          >
+            Ensaios pivotais
+          </div>
+          <!-- Bullets -->
+          <div style="display: flex; flex-direction: column; gap: 16px; flex: 1">
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--gold-dark);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>Antirreabsortivos</strong>
+                : FIT, FREEDOM, HORIZON
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--gold-dark);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>Anabólicos</strong>
+                : VERO, ACTIVE, FRAME/ARCH
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--gold-dark);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                Sequência sustenta estratégia
+                <em>goal-directed</em>
+              </span>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div
+            style="
+              margin-top: 22px;
+              padding-top: 16px;
+              border-top: 1px solid rgba(var(--navy-rgb), 0.06);
+              display: flex;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--white);
+                background: rgba(var(--navy-rgb), 0.6);
+                padding: 5px 11px;
+                border-radius: 5px;
+              "
+            >
+              RCTs de referência
+            </span>
+          </div>
         </div>
       </div>
-
-      <!-- Card 2: Brasil (destacado) -->
-      <div style="background: linear-gradient(180deg, rgba(var(--teal-rgb), 0.08) 0%, var(--white) 100%); border: 2px solid var(--teal); border-radius: 14px; padding: 20px 20px 16px 20px; box-shadow: 0 4px 12px rgba(var(--teal-rgb), 0.12); display: flex; flex-direction: column;">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-          <div style="background: var(--teal); color: var(--white); font-family: Inter, sans-serif; font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 6px; letter-spacing: 0.02em;">BRASIL</div>
-          <span style="font-family: Inter, sans-serif; font-size: 10px; font-weight: 600; color: var(--teal); background: rgba(var(--teal-rgb), 0.15); padding: 3px 6px; border-radius: 4px;">CONTEXTO LOCAL</span>
-        </div>
-        <div style="font-family: Inter, sans-serif; font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Risco basal</div>
-        <ul style="margin: 0; padding-left: 18px; font-family: Inter, sans-serif; font-size: 14px; line-height: 1.55; color: var(--navy);">
-          <li style="margin-bottom: 10px;"><strong>FRAX-Brasil 2.0</strong>: recalibração BRAVOS 2024</li>
-          <li style="margin-bottom: 10px;"><strong>SPAH</strong>: ~8% MOF; ~3% quadril em idosos</li>
-          <li style="margin-bottom: 10px;"><strong>SBD 2025</strong>: DM2 com fratura ou T ≤ −2,0</li>
-          <li><strong>SBEM/ABRASSO</strong>: posição <em>anabolic-first</em></li>
-        </ul>
-        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(var(--teal-rgb), 0.2); display: flex; align-items: center; gap: 6px;">
-          <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--white); background: var(--teal); padding: 3px 8px; border-radius: 4px;">Dados nacionais</span>
-        </div>
-      </div>
-
-      <!-- Card 3: Evidência -->
-      <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.12); border-radius: 14px; padding: 20px 20px 16px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-          <div style="background: var(--gold); color: var(--navy); font-family: Inter, sans-serif; font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 6px; letter-spacing: 0.02em;">EVIDÊNCIA</div>
-        </div>
-        <div style="font-family: Inter, sans-serif; font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Ensaios pivotais</div>
-        <ul style="margin: 0; padding-left: 18px; font-family: Inter, sans-serif; font-size: 14px; line-height: 1.55; color: var(--navy);">
-          <li style="margin-bottom: 10px;"><strong>Antirreabsortivos</strong>: FIT, FREEDOM, HORIZON</li>
-          <li style="margin-bottom: 10px;"><strong>Anabólicos</strong>: VERO, ACTIVE, FRAME/ARCH</li>
-          <li>Sequência sustenta estratégia <em>goal-directed</em></li>
-        </ul>
-        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(var(--navy-rgb), 0.08); display: flex; align-items: center; gap: 6px;">
-          <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--white); background: rgba(var(--navy-rgb), 0.7); padding: 3px 8px; border-radius: 4px;">RCTs de referência</span>
-        </div>
-      </div>
-
     </div>
 
-    <!-- Take-home (colado ao bloco de cards para não parecer "rodapé perdido") -->
-    <div style="margin-top: auto; padding: 14px 20px; border-radius: 12px; background: var(--navy); display: flex; align-items: center; gap: 14px;">
-      <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 6px 12px; border-radius: 6px; white-space: nowrap;">Regra da casa</span>
-      <p style="margin: 0; font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.4;">Todo número "importante" tem fonte <strong style="color: var(--gold);">nomeada</strong> no slide ou nesta lista.</p>
+    <!-- ═══ TAKE-HOME — anchored at bottom ═══ -->
+    <div
+      style="
+        background: var(--navy);
+        border-radius: 14px;
+        padding: 20px 28px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      "
+    >
+      <span
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+          color: var(--navy);
+          background: var(--gold);
+          padding: 7px 16px;
+          border-radius: 6px;
+          white-space: nowrap;
+          flex-shrink: 0;
+        "
+      >
+        Regra da casa
+      </span>
+      <p
+        style="
+          margin: 0;
+          font-family: Inter, sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: var(--white);
+          line-height: 1.45;
+        "
+      >
+        Todo número &ldquo;importante&rdquo; tem fonte
+        <strong style="color: var(--gold)">nomeada</strong>
+        no slide ou nesta lista.
+      </p>
     </div>
-
-    </div>
-
   </div>
-
 </section>
 
 <!-- 5. Slide 5 - Evolucao do conceito -->
-<section class="slide" data-slide="" data-title="Slide 5 - Evolucao do conceito" id="slide-5" style="padding: 32px 40px; background: var(--bg);">
-
-  <div style="height: 100%; display: flex; flex-direction: column;">
-
-    <!-- Header compacto -->
-    <div style="margin-bottom: 12px;">
-      <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 4px;">
-        <h1 style="font-family: Inter, sans-serif; font-size: 34px; font-weight: 700; color: var(--navy); line-height: 1.1; margin: 0;">A virada: densitometria → risco → metas</h1>
-      </div>
-      <p style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 500; color: rgba(var(--navy-rgb), 0.6); margin: 0;">200 anos de evolução conceitual — do termo descritivo ao tratamento guiado por metas</p>
+<section
+  class="slide"
+  data-slide=""
+  data-title="Slide 5 - Evolucao do conceito"
+  id="slide-5"
+  style="padding: 36px 48px; background: var(--bg)"
+>
+  <div style="height: 100%; display: flex; flex-direction: column">
+    <!-- Header -->
+    <div style="margin-bottom: 12px">
+      <h1
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 38px;
+          font-weight: 800;
+          color: var(--navy);
+          line-height: 1.1;
+          margin: 0;
+          letter-spacing: -0.01em;
+        "
+      >
+        A virada: densitometria → risco → metas
+      </h1>
+      <p
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: rgba(var(--navy-rgb), 0.42);
+          margin: 6px 0 0 0;
+        "
+      >
+        200 anos de evolução conceitual — do termo descritivo ao tratamento guiado por metas
+      </p>
     </div>
 
     <!-- Timeline expandida -->
-    <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
-      <div style="position: relative; width: 100%; max-width: 1320px; background: rgba(var(--navy-rgb), 0.035); border-radius: 16px; padding: 32px 36px 28px 36px;">
-        
+    <div style="flex: 1; display: flex; align-items: center; justify-content: center">
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          max-width: 1320px;
+          background: rgba(var(--navy-rgb), 0.035);
+          border-radius: 16px;
+          padding: 32px 36px 28px 36px;
+        "
+      >
         <!-- Linha dourada horizontal -->
-        <div style="position: absolute; top: 50%; left: 36px; right: 36px; height: 5px; background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 50%, var(--gold) 100%); transform: translateY(4px); z-index: 1; border-radius: 3px;"></div>
-        
+        <div
+          style="
+            position: absolute;
+            top: 50%;
+            left: 36px;
+            right: 36px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--navy) 0%, var(--gold-dark) 50%, var(--gold-dark) 100%);
+            transform: translateY(4px);
+            z-index: 1;
+            border-radius: 3px;
+          "
+        ></div>
+
         <!-- Grid de colunas -->
-        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; position: relative; z-index: 2;">
-          
+        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; position: relative; z-index: 2">
           <!-- 1829 -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1;">1829</span>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.03em;">Lobstein</span>
-            <div style="width: 40px; height: 40px; background: var(--navy); border-radius: 50%; margin: 12px 0; border: 3px solid var(--bg); box-shadow: 0 2px 8px rgba(0,0,0,0.15);"></div>
-            <div style="background: rgba(var(--navy-rgb), 0.06); border-radius: 8px; padding: 8px 10px; min-height: 52px; display: flex; align-items: center;">
-              <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; color: rgba(var(--navy-rgb), 0.7); line-height: 1.35;">Termo "ossos porosos" cunhado</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+              "
+            >
+              1829
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 2px;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+              "
+            >
+              Lobstein
+            </span>
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                background: var(--navy);
+                border-radius: 50%;
+                margin: 12px 0;
+                border: 3px solid var(--bg);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+              "
+            ></div>
+            <div
+              style="
+                background: rgba(var(--navy-rgb), 0.06);
+                border-radius: 8px;
+                padding: 8px 10px;
+                min-height: 52px;
+                display: flex;
+                align-items: center;
+              "
+            >
+              <span
+                style="
+                  font-family: Inter, sans-serif;
+                  font-size: 13px;
+                  font-weight: 500;
+                  color: rgba(var(--navy-rgb), 0.7);
+                  line-height: 1.35;
+                "
+              >
+                Termo "ossos porosos" cunhado
+              </span>
             </div>
           </div>
-          
+
           <!-- 1994 -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1;">1994</span>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.03em;">OMS</span>
-            <div style="width: 40px; height: 40px; background: var(--navy); border-radius: 50%; margin: 12px 0; border: 3px solid var(--bg); box-shadow: 0 2px 8px rgba(0,0,0,0.15);"></div>
-            <div style="background: rgba(var(--navy-rgb), 0.06); border-radius: 8px; padding: 8px 10px; min-height: 52px; display: flex; align-items: center;">
-              <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; color: rgba(var(--navy-rgb), 0.7); line-height: 1.35;">Definição: T-score ≤ −2,5</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+              "
+            >
+              1994
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 2px;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+              "
+            >
+              OMS
+            </span>
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                background: var(--navy);
+                border-radius: 50%;
+                margin: 12px 0;
+                border: 3px solid var(--bg);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+              "
+            ></div>
+            <div
+              style="
+                background: rgba(var(--navy-rgb), 0.06);
+                border-radius: 8px;
+                padding: 8px 10px;
+                min-height: 52px;
+                display: flex;
+                align-items: center;
+              "
+            >
+              <span
+                style="
+                  font-family: Inter, sans-serif;
+                  font-size: 13px;
+                  font-weight: 500;
+                  color: rgba(var(--navy-rgb), 0.7);
+                  line-height: 1.35;
+                "
+              >
+                Definição: T-score ≤ −2,5
+              </span>
             </div>
           </div>
-          
+
           <!-- 2000 -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1;">2000</span>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.03em;">NIH</span>
-            <div style="width: 40px; height: 40px; background: var(--navy); border-radius: 50%; margin: 12px 0; border: 3px solid var(--bg); box-shadow: 0 2px 8px rgba(0,0,0,0.15);"></div>
-            <div style="background: rgba(var(--navy-rgb), 0.06); border-radius: 8px; padding: 8px 10px; min-height: 52px; display: flex; align-items: center;">
-              <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 500; color: rgba(var(--navy-rgb), 0.7); line-height: 1.35;">Qualidade > quantidade óssea</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+              "
+            >
+              2000
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 2px;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+              "
+            >
+              NIH
+            </span>
+            <div
+              style="
+                width: 40px;
+                height: 40px;
+                background: var(--navy);
+                border-radius: 50%;
+                margin: 12px 0;
+                border: 3px solid var(--bg);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+              "
+            ></div>
+            <div
+              style="
+                background: rgba(var(--navy-rgb), 0.06);
+                border-radius: 8px;
+                padding: 8px 10px;
+                min-height: 52px;
+                display: flex;
+                align-items: center;
+              "
+            >
+              <span
+                style="
+                  font-family: Inter, sans-serif;
+                  font-size: 13px;
+                  font-weight: 500;
+                  color: rgba(var(--navy-rgb), 0.7);
+                  line-height: 1.35;
+                "
+              >
+                Qualidade > quantidade óssea
+              </span>
             </div>
           </div>
-          
+
           <!-- 2008 (destaque: mudança de paradigma) -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--gold); line-height: 1;">2008</span>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; color: var(--gold); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.03em;">FRAX</span>
-            <div style="width: 44px; height: 44px; background: var(--gold); border-radius: 50%; margin: 10px 0; border: 3px solid var(--bg); box-shadow: 0 3px 12px rgba(var(--gold-rgb), 0.4);"></div>
-            <div style="background: rgba(var(--gold-rgb), 0.12); border: 1px solid rgba(var(--gold-rgb), 0.25); border-radius: 8px; padding: 8px 10px; min-height: 52px; display: flex; align-items: center;">
-              <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; color: var(--navy); line-height: 1.35;">Risco absoluto em 10 anos</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--gold-dark);
+                line-height: 1;
+              "
+            >
+              2008
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--gold-dark);
+                margin-top: 2px;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+              "
+            >
+              FRAX
+            </span>
+            <div
+              style="
+                width: 44px;
+                height: 44px;
+                background: var(--white);
+                border: 3.5px solid var(--gold-dark);
+                border-radius: 50%;
+                margin: 10px 0;
+                box-shadow: 0 2px 8px rgba(var(--gold-dark-rgb), 0.25);
+              "
+            ></div>
+            <div
+              style="
+                background: rgba(var(--gold-dark-rgb), 0.08);
+                border: 1px solid rgba(var(--gold-dark-rgb), 0.2);
+                border-radius: 8px;
+                padding: 8px 10px;
+                min-height: 52px;
+                display: flex;
+                align-items: center;
+              "
+            >
+              <span
+                style="
+                  font-family: Inter, sans-serif;
+                  font-size: 13px;
+                  font-weight: 600;
+                  color: var(--navy);
+                  line-height: 1.35;
+                "
+              >
+                Risco absoluto em 10 anos
+              </span>
             </div>
           </div>
-          
+
           <!-- 2010 -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--gold); line-height: 1;">2010+</span>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; color: var(--gold); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.03em;">Iminente</span>
-            <div style="width: 44px; height: 44px; background: var(--gold); border-radius: 50%; margin: 10px 0; border: 3px solid var(--bg); box-shadow: 0 3px 12px rgba(var(--gold-rgb), 0.4);"></div>
-            <div style="background: rgba(var(--gold-rgb), 0.12); border: 1px solid rgba(var(--gold-rgb), 0.25); border-radius: 8px; padding: 8px 10px; min-height: 52px; display: flex; align-items: center;">
-              <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; color: var(--navy); line-height: 1.35;">Janela crítica 1-2 anos</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--gold-dark);
+                line-height: 1;
+              "
+            >
+              2010+
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--gold-dark);
+                margin-top: 2px;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+              "
+            >
+              Iminente
+            </span>
+            <div
+              style="
+                width: 44px;
+                height: 44px;
+                background: var(--white);
+                border: 3.5px solid var(--gold-dark);
+                border-radius: 50%;
+                margin: 10px 0;
+                box-shadow: 0 2px 8px rgba(var(--gold-dark-rgb), 0.25);
+              "
+            ></div>
+            <div
+              style="
+                background: rgba(var(--gold-dark-rgb), 0.08);
+                border: 1px solid rgba(var(--gold-dark-rgb), 0.2);
+                border-radius: 8px;
+                padding: 8px 10px;
+                min-height: 52px;
+                display: flex;
+                align-items: center;
+              "
+            >
+              <span
+                style="
+                  font-family: Inter, sans-serif;
+                  font-size: 13px;
+                  font-weight: 600;
+                  color: var(--navy);
+                  line-height: 1.35;
+                "
+              >
+                Janela crítica 1-2 anos
+              </span>
             </div>
           </div>
-          
+
           <!-- 2024 (destaque máximo) -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--gold); line-height: 1;">2024</span>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; color: var(--gold); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.03em;">T2T</span>
-            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--gold) 0%, rgba(var(--navy-rgb), 0.3) 100%); border-radius: 50%; margin: 8px 0; border: 3px solid var(--bg); box-shadow: 0 4px 16px rgba(var(--gold-rgb), 0.5);"></div>
-            <div style="background: var(--gold); border-radius: 8px; padding: 8px 10px; min-height: 52px; display: flex; align-items: center;">
-              <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 700; color: var(--navy); line-height: 1.35;">Metas terapêuticas individualizadas</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--gold-dark);
+                line-height: 1;
+              "
+            >
+              2024
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                color: var(--gold-dark);
+                margin-top: 2px;
+                text-transform: uppercase;
+                letter-spacing: 0.03em;
+              "
+            >
+              T2T
+            </span>
+            <div
+              style="
+                width: 48px;
+                height: 48px;
+                background: var(--white);
+                border: 4px solid var(--gold-dark);
+                border-radius: 50%;
+                margin: 8px 0;
+                box-shadow: 0 3px 12px rgba(var(--gold-dark-rgb), 0.3);
+              "
+            ></div>
+            <div
+              style="
+                background: rgba(var(--gold-dark-rgb), 0.1);
+                border: 1px solid rgba(var(--gold-dark-rgb), 0.25);
+                border-radius: 8px;
+                padding: 8px 10px;
+                min-height: 52px;
+                display: flex;
+                align-items: center;
+              "
+            >
+              <span
+                style="
+                  font-family: Inter, sans-serif;
+                  font-size: 13px;
+                  font-weight: 700;
+                  color: var(--navy);
+                  line-height: 1.35;
+                "
+              >
+                Metas terapêuticas individualizadas
+              </span>
             </div>
           </div>
-          
         </div>
       </div>
     </div>
 
     <!-- Take-home melhorado -->
-    <div style="margin-top: 12px; background: var(--navy); border-radius: 12px; padding: 14px 20px; display: flex; align-items: center; gap: 16px;">
-      <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
-        <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 6px 12px; border-radius: 6px;">Mensagem</span>
+    <div
+      style="
+        margin-top: 12px;
+        background: var(--navy);
+        border-radius: 14px;
+        padding: 20px 28px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      "
+    >
+      <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0">
+        <span
+          style="
+            font-family: Inter, sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--navy);
+            background: var(--gold);
+            padding: 6px 12px;
+            border-radius: 6px;
+          "
+        >
+          Mensagem
+        </span>
       </div>
-      <p style="margin: 0; font-family: Inter, sans-serif; font-size: 15px; font-weight: 500; color: var(--white); line-height: 1.4;">
-        Decidir <strong style="color: var(--gold);">quem</strong> tratar depende de 3 eixos: <strong style="color: var(--gold);">risco absoluto</strong> + <strong style="color: var(--gold);">tempo</strong> (iminência) + <strong style="color: var(--gold);">meta</strong> T-score
+      <p
+        style="
+          margin: 0;
+          font-family: Inter, sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: var(--white);
+          line-height: 1.4;
+        "
+      >
+        Decidir
+        <strong style="color: var(--gold)">quem</strong>
+        tratar depende de 3 eixos:
+        <strong style="color: var(--gold)">risco absoluto</strong>
+        +
+        <strong style="color: var(--gold)">tempo</strong>
+        (iminência) +
+        <strong style="color: var(--gold)">meta</strong>
+        T-score
       </p>
     </div>
-
   </div>
-
 </section>
 
 <!-- 6. Slide 6 - Trials Pivotais -->
-<section class="slide" data-slide="" data-title="Slide 6 - Trials Pivotais" id="slide-6" style="padding: 40px 48px; background: var(--bg);">
-
-  <!-- Inner wrapper: justify-content distribui título/conteúdo/footer verticalmente -->
-  <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
-
+<section
+  class="slide"
+  data-slide=""
+  data-title="Slide 6 - Trials Pivotais"
+  id="slide-6"
+  style="padding: 36px 48px; background: var(--bg)"
+>
+  <!-- Inner wrapper -->
+  <div style="height: 100%; display: flex; flex-direction: column; justify-content: space-between">
     <!-- Header -->
     <div>
-      <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.15; margin: 0 0 6px 0;">Trials Pivotais</h1>
-      <p style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 500; color: rgba(var(--navy-rgb), 0.65); margin: 0;">Os estudos que mudaram o baseline de evidência — <span style="color: var(--navy); font-weight: 600;">anti-reabsortivos</span> e <span style="color: var(--gold); font-weight: 700;">anabólicos</span></p>
+      <h1
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 38px;
+          font-weight: 800;
+          color: var(--navy);
+          line-height: 1.1;
+          margin: 0 0 6px 0;
+          letter-spacing: -0.01em;
+        "
+      >
+        Trials Pivotais
+      </h1>
+      <p
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: rgba(var(--navy-rgb), 0.42);
+          margin: 0;
+        "
+      >
+        Os estudos que mudaram o baseline de evidência —
+        <span style="color: var(--navy); font-weight: 600">anti-reabsortivos</span>
+        e
+        <span style="color: var(--gold-dark); font-weight: 700">anabólicos</span>
+      </p>
     </div>
 
     <!-- Timeline: container com background sutil -->
-    <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 0;">
-      <div style="position: relative; width: 100%; max-width: 1400px; background: rgba(var(--navy-rgb), 0.03); border-radius: 20px; padding: 40px 44px;">
+    <div style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 0">
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          max-width: 1400px;
+          background: rgba(var(--navy-rgb), 0.03);
+          border-radius: 20px;
+          padding: 40px 44px;
+        "
+      >
         <!-- Linha dourada horizontal -->
-        <div style="position: absolute; top: 50%; left: 44px; right: 44px; height: 5px; background: var(--gold); transform: translateY(8px); z-index: 1;"></div>
+        <div
+          style="
+            position: absolute;
+            top: 50%;
+            left: 44px;
+            right: 44px;
+            height: 5px;
+            background: var(--gold-dark);
+            transform: translateY(8px);
+            z-index: 1;
+          "
+        ></div>
         <!-- Grid de colunas -->
-        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; position: relative; z-index: 2;">
+        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 12px; position: relative; z-index: 2">
           <!-- 1996 FIT (anti-reabsortivo) -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1;">1996</span>
-            <span style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 4px;">FIT</span>
-            <div style="width: 44px; height: 44px; background: var(--navy); border-radius: 50%; margin: 14px 0; border: 4px solid var(--bg);"></div>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.2;">alendronato</span>
-            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; color: rgba(var(--navy-rgb), 0.5); margin-top: 4px; line-height: 1.3;">↓47% vert</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+              "
+            >
+              1996
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 17px;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 4px;
+              "
+            >
+              FIT
+            </span>
+            <div
+              style="
+                width: 44px;
+                height: 44px;
+                background: var(--navy);
+                border-radius: 50%;
+                margin: 14px 0;
+                border: 4px solid var(--bg);
+              "
+            ></div>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--navy);
+                line-height: 1.2;
+              "
+            >
+              alendronato
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 500;
+                color: rgba(var(--navy-rgb), 0.5);
+                margin-top: 4px;
+                line-height: 1.3;
+              "
+            >
+              ↓47% vert
+            </span>
           </div>
           <!-- 2007 HORIZON (anti-reabsortivo) -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1;">2007</span>
-            <span style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 4px;">HORIZON</span>
-            <div style="width: 44px; height: 44px; background: var(--navy); border-radius: 50%; margin: 14px 0; border: 4px solid var(--bg);"></div>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.2;">zoledronato</span>
-            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; color: rgba(var(--navy-rgb), 0.5); margin-top: 4px; line-height: 1.3;">↓41% quadril</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+              "
+            >
+              2007
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 17px;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 4px;
+              "
+            >
+              HORIZON
+            </span>
+            <div
+              style="
+                width: 44px;
+                height: 44px;
+                background: var(--navy);
+                border-radius: 50%;
+                margin: 14px 0;
+                border: 4px solid var(--bg);
+              "
+            ></div>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--navy);
+                line-height: 1.2;
+              "
+            >
+              zoledronato
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 500;
+                color: rgba(var(--navy-rgb), 0.5);
+                margin-top: 4px;
+                line-height: 1.3;
+              "
+            >
+              ↓41% quadril
+            </span>
           </div>
           <!-- 2009 FREEDOM (anti-reabsortivo) -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1;">2009</span>
-            <span style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 4px;">FREEDOM</span>
-            <div style="width: 44px; height: 44px; background: var(--navy); border-radius: 50%; margin: 14px 0; border: 4px solid var(--bg);"></div>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.2;">denosumabe</span>
-            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; color: rgba(var(--navy-rgb), 0.5); margin-top: 4px; line-height: 1.3;">↓68% vert</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+              "
+            >
+              2009
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 17px;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 4px;
+              "
+            >
+              FREEDOM
+            </span>
+            <div
+              style="
+                width: 44px;
+                height: 44px;
+                background: var(--navy);
+                border-radius: 50%;
+                margin: 14px 0;
+                border: 4px solid var(--bg);
+              "
+            ></div>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--navy);
+                line-height: 1.2;
+              "
+            >
+              denosumabe
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 500;
+                color: rgba(var(--navy-rgb), 0.5);
+                margin-top: 4px;
+                line-height: 1.3;
+              "
+            >
+              ↓68% vert
+            </span>
           </div>
           <!-- 2016 FRAME (anabólico) -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1;">2016</span>
-            <span style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 4px;">FRAME</span>
-            <div style="width: 44px; height: 44px; background: var(--gold); border-radius: 50%; margin: 14px 0; border: 4px solid var(--bg);"></div>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.2;">romosozumabe</span>
-            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; color: rgba(var(--gold-rgb), 0.8); margin-top: 4px; line-height: 1.3;">↓73% vert</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+              "
+            >
+              2016
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 17px;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 4px;
+              "
+            >
+              FRAME
+            </span>
+            <div
+              style="
+                width: 44px;
+                height: 44px;
+                background: var(--white);
+                border: 3.5px solid var(--gold-dark);
+                border-radius: 50%;
+                margin: 14px 0;
+              "
+            ></div>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--navy);
+                line-height: 1.2;
+              "
+            >
+              romosozumabe
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 500;
+                color: var(--gold-dark);
+                margin-top: 4px;
+                line-height: 1.3;
+              "
+            >
+              ↓73% vert
+            </span>
           </div>
           <!-- 2017 ARCH (anabólico→sequência) -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1;">2017</span>
-            <span style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 4px;">ARCH</span>
-            <div style="width: 44px; height: 44px; background: var(--gold); border-radius: 50%; margin: 14px 0; border: 4px solid var(--bg);"></div>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.2;">romo → ALN</span>
-            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; color: rgba(var(--gold-rgb), 0.8); margin-top: 4px; line-height: 1.3;">↓48% quadril</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+              "
+            >
+              2017
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 17px;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 4px;
+              "
+            >
+              ARCH
+            </span>
+            <div
+              style="
+                width: 44px;
+                height: 44px;
+                background: var(--white);
+                border: 3.5px solid var(--gold-dark);
+                border-radius: 50%;
+                margin: 14px 0;
+              "
+            ></div>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--navy);
+                line-height: 1.2;
+              "
+            >
+              romo → ALN
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 500;
+                color: var(--gold-dark);
+                margin-top: 4px;
+                line-height: 1.3;
+              "
+            >
+              ↓48% quadril
+            </span>
           </div>
           <!-- 2018 VERO (anabólico) -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1;">2018</span>
-            <span style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 4px;">VERO</span>
-            <div style="width: 44px; height: 44px; background: var(--gold); border-radius: 50%; margin: 14px 0; border: 4px solid var(--bg);"></div>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.2;">teriparatida</span>
-            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; color: rgba(var(--gold-rgb), 0.8); margin-top: 4px; line-height: 1.3;">vs risedronato</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+              "
+            >
+              2018
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 17px;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 4px;
+              "
+            >
+              VERO
+            </span>
+            <div
+              style="
+                width: 44px;
+                height: 44px;
+                background: var(--white);
+                border: 3.5px solid var(--gold-dark);
+                border-radius: 50%;
+                margin: 14px 0;
+              "
+            ></div>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--navy);
+                line-height: 1.2;
+              "
+            >
+              teriparatida
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 500;
+                color: var(--gold-dark);
+                margin-top: 4px;
+                line-height: 1.3;
+              "
+            >
+              vs risedronato
+            </span>
           </div>
           <!-- 2018 ACTIVE (anabólico) -->
-          <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <span style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); line-height: 1;">2018</span>
-            <span style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin-top: 4px;">ACTIVE</span>
-            <div style="width: 44px; height: 44px; background: var(--gold); border-radius: 50%; margin: 14px 0; border: 4px solid var(--bg);"></div>
-            <span style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.2;">abaloparatida</span>
-            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; color: rgba(var(--gold-rgb), 0.8); margin-top: 4px; line-height: 1.3;">↓86% vert</span>
+          <div style="display: flex; flex-direction: column; align-items: center; text-align: center">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--navy);
+                line-height: 1;
+              "
+            >
+              2018
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 17px;
+                font-weight: 700;
+                color: var(--navy);
+                margin-top: 4px;
+              "
+            >
+              ACTIVE
+            </span>
+            <div
+              style="
+                width: 44px;
+                height: 44px;
+                background: var(--white);
+                border: 3.5px solid var(--gold-dark);
+                border-radius: 50%;
+                margin: 14px 0;
+              "
+            ></div>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 14px;
+                font-weight: 600;
+                color: var(--navy);
+                line-height: 1.2;
+              "
+            >
+              abaloparatida
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 500;
+                color: var(--gold-dark);
+                margin-top: 4px;
+                line-height: 1.3;
+              "
+            >
+              ↓86% vert
+            </span>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Leitura rápida -->
-    <div style="background: var(--navy); border-radius: 14px; padding: 16px 24px; display: flex; align-items: center; gap: 20px;">
-      <div style="display: flex; gap: 12px; flex-shrink: 0;">
-        <div style="display: flex; align-items: center; gap: 6px;">
-          <div style="width: 14px; height: 14px; background: var(--navy); border: 2px solid var(--white); border-radius: 50%;"></div>
-          <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; color: var(--white);">Antirreabsortivo</span>
+    <!-- Take-home -->
+    <div
+      style="
+        background: var(--navy);
+        border-radius: 14px;
+        padding: 20px 28px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      "
+    >
+      <div style="display: flex; gap: 12px; flex-shrink: 0">
+        <div style="display: flex; align-items: center; gap: 6px">
+          <div
+            style="
+              width: 14px;
+              height: 14px;
+              background: var(--navy);
+              border: 2px solid var(--white);
+              border-radius: 50%;
+            "
+          ></div>
+          <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; color: var(--white)">
+            Antirreabsortivo
+          </span>
         </div>
-        <div style="display: flex; align-items: center; gap: 6px;">
-          <div style="width: 14px; height: 14px; background: var(--gold); border-radius: 50%;"></div>
-          <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; color: var(--gold);">Anabólico</span>
+        <div style="display: flex; align-items: center; gap: 6px">
+          <div style="width: 14px; height: 14px; background: var(--gold); border-radius: 50%"></div>
+          <span style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 600; color: var(--gold)">
+            Anabólico
+          </span>
         </div>
       </div>
-      <div style="width: 1px; height: 24px; background: rgba(255,255,255,0.2);"></div>
-      <p style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 500; color: var(--white); margin: 0; line-height: 1.4;">Os trials definiram <strong style="color: var(--gold);">quem tratar</strong>, <strong style="color: var(--gold);">por quanto tempo</strong> e <strong style="color: var(--gold);">em que sequência</strong>.</p>
+      <div style="width: 1px; height: 24px; background: rgba(255, 255, 255, 0.2)"></div>
+      <p
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: var(--white);
+          margin: 0;
+          line-height: 1.4;
+        "
+      >
+        Os trials definiram
+        <strong style="color: var(--gold)">quem tratar</strong>
+        ,
+        <strong style="color: var(--gold)">por quanto tempo</strong>
+        e
+        <strong style="color: var(--gold)">em que sequência</strong>
+        .
+      </p>
     </div>
-
   </div>
-
 </section>
 
 <!-- 7. Slide 6A - Utilidade Comparada: Fraturas vs Doenças -->

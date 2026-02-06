@@ -28,7 +28,13 @@ function validateListMetaAndFiles(files) {
     process.exit(1);
   }
   if (meta.length !== files.length) {
-    console.error('ERRO: _list.txt tem', files.length, 'itens; _meta.json tem', meta.length, '. Mantenha em sync (rename-osteoporose-slides-by-order.js).');
+    console.error(
+      'ERRO: _list.txt tem',
+      files.length,
+      'itens; _meta.json tem',
+      meta.length,
+      '. Mantenha em sync (rename-osteoporose-slides-by-order.js).'
+    );
     process.exit(1);
   }
   for (let i = 0; i < files.length; i++) {
@@ -57,14 +63,15 @@ const printHead = (count) => `<!DOCTYPE html>
 <title>Osteoporose - ${count} slides</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>:root {
-  --bg: #F9F8F4; --white: #FFFFFF; --navy: #0B1320; --gold: #DDB944;
+  --bg: #F9F8F4; --white: #FFFFFF; --navy: #0B1320; --gold: #DDB944; --gold-dark: #A07D1C;
   --teal: #1F766E; --blue: #2563EB; --text: #222222; --muted: #666666;
   --border: #E9ECEF;
   --text-rgb: 34,34,34; --muted-rgb: 102,102,102; --border-rgb: 233,236,239;
-  --bg-rgb: 249,248,244; --navy-rgb: 11,19,32; --gold-rgb: 221,185,68;
+  --bg-rgb: 249,248,244; --navy-rgb: 11,19,32; --gold-rgb: 221,185,68; --gold-dark-rgb: 160,125,28;
   --teal-rgb: 31,118,110; --blue-rgb: 37,99,235;
   --stage-w: 1600; --stage-h: 900;
   --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: Georgia, "Times New Roman", Times, serif;
 }
 *,*::before,*::after{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -103,8 +110,10 @@ p{margin:0 0 .8rem}
   @page{size:16.667in 9.375in;margin:0}
   body{background:white!important;overflow:hidden!important}
   html{overflow:hidden!important}
-  .slides-container{padding:0!important;max-width:none!important}
-  .slide{width:16.667in!important;height:9.375in!important;margin:0!important;border:none!important;box-shadow:none!important}
+  .slides-container{padding:0!important;margin:0!important;max-width:none!important;overflow:hidden!important}
+  .slide{width:16.667in!important;height:9.375in!important;min-height:9.375in!important;max-height:9.375in!important;overflow:hidden!important;margin:0!important;padding:0!important;border:none!important;box-shadow:none!important;page-break-after:always!important;break-after:page!important;page-break-inside:avoid!important;break-inside:avoid!important;box-sizing:border-box!important;isolation:isolate!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  .slide:first-child{page-break-before:auto!important;break-before:auto!important}
+  .slide:last-child{page-break-after:auto!important;break-after:auto!important}
 }</style>
 </head>
 <body>

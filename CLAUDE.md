@@ -85,11 +85,11 @@ Criar (ou refatorar) apresentações de alto nível com:
 
 ## REPOSITÓRIO REMOTO
 
-| Campo | Valor |
-| ----- | ----- |
-| **Remote** | `origin` |
-| **URL** | `https://github.com/lucasmiachon-blip/aulas_core.git` |
-| **Branch** | `main` |
+| Campo        | Valor                                                             |
+| ------------ | ----------------------------------------------------------------- |
+| **Remote**   | `origin`                                                          |
+| **URL**      | `https://github.com/lucasmiachon-blip/aulas_core.git`             |
+| **Branch**   | `main`                                                            |
 | **Política** | Local e GitHub devem estar **sempre espelhados** (mesmo conteúdo) |
 
 **Regras de sync:**
@@ -407,6 +407,45 @@ Aulas2/
 ---
 
 ## REGISTRO DE ERROS & APRENDIZADOS
+
+### Sessão 2026-02-06 (Round 8 — Print 16:9 + um slide por página)
+
+**Problema:** index.html?print=1 não ficava em formato 16:9 único slide por página; conteúdo “comia” de baixo (vários slides empilhados com altura natural + corte no PDF).
+
+**Causa:** Em `print.css`, no bloco `@media screen` para `html.is-print`, o `.slide` não tinha largura/altura fixas — os slides empilhavam com altura do conteúdo e no PDF cada slide era 9.375in com `overflow: hidden`, cortando o que passasse.
+
+**Correção (HC2: ~6 linhas em print.css):** Forçar caixa 16:9 por slide na pré-visualização: `html.is-print .slide { width: 1600px; height: 900px; min-height: 900px; max-height: 900px; overflow: hidden; box-sizing: border-box; }` (além do zoom já existente). Assim, na tela com ?print=1 cada slide é uma “página” 16:9 no scroll; no @media print mantém-se 16.667×9.375in e overflow:hidden (Erro 9 respeitado).
+
+**Limite:** Conteúdo que passar de 900px continua cortado. “Todo conteúdo dentro” exigiria escala (JS) ou redução de conteúdo no slide — documentado em REGENERAR_PRINT_E_PDF.md.
+
+### Sessão 2026-02-06 (Round 7 — Debug Session)
+
+#### Diagnóstico realizado (sem correções aplicadas — por decisão do usuário)
+
+**Foco:** Debug sistemático com runtime evidence (RADAR-5W + instrumentação de logs)
+
+**Hipóteses testadas:**
+
+| #   | Hipótese                                                       | Resultado                                                                                                                                           | Evidência                                                        |
+| --- | -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| H1  | S14b geraria data-key duplicado "S14"                          | **PARCIAL** — Sem duplicata, mas S14b recebe `dataKey: "NONE"` (regex `/^(S\d{2})_/` não captura "S14b\_"). Hash navigation para S14b não funciona. | Log: `slideIndex:12, file:"S14b_slide-14b.html", dataKey:"NONE"` |
+| H2  | print.html desatualizado vs slides do viewer                   | **CONFIRMADO** por leitura — print.html não tem `--gold-dark`, ainda tem linha decorativa gold no S01.                                              | Comparação direta de código                                      |
+| H3  | GRADE @media print com `overflow:visible` pode causar bleeding | **NÃO TESTADO** — requer geração de PDF para confirmar                                                                                              | —                                                                |
+| H4  | GRADE \_list.txt sem .html pode falhar                         | **REJEITADO** — JS adiciona .html automaticamente, 58 slides carregaram OK                                                                          | Log: `totalSlides:58`                                            |
+| H5  | Counter não bate com número do slide HTML                      | **CONFIRMADO** — slides reordenados na \_list.txt mas arquivos não renomeados. Counter posição 9 = S13, posição 10 = S12, etc.                      | Log: `slideIndex:8, file:"S13_slide-13.html"`                    |
+
+**Decisão do usuário:** Manter como está. O counter mostra posição no deck (correto para apresentação). Nomes de arquivos são identificadores internos. Renomear 72+ arquivos seria refatoração desnecessária (HC7).
+
+**Bug conhecido não corrigido (por decisão de manter estabilidade):**
+
+- `slide-loader.js` regex `/^(S\d{2})_/` deveria ser `/^(S\d{2,3}[a-z]?)_/` para capturar S14b (documentado no Erro 5, sessão 2026-02-05, nunca aplicado no código-fonte)
+
+**Aprendizados desta sessão:**
+
+1. **Runtime evidence > code reading** — Ler código sugeria que S14b teria data-key duplicado. Logs de runtime provaram que na verdade o regex falha silenciosamente (sem match = sem key). Conclusão diferente, fix diferente.
+2. **Nem todo "problema" precisa de fix** — Counter vs filename é uma divergência, não um bug. Para o apresentador e a plateia, o counter (posição no deck) é o que importa.
+3. **Debug mode exige disciplina de cleanup** — Instrumentação adicionada deve ser 100% removida. Auto-formatação do editor pode transformar 3 linhas adicionadas em 400 linhas de diff. Solução: `git checkout -- arquivo` para restaurar estado exato.
+4. **HC7 (não refatorar sem pedir) protege de over-engineering** — A tentação de "corrigir tudo" é forte. Perguntar antes e respeitar "deixe como está" é maturidade profissional.
 
 ### Sessão 2026-02-06 (Round 5 — Cross-slide audit S01-S06)
 
@@ -990,4 +1029,4 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 ---
 
 _Criado: 2026-02-03_
-_Última atualização: 2026-02-06 (Round 6 — Color Theory fix: gold-on-cream dual-token)_
+_Última atualização: 2026-02-06 (Round 8 — Print 16:9: caixa fixa por slide em ?print=1)_

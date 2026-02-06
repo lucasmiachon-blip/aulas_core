@@ -285,8 +285,16 @@ html.is-print .slide {
     display: block !important;
   }
 
-  /* o truque: escalar o SLIDE em layout (zoom afeta layout no Chromium) */
+  /* Caixa 16:9 por slide na pré-visualização (?print=1): 1 slide = 1 "página" no scroll.
+     Conteúdo que passar de 900px continua cortado (overflow:hidden); "todo conteúdo dentro"
+     exigiria escala (JS) ou redução de conteúdo no slide. */
   html.is-print .slide {
+    width: 1600px !important;
+    height: 900px !important;
+    min-height: 900px !important;
+    max-height: 900px !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
     zoom: var(--print-preview-zoom, 1) !important;
     transform: none !important;
   }
