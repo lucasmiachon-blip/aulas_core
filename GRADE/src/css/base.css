@@ -34,6 +34,9 @@
   --muted-rgb: 71, 85, 105;
   --border-rgb: 226, 232, 240;
 
+  /* Títulos — dourado profissional (contraste ≥ 3:1 em bg claro p/ large text) */
+  --gold-title: #8B6F30;
+
   /* Alertas */
   --danger: #ef4444;
   --danger-rgb: 239, 68, 68;
@@ -182,6 +185,13 @@ h1, h2, h3 {
   font-weight: 700 !important;
   margin: 0 0 1.35vw 0 !important;
   letter-spacing: -0.02em !important;
+  /* Dourado profissional — identidade visual unificada */
+  color: var(--gold-title) !important;
+}
+
+/* Slides com fundo escuro: título branco (sobrepõe o dourado) */
+.slide.bg-navy h2 {
+  color: var(--white) !important;
 }
 
 .slide h3 {
