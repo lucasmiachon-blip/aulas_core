@@ -1,5 +1,19 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-06 — S19: definição RoB (alto vs baixo) + polish milimétrico
+
+- **Definição dual-coding:** strip horizontal com "✓ Baixo RoB" (teal) vs "✗ Alto RoB" (vermelho) e explicação breve — a plateia entende o conceito em 3 segundos sem precisar de parágrafo.
+- **Título reformulado:** "Risco de Viés: o CLEAR não rebaixa" — nome completo do domínio no título para plateia leiga.
+- **Hero compactado:** font-size de 4.2vw → 3.4vw, padding reduzido — ainda dominante mas libera espaço para os painéis de ferramentas.
+- **Grid rebalanceado:** 1fr:1.8fr → 1.15fr:1.65fr — mais breathing room na coluna esquerda.
+- **Redundância eliminada:** "Princípio GRADE" repetia o hero. Substituído por insight novo: "Avalie RoB por desfecho, não por estudo — blinding importa p/ QoL mas não p/ mortalidade."
+- **Domínios (direita):** texto levemente compactado sem perda de informação. Zebra striping e teal accent bars mantidos.
+
+### Arquivos modificados
+
+- `src/slides/S19.html`
+- `CHANGELOG.md`
+
 ## 2026-02-06 — Títulos padronizados (navy / gold) + flexbox S54/S55 (v3)
 
 - **Títulos h2 padronizados:** slides claros recebem h2 em azul navy profissional (`var(--navy)`). Slides `bg-navy` recebem h2 em dourado profissional (`--gold-title: #8B6F30`, contraste ≥ 3:1 sobre fundo escuro).

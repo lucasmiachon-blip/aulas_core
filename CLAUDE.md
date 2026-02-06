@@ -190,6 +190,9 @@ Aulas2/
 4. **Dados exigem fonte.** Se não tiver, sinalize "DADO A CONFIRMAR".
 5. **Degradação graciosa.** A apresentação deve funcionar sem animações.
 6. **O output deve parecer deliberadamente desenhado** — nunca genérico, nunca "AI slop".
+7. **Qualidade milimétrica.** Cada pixel tem propósito. Primeiro render é rascunho. Revisar com olho de diretor antes de entregar.
+8. **Teste de conferência.** "Isto seria aprovado para TED/ASCO/ESC?" Se não, refazer.
+9. **Ponto focal obrigatório.** Cada slide tem UM elemento dominante. Se nenhum domina, redesenhar.
 
 ---
 
@@ -242,6 +245,29 @@ Aulas2/
 6. Documentar aprendizado
 ```
 
+### OBRIGATÓRIO — Ciclo Produção → Screenshot → Crítica → Fix
+
+> **Regra inviolável:** Após produzir qualquer slide, SEMPRE:
+
+```
+1. GERAR screenshot de máxima precisão (1600×900, resolução do viewer)
+2. AVALIAR criticamente como front-end sênior + diretor de apresentações
+3. LISTAR problemas específicos (não "está OK")
+4. CORRIGIR os problemas encontrados
+5. GERAR novo screenshot
+6. REPETIR até passar no checklist abaixo
+7. SÓ ENTÃO mostrar ao usuário
+```
+
+**Nunca entregar sem ter visto o screenshot. Nunca dizer "pronto" sem o ciclo completo.**
+
+**Coisas a verificar no screenshot:**
+- % de whitespace: > 30% em um bloco = problema (exceto se intencional/centered)
+- Dead space DENTRO de cards: indica flex/grid stretch indevido
+- Font sizes na resolução real: 12px no viewer a 1600px pode ser ilegível
+- Hierarquia visual: se todos os elementos têm o mesmo peso, o slide é genérico
+- Contraste: textos claros em fundos claros são invisíveis no projetor
+
 ### Checklist de qualidade visual (usar SEMPRE):
 
 | Critério     | Verificar                                   |
@@ -256,13 +282,17 @@ Aulas2/
 | Carga cogn.  | Uma ideia por slide? Chunks de 3-5?         |
 | Dual coding  | Visual complementa texto (não duplica)?     |
 | Narrativa    | Slide avança a história? Tem propósito?     |
+| Fill ratio   | Conteúdo preenche ≥70% da área útil?        |
+| Dead space   | Zero whitespace acidental DENTRO de cards?  |
 
 ### QA — Slides (obrigatório)
 
-1. Gerar slides → converter para imagens → inspeção visual
+1. Gerar slides → converter para imagens a **1600×900** → inspeção visual
 2. Checar: elementos sobrepostos, text overflow, texto/ícones low-contrast, espaçamento desigual
-3. Verificar placeholders: `grep -iE "xxxx|lorem|ipsum" output`
-4. Corrigir → re-verificar → repetir até pass limpo
+3. Checar: **% de preenchimento** (conteúdo vs whitespace) — alvo ≥ 70%
+4. Checar: **dead space dentro de containers** (cards, boxes) — deve ser zero
+5. Verificar placeholders: `grep -iE "xxxx|lorem|ipsum" output`
+6. Corrigir → re-verificar → repetir até pass limpo
 
 ### QA — Frontend
 
@@ -333,7 +363,87 @@ Aulas2/
 
 ## REGISTRO DE ERROS & APRENDIZADOS
 
-### Sessão 2026-02-06
+### Sessão 2026-02-06 (Round 4 — S19 RoB definition + visual polish)
+
+#### Insight 3: Dual-coding strip para definir conceitos novos à plateia
+
+**O que fiz bem:** A plateia não sabia o que é "alto RoB" vs "baixo RoB". Em vez de um parágrafo explicativo (compete com o título), criei uma **faixa dual-coding** com duas metades lado a lado: `✓ Baixo RoB` (teal, fundo suave) vs `✗ Alto RoB` (vermelho, fundo suave), cada uma com explicação de 1 frase.
+
+**Por que funcionou:**
+
+1. **Dual coding** (texto + cor + ícone) — 3 canais simultâneos, o conceito é absorvido em 2 segundos
+2. **Contraste semântico** — teal vs vermelho reforça a dicotomia "bom/mau" sem precisar ler
+3. **Não compete com o hero** — a faixa é subordinada (0.78vw body, 1vw labels), título continua dominante
+4. **Zero carga cognitiva extra** — o leitor varre da esquerda para direita e entende
+
+**Padrão extraído:**
+
+```html
+<!-- Strip dual-coding: conceito A vs conceito B -->
+<div style="display:flex; border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
+  <div style="flex:1; display:flex; align-items:center; gap:0.55vw; padding:0.4vw 0.75vw; background:rgba(var(--teal-rgb),0.06); border-left:0.22vw solid var(--teal);">
+    <span style="font-weight:800; color:var(--teal);">✓ Conceito A</span>
+    <span style="color:var(--navy);">Explicação breve</span>
+  </div>
+  <div style="width:1px; background:var(--border);"></div>
+  <div style="flex:1; display:flex; align-items:center; gap:0.55vw; padding:0.4vw 0.75vw; background:rgba(220,53,69,0.04); border-left:0.22vw solid #c0392b;">
+    <span style="font-weight:800; color:#c0392b;">✗ Conceito B</span>
+    <span style="color:var(--navy);">Explicação breve</span>
+  </div>
+</div>
+```
+
+**Quando usar:** Sempre que o slide introduz uma dicotomia que a plateia pode não conhecer (alto/baixo, direto/indireto, preciso/impreciso).
+
+#### Insight 4: Eliminar redundância entre hero e painéis informativos
+
+**O que fiz bem:** O "Princípio GRADE" dizia "RCTs → alta certeza" — que é exatamente o que o hero já comunicava. Substituí por um insight genuinamente novo: "Avalie RoB **por desfecho**, não por estudo — blinding importa p/ QoL mas não p/ mortalidade."
+
+**Aprendizado:**
+
+- **Cada elemento do slide deve carregar informação NOVA** — repetir é desperdiçar espaço e atenção
+- **Antes de finalizar, perguntar:** "Se eu tapar este elemento, perco alguma informação?" Se não, o elemento é redundante
+- **Painéis de apoio devem complementar, não repetir, o hero**
+
+---
+
+### Sessão 2026-02-06 (Round 3 — Visual S03/S04)
+
+#### Erro 10: `space-between` com colunas desiguais = whitespace artificial (REINCIDÊNCIA do Erro 6)
+
+**O que fiz:** Redesenhei S03 com 2 colunas: Compreender (4 itens) e Aplicar (3 itens), usando `justify-content: space-between` em ambas. A coluna com 3 itens ficou com gaps enormes entre os cards — whitespace artificial, não intencional.
+
+**Por que estava errado:** `space-between` distribui o espaço ENTRE itens igualmente. Quando duas colunas com alturas iguais têm quantidades diferentes de itens, a coluna com menos itens fica com gaps absurdos. O resultado parece "preguiçoso", não "desenhado". É o MESMO padrão do Erro 6 (flex forçado).
+
+**O que o usuário disse:** "vc eh muito melhor que isso... o flexbox ficou ruim, se precisar crie boxes separados"
+
+**Correção aplicada:** Redesenho total — hero card full-width para item #1 (ponto focal) + grid 3×2 com cards individuais para itens 2-7. Cada card é um box isolado com sua própria geometria. Zero dependência de flex distribution entre containers com quantidades diferentes.
+
+**Aprendizado:**
+
+- **`space-between` com N ≠ M itens em colunas adjacentes é PROIBIDO** — sempre cria assimetria visual
+- **Quando itens têm quantidades desiguais:** usar grid com cells fixas, NÃO flex columns
+- **Cards separados > flex rows** — cada item em seu próprio box com geometria definida
+- **Primeiro output ≠ melhor output** — a qualidade milimétrica importa. Não entregar "bom o suficiente". Entregar deliberadamente desenhado.
+- **REINCIDÊNCIA:** Erro 6 + Erro 10 = mesmo padrão (flex forçado). Preciso internalizar que flex é ferramenta, não solução universal.
+
+#### Erro 11: Qualidade milimétrica — "bom o suficiente" não é o padrão
+
+**O que fiz:** Entreguei a primeira versão do S03 como se fosse aceitável. Tinha hierarquia funcional mas não tinha qualidade de design deliberado. O usuário precisou me lembrar do meu papel.
+
+**Por que estava errado:** Sou Dev Front-End Sênior (top 100) + Diretor de Apresentações Internacionais. O padrão não é "funciona e está correto". O padrão é: **cada slide deve parecer que um designer gastou 2 horas nele**. A primeira versão parecia output de template, não design intencional.
+
+**Aprendizado:**
+
+- **Qualidade milimétrica é o padrão** — não é bonus, é requisito
+- **Antes de entregar, perguntar:** "Um diretor de apresentações aprovaria isto para uma conferência internacional?"
+- **Se a resposta for 'mais ou menos'** → refazer antes de mostrar
+- **O primeiro render é rascunho** — tratar como draft, não como entrega
+- **Ponto focal deliberado** — cada slide precisa de um elemento que domina visualmente (hero card, imagem, número grande). Se todos os elementos têm o mesmo peso visual, o slide é genérico.
+
+---
+
+### Sessão 2026-02-06 (Rounds 1-2)
 
 #### Erro 7: `display:flex` inline em slide quebrou viewer inteiro
 
@@ -491,6 +601,43 @@ Aulas2/
 
 ---
 
+## PADRÃO DE QUALIDADE — PROTOCOLO MILITAR
+
+> **"A qualidade milimétrica importa."** — Princípio inviolável.
+
+### O que significa "qualidade milimétrica":
+
+1. **Cada pixel tem propósito.** Nenhum espaço é acidente. Whitespace é design, não sobra.
+2. **Cada slide é uma peça de design.** Não é "conteúdo formatado" — é comunicação visual deliberada.
+3. **O primeiro output é rascunho.** NUNCA entregar o primeiro render como produto final. Sempre revisar com olho crítico antes de mostrar.
+4. **Alinhamento sub-pixel.** Margens, paddings, gaps — tudo medido, nada "mais ou menos".
+5. **Hierarquia de 3 níveis obrigatória.** Título > corpo > detalhe. Se dois elementos competem pela atenção, o slide está errado.
+6. **Ponto focal em cada slide.** Um elemento domina. Se nenhum domina, é genérico.
+7. **Teste do "conferência internacional".** Antes de entregar: "Um diretor de apresentações aprovaria isto para TED/ASCO/ESC?" Se não, refazer.
+
+### Checklist pré-entrega (OBRIGATÓRIO antes de mostrar ao usuário):
+
+| #   | Verificação                                        | Pass? |
+| --- | -------------------------------------------------- | ----- |
+| 1   | Ponto focal claro e dominante?                     |       |
+| 2   | Hierarquia de 3 níveis visível?                    |       |
+| 3   | Alinhamento preciso (grid invisível)?              |       |
+| 4   | Zero whitespace acidental?                         |       |
+| 5   | Contraste suficiente em TODOS os textos?           |       |
+| 6   | Layout funciona sem flex forçado?                  |       |
+| 7   | Passaria no "teste de conferência"?                |       |
+| 8   | Cada elemento tem propósito? (remover = pioraria?) |       |
+
+### Anti-padrões fatais (NUNCA fazer):
+
+- **Flex `space-between` com colunas de quantidades diferentes** → grid ou cards isolados
+- **Entregar primeiro render sem revisão** → é rascunho, não produto
+- **"Funciona" ≠ "está bom"** → funcional é requisito mínimo, não padrão de qualidade
+- **Todos os elementos com mesmo peso visual** → slide genérico, sem ponto focal
+- **Template thinking** → cada slide é único, tratado como peça individual de design
+
+---
+
 ## COMPROMISSO DE MELHORIA CONTÍNUA
 
 A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
@@ -500,14 +647,24 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 3. Extrair aprendizado concreto e generalizável
 4. Aplicar em TODOS os projetos futuros
 5. **Atualizar este arquivo automaticamente**
+6. **Verificar se é REINCIDÊNCIA** — se for, escalar a severidade e criar regra hard-coded
 
 **Meta:** Zero erros repetidos. Erros novos são aceitáveis (aprendizado). Erros repetidos são inaceitáveis (não aprendi).
+
+**Severidade de reincidência:**
+
+| Ocorrência            | Ação                                             |
+| --------------------- | ------------------------------------------------ |
+| 1ª vez                | Documentar + aprendizado                         |
+| 2ª vez (REINCIDÊNCIA) | Criar regra HARD nos anti-padrões + auto-crítica |
+| 3ª vez                | Criar checklist OBRIGATÓRIO pré-ação             |
 
 **Transferência de conhecimento:**
 
 - Erro em projeto A → Prevenção em projetos B, C, D...
 - Padrão identificado → Regra adicionada aos princípios
-- 3 erros similares → Nova seção de referência criada
+- 2+ erros similares → Anti-padrão fatal criado
+- 3+ erros similares → Checklist obrigatório criado
 
 ---
 
@@ -515,25 +672,36 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 
 | Projeto                              | Tipo                  | Erros registrados |
 | ------------------------------------ | --------------------- | ----------------- |
-| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 9 (+2 insights)   |
+| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 11 (+2 insights)  |
 | _(novos projetos serão adicionados)_ |                       |                   |
 
 ---
 
 ## SESSÕES RECENTES
 
+### Sessão 2026-02-06 (Round 3 — Visual S03/S04 + Qualidade Milimétrica)
+
+**Foco:** Redesign profissional dos slides S03 e S04, integração de GRADE ZIPs, organização do projeto, criação de scripts de export
+
+**Tarefas executadas:**
+
+- Pull de 2 ZIPs GRADE (base + patch v9) com overwrite sequencial
+- Organização profissional: `exports/`, `screenshots/` com subpastas por projeto
+- `.gitignore` revampado (artefatos, node_modules, OS, IDE, builds)
+- Script `export-grade-all.js` (PDF + screenshots via Playwright, self-contained)
+- Script `screenshot-osteo-slides.js` (QA screenshots de slides individuais)
+- Redesign S03: "O Paradoxo" como hero card + grid 3×2 para objetivos 2-7
+- Redesign S04: 3 cards com footer ancorado via `margin-top: auto`
+- Debug blank screenshots (`.slide { display: none }` do viewer.css)
+
+**Erros registrados:** 2 novos (Erro 10: flex space-between com colunas desiguais, Erro 11: qualidade milimétrica)
+**Aprendizado-chave:** "A qualidade milimétrica importa" — protocolo militar de qualidade adicionado ao CLAUDE.md
+
 ### Sessão 2026-02-06 (Debug — Print/PDF Collapse)
 
 **Foco:** Debug e restauração do pipeline print.html → PDF após sessão anterior do Claude quebrar paginação
 
 **Problema:** Sessão anterior do Claude removeu `overflow:hidden` de html/body no `@media print` do `build-osteoporose-print-html.js` ao "organizar a casa". Isso causou: slides sangrando entre páginas no PDF, print.html "colapsado". Usuário não conseguia gerar PDFs.
-
-**Diagnose:**
-
-- CSS/JS do viewer (print.css, viewer.css, base.css, viewer.js, slide-loader.js) — **INTACTOS**, zero mudanças
-- Única mudança funcional: remoção de `overflow:hidden!important` de html e body no `@media print` do build script
-- S10_slide-10.html: apenas reformatação Prettier (sem mudança funcional)
-- print.html: tinha sido editado manualmente (24K linhas vs 4.8K canônico) — possivelmente por ChatGPT ou manualmente
 
 **Erros registrados:** 1 novo (Erro 9: remoção de overflow:hidden do @media print)
 
@@ -582,4 +750,4 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 ---
 
 _Criado: 2026-02-03_
-_Última atualização: 2026-02-06_
+_Última atualização: 2026-02-06 (Round 3 — Protocolo Militar de Qualidade)_
