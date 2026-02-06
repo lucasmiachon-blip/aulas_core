@@ -1,5 +1,17 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-06 — S19: framework de decisão RoB + cores tokenizadas (v2)
+
+- **Framework de decisão (Fig 2 do Core GRADE 4):** painel "Princípio GRADE" substituído por "Quando rebaixar?" com as 3 regras do corpo de evidência: alto RoB domina (>65% peso) → rebaixar; evidência apreciável de baixo RoB + resultados similares → usar todos, não rebaixar; resultados diferentes → usar só baixo RoB.
+- **Direção do viés:** conceito adicionado ao framework — se o viés iria contra o efeito observado, não rebaixar.
+- **Cores tokenizadas:** `#c0392b` e `rgba(220,53,69)` hardcoded substituídos por `var(--danger)` e `rgba(var(--danger-rgb))`.
+- **Conteúdo verificado contra artigo completo:** todos os conceitos-chave de RoB do Core GRADE 4 estão representados, exceto "rating up" (conceito oposto ao foco do slide).
+
+### Arquivos modificados
+
+- `src/slides/S19.html`
+- `CHANGELOG.md`
+
 ## 2026-02-06 — S19: definição RoB (alto vs baixo) + polish milimétrico
 
 - **Definição dual-coding:** strip horizontal com "✓ Baixo RoB" (teal) vs "✗ Alto RoB" (vermelho) e explicação breve — a plateia entende o conceito em 3 segundos sem precisar de parágrafo.

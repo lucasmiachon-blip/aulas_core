@@ -193,6 +193,8 @@ Aulas2/
 7. **Qualidade milimétrica.** Cada pixel tem propósito. Primeiro render é rascunho. Revisar com olho de diretor antes de entregar.
 8. **Teste de conferência.** "Isto seria aprovado para TED/ASCO/ESC?" Se não, refazer.
 9. **Ponto focal obrigatório.** Cada slide tem UM elemento dominante. Se nenhum domina, redesenhar.
+10. **Consistência cross-slide.** Títulos na mesma altura, mesmo tamanho, mesmo peso em todos os content slides. Consultar design tokens antes de editar.
+11. **Zero AI markers.** Sem linhas de acento sob títulos, gradientes genéricos, ou decoração sem propósito.
 
 ---
 
@@ -262,6 +264,7 @@ Aulas2/
 **Nunca entregar sem ter visto o screenshot. Nunca dizer "pronto" sem o ciclo completo.**
 
 **Coisas a verificar no screenshot:**
+
 - % de whitespace: > 30% em um bloco = problema (exceto se intencional/centered)
 - Dead space DENTRO de cards: indica flex/grid stretch indevido
 - Font sizes na resolução real: 12px no viewer a 1600px pode ser ilegível
@@ -363,7 +366,139 @@ Aulas2/
 
 ## REGISTRO DE ERROS & APRENDIZADOS
 
-### Sessão 2026-02-06 (Round 4 — S19 RoB definition + visual polish)
+### Sessão 2026-02-06 (Round 5 — Cross-slide audit S01-S06)
+
+#### Erro 12: Screenshot script `display:block!important` quebrou centering de `.slide--center` (S01/S02)
+
+**O que fiz:** O `screenshot-osteo-slides.js` aplicava `.slide{display:block!important}` para sobrescrever o `display:none` do viewer.css. Porém, S01 e S02 usam `display:flex` inline + `.slide--center` para centralizar conteúdo. O `!important` do script sobrescreveu o flex, jogando o conteúdo para o top-left.
+
+**Por que estava errado:** `display:block!important` é um martelo — resolve o problema de visibilidade mas destrói centering de slides que dependem de flex. O script precisa respeitar a intenção de layout de cada slide.
+
+**Correção:** Adicionei `.slide.slide--center{display:flex!important;align-items:center!important;justify-content:center!important;}` ao CSS do screenshot script.
+
+**Aprendizado:**
+
+- **Overrides globais com `!important` precisam de escape hatches** — se `.slide` tem classes especiais (`.slide--center`, `.slide--dark`), o override precisa respeitá-las
+- **Sempre testar screenshots de slides com layouts diferentes** (centered vs content-flow) após mudar o script
+- **Padrão:** Ao adicionar `!important` global, listar todas as classes que precisam de exceção
+
+#### Erro 13: Inconsistência de título/padding entre slides de conteúdo (CROSS-SLIDE)
+
+**O que fiz:** S03/S04 tinham título 38px/800 com padding 36px 48px. S05 tinha 34px/700 com 32px 40px. S06 tinha 42px/700 com 40px 48px. Subtítulos variavam entre 0.42, 0.6 e 0.65 de opacidade. Take-home bars tinham paddings diferentes.
+
+**Por que estava errado:** Títulos em alturas e tamanhos diferentes criam "salto visual" ao navegar entre slides. O olho percebe inconsistência mesmo que consciente não perceba. É o tipo de detalhe que separa apresentação profissional de amadora.
+
+**Correção:** Padronizei todos os content slides para: `38px/800/letter-spacing -0.01em`, padding `36px 48px`, subtitle `15px/500/rgba(navy,0.42)`, take-home `border-radius:14px; padding:20px 28px`.
+
+**Aprendizado:**
+
+- **Cross-slide consistency é OBRIGATÓRIO** — antes de editar um slide, verificar o padrão dos slides vizinhos
+- **Criar um "design token" mental:** tamanho de título, padding, subtitle style, take-home style → replicar em TODOS os content slides
+- **Auditoria cruzada:** ao finalizar um batch de slides, comparar screenshots lado a lado para detectar inconsistências
+
+#### Erro 14: Linha de acento dourada sob título do S01 — AI marker
+
+**O que fiz:** S01 tinha `<div style="width: 80px; height: 4px; background: var(--gold); margin: 0 auto 20px auto; border-radius: 2px;">` entre o título e o subtítulo.
+
+**Por que estava errado:** CLAUDE.md diz explicitamente: **"Nunca usar linhas de acento sob títulos — é marca de AI."** Esta regra existia desde a criação do documento, mas eu a ignorei no S01. É embaraçoso.
+
+**Correção:** Removida a linha. Espaço entre título e subtítulo ajustado com margin.
+
+**Aprendizado:**
+
+- **Ler as próprias regras ANTES de produzir** — o CLAUDE.md tem a resposta, só preciso consultá-lo
+- **Grep por anti-padrões após produzir:** `grep -i "width.*height.*4px\|accent.*line\|decorative.*line" slides/*.html`
+- **Zero tolerância para AI markers** — linhas de acento, gradientes genéricos, sombras decorativas sem propósito
+
+#### Erro 15: Gold (#DDB944) on Cream (#F9F8F4) — monochromatic vibration (CRÍTICO VISUAL)
+
+**O que fiz:** Usei `var(--gold)` (#DDB944) para texto, badges e círculos sólidos diretamente sobre o fundo cream (#F9F8F4). O usuário disse: "o dourado com esse creme ainda dói aos olhos".
+
+**Análise de teoria das cores:**
+
+1. **Proximidade de matiz:** Gold ≈ 46°, Cream ≈ 48° — virtualmente MESMO matiz. Diferença de apenas 2°. São monocromáticos.
+2. **Contraste de luminância:** Gold L ≈ 0.51, Cream L ≈ 0.94 → ratio **1.76:1** (WCAG exige 3:1 mínimo para texto grande).
+3. **Vibração cromática:** Duas cores quentes de mesmo matiz mas saturações diferentes criam "shimmer" — o olho não consegue definir a borda com clareza, causando fadiga.
+4. **Comparação:** Gold on Navy = 171° de separação de matiz + 9.7:1 contraste = **lindo**. Gold on Cream = 2° separação + 1.76:1 = **dor**.
+
+**Correção aplicada — Dual-token strategy:**
+
+- Adicionei `--gold-dark: #A07D1C` (burnished gold) ao base.css
+- `--gold-dark` no cream: contraste **3.6:1** (passa AA para texto grande)
+- `--gold-dark` no navy: contraste **4.7:1** (passa AA)
+- Círculos sólidos dourados → **rings** (borda escura com fill branco): reduz superfície dourada em ~80%
+- `--gold` (#DDB944) preservado APENAS para fundos escuros (navy take-home bars)
+
+**Design tokens de cor (REGRA):**
+
+| Token         | Hex     | Uso                      | Contraste cream  | Contraste navy    |
+| ------------- | ------- | ------------------------ | ---------------- | ----------------- |
+| `--gold`      | #DDB944 | Sobre navy/escuro APENAS | 1.76:1 (falha)   | 9.7:1 (excelente) |
+| `--gold-dark` | #A07D1C | Sobre cream/branco       | 3.6:1 (passa AA) | 4.7:1 (passa AA)  |
+| `--navy`      | #0B1320 | Universal                | 16:1 (excelente) | —                 |
+| `--teal`      | #1F766E | Accent (cards, badges)   | ~4.5:1           | ~3.5:1            |
+
+**Aprendizado:**
+
+- **NUNCA usar cor de accent diretamente sobre fundo sem verificar contraste** — o olho não mente
+- **Cores quentes sobre fundos quentes** exigem cuidado redobrado — aumentar separação de matiz OU luminância
+- **Dual-token** é a solução correta: mesma família cromática, duas intensidades para contextos diferentes
+- **Rings > Solid fills** para accent colors sobre fundos claros — reduz área de conflito dramáticamente
+- **Calcular antes de aplicar:** (L1 + 0.05) / (L2 + 0.05) ≥ 3.0 para texto grande, ≥ 4.5 para texto normal
+
+#### Insight 5: Padrão de design tokens para content slides
+
+**O que fiz bem:** Identifiquei que slides S03-S06 precisavam compartilhar tokens visuais e padronizei sistematicamente.
+
+**Design tokens padronizados:**
+
+| Token              | Valor                                                                 |
+| ------------------ | --------------------------------------------------------------------- |
+| Section padding    | `36px 48px`                                                           |
+| Title              | `38px`, `weight 800`, `letter-spacing -0.01em`, `color: var(--navy)`  |
+| Title line-height  | `1.1`                                                                 |
+| Subtitle           | `15px`, `weight 500`, `color: rgba(var(--navy-rgb), 0.42)`            |
+| Title→Subtitle gap | `6px`                                                                 |
+| Take-home bar      | `bg: var(--navy)`, `border-radius: 14px`, `padding: 20px 28px`        |
+| Take-home text     | `15px`, `weight 500`, `color: var(--white)`                           |
+| Take-home badge    | `12px`, `weight 700`, `color: var(--navy)`, `bg: var(--gold)`         |
+| Gold on light bg   | Use `var(--gold-dark)` (#A07D1C) — NEVER `var(--gold)` on cream/white |
+| Gold circles light | Ring: `bg: white; border: 3.5px solid var(--gold-dark)`               |
+| Gold on dark bg    | Use `var(--gold)` (#DDB944) — high contrast on navy                   |
+
+**Quando usar:** Aplicar em TODOS os slides de conteúdo (S03+). Slides especiais (title/S01, quote/S02, dark backgrounds) têm tokens próprios.
+
+**Padrão extraído:** Antes de editar qualquer content slide, consultar esta tabela. Se o slide diverge sem razão funcional, padronizar.
+
+---
+
+### Sessão 2026-02-06 (Round 4 — S19 RoB definition + content audit)
+
+#### Insight 5: Verificar conteúdo contra o artigo-fonte antes de declarar "pronto"
+
+**O que fiz bem:** Na segunda rodada do S19, li o artigo completo do Core GRADE 4 (BMJ 2025;389:e083864) e fiz uma tabela cruzando cada conceito-chave do artigo com o que estava no slide. Descobri que o **framework de decisão para o corpo de evidência** (Figure 2 — quando rebaixar, quando não rebaixar, direção do viés) estava ausente. Adicionei condensado em linguagem auto-explicativa.
+
+**Aprendizado:**
+
+- **Antes de declarar um slide "pronto", cruzar com o artigo-fonte** — listar conceitos-chave e verificar 1 a 1
+- **"Está bonito" ≠ "está completo"** — design visual pode esconder lacunas de conteúdo
+- **O público precisa do framework de decisão**, não só dos fatos. Saber que o CLEAR tem "baixo RoB" é informação; saber QUANDO o GRADE rebaixa é conhecimento aplicável
+
+#### Erro 13: Cores hardcoded violando regra de tokens CSS
+
+**O que fiz:** Usei `#c0392b` e `rgba(220, 53, 69, 0.04)` diretamente no HTML do S19 para o "Alto RoB", em vez de usar `var(--danger)` e `rgba(var(--danger-rgb), 0.04)`.
+
+**Por que estava errado:** CLAUDE.md tem regra explícita: "SEMPRE usar `var(--nome)` para cores — nunca hardcoded `#XXXXXX`". O `--danger` e `--danger-rgb` já existiam em `base.css`. Falhei em verificar antes de hardcodar.
+
+**Aprendizado:**
+
+- **Antes de usar qualquer cor:** `grep` no `base.css` para verificar se já existe um token
+- **Nunca hardcodar cores** — mesmo para cores "pontuais" como vermelho de alerta
+- **Checar tokens existentes é o PRIMEIRO passo**, não o último
+
+---
+
+### Sessão 2026-02-06 (Round 4 — S19 RoB definition + visual polish, v1)
 
 #### Insight 3: Dual-coding strip para definir conceitos novos à plateia
 
@@ -381,12 +516,16 @@ Aulas2/
 ```html
 <!-- Strip dual-coding: conceito A vs conceito B -->
 <div style="display:flex; border:1px solid var(--border); border-radius:var(--radius-sm); overflow:hidden;">
-  <div style="flex:1; display:flex; align-items:center; gap:0.55vw; padding:0.4vw 0.75vw; background:rgba(var(--teal-rgb),0.06); border-left:0.22vw solid var(--teal);">
+  <div
+    style="flex:1; display:flex; align-items:center; gap:0.55vw; padding:0.4vw 0.75vw; background:rgba(var(--teal-rgb),0.06); border-left:0.22vw solid var(--teal);"
+  >
     <span style="font-weight:800; color:var(--teal);">✓ Conceito A</span>
     <span style="color:var(--navy);">Explicação breve</span>
   </div>
   <div style="width:1px; background:var(--border);"></div>
-  <div style="flex:1; display:flex; align-items:center; gap:0.55vw; padding:0.4vw 0.75vw; background:rgba(220,53,69,0.04); border-left:0.22vw solid #c0392b;">
+  <div
+    style="flex:1; display:flex; align-items:center; gap:0.55vw; padding:0.4vw 0.75vw; background:rgba(220,53,69,0.04); border-left:0.22vw solid #c0392b;"
+  >
     <span style="font-weight:800; color:#c0392b;">✗ Conceito B</span>
     <span style="color:var(--navy);">Explicação breve</span>
   </div>
@@ -635,6 +774,10 @@ Aulas2/
 - **"Funciona" ≠ "está bom"** → funcional é requisito mínimo, não padrão de qualidade
 - **Todos os elementos com mesmo peso visual** → slide genérico, sem ponto focal
 - **Template thinking** → cada slide é único, tratado como peça individual de design
+- **Linhas de acento sob títulos** → marca de AI. Usar whitespace ou background color
+- **Títulos de tamanhos/pesos diferentes entre slides de conteúdo** → inconsistência profissional. Consultar design tokens
+- **Override global `!important` sem escape hatches** → verificar todas as classes especiais
+- **Accent color diretamente sobre fundo de matiz similar** → verificar contraste WCAG. Gold (#DDB944) sobre cream (#F9F8F4) = 1.76:1 = DOR. Usar `--gold-dark` em light bg
 
 ---
 
@@ -672,12 +815,52 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 
 | Projeto                              | Tipo                  | Erros registrados |
 | ------------------------------------ | --------------------- | ----------------- |
-| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 11 (+2 insights)  |
+| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 15 (+5 insights)  |
 | _(novos projetos serão adicionados)_ |                       |                   |
 
 ---
 
 ## SESSÕES RECENTES
+
+### Sessão 2026-02-06 (Round 6 — Color Theory: Gold-on-Cream Fix)
+
+**Foco:** Aplicar teoria das cores para resolver vibração monocromática gold (#DDB944) sobre cream (#F9F8F4)
+
+**Diagnóstico de cor:**
+
+- Gold e Cream diferem apenas 2° em matiz (46° vs 48°) → monocromáticos
+- Contraste: 1.76:1 (WCAG exige 3:1 mínimo para texto grande)
+- Efeito: fadiga ocular, "shimmer", dor
+
+**Tarefas executadas:**
+
+- Adicionado `--gold-dark: #A07D1C` (burnished gold) + `--gold-dark-rgb` ao base.css
+- S03: badges APLICAR (5-7) → gold-dark fill, white text; card borders → gold-dark-rgb
+- S04: badge EVIDÊNCIA → gold-dark; bullet dots → gold-dark
+- S05: anos (2008, 2010+, 2024) → gold-dark text; círculos sólidos → RINGS (borda gold-dark, fill branco); timeline line → gold-dark
+- S06: 4 círculos anabólicos → RINGS; percentage text → gold-dark; timeline line → gold-dark; subtitle "anabólicos" → gold-dark
+- Take-home bars (navy bg): gold mantido sem alteração (9.7:1 contraste = perfeito)
+
+**Erros registrados:** 1 novo (Erro 15: gold-on-cream monochromatic vibration)
+**Aprendizado-chave:** Dual-token strategy para accent colors. Verificar contraste ANTES de aplicar cor.
+
+### Sessão 2026-02-06 (Round 5 — Cross-slide audit S01-S06)
+
+**Foco:** Auditoria cruzada de precisão visual nos 6 primeiros slides: consistência de títulos, palheta, posicionamento, distribuição
+
+**Tarefas executadas:**
+
+- Fix screenshot script: `.slide--center` agora preserva `display:flex` para centering correto de S01/S02
+- S01: removida linha de acento dourada (AI marker per CLAUDE.md)
+- S05: título padronizado de 34px/700 → 38px/800, padding 32px→36px, subtitle opacity 0.6→0.42
+- S06: título padronizado de 42px/700 → 38px/800, padding 40px→36px, subtitle opacity 0.65→0.42
+- S05: 2024 "T2T" box solid gold → gold tint (removido grito visual)
+- S05/S06: take-home bars padronizadas (padding 20px 28px, border-radius 14px)
+- Design tokens documentados no CLAUDE.md para reuso em todos os content slides
+
+**Erros registrados:** 3 novos (Erro 12: screenshot display override, Erro 13: cross-slide inconsistency, Erro 14: AI accent line)
+**Insights registrados:** 1 novo (Insight 5: design tokens para content slides)
+**Aprendizado-chave:** Consistência cross-slide é tão importante quanto qualidade individual.
 
 ### Sessão 2026-02-06 (Round 3 — Visual S03/S04 + Qualidade Milimétrica)
 
@@ -750,4 +933,4 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 ---
 
 _Criado: 2026-02-03_
-_Última atualização: 2026-02-06 (Round 3 — Protocolo Militar de Qualidade)_
+_Última atualização: 2026-02-06 (Round 6 — Color Theory fix: gold-on-cream dual-token)_
