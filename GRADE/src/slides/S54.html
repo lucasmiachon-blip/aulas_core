@@ -1,169 +1,210 @@
 <div class="slide" data-slide-id="S54">
 
-  <p style="margin:0 0 0.4vw 0; font-size: 0.78vw; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 800;">
-    Dom&iacute;nios do GRADE &bull; Core GRADE 3
+  <p style="margin:0 0 0.3vw 0; font-size:0.75vw; text-transform:uppercase; letter-spacing:0.10em; color:var(--muted); font-weight:700;">
+    Dom&iacute;nios do GRADE &middot; Core GRADE 3
   </p>
 
-  <h2 style="margin: 0 0 0.7vw 0; font-weight: 800; color: var(--navy); font-size: 2.4vw; line-height: 1.10;">
+  <h2 style="color:var(--navy);">
     Inconsist&ecirc;ncia: leitura visual do forest plot
   </h2>
 
-  <div style="display:grid; grid-template-columns: 5fr 5fr 3.5fr; gap: 1vw; flex:1;">
+  <!-- Main grid: 3 columns, stretches to fill slide -->
+  <div style="display:grid; grid-template-columns:1fr 1fr 0.72fr; gap:0.9vw; flex:1; align-items:stretch; min-height:0;">
 
-    <!-- COL 1: Forest plot — Consistente -->
-    <div style="border: 1px solid rgba(var(--navy-rgb),0.12); border-radius: 0.8vw; overflow:hidden;">
-      <div style="padding: 0.5vw 0.75vw; background: rgba(var(--teal-rgb),0.06); border-bottom: 1px solid rgba(var(--navy-rgb),0.08); display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-weight:800; font-size:0.92vw; color:var(--navy);">Consistente</span>
-        <span style="font-size:0.76vw; color:var(--muted);">I&sup2;&nbsp;=&nbsp;8%</span>
+    <!-- ═══════════ COL 1 — Forest plot: Consistente ═══════════ -->
+    <div style="display:flex; flex-direction:column; border:1px solid var(--border); border-top:0.22vw solid var(--teal); border-radius:var(--radius-md); overflow:hidden; min-height:0;">
+      <!-- Header -->
+      <div style="padding:0.45vw 0.7vw; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); background:rgba(var(--teal-rgb),0.03);">
+        <span style="font-weight:800; font-size:0.88vw; color:var(--navy);">Consistente</span>
+        <span style="font-size:0.72vw; color:var(--muted); font-weight:500;">I&sup2;&thinsp;=&thinsp;8%&ensp;&middot;&ensp;p&thinsp;=&thinsp;0,36</span>
       </div>
-      <div style="padding: 0.4vw 0.5vw;">
-        <svg viewBox="0 0 520 215" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family: Inter, system-ui, sans-serif;">
-          <line x1="280" y1="8" x2="280" y2="175" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="4,3"/>
-          <text x="200" y="8" fill="#94a3b8" font-size="7.5" text-anchor="middle">&larr; Benef&iacute;cio</text>
-          <text x="360" y="8" fill="#94a3b8" font-size="7.5" text-anchor="middle">Dano &rarr;</text>
+      <!-- SVG — log-scale forest plot (Cochrane style) -->
+      <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:0.35vw 0.4vw; min-height:0; overflow:hidden;">
+        <svg viewBox="0 0 420 195" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-height:100%;" font-family="Inter,system-ui,sans-serif">
+          <!-- Null line RR=1.0 at x=220 -->
+          <line x1="220" y1="10" x2="220" y2="170" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="4,3"/>
+          <!-- Direction -->
+          <text x="155" y="12" fill="#94a3b8" font-size="7.5" text-anchor="middle">&larr; Benef&iacute;cio</text>
+          <text x="285" y="12" fill="#94a3b8" font-size="7.5" text-anchor="middle">Risco &rarr;</text>
+          <text x="315" y="12" fill="#94a3b8" font-size="7" font-weight="600">RR [IC 95%]</text>
 
-          <!-- Scale -->
-          <line x1="165" y1="175" x2="400" y2="175" stroke="#e2e8f0" stroke-width="0.6"/>
-          <text x="165" y="188" fill="#94a3b8" font-size="7" text-anchor="middle">0,5</text>
-          <text x="222" y="188" fill="#94a3b8" font-size="7" text-anchor="middle">0,7</text>
-          <text x="280" y="188" fill="#94a3b8" font-size="7" text-anchor="middle" font-weight="600">1,0</text>
-          <text x="340" y="188" fill="#94a3b8" font-size="7" text-anchor="middle">1,4</text>
-          <text x="400" y="188" fill="#94a3b8" font-size="7" text-anchor="middle">2,0</text>
+          <!-- Study 1: Tanaka 2018 — RR 0,72 [0,58–0,89] -->
+          <text x="5" y="32" fill="#1e293b" font-size="9.5">Tanaka 2018</text>
+          <line x1="157" y1="28" x2="206" y2="28" stroke="#475569" stroke-width="1.2"/>
+          <line x1="157" y1="25" x2="157" y2="31" stroke="#475569" stroke-width="0.8"/>
+          <line x1="206" y1="25" x2="206" y2="31" stroke="#475569" stroke-width="0.8"/>
+          <rect x="176" y="23" width="10" height="10" fill="#0b1320"/>
+          <text x="315" y="32" fill="#475569" font-size="8.5">0,72 [0,58&ndash;0,89]</text>
 
-          <!-- Study 1: RR 0.72 [0.58, 0.89] -->
-          <text x="6" y="30" fill="#0f172a" font-size="8.5">Tanaka 2018</text>
-          <line x1="192" y1="27" x2="262" y2="27" stroke="#0b1320" stroke-width="1.3"/>
-          <rect x="220" y="21" width="9" height="9" fill="#0b1320" rx="1"/>
-          <text x="430" y="30" fill="#475569" font-size="7.5" text-anchor="start">0,72 [0,58&ndash;0,89]</text>
+          <!-- Study 2: Rivera 2019 — RR 0,78 [0,65–0,93] -->
+          <text x="5" y="58" fill="#1e293b" font-size="9.5">Rivera 2019</text>
+          <line x1="170" y1="54" x2="211" y2="54" stroke="#475569" stroke-width="1.2"/>
+          <line x1="170" y1="51" x2="170" y2="57" stroke="#475569" stroke-width="0.8"/>
+          <line x1="211" y1="51" x2="211" y2="57" stroke="#475569" stroke-width="0.8"/>
+          <rect x="185" y="48" width="12" height="12" fill="#0b1320"/>
+          <text x="315" y="58" fill="#475569" font-size="8.5">0,78 [0,65&ndash;0,93]</text>
 
-          <!-- Study 2: RR 0.78 [0.65, 0.93] -->
-          <text x="6" y="58" fill="#0f172a" font-size="8.5">Rivera 2019</text>
-          <line x1="210" y1="55" x2="268" y2="55" stroke="#0b1320" stroke-width="1.3"/>
-          <rect x="234" y="48" width="11" height="11" fill="#0b1320" rx="1"/>
-          <text x="430" y="58" fill="#475569" font-size="7.5" text-anchor="start">0,78 [0,65&ndash;0,93]</text>
+          <!-- Study 3: Kim 2020 — RR 0,69 [0,52–0,91] -->
+          <text x="5" y="84" fill="#1e293b" font-size="9.5">Kim 2020</text>
+          <line x1="144" y1="80" x2="209" y2="80" stroke="#475569" stroke-width="1.2"/>
+          <line x1="144" y1="77" x2="144" y2="83" stroke="#475569" stroke-width="0.8"/>
+          <line x1="209" y1="77" x2="209" y2="83" stroke="#475569" stroke-width="0.8"/>
+          <rect x="173" y="76" width="8" height="8" fill="#0b1320"/>
+          <text x="315" y="84" fill="#475569" font-size="8.5">0,69 [0,52&ndash;0,91]</text>
 
-          <!-- Study 3: RR 0.69 [0.52, 0.91] -->
-          <text x="6" y="86" fill="#0f172a" font-size="8.5">Kim 2020</text>
-          <line x1="175" y1="83" x2="264" y2="83" stroke="#0b1320" stroke-width="1.3"/>
-          <rect x="216" y="78" width="7" height="7" fill="#0b1320" rx="1"/>
-          <text x="430" y="86" fill="#475569" font-size="7.5" text-anchor="start">0,69 [0,52&ndash;0,91]</text>
+          <!-- Study 4: Müller 2021 — RR 0,75 [0,63–0,89] -->
+          <text x="5" y="110" fill="#1e293b" font-size="9.5">M&uuml;ller 2021</text>
+          <line x1="166" y1="106" x2="206" y2="106" stroke="#475569" stroke-width="1.2"/>
+          <line x1="166" y1="103" x2="166" y2="109" stroke="#475569" stroke-width="0.8"/>
+          <line x1="206" y1="103" x2="206" y2="109" stroke="#475569" stroke-width="0.8"/>
+          <rect x="180" y="100" width="11" height="11" fill="#0b1320"/>
+          <text x="315" y="110" fill="#475569" font-size="8.5">0,75 [0,63&ndash;0,89]</text>
 
-          <!-- Study 4: RR 0.75 [0.63, 0.89] -->
-          <text x="6" y="114" fill="#0f172a" font-size="8.5">M&uuml;ller 2021</text>
-          <line x1="206" y1="111" x2="262" y2="111" stroke="#0b1320" stroke-width="1.3"/>
-          <rect x="228" y="105" width="10" height="10" fill="#0b1320" rx="1"/>
-          <text x="430" y="114" fill="#475569" font-size="7.5" text-anchor="start">0,75 [0,63&ndash;0,89]</text>
+          <!-- Study 5: Chen 2022 — RR 0,80 [0,61–1,05] -->
+          <text x="5" y="136" fill="#1e293b" font-size="9.5">Chen 2022</text>
+          <line x1="162" y1="132" x2="225" y2="132" stroke="#475569" stroke-width="1.2"/>
+          <line x1="162" y1="129" x2="162" y2="135" stroke="#475569" stroke-width="0.8"/>
+          <line x1="225" y1="129" x2="225" y2="135" stroke="#475569" stroke-width="0.8"/>
+          <rect x="190" y="128" width="7" height="7" fill="#0b1320"/>
+          <text x="315" y="136" fill="#475569" font-size="8.5">0,80 [0,61&ndash;1,05]</text>
 
-          <!-- Study 5: RR 0.80 [0.61, 1.05] -->
-          <text x="6" y="142" fill="#0f172a" font-size="8.5">Chen 2022</text>
-          <line x1="200" y1="139" x2="286" y2="139" stroke="#0b1320" stroke-width="1.3"/>
-          <rect x="240" y="134" width="6" height="6" fill="#0b1320" rx="1"/>
-          <text x="430" y="142" fill="#475569" font-size="7.5" text-anchor="start">0,80 [0,61&ndash;1,05]</text>
+          <!-- Separator -->
+          <line x1="5" y1="150" x2="415" y2="150" stroke="#e2e8f0" stroke-width="0.6"/>
 
-          <line x1="6" y1="158" x2="510" y2="158" stroke="#e2e8f0" stroke-width="0.6"/>
+          <!-- Pooled: RR 0,75 [0,68–0,83] — teal diamond -->
+          <text x="5" y="172" fill="#0b1320" font-size="9.5" font-weight="700">Agrupado</text>
+          <polygon points="175,168 186,159 198,168 186,177" fill="#0f766e"/>
+          <text x="315" y="172" fill="#0b1320" font-size="8.5" font-weight="700">0,75 [0,68&ndash;0,83]</text>
 
-          <!-- Pooled: RR 0.75 [0.68, 0.83] -->
-          <text x="6" y="172" fill="#0b1320" font-size="8.5" font-weight="700">Agrupado</text>
-          <polygon points="218,170 232,162 247,170 232,178" fill="#0f766e" stroke="#0f766e" stroke-width="0.8"/>
-          <text x="430" y="172" fill="#0b1320" font-size="7.5" text-anchor="start" font-weight="700">0,75 [0,68&ndash;0,83]</text>
-
-          <text x="430" y="8" fill="#94a3b8" font-size="7" text-anchor="start" font-weight="600">RR [IC 95%]</text>
+          <!-- Axis -->
+          <line x1="80" y1="182" x2="300" y2="182" stroke="#e2e8f0" stroke-width="0.6"/>
+          <line x1="80" y1="179" x2="80" y2="185" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="80" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,3</text>
+          <line x1="139" y1="179" x2="139" y2="185" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="139" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,5</text>
+          <line x1="178" y1="179" x2="178" y2="185" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="178" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,7</text>
+          <line x1="220" y1="179" x2="220" y2="185" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="220" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle" font-weight="600">1,0</text>
+          <line x1="259" y1="179" x2="259" y2="185" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="259" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle">1,4</text>
+          <line x1="300" y1="179" x2="300" y2="185" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="300" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle">2,0</text>
         </svg>
-        <div style="text-align:center; font-size:0.78vw; color:var(--teal); font-weight:700; padding-top:0.2vw;">
-          ICs sobrepostos, mesma dire&ccedil;&atilde;o &rarr; <b>n&atilde;o rebaixar</b>
-        </div>
+      </div>
+      <!-- Summary strip -->
+      <div style="padding:0.35vw 0.65vw; margin:0 0.45vw 0.45vw; border-radius:0.3vw; border-left:0.18vw solid var(--teal); background:rgba(var(--teal-rgb),0.04); font-size:0.78vw; line-height:1.3; color:var(--navy); font-weight:600;">
+        ICs sobrepostos, mesma dire&ccedil;&atilde;o &rarr; <b>n&atilde;o rebaixar</b>
       </div>
     </div>
 
-    <!-- COL 2: Forest plot — Inconsistente -->
-    <div style="border: 1px solid rgba(var(--gold-rgb),0.30); border-radius: 0.8vw; overflow:hidden;">
-      <div style="padding: 0.5vw 0.75vw; background: rgba(var(--gold-rgb),0.08); border-bottom: 1px solid rgba(var(--gold-rgb),0.18); display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-weight:800; font-size:0.92vw; color:var(--navy);">Inconsistente</span>
-        <span style="font-size:0.76vw; color:var(--muted);">I&sup2;&nbsp;=&nbsp;82%</span>
+    <!-- ═══════════ COL 2 — Forest plot: Inconsistente ═══════════ -->
+    <div style="display:flex; flex-direction:column; border:1px solid var(--border); border-top:0.22vw solid var(--gold); border-radius:var(--radius-md); overflow:hidden; min-height:0;">
+      <div style="padding:0.45vw 0.7vw; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); background:rgba(var(--gold-rgb),0.04);">
+        <span style="font-weight:800; font-size:0.88vw; color:var(--navy);">Inconsistente</span>
+        <span style="font-size:0.72vw; color:var(--muted); font-weight:500;">I&sup2;&thinsp;=&thinsp;82%&ensp;&middot;&ensp;p&thinsp;&lt;&thinsp;0,001</span>
       </div>
-      <div style="padding: 0.4vw 0.5vw;">
-        <svg viewBox="0 0 520 215" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family: Inter, system-ui, sans-serif;">
-          <line x1="280" y1="8" x2="280" y2="175" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="4,3"/>
-          <text x="200" y="8" fill="#94a3b8" font-size="7.5" text-anchor="middle">&larr; Benef&iacute;cio</text>
-          <text x="360" y="8" fill="#94a3b8" font-size="7.5" text-anchor="middle">Dano &rarr;</text>
+      <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:0.35vw 0.4vw; min-height:0; overflow:hidden;">
+        <svg viewBox="0 0 420 195" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-height:100%;" font-family="Inter,system-ui,sans-serif">
+          <line x1="220" y1="10" x2="220" y2="170" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="4,3"/>
+          <text x="155" y="12" fill="#94a3b8" font-size="7.5" text-anchor="middle">&larr; Benef&iacute;cio</text>
+          <text x="285" y="12" fill="#94a3b8" font-size="7.5" text-anchor="middle">Risco &rarr;</text>
+          <text x="315" y="12" fill="#94a3b8" font-size="7" font-weight="600">RR [IC 95%]</text>
 
-          <line x1="115" y1="175" x2="400" y2="175" stroke="#e2e8f0" stroke-width="0.6"/>
-          <text x="115" y="188" fill="#94a3b8" font-size="7" text-anchor="middle">0,3</text>
-          <text x="165" y="188" fill="#94a3b8" font-size="7" text-anchor="middle">0,5</text>
-          <text x="222" y="188" fill="#94a3b8" font-size="7" text-anchor="middle">0,7</text>
-          <text x="280" y="188" fill="#94a3b8" font-size="7" text-anchor="middle" font-weight="600">1,0</text>
-          <text x="340" y="188" fill="#94a3b8" font-size="7" text-anchor="middle">1,4</text>
-          <text x="400" y="188" fill="#94a3b8" font-size="7" text-anchor="middle">2,0</text>
+          <!-- Study 1: Adams 2017 — RR 0,52 [0,35–0,77] -->
+          <text x="5" y="32" fill="#1e293b" font-size="9.5">Adams 2017</text>
+          <line x1="98" y1="28" x2="189" y2="28" stroke="#475569" stroke-width="1.2"/>
+          <line x1="98" y1="25" x2="98" y2="31" stroke="#475569" stroke-width="0.8"/>
+          <line x1="189" y1="25" x2="189" y2="31" stroke="#475569" stroke-width="0.8"/>
+          <rect x="140" y="24" width="8" height="8" fill="#0b1320"/>
+          <text x="315" y="32" fill="#475569" font-size="8.5">0,52 [0,35&ndash;0,77]</text>
 
-          <!-- Study 1: RR 0.52 [0.35, 0.77] -->
-          <text x="6" y="30" fill="#0f172a" font-size="8.5">Adams 2017</text>
-          <line x1="115" y1="27" x2="240" y2="27" stroke="#0b1320" stroke-width="1.3"/>
-          <rect x="168" y="21" width="8" height="8" fill="var(--gold)" rx="1"/>
-          <text x="430" y="30" fill="#475569" font-size="7.5" text-anchor="start">0,52 [0,35&ndash;0,77]</text>
+          <!-- Study 2: Patel 2019 — RR 0,91 [0,72–1,15] -->
+          <text x="5" y="58" fill="#1e293b" font-size="9.5">Patel 2019</text>
+          <line x1="181" y1="54" x2="236" y2="54" stroke="#475569" stroke-width="1.2"/>
+          <line x1="181" y1="51" x2="181" y2="57" stroke="#475569" stroke-width="0.8"/>
+          <line x1="236" y1="51" x2="236" y2="57" stroke="#475569" stroke-width="0.8"/>
+          <rect x="204" y="49" width="10" height="10" fill="#0b1320"/>
+          <text x="315" y="58" fill="#475569" font-size="8.5">0,91 [0,72&ndash;1,15]</text>
 
-          <!-- Study 2: RR 0.91 [0.72, 1.15] -->
-          <text x="6" y="58" fill="#0f172a" font-size="8.5">Patel 2019</text>
-          <line x1="228" y1="55" x2="303" y2="55" stroke="#0b1320" stroke-width="1.3"/>
-          <rect x="260" y="48" width="10" height="10" fill="var(--gold)" rx="1"/>
-          <text x="430" y="58" fill="#475569" font-size="7.5" text-anchor="start">0,91 [0,72&ndash;1,15]</text>
+          <!-- Study 3: Li 2020 — RR 0,68 [0,48–0,96] -->
+          <text x="5" y="84" fill="#1e293b" font-size="9.5">Li 2020</text>
+          <line x1="135" y1="80" x2="215" y2="80" stroke="#475569" stroke-width="1.2"/>
+          <line x1="135" y1="77" x2="135" y2="83" stroke="#475569" stroke-width="0.8"/>
+          <line x1="215" y1="77" x2="215" y2="83" stroke="#475569" stroke-width="0.8"/>
+          <rect x="172" y="77" width="7" height="7" fill="#0b1320"/>
+          <text x="315" y="84" fill="#475569" font-size="8.5">0,68 [0,48&ndash;0,96]</text>
 
-          <!-- Study 3: RR 0.68 [0.48, 0.96] -->
-          <text x="6" y="86" fill="#0f172a" font-size="8.5">Li 2020</text>
-          <line x1="148" y1="83" x2="274" y2="83" stroke="#0b1320" stroke-width="1.3"/>
-          <rect x="215" y="79" width="7" height="7" fill="var(--gold)" rx="1"/>
-          <text x="430" y="86" fill="#475569" font-size="7.5" text-anchor="start">0,68 [0,48&ndash;0,96]</text>
+          <!-- Study 4: Santos 2021 — RR 1,12 [0,85–1,48] (HARMS SIDE) -->
+          <text x="5" y="110" fill="#1e293b" font-size="9.5">Santos 2021</text>
+          <line x1="201" y1="106" x2="265" y2="106" stroke="#475569" stroke-width="1.2"/>
+          <line x1="201" y1="103" x2="201" y2="109" stroke="#475569" stroke-width="0.8"/>
+          <line x1="265" y1="103" x2="265" y2="109" stroke="#475569" stroke-width="0.8"/>
+          <rect x="229" y="102" width="9" height="9" fill="#0b1320"/>
+          <text x="315" y="110" fill="#475569" font-size="8.5">1,12 [0,85&ndash;1,48]</text>
 
-          <!-- Study 4: RR 1.12 [0.85, 1.48] — DANO -->
-          <text x="6" y="114" fill="#0f172a" font-size="8.5">Santos 2021</text>
-          <line x1="255" y1="111" x2="345" y2="111" stroke="#0b1320" stroke-width="1.3"/>
-          <rect x="296" y="105" width="9" height="9" fill="var(--gold)" rx="1"/>
-          <text x="430" y="114" fill="#475569" font-size="7.5" text-anchor="start">1,12 [0,85&ndash;1,48]</text>
+          <!-- Study 5: Weber 2022 — RR 0,60 [0,38–0,95] -->
+          <text x="5" y="136" fill="#1e293b" font-size="9.5">Weber 2022</text>
+          <line x1="107" y1="132" x2="214" y2="132" stroke="#475569" stroke-width="1.2"/>
+          <line x1="107" y1="129" x2="107" y2="135" stroke="#475569" stroke-width="0.8"/>
+          <line x1="214" y1="129" x2="214" y2="135" stroke="#475569" stroke-width="0.8"/>
+          <rect x="156" y="128" width="8" height="8" fill="#0b1320"/>
+          <text x="315" y="136" fill="#475569" font-size="8.5">0,60 [0,38&ndash;0,95]</text>
 
-          <!-- Study 5: RR 0.60 [0.38, 0.95] -->
-          <text x="6" y="142" fill="#0f172a" font-size="8.5">Weber 2022</text>
-          <line x1="126" y1="139" x2="272" y2="139" stroke="#0b1320" stroke-width="1.3"/>
-          <rect x="196" y="134" width="8" height="8" fill="var(--gold)" rx="1"/>
-          <text x="430" y="142" fill="#475569" font-size="7.5" text-anchor="start">0,60 [0,38&ndash;0,95]</text>
+          <line x1="5" y1="150" x2="415" y2="150" stroke="#e2e8f0" stroke-width="0.6"/>
 
-          <line x1="6" y1="158" x2="510" y2="158" stroke="#e2e8f0" stroke-width="0.6"/>
+          <!-- Pooled: RR 0,76 [0,55–1,06] — gold diamond — CROSSES NULL -->
+          <text x="5" y="172" fill="#0b1320" font-size="9.5" font-weight="700">Agrupado</text>
+          <polygon points="150,168 188,159 226,168 188,177" fill="#d2b55b"/>
+          <text x="315" y="172" fill="#0b1320" font-size="8.5" font-weight="700">0,76 [0,55&ndash;1,06]</text>
 
-          <!-- Pooled: RR 0.76 [0.55, 1.06] — crosses null -->
-          <text x="6" y="172" fill="#0b1320" font-size="8.5" font-weight="700">Agrupado</text>
-          <polygon points="186,170 238,162 290,170 238,178" fill="var(--gold)" stroke="rgba(var(--gold-rgb),0.8)" stroke-width="0.8"/>
-          <text x="430" y="172" fill="#0b1320" font-size="7.5" text-anchor="start" font-weight="700">0,76 [0,55&ndash;1,06]</text>
-
-          <text x="430" y="8" fill="#94a3b8" font-size="7" text-anchor="start" font-weight="600">RR [IC 95%]</text>
+          <line x1="80" y1="182" x2="300" y2="182" stroke="#e2e8f0" stroke-width="0.6"/>
+          <line x1="80" y1="179" x2="80" y2="185" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="80" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,3</text>
+          <line x1="139" y1="179" x2="139" y2="185" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="139" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,5</text>
+          <line x1="178" y1="179" x2="178" y2="185" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="178" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,7</text>
+          <line x1="220" y1="179" x2="220" y2="185" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="220" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle" font-weight="600">1,0</text>
+          <line x1="259" y1="179" x2="259" y2="185" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="259" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle">1,4</text>
+          <line x1="300" y1="179" x2="300" y2="185" stroke="#cbd5e1" stroke-width="0.6"/>
+          <text x="300" y="194" fill="#94a3b8" font-size="6.5" text-anchor="middle">2,0</text>
         </svg>
-        <div style="text-align:center; font-size:0.78vw; color:rgba(var(--gold-rgb),1); font-weight:700; padding-top:0.2vw;">
-          Dire&ccedil;&otilde;es opostas, diamante cruza nulo &rarr; <b>rebaixar</b>
-        </div>
+      </div>
+      <div style="padding:0.35vw 0.65vw; margin:0 0.45vw 0.45vw; border-radius:0.3vw; border-left:0.18vw solid var(--gold); background:rgba(var(--gold-rgb),0.04); font-size:0.78vw; line-height:1.3; color:var(--navy); font-weight:600;">
+        Dire&ccedil;&otilde;es opostas, diamante cruza nulo &rarr; <b>rebaixar</b>
       </div>
     </div>
 
-    <!-- COL 3: Explicação Core GRADE 3 -->
-    <div style="display:flex; flex-direction:column; gap:0.65vw;">
+    <!-- ═══════════ COL 3 — Explica&ccedil;&atilde;o Core GRADE 3 ═══════════ -->
+    <div style="display:flex; flex-direction:column; gap:0.5vw; min-height:0;">
 
-      <div style="background:rgba(var(--navy-rgb),0.04); border:1px solid rgba(var(--navy-rgb),0.10); border-radius:0.7vw; padding:0.7vw 0.8vw; flex:1;">
-        <div style="font-size:0.78vw; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); font-weight:800; margin-bottom:0.35vw;">Como avaliar</div>
-        <ol style="margin:0; padding-left:1vw; font-size:0.86vw; line-height:1.35; color:var(--navy); display:flex; flex-direction:column; gap:0.3vw;">
+      <!-- Panel 1: Como avaliar -->
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:0.55vw 0.7vw; border-left:0.18vw solid var(--navy); background:rgba(var(--navy-rgb),0.02); border-radius:0 0.4vw 0.4vw 0;">
+        <div style="font-size:0.68vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">Como avaliar</div>
+        <ol style="margin:0; padding-left:0.9vw; font-size:0.82vw; line-height:1.32; color:var(--navy); display:flex; flex-direction:column; gap:0.2vw;">
           <li><b>Pontos estimados</b> pr&oacute;ximos ou distantes?</li>
-          <li><b>ICs se sobrep&otilde;em</b> ou h&aacute; &ldquo;outliers&rdquo;?</li>
-          <li>Estudos apontam para <b>dire&ccedil;&otilde;es opostas</b> (benef&iacute;cio vs dano)?</li>
-          <li>H&aacute; <b>explica&ccedil;&atilde;o plaus&iacute;vel</b> (dose, popula&ccedil;&atilde;o, baseline)?</li>
+          <li><b>ICs se sobrep&otilde;em</b> ou h&aacute; outliers?</li>
+          <li>Estudos apontam para <b>dire&ccedil;&otilde;es opostas</b>?</li>
+          <li><b>Explica&ccedil;&atilde;o plaus&iacute;vel</b> (dose, popula&ccedil;&atilde;o)?</li>
         </ol>
       </div>
 
-      <div style="background:rgba(var(--gold-rgb),0.07); border:1px solid rgba(var(--gold-rgb),0.18); border-radius:0.7vw; padding:0.7vw 0.8vw;">
-        <div style="font-size:0.78vw; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">Regra Core GRADE</div>
-        <div style="font-size:0.86vw; line-height:1.35; color:var(--navy);">
+      <!-- Panel 2: Quando rebaixar -->
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:0.55vw 0.7vw; border-left:0.18vw solid var(--gold); background:rgba(var(--gold-rgb),0.03); border-radius:0 0.4vw 0.4vw 0;">
+        <div style="font-size:0.68vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">Quando rebaixar</div>
+        <div style="font-size:0.82vw; line-height:1.32; color:var(--navy);">
           Avalie efeitos <b>relativos</b> (RR/OR) para bin&aacute;rios e <b>absolutos</b> para cont&iacute;nuos. Se a varia&ccedil;&atilde;o <b>n&atilde;o tem explica&ccedil;&atilde;o</b>, rebaixe 1&ndash;2 n&iacute;veis.
         </div>
       </div>
 
-      <div style="background:rgba(var(--teal-rgb),0.05); border:1px solid rgba(var(--teal-rgb),0.15); border-radius:0.7vw; padding:0.7vw 0.8vw;">
-        <div style="font-size:0.78vw; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">N&atilde;o dependa s&oacute; do I&sup2;</div>
-        <div style="font-size:0.86vw; line-height:1.35; color:var(--navy);">
-          I&sup2; e Cochran Q s&atilde;o <b>ponto de partida</b>. O julgamento final vem da <b>inspe&ccedil;&atilde;o visual</b> do forest plot e da relev&acirc;ncia cl&iacute;nica dos achados individuais.
+      <!-- Panel 3: Além do I² -->
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:0.55vw 0.7vw; border-left:0.18vw solid var(--teal); background:rgba(var(--teal-rgb),0.02); border-radius:0 0.4vw 0.4vw 0;">
+        <div style="font-size:0.68vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">Al&eacute;m do I&sup2;</div>
+        <div style="font-size:0.82vw; line-height:1.32; color:var(--navy);">
+          I&sup2; e Cochran&nbsp;Q s&atilde;o <b>ponto de partida</b>. O julgamento final vem da <b>inspe&ccedil;&atilde;o visual</b> do forest plot e da relev&acirc;ncia cl&iacute;nica.
         </div>
       </div>
 
@@ -171,8 +212,8 @@
 
   </div>
 
-  <div class="ref" style="margin-top:auto; padding-top: 0.5vw; border-top: 1px solid var(--border); font-size: 0.74vw; color: var(--muted);">
-    Dados ilustrativos. Fonte: Sch&uuml;nemann HJ et al. Core GRADE 3: rating certainty &mdash; assessing inconsistency. BMJ 2025;389:e081905. DOI: 10.1136/bmj-2024-081905.
+  <div class="ref" style="margin-top:auto; padding-top:0.45vw; border-top:1px solid var(--border); font-size:0.72vw; color:var(--muted);">
+    Dados ilustrativos (log-scale). Sch&uuml;nemann HJ et al. Core GRADE 3 &mdash; assessing inconsistency. <i>BMJ</i> 2025;389:e081905.
   </div>
 
 </div>

@@ -1,11 +1,12 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
-## 2026-02-06 — Redesign profissional S54/S55: grid 3 colunas + paleta navy/gold/teal + Core GRADE
+## 2026-02-06 — Redesign profissional S54/S55 (v2): Cochrane-style SVGs + flexbox corrigido
 
-- **S54 (inconsistência — forest plots):** redesenhado com **grid de 3 colunas** — consistente (navy, diamante teal) | inconsistente (gold markers, diamante gold) | painel de explicação Core GRADE 3 (como avaliar, regra, nota sobre I²). Paleta profissional sem vermelho — gold como accent de cautela.
-- **S55 (viés de publicação — funnel plots):** redesenhado com **grid de 3 colunas** — simétrico (navy dots, teal) | assimétrico (navy dots, gold com zona "faltantes") | painel Core GRADE 4 (quando suspeitar, o que fazer, além do funil). Mesma paleta profissional.
-- **Paleta unificada:** removido uso de `--danger` (vermelho) em ambos os slides. Agora usa exclusivamente navy (pontos/texto), teal (sem risco) e gold (cautela/alerta) — alinhado à identidade visual da apresentação.
-- Ambos os gráficos são SVG inline vetoriais, sem dependência de imagens externas.
+- **S54 (forest plots — v2):** coordenadas SVG recalculadas em log-scale real (ln(RR), escala 0.3–2.0). CI com **end caps** (estilo Cochrane). Squares todos navy (diferenciação pelo dado, não pela cor). Diamante teal (consistente) vs gold (inconsistente, cruza nulo). Eixo com tick marks alinhados à escala.
+- **S55 (funnel plots — v2):** scatter recalculado com distribuição simétrica vs assimétrica realista. Triângulo de 95% CI como boundary. Zona "faltantes" sutil em gold. Eixos com labels e ticks.
+- **Card architecture unificada:** bordas `1px solid var(--border)` + acento superior (0.22vw solid teal/gold). Header com border-bottom. Summary strip com **left-border accent + navy text** (contraste adequado, sem gold como cor de texto).
+- **Flexbox corrigido:** `min-height:0` em todos os flex children para prevenir overflow. Painéis de explicação com `flex:1 + justify-content:center` para distribuição vertical equalitária. Left-border com cores semânticas: navy (método), gold (decisão), teal (nuance).
+- **Grid:** proporção `1fr 1fr 0.72fr` balanceada. `align-items:stretch` para colunas iguais.
 
 ### Arquivos modificados
 - `src/slides/S54.html`

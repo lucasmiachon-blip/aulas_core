@@ -1,158 +1,159 @@
 <div class="slide" data-slide-id="S55">
 
-  <p style="margin:0 0 0.4vw 0; font-size: 0.78vw; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 800;">
-    Dom&iacute;nios do GRADE &bull; Vi&eacute;s de publica&ccedil;&atilde;o
+  <p style="margin:0 0 0.3vw 0; font-size:0.75vw; text-transform:uppercase; letter-spacing:0.10em; color:var(--muted); font-weight:700;">
+    Dom&iacute;nios do GRADE &middot; Vi&eacute;s de publica&ccedil;&atilde;o
   </p>
 
-  <h2 style="margin: 0 0 0.7vw 0; font-weight: 800; color: var(--navy); font-size: 2.4vw; line-height: 1.10;">
+  <h2 style="color:var(--navy);">
     Funnel plot: o que a assimetria revela
   </h2>
 
-  <div style="display:grid; grid-template-columns: 5fr 5fr 3.5fr; gap: 1vw; flex:1;">
+  <div style="display:grid; grid-template-columns:1fr 1fr 0.72fr; gap:0.9vw; flex:1; align-items:stretch; min-height:0;">
 
-    <!-- COL 1: Funnel plot — Simétrico -->
-    <div style="border: 1px solid rgba(var(--navy-rgb),0.12); border-radius: 0.8vw; overflow:hidden;">
-      <div style="padding: 0.5vw 0.75vw; background: rgba(var(--teal-rgb),0.06); border-bottom: 1px solid rgba(var(--navy-rgb),0.08); display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-weight:800; font-size:0.92vw; color:var(--navy);">Sim&eacute;trico</span>
-        <span style="font-size:0.76vw; color:var(--teal); font-weight:600;">Sem vi&eacute;s</span>
+    <!-- ═══════════ COL 1 — Funnel plot: Sim&eacute;trico ═══════════ -->
+    <div style="display:flex; flex-direction:column; border:1px solid var(--border); border-top:0.22vw solid var(--teal); border-radius:var(--radius-md); overflow:hidden; min-height:0;">
+      <div style="padding:0.45vw 0.7vw; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); background:rgba(var(--teal-rgb),0.03);">
+        <span style="font-weight:800; font-size:0.88vw; color:var(--navy);">Sim&eacute;trico</span>
+        <span style="font-size:0.72vw; color:var(--teal); font-weight:600;">Sem vi&eacute;s</span>
       </div>
-      <div style="padding: 0.4vw 0.5vw;">
-        <svg viewBox="0 0 380 265" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family: Inter, system-ui, sans-serif;">
-          <!-- Y-axis -->
-          <line x1="50" y1="16" x2="50" y2="222" stroke="#94a3b8" stroke-width="0.7"/>
-          <text x="24" y="122" fill="#94a3b8" font-size="7.5" text-anchor="middle" transform="rotate(-90,24,122)">Erro padr&atilde;o (SE)</text>
-          <text x="45" y="22" fill="#94a3b8" font-size="6.5" text-anchor="end">0</text>
-          <text x="45" y="73" fill="#94a3b8" font-size="6.5" text-anchor="end">0,1</text>
-          <text x="45" y="124" fill="#94a3b8" font-size="6.5" text-anchor="end">0,2</text>
-          <text x="45" y="175" fill="#94a3b8" font-size="6.5" text-anchor="end">0,3</text>
-          <text x="45" y="222" fill="#94a3b8" font-size="6.5" text-anchor="end">0,4</text>
+      <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:0.35vw 0.4vw; min-height:0; overflow:hidden;">
+        <svg viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-height:100%;" font-family="Inter,system-ui,sans-serif">
+          <!-- Y axis -->
+          <line x1="48" y1="20" x2="48" y2="200" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="20" y="114" fill="#94a3b8" font-size="7.5" text-anchor="middle" transform="rotate(-90,20,114)">Erro padr&atilde;o (SE)</text>
+          <text x="43" y="24" fill="#94a3b8" font-size="6.5" text-anchor="end">0</text>
+          <text x="43" y="80" fill="#94a3b8" font-size="6.5" text-anchor="end">0,1</text>
+          <text x="43" y="140" fill="#94a3b8" font-size="6.5" text-anchor="end">0,2</text>
+          <text x="43" y="200" fill="#94a3b8" font-size="6.5" text-anchor="end">0,3</text>
+          <line x1="45" y1="20" x2="51" y2="20" stroke="#94a3b8" stroke-width="0.5"/>
+          <line x1="45" y1="80" x2="51" y2="80" stroke="#94a3b8" stroke-width="0.5"/>
+          <line x1="45" y1="140" x2="51" y2="140" stroke="#94a3b8" stroke-width="0.5"/>
+          <line x1="45" y1="200" x2="51" y2="200" stroke="#94a3b8" stroke-width="0.5"/>
 
-          <!-- X-axis -->
-          <line x1="50" y1="222" x2="365" y2="222" stroke="#94a3b8" stroke-width="0.7"/>
-          <text x="207" y="245" fill="#94a3b8" font-size="7" text-anchor="middle">Tamanho do efeito (log RR)</text>
-          <text x="100" y="235" fill="#94a3b8" font-size="6.5" text-anchor="middle">-0,6</text>
-          <text x="155" y="235" fill="#94a3b8" font-size="6.5" text-anchor="middle">-0,4</text>
-          <text x="207" y="235" fill="#94a3b8" font-size="6.5" text-anchor="middle" font-weight="600">efeito</text>
-          <text x="260" y="235" fill="#94a3b8" font-size="6.5" text-anchor="middle">0</text>
-          <text x="315" y="235" fill="#94a3b8" font-size="6.5" text-anchor="middle">+0,2</text>
+          <!-- X axis -->
+          <line x1="48" y1="200" x2="310" y2="200" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="180" y="222" fill="#94a3b8" font-size="7" text-anchor="middle">Tamanho do efeito (log RR)</text>
 
-          <!-- Funnel outline -->
-          <polygon points="207,18 60,222 354,222" fill="rgba(var(--teal-rgb),0.03)" stroke="rgba(var(--teal-rgb),0.20)" stroke-width="0.8" stroke-dasharray="4,3"/>
+          <!-- Funnel (95% CI boundaries) -->
+          <polygon points="180,20 52,200 308,200" fill="rgba(var(--teal-rgb),0.03)" stroke="rgba(var(--teal-rgb),0.18)" stroke-width="0.8" stroke-dasharray="4,3"/>
           <!-- Pooled effect line -->
-          <line x1="207" y1="14" x2="207" y2="222" stroke="var(--teal)" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+          <line x1="180" y1="16" x2="180" y2="200" stroke="#0f766e" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.5"/>
 
-          <!-- Studies (symmetric) -->
-          <circle cx="204" cy="32" r="4" fill="var(--navy)" opacity="0.85"/>
-          <circle cx="212" cy="38" r="4" fill="var(--navy)" opacity="0.85"/>
-          <circle cx="201" cy="46" r="4" fill="var(--navy)" opacity="0.85"/>
-          <circle cx="209" cy="52" r="4" fill="var(--navy)" opacity="0.85"/>
-          <circle cx="188" cy="85" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <circle cx="225" cy="90" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <circle cx="178" cy="105" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <circle cx="238" cy="100" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <circle cx="195" cy="115" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <circle cx="220" cy="120" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <circle cx="162" cy="148" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="248" cy="152" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="145" cy="175" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="265" cy="178" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="130" cy="200" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="280" cy="205" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="172" cy="192" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="240" cy="198" r="3" fill="var(--navy)" opacity="0.6"/>
+          <!-- Studies: symmetric scatter around x=180 -->
+          <!-- Large (low SE) -->
+          <circle cx="177" cy="30" r="3.8" fill="#0b1320" opacity="0.85"/>
+          <circle cx="185" cy="35" r="3.8" fill="#0b1320" opacity="0.85"/>
+          <circle cx="174" cy="42" r="3.8" fill="#0b1320" opacity="0.85"/>
+          <circle cx="183" cy="48" r="3.8" fill="#0b1320" opacity="0.85"/>
+          <!-- Medium -->
+          <circle cx="162" cy="80" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="198" cy="85" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="150" cy="100" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="210" cy="96" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="170" cy="115" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="195" cy="120" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="155" cy="135" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="205" cy="140" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <!-- Small (high SE) -->
+          <circle cx="130" cy="155" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="230" cy="160" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="115" cy="175" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="245" cy="178" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="100" cy="195" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="260" cy="198" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="145" cy="185" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="215" cy="190" r="2.8" fill="#0b1320" opacity="0.58"/>
         </svg>
-        <div style="text-align:center; font-size:0.78vw; color:var(--teal); font-weight:700; padding-top:0.1vw;">
-          Dispers&atilde;o sim&eacute;trica &rarr; <b>n&atilde;o rebaixar</b>
-        </div>
+      </div>
+      <div style="padding:0.35vw 0.65vw; margin:0 0.45vw 0.45vw; border-radius:0.3vw; border-left:0.18vw solid var(--teal); background:rgba(var(--teal-rgb),0.04); font-size:0.78vw; line-height:1.3; color:var(--navy); font-weight:600;">
+        Dispers&atilde;o sim&eacute;trica &rarr; <b>n&atilde;o rebaixar</b>
       </div>
     </div>
 
-    <!-- COL 2: Funnel plot — Assimétrico -->
-    <div style="border: 1px solid rgba(var(--gold-rgb),0.30); border-radius: 0.8vw; overflow:hidden;">
-      <div style="padding: 0.5vw 0.75vw; background: rgba(var(--gold-rgb),0.08); border-bottom: 1px solid rgba(var(--gold-rgb),0.18); display:flex; justify-content:space-between; align-items:center;">
-        <span style="font-weight:800; font-size:0.92vw; color:var(--navy);">Assim&eacute;trico</span>
-        <span style="font-size:0.76vw; color:var(--gold); font-weight:600;">Suspeita</span>
+    <!-- ═══════════ COL 2 — Funnel plot: Assim&eacute;trico ═══════════ -->
+    <div style="display:flex; flex-direction:column; border:1px solid var(--border); border-top:0.22vw solid var(--gold); border-radius:var(--radius-md); overflow:hidden; min-height:0;">
+      <div style="padding:0.45vw 0.7vw; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); background:rgba(var(--gold-rgb),0.04);">
+        <span style="font-weight:800; font-size:0.88vw; color:var(--navy);">Assim&eacute;trico</span>
+        <span style="font-size:0.72vw; color:var(--gold); font-weight:600;">Suspeita</span>
       </div>
-      <div style="padding: 0.4vw 0.5vw;">
-        <svg viewBox="0 0 380 265" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family: Inter, system-ui, sans-serif;">
-          <!-- Y-axis -->
-          <line x1="50" y1="16" x2="50" y2="222" stroke="#94a3b8" stroke-width="0.7"/>
-          <text x="24" y="122" fill="#94a3b8" font-size="7.5" text-anchor="middle" transform="rotate(-90,24,122)">Erro padr&atilde;o (SE)</text>
-          <text x="45" y="22" fill="#94a3b8" font-size="6.5" text-anchor="end">0</text>
-          <text x="45" y="73" fill="#94a3b8" font-size="6.5" text-anchor="end">0,1</text>
-          <text x="45" y="124" fill="#94a3b8" font-size="6.5" text-anchor="end">0,2</text>
-          <text x="45" y="175" fill="#94a3b8" font-size="6.5" text-anchor="end">0,3</text>
-          <text x="45" y="222" fill="#94a3b8" font-size="6.5" text-anchor="end">0,4</text>
+      <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:0.35vw 0.4vw; min-height:0; overflow:hidden;">
+        <svg viewBox="0 0 320 230" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-height:100%;" font-family="Inter,system-ui,sans-serif">
+          <!-- Y axis -->
+          <line x1="48" y1="20" x2="48" y2="200" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="20" y="114" fill="#94a3b8" font-size="7.5" text-anchor="middle" transform="rotate(-90,20,114)">Erro padr&atilde;o (SE)</text>
+          <text x="43" y="24" fill="#94a3b8" font-size="6.5" text-anchor="end">0</text>
+          <text x="43" y="80" fill="#94a3b8" font-size="6.5" text-anchor="end">0,1</text>
+          <text x="43" y="140" fill="#94a3b8" font-size="6.5" text-anchor="end">0,2</text>
+          <text x="43" y="200" fill="#94a3b8" font-size="6.5" text-anchor="end">0,3</text>
+          <line x1="45" y1="20" x2="51" y2="20" stroke="#94a3b8" stroke-width="0.5"/>
+          <line x1="45" y1="80" x2="51" y2="80" stroke="#94a3b8" stroke-width="0.5"/>
+          <line x1="45" y1="140" x2="51" y2="140" stroke="#94a3b8" stroke-width="0.5"/>
+          <line x1="45" y1="200" x2="51" y2="200" stroke="#94a3b8" stroke-width="0.5"/>
 
-          <!-- X-axis -->
-          <line x1="50" y1="222" x2="365" y2="222" stroke="#94a3b8" stroke-width="0.7"/>
-          <text x="207" y="245" fill="#94a3b8" font-size="7" text-anchor="middle">Tamanho do efeito (log RR)</text>
-          <text x="100" y="235" fill="#94a3b8" font-size="6.5" text-anchor="middle">-0,6</text>
-          <text x="155" y="235" fill="#94a3b8" font-size="6.5" text-anchor="middle">-0,4</text>
-          <text x="207" y="235" fill="#94a3b8" font-size="6.5" text-anchor="middle" font-weight="600">efeito</text>
-          <text x="260" y="235" fill="#94a3b8" font-size="6.5" text-anchor="middle">0</text>
-          <text x="315" y="235" fill="#94a3b8" font-size="6.5" text-anchor="middle">+0,2</text>
+          <!-- X axis -->
+          <line x1="48" y1="200" x2="310" y2="200" stroke="#94a3b8" stroke-width="0.6"/>
+          <text x="180" y="222" fill="#94a3b8" font-size="7" text-anchor="middle">Tamanho do efeito (log RR)</text>
 
-          <!-- Funnel outline -->
-          <polygon points="207,18 60,222 354,222" fill="rgba(var(--gold-rgb),0.03)" stroke="rgba(var(--gold-rgb),0.25)" stroke-width="0.8" stroke-dasharray="4,3"/>
-          <!-- Pooled line -->
-          <line x1="207" y1="14" x2="207" y2="222" stroke="var(--gold)" stroke-width="1" stroke-dasharray="3,2" opacity="0.6"/>
+          <!-- Funnel (95% CI boundaries) -->
+          <polygon points="180,20 52,200 308,200" fill="rgba(var(--gold-rgb),0.02)" stroke="rgba(var(--gold-rgb),0.22)" stroke-width="0.8" stroke-dasharray="4,3"/>
+          <line x1="180" y1="16" x2="180" y2="200" stroke="#d2b55b" stroke-width="0.8" stroke-dasharray="3,2" opacity="0.5"/>
 
-          <!-- Missing zone -->
-          <rect x="230" y="125" width="108" height="95" rx="6" fill="rgba(var(--gold-rgb),0.06)" stroke="rgba(var(--gold-rgb),0.20)" stroke-width="0.8" stroke-dasharray="3,2"/>
-          <text x="284" y="172" fill="var(--gold)" font-size="8" text-anchor="middle" font-weight="600" opacity="0.7">Estudos</text>
-          <text x="284" y="184" fill="var(--gold)" font-size="8" text-anchor="middle" font-weight="600" opacity="0.7">&ldquo;faltantes&rdquo;</text>
+          <!-- Missing studies zone -->
+          <rect x="198" y="135" width="100" height="65" rx="5" fill="rgba(var(--gold-rgb),0.05)" stroke="rgba(var(--gold-rgb),0.18)" stroke-width="0.7" stroke-dasharray="3,2"/>
+          <text x="248" y="168" fill="#d2b55b" font-size="7.5" text-anchor="middle" font-weight="600" opacity="0.65">Estudos</text>
+          <text x="248" y="179" fill="#d2b55b" font-size="7.5" text-anchor="middle" font-weight="600" opacity="0.65">&ldquo;faltantes&rdquo;</text>
 
-          <!-- Studies (asymmetric) -->
-          <circle cx="204" cy="32" r="4" fill="var(--navy)" opacity="0.85"/>
-          <circle cx="212" cy="38" r="4" fill="var(--navy)" opacity="0.85"/>
-          <circle cx="200" cy="46" r="4" fill="var(--navy)" opacity="0.85"/>
-          <circle cx="208" cy="54" r="4" fill="var(--navy)" opacity="0.85"/>
-          <circle cx="188" cy="85" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <circle cx="222" cy="92" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <circle cx="175" cy="105" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <circle cx="192" cy="118" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <circle cx="182" cy="130" r="3.5" fill="var(--navy)" opacity="0.75"/>
-          <!-- Small: only on left -->
-          <circle cx="152" cy="150" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="140" cy="168" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="128" cy="185" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="145" cy="180" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="158" cy="195" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="120" cy="208" r="3" fill="var(--navy)" opacity="0.6"/>
-          <circle cx="138" cy="202" r="3" fill="var(--navy)" opacity="0.6"/>
+          <!-- Studies: asymmetric (only left side at bottom) -->
+          <circle cx="177" cy="30" r="3.8" fill="#0b1320" opacity="0.85"/>
+          <circle cx="185" cy="35" r="3.8" fill="#0b1320" opacity="0.85"/>
+          <circle cx="174" cy="42" r="3.8" fill="#0b1320" opacity="0.85"/>
+          <circle cx="182" cy="50" r="3.8" fill="#0b1320" opacity="0.85"/>
+          <!-- Medium — slightly left-biased -->
+          <circle cx="162" cy="80" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="196" cy="88" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="148" cy="102" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="170" cy="118" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <circle cx="158" cy="130" r="3.2" fill="#0b1320" opacity="0.72"/>
+          <!-- Small — ONLY on left (bias) -->
+          <circle cx="130" cy="155" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="118" cy="170" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="105" cy="188" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="125" cy="182" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="140" cy="196" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="95" cy="198" r="2.8" fill="#0b1320" opacity="0.58"/>
+          <circle cx="115" cy="195" r="2.8" fill="#0b1320" opacity="0.58"/>
         </svg>
-        <div style="text-align:center; font-size:0.78vw; color:var(--gold); font-weight:700; padding-top:0.1vw;">
-          Pequenos s&oacute; com efeito grande &rarr; <b>rebaixar 1 n&iacute;vel</b>
-        </div>
+      </div>
+      <div style="padding:0.35vw 0.65vw; margin:0 0.45vw 0.45vw; border-radius:0.3vw; border-left:0.18vw solid var(--gold); background:rgba(var(--gold-rgb),0.04); font-size:0.78vw; line-height:1.3; color:var(--navy); font-weight:600;">
+        Pequenos s&oacute; com efeito grande &rarr; <b>rebaixar 1 n&iacute;vel</b>
       </div>
     </div>
 
-    <!-- COL 3: Explicação Core GRADE 4 -->
-    <div style="display:flex; flex-direction:column; gap:0.65vw;">
+    <!-- ═══════════ COL 3 — Explica&ccedil;&atilde;o Core GRADE ═══════════ -->
+    <div style="display:flex; flex-direction:column; gap:0.5vw; min-height:0;">
 
-      <div style="background:rgba(var(--navy-rgb),0.04); border:1px solid rgba(var(--navy-rgb),0.10); border-radius:0.7vw; padding:0.7vw 0.8vw; flex:1;">
-        <div style="font-size:0.78vw; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); font-weight:800; margin-bottom:0.35vw;">Quando suspeitar</div>
-        <ul style="margin:0; padding-left:1vw; font-size:0.86vw; line-height:1.35; color:var(--navy); display:flex; flex-direction:column; gap:0.3vw;">
-          <li><b>Small-study effects:</b> efeito grande vem de estudos pequenos e heterog&ecirc;neos.</li>
-          <li>Desfechos do <b>registro</b> (ClinicalTrials.gov) n&atilde;o batem com o publicado.</li>
-          <li><b>Lacuna de negativos:</b> s&oacute; positivos publicados; negativos ficam em abstracts.</li>
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:0.55vw 0.7vw; border-left:0.18vw solid var(--navy); background:rgba(var(--navy-rgb),0.02); border-radius:0 0.4vw 0.4vw 0;">
+        <div style="font-size:0.68vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">Quando suspeitar</div>
+        <ul style="margin:0; padding-left:0.9vw; font-size:0.82vw; line-height:1.32; color:var(--navy); display:flex; flex-direction:column; gap:0.2vw;">
+          <li><b>Small-study effects:</b> efeito grande vem de estudos pequenos.</li>
+          <li>Desfechos do <b>registro</b> n&atilde;o batem com a publica&ccedil;&atilde;o.</li>
+          <li><b>Lacuna de negativos:</b> s&oacute; positivos publicados.</li>
         </ul>
       </div>
 
-      <div style="background:rgba(var(--gold-rgb),0.07); border:1px solid rgba(var(--gold-rgb),0.18); border-radius:0.7vw; padding:0.7vw 0.8vw;">
-        <div style="font-size:0.78vw; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">O que fazer (GRADE)</div>
-        <ol style="margin:0; padding-left:1vw; font-size:0.86vw; line-height:1.35; color:var(--navy); display:flex; flex-direction:column; gap:0.25vw;">
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:0.55vw 0.7vw; border-left:0.18vw solid var(--gold); background:rgba(var(--gold-rgb),0.03); border-radius:0 0.4vw 0.4vw 0;">
+        <div style="font-size:0.68vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">O que fazer (GRADE)</div>
+        <ol style="margin:0; padding-left:0.9vw; font-size:0.82vw; line-height:1.32; color:var(--navy); display:flex; flex-direction:column; gap:0.2vw;">
           <li>Checar <b>registro/protocolo</b> vs artigo.</li>
-          <li>Verificar se resultado muda ao <b>excluir pequenos/alto vi&eacute;s</b>.</li>
-          <li>Se suspeita consistente: <b>rebaixar 1 n&iacute;vel</b>.</li>
+          <li>Resultado muda ao <b>excluir pequenos</b>?</li>
+          <li>Se consistente: <b>rebaixar 1 n&iacute;vel</b>.</li>
         </ol>
       </div>
 
-      <div style="background:rgba(var(--teal-rgb),0.05); border:1px solid rgba(var(--teal-rgb),0.15); border-radius:0.7vw; padding:0.7vw 0.8vw;">
-        <div style="font-size:0.78vw; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">Al&eacute;m do funil</div>
-        <div style="font-size:0.86vw; line-height:1.35; color:var(--navy);">
-          Assimetria pode vir de <b>heterogeneidade real</b>, n&atilde;o s&oacute; de vi&eacute;s. Use o funnel como <b>sinal</b>, n&atilde;o como veredito.
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:0.55vw 0.7vw; border-left:0.18vw solid var(--teal); background:rgba(var(--teal-rgb),0.02); border-radius:0 0.4vw 0.4vw 0;">
+        <div style="font-size:0.68vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">Al&eacute;m do funil</div>
+        <div style="font-size:0.82vw; line-height:1.32; color:var(--navy);">
+          Assimetria pode vir de <b>heterogeneidade real</b>, n&atilde;o s&oacute; de vi&eacute;s. Use como <b>sinal</b>, n&atilde;o como veredito.
         </div>
       </div>
 
@@ -160,8 +161,8 @@
 
   </div>
 
-  <div class="ref" style="margin-top:auto; padding-top: 0.5vw; border-top: 1px solid var(--border); font-size: 0.74vw; color: var(--muted);">
-    Funnel plots ilustrativos. Fontes: Cochrane Handbook 10.4 (funnel plot asymmetry) &bull; Sterne JAE et al. BMJ 2011;343:d4002. &bull; Core GRADE 4 (vi&eacute;s de publica&ccedil;&atilde;o) &mdash; BMJ 2025.
+  <div class="ref" style="margin-top:auto; padding-top:0.45vw; border-top:1px solid var(--border); font-size:0.72vw; color:var(--muted);">
+    Funnel plots ilustrativos. Cochrane Handbook 10.4 &bull; Sterne JAE et al. <i>BMJ</i> 2011;343:d4002 &bull; Core GRADE 4 &mdash; <i>BMJ</i> 2025.
   </div>
 
 </div>
