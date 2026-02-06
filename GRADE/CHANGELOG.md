@@ -1,15 +1,20 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
-## 2026-02-06 — SVG forest plots + funnel plots profissionais (S54, S55)
+## 2026-02-06 — Redesign profissional S54/S55: grid 3 colunas + paleta navy/gold/teal + Core GRADE
 
-- **S54 (inconsistência):** imagens PNG substituídas por **forest plots SVG inline** (resolução independente). Dois painéis lado a lado — consistente (I²=8%, teal) vs inconsistente (I²=82%, vermelho) — com escala log RR, diamante agrupado e mensagem Core GRADE 3.
-- **S55 (viés de publicação):** slide redesenhado com **funnel plots SVG inline**. Dois painéis — simétrico (sem viés, teal) vs assimétrico (viés, vermelho com zona de "estudos faltantes"). Adicionadas caixas práticas "Quando suspeitar" e "O que fazer".
-- Ambos os gráficos são vetoriais (SVG), sem dependência de imagens externas, funcionam em viewer + print + PPTX.
+- **S54 (inconsistência — forest plots):** redesenhado com **grid de 3 colunas** — consistente (navy, diamante teal) | inconsistente (gold markers, diamante gold) | painel de explicação Core GRADE 3 (como avaliar, regra, nota sobre I²). Paleta profissional sem vermelho — gold como accent de cautela.
+- **S55 (viés de publicação — funnel plots):** redesenhado com **grid de 3 colunas** — simétrico (navy dots, teal) | assimétrico (navy dots, gold com zona "faltantes") | painel Core GRADE 4 (quando suspeitar, o que fazer, além do funil). Mesma paleta profissional.
+- **Paleta unificada:** removido uso de `--danger` (vermelho) em ambos os slides. Agora usa exclusivamente navy (pontos/texto), teal (sem risco) e gold (cautela/alerta) — alinhado à identidade visual da apresentação.
+- Ambos os gráficos são SVG inline vetoriais, sem dependência de imagens externas.
 
 ### Arquivos modificados
 - `src/slides/S54.html`
 - `src/slides/S55.html`
 - `CHANGELOG.md`
+
+## 2026-02-06 — SVG forest plots + funnel plots (versão inicial S54, S55)
+
+- Primeira versão com SVG inline (2 colunas, paleta com vermelho). Substituída pelo redesign acima.
 
 ## 2026-02-06 — P2 (core até Camões): hierarquia + legibilidade em projetor + forest plots reais
 
