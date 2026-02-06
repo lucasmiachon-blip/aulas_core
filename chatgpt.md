@@ -94,12 +94,48 @@ Checklist:
 
 ### 2026-02-04 (rodada: slides 1–15)
 - **Capa/contracapa consistentes**: alinhar o gradiente inline do slide com o gradiente do `print.css` evita a sensação de “3 versões” (index/print/PDF).
-- **Slides 3–4 com muito vazio**: quando o conteúdo principal ocupa só o terço superior, o vazio parece bug. Fix simples e limpo: `justify-content: center` no bloco principal (sem esticar cards).
+- **Slides 3–4 com muito vazio**: quando o conteúdo principal ocupa só o terço superior, o vazio parece bug.
+  - Fix preferido (mais “intencional”): **subir os cards** e ancorar o take-home com `margin-top: auto` (evita centro “morto” e mantém rodapé consistente).
 - **Gráficos (pizza → donut)**:
   - Preferir **SVG donut** a `conic-gradient` quando o objetivo é export/print consistente.
   - Hierarquia: colocar o número-chave (ex.: **70%**) no centro e mover o outro número para legenda/tag evita “número perdido na fatia”.
-- **DM2 (sem obesidade)**: organizar em 2 colunas ("por que subestima" + "ajuste prático/conduta") reduz redundância e melhora scanabilidade.
+- **Interatividade (caso clínico)**: separar **pergunta** e **resposta** em slides diferentes.
+  - Slide 1: só caso + pergunta + opções (A/B/C/D), sem “pistas” de resposta.
+  - Slide 2: resposta + racional (comparação FRAX, take-home) com espaço para respirar.
+- **Ordem narrativa**: depois do caso, mostrar **modelos (FRAX/FRAXplus/FRAX-Brasil)** e só então revelar a resposta (aumenta tensão e ajuda a fixar o modelo mental).
+- **DM2 (sem obesidade)**: manter foco em DM2 e evitar redundância.
+  - Slide “DM2 subestima” → mecanismo + red flags + preview curto de ajuste.
+  - Slide seguinte → detalhes de diretrizes e métodos.
 - **Slide de NNT**: manter “ordem de grandeza” explícita para baixo risco (quando não há NNT único) e ancorar o restante com:
   - NNT alto risco (meta-análise) +
   - um NNT real de trial grande (ex.: HORIZON-PFT) +
   - RRR por classe (trials pivotais) para dar contexto.
+
+### 2026-02-04 (higiene de arquivos / export)
+- Sempre que mexer em ordem/quantidade de slides: manter **`slides/_list.txt`**, **`slides/_meta.json`** e **`print.html`** em sync.
+  - Regra prática: após editar `_list.txt`, regenerar `_meta.json` (por parser simples do `data-title`/`id`) e rodar `node scripts/build-osteoporose-print-html.js`.
+- Ajustes de “bordas cortadas” em print/PDF geralmente são resolvidos com:
+  - `padding` assimétrico (ex.: mais `right/bottom`), e
+  - reduzir `max-width` do grid (evita conteúdo beijando a borda em DPI/zoom diferentes).
+
+### 2026-02-04 (rodada: interatividade + consistência)
+- **Interatividade (caso clínico)**: separar *pergunta* e *resposta* em slides distintos aumenta atenção e evita “spoiler”.
+  - Pergunta: só caso + prompt A/B/C/D.
+  - Resposta: comparação + racional + referência.
+- **Evitar “borramento”** (cansaço visual): quando um slide “embaça a vista”, geralmente é excesso de contornos/sombras e informação competindo.
+  - Reduzir bordas 3px→1–2px, diminuir sombras e remover caixas redundantes.
+  - Manter no máximo **2 cores de acento** por slide (ouro + 1 cor funcional, ex.: teal/blue).
+- **Ao mexer em ordem/quantidade de slides**:
+  - Manter `slides/_list.txt` e `slides/_meta.json` em sync.
+  - Rodar `node scripts/build-osteoporose-print-html.js` para regenerar `print.html` (título/contagem corretos).
+  - Reexportar PDF via `node scripts/export-osteoporose-pdf.js`.
+
+### 2026-02-05 (rodada: blur + narrativa + margens)
+- **Borramento no viewer**: `transform: scale()` pode deixar texto “lavado/embaçado” em escalas fracionárias.
+  - Hotfix: aplicar `zoom` (quando suportado) no `stage__inner` e manter `transform` como fallback.
+- **Gráfico donut**: quando borda/sombra “encosta” na beirada em alguns zooms, é quase sempre **safe-area**.
+  - Hotfix: aumentar `padding-right` e `padding-bottom` no slide do donut.
+- **Caso clínico (pergunta vs resposta)**:
+  - Pergunta: remover "dica"/pistas (mantém o momento de interação limpo).
+  - Resposta: colocar badge "Resposta: B" e mover dica de dinâmica para o slide de resposta.
+- **Ordem didática** (solicitado): mover bloco **NNT + NOGG + classificação** para antes do bloco DM2/ajustes do FRAX.

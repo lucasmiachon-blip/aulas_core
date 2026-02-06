@@ -11,12 +11,13 @@ S08_slide-08.html
 S13_slide-13.html
 S12_slide-12.html
 S14_slide-14.html
-S16_slide-16.html
 S17_slide-17.html
-S19_slide-19.html
+S14b_slide-14b.html
 S20_slide-20.html
 S21_slide-21.html
 S22_slide-22.html
+S19_slide-19.html
+S16_slide-16.html
 S23_slide-23.html
 S24_slide-24.html
 S25_slide-25.html

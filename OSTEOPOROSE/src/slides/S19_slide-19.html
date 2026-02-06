@@ -48,61 +48,45 @@
         </div>
       </div>
 
-      <!-- Coluna 2: ajuste prático + conduta -->
-      <div style="display: flex; flex-direction: column; gap: 14px;">
+      <!-- Coluna 2: implicação prática (evita redundância com o slide seguinte) -->
+      <div style="display: flex; flex-direction: column; gap: 14px; min-height: 0;">
 
-        <!-- Ajuste prático -->
+        <!-- O que muda -->
         <div style="background: white; border: 1px solid rgba(var(--navy-rgb), 0.12); border-radius: 16px; padding: 20px 22px; box-shadow: 0 6px 18px rgba(0,0,0,0.06);">
-          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px;">
-            <h2 style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 800; color: var(--navy); margin: 0;">Ajuste prático</h2>
-            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 900; color: rgba(var(--navy-rgb), 0.65); background: rgba(var(--navy-rgb), 0.06); border: 1px solid rgba(var(--navy-rgb), 0.12); padding: 6px 10px; border-radius: 999px;">Escolha 1 método</span>
-          </div>
-
-          <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 14px;">
-            <div style="display: flex; gap: 10px; align-items: flex-start;">
-              <div style="width: 22px; height: 22px; border-radius: 7px; background: rgba(var(--gold-rgb), 0.18); color: var(--navy); display: flex; align-items: center; justify-content: center; font-family: Inter, sans-serif; font-size: 12px; font-weight: 900; flex: 0 0 auto;">1</div>
-              <div style="font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); line-height: 1.35;">
-                <strong>Preferência:</strong> <span style="font-weight: 700;">FRAX + TBS</span> (se disponível).
-              </div>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: flex-start;">
-              <div style="width: 22px; height: 22px; border-radius: 7px; background: rgba(var(--gold-rgb), 0.18); color: var(--navy); display: flex; align-items: center; justify-content: center; font-family: Inter, sans-serif; font-size: 12px; font-weight: 900; flex: 0 0 auto;">2</div>
-              <div style="font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); line-height: 1.35;">
-                <strong>Alternativas:</strong> marcar AR (proxy) <span style="color: rgba(var(--navy-rgb), 0.55);">ou</span> reduzir T-score do colo em 0,5 <span style="color: rgba(var(--navy-rgb), 0.55);">ou</span> adicionar 10 anos à idade.
-              </div>
-            </div>
-            <div style="display: flex; gap: 10px; align-items: flex-start;">
-              <div style="width: 22px; height: 22px; border-radius: 7px; background: rgba(var(--gold-rgb), 0.18); color: var(--navy); display: flex; align-items: center; justify-content: center; font-family: Inter, sans-serif; font-size: 12px; font-weight: 900; flex: 0 0 auto;">3</div>
-              <div style="font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); line-height: 1.35;">
-                <strong>Documente</strong> o método — e evite “empilhar” múltiplos ajustes.
-              </div>
-            </div>
-          </div>
+          <h2 style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 800; color: var(--navy); margin: 0 0 10px 0;">O que muda na prática?</h2>
+          <ul style="margin: 0; padding: 0 0 0 18px;">
+            <li style="font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); line-height: 1.45; margin: 0 0 10px 0;"><strong>Não decidir só pelo T-score</strong> — pense em risco absoluto.</li>
+            <li style="font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); line-height: 1.45; margin: 0 0 10px 0;"><strong>Red flags</strong> (DM2 longa duração + quedas/complicações) → trate como risco mais alto.</li>
+            <li style="font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); line-height: 1.45; margin: 0;"><strong>Use um método de ajuste</strong> quando apropriado (sem “empilhar”).</li>
+          </ul>
 
           <div style="margin-top: 14px; background: rgba(var(--blue-rgb), 0.10); border: 1px solid rgba(var(--blue-rgb), 0.22); border-radius: 12px; padding: 12px 14px;">
-            <p style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.35;">
-              Atalho cognitivo: <span style="color: rgba(var(--navy-rgb), 0.7);">se o caso “parece alto risco”, trate como alto risco.</span>
-            </p>
+            <p style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.35;">Atalho cognitivo: <span style="color: rgba(var(--navy-rgb), 0.72);">se o caso “parece alto risco”, trate como alto risco.</span></p>
           </div>
         </div>
 
-        <!-- Conduta -->
-        <div style="background: linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.92) 100%); border-radius: 16px; padding: 18px 20px; box-shadow: 0 8px 22px rgba(0,0,0,0.12);">
-          <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px;">
-            <div style="min-width: 0;">
-              <div style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 800; color: rgba(255,255,255,0.72); text-transform: uppercase; letter-spacing: 0.08em;">Conduta</div>
-              <div style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 900; color: white; margin-top: 6px; line-height: 1.2;">
-                DM2 + alto risco → tratar cedo
-              </div>
-              <div style="font-family: Inter, sans-serif; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.86); margin-top: 6px; line-height: 1.35;">
-                Fratura de fragilidade, T-score ≤ −2,0 ou FRAX acima do limiar institucional.
-              </div>
+        <!-- Como ajustar (preview) -->
+        <div style="background: rgba(var(--gold-rgb), 0.10); border: 1px solid rgba(var(--gold-rgb), 0.32); border-radius: 16px; padding: 18px 20px; box-shadow: 0 6px 18px rgba(0,0,0,0.04);">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 10px;">
+            <h3 style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 900; color: var(--navy); margin: 0;">Como ajustar (30s)</h3>
+            <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 900; color: rgba(var(--navy-rgb), 0.70); background: rgba(255,255,255,0.70); border: 1px solid rgba(var(--gold-rgb), 0.30); padding: 6px 10px; border-radius: 999px;">Escolha 1 método</span>
+          </div>
+
+          <div style="margin-top: 12px; display: grid; gap: 10px;">
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <div style="width: 22px; height: 22px; border-radius: 7px; background: rgba(var(--gold-rgb), 0.22); color: var(--navy); display: flex; align-items: center; justify-content: center; font-family: Inter, sans-serif; font-size: 12px; font-weight: 900; flex: 0 0 auto;">1</div>
+              <div style="font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); line-height: 1.35;"><strong>Preferir:</strong> FRAX + TBS (se disponível).</div>
             </div>
-            <div style="flex: 0 0 auto; background: rgba(var(--gold-rgb), 0.16); border: 1px solid rgba(var(--gold-rgb), 0.30); border-radius: 14px; padding: 10px 12px; text-align: center; min-width: 150px;">
-              <div style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 900; color: rgba(255,255,255,0.70); letter-spacing: 0.08em; text-transform: uppercase;">Diretriz</div>
-              <div style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 900; color: var(--gold); margin-top: 2px;">SBD 2025</div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <div style="width: 22px; height: 22px; border-radius: 7px; background: rgba(var(--gold-rgb), 0.22); color: var(--navy); display: flex; align-items: center; justify-content: center; font-family: Inter, sans-serif; font-size: 12px; font-weight: 900; flex: 0 0 auto;">2</div>
+              <div style="font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); line-height: 1.35;"><strong>Se não:</strong> use um proxy (AR) <span style="color: rgba(var(--navy-rgb), 0.55);">ou</span> −0,5 SD <span style="color: rgba(var(--navy-rgb), 0.55);">ou</span> +10 anos.</div>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: flex-start;">
+              <div style="width: 22px; height: 22px; border-radius: 7px; background: rgba(var(--gold-rgb), 0.22); color: var(--navy); display: flex; align-items: center; justify-content: center; font-family: Inter, sans-serif; font-size: 12px; font-weight: 900; flex: 0 0 auto;">3</div>
+              <div style="font-family: Inter, sans-serif; font-size: 15px; color: var(--navy); line-height: 1.35;"><strong>Documente</strong> o método — e não empilhe ajustes.</div>
             </div>
           </div>
+          <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 650; color: rgba(var(--navy-rgb), 0.65); margin: 12px 0 0 0; line-height: 1.35;">Detalhes + exemplos no próximo slide.</p>
         </div>
 
       </div>

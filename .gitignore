@@ -1,27 +1,41 @@
-# Dependências
+# ===================================================================
+# .gitignore — Aulas2 (Professional Presentation Project)
+# ===================================================================
+
+# -----------------------------------------------
+# Dependencies
+# -----------------------------------------------
 node_modules/
 package-lock.json
 
-# Arquivos gerados (outputs)
+# -----------------------------------------------
+# Generated Outputs (PDFs, PNGs, PPTX, ZIPs)
+# -----------------------------------------------
 exports/
-exports/*.pdf
-exports/*.zip
+screenshots/
 *.pdf
+*.pptx
 
+# -----------------------------------------------
 # Logs
+# -----------------------------------------------
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Sistema operacional
+# -----------------------------------------------
+# OS artifacts
+# -----------------------------------------------
 .DS_Store
 Thumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 
-# IDE / Editores
+# -----------------------------------------------
+# IDE / Editor
+# -----------------------------------------------
 .vscode/
 .idea/
 *.swp
@@ -31,52 +45,68 @@ $RECYCLE.BIN/
 .classpath
 .settings/
 
-# Temporários
+# -----------------------------------------------
+# Cursor AI (debug logs, session data)
+# -----------------------------------------------
+.cursor/debug.log
+
+# -----------------------------------------------
+# Temporary files
+# -----------------------------------------------
 *.tmp
 *.temp
 ~*
+_temp_*/
 
-# Backups locais
+# -----------------------------------------------
+# Backups
+# -----------------------------------------------
 *.ORIGINAL
 *.backup
 
-# OneDrive
+# -----------------------------------------------
+# OneDrive sync artifacts
+# -----------------------------------------------
 *.cloud
 
-# Build / Dist
+# -----------------------------------------------
+# Build / Dist (general)
+# -----------------------------------------------
 build/
-dist/
 out/
 
-# Exceção: GRADE/dist precisa estar no repositório para GitHub Pages
+# Exception: GRADE/dist is needed for GitHub Pages
 !GRADE/dist/
-!GRADE/dist/index.html
+!GRADE/dist/**
 
-# Testes
+# -----------------------------------------------
+# Tests
+# -----------------------------------------------
 coverage/
 .nyc_output/
 
-# Ambiente
+# -----------------------------------------------
+# Environment / Secrets
+# -----------------------------------------------
 .env
 .env.local
 .env.*.local
-
-# Arquivos de verificação local (apenas para Auto)
-docs/STATUS_SYNC.md
-docs/VERIFICACAO_ALINHAMENTO.md
-
-# Tokens e credenciais
 config/github-token.txt
-METRICAS_MVP.txt
 github-token.txt
 *github-token*
 *GITHUB_TOKEN*
 *.token
 *.key
 *.secret
-# Padrões de tokens GitHub
 ghp_*
 gho_*
 ghu_*
 ghs_*
 ghr_*
+METRICAS_MVP.txt
+
+# -----------------------------------------------
+# Auto-generated verification docs
+# -----------------------------------------------
+docs/STATUS_SYNC.md
+docs/VERIFICACAO_ALINHAMENTO.md

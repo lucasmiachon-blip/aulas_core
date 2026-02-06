@@ -178,9 +178,7 @@ async function main() {
     args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
   });
 
-  const page = await (
-    await browser.newContext({ viewport: { width: SLIDE_W, height: SLIDE_H } })
-  ).newPage();
+  const page = await (await browser.newContext({ viewport: { width: SLIDE_W, height: SLIDE_H } })).newPage();
 
   await page.setContent(fullHTML, { waitUntil: 'networkidle' });
   await page.waitForTimeout(3000); // fonts + images

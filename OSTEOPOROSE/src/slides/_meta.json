@@ -1,428 +1,434 @@
 [
   {
     "n": 1,
+    "file": "S01_slide-01.html",
     "id": "slide-1",
-    "title": "Slide 1 - Mudancas de Paradigma no Tratamento da Osteoporose",
-    "file": "S01_slide-01.html"
+    "title": "Slide 1 - Mudancas de Paradigma no Tratamento da Osteoporose"
   },
   {
     "n": 2,
+    "file": "S02_slide-02.html",
     "id": "slide-2",
-    "title": "Slide 2 - Citação Rilke",
-    "file": "S02_slide-02.html"
+    "title": "Slide 2 - Citação Rilke"
   },
   {
     "n": 3,
+    "file": "S03_slide-03.html",
     "id": "slide-3",
-    "title": "Slide 3 - Objetivos Educacionais",
-    "file": "S03_slide-03.html"
+    "title": "Slide 3 - Objetivos Educacionais"
   },
   {
     "n": 4,
+    "file": "S04_slide-04.html",
     "id": "slide-4",
-    "title": "Slide 4 - De onde vem estas recomendacoes?",
-    "file": "S04_slide-04.html"
+    "title": "Slide 4 - De onde vem estas recomendacoes?"
   },
   {
     "n": 5,
+    "file": "S05_slide-05.html",
     "id": "slide-5",
-    "title": "Slide 5 - Evolucao do conceito",
-    "file": "S05_slide-05.html"
+    "title": "Slide 5 - Evolucao do conceito"
   },
   {
     "n": 6,
+    "file": "S06_slide-06.html",
     "id": "slide-6",
-    "title": "Slide 6 - Trials Pivotais",
-    "file": "S06_slide-06.html"
+    "title": "Slide 6 - Trials Pivotais"
   },
   {
     "n": 7,
+    "file": "S07_slide-07.html",
     "id": "slide-utilidade-comparada",
-    "title": "Slide 6A - Utilidade Comparada: Fraturas vs Doenças",
-    "file": "S07_slide-07.html"
+    "title": "Slide 6A - Utilidade Comparada: Fraturas vs Doenças"
   },
   {
     "n": 8,
+    "file": "S08_slide-08.html",
     "id": "slide-8",
-    "title": "Slide 8 - O que e Utilidade em Saude",
-    "file": "S08_slide-08.html"
+    "title": "Slide 8 - O que e Utilidade em Saude"
   },
   {
     "n": 9,
+    "file": "S13_slide-13.html",
     "id": "slide-9-osteopenia",
-    "title": "Slide 9B - Paradoxo das Fraturas em Osteopenia",
-    "file": "S13_slide-13.html"
+    "title": "Slide 9B - Paradoxo das Fraturas em Osteopenia"
   },
   {
     "n": 10,
+    "file": "S12_slide-12.html",
     "id": "slide-9",
-    "title": "Slide 9 - Incidência de fraturas por sítio e sexo (EU27+2, 2019)",
-    "file": "S12_slide-12.html"
+    "title": "Slide 9 - Incidência de fraturas por sítio e sexo (EU27+2, 2019)"
   },
   {
     "n": 11,
+    "file": "S14_slide-14.html",
     "id": "slide-7",
-    "title": "Slide 7 - Caso Clínico (DM2 e FRAX)",
-    "file": "S14_slide-14.html"
+    "title": "Slide 7 - Caso Clínico (DM2 e FRAX)"
   },
   {
     "n": 12,
-    "id": "slide-frax-diabetes-2",
-    "title": "FRAX no Diabetes: Diretrizes e Ajustes",
-    "file": "S16_slide-16.html"
+    "file": "S17_slide-17.html",
+    "id": "slide-13",
+    "title": "Slide 13 - Modelos FRAX"
   },
   {
     "n": 13,
-    "id": "slide-13",
-    "title": "Slide 13 - Modelos FRAX",
-    "file": "S17_slide-17.html"
+    "file": "S14b_slide-14b.html",
+    "id": "slide-7b",
+    "title": "Slide 7B - Caso Clínico: Resposta e racional (DM2)"
   },
   {
     "n": 14,
-    "id": "slide-15",
-    "title": "Slide 15 - DM2 e obesidade: quando o FRAX subestima",
-    "file": "S19_slide-19.html"
+    "file": "S20_slide-20.html",
+    "id": "slide-17",
+    "title": "Slide 15 - Magnitude: NNT depende do risco basal"
   },
   {
     "n": 15,
-    "id": "slide-17",
-    "title": "Slide 17 - Quanto maior o risco basal, maior o ganho",
-    "file": "S20_slide-20.html"
+    "file": "S21_slide-21.html",
+    "id": "slide-18",
+    "title": "Slide 18 - NOGG 2024: Limiares Idade-Dependentes"
   },
   {
     "n": 16,
-    "id": "slide-18",
-    "title": "Slide 18 - NOGG 2024: Limiares Idade-Dependentes",
-    "file": "S21_slide-21.html"
+    "file": "S22_slide-22.html",
+    "id": "slide-19",
+    "title": "Slide 19 - Classificação Prática de Risco"
   },
   {
     "n": 17,
-    "id": "slide-19",
-    "title": "Slide 19 - Classificação Prática de Risco",
-    "file": "S22_slide-22.html"
+    "file": "S19_slide-19.html",
+    "id": "slide-15",
+    "title": "Slide 14 - DM2: quando o FRAX subestima"
   },
   {
     "n": 18,
-    "id": "slide-20",
-    "title": "Slide 20 - Risco Iminente",
-    "file": "S23_slide-23.html"
+    "file": "S16_slide-16.html",
+    "id": "slide-frax-diabetes-2",
+    "title": "FRAX no Diabetes: Diretrizes e Ajustes"
   },
   {
     "n": 19,
-    "id": "slide-21",
-    "title": "Slide 21 - Risco iminente: a janela crítica",
-    "file": "S24_slide-24.html"
+    "file": "S23_slide-23.html",
+    "id": "slide-20",
+    "title": "Slide 20 - Risco Iminente"
   },
   {
     "n": 20,
-    "id": "slide-22",
-    "title": "Slide 22 - Risco de refratura em 12 meses por sítio",
-    "file": "S25_slide-25.html"
+    "file": "S24_slide-24.html",
+    "id": "slide-21",
+    "title": "Slide 21 - Risco iminente: a janela crítica"
   },
   {
     "n": 21,
-    "id": "slide-23",
-    "title": "Slide 23 - Quando fazer anabólico primeiro",
-    "file": "S26_slide-26.html"
+    "file": "S25_slide-25.html",
+    "id": "slide-22",
+    "title": "Slide 22 - Risco de refratura em 12 meses por sítio"
   },
   {
     "n": 22,
-    "id": "slide-24",
-    "title": "Slide 24 - Blunting Effect",
-    "file": "S27_slide-27.html"
+    "file": "S26_slide-26.html",
+    "id": "slide-23",
+    "title": "Slide 23 - Quando fazer anabólico primeiro"
   },
   {
     "n": 23,
-    "id": "slide-25",
-    "title": "Slide 25 - Treat-to-target: 3 metas de T-score",
-    "file": "S28_slide-28.html"
+    "file": "S27_slide-27.html",
+    "id": "slide-24",
+    "title": "Slide 24 - Blunting Effect"
   },
   {
     "n": 24,
-    "id": "slide-26",
-    "title": "Slide 26 - Ponto de partida por esquema",
-    "file": "S29_slide-29.html"
+    "file": "S28_slide-28.html",
+    "id": "slide-25",
+    "title": "Slide 25 - Treat-to-target: 3 metas de T-score"
   },
   {
     "n": 25,
-    "id": "slide-27",
-    "title": "Slide 27 - Matriz T-score x escolha da droga inicial",
-    "file": "S30_slide-30.html"
+    "file": "S29_slide-29.html",
+    "id": "slide-26",
+    "title": "Slide 26 - Ponto de partida por esquema"
   },
   {
     "n": 26,
-    "id": "slide-28",
-    "title": "Slide 28 - Romosozumabe (Evenity) no SUS",
-    "file": "S31_slide-31.html"
+    "file": "S30_slide-30.html",
+    "id": "slide-27",
+    "title": "Slide 27 - Matriz T-score x escolha da droga inicial"
   },
   {
     "n": 27,
-    "id": "slide-29",
-    "title": "Slide 29 - [Divisor conceitual]",
-    "file": "S32_slide-32.html"
+    "file": "S31_slide-31.html",
+    "id": "slide-28",
+    "title": "Slide 28 - Romosozumabe (Evenity) no SUS"
   },
   {
     "n": 28,
-    "id": "slide-30",
-    "title": "Slide 30 - Redução de mortalidade com zoledronato",
-    "file": "S33_slide-33.html"
+    "file": "S32_slide-32.html",
+    "id": "slide-29",
+    "title": "Slide 29 - [Divisor conceitual]"
   },
   {
     "n": 29,
-    "id": "slide-31",
-    "title": "Slide 31 - Zoledronato Reduz Mortalidade?",
-    "file": "S34_slide-34.html"
+    "file": "S33_slide-33.html",
+    "id": "slide-30",
+    "title": "Slide 30 - Redução de mortalidade com zoledronato"
   },
   {
     "n": 30,
-    "id": "slide-32",
-    "title": "Slide 32 - Esse Achado Foi Replicado?",
-    "file": "S35_slide-35.html"
+    "file": "S34_slide-34.html",
+    "id": "slide-31",
+    "title": "Slide 31 - Zoledronato Reduz Mortalidade?"
   },
   {
     "n": 31,
-    "id": "slide-33",
-    "title": "Slide 33 - Time to benefit",
-    "file": "S36_slide-36.html"
+    "file": "S35_slide-35.html",
+    "id": "slide-32",
+    "title": "Slide 32 - Esse Achado Foi Replicado?"
   },
   {
     "n": 32,
-    "id": "slide-34",
-    "title": "Slide 34 - Quando NAO tratar",
-    "file": "S37_slide-37.html"
+    "file": "S36_slide-36.html",
+    "id": "slide-33",
+    "title": "Slide 33 - Time to benefit"
   },
   {
     "n": 33,
-    "id": "slide-35",
-    "title": "Slide 35 - Algoritmo Treat-to-Target em 5 Passos",
-    "file": "S38_slide-38.html"
+    "file": "S37_slide-37.html",
+    "id": "slide-34",
+    "title": "Slide 34 - Quando NAO tratar"
   },
   {
     "n": 34,
-    "id": "slide-36",
-    "title": "Slide 36 - Take Home Points",
-    "file": "S39_slide-39.html"
+    "file": "S38_slide-38.html",
+    "id": "slide-35",
+    "title": "Slide 35 - Algoritmo Treat-to-Target em 5 Passos"
   },
   {
     "n": 35,
-    "id": "slide-37",
-    "title": "Slide 37 - Conceitos de EBM",
-    "file": "S40_slide-40.html"
+    "file": "S39_slide-39.html",
+    "id": "slide-36",
+    "title": "Slide 36 - Take Home Points"
   },
   {
     "n": 36,
-    "id": "slide-38",
-    "title": "Slide 38 - Citação Rilke (Dragões)",
-    "file": "S41_slide-41.html"
+    "file": "S40_slide-40.html",
+    "id": "slide-37",
+    "title": "Slide 37 - Conceitos de EBM"
   },
   {
     "n": 37,
-    "id": "slide-39",
-    "title": "Slide 39 - Osteoporose Induzida por Glicocorticoides",
-    "file": "S42_slide-42.html"
+    "file": "S41_slide-41.html",
+    "id": "slide-38",
+    "title": "Slide 38 - Citação Rilke (Dragões)"
   },
   {
     "n": 38,
-    "id": "slide-40",
-    "title": "Slide 40 - Risco de Fratura Vertebral por Dose de GC",
-    "file": "S43_slide-43.html"
+    "file": "S42_slide-42.html",
+    "id": "slide-39",
+    "title": "Slide 39 - Osteoporose Induzida por Glicocorticoides"
   },
   {
     "n": 39,
-    "id": "slide-41",
-    "title": "Slide 41 - Caso Clinico",
-    "file": "S44_slide-44.html"
+    "file": "S43_slide-43.html",
+    "id": "slide-40",
+    "title": "Slide 40 - Risco de Fratura Vertebral por Dose de GC"
   },
   {
     "n": 40,
-    "id": "slide-42",
-    "title": "Slide 42 - O que cada diretriz recomendaria para Maria?",
-    "file": "S45_slide-45.html"
+    "file": "S44_slide-44.html",
+    "id": "slide-41",
+    "title": "Slide 41 - Caso Clinico"
   },
   {
     "n": 41,
-    "id": "slide-43",
-    "title": "Slide 43 - Evidencias e Populacoes Especiais",
-    "file": "S46_slide-46.html"
+    "file": "S45_slide-45.html",
+    "id": "slide-42",
+    "title": "Slide 42 - O que cada diretriz recomendaria para Maria?"
   },
   {
     "n": 42,
-    "id": "slide-44",
-    "title": "Slide 44 - Classificacao de Risco ACR 2022",
-    "file": "S47_slide-47.html"
+    "file": "S46_slide-46.html",
+    "id": "slide-43",
+    "title": "Slide 43 - Evidencias e Populacoes Especiais"
   },
   {
     "n": 43,
-    "id": "slide-45",
-    "title": "Slide 45 - Evidencias e Avaliacao de Risco",
-    "file": "S48_slide-48.html"
+    "file": "S47_slide-47.html",
+    "id": "slide-44",
+    "title": "Slide 44 - Classificacao de Risco ACR 2022"
   },
   {
     "n": 44,
-    "id": "slide-46",
-    "title": "Slide 46 - Classificacao de Risco e Tratamento ECTS 2024",
-    "file": "S49_slide-49.html"
+    "file": "S48_slide-48.html",
+    "id": "slide-45",
+    "title": "Slide 45 - Evidencias e Avaliacao de Risco"
   },
   {
     "n": 45,
-    "id": "slide-47",
-    "title": "Slide 47 - Diretriz JSBMR 2023 -- Sistema de Pontuação",
-    "file": "S50_slide-50.html"
+    "file": "S49_slide-49.html",
+    "id": "slide-46",
+    "title": "Slide 46 - Classificacao de Risco e Tratamento ECTS 2024"
   },
   {
     "n": 46,
-    "id": "slide-frax-diabetes-1",
-    "title": "A Armadilha do FRAX no Diabetes",
-    "file": "S15_slide-15.html"
+    "file": "S50_slide-50.html",
+    "id": "slide-47",
+    "title": "Slide 47 - Diretriz JSBMR 2023 -- Sistema de Pontuação"
   },
   {
     "n": 47,
-    "id": "slide-12",
-    "title": "Slide 12 - Quanto uma fratura “custa” em qualidade de vida?",
-    "file": "S09_slide-09.html"
+    "file": "S15_slide-15.html",
+    "id": "slide-frax-diabetes-1",
+    "title": "A Armadilha do FRAX no Diabetes"
   },
   {
     "n": 48,
-    "id": "slide-qaly-por-risco",
-    "title": "Slide 12A - QALY por risco: por que o risco basal muda tudo",
-    "file": "S10_slide-10.html"
+    "file": "S09_slide-09.html",
+    "id": "slide-12",
+    "title": "Slide 12 - Quanto uma fratura “custa” em qualidade de vida?"
   },
   {
     "n": 49,
-    "id": "slide-qaly-limiar-paises",
-    "title": "Slide 12B - Quanto vale 1 QALY? Limiar por país",
-    "file": "S11_slide-11.html"
+    "file": "S10_slide-10.html",
+    "id": "slide-qaly-por-risco",
+    "title": "Slide 12A - QALY por risco: por que o risco basal muda tudo"
   },
   {
     "n": 50,
-    "id": "slide-48",
-    "title": "Slide 48 - TBS: Interpretação e Ajuste do FRAX",
-    "file": "S51_slide-51.html"
+    "file": "S11_slide-11.html",
+    "id": "slide-qaly-limiar-paises",
+    "title": "Slide 12B - Quanto vale 1 QALY? Limiar por país"
   },
   {
     "n": 51,
-    "id": "slide-49",
-    "title": "Slide 49 - DIOP: quando o remedio vira fratura -- osso vs quedas",
-    "file": "S52_slide-52.html"
+    "file": "S51_slide-51.html",
+    "id": "slide-48",
+    "title": "Slide 48 - TBS: Interpretação e Ajuste do FRAX"
   },
   {
     "n": 52,
-    "id": "slide-50",
-    "title": "Slide 50 - DIOP (1/2): classes comuns + armadilhas MBE",
-    "file": "S53_slide-53.html"
+    "file": "S52_slide-52.html",
+    "id": "slide-49",
+    "title": "Slide 49 - DIOP: quando o remedio vira fratura -- osso vs quedas"
   },
   {
     "n": 53,
-    "id": "slide-51",
-    "title": "",
-    "file": "S54_slide-54.html"
+    "file": "S53_slide-53.html",
+    "id": "slide-50",
+    "title": "Slide 50 - DIOP (1/2): classes comuns + armadilhas MBE"
   },
   {
     "n": 54,
-    "id": "slide-52",
-    "title": "Slide 52 - MBE: PPI -- associação consistente, causalidade incerta",
-    "file": "S55_slide-55.html"
+    "file": "S54_slide-54.html",
+    "id": "slide-51",
+    "title": ""
   },
   {
     "n": 55,
-    "id": "slide-53",
-    "title": "",
-    "file": "S56_slide-56.html"
+    "file": "S55_slide-55.html",
+    "id": "slide-52",
+    "title": "Slide 52 - MBE: PPI -- associação consistente, causalidade incerta"
   },
   {
     "n": 56,
-    "id": "slide-54",
-    "title": "",
-    "file": "S57_slide-57.html"
+    "file": "S56_slide-56.html",
+    "id": "slide-53",
+    "title": ""
   },
   {
     "n": 57,
-    "id": "slide-55",
-    "title": "Slide 55 - Vitamina D e quedas: beneficio incerto; bolus alto pode aumentar quedas",
-    "file": "S58_slide-58.html"
+    "file": "S57_slide-57.html",
+    "id": "slide-54",
+    "title": ""
   },
   {
     "n": 58,
-    "id": "slide-56",
-    "title": "Slide 56 - Dose diaria vs semanal de vitamina D: 25(OH)D → queda",
-    "file": "S59_slide-59.html"
+    "file": "S58_slide-58.html",
+    "id": "slide-55",
+    "title": "Slide 55 - Vitamina D e quedas: beneficio incerto; bolus alto pode aumentar quedas"
   },
   {
     "n": 59,
-    "id": "slide-57",
-    "title": "Slide 57 - VFA: a fratura vertebral que ninguem viu",
-    "file": "S60_slide-60.html"
+    "file": "S59_slide-59.html",
+    "id": "slide-56",
+    "title": "Slide 56 - Dose diaria vs semanal de vitamina D: 25(OH)D → queda"
   },
   {
     "n": 60,
-    "id": "slide-58",
-    "title": "Slide 58 - Apêndice -- Reacao de fase aguda ao zoledronato (APR)",
-    "file": "S61_slide-61.html"
+    "file": "S60_slide-60.html",
+    "id": "slide-57",
+    "title": "Slide 57 - VFA: a fratura vertebral que ninguem viu"
   },
   {
     "n": 61,
-    "id": "slide-59",
-    "title": "Slide 59 - Apêndice -- Como reduzir sintomas da APR (e manter adesao)",
-    "file": "S62_slide-62.html"
+    "file": "S61_slide-61.html",
+    "id": "slide-58",
+    "title": "Slide 58 - Apêndice -- Reacao de fase aguda ao zoledronato (APR)"
   },
   {
     "n": 62,
-    "id": "slide-60",
-    "title": "Slide 60 - Efeitos adversos raros: AFF e MRONJ",
-    "file": "S63_slide-63.html"
+    "file": "S62_slide-62.html",
+    "id": "slide-59",
+    "title": "Slide 59 - Apêndice -- Como reduzir sintomas da APR (e manter adesao)"
   },
   {
     "n": 63,
-    "id": "slide-61",
-    "title": "Slide 61 - Drug Holiday: quando pausar, quando NAO pausar",
-    "file": "S64_slide-64.html"
+    "file": "S63_slide-63.html",
+    "id": "slide-60",
+    "title": "Slide 60 - Efeitos adversos raros: AFF e MRONJ"
   },
   {
     "n": 64,
-    "id": "slide-62",
-    "title": "Slide 62 - Sequenciamento de terapias: 3 armadilhas que mudam desfechos",
-    "file": "S65_slide-65.html"
+    "file": "S64_slide-64.html",
+    "id": "slide-61",
+    "title": "Slide 61 - Drug Holiday: quando pausar, quando NAO pausar"
   },
   {
     "n": 65,
-    "id": "slide-63",
-    "title": "Slide 63 - CTX e P1NP: como coletar e interpretar",
-    "file": "S66_slide-66.html"
+    "file": "S65_slide-65.html",
+    "id": "slide-62",
+    "title": "Slide 62 - Sequenciamento de terapias: 3 armadilhas que mudam desfechos"
   },
   {
     "n": 66,
-    "id": "slide-64",
-    "title": "Slide 64 - Armadilhas, limitacoes e mensagens-chave BTMs",
-    "file": "S67_slide-67.html"
+    "file": "S66_slide-66.html",
+    "id": "slide-63",
+    "title": "Slide 63 - CTX e P1NP: como coletar e interpretar"
   },
   {
     "n": 67,
-    "id": "slide-66",
-    "title": "Slide 66 - DXA da coluna: artefatos + regra ISCD",
-    "file": "S68_slide-68.html"
+    "file": "S67_slide-67.html",
+    "id": "slide-64",
+    "title": "Slide 64 - Armadilhas, limitacoes e mensagens-chave BTMs"
   },
   {
     "n": 68,
+    "file": "S68_slide-68.html",
     "id": "slide-66",
-    "title": "Slide 66 - DXA da coluna: artefatos + regra ISCD",
-    "file": "S69_slide-69.html"
+    "title": "Slide 66 - DXA da coluna: artefatos + regra ISCD"
   },
   {
     "n": 69,
-    "id": "slide-67",
-    "title": "Slide 67 - Monitoramento: LSC define mudança real",
-    "file": "S70_slide-70.html"
+    "file": "S69_slide-69.html",
+    "id": "slide-66",
+    "title": "Slide 66 - DXA da coluna: artefatos + regra ISCD"
   },
   {
     "n": 70,
-    "id": "slide-68",
-    "title": "Slide 68 - Discordância + quando usar rádio 33%",
-    "file": "S71_slide-71.html"
+    "file": "S70_slide-70.html",
+    "id": "slide-67",
+    "title": "Slide 67 - Monitoramento: LSC define mudança real"
   },
   {
     "n": 71,
+    "file": "S71_slide-71.html",
+    "id": "slide-68",
+    "title": "Slide 68 - Discordância + quando usar rádio 33%"
+  },
+  {
+    "n": 72,
+    "file": "S72_slide-72.html",
     "id": "slide-romosozumabe-custo",
-    "title": "Slide A1 - Romosozumabe: Análise Custo-Efetividade",
-    "file": "S72_slide-72.html"
+    "title": "Slide A1 - Romosozumabe: Análise Custo-Efetividade"
   }
 ]

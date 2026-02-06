@@ -796,3 +796,25 @@ Foco em reduzir densidade de conteúdo e aumentar clareza visual para melhor pro
 - Slide 13 (pizza → donut): substitui conic-gradient por **donut SVG** com hierarquia (70% no centro + 30% em tag/legenda) para melhor estética e consistência no PDF.
 - Slide 14 (DM2): remove obesidade e reestrutura em duas colunas (por que subestima / ajuste prático + conduta) com foco total em DM2.
 - Slide 15 (NNT): refaz paleta e hierarquia; destaca NNT por cenário (baixo vs alto risco), adiciona “âncora” (HORIZON-PFT) e números por classe (RRR) de trials pivotais.
+
+## OSTEOPOROSE_ROUND6_BLUR_FIX_ORDER_SPACING — 2026-02-05
+
+- Viewer: reduz “borramento” em escala fracionária aplicando `zoom` quando suportado (fallback em `transform` via `--scale`).
+- Slide 03: adiciona microdinâmica (Caso → Regra → Aplicação) e ancora o take-home no rodapé (`margin-top:auto`) para eliminar “vazio bugado”.
+- Slide 04: ancora take-home no rodapé (`margin-top:auto`) para consistência vertical.
+- Slide 09 (donut): aumenta `padding-right` e `padding-bottom` (safe-area) para evitar encostar/clipping em certos zooms.
+- Slide 11 (caso): remove dica/pistas (mantém interação limpa).
+- Slide 13 (resposta): adiciona badge “Resposta: B”, move dica de dinâmica para este slide e ajusta layout para reduzir whitespace interno.
+- Ordem: move bloco NNT + NOGG + classificação para antes do bloco DM2/ajustes do FRAX (requested).
+- Export: regen `print.html` e reexport PDF 16:9.
+
+Arquivos-chave modificados:
+- `OSTEOPOROSE/src/js/viewer.js`
+- `OSTEOPOROSE/src/slides/S03_slide-03.html`
+- `OSTEOPOROSE/src/slides/S04_slide-04.html`
+- `OSTEOPOROSE/src/slides/S13_slide-13.html`
+- `OSTEOPOROSE/src/slides/S14_slide-14.html`
+- `OSTEOPOROSE/src/slides/S14b_slide-14b.html`
+- `OSTEOPOROSE/src/slides/_list.txt`
+- `OSTEOPOROSE/src/slides/_meta.json`
+- `OSTEOPOROSE/src/print.html`
