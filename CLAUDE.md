@@ -218,21 +218,21 @@ Aulas2/
 
 **Tokens inline de referência (S19 — padrão-alvo):**
 
-| Elemento | Valor | Nota |
-|---|---|---|
-| Eyebrow (categoria) | `0.72vw` uppercase, 700, `var(--muted)` | Acima do h2 |
-| Labels de seção | `0.65vw` uppercase, 800, `var(--muted)` | Dentro de painéis |
-| Body text painéis | `0.78vw`, line-height 1.35, `var(--navy)` | Informação principal |
-| Domain titles (direita) | `0.9vw`, 800, `var(--navy)` | Títulos de domínio |
-| Domain descriptions | `0.78vw`, `var(--muted)` | Descritivos |
-| Status tags ("baixo") | `0.75vw`, 700, `var(--teal)` | Alinhados à direita |
-| Chip | `0.68vw` | Badge no header |
-| Hero número | `3.4vw` serif, 800, `var(--teal)` | Ponto focal |
-| Hero sub-text | `0.78-0.95vw`, `var(--navy)` | Contextual |
-| Shadow (hero card) | `0 0.2vw 0.8vw rgba(var(--navy-rgb), 0.07)` | Sutil, profissional |
-| Border-left accent | `0.18-0.22vw solid var(--X)` | Semântico por cor |
-| Gap entre painéis | `0.4-0.65vw` | Flex column |
-| Grid principal | `1.15fr 1.65fr` com `gap: 1.4vw` | 2 colunas |
+| Elemento                | Valor                                       | Nota                 |
+| ----------------------- | ------------------------------------------- | -------------------- |
+| Eyebrow (categoria)     | `0.72vw` uppercase, 700, `var(--muted)`     | Acima do h2          |
+| Labels de seção         | `0.65vw` uppercase, 800, `var(--muted)`     | Dentro de painéis    |
+| Body text painéis       | `0.78vw`, line-height 1.35, `var(--navy)`   | Informação principal |
+| Domain titles (direita) | `0.9vw`, 800, `var(--navy)`                 | Títulos de domínio   |
+| Domain descriptions     | `0.78vw`, `var(--muted)`                    | Descritivos          |
+| Status tags ("baixo")   | `0.75vw`, 700, `var(--teal)`                | Alinhados à direita  |
+| Chip                    | `0.68vw`                                    | Badge no header      |
+| Hero número             | `3.4vw` serif, 800, `var(--teal)`           | Ponto focal          |
+| Hero sub-text           | `0.78-0.95vw`, `var(--navy)`                | Contextual           |
+| Shadow (hero card)      | `0 0.2vw 0.8vw rgba(var(--navy-rgb), 0.07)` | Sutil, profissional  |
+| Border-left accent      | `0.18-0.22vw solid var(--X)`                | Semântico por cor    |
+| Gap entre painéis       | `0.4-0.65vw`                                | Flex column          |
+| Grid principal          | `1.15fr 1.65fr` com `gap: 1.4vw`            | 2 colunas            |
 
 **Ao polir outro slide:** abrir S19 como referência lateral e replicar tipografia, sombras, espaçamentos. Não inventar novos valores.
 

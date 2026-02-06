@@ -1,82 +1,516 @@
-<!-- 4. Slide 4 - De onde vem estas recomendacoes? -->
-<section class="slide" data-slide="" data-title="Slide 4 - De onde vem estas recomendacoes?" id="slide-4" style="padding: 36px 48px; background: var(--bg);">
-
-  <div style="height: 100%; display: flex; flex-direction: column;">
-
-    <!-- Header compacto -->
-    <div style="margin-bottom: 14px;">
-      <h1 style="font-family: Inter, sans-serif; font-size: 36px; font-weight: 700; color: var(--navy); line-height: 1.15; margin: 0 0 6px 0;">Fontes e premissas</h1>
-      <p style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 500; color: rgba(var(--navy-rgb), 0.7); line-height: 1.4; margin: 0;">Guidelines dizem <strong style="color: var(--navy);">o que</strong> fazer · Modelos (QALY/ICER) ajudam a decidir <strong style="color: var(--navy);">quando vale</strong></p>
+<!-- 4. Slide 4 - De onde vem estas recomendações? -->
+<section
+  class="slide"
+  data-slide=""
+  data-title="Slide 4 - De onde vem estas recomendacoes?"
+  id="slide-4"
+  style="padding: 36px 48px; background: var(--bg)"
+>
+  <!-- Outer grid: title (top) / cards centered / take-home (bottom) -->
+  <div style="display: grid; grid-template-rows: auto 1fr auto; height: 100%; row-gap: 0">
+    <!-- ═══ TITLE — anchored at top ═══ -->
+    <div style="padding-bottom: 8px">
+      <h1
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 38px;
+          font-weight: 800;
+          color: var(--navy);
+          line-height: 1.1;
+          margin: 0 0 6px 0;
+          letter-spacing: -0.01em;
+        "
+      >
+        Fontes e premissas
+      </h1>
+      <p
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: rgba(var(--navy-rgb), 0.42);
+          line-height: 1.35;
+          margin: 0;
+        "
+      >
+        Guidelines dizem
+        <strong style="color: var(--navy); font-weight: 600">o que</strong>
+        fazer · Modelos (QALY/ICER) ajudam a decidir
+        <strong style="color: var(--navy); font-weight: 600">quando vale</strong>
+      </p>
     </div>
 
-    <!-- Conteúdo (cards + take-home) com distribuição vertical (evita topo "vazio" e mantém take-home no rodapé) -->
-    <div style="flex: 1; display: flex; flex-direction: column; gap: 16px; padding-top: 10px; min-height: 0;">
-
-    <!-- Cards container -->
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch;">
-
-      <!-- Card 1: Internacional -->
-      <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.12); border-radius: 14px; padding: 20px 20px 16px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-          <div style="background: var(--navy); color: var(--white); font-family: Inter, sans-serif; font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 6px; letter-spacing: 0.02em;">INTERNACIONAL</div>
+    <!-- ═══ CARDS — centered vertically in available space ═══ -->
+    <div style="display: grid; place-content: center; min-height: 0">
+      <div
+        style="
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 18px;
+          width: calc(1600px - 96px);
+          align-items: stretch;
+        "
+      >
+        <!-- Card 1: Internacional -->
+        <div
+          style="
+            background: var(--white);
+            border: 1px solid rgba(var(--navy-rgb), 0.08);
+            border-radius: 16px;
+            padding: 28px 28px 22px 28px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <!-- Tag -->
+          <div style="margin-bottom: 20px">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--white);
+                background: var(--navy);
+                padding: 6px 14px;
+                border-radius: 6px;
+                letter-spacing: 0.05em;
+              "
+            >
+              INTERNACIONAL
+            </span>
+          </div>
+          <!-- Title -->
+          <div
+            style="
+              font-family: Inter, sans-serif;
+              font-size: 26px;
+              font-weight: 700;
+              color: var(--navy);
+              margin-bottom: 22px;
+              line-height: 1.15;
+            "
+          >
+            Guidelines
+          </div>
+          <!-- Bullets -->
+          <div style="display: flex; flex-direction: column; gap: 16px; flex: 1">
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--navy);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>NOGG 2024</strong>
+                : limiares por idade +
+                <em>very high risk</em>
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--navy);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>ACR 2022</strong>
+                : estratificação GC; anabólico em alto risco
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--navy);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>ASBMR/BHOF 2024</strong>
+                :
+                <em>treat-to-target</em>
+                +
+                <em>goal-directed</em>
+              </span>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div
+            style="
+              margin-top: 22px;
+              padding-top: 16px;
+              border-top: 1px solid rgba(var(--navy-rgb), 0.06);
+              display: flex;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--white);
+                background: var(--navy);
+                padding: 5px 11px;
+                border-radius: 5px;
+              "
+            >
+              UK
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--white);
+                background: var(--navy);
+                padding: 5px 11px;
+                border-radius: 5px;
+              "
+            >
+              EUA
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--white);
+                background: var(--navy);
+                padding: 5px 11px;
+                border-radius: 5px;
+              "
+            >
+              Global
+            </span>
+          </div>
         </div>
-        <div style="font-family: Inter, sans-serif; font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Guidelines</div>
-        <ul style="margin: 0; padding-left: 18px; font-family: Inter, sans-serif; font-size: 14px; line-height: 1.55; color: var(--navy);">
-          <li style="margin-bottom: 10px;"><strong>NOGG 2024</strong>: limiares por idade + <em>very high risk</em></li>
-          <li style="margin-bottom: 10px;"><strong>ACR 2022</strong>: estratificação GC; anabólico em alto risco</li>
-          <li><strong>ASBMR/BHOF 2024</strong>: <em>treat-to-target</em> + <em>goal-directed</em></li>
-        </ul>
-        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(var(--navy-rgb), 0.08); display: flex; align-items: center; gap: 6px;">
-          <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--white); background: var(--navy); padding: 3px 8px; border-radius: 4px;">UK</span>
-          <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--white); background: var(--navy); padding: 3px 8px; border-radius: 4px;">EUA</span>
-          <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--white); background: var(--navy); padding: 3px 8px; border-radius: 4px;">Global</span>
+
+        <!-- Card 2: Brasil (highlight) -->
+        <div
+          style="
+            background: linear-gradient(180deg, rgba(var(--teal-rgb), 0.05) 0%, var(--white) 100%);
+            border: 2px solid var(--teal);
+            border-radius: 16px;
+            padding: 28px 28px 22px 28px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <!-- Tags -->
+          <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 8px">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--white);
+                background: var(--teal);
+                padding: 6px 14px;
+                border-radius: 6px;
+                letter-spacing: 0.05em;
+              "
+            >
+              BRASIL
+            </span>
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 10px;
+                font-weight: 700;
+                color: var(--teal);
+                background: rgba(var(--teal-rgb), 0.1);
+                padding: 5px 10px;
+                border-radius: 5px;
+                letter-spacing: 0.02em;
+              "
+            >
+              CONTEXTO LOCAL
+            </span>
+          </div>
+          <!-- Title -->
+          <div
+            style="
+              font-family: Inter, sans-serif;
+              font-size: 26px;
+              font-weight: 700;
+              color: var(--navy);
+              margin-bottom: 22px;
+              line-height: 1.15;
+            "
+          >
+            Risco basal
+          </div>
+          <!-- Bullets -->
+          <div style="display: flex; flex-direction: column; gap: 16px; flex: 1">
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--teal);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>FRAX-Brasil 2.0</strong>
+                : recalibração BRAVOS 2024
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--teal);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>SPAH</strong>
+                : ~8% MOF; ~3% quadril em idosos
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--teal);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>SBD 2025</strong>
+                : DM2 com fratura ou T &le; &minus;2,0
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--teal);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>SBEM/ABRASSO</strong>
+                : posição
+                <em>anabolic-first</em>
+              </span>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div
+            style="
+              margin-top: 22px;
+              padding-top: 16px;
+              border-top: 1px solid rgba(var(--teal-rgb), 0.1);
+              display: flex;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--white);
+                background: var(--teal);
+                padding: 5px 11px;
+                border-radius: 5px;
+              "
+            >
+              Dados nacionais
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 3: Evidência -->
+        <div
+          style="
+            background: var(--white);
+            border: 1px solid rgba(var(--navy-rgb), 0.08);
+            border-radius: 16px;
+            padding: 28px 28px 22px 28px;
+            display: flex;
+            flex-direction: column;
+          "
+        >
+          <!-- Tag -->
+          <div style="margin-bottom: 20px">
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 11px;
+                font-weight: 700;
+                color: var(--white);
+                background: var(--gold-dark);
+                padding: 6px 14px;
+                border-radius: 6px;
+                letter-spacing: 0.05em;
+              "
+            >
+              EVIDÊNCIA
+            </span>
+          </div>
+          <!-- Title -->
+          <div
+            style="
+              font-family: Inter, sans-serif;
+              font-size: 26px;
+              font-weight: 700;
+              color: var(--navy);
+              margin-bottom: 22px;
+              line-height: 1.15;
+            "
+          >
+            Ensaios pivotais
+          </div>
+          <!-- Bullets -->
+          <div style="display: flex; flex-direction: column; gap: 16px; flex: 1">
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--gold-dark);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>Antirreabsortivos</strong>
+                : FIT, FREEDOM, HORIZON
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--gold-dark);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                <strong>Anabólicos</strong>
+                : VERO, ACTIVE, FRAME/ARCH
+              </span>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: flex-start">
+              <span
+                style="
+                  width: 7px;
+                  height: 7px;
+                  background: var(--gold-dark);
+                  border-radius: 50%;
+                  margin-top: 9px;
+                  flex-shrink: 0;
+                "
+              ></span>
+              <span style="font-family: Inter, sans-serif; font-size: 16px; line-height: 1.55; color: var(--navy)">
+                Sequência sustenta estratégia
+                <em>goal-directed</em>
+              </span>
+            </div>
+          </div>
+          <!-- Footer -->
+          <div
+            style="
+              margin-top: 22px;
+              padding-top: 16px;
+              border-top: 1px solid rgba(var(--navy-rgb), 0.06);
+              display: flex;
+              align-items: center;
+              gap: 7px;
+            "
+          >
+            <span
+              style="
+                font-family: Inter, sans-serif;
+                font-size: 12px;
+                font-weight: 600;
+                color: var(--white);
+                background: rgba(var(--navy-rgb), 0.6);
+                padding: 5px 11px;
+                border-radius: 5px;
+              "
+            >
+              RCTs de referência
+            </span>
+          </div>
         </div>
       </div>
-
-      <!-- Card 2: Brasil (destacado) -->
-      <div style="background: linear-gradient(180deg, rgba(var(--teal-rgb), 0.08) 0%, var(--white) 100%); border: 2px solid var(--teal); border-radius: 14px; padding: 20px 20px 16px 20px; box-shadow: 0 4px 12px rgba(var(--teal-rgb), 0.12); display: flex; flex-direction: column;">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-          <div style="background: var(--teal); color: var(--white); font-family: Inter, sans-serif; font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 6px; letter-spacing: 0.02em;">BRASIL</div>
-          <span style="font-family: Inter, sans-serif; font-size: 10px; font-weight: 600; color: var(--teal); background: rgba(var(--teal-rgb), 0.15); padding: 3px 6px; border-radius: 4px;">CONTEXTO LOCAL</span>
-        </div>
-        <div style="font-family: Inter, sans-serif; font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Risco basal</div>
-        <ul style="margin: 0; padding-left: 18px; font-family: Inter, sans-serif; font-size: 14px; line-height: 1.55; color: var(--navy);">
-          <li style="margin-bottom: 10px;"><strong>FRAX-Brasil 2.0</strong>: recalibração BRAVOS 2024</li>
-          <li style="margin-bottom: 10px;"><strong>SPAH</strong>: ~8% MOF; ~3% quadril em idosos</li>
-          <li style="margin-bottom: 10px;"><strong>SBD 2025</strong>: DM2 com fratura ou T ≤ −2,0</li>
-          <li><strong>SBEM/ABRASSO</strong>: posição <em>anabolic-first</em></li>
-        </ul>
-        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(var(--teal-rgb), 0.2); display: flex; align-items: center; gap: 6px;">
-          <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--white); background: var(--teal); padding: 3px 8px; border-radius: 4px;">Dados nacionais</span>
-        </div>
-      </div>
-
-      <!-- Card 3: Evidência -->
-      <div style="background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.12); border-radius: 14px; padding: 20px 20px 16px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); display: flex; flex-direction: column;">
-        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
-          <div style="background: var(--gold); color: var(--navy); font-family: Inter, sans-serif; font-weight: 700; font-size: 12px; padding: 6px 10px; border-radius: 6px; letter-spacing: 0.02em;">EVIDÊNCIA</div>
-        </div>
-        <div style="font-family: Inter, sans-serif; font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Ensaios pivotais</div>
-        <ul style="margin: 0; padding-left: 18px; font-family: Inter, sans-serif; font-size: 14px; line-height: 1.55; color: var(--navy);">
-          <li style="margin-bottom: 10px;"><strong>Antirreabsortivos</strong>: FIT, FREEDOM, HORIZON</li>
-          <li style="margin-bottom: 10px;"><strong>Anabólicos</strong>: VERO, ACTIVE, FRAME/ARCH</li>
-          <li>Sequência sustenta estratégia <em>goal-directed</em></li>
-        </ul>
-        <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(var(--navy-rgb), 0.08); display: flex; align-items: center; gap: 6px;">
-          <span style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--white); background: rgba(var(--navy-rgb), 0.7); padding: 3px 8px; border-radius: 4px;">RCTs de referência</span>
-        </div>
-      </div>
-
     </div>
 
-    <!-- Take-home (colado ao bloco de cards para não parecer "rodapé perdido") -->
-    <div style="margin-top: auto; padding: 14px 20px; border-radius: 12px; background: var(--navy); display: flex; align-items: center; gap: 14px;">
-      <span style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 6px 12px; border-radius: 6px; white-space: nowrap;">Regra da casa</span>
-      <p style="margin: 0; font-family: Inter, sans-serif; font-size: 14px; font-weight: 500; color: var(--white); line-height: 1.4;">Todo número "importante" tem fonte <strong style="color: var(--gold);">nomeada</strong> no slide ou nesta lista.</p>
+    <!-- ═══ TAKE-HOME — anchored at bottom ═══ -->
+    <div
+      style="
+        background: var(--navy);
+        border-radius: 14px;
+        padding: 20px 28px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      "
+    >
+      <span
+        style="
+          font-family: Inter, sans-serif;
+          font-size: 12px;
+          font-weight: 700;
+          color: var(--navy);
+          background: var(--gold);
+          padding: 7px 16px;
+          border-radius: 6px;
+          white-space: nowrap;
+          flex-shrink: 0;
+        "
+      >
+        Regra da casa
+      </span>
+      <p
+        style="
+          margin: 0;
+          font-family: Inter, sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          color: var(--white);
+          line-height: 1.45;
+        "
+      >
+        Todo número &ldquo;importante&rdquo; tem fonte
+        <strong style="color: var(--gold)">nomeada</strong>
+        no slide ou nesta lista.
+      </p>
     </div>
-
-    </div>
-
   </div>
-
 </section>
