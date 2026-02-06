@@ -1,8 +1,8 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
-## 2026-02-06 — Títulos dourados + flexbox S54/S55 (v3)
+## 2026-02-06 — Títulos padronizados (navy / gold) + flexbox S54/S55 (v3)
 
-- **Títulos h2 padronizados em dourado profissional (`--gold-title: #8B6F30`):** Todos os slides com fundo claro recebem h2 em tom dourado quente, com contraste ≥ 3:1 (large text WCAG AA). Slides `bg-navy` mantêm título branco via override CSS.
+- **Títulos h2 padronizados:** slides claros recebem h2 em azul navy profissional (`var(--navy)`). Slides `bg-navy` recebem h2 em dourado profissional (`--gold-title: #8B6F30`, contraste ≥ 3:1 sobre fundo escuro).
 - **Variável CSS `--gold-title`** adicionada ao `:root` em `base.css`.
 - **SVG viewBox ampliado** em S54 (420×270) e S55 (340×270): espaçamento vertical entre estudos aumentado de 26px para 34px, reduzindo dead space dentro dos cards. SVGs preenchem melhor a área disponível.
 - **Funnel plots S55:** dots redistribuídos com mais breathing room vertical; eixo Y estendido; zona "faltantes" reposicionada.

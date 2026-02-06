@@ -185,13 +185,13 @@ h1, h2, h3 {
   font-weight: 700 !important;
   margin: 0 0 1.35vw 0 !important;
   letter-spacing: -0.02em !important;
-  /* Dourado profissional — identidade visual unificada */
-  color: var(--gold-title) !important;
+  /* Azul profissional para slides claros */
+  color: var(--navy) !important;
 }
 
-/* Slides com fundo escuro: título branco (sobrepõe o dourado) */
+/* Slides com fundo escuro: título em dourado profissional */
 .slide.bg-navy h2 {
-  color: var(--white) !important;
+  color: var(--gold-title) !important;
 }
 
 .slide h3 {
