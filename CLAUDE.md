@@ -83,6 +83,24 @@ Criar (ou refatorar) apresentações de alto nível com:
 
 ---
 
+## REPOSITÓRIO REMOTO
+
+| Campo | Valor |
+| ----- | ----- |
+| **Remote** | `origin` |
+| **URL** | `https://github.com/lucasmiachon-blip/aulas_core.git` |
+| **Branch** | `main` |
+| **Política** | Local e GitHub devem estar **sempre espelhados** (mesmo conteúdo) |
+
+**Regras de sync:**
+
+- Após cada commit local, fazer `git push origin main` para manter espelhado
+- Se o local estiver ahead do remote, usar `git push --force origin main` para sobrescrever (o usuário autorizou force push)
+- **NUNCA** deixar commits locais sem push ao final de uma sessão de trabalho
+- Verificar com `git status` que o branch está `up to date with 'origin/main'` antes de encerrar
+
+---
+
 ## TECH STACK
 
 | Camada          | Tecnologias                             |
