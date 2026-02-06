@@ -10,6 +10,7 @@ Meta do produto: **≥ 7,5/10** (consistência e previsibilidade, sem ruído).
 1) **Overflow/viewport:** qualquer elemento que vaze no viewer ou na exportação PDF.
 2) **Ilegível em sala:** fonte pequena / baixo contraste / quadro denso.
    - Regra prática: texto “útil” (não rodapé) raramente deve cair abaixo de ~0,95vw. Serif e sans precisam ser legíveis no projetor.
+   - Preferir títulos/headlines em alto contraste (evitar dourado puro em texto fino).
 3) **>1 ideia central:** duas mensagens competindo na mesma tela.
 4) **Texto de fala do apresentador:** frases em tom de tutorial, primeira pessoa, ou “conversa” dentro do slide.
 5) **Números sem contexto:** sem denominador, horizonte de tempo ou desfecho.
@@ -72,7 +73,7 @@ Meta do produto: **≥ 7,5/10** (consistência e previsibilidade, sem ruído).
 ## Micro-regras práticas (para edição rápida)
 
 - **Headline:** 12–18 palavras. Se passar disso, está virando parágrafo.
-- **Projetor (tipografia):** valide em tela cheia (16:9) e a 2–3 metros. Se o corpo estiver pequeno, suba a escala antes de enxugar conteúdo.
+- **Projetor (tipografia):** valide em tela cheia (16:9) e a 2–3 metros. Referência de mínima: corpo ~19px; secundário ~16px; referências ~13px.
 - **Números:** no máximo 2 por slide. Se precisar de mais, é outro slide.
 - **Citações/“ipsis litteris”:** preferir trechos curtos + atribuição clara.
 - **EtD:** uma vez no bloco (slide “definitivo”). O resto referencia.

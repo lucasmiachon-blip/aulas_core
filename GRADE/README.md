@@ -1,12 +1,3 @@
-# GRADE • Deck (HTML/CSS/JS)
-
-## Nota rápida (projeção)
-
-- A escala tipográfica global usa **clamp()** para evitar que **Georgia (serifa)** e **Inter (sans)** fiquem pequenas em projetores (ex.: 1280×720).
-- Checklist de legibilidade: texto principal ≥18px, secundário ≥16px, referências ≥12px.
-
----
-
 # Figuras do GRADE
 
 Esta pasta contém figuras extraídas de papers para uso nos slides.
@@ -32,3 +23,33 @@ Esta pasta contém figuras extraídas de papers para uso nos slides.
 2. Localizar a figura Kaplan-Meier do endpoint primário
 3. Extrair/recortar a figura (sem legendas duplicadas ou bordas)
 4. Salvar como `scot-heart-10y-km.png` nesta pasta
+
+---
+
+## Core GRADE 1 (BMJ 2025)
+
+### core1_fig1_overview.png
+
+Figura‑resumo (Figura 1) mostrando o fluxo: revis&atilde;o sistem&aacute;tica &rarr; certeza da evid&ecirc;ncia &rarr; processo de diretriz/EtD.
+
+**Fonte:** Core GRADE 1. *BMJ* 2025. DOI: 10.1136/bmj-2024-081903
+
+### core1_fig2_certainty.png
+
+Figura‑resumo (Figura 2) mostrando como julgar certeza: downgrades/upgrades e categorias (alta, moderada, baixa...).
+
+**Fonte:** Core GRADE 1. *BMJ* 2025. DOI: 10.1136/bmj-2024-081903
+
+---
+
+## Core GRADE 3 (BMJ 2024)
+
+### core3_fig3_forest.png
+
+Forest plot (Figura 3) para leitura de consist&ecirc;ncia: quando a dire&ccedil;&atilde;o/magnitude mudam entre estudos.
+
+### core3_fig4_forest.png
+
+Forest plot (Figura 4) mostrando que I&sup2; alto pode coexistir com dire&ccedil;&atilde;o semelhante &mdash; priorizar leitura visual.
+
+**Fonte (ambas):** Core GRADE 3. *BMJ* 2024. DOI: 10.1136/bmj-2024-081905

@@ -49,18 +49,47 @@
   text-transform: uppercase;
   letter-spacing: 0.10em;
   font-weight: 800;
-  color: var(--gold);
+  /* Neutral label (gold was low-contrast on some projectors). */
+  color: rgba(var(--text-rgb), 0.48);
+}
+
+/* Ensure labels remain readable on dark slides */
+.bg-navy .label-gold {
+  color: rgba(255, 255, 255, 0.72);
 }
 
 /* Small section title (used inside cards) */
 .small-title {
   font-family: var(--font-sans);
   font-size: 0.86vw;
-  color: rgba(var(--navy-rgb), 0.70);
+  color: rgba(var(--text-rgb), 0.62);
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin: 0;
+}
+
+/* Headline accent (avoid gold; keep contrast on projector) */
+.title-accent {
+  color: var(--accent);
+  font-weight: 900;
+}
+
+.bg-navy .title-accent {
+  color: var(--accent);
+}
+
+.bg-navy .small-title {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Accent helper (replaces gold in headings) */
+.title-accent {
+  color: var(--teal);
+}
+
+.bg-navy .title-accent {
+  color: rgba(255, 255, 255, 0.92);
 }
 
 /* Bullet rows (consistent spacing + alignment) */

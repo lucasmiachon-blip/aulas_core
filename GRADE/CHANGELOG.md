@@ -1,25 +1,34 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
-## 2026-02-04 — P2 (legibilidade + hierarquia): CAC (S09/S10) + bempedóico (S44/S18)
+## 2026-02-06 — P2 (core até Camões): hierarquia + legibilidade em projetor + forest plots reais
 
-- **CSS (design system):** adicionados helpers ausentes usados por vários slides (**`.grid`**, **`.chip-row`**, **`.rule`**, `ul.bullets`, `.badge`, defaults de `.label-gold` e `.source`) para garantir layout previsível e legível (inclui indent/spacing de listas).
-- **S09 (CAC):** título encurtado e hierarquia refeita; análise GRADE virou 3 blocos (Baseline/Upgrade/Downgrade) para leitura em 5–8s; “Frase de 10s” substituída por **mensagem âncora**.
-- **S10 (CAC=0):** janela deixou de parecer “regra fixa” — agora aparece como **função do risco basal** (barra/gradiente) + exceção explícita para cenários de alto risco.
-- **S44 (CLEAR Outcomes):** refeito em 3 colunas (snapshot → relativo → absoluto), com ARR/NNT em tiles e redução de ruído em boxes.
-- **S18 (Imprecisão):** redistribuição completa (visual MID+IC à esquerda + checklist compacto à direita) para a decisão “rebaixar −1” ficar inevitável.
-- **S43/S46/S47 (SAMS/limitações):** removidos trechos de “fala do apresentador”/objetivos; inserida 1 pergunta curta de sala (S43) mantendo SAMS como pano de fundo.
-- **Checklist:** regra explícita de tipografia para projetor adicionada em `docs/quality_checklist_v2.md`.
+- **Tipografia (projetor):** escala com `clamp()` para evitar serifa/sans pequenas em 720p; ajuste de rodapé + respiro inferior do S10.
+- **S05/S06 (fundamento do GRADE):** mantidos sem alteração — tentativa de reconstrução com figuras do Core 1 ficou pior que o original.
+- **S54 (inconsistência):** substituído esquema fictício por **forest plots reais (Figuras 3 e 4 do Core GRADE 3)** + legenda mínima.
+- **CCTA:** removida menção no core (S07, S60); permanece no apêndice.
+- **GRADE dots:** corrigidos símbolos/contagem para compatibilidade com “MODERADA” (⊕⊕⊕◯) nos slides do CAC.
+- **Tom de slide:** removidas frases‑script/meta (“como eu digo”, “objetivo didático”), preservando a intenção (S43, S46, S47).
+- **Títulos:** retirados acentos dourados no meio do título em slides-chave do bloco bempedóico/metodologia.
 
 ### Arquivos modificados
-- `src/css/blocks.css`
-- `src/slides/S09.html`
+- `src/css/base.css`
+- `src/assets/figures/core3_fig3_forest.png`
+- `src/assets/figures/core3_fig4_forest.png`
+- `src/slides/S07.html`
 - `src/slides/S10.html`
+- `src/slides/S11.html`
+- `src/slides/S13.html`
 - `src/slides/S18.html`
+- `src/slides/S19.html`
+- `src/slides/S20.html`
+- `src/slides/S36.html`
 - `src/slides/S43.html`
 - `src/slides/S46.html`
-- `src/slides/S44.html`
 - `src/slides/S47.html`
-- `docs/quality_checklist_v2.md`
+- `src/slides/S54.html`
+- `src/slides/S60.html`
+- `src/slides/S61.html`
+- `scripts/export-grade-pdf.js`
 - `CHANGELOG.md`
 
 ## 2026-02-04 — P2 (Bempedóico): reduzir redundância + pós-hoc/limitações (SAMS como pano de fundo)

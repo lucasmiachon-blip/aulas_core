@@ -1,117 +1,171 @@
 <section class="slide" data-slide-id="S18">
-  <p class="label-gold" style="margin-bottom: .45vw;">IMPRECISÃO — CLEAR Outcomes (MACE‑4)</p>
-  <h2 style="margin: 0 0 .6vw 0;">IC toca o MID → rebaixar 1 nível de certeza</h2>
-  <p class="lead" style="margin: 0 0 1.05vw 0; max-width: 92%;">
-    O efeito é estatisticamente significativo, mas pode ser menor do que o clinicamente importante.
-  </p>
+  <h2 style="font-family: var(--font-serif); font-size: 2.8vw; color: var(--navy); margin-bottom: 1.25vw; line-height: 1.2;">
+    Aplicação ao CLEAR Outcomes: Imprecisão (MACE-4)
+  </h2>
 
-  <div class="grid" style="grid-template-columns: 1.35fr 1fr; gap: 1.2vw; align-items: stretch;">
+  <div style="display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 2.2vw; flex-grow: 1; align-items: start;">
 
-    <!-- VISUAL: MID + IC 95% (HR) -->
-    <div class="card" style="padding: 1.25vw 1.35vw; border: 2px solid rgba(var(--navy-rgb),0.16);">
-      <div class="small-title" style="margin-bottom: .75vw;">Limiar (MID) + IC 95% (HR)</div>
+    <!-- COLUNA ESQUERDA -->
+    <div style="display: flex; flex-direction: column; gap: 1.25vw;">
 
-      <div style="position: relative; margin-top: 0.4vw;">
-        <div style="position: relative; height: 3.25vw; border-radius: 0.7vw; overflow: hidden; border: 1px solid rgba(var(--navy-rgb),0.14);
-                    background: linear-gradient(90deg,
-                      rgba(var(--teal-rgb),0.16) 0%,
-                      rgba(var(--teal-rgb),0.16) 36.36%,
-                      rgba(var(--gold-rgb),0.12) 36.36%,
-                      rgba(var(--gold-rgb),0.12) 54.55%,
-                      rgba(var(--danger-rgb),0.12) 54.55%,
-                      rgba(var(--danger-rgb),0.12) 100%);
-              ">
-
-          <!-- MID (HR 0.80) -->
-          <div style="position:absolute; left: 36.36%; top: 0; bottom: 0; width: 0.30vw; background: var(--gold);"></div>
-          <div style="position:absolute; left: 36.36%; top: -1.35vw; transform: translateX(-50%);
-                      background: rgba(var(--gold-rgb),0.14); border: 2px solid rgba(var(--gold-rgb),0.55);
-                      padding: 0.22vw 0.55vw; border-radius: 0.42vw;
-                      font-size: 0.78vw; font-weight: 900; color: var(--navy);">
-            MID 0,80
-          </div>
-
-          <!-- Nulidade (HR 1.0) -->
-          <div style="position:absolute; left: 54.55%; top: 0; bottom: 0; border-left: 0.26vw dashed rgba(var(--navy-rgb),0.40);"></div>
-          <div style="position:absolute; left: 54.55%; top: -1.35vw; transform: translateX(-50%);
-                      background: white; border: 2px solid rgba(var(--navy-rgb),0.35);
-                      padding: 0.22vw 0.55vw; border-radius: 0.42vw;
-                      font-size: 0.78vw; font-weight: 900; color: var(--navy);">
-            HR 1,0
-          </div>
-
-          <!-- IC 95% 0.79–0.96 ; HR 0.87 -->
-          <div style="position:absolute; top: 50%; left: 35.45%; width: 15.46%; height: 0;
-                      border-top: 0.34vw solid rgba(var(--gold-rgb),0.95); transform: translateY(-50%);">
-            <div style="position:absolute; left: 0; top: -0.75vw; width: 0.22vw; height: 1.5vw; background: rgba(var(--gold-rgb),0.95); border-radius: 999px;"></div>
-            <div style="position:absolute; right: 0; top: -0.75vw; width: 0.22vw; height: 1.5vw; background: rgba(var(--gold-rgb),0.95); border-radius: 999px;"></div>
-            <div style="position:absolute; left: 47.0%; top: -0.65vw; width: 1.05vw; height: 1.05vw;
-                        background: var(--gold); border: 0.2vw solid white; border-radius: 50%;
-                        box-shadow: 0 0.15vw 0.6vw rgba(0,0,0,0.18);"></div>
-          </div>
-        </div>
-
-        <!-- Ticks -->
-        <div style="display: flex; justify-content: space-between; margin-top: 0.65vw; font-size: 0.86vw; color: var(--muted);">
-          <span>0,4</span><span>0,6</span><span style="color: var(--gold); font-weight: 900;">0,8</span><span>1,0</span><span>1,2</span><span>1,5</span>
-        </div>
-
-        <div style="display:flex; justify-content: space-between; gap: 1.2vw; margin-top: 0.75vw;">
-          <div style="flex:1; font-size: 0.92vw; color: var(--navy); line-height: 1.35;">
-            <span style="font-weight: 900; color: rgba(var(--teal-rgb),0.95);">Benefício importante</span>
-            <span style="color: var(--muted);">(à esquerda do MID)</span>
-          </div>
-          <div style="flex:1; text-align:right; font-size: 0.92vw; color: var(--navy); line-height: 1.35;">
-            <span style="font-weight: 900; color: rgba(var(--danger-rgb),0.95);">Nulo / dano</span>
-            <span style="color: var(--muted);">(à direita de 1,0)</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="note" style="margin-top: 1.05vw; border-left-color: var(--gold); background: rgba(var(--gold-rgb),0.09);">
-        <p style="margin: 0; font-size: 1.02vw; color: var(--navy); line-height: 1.45;">
-          O IC 95% <strong>toca</strong> o MID: o efeito pode ser menor do que o clinicamente importante.
+      <!-- FOREST PLOT + LIMIARES -->
+      <div style="background: white; border: 2px solid rgba(var(--navy-rgb),0.16); border-radius: 0.9vw; padding: 1.55vw; box-shadow: 0 0.3vw 1vw rgba(0,0,0,0.08);">
+        <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--muted); text-transform: uppercase; font-weight: 900; letter-spacing: 0.05vw; margin: 0 0 1vw 0;">
+          Limiar de decisão (MID) + intervalo de confiança
         </p>
+
+        <!-- Eixo -->
+        <div style="position: relative;">
+          <div style="position: relative; height: 3.25vw; border-radius: 0.7vw; overflow: hidden; border: 1px solid rgba(var(--navy-rgb),0.14);
+                      background: linear-gradient(90deg,
+                        rgba(var(--teal-rgb),0.16) 0%,
+                        rgba(var(--teal-rgb),0.16) 36.36%,
+                        rgba(var(--gold-rgb),0.12) 36.36%,
+                        rgba(var(--gold-rgb),0.12) 54.55%,
+                        rgba(var(--danger-rgb),0.12) 54.55%,
+                        rgba(var(--danger-rgb),0.12) 100%);
+                  ">
+
+            <!-- MID (RR 0.80) -->
+            <div style="position:absolute; left: 36.36%; top: 0; bottom: 0; width: 0.30vw; background: var(--gold);"></div>
+            <div style="position:absolute; left: 36.36%; top: -1.35vw; transform: translateX(-50%);
+                        background: rgba(var(--gold-rgb),0.14); border: 2px solid rgba(var(--gold-rgb),0.55);
+                        padding: 0.22vw 0.55vw; border-radius: 0.42vw;
+                        font-family: var(--font-sans); font-size: 0.78vw; font-weight: 900; color: var(--navy);">
+              MID 0,80
+            </div>
+
+            <!-- Nulidade (RR 1.0) -->
+            <div style="position:absolute; left: 54.55%; top: 0; bottom: 0; border-left: 0.26vw dashed rgba(var(--navy-rgb),0.40);"></div>
+            <div style="position:absolute; left: 54.55%; top: -1.35vw; transform: translateX(-50%);
+                        background: white; border: 2px solid rgba(var(--navy-rgb),0.35);
+                        padding: 0.22vw 0.55vw; border-radius: 0.42vw;
+                        font-family: var(--font-sans); font-size: 0.78vw; font-weight: 900; color: var(--navy);">
+              RR 1,0
+            </div>
+
+            <!-- IC 95%: 0,79–0,96 ; HR 0,87 -->
+            <div style="position:absolute; top: 50%; left: 35.45%; width: 15.46%; height: 0;
+                        border-top: 0.34vw solid rgba(var(--gold-rgb),0.95); transform: translateY(-50%);">
+              <div style="position:absolute; left: 0; top: -0.75vw; width: 0.22vw; height: 1.5vw; background: rgba(var(--gold-rgb),0.95); border-radius: 999px;"></div>
+              <div style="position:absolute; right: 0; top: -0.75vw; width: 0.22vw; height: 1.5vw; background: rgba(var(--gold-rgb),0.95); border-radius: 999px;"></div>
+              <div style="position:absolute; left: 47.0%; top: -0.65vw; width: 1.05vw; height: 1.05vw;
+                          background: var(--gold); border: 0.2vw solid white; border-radius: 50%;
+                          box-shadow: 0 0.15vw 0.6vw rgba(0,0,0,0.18);"></div>
+            </div>
+          </div>
+
+          <!-- Ticks -->
+          <div style="display: flex; justify-content: space-between; margin-top: 0.65vw; font-family: var(--font-sans); font-size: 0.86vw; color: var(--muted);">
+            <span>0,4</span><span>0,6</span><span style="color: var(--gold); font-weight: 900;">0,8</span><span>1,0</span><span>1,2</span><span>1,5</span>
+          </div>
+
+          <div style="display:flex; justify-content: space-between; gap: 1.2vw; margin-top: 0.75vw;">
+            <div style="flex:1; font-family: var(--font-sans); font-size: 0.92vw; color: var(--navy); line-height: 1.35;">
+              <span style="font-weight: 900; color: rgba(var(--teal-rgb),0.95);">Benefício importante</span>
+              <span style="color: var(--muted);">(à esquerda do MID)</span>
+            </div>
+            <div style="flex:1; text-align:right; font-family: var(--font-sans); font-size: 0.92vw; color: var(--navy); line-height: 1.35;">
+              <span style="font-weight: 900; color: rgba(var(--danger-rgb),0.95);">Nulo / dano</span>
+              <span style="color: var(--muted);">(à direita de RR 1,0)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top: 1vw; border-left-color: var(--gold); background: rgba(var(--gold-rgb),0.09);">
+          <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--navy); margin: 0; line-height: 1.45;">
+            O IC 95% <strong>toca</strong> o MID: o efeito pode ser menor do que o clinicamente importante.
+          </p>
+        </div>
       </div>
+
+      <!-- CHECKLIST -->
+      <div class="card" style="padding: 0; overflow: hidden; border: 1px solid rgba(var(--navy-rgb),0.18);">
+        <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center;">
+          <span>Checklist de imprecisão (Core GRADE)</span>
+          <span class="chip chip--gold">rebaixar −1</span>
+        </div>
+        <div class="cardBody">
+          <table class="table-medium" style="margin: 0;">
+            <thead>
+              <tr>
+                <th style="width: 42%;">Pergunta</th>
+                <th>Aplicação ao CLEAR Outcomes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Limiar definido?</strong></td>
+                <td>MID como limiar de decisão (RR ≈ 0,80)</td>
+              </tr>
+              <tr>
+                <td><strong>IC cruza o limiar?</strong></td>
+                <td>Sim — inclui efeitos &lt; MID e &gt; MID <span class="chip chip--gold" style="margin-left: 0.6vw;">atenção</span></td>
+              </tr>
+              <tr>
+                <td><strong>IC cruza nulidade?</strong></td>
+                <td>Não (RR 1,0 fora do IC) <span class="chip chip--teal" style="margin-left: 0.6vw;">ok</span></td>
+              </tr>
+              <tr>
+                <td><strong>OIS / eventos?</strong></td>
+                <td>RCT grande → provável que OIS não seja o limitador <span class="chip chip--teal" style="margin-left: 0.6vw;">ok</span></td>
+              </tr>
+              <tr>
+                <td><strong>Decisão muda?</strong></td>
+                <td>Efeito pode ser pequeno (próximo ao limiar) → decisão pode mudar</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="note" style="margin-top: 1.1vw; border-left-color: var(--navy); background: rgba(var(--navy-rgb),0.06);">
+            <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--navy); margin: 0; line-height: 1.45;">
+              <strong>Decisão:</strong> rebaixar <strong>−1</strong> por imprecisão.
+            </p>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- DECISÃO: checklist compacto -->
-    <div class="card" style="padding: 1.25vw 1.35vw; border: 2px solid rgba(var(--gold-rgb),0.45); background: rgba(var(--gold-rgb),0.08);">
-      <div class="small-title" style="margin-bottom: .75vw; color: rgba(var(--navy-rgb),0.80);">Checklist (Core GRADE)</div>
+    <!-- COLUNA DIREITA -->
+    <div style="display: flex; flex-direction: column; gap: 1.25vw;">
 
-      <div style="display:grid; gap: 0.7vw; font-size: 1.05vw; line-height: 1.35;">
-        <div style="display:flex; gap:0.6vw; align-items:flex-start;">
-          <span class="iconCircle iconCircle--teal">✓</span>
-          <div><strong>MID definido?</strong> Sim (≈0,80)</div>
-        </div>
-        <div style="display:flex; gap:0.6vw; align-items:flex-start;">
-          <span class="iconCircle iconCircle--gold">!</span>
-          <div><strong>IC cruza o MID?</strong> Toca o limiar</div>
-        </div>
-        <div style="display:flex; gap:0.6vw; align-items:flex-start;">
-          <span class="iconCircle iconCircle--teal">✓</span>
-          <div><strong>IC cruza nulidade?</strong> Não</div>
-        </div>
-        <div style="display:flex; gap:0.6vw; align-items:flex-start;">
-          <span class="iconCircle iconCircle--gold">!</span>
-          <div><strong>Decisão muda?</strong> Pode mudar em baixo risco / alto custo</div>
-        </div>
-      </div>
-
-      <div class="note" style="margin-top: 1.0vw; border-left-color: var(--navy); background: rgba(var(--navy-rgb),0.06);">
-        <p style="margin: 0; font-size: 1.02vw; color: var(--navy); line-height: 1.45;">
-          <strong>Decisão GRADE:</strong> rebaixar <strong>−1</strong> por imprecisão.
+      <div style="background: rgba(var(--gold-rgb),0.18); color: var(--navy); border: 2px solid rgba(var(--gold-rgb),0.55); padding: 1.55vw; border-radius: 0.9vw;">
+        <p style="font-family: var(--font-sans); font-size: 0.95vw; color: rgba(15,23,42,0.70); text-transform: uppercase; font-weight: 900; letter-spacing: 0.05vw; margin: 0 0 0.95vw 0;">
+          Contexto (MACE-4)
+        </p>
+        <p style="font-family: var(--font-serif); font-size: 1.12vw; line-height: 1.55; margin: 0;">
+          Redução relativa modesta e <strong>próxima ao limiar</strong> → o mesmo IC pode sustentar decisões diferentes, dependendo do threshold (RR, ARR/NNT).
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.95vw; line-height: 1.45; margin: 0.85vw 0 0 0; color: rgba(15,23,42,0.75);">
+          Nota: <b>heterogeneidade</b> (I&sup2;) é avaliada em <b>inconsistência</b>.
         </p>
       </div>
 
-      <div style="margin-top: 0.9vw; font-size: 0.95vw; color: rgba(var(--text-rgb),0.70); line-height: 1.35;">
-        Nota: heterogeneidade (I&sup2;) pertence ao domínio de <strong>inconsistência</strong>.
+      <div style="background: white; border: 2px solid rgba(var(--gold-rgb),0.55); border-radius: 0.9vw; padding: 1.55vw;">
+        <p style="font-family: var(--font-sans); font-size: 0.95vw; color: var(--gold); text-transform: uppercase; font-weight: 900; letter-spacing: 0.05vw; margin: 0 0 0.95vw 0;">
+          Como GRADE pensa imprecisão
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 0.75vw;">
+          <p style="font-family: var(--font-sans); font-size: 1vw; color: var(--text); margin: 0; line-height: 1.45;">
+            1) Defina o <strong>limiar</strong> (RR, ARR/NNT, dano importante)
+          </p>
+          <p style="font-family: var(--font-sans); font-size: 1vw; color: var(--text); margin: 0; line-height: 1.45;">
+            2) Veja se o IC cruza o limiar e/ou a nulidade
+          </p>
+          <p style="font-family: var(--font-sans); font-size: 1vw; color: var(--text); margin: 0; line-height: 1.45;">
+            3) Considere <strong>OIS/eventos</strong> quando o IC é amplo
+          </p>
+        </div>
       </div>
+
     </div>
 
   </div>
 
-  <p class="source" style="margin-top: 1.05vw;">
-    Fonte: CLEAR Outcomes (Nissen SE et al. <em>N Engl J Med</em> 2023;388:1353–1364). &nbsp;|&nbsp; Core GRADE 2 (BMJ 2025; DOI: 10.1136/bmj-2024-081904)
-  </p>
+  <div style="margin-top: auto; padding-top: 0.9vw; border-top: 1px solid var(--border);">
+    <p style="font-family: var(--font-sans); font-size: 0.75vw; color: var(--muted); margin: 0; line-height: 1.3;">
+      <strong>Fonte:</strong> Nissen SE et al. <em>N Engl J Med</em> 2023;388:1353&ndash;1364 (CLEAR Outcomes). &nbsp;|&nbsp; Core GRADE 2 (BMJ 2025; DOI: 10.1136/bmj-2024-081904)
+    </p>
+  </div>
 </section>

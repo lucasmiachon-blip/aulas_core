@@ -10,9 +10,14 @@ async function exportPDF() {
   // Tentar GitHub Pages primeiro, fallback para localhost
   // Live Server (5500) em primeiro; 8000 = fallback (Python do exportar-pdf-e-zip.ps1).
   const urlCandidates = [
+    // Local (repo root = este projeto)
+    'http://127.0.0.1:8000/src/index.html',
+    'http://localhost:8000/src/index.html',
+    // Compat: quando o projeto fica dentro de uma pasta /GRADE no servidor
     'http://127.0.0.1:5500/GRADE/src/index.html',
     'http://localhost:5500/GRADE/src/index.html',
     'http://localhost:8000/GRADE/src/index.html',
+    // Public
     'https://lucasmiachon-blip.github.io/aulas_core/GRADE/src/index.html'
   ];
   let url = urlCandidates[0];
@@ -29,9 +34,18 @@ async function exportPDF() {
   
   // Iniciar navegador
   console.log('🌐 Abrindo navegador...');
-  const browser = await chromium.launch({
-    headless: true
+  const systemChromium = ['/usr/bin/chromium', '/usr/bin/chromium-browser'].find(p => {
+    try { return fs.existsSync(p); } catch { return false; }
   });
+
+  const launchOpts = {
+    headless: true,
+    // Em ambientes sem download dos browsers do Playwright, usar Chromium do sistema.
+    ...(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {}),
+    ...(!process.env.CHROMIUM_PATH && systemChromium ? { executablePath: systemChromium } : {})
+  };
+
+  const browser = await chromium.launch(launchOpts);
   
   const page = await browser.newPage();
   
