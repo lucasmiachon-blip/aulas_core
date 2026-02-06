@@ -1,5 +1,16 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-06 — SVG forest plots + funnel plots profissionais (S54, S55)
+
+- **S54 (inconsistência):** imagens PNG substituídas por **forest plots SVG inline** (resolução independente). Dois painéis lado a lado — consistente (I²=8%, teal) vs inconsistente (I²=82%, vermelho) — com escala log RR, diamante agrupado e mensagem Core GRADE 3.
+- **S55 (viés de publicação):** slide redesenhado com **funnel plots SVG inline**. Dois painéis — simétrico (sem viés, teal) vs assimétrico (viés, vermelho com zona de "estudos faltantes"). Adicionadas caixas práticas "Quando suspeitar" e "O que fazer".
+- Ambos os gráficos são vetoriais (SVG), sem dependência de imagens externas, funcionam em viewer + print + PPTX.
+
+### Arquivos modificados
+- `src/slides/S54.html`
+- `src/slides/S55.html`
+- `CHANGELOG.md`
+
 ## 2026-02-06 — P2 (core até Camões): hierarquia + legibilidade em projetor + forest plots reais
 
 - **Tipografia (projetor):** escala com `clamp()` para evitar serifa/sans pequenas em 720p; ajuste de rodapé + respiro inferior do S10.

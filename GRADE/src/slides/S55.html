@@ -1,33 +1,164 @@
-<!-- S55 — Domínio GRADE: viés de publicação (versão enxuta) -->
-<section class="slide" style="background: var(--bg); padding: var(--pad);">
-  <p class="label-gold" style="margin-bottom: .4vw;">DOMÍNIOS DO GRADE — CERTEZA DA EVIDÊNCIA</p>
-  <h2 style="margin: 0 0 .6vw 0;">Viés de publicação: 3 sinais, 3 ações</h2>
-  <p class="lead" style="margin: 0 0 1.2vw 0; max-width: 92%;">
-    Não é “decorar funil” — é reconhecer quando a evidência tende a parecer maior do que é.
+<div class="slide" data-slide-id="S55">
+
+  <p style="margin:0 0 0.5vw 0; font-size: 0.82vw; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 800;">
+    Dom&iacute;nios do GRADE &bull; Vi&eacute;s de publica&ccedil;&atilde;o
   </p>
 
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.2vw;">
-    <div class="card" style="padding: 1.2vw 1.3vw;">
-      <div class="small-title" style="margin-bottom: .6vw;">Sinais (suspeite quando…)</div>
-      <ul style="margin: 0; padding-left: 1.1vw;">
-        <li><strong>Efeito grande</strong> vindo de estudos pequenos e heterogêneos (small‑study effects).</li>
-        <li>Resultados “positivos” aparecem, mas <strong>desfechos previstos no registro</strong> não batem com o publicado.</li>
-        <li>Há <strong>lacuna de negativos</strong> (muitos abstracts, poucos full‑texts; ou somente positivos).</li>
-      </ul>
+  <h2 style="margin: 0 0 0.8vw 0; font-weight: 800; color: var(--navy); font-size: 2.6vw; line-height: 1.12;">
+    Funnel plot: o que a assimetria revela
+  </h2>
+
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.4vw; flex:1;">
+
+    <!-- FUNNEL PLOT A: Simétrico (sem viés) -->
+    <div class="card" style="padding: 0; overflow: hidden; border-color: rgba(var(--teal-rgb),0.25); border-top: 0.3vw solid var(--teal);">
+      <div style="padding: 0.65vw 1vw; background: rgba(var(--teal-rgb),0.06); display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-weight:800; font-size:1.02vw; color:var(--teal);">&#10003; Sim&eacute;trico</span>
+        <span style="font-size:0.86vw; color:var(--muted);">Baixa suspeita de vi&eacute;s</span>
+      </div>
+      <div style="padding: 0.5vw 0.7vw;">
+        <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family: Inter, system-ui, sans-serif;">
+          <!-- Y-axis (SE) -->
+          <line x1="55" y1="20" x2="55" y2="240" stroke="#94a3b8" stroke-width="0.8"/>
+          <text x="28" y="135" fill="#64748b" font-size="8.5" text-anchor="middle" transform="rotate(-90,28,135)">Erro padr&atilde;o</text>
+          <text x="50" y="28" fill="#64748b" font-size="7.5" text-anchor="end">0</text>
+          <text x="50" y="90" fill="#64748b" font-size="7.5" text-anchor="end">0,1</text>
+          <text x="50" y="150" fill="#64748b" font-size="7.5" text-anchor="end">0,2</text>
+          <text x="50" y="210" fill="#64748b" font-size="7.5" text-anchor="end">0,3</text>
+          <text x="50" y="244" fill="#64748b" font-size="7.5" text-anchor="end">0,4</text>
+          <!-- Y ticks -->
+          <line x1="52" y1="24" x2="58" y2="24" stroke="#94a3b8" stroke-width="0.6"/>
+          <line x1="52" y1="86" x2="58" y2="86" stroke="#94a3b8" stroke-width="0.6"/>
+          <line x1="52" y1="148" x2="58" y2="148" stroke="#94a3b8" stroke-width="0.6"/>
+          <line x1="52" y1="210" x2="58" y2="210" stroke="#94a3b8" stroke-width="0.6"/>
+
+          <!-- X-axis (effect) -->
+          <line x1="55" y1="240" x2="400" y2="240" stroke="#94a3b8" stroke-width="0.8"/>
+          <text x="228" y="262" fill="#64748b" font-size="8.5" text-anchor="middle">Tamanho do efeito (log RR)</text>
+          <text x="120" y="254" fill="#64748b" font-size="7.5" text-anchor="middle">-0,6</text>
+          <text x="175" y="254" fill="#64748b" font-size="7.5" text-anchor="middle">-0,4</text>
+          <text x="228" y="254" fill="#94a3b8" font-size="7.5" text-anchor="middle" font-weight="600">-0,29</text>
+          <text x="282" y="254" fill="#64748b" font-size="7.5" text-anchor="middle">-0,1</text>
+          <text x="338" y="254" fill="#64748b" font-size="7.5" text-anchor="middle">+0,1</text>
+
+          <!-- Funnel outline (95% CI) centered at pooled effect logRR=-0.29 -->
+          <polygon points="228,24 68,240 388,240" fill="rgba(15,118,110,0.04)" stroke="rgba(15,118,110,0.25)" stroke-width="1" stroke-dasharray="5,3"/>
+
+          <!-- Pooled effect vertical line -->
+          <line x1="228" y1="20" x2="228" y2="240" stroke="var(--teal)" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+          <!-- Studies (symmetric scatter) -->
+          <!-- Large studies (low SE, clustered tightly) -->
+          <circle cx="224" cy="38" r="4.5" fill="var(--navy)" opacity="0.85"/>
+          <circle cx="234" cy="44" r="4.5" fill="var(--navy)" opacity="0.85"/>
+          <circle cx="222" cy="52" r="4.5" fill="var(--navy)" opacity="0.85"/>
+          <circle cx="230" cy="58" r="4.5" fill="var(--navy)" opacity="0.85"/>
+          <!-- Medium studies -->
+          <circle cx="205" cy="100" r="4" fill="var(--navy)" opacity="0.75"/>
+          <circle cx="248" cy="106" r="4" fill="var(--navy)" opacity="0.75"/>
+          <circle cx="195" cy="120" r="4" fill="var(--navy)" opacity="0.75"/>
+          <circle cx="260" cy="115" r="4" fill="var(--navy)" opacity="0.75"/>
+          <circle cx="215" cy="128" r="4" fill="var(--navy)" opacity="0.75"/>
+          <circle cx="243" cy="135" r="4" fill="var(--navy)" opacity="0.75"/>
+          <!-- Small studies (high SE, scattered but symmetric) -->
+          <circle cx="178" cy="165" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="272" cy="170" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="160" cy="190" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="290" cy="195" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="148" cy="218" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="306" cy="222" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="192" cy="208" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="265" cy="215" r="3.5" fill="var(--navy)" opacity="0.65"/>
+        </svg>
+        <div style="text-align:center; font-size:0.88vw; color:var(--teal); font-weight:700; margin-top:0.15vw;">
+          Dispers&atilde;o sim&eacute;trica &rarr; <b>n&atilde;o rebaixar</b>
+        </div>
+      </div>
     </div>
 
-    <div class="card" style="padding: 1.2vw 1.3vw;">
-      <div class="small-title" style="margin-bottom: .6vw;">Ações (o que fazer no GRADE)</div>
-      <ul style="margin: 0; padding-left: 1.1vw;">
-        <li>Procure <strong>registro/protocolo</strong> e compare com o artigo (desfechos e análises).</li>
-        <li>Verifique se <strong>a evidência muda</strong> ao excluir estudos muito pequenos / alto viés.</li>
-        <li>Se a suspeita for consistente: <strong>rebaixe 1 nível</strong> (publication bias) e descreva o racional.</li>
-      </ul>
-      <div class="note" style="margin-top: .9vw;">
-        Heurística: quando a “certeza” parece alta demais para o tamanho/qualidade do conjunto, trate como sinal — não como veredito.
+    <!-- FUNNEL PLOT B: Assimétrico (viés de publicação) -->
+    <div class="card" style="padding: 0; overflow: hidden; border-color: rgba(var(--danger-rgb),0.25); border-top: 0.3vw solid var(--danger);">
+      <div style="padding: 0.65vw 1vw; background: rgba(var(--danger-rgb),0.05); display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-weight:800; font-size:1.02vw; color:var(--danger);">&#10007; Assim&eacute;trico</span>
+        <span style="font-size:0.86vw; color:var(--muted);">Suspeita de vi&eacute;s de publica&ccedil;&atilde;o</span>
       </div>
+      <div style="padding: 0.5vw 0.7vw;">
+        <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; font-family: Inter, system-ui, sans-serif;">
+          <!-- Y-axis (SE) -->
+          <line x1="55" y1="20" x2="55" y2="240" stroke="#94a3b8" stroke-width="0.8"/>
+          <text x="28" y="135" fill="#64748b" font-size="8.5" text-anchor="middle" transform="rotate(-90,28,135)">Erro padr&atilde;o</text>
+          <text x="50" y="28" fill="#64748b" font-size="7.5" text-anchor="end">0</text>
+          <text x="50" y="90" fill="#64748b" font-size="7.5" text-anchor="end">0,1</text>
+          <text x="50" y="150" fill="#64748b" font-size="7.5" text-anchor="end">0,2</text>
+          <text x="50" y="210" fill="#64748b" font-size="7.5" text-anchor="end">0,3</text>
+          <text x="50" y="244" fill="#64748b" font-size="7.5" text-anchor="end">0,4</text>
+          <!-- Y ticks -->
+          <line x1="52" y1="24" x2="58" y2="24" stroke="#94a3b8" stroke-width="0.6"/>
+          <line x1="52" y1="86" x2="58" y2="86" stroke="#94a3b8" stroke-width="0.6"/>
+          <line x1="52" y1="148" x2="58" y2="148" stroke="#94a3b8" stroke-width="0.6"/>
+          <line x1="52" y1="210" x2="58" y2="210" stroke="#94a3b8" stroke-width="0.6"/>
+
+          <!-- X-axis (effect) -->
+          <line x1="55" y1="240" x2="400" y2="240" stroke="#94a3b8" stroke-width="0.8"/>
+          <text x="228" y="262" fill="#64748b" font-size="8.5" text-anchor="middle">Tamanho do efeito (log RR)</text>
+          <text x="120" y="254" fill="#64748b" font-size="7.5" text-anchor="middle">-0,6</text>
+          <text x="175" y="254" fill="#64748b" font-size="7.5" text-anchor="middle">-0,4</text>
+          <text x="228" y="254" fill="#94a3b8" font-size="7.5" text-anchor="middle" font-weight="600">-0,29</text>
+          <text x="282" y="254" fill="#64748b" font-size="7.5" text-anchor="middle">-0,1</text>
+          <text x="338" y="254" fill="#64748b" font-size="7.5" text-anchor="middle">+0,1</text>
+
+          <!-- Funnel outline (95% CI) -->
+          <polygon points="228,24 68,240 388,240" fill="rgba(239,68,68,0.03)" stroke="rgba(220,38,38,0.20)" stroke-width="1" stroke-dasharray="5,3"/>
+
+          <!-- Pooled effect line -->
+          <line x1="228" y1="20" x2="228" y2="240" stroke="var(--danger)" stroke-width="1.2" stroke-dasharray="3,2"/>
+
+          <!-- Missing studies zone (ghost area) -->
+          <rect x="255" y="140" width="120" height="100" rx="8" fill="rgba(220,38,38,0.06)" stroke="rgba(220,38,38,0.15)" stroke-width="1" stroke-dasharray="3,2"/>
+          <text x="315" y="192" fill="#dc2626" font-size="9" text-anchor="middle" font-weight="600" opacity="0.7">Estudos</text>
+          <text x="315" y="204" fill="#dc2626" font-size="9" text-anchor="middle" font-weight="600" opacity="0.7">&ldquo;faltantes&rdquo;</text>
+
+          <!-- Studies (asymmetric — large studies OK, small studies skewed LEFT) -->
+          <!-- Large studies (low SE, clustered — similar to symmetric) -->
+          <circle cx="224" cy="38" r="4.5" fill="var(--navy)" opacity="0.85"/>
+          <circle cx="233" cy="44" r="4.5" fill="var(--navy)" opacity="0.85"/>
+          <circle cx="221" cy="52" r="4.5" fill="var(--navy)" opacity="0.85"/>
+          <circle cx="229" cy="60" r="4.5" fill="var(--navy)" opacity="0.85"/>
+          <!-- Medium studies (slightly asymmetric) -->
+          <circle cx="205" cy="100" r="4" fill="var(--navy)" opacity="0.75"/>
+          <circle cx="245" cy="108" r="4" fill="var(--navy)" opacity="0.75"/>
+          <circle cx="192" cy="118" r="4" fill="var(--navy)" opacity="0.75"/>
+          <circle cx="210" cy="130" r="4" fill="var(--navy)" opacity="0.75"/>
+          <circle cx="198" cy="140" r="4" fill="var(--navy)" opacity="0.75"/>
+          <!-- Small studies (only on left — showing larger effects, RIGHT side missing) -->
+          <circle cx="168" cy="165" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="155" cy="182" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="142" cy="200" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="160" cy="195" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="175" cy="212" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="135" cy="225" r="3.5" fill="var(--navy)" opacity="0.65"/>
+          <circle cx="152" cy="220" r="3.5" fill="var(--navy)" opacity="0.65"/>
+        </svg>
+        <div style="text-align:center; font-size:0.88vw; color:var(--danger); font-weight:700; margin-top:0.15vw;">
+          Estudos pequenos s&oacute; com efeitos grandes &rarr; <b>rebaixar 1 n&iacute;vel</b>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Key points row -->
+  <div style="display:flex; gap:1vw; margin-top: 0.6vw;">
+    <div style="flex:1; padding:0.6vw 0.85vw; border-radius:0.8vw; background:rgba(var(--navy-rgb),0.04); border:1px solid rgba(var(--navy-rgb),0.10); font-size:0.92vw; line-height:1.3; color:var(--navy);">
+      <b>Quando suspeitar:</b> efeito grande vindo de estudos pequenos &bull; desfechos do registro n&atilde;o batem com publica&ccedil;&atilde;o &bull; lacuna de negativos
+    </div>
+    <div style="flex:1; padding:0.6vw 0.85vw; border-radius:0.8vw; background:rgba(var(--gold-rgb),0.08); border:1px solid rgba(var(--gold-rgb),0.18); font-size:0.92vw; line-height:1.3; color:var(--navy);">
+      <b>O que fazer:</b> checar registro/protocolo &bull; verificar se evid&ecirc;ncia muda ao excluir pequenos &bull; se consistente: <b>rebaixar</b>
     </div>
   </div>
 
-  <p class="source" style="margin-top: 1.2vw;">Fonte: Core GRADE 2/4 (BMJ 2025; DOI: 10.1136/bmj-2024-081904).</p>
-</section>
+  <div class="ref" style="margin-top:auto; padding-top: 0.5vw; border-top: 1px solid var(--border); font-size: 0.78vw; color: var(--muted);">
+    Conceito: Cochrane Handbook 10.4 &bull; Core GRADE 4 (vi&eacute;s de publica&ccedil;&atilde;o) &mdash; BMJ 2025. Funnel plots ilustrativos.
+  </div>
+
+</div>
