@@ -94,10 +94,9 @@ Criar (ou refatorar) apresentações de alto nível com:
 
 **Regras de sync:**
 
-- Após cada commit local, fazer `git push origin main` para manter espelhado
-- Se o local estiver ahead do remote, usar `git push --force origin main` para sobrescrever (o usuário autorizou force push)
-- **NUNCA** deixar commits locais sem push ao final de uma sessão de trabalho
-- Verificar com `git status` que o branch está `up to date with 'origin/main'` antes de encerrar
+- Push apenas quando o usuário solicitar explicitamente
+- O remote pode estar à frente do local (edições por outras ferramentas/sessões)
+- Se o usuário pedir para sobrescrever o GitHub, usar `git push --force origin main`
 
 ---
 
