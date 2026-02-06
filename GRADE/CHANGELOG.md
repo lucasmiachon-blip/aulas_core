@@ -1,5 +1,18 @@
 # CHANGELOG - Aulas Core (GRADE + OSTEOPOROSE)
 
+## 2026-02-06 — S19: κ interobservador RoB 2 + polish visual (v3)
+
+- **Variabilidade interobservador:** κ = 0,16 (concordância leve) adicionado ao painel de ferramentas RCTs, com nota de que ROBUST-RCT foi desenvolvido para ↑ reprodutibilidade. Fonte: Minozzi et al., *J Clin Epidemiol* 2020;126:37-44 (tier-1).
+- **Sombra profissional no hero:** `box-shadow: 0 0.2vw 0.8vw rgba(var(--navy-rgb), 0.07)` — profundidade sutil sem exagero.
+- **Labels mais legíveis:** 0.60vw → 0.65vw nos 3 painéis da coluna esquerda.
+- **Chip maior:** 0.62vw → 0.68vw no "5 domínios · todos baixo".
+- **Referência Minozzi adicionada** ao rodapé (4 fontes tier-1 total).
+
+### Arquivos modificados
+
+- `src/slides/S19.html`
+- `CHANGELOG.md`
+
 ## 2026-02-06 — S19: framework de decisão RoB + cores tokenizadas (v2)
 
 - **Framework de decisão (Fig 2 do Core GRADE 4):** painel "Princípio GRADE" substituído por "Quando rebaixar?" com as 3 regras do corpo de evidência: alto RoB domina (>65% peso) → rebaixar; evidência apreciável de baixo RoB + resultados similares → usar todos, não rebaixar; resultados diferentes → usar só baixo RoB.
