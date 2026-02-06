@@ -195,6 +195,7 @@ Aulas2/
 9. **Ponto focal obrigatório.** Cada slide tem UM elemento dominante. Se nenhum domina, redesenhar.
 10. **Consistência cross-slide.** Títulos na mesma altura, mesmo tamanho, mesmo peso em todos os content slides. Consultar design tokens antes de editar.
 11. **Zero AI markers.** Sem linhas de acento sob títulos, gradientes genéricos, ou decoração sem propósito.
+12. **Paralelismo obrigatório.** Ao polir um slide (fontes, sombras, tamanhos, cores), o MESMO padrão deve ser aplicado a TODOS os slides do mesmo tipo. Nunca polir um slide isoladamente — a inconsistência resultante é pior que o estado anterior. Se não há tempo para padronizar todos, documentar as escolhas feitas e marcar como dívida técnica.
 
 ---
 
@@ -210,6 +211,30 @@ Aulas2/
 - **Variar layouts** — alternar entre colunas, grids, callouts, imagens half-bleed. Nunca repetir layout em slides consecutivos.
 - **Font pairing importa** — header font distintiva + body font limpa. Nunca Arial sozinho.
 - **Nunca usar linhas de acento sob títulos** — é marca de AI. Usar whitespace ou background color.
+
+### Dívida técnica — paralelismo cross-slide (GRADE)
+
+> **Status:** S19 foi polido milimetricamente. Os demais slides de conteúdo podem ter tamanhos, sombras e labels diferentes. Ao editar qualquer slide futuro, usar S19 como referência e replicar padrões.
+
+**Tokens inline de referência (S19 — padrão-alvo):**
+
+| Elemento | Valor | Nota |
+|---|---|---|
+| Eyebrow (categoria) | `0.72vw` uppercase, 700, `var(--muted)` | Acima do h2 |
+| Labels de seção | `0.65vw` uppercase, 800, `var(--muted)` | Dentro de painéis |
+| Body text painéis | `0.78vw`, line-height 1.35, `var(--navy)` | Informação principal |
+| Domain titles (direita) | `0.9vw`, 800, `var(--navy)` | Títulos de domínio |
+| Domain descriptions | `0.78vw`, `var(--muted)` | Descritivos |
+| Status tags ("baixo") | `0.75vw`, 700, `var(--teal)` | Alinhados à direita |
+| Chip | `0.68vw` | Badge no header |
+| Hero número | `3.4vw` serif, 800, `var(--teal)` | Ponto focal |
+| Hero sub-text | `0.78-0.95vw`, `var(--navy)` | Contextual |
+| Shadow (hero card) | `0 0.2vw 0.8vw rgba(var(--navy-rgb), 0.07)` | Sutil, profissional |
+| Border-left accent | `0.18-0.22vw solid var(--X)` | Semântico por cor |
+| Gap entre painéis | `0.4-0.65vw` | Flex column |
+| Grid principal | `1.15fr 1.65fr` com `gap: 1.4vw` | 2 colunas |
+
+**Ao polir outro slide:** abrir S19 como referência lateral e replicar tipografia, sombras, espaçamentos. Não inventar novos valores.
 
 ### Frontend
 
@@ -472,7 +497,22 @@ Aulas2/
 
 ---
 
-### Sessão 2026-02-06 (Round 4 — S19 RoB definition + content audit)
+### Sessão 2026-02-06 (Round 4 — S19 RoB definition + content audit + paralelismo)
+
+#### Insight 6: Polir um slide cria dívida de paralelismo
+
+**O que aconteceu:** Poli S19 com sombras, labels maiores, kappa data, tokens corretos. Mas os outros ~50 slides de conteúdo continuam com tamanhos, sombras e labels diferentes. O resultado é um slide "premium" cercado de slides "standard" — a inconsistência chama mais atenção que o polish.
+
+**Aprendizado:**
+
+- **Polir um slide = compromisso de polir todos** do mesmo tipo, ou documentar a dívida
+- **Nunca polir isoladamente sem registrar as escolhas** — futuras sessões não têm contexto dos valores escolhidos
+- **Tabela de tokens inline** adicionada ao CLAUDE.md para que qualquer sessão futura replique o padrão do S19
+- **Regra 12 criada:** "Paralelismo obrigatório" — ao polir um slide, aplicar o mesmo padrão a todos
+
+---
+
+### Sessão 2026-02-06 (Round 4 — S19 RoB definition + content audit, details)
 
 #### Insight 5: Verificar conteúdo contra o artigo-fonte antes de declarar "pronto"
 
