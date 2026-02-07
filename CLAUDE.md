@@ -556,6 +556,47 @@ ANTES de polir qualquer slide:
 - **Border-left accent** é mais elegante que border-all para callouts secundários — cria hierarquia sem competir com o conteúdo principal
 - **Regra 6→4:** Se um slide tem > 6 elementos visuais distintos, consolidar até ≤ 6
 
+#### Insight 13: Callout full-width abaixo da grid = dead space; integrar na coluna resolve
+
+**O que fiz (Round 6 — V3 S33):** V2 tinha o callout de estatinas como elemento full-width ABAIXO da grid (KM + Hero/RRR/NNT). Como a grid tinha `flex:1` e o conteúdo era mais curto que o espaço, ~150px de cream ficavam vazios entre a grid e o callout.
+
+**Fix V3:** Movi o callout para DENTRO da coluna direita, ancorado ao fundo com `margin-top: auto`. A grid agora contém TODA a informação. O gap restante (entre RRR/NNT e callout) funciona como "pausa dramática" antes da punchline — intencional, não sobra.
+
+**Também fixei:** KM card `align-items: flex-start` (imagem no topo, ref no rodapé via `margin: auto 0 0 0`), statin labels 9px→10px para legibilidade de auditório, punchline com `background: rgba(navy, 0.04)` para separação visual.
+
+**Padrão extraído:**
+
+- **Callouts secundários NUNCA devem ser full-width isolados abaixo da grid** — integrar na coluna mais relevante
+- **`margin-top: auto` em callout dentro de flex column** = ancora ao fundo, cria gap intencional
+- **Fill ratio subiu de ~55% para ~78%** com a mesma informação — puro layout
+- **Imagem em card stretch:** `align-items: flex-start` > `center` quando a imagem é curta (evita dead space simétrico)
+- **Textos de callout em auditório:** mínimo 10px para labels, 15-16px para dados
+- **Navy bookends em coluna** (hero top + conclusion bottom) criam sandwich Duarte e color story: navy → gold → navy
+- **Clinical pearl com `flex:1; align-items:center`** distribui gap simetricamente — transforma dead space em ritmo visual
+- **Gold accent chain:** stats (gold border) → pearl (gold border-left) → punchline (gold text on navy) = consistência cromática sem monotonia
+
+#### Insight 14: Layout deve seguir o aspect ratio do asset, não o contrário (CRÍTICO)
+
+**O que aconteceu (V2-V4 S33):** Fiz 4 versões do S33 com layout 2-colunas (55%/45% grid). Todas falharam porque a imagem KM (700×268, ratio 2.6:1) é ultra-wide. Em qualquer grid vertical, ela gera ~150-300px de dead space. Tentei preencher com clinical pearl, navy bookends, margin-auto — nada funcionou. O layout 2-colunas era INCOMPATÍVEL com o asset.
+
+**Fix V5 (3 bandas horizontais):** Reformulei completamente para 3 bandas horizontais:
+
+- **Band 1 (navy):** título + 0.72 hero stat side-by-side — dado e título na mesma linha
+- **Band 2 (cream, flex:1):** chart FULL-WIDTH (`width:100%; height:100%; object-fit:contain`) — preenche toda a banda
+- **Band 3 (navy):** statin comparison + punchline em row horizontal
+
+Fill ratio: **~92%**. Zero dead space. Duarte sandwich (dark→light→dark).
+
+**Padrão extraído:**
+
+- **Imagem wide (ratio >2:1) → layout horizontal (bandas)** — NUNCA 2-colunas
+- **Imagem tall (ratio <1:1) → layout vertical (colunas)** — grid funciona
+- **Imagem quadrada (~1:1) → qualquer layout** — flexível
+- **`width:100%; height:100%; object-fit:contain`** = imagem preenche o container mantendo ratio
+- **`max-width:100%; max-height:100%`** NÃO escala para cima — só limita o máximo
+- **Duarte sandwich (dark→light→dark)** funciona melhor quando a cream band tem conteúdo denso (chart full-width)
+- **Title + hero stat side-by-side** economiza ~80px vertical vs stacked — crucial quando vertical é escasso
+
 ### Sessão 2026-02-07 (Round 2 — Reestilização bg-navy + QA visual GRADE)
 
 #### Erro 17: Chip CSS faltando override para bg-navy (chip--muted, chip--navy invisíveis)
