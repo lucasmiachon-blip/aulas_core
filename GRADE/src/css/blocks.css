@@ -40,14 +40,14 @@
 .slide-indicator {
   font-family: var(--font-sans);
   font-size: 14px;
-  color: rgba(255,255,255,0.86);
+  color: rgba(255, 255, 255, 0.86);
 }
 
 /* Labels */
 .label-gold {
   font-family: var(--font-sans);
   text-transform: uppercase;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.1em;
   font-weight: 800;
   /* Neutral label (gold was low-contrast on some projectors). */
   color: rgba(var(--text-rgb), 0.48);
@@ -137,7 +137,7 @@
 /* Contrast fixes for dark slides */
 .bg-navy .iconCircle {
   border-color: rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.92);
 }
 
@@ -212,7 +212,7 @@
 .chip--gold {
   background: rgba(var(--gold-rgb), 0.12);
   color: var(--navy);
-  border-color: rgba(var(--gold-rgb), 0.30);
+  border-color: rgba(var(--gold-rgb), 0.3);
 }
 
 .cardHeader .chip--gold {
@@ -239,7 +239,6 @@
   border-color: rgba(var(--navy-rgb), 0.16);
 }
 
-
 .chip--teal {
   background: rgba(var(--teal-rgb), 0.12);
   color: var(--teal);
@@ -247,29 +246,35 @@
 }
 
 .chip--navy {
-  background: rgba(var(--navy-rgb), 0.10);
+  background: rgba(var(--navy-rgb), 0.1);
   color: var(--navy);
   border-color: rgba(var(--navy-rgb), 0.22);
 }
 
 /* Chip overrides for dark slides */
 .bg-navy .chip--muted {
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.88);
   border-color: rgba(255, 255, 255, 0.18);
 }
 
 .bg-navy .chip--navy {
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.88);
   border-color: rgba(255, 255, 255, 0.18);
+}
+
+.bg-navy .chip--gold {
+  background: rgba(var(--gold-rgb), 0.22);
+  color: var(--gold);
+  border-color: rgba(var(--gold-rgb), 0.4);
 }
 
 /* Notes */
 .note {
   border-left: 0.35vw solid var(--gold);
-  background: rgba(var(--gold-rgb), 0.10);
-  padding: 0.9vw 1.0vw;
+  background: rgba(var(--gold-rgb), 0.1);
+  padding: 0.9vw 1vw;
   border-radius: 0.6vw;
 }
 
@@ -312,8 +317,6 @@
   padding: 0.65vw 0.8vw;
 }
 
-
-
 .table-medium {
   border-collapse: collapse;
   width: 100%;
@@ -327,7 +330,7 @@
 
 .table-medium th {
   font-family: var(--font-sans);
-  font-size: 0.80vw;
+  font-size: 0.8vw;
   color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -381,7 +384,7 @@
 }
 
 .bg-navy .rule {
-  background: rgba(255,255,255, 0.18);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 /* Bullets: consistent indent + spacing (keeps content legible in projector) */
@@ -399,8 +402,8 @@ ul.bullets li {
 
 /* Small PICO badge (P/I/O) */
 .badge {
-  width: 2.0vw;
-  height: 2.0vw;
+  width: 2vw;
+  height: 2vw;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -420,11 +423,11 @@ ul.bullets li {
 /* Source line helper */
 .source {
   font-family: var(--font-sans) !important;
-  font-size: 0.80vw;
-  color: rgba(var(--text-rgb), 0.60);
+  font-size: 0.8vw;
+  color: rgba(var(--text-rgb), 0.6);
   line-height: 1.35;
 }
 
 .bg-navy .source {
-  color: rgba(255,255,255,0.70);
+  color: rgba(255, 255, 255, 0.7);
 }

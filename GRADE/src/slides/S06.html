@@ -1,156 +1,376 @@
 <section class="slide bg-navy" data-slide-id="S06">
   <!-- Wrapper flex para preencher 100% vertical -->
-  <div style="display:flex; flex-direction:column; height:100%;">
+  <div style="display: flex; flex-direction: column; height: 100%">
+    <div class="label-gold" style="font-size: 0.9vw">MÉTODO — DO ESTUDO À CERTEZA</div>
 
-    <div class="label-gold" style="font-size:0.90vw;">MÉTODO — DO ESTUDO À CERTEZA</div>
+    <h2 style="color: var(--white); margin-top: 0.6vw">O motor do GRADE</h2>
 
-    <h2 style="color: var(--white); margin-top:0.6vw;">O motor do GRADE</h2>
-
-    <div class="lead" style="color: rgba(255,255,255,0.72); max-width: 90%; margin-bottom:1.2vw;">
+    <div class="lead" style="color: rgba(255, 255, 255, 0.72); max-width: 90%; margin-bottom: 1.2vw">
       Comece pelo desenho do estudo, ajuste com os domínios — e declare a certeza.
     </div>
 
     <!-- PONTO DE PARTIDA -->
-    <div style="display:flex; gap:1.6vw; margin-bottom:1.3vw;">
-      <div style="flex:1; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:0.8vw; padding:0.9vw 1.2vw; display:flex; align-items:center; gap:1.2vw;">
-        <div style="font-size:0.80vw; letter-spacing:0.12em; text-transform:uppercase; color: rgba(255,255,255,0.55); font-weight:800; white-space:nowrap;">PONTO DE PARTIDA</div>
-        <div style="display:flex; align-items:center; gap:1.4vw;">
-          <div style="display:flex; align-items:center; gap:0.5vw;">
-            <span style="font-size:1.0vw; font-weight:800; color: rgba(255,255,255,0.92);">RCT</span>
-            <span style="font-size:1.3vw; letter-spacing:0.15vw; color: var(--gold);">⊕⊕⊕⊕</span>
-            <span style="font-size:0.85vw; color: rgba(255,255,255,0.55);">ALTA</span>
+    <div style="display: flex; gap: 1.6vw; margin-bottom: 1.3vw">
+      <div
+        style="
+          flex: 1;
+          background: rgba(255, 255, 255, 0.06);
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 0.8vw;
+          padding: 0.9vw 1.2vw;
+          display: flex;
+          align-items: center;
+          gap: 1.2vw;
+        "
+      >
+        <div
+          style="
+            font-size: 0.8vw;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.55);
+            font-weight: 800;
+            white-space: nowrap;
+          "
+        >
+          PONTO DE PARTIDA
+        </div>
+        <div style="display: flex; align-items: center; gap: 1.4vw">
+          <div style="display: flex; align-items: center; gap: 0.5vw">
+            <span style="font-size: 1vw; font-weight: 800; color: rgba(255, 255, 255, 0.92)">RCT</span>
+            <span style="font-size: 1.3vw; letter-spacing: 0.15vw; color: var(--gold)">⊕⊕⊕⊕</span>
+            <span style="font-size: 0.85vw; color: rgba(255, 255, 255, 0.55)">ALTA</span>
           </div>
-          <div style="width:1px; height:1.6vw; background: rgba(255,255,255,0.15);"></div>
-          <div style="display:flex; align-items:center; gap:0.5vw;">
-            <span style="font-size:1.0vw; font-weight:800; color: rgba(255,255,255,0.92);">Observacional</span>
-            <span style="font-size:1.3vw; letter-spacing:0.15vw;"><span style="color: var(--gold);">⊕⊕</span><span style="color: rgba(255,255,255,0.25);">◯◯</span></span>
-            <span style="font-size:0.85vw; color: rgba(255,255,255,0.55);">BAIXA</span>
+          <div style="width: 1px; height: 1.6vw; background: rgba(255, 255, 255, 0.15)"></div>
+          <div style="display: flex; align-items: center; gap: 0.5vw">
+            <span style="font-size: 1vw; font-weight: 800; color: rgba(255, 255, 255, 0.92)">Observacional</span>
+            <span style="font-size: 1.3vw; letter-spacing: 0.15vw">
+              <span style="color: var(--gold)">⊕⊕</span>
+              <span style="color: rgba(255, 255, 255, 0.25)">◯◯</span>
+            </span>
+            <span style="font-size: 0.85vw; color: rgba(255, 255, 255, 0.55)">BAIXA</span>
           </div>
         </div>
       </div>
     </div>
 
     <!-- GRID: Downgrades | Upgrades | Resultado — flex:1 preenche espaço -->
-    <div style="display:grid; grid-template-columns: 1.2fr 0.85fr 0.75fr; gap:1.3vw; flex:1; align-items:stretch;">
-
+    <div style="display: grid; grid-template-columns: 1.2fr 0.85fr 0.75fr; gap: 1.3vw; flex: 1; align-items: stretch">
       <!-- DOWNGRADES -->
-      <div style="background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.10); border-radius:1.0vw; padding:1.2vw 1.3vw; display:flex; flex-direction:column;">
-        <div style="display:flex; align-items:center; gap:0.6vw; margin-bottom:0.9vw;">
-          <span class="chip chip--gold" style="font-size:0.78vw;">↓ DOWNGRADES</span>
-          <span style="font-size:0.75vw; color: rgba(255,255,255,0.42);">5 domínios</span>
+      <div
+        style="
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 1vw;
+          padding: 1.2vw 1.3vw;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; gap: 0.6vw; margin-bottom: 0.9vw">
+          <span class="chip chip--gold" style="font-size: 0.78vw">↓ DOWNGRADES</span>
+          <span style="font-size: 0.75vw; color: rgba(255, 255, 255, 0.42)">5 domínios</span>
         </div>
 
-        <div style="display:flex; flex-direction:column; gap:0.6vw; flex:1;">
-          <div style="display:flex; align-items:center; gap:0.65vw; padding:0.5vw 0.75vw; border-left:0.18vw solid var(--gold); border-radius:0 0.45vw 0.45vw 0; background: rgba(var(--gold-rgb),0.06);">
-            <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.93); flex:1;">Risco de viés</span>
-            <span style="font-size:0.75vw; font-weight:700; color: rgba(255,255,255,0.68); white-space:nowrap;">−1 / −2</span>
+        <div style="display: flex; flex-direction: column; gap: 0.6vw; flex: 1">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.65vw;
+              padding: 0.5vw 0.75vw;
+              border-left: 0.18vw solid var(--gold);
+              border-radius: 0 0.45vw 0.45vw 0;
+              background: rgba(var(--gold-rgb), 0.06);
+            "
+          >
+            <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.93); flex: 1">
+              Risco de viés
+            </span>
+            <span style="font-size: 0.75vw; font-weight: 700; color: rgba(255, 255, 255, 0.68); white-space: nowrap">
+              −1 / −2
+            </span>
           </div>
 
-          <div style="display:flex; align-items:center; gap:0.65vw; padding:0.5vw 0.75vw; border-left:0.18vw solid rgba(var(--gold-rgb),0.70); border-radius:0 0.45vw 0.45vw 0; background: rgba(255,255,255,0.03);">
-            <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.90); flex:1;">Inconsistência</span>
-            <span style="font-size:0.75vw; font-weight:700; color: rgba(255,255,255,0.68); white-space:nowrap;">−1 / −2</span>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.65vw;
+              padding: 0.5vw 0.75vw;
+              border-left: 0.18vw solid rgba(var(--gold-rgb), 0.7);
+              border-radius: 0 0.45vw 0.45vw 0;
+              background: rgba(255, 255, 255, 0.03);
+            "
+          >
+            <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.9); flex: 1">
+              Inconsistência
+            </span>
+            <span style="font-size: 0.75vw; font-weight: 700; color: rgba(255, 255, 255, 0.68); white-space: nowrap">
+              −1 / −2
+            </span>
           </div>
 
-          <div style="display:flex; align-items:center; gap:0.65vw; padding:0.5vw 0.75vw; border-left:0.18vw solid rgba(var(--gold-rgb),0.50); border-radius:0 0.45vw 0.45vw 0; background: rgba(255,255,255,0.03);">
-            <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.87); flex:1;">Indireção</span>
-            <span style="font-size:0.75vw; font-weight:700; color: rgba(255,255,255,0.68); white-space:nowrap;">−1 / −2</span>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.65vw;
+              padding: 0.5vw 0.75vw;
+              border-left: 0.18vw solid rgba(var(--gold-rgb), 0.5);
+              border-radius: 0 0.45vw 0.45vw 0;
+              background: rgba(255, 255, 255, 0.03);
+            "
+          >
+            <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.87); flex: 1">
+              Indireção
+            </span>
+            <span style="font-size: 0.75vw; font-weight: 700; color: rgba(255, 255, 255, 0.68); white-space: nowrap">
+              −1 / −2
+            </span>
           </div>
 
-          <div style="display:flex; align-items:center; gap:0.65vw; padding:0.5vw 0.75vw; border-left:0.18vw solid rgba(var(--gold-rgb),0.35); border-radius:0 0.45vw 0.45vw 0; background: rgba(255,255,255,0.03);">
-            <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.84); flex:1;">Imprecisão</span>
-            <span style="font-size:0.75vw; font-weight:700; color: rgba(255,255,255,0.68); white-space:nowrap;">−1 / −2</span>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.65vw;
+              padding: 0.5vw 0.75vw;
+              border-left: 0.18vw solid rgba(var(--gold-rgb), 0.35);
+              border-radius: 0 0.45vw 0.45vw 0;
+              background: rgba(255, 255, 255, 0.03);
+            "
+          >
+            <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.84); flex: 1">
+              Imprecisão
+            </span>
+            <span style="font-size: 0.75vw; font-weight: 700; color: rgba(255, 255, 255, 0.68); white-space: nowrap">
+              −1 / −2
+            </span>
           </div>
 
-          <div style="display:flex; align-items:center; gap:0.65vw; padding:0.5vw 0.75vw; border-left:0.18vw solid rgba(var(--gold-rgb),0.22); border-radius:0 0.45vw 0.45vw 0; background: rgba(255,255,255,0.03);">
-            <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.80); flex:1;">Viés de publicação</span>
-            <span style="font-size:0.75vw; font-weight:700; color: rgba(255,255,255,0.68); white-space:nowrap;">−1 / −2</span>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.65vw;
+              padding: 0.5vw 0.75vw;
+              border-left: 0.18vw solid rgba(var(--gold-rgb), 0.22);
+              border-radius: 0 0.45vw 0.45vw 0;
+              background: rgba(255, 255, 255, 0.03);
+            "
+          >
+            <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.8); flex: 1">
+              Viés de publicação
+            </span>
+            <span style="font-size: 0.75vw; font-weight: 700; color: rgba(255, 255, 255, 0.68); white-space: nowrap">
+              −1 / −2
+            </span>
           </div>
         </div>
 
-        <div style="margin-top:auto; padding-top:0.7vw; border-top:1px solid rgba(255,255,255,0.06);">
-          <div style="font-size:0.85vw; color: rgba(255,255,255,0.50);">
-            Cada domínio avaliado <strong style="color: var(--gold);">independentemente</strong>. Descer é mais comum que subir.
+        <div style="margin-top: auto; padding-top: 0.7vw; border-top: 1px solid rgba(255, 255, 255, 0.06)">
+          <div style="font-size: 0.85vw; color: rgba(255, 255, 255, 0.5)">
+            Cada domínio avaliado
+            <strong style="color: var(--gold)">independentemente</strong>
+            . Descer é mais comum que subir.
           </div>
         </div>
       </div>
 
       <!-- UPGRADES -->
-      <div style="background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.10); border-radius:1.0vw; padding:1.2vw 1.3vw; display:flex; flex-direction:column;">
-        <div style="display:flex; align-items:center; gap:0.6vw; margin-bottom:0.9vw;">
-          <span class="chip chip--teal" style="font-size:0.78vw;">↑ UPGRADES</span>
-          <span style="font-size:0.75vw; color: rgba(255,255,255,0.42);">só observacionais</span>
+      <div
+        style="
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 1vw;
+          padding: 1.2vw 1.3vw;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div style="display: flex; align-items: center; gap: 0.6vw; margin-bottom: 0.9vw">
+          <span class="chip chip--teal" style="font-size: 0.78vw">↑ UPGRADES</span>
+          <span style="font-size: 0.75vw; color: rgba(255, 255, 255, 0.42)">só observacionais</span>
         </div>
 
-        <div style="display:flex; flex-direction:column; gap:0.6vw;">
-          <div style="padding:0.55vw 0.75vw; border-left:0.18vw solid var(--teal); border-radius:0 0.45vw 0.45vw 0; background: rgba(var(--teal-rgb),0.06);">
-            <div style="display:flex; align-items:center; gap:0.5vw;">
-              <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.93); flex:1;">Grande efeito</span>
-              <span style="font-size:0.75vw; font-weight:700; color: rgba(255,255,255,0.68);">+1 / +2</span>
+        <div style="display: flex; flex-direction: column; gap: 0.6vw">
+          <div
+            style="
+              padding: 0.55vw 0.75vw;
+              border-left: 0.18vw solid var(--teal);
+              border-radius: 0 0.45vw 0.45vw 0;
+              background: rgba(var(--teal-rgb), 0.06);
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 0.5vw">
+              <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.93); flex: 1">
+                Grande efeito
+              </span>
+              <span style="font-size: 0.75vw; font-weight: 700; color: rgba(255, 255, 255, 0.68)">+1 / +2</span>
             </div>
-            <div style="font-size:0.80vw; color: rgba(255,255,255,0.50); margin-top:0.25vw;">RR &lt; 0.5 ou &gt; 2.0</div>
+            <div style="font-size: 0.8vw; color: rgba(255, 255, 255, 0.5); margin-top: 0.25vw">
+              RR &lt; 0.5 ou &gt; 2.0
+            </div>
           </div>
 
-          <div style="padding:0.55vw 0.75vw; border-left:0.18vw solid rgba(var(--teal-rgb),0.70); border-radius:0 0.45vw 0.45vw 0; background: rgba(255,255,255,0.03);">
-            <div style="display:flex; align-items:center; gap:0.5vw;">
-              <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.90); flex:1;">Dose–resposta</span>
-              <span style="font-size:0.75vw; font-weight:700; color: rgba(255,255,255,0.68);">+1</span>
+          <div
+            style="
+              padding: 0.55vw 0.75vw;
+              border-left: 0.18vw solid rgba(var(--teal-rgb), 0.7);
+              border-radius: 0 0.45vw 0.45vw 0;
+              background: rgba(255, 255, 255, 0.03);
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 0.5vw">
+              <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.9); flex: 1">
+                Dose–resposta
+              </span>
+              <span style="font-size: 0.75vw; font-weight: 700; color: rgba(255, 255, 255, 0.68)">+1</span>
             </div>
-            <div style="font-size:0.80vw; color: rgba(255,255,255,0.50); margin-top:0.25vw;">Gradiente claro (ex.: CAC)</div>
+            <div style="font-size: 0.8vw; color: rgba(255, 255, 255, 0.5); margin-top: 0.25vw">
+              Gradiente claro (ex.: CAC)
+            </div>
           </div>
 
-          <div style="padding:0.55vw 0.75vw; border-left:0.18vw solid rgba(var(--teal-rgb),0.50); border-radius:0 0.45vw 0.45vw 0; background: rgba(255,255,255,0.03);">
-            <div style="display:flex; align-items:center; gap:0.5vw;">
-              <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.87); flex:1; line-height:1.25;">Confundimento reduziria efeito</span>
-              <span style="font-size:0.75vw; font-weight:700; color: rgba(255,255,255,0.68);">+1</span>
+          <div
+            style="
+              padding: 0.55vw 0.75vw;
+              border-left: 0.18vw solid rgba(var(--teal-rgb), 0.5);
+              border-radius: 0 0.45vw 0.45vw 0;
+              background: rgba(255, 255, 255, 0.03);
+            "
+          >
+            <div style="display: flex; align-items: center; gap: 0.5vw">
+              <span
+                style="
+                  font-size: 0.98vw;
+                  font-weight: 800;
+                  color: rgba(255, 255, 255, 0.87);
+                  flex: 1;
+                  line-height: 1.25;
+                "
+              >
+                Confundimento reduziria efeito
+              </span>
+              <span style="font-size: 0.75vw; font-weight: 700; color: rgba(255, 255, 255, 0.68)">+1</span>
             </div>
-            <div style="font-size:0.80vw; color: rgba(255,255,255,0.50); margin-top:0.25vw;">Viés contra o efeito observado</div>
+            <div style="font-size: 0.8vw; color: rgba(255, 255, 255, 0.5); margin-top: 0.25vw">
+              Viés contra o efeito observado
+            </div>
           </div>
         </div>
 
-        <div style="margin-top:auto; padding-top:0.7vw; border-top:1px solid rgba(255,255,255,0.06);">
-          <div style="font-size:0.85vw; color: rgba(255,255,255,0.50);">
-            O objetivo é <strong style="color: rgba(255,255,255,0.80);">explicar</strong>, não pontuar.
+        <div style="margin-top: auto; padding-top: 0.7vw; border-top: 1px solid rgba(255, 255, 255, 0.06)">
+          <div style="font-size: 0.85vw; color: rgba(255, 255, 255, 0.5)">
+            O objetivo é
+            <strong style="color: rgba(255, 255, 255, 0.8)">explicar</strong>
+            , não pontuar.
           </div>
         </div>
       </div>
 
       <!-- RESULTADO: 4 NÍVEIS -->
-      <div style="background: rgba(var(--gold-rgb),0.08); border:1px solid rgba(var(--gold-rgb),0.25); border-radius:1.0vw; padding:1.2vw 1.3vw; display:flex; flex-direction:column;">
-        <div style="font-size:0.80vw; letter-spacing:0.12em; text-transform:uppercase; color: rgba(255,255,255,0.60); font-weight:800; margin-bottom:0.9vw;">
+      <div
+        style="
+          background: rgba(var(--gold-rgb), 0.08);
+          border: 1px solid rgba(var(--gold-rgb), 0.25);
+          border-radius: 1vw;
+          padding: 1.2vw 1.3vw;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <div
+          style="
+            font-size: 0.8vw;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 800;
+            margin-bottom: 0.9vw;
+          "
+        >
           RESULTADO FINAL
         </div>
 
-        <div style="display:flex; flex-direction:column; gap:0.8vw; flex:1;">
-          <div style="display:flex; align-items:center; gap:0.55vw; padding:0.5vw 0.65vw; border-radius:0.45vw; background: rgba(var(--gold-rgb),0.12);">
-            <span style="font-size:1.1vw; letter-spacing:0.10vw; color: var(--gold);">⊕⊕⊕⊕</span>
-            <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.93);">Alta</span>
+        <div style="display: flex; flex-direction: column; gap: 0.8vw; flex: 1">
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.55vw;
+              padding: 0.5vw 0.65vw;
+              border-radius: 0.45vw;
+              background: rgba(var(--gold-rgb), 0.12);
+            "
+          >
+            <span style="font-size: 1.1vw; letter-spacing: 0.1vw; color: var(--gold)">⊕⊕⊕⊕</span>
+            <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.93)">Alta</span>
           </div>
-          <div style="display:flex; align-items:center; gap:0.55vw; padding:0.5vw 0.65vw; border-radius:0.45vw; background: rgba(var(--gold-rgb),0.07);">
-            <span style="font-size:1.1vw; letter-spacing:0.10vw;"><span style="color: var(--gold);">⊕⊕⊕</span><span style="color: rgba(255,255,255,0.20);">◯</span></span>
-            <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.93);">Moderada</span>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.55vw;
+              padding: 0.5vw 0.65vw;
+              border-radius: 0.45vw;
+              background: rgba(var(--gold-rgb), 0.07);
+            "
+          >
+            <span style="font-size: 1.1vw; letter-spacing: 0.1vw">
+              <span style="color: var(--gold)">⊕⊕⊕</span>
+              <span style="color: rgba(255, 255, 255, 0.2)">◯</span>
+            </span>
+            <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.93)">Moderada</span>
           </div>
-          <div style="display:flex; align-items:center; gap:0.55vw; padding:0.5vw 0.65vw; border-radius:0.45vw; background: rgba(255,255,255,0.04);">
-            <span style="font-size:1.1vw; letter-spacing:0.10vw;"><span style="color: var(--gold);">⊕⊕</span><span style="color: rgba(255,255,255,0.20);">◯◯</span></span>
-            <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.90);">Baixa</span>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.55vw;
+              padding: 0.5vw 0.65vw;
+              border-radius: 0.45vw;
+              background: rgba(255, 255, 255, 0.04);
+            "
+          >
+            <span style="font-size: 1.1vw; letter-spacing: 0.1vw">
+              <span style="color: var(--gold)">⊕⊕</span>
+              <span style="color: rgba(255, 255, 255, 0.2)">◯◯</span>
+            </span>
+            <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.9)">Baixa</span>
           </div>
-          <div style="display:flex; align-items:center; gap:0.55vw; padding:0.5vw 0.65vw; border-radius:0.45vw; background: rgba(255,255,255,0.02);">
-            <span style="font-size:1.1vw; letter-spacing:0.10vw;"><span style="color: var(--gold);">⊕</span><span style="color: rgba(255,255,255,0.20);">◯◯◯</span></span>
-            <span style="font-size:0.98vw; font-weight:800; color: rgba(255,255,255,0.85);">Muito baixa</span>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 0.55vw;
+              padding: 0.5vw 0.65vw;
+              border-radius: 0.45vw;
+              background: rgba(255, 255, 255, 0.02);
+            "
+          >
+            <span style="font-size: 1.1vw; letter-spacing: 0.1vw">
+              <span style="color: var(--gold)">⊕</span>
+              <span style="color: rgba(255, 255, 255, 0.2)">◯◯◯</span>
+            </span>
+            <span style="font-size: 0.98vw; font-weight: 800; color: rgba(255, 255, 255, 0.85)">Muito baixa</span>
           </div>
         </div>
 
-        <div style="margin-top:auto; padding-top:0.7vw; border-top:1px solid rgba(var(--gold-rgb),0.18);">
-          <div style="font-size:0.85vw; color: rgba(255,255,255,0.58); line-height:1.35;">
-            Certeza é <strong style="color: var(--gold);">por desfecho</strong>, não por estudo.
+        <div style="margin-top: auto; padding-top: 0.7vw; border-top: 1px solid rgba(var(--gold-rgb), 0.18)">
+          <div style="font-size: 0.85vw; color: rgba(255, 255, 255, 0.58); line-height: 1.35">
+            Certeza é
+            <strong style="color: var(--gold)">por desfecho</strong>
+            , não por estudo.
           </div>
         </div>
       </div>
-
     </div>
+  </div>
+  <!-- /wrapper flex -->
 
-  </div><!-- /wrapper flex -->
-
-  <div class="ref" style="position:absolute; bottom:4%; left:6%; font-size:0.75vw; color: rgba(255,255,255,0.50);">
+  <div class="ref" style="position: absolute; bottom: 4%; left: 6%; font-size: 0.75vw; color: rgba(255, 255, 255, 0.5)">
     Baseado no framework GRADE — Guyatt et al., BMJ 2004; J Clin Epidemiol 2011.
   </div>
 </section>

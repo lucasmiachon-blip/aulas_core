@@ -1,5 +1,56 @@
 # Changelog
 
+## 2026-02-07 — Round 12 (S33 merge + S35 GRADE redesign)
+
+### Conteúdo
+
+- **S33 redesign (merge S33+S34):** Slides redundantes sobre zoledronato e mortalidade mesclados em um único slide
+
+  - KM real do HORIZON-RFT (Lyles NEJM 2007, Fig. 2E) — recortada de PMC2324066
+  - HR 0.72, RRR 28%, NNT 27, população n=2.127
+  - Callout comparativo com estatinas (4S) — storytelling hook para S35
+  - S34 removido de `_list.txt` (69 slides total)
+
+- **S35 redesign (lente GRADE):** Slide "Esse Achado Foi Replicado?" completamente refeito
+  - **Forest plot real** extraído de Cummings et al. JAMA Intern Med 2019;179:1491-1500 (Figure 3)
+    - PDF fornecido pelo usuário → renderizado via pdfjs-dist → recortado com sharp
+  - **Painel GRADE:** ⊕⊕⊕⊕ Alta Certeza, 5 domínios com checklist visual
+  - **Hero number:** RR 0.95 (IC95% 0.86–1.04), I²=0%
+  - **Lan 2025 referenciado:** Confirmação com 47 RCTs, n=59.437
+  - **Conclusão removida** (caixa gold "não prescreva pela mortalidade") — conforme solicitação
+  - HTML forest plot anterior substituído por imagem real do journal
+
+### Sparkline Narrative (Duarte)
+
+- S33 (HORIZON): "o que poderia ser" — HR 0.72, comparação com estatinas = esperança
+- S35 (GRADE): "o que é" — RR 0.95, GRADE Alta = realidade definitiva
+- Tensão narrativa entre os dois slides maximizada
+
+### Assets adicionados
+
+- `OSTEOPOROSE/assets/horizon-km-death.jpg` — KM mortalidade HORIZON (crop de PMC)
+- `OSTEOPOROSE/assets/cummings2019-fig3-forest.jpg` — Forest plot JAMA Intern Med 2019
+- `OSTEOPOROSE/assets/lan2025-original-ref.jpeg` — Forest plot Lan CORR 2025 (full)
+- `OSTEOPOROSE/assets/pdf/jamainternal_cummings_2019.pdf` — PDF fonte
+
+### Arquivos tocados
+
+- `OSTEOPOROSE/src/slides/S33_slide-33.html` (reescrito — merge S33+S34)
+- `OSTEOPOROSE/src/slides/S35_slide-35.html` (reescrito — GRADE + imagem real)
+- `OSTEOPOROSE/src/slides/_list.txt` (S34 removido, 70→69 slides)
+- `screenshots/S35_AFTER.png`
+- `CHANGELOG.md` (esta entrada)
+
+### Handoff para próxima sessão
+
+- **S33:** Validar no viewer real (Live Server) — verificar se KM do HORIZON está renderizando
+- **S35:** Verificar legibilidade do forest plot na projeção (auditório)
+- **print.html:** Precisa rebuild para refletir remoção do S34
+- **Considerar:** Extrair Figure 4 (zoledronato) do JAMA 2019 para slide futuro?
+- **Limpeza:** Remover assets temporários (lan2025-fig0.png, jama2019-p5.png, etc.)
+
+---
+
 ## 2026-02-07 — Round 10 (Restauração slide perdido S08b + redesign)
 
 ### Conteúdo

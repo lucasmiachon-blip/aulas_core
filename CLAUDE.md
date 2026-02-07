@@ -416,6 +416,146 @@ Aulas2/
 
 ## REGISTRO DE ERROS & APRENDIZADOS
 
+### Sessão 2026-02-07 (Round 5 — S09 GRADE: padding + overlap fix)
+
+**Foco:** Ajustar padding e corrigir sobreposição da ref no S09 (CAC: leitura GRADE explícita) após integração da figura MESA.
+
+#### Erro 20: Over-engineering "minor fix" — 5 iterações quando 1 bastava (REINCIDÊNCIA 3ª vez: Erros 1, 6, 10)
+
+**O que aconteceu:** O usuário disse que S09 estava "muito bom" e só precisava "ajustar padding e mínimas sobreposição". Em vez de fazer a correção mínima (mover ref de `bottom: 4%` para `bottom: 1%`), fiz 5 iterações de mudanças cada vez mais complexas:
+
+1. Reduzi paddings, gaps e margins em todo o slide (0.85→0.7vw, 2vw→1.8vw, 1.6vw→1.2vw)
+2. Troquei inner grid para flex com `space-between` (criando gaps artificiais entre domain cards)
+3. Mudei o grid para `grid-template-rows: 1fr auto` com ref como row spanning
+4. Múltiplas tentativas de posição da ref
+5. Cada iteração piorou — o usuário disse "ficou pior e ainda corta em baixo"
+
+**Por que estava errado:**
+
+- O usuário disse que estava "muito bom" — o fix deveria ser MÍNIMO (mover a ref para baixo)
+- Mudei paddings, gaps, flex behavior, grid structure, distribuição interna — nada disso foi pedido
+- Cada iteração adicionou complexidade em vez de resolver o problema único (ref sobrepondo card)
+- A reversão final para o estado original + `bottom: 1%` + `padding-bottom: 1.8vw` era o que deveria ter sido a PRIMEIRA e ÚNICA mudança
+
+**REINCIDÊNCIA (3ª vez):**
+
+| Ocorrência | Erro                       | Padrão                                             |
+| ---------- | -------------------------- | -------------------------------------------------- |
+| 1ª         | Erro 1 (sessão 2026-02-03) | Mudanças incrementais sem visão clara              |
+| 2ª         | Erro 6 (sessão 2026-02-05) | 19 slides alterados de uma vez sem validação       |
+| 3ª         | Erro 20 (esta sessão)      | 5 iterações de over-engineering num fix de 1 linha |
+
+**Checklist OBRIGATÓRIO pré-ação (criado pela 3ª reincidência):**
+
+```
+ANTES de editar qualquer slide que o usuário disse estar "bom" ou "muito bom":
+1. Listar EXATAMENTE o que o usuário pediu para mudar (nada mais)
+2. Propor a mudança MÍNIMA (idealmente 1-2 propriedades CSS)
+3. Aplicar APENAS essa mudança
+4. Screenshot → verificar
+5. SÓ adicionar mais mudanças se o screenshot revelar problema novo
+6. NUNCA mudar layout/structure se o pedido foi padding/overlap
+```
+
+**Aprendizado:**
+
+- **"Muito bom, só precisa X" = escopo é APENAS X** — não expandir
+- **Princípio da intervenção mínima:** se uma propriedade CSS resolve, não mudar 15
+- **Over-engineering em "minor fix" é pior que o problema original** — cada mudança extra é risco de regressão
+- **Reverter para o original e fazer a mudança mínima é SEMPRE uma opção** — deveria ter sido a primeira
+
+### Sessão 2026-02-07 (Round 3+4+5 — Polish → Redesign S33+S35 OSTEOPOROSE)
+
+**Foco:** Dois passes de perfeição visual nos slides S33 (HORIZON) e S35 (Replicação GRADE) — consistência cross-slide, recrop de assets, tipografia, análise retina 2x DPI
+
+**Round 3 — Token standardization:**
+
+- Padronização de tokens cross-slide S33↔S35: title 38px, subtitle 15px, padding 32/44/16/44, footer 10px
+- Hero card S35: padding 18px/22px (vs S33 22px all — deliberadamente mais compacto para 4 painéis)
+- GRADE domains: gap 5→6px, checkmark 12→13px, text 12→12.5px
+- Interpretação GRADE: 12.5→13px para legibilidade a distância
+- Image card padding/label harmonizados (10px label, 14px card padding)
+- S33 insight box: visibilidade melhorada (bg 0.04→0.05, text 0.55→0.60, size 12→12.5px)
+- Hero card label S35: 9→10px (harmonização com S33's 11px)
+
+**Round 4 — Retina analysis + precision fixes:**
+
+- Recrop forest plot JAMA (Cummings 2019 Fig 3) — removido blue JAMA separator line + garantido "Risk Ratio (95% CI)" axis label completo
+- Grid gap S35: 20→22px (match S33)
+- GRADE circles: 16→18px (legibilidade auditório)
+- Section labels ("Domínios GRADE", "Interpretação GRADE"): 9→10px, color 0.4→0.45
+- Interpretation panel: removido flex:1 (eliminado dead space interno)
+- S33 statin conclusion: 14px bold italic → 15px bold only + letter-spacing: -0.01em (punchline mais limpo)
+- S33: Testei `align-items: stretch` no grid → REVERTIDO (criava whitespace interno excessivo no KM card 700px). `align-items: start` é correto para imagem com resolução limitada
+- S33 KM card: adicionado min-height:0 + overflow:hidden (defensive CSS)
+
+**Erros:** Nenhum novo. Tentativa de stretch no S33 foi detectada e revertida no mesmo ciclo.
+
+#### Insight 8: Token audit cross-slide como passo obrigatório antes de polir
+
+**O que fiz bem:** Antes de tocar em S35, tirei screenshot de S32 (vizinho anterior), S33, S35 e S08 (vizinho posterior). Montei tabela comparativa de tokens (title size, subtitle, padding, hero padding). Identifiquei 6 inconsistências e corrigi todas sistematicamente.
+
+**Por que funciona:** Regra 14 do CLAUDE.md ("Slide novo = tokens do vizinho") aplicada como audit, não como afterthought. O resultado é que S33 e S35 agora formam um par visual coeso — a plateia percebe que são slides do mesmo "capítulo" pela consistência tipográfica, mesmo com conteúdos contrastantes.
+
+**Padrão extraído:**
+
+```
+ANTES de polir qualquer slide:
+1. Tirar screenshot dos 4 slides: anterior, o slide, posterior, e o "par" narrativo
+2. Montar tabela de tokens: title size/weight, subtitle size/color, padding, footer, hero card
+3. Identificar inconsistências
+4. Padronizar PRIMEIRO, polir DEPOIS
+```
+
+#### Insight 9: Tipografia proporcional como recurso narrativo
+
+**O que fiz bem:** O hero number em S33 é 52px (HR 0.72 — resultado impressionante) e em S35 é 44px (RR 0.95 — resultado nulo). A redução deliberada de tamanho tipográfico espelha a deflação do achado clínico.
+
+**Por que funciona:** Na Escola Duarte, contraste tipográfico é contraste narrativo. O público inconscientemente associa "número grande = impactante" e "número menor = menos relevante". Quando passam de 0.72 (52px) para 0.95 (44px), a deflação visual amplifica a mensagem.
+
+**Padrão extraído:**
+
+- **Hero numbers** em slides sequenciais podem ter tamanhos diferentes para reforçar a narrativa
+- Slide que apresenta resultado positivo: hero number ≥ 50px
+- Slide que contradiz/deflaciona: hero number 40-46px
+- A diferença deve ser perceptível mas não gritante (8-12px max)
+
+#### Insight 10: align-items:stretch com imagem de baixa resolução cria dead space interno
+
+**O que fiz:** Testei `align-items: stretch` no grid do S33 para eliminar cream gap abaixo do KM card. O card se expandiu, mas a imagem (700×268 natural) com `object-fit: contain` ficou flutuando no meio de um card alto (812×539 container). Resultado: mais whitespace DENTRO do card do que havia FORA dele.
+
+**Por que estava errado:** `align-items: stretch` funciona quando o conteúdo preenche naturalmente o espaço extra (ex: forest plot de 2268×1240 no S35, que preenche bem). Mas com imagem de resolução limitada, stretch cria um container grande com imagem pequena dentro — pior que o gap externo.
+
+**Regra:** `align-items: stretch` só quando o conteúdo-fonte tem resolução suficiente para preencher. Com imagem upscaled (<2x do rendered), usar `align-items: start` e aceitar o gap externo.
+
+#### Insight 11: Retina screenshot (2x DPI) revela problemas invisiveis a 1x
+
+**O que fiz bem:** Capturei com `deviceScaleFactor: 2` (3200×1800 effective pixels) e medição de computed styles via `page.evaluate()`. Isso revelou: upscaling do KM (700→812px), precisão do crop do forest plot, e legibilidade real das micro-tipografias (9-10px labels).
+
+**Padrão extraído:**
+
+- Screenshots de QA devem ser SEMPRE 2x DPI mínimo
+- Medir `naturalWidth` vs `renderedWidth` de todas as imagens — ratio < 1.5 indica upscaling
+- Labels abaixo de 10px em 1600×900 podem ser ilegíveis em auditório — 10px é o mínimo prático
+
+#### Insight 12: Consolidação de cards reduz ruído e fortalece hierarquia
+
+**O que fiz (Round 5 — redesign S33):** S33 tinha 9 elementos visuais competindo: hero card, KM card, RRR, NNT, Population card, Insight box, Statin callout (gold border), title, footer. O resultado era denso e sem hierarquia clara.
+
+**Redesign:**
+
+- Population card (4 dados em card branco com borda) → **embutido no hero card** como strip sutil (`rgba(255,255,255,0.07)` bg dentro do navy card)
+- Insight box ("Curvas divergem...") → **removido** (redundante — o KM mostra isso visualmente)
+- Statin callout (gold border + bg full-width) → **border-left accent** com dados inline e punchline separada por divider sutil
+- Resultado: 9 → 6 elementos. HR 0.72 domina incontestadamente.
+
+**Padrão extraído:**
+
+- **Dados qualificadores** (n, idade, critérios de inclusão) podem ser embutidos no hero card como strip inferior — não precisam de card próprio
+- **Nunca narrar o que o visual já mostra** — se o KM mostra divergência, não adicionar texto dizendo "as curvas divergem"
+- **Border-left accent** é mais elegante que border-all para callouts secundários — cria hierarquia sem competir com o conteúdo principal
+- **Regra 6→4:** Se um slide tem > 6 elementos visuais distintos, consolidar até ≤ 6
+
 ### Sessão 2026-02-07 (Round 2 — Reestilização bg-navy + QA visual GRADE)
 
 #### Erro 17: Chip CSS faltando override para bg-navy (chip--muted, chip--navy invisíveis)
@@ -959,6 +1099,7 @@ Eu nem olhei o screenshot antes de agir.
 - **Confundir nome de arquivo (SNN.html) com posição no deck** → "slide 7" = posição 7 no contador = linha 7 do `_list.txt`, NÃO arquivo S07.html. SEMPRE consultar `_list.txt` e screenshots do usuário antes de agir
 - **`git checkout --` sem backup em arquivos com mudanças pré-sessão** → verificar `git status` ANTES; usar `git stash` ou cópia manual para preservar mudanças uncommitted de outras sessões
 - **`margin-top:auto` em AMBAS as colunas** → cria dead space simétrico. Combinar callouts em take-home bar full-width
+- **Over-engineering "minor fix"** → quando o usuário diz "muito bom, só ajusta X", a resposta é mudar X e NADA MAIS. Não redesenhar layout, grid, flex, paddings inteiros. Uma propriedade CSS por vez. 3ª reincidência = checklist obrigatório (ver Erro 20)
 
 ---
 
@@ -996,12 +1137,28 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 
 | Projeto                              | Tipo                  | Erros registrados |
 | ------------------------------------ | --------------------- | ----------------- |
-| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 19 (+9 insights)  |
+| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 20 (+11 insights) |
 | _(novos projetos serão adicionados)_ |                       |                   |
 
 ---
 
 ## SESSÕES RECENTES
+
+### Sessão 2026-02-07 (Round 5 — S09 padding/overlap fix + MESA figure)
+
+**Foco:** Fix de chip contrast (.bg-navy .chip--gold), remoção de slide redundante (S60), integração de figura MESA em S09, e ajuste de padding/overlap.
+
+**Tarefas executadas:**
+
+- blocks.css: adicionado `.bg-navy .chip--gold` (background rgba gold 0.22, color gold, border gold 0.4)
+- S03: inline style override no chip--gold dentro da take-home bar navy
+- S60 removido da \_list.txt (slide redundante per usuário)
+- S09: coluna direita substituída — bar chart HTML/CSS → imagem `mesa_cac_warranty.png` (Budoff 2018)
+- S09: coortes validadoras compactadas (Rotterdam, Heinz Nixdorf, Dallas Heart, CAC Consortium)
+- S09: ref movida de `bottom: 4%` → `bottom: 1%` + grid `padding-bottom: 1.8vw` para evitar sobreposição
+
+**Erros registrados:** 1 novo (Erro 20: over-engineering minor fix — 3ª reincidência, checklist obrigatório criado)
+**Aprendizado-chave:** Quando o usuário diz "muito bom, só ajusta X", o escopo é APENAS X. Intervenção mínima > redesign.
 
 ### Sessão 2026-02-07 (Round 4 — Restauração seletiva + S03 visual audit)
 
@@ -1323,11 +1480,13 @@ Quando múltiplos itens de dados são exibidos, a tentação é tratá-los igual
 **O que fiz:** Criei visualização de forest plot usando CSS positioning (position: absolute, left: %) com escala 0.5-1.5 onde 50% = null line (1.0). Diamonds com `rotate(45deg)`, CI lines com width.
 
 **Por que funciona:**
+
 - Comunica visualmente a contradição entre estudos (gold à esquerda vs gray cruzando 1.0)
 - Preenche whitespace que existia no design anterior
 - Mantém precisão dos dados reais (nenhum número inventado)
 
 **Padrão extraído:**
+
 - Escala: `position_% = (value - min_scale) / (max_scale - min_scale) * 100`
 - Null line: `position: absolute; left: 50%; width: 1.5px`
 - CI: `position: absolute; left: CI_low_%; width: (CI_high_% - CI_low_%)%`
@@ -1336,6 +1495,7 @@ Quando múltiplos itens de dados são exibidos, a tentação é tratá-los igual
 **Insight 10: data-key nulo causa bug de navegação no viewer**
 
 **O que descobri:** Quando um slide não tem `data-key`, o viewer não atualiza o hash ao navegar para ele. Isso causa um comportamento onde ArrowRight "pula" o slide ou fica preso no anterior, porque:
+
 1. `setActive(N)` ativa o slide N
 2. Sem data-key, hash não muda
 3. Hash fica apontando para o slide anterior
@@ -1344,4 +1504,4 @@ Quando múltiplos itens de dados são exibidos, a tentação é tratá-los igual
 **Regra nova:** TODO slide carregado pelo slide-loader DEVE ter `data-key`. O regex deve cobrir TODOS os padrões de filename (Sxx, Sxxb, Sxxx).
 
 _Criado: 2026-02-03_
-_Última atualização: 2026-02-07 (Round 4 — Restauração seletiva + S03 visual audit)_
+_Última atualização: 2026-02-07 (Round 5 — S09 padding/overlap fix + MESA figure)_

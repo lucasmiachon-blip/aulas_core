@@ -11,10 +11,9 @@
     (EtD) — sem misturar as duas coisas.
   </div>
 
-  <div
-    style="display: grid; grid-template-columns: 1fr 1fr; gap: 2vw; margin-top: 1.6vw; align-items: stretch; flex: 1"
-  >
-    <!-- Coluna 1: Análise GRADE detalhada -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2vw; margin-top: 1.6vw; align-items: start">
+    <!-- Coluna 1: Análise GRADE + coortes validadoras -->
+    <div style="display: flex; flex-direction: column; gap: 0.9vw">
     <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column">
       <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center">
         <span>ANÁLISE GRADE — CAC</span>
@@ -100,82 +99,74 @@
       </div>
     </div>
 
-    <!-- Coluna 2: Da certeza à decisão (EtD) -->
-    <div style="display: flex; flex-direction: column; gap: 1.2vw">
-      <div class="card" style="padding: 1.4vw; flex: 1; display: flex; flex-direction: column">
+    <!-- Coortes validadoras (abaixo do card GRADE) -->
+    <div
+      style="
+        padding: 0.7vw 1vw;
+        border-radius: 0.8vw;
+        background: rgba(var(--navy-rgb), 0.04);
+        border: 1px solid rgba(var(--navy-rgb), 0.1);
+      "
+    >
+      <div
+        style="
+          font-size: 0.68vw;
+          font-weight: 900;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: rgba(var(--navy-rgb), 0.55);
+          margin-bottom: 0.35vw;
+        "
+      >
+        Gradiente replicado em &gt;80 000 indivíduos
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.25vw 0.7vw; font-size: 0.78vw; color: var(--navy)">
+        <span><b>Rotterdam</b> <span style="color: rgba(var(--text-rgb), 0.45)">6 700</span></span>
+        <span style="color: rgba(var(--navy-rgb), 0.2)">·</span>
+        <span><b>Heinz Nixdorf</b> <span style="color: rgba(var(--text-rgb), 0.45)">4 800</span></span>
+        <span style="color: rgba(var(--navy-rgb), 0.2)">·</span>
+        <span><b>Dallas Heart</b> <span style="color: rgba(var(--text-rgb), 0.45)">2 100</span></span>
+        <span style="color: rgba(var(--navy-rgb), 0.2)">·</span>
+        <span><b>CAC Consortium</b> <span style="color: rgba(var(--text-rgb), 0.45)">66 600</span></span>
+      </div>
+    </div>
+    </div>
+
+    <!-- Coluna 2: Figura MESA -->
+    <div class="card" style="padding: 1vw 1.1vw; display: flex; flex-direction: column">
         <div
           style="
-            font-size: 0.95vw;
+            font-size: 0.78vw;
             letter-spacing: 0.12em;
             text-transform: uppercase;
             color: rgba(var(--text-rgb), 0.55);
             font-weight: 900;
-            margin-bottom: 1vw;
+            margin-bottom: 0.6vw;
           "
         >
-          Da certeza à decisão (EtD)
+          Incidência cumulativa ASCVD — MESA 10 anos
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 0.85vw; flex: 1">
-          <div style="display: flex; gap: 0.8vw; align-items: flex-start">
-            <span class="iconCircle iconCircle--teal">✓</span>
-            <div style="font-size: 1.05vw; line-height: 1.35">
-              <strong>Benefício absoluto</strong>
-              depende do risco basal — CAC reclassifica e muda o NNT.
-            </div>
-          </div>
-
-          <div style="display: flex; gap: 0.8vw; align-items: flex-start">
-            <span class="iconCircle iconCircle--gold">!</span>
-            <div style="font-size: 1.05vw; line-height: 1.35">
-              <strong>Valores e preferências</strong>
-              : o paciente pode valorizar mais a "garantia" (CAC=0) do que o número.
-            </div>
-          </div>
-
-          <div style="display: flex; gap: 0.8vw; align-items: flex-start">
-            <span class="iconCircle">$</span>
-            <div style="font-size: 1.05vw; line-height: 1.35">
-              <strong>Custo e acesso</strong>
-              : CAC não é universal. Considerar viabilidade e equidade.
-            </div>
-          </div>
-
-          <div style="display: flex; gap: 0.8vw; align-items: flex-start">
-            <span class="iconCircle iconCircle--teal">⚖</span>
-            <div style="font-size: 1.05vw; line-height: 1.35">
-              <strong>Aceitabilidade</strong>
-              : radiação, ansiedade do paciente, achados incidentais.
-            </div>
-          </div>
-        </div>
-
-        <div style="margin-top: auto; padding-top: 0.8vw; border-top: 1px solid rgba(var(--navy-rgb), 0.1)">
-          <div class="note" style="margin: 0; border-left-color: var(--teal); background: rgba(var(--teal-rgb), 0.08)">
-            <div style="font-size: 1.02vw; color: rgba(var(--text-rgb), 0.85); line-height: 1.4">
-              <strong>Certeza</strong>
-              = confiança na estimativa.
-              <strong>Força</strong>
-              = decisão (EtD).
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="card" style="padding: 1.15vw 1.25vw; background: rgba(var(--navy-rgb), 0.03)">
         <div
           style="
-            font-size: 0.8vw;
-            font-weight: 900;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: rgba(var(--navy-rgb), 0.7);
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 0.5vw;
+            background: #fff;
           "
         >
-          Mensagem âncora
+          <img
+            src="./assets/figures/mesa_cac_warranty.png"
+            alt="Curvas Kaplan-Meier de eventos ASCVD por categoria de CAC e etnia — MESA, n=6783, 10 anos"
+            style="width: 100%; height: 100%; object-fit: contain"
+          />
         </div>
-        <div style="margin-top: 0.55vw; font-size: 1.12vw; line-height: 1.38; color: var(--navy)">
-          "CAC não prescreve: reclassifica risco. O EtD decide a intensidade."
+
+        <div style="margin-top: 0.5vw; font-size: 0.72vw; color: rgba(var(--text-rgb), 0.48); line-height: 1.3">
+          Budoff et al. Eur Heart J 2018;39:2401–8. n = 6 783, mediana 11,1 a. Linha vermelha = risco 7,5%.
         </div>
       </div>
     </div>
@@ -183,7 +174,7 @@
 
   <div
     class="ref"
-    style="position: absolute; bottom: 4%; left: 6%; font-size: 0.8vw; color: rgba(var(--text-rgb), 0.55)"
+    style="position: absolute; bottom: 1%; left: 6%; font-size: 0.72vw; color: rgba(var(--text-rgb), 0.4)"
   >
     Fonte: MESA, Rotterdam, Copenhagen, Dallas Heart, UK Biobank. SBC 2025.
   </div>

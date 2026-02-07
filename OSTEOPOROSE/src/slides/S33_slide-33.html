@@ -24,9 +24,10 @@
       HORIZON-Recurrent Fracture Trial • Lyles et al. NEJM 2007
     </p>
 
-    <!-- CORPO: KM (real) + Stats -->
-    <div style="flex: 1; display: grid; grid-template-columns: 56% 44%; gap: 22px; min-height: 0; align-items: start">
-      <!-- ═══ LEFT: KM original do NEJM ═══ -->
+    <!-- CORPO: Grid única — tudo dentro, zero dead space -->
+    <div style="flex: 1; display: grid; grid-template-columns: 55% 45%; gap: 22px; min-height: 0; align-items: stretch">
+
+      <!-- ═══ LEFT: KM card — stretch, imagem centralizada ═══ -->
       <div
         style="
           background: white;
@@ -35,6 +36,8 @@
           padding: 16px 16px 12px 16px;
           display: flex;
           flex-direction: column;
+          min-height: 0;
+          overflow: hidden;
         "
       >
         <p
@@ -49,16 +52,18 @@
         >
           Incidência Cumulativa de Morte — NEJM 2007, Fig. 2E
         </p>
-        <img
-          src="../assets/horizon-km-death.jpg"
-          alt="Kaplan-Meier mortality curves from HORIZON-RFT showing divergence between zoledronic acid and placebo groups over 36 months"
-          style="width: 100%; height: auto; border-radius: 6px; display: block"
-        />
+        <div style="flex: 1; display: flex; align-items: flex-start; justify-content: center; min-height: 0; overflow: hidden">
+          <img
+            src="../assets/horizon-km-death.jpg"
+            alt="Kaplan-Meier mortality curves from HORIZON-RFT showing divergence between zoledronic acid and placebo groups over 36 months"
+            style="width: 100%; height: auto; max-height: 100%; object-fit: contain; border-radius: 6px; display: block"
+          />
+        </div>
         <p
           style="
             font-size: 9px;
-            color: rgba(var(--muted-rgb), 0.55);
-            margin: 8px 0 0 0;
+            color: rgba(var(--muted-rgb), 0.45);
+            margin: auto 0 0 0;
             font-style: italic;
             line-height: 1.3;
           "
@@ -67,37 +72,63 @@
         </p>
       </div>
 
-      <!-- ═══ RIGHT: Stats ═══ -->
-      <div style="display: flex; flex-direction: column; gap: 12px">
-        <!-- HR Card (navy, destaque máximo — ponto focal) -->
-        <div style="background: var(--navy); border-radius: 12px; padding: 22px; text-align: center">
-          <p
+      <!-- ═══ RIGHT: Tudo consolidado — Hero + Stats + Statin hook ═══ -->
+      <div style="display: flex; flex-direction: column; gap: 10px; min-height: 0">
+
+        <!-- Hero: HR + População integrados -->
+        <div style="background: var(--navy); border-radius: 12px; overflow: hidden">
+          <div style="padding: 20px 22px 14px 22px; text-align: center">
+            <p
+              style="
+                font-size: 11px;
+                font-weight: 600;
+                color: rgba(255, 255, 255, 0.5);
+                margin: 0 0 4px 0;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+              "
+            >
+              Hazard Ratio — Mortalidade
+            </p>
+            <p
+              style="
+                font-size: 52px;
+                font-weight: 800;
+                color: var(--white);
+                margin: 0;
+                line-height: 1;
+                letter-spacing: -0.02em;
+              "
+            >
+              0.72
+            </p>
+            <p style="font-size: 14px; color: rgba(255, 255, 255, 0.65); margin: 8px 0 0 0">
+              (IC95% 0.56–0.93) • p = 0.01
+            </p>
+          </div>
+          <div
             style="
-              font-size: 11px;
-              font-weight: 600;
-              color: rgba(255, 255, 255, 0.5);
-              margin: 0 0 4px 0;
-              text-transform: uppercase;
-              letter-spacing: 0.06em;
+              background: rgba(255, 255, 255, 0.07);
+              padding: 9px 22px;
+              display: flex;
+              gap: 14px;
+              justify-content: center;
+              flex-wrap: wrap;
             "
           >
-            Hazard Ratio — Mortalidade
-          </p>
-          <p
-            style="
-              font-size: 52px;
-              font-weight: 800;
-              color: var(--white);
-              margin: 0;
-              line-height: 1;
-              letter-spacing: -0.02em;
-            "
-          >
-            0.72
-          </p>
-          <p style="font-size: 14px; color: rgba(255, 255, 255, 0.65); margin: 8px 0 0 0">
-            (IC95% 0.56–0.93) • p = 0.01
-          </p>
+            <span style="font-size: 11px; color: rgba(255, 255, 255, 0.5)">
+              <strong style="color: rgba(255, 255, 255, 0.72)">n = 2.127</strong>
+            </span>
+            <span style="font-size: 11px; color: rgba(255, 255, 255, 0.5)">
+              Idade <strong style="color: rgba(255, 255, 255, 0.72)">74.5a</strong>
+            </span>
+            <span style="font-size: 11px; color: rgba(255, 255, 255, 0.5)">
+              Pós-fx quadril <strong style="color: rgba(255, 255, 255, 0.72)">&lt;90d</strong>
+            </span>
+            <span style="font-size: 11px; color: rgba(255, 255, 255, 0.5)">
+              Zol <strong style="color: rgba(255, 255, 255, 0.72)">5mg IV</strong>
+            </span>
+          </div>
         </div>
 
         <!-- RRR + NNT -->
@@ -107,7 +138,7 @@
               background: rgba(var(--gold-rgb), 0.14);
               border: 2px solid var(--gold);
               border-radius: 10px;
-              padding: 14px;
+              padding: 12px;
               text-align: center;
             "
           >
@@ -123,14 +154,14 @@
             >
               RRR
             </p>
-            <p style="font-size: 34px; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1">28%</p>
+            <p style="font-size: 32px; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1">28%</p>
           </div>
           <div
             style="
               background: rgba(var(--gold-rgb), 0.14);
               border: 2px solid var(--gold);
               border-radius: 10px;
-              padding: 14px;
+              padding: 12px;
               text-align: center;
             "
           >
@@ -146,125 +177,66 @@
             >
               NNT
             </p>
-            <p style="font-size: 34px; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1">27</p>
+            <p style="font-size: 32px; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1">27</p>
           </div>
         </div>
 
-        <!-- População -->
-        <div
-          style="
-            background: white;
-            border: 1.5px solid rgba(var(--border-rgb), 0.55);
-            border-radius: 10px;
-            padding: 14px 16px;
-          "
-        >
-          <p
+        <!-- Statin comparison — ancorado ao fundo da coluna -->
+        <div style="margin-top: auto">
+          <!-- Comparativo -->
+          <div
             style="
-              font-size: 10px;
-              font-weight: 700;
-              color: rgba(var(--navy-rgb), 0.45);
-              margin: 0 0 8px 0;
-              text-transform: uppercase;
-              letter-spacing: 0.06em;
+              background: rgba(var(--gold-rgb), 0.08);
+              border-left: 4px solid var(--gold);
+              border-radius: 0 10px 10px 0;
+              padding: 14px 18px;
             "
           >
-            População
-          </p>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px 14px">
-            <p style="font-size: 13px; color: var(--navy); margin: 0; line-height: 1.35"><strong>n = 2.127</strong></p>
-            <p style="font-size: 13px; color: var(--navy); margin: 0; line-height: 1.35">
-              Idade
-              <strong>74.5a</strong>
-            </p>
-            <p style="font-size: 13px; color: var(--navy); margin: 0; line-height: 1.35">
-              Fx quadril
-              <strong>&lt;90d</strong>
-            </p>
-            <p style="font-size: 13px; color: var(--navy); margin: 0; line-height: 1.35">
-              Zol
-              <strong>5mg IV</strong>
-              anual
-            </p>
+            <div style="display: flex; align-items: center; gap: 14px; justify-content: center; flex-wrap: wrap">
+              <div style="text-align: center">
+                <p style="font-size: 10px; font-weight: 700; color: var(--muted); margin: 0; text-transform: uppercase; letter-spacing: 0.04em">
+                  Estatinas pós-IAM (4S)
+                </p>
+                <p style="font-size: 16px; font-weight: 800; color: var(--navy); margin: 2px 0 0 0; line-height: 1.2">
+                  RRR 30% · NNT ~30
+                </p>
+                <p style="font-size: 11px; color: var(--muted); margin: 2px 0 0 0">em 5.4 anos</p>
+              </div>
+              <p style="font-size: 26px; color: var(--gold-dark); font-weight: 700; margin: 0; line-height: 1">≈</p>
+              <div style="text-align: center">
+                <p style="font-size: 10px; font-weight: 700; color: var(--muted); margin: 0; text-transform: uppercase; letter-spacing: 0.04em">
+                  Zoledronato pós-fx (HORIZON)
+                </p>
+                <p style="font-size: 16px; font-weight: 800; color: var(--gold-dark); margin: 2px 0 0 0; line-height: 1.2">
+                  RRR 28% · NNT 27
+                </p>
+                <p style="font-size: 11px; color: var(--muted); margin: 2px 0 0 0">em 1.9 anos</p>
+              </div>
+            </div>
           </div>
-        </div>
-
-        <!-- Insight clínico -->
-        <div style="background: rgba(var(--navy-rgb), 0.04); border-radius: 8px; padding: 10px 14px">
+          <!-- Punchline -->
           <p
-            style="font-size: 12px; color: rgba(var(--navy-rgb), 0.55); margin: 0; line-height: 1.4; font-style: italic"
+            style="
+              font-size: 15px;
+              font-weight: 700;
+              color: var(--navy);
+              margin: 10px 0 0 0;
+              line-height: 1.35;
+              letter-spacing: -0.01em;
+              text-align: center;
+              padding: 8px 12px;
+              background: rgba(var(--navy-rgb), 0.04);
+              border-radius: 8px;
+            "
           >
-            Curvas divergem após ~12 meses — efeito mediado pela prevenção de novas fraturas
+            Tratar o osso pós-fratura é tão vital quanto tratar o colesterol.
           </p>
         </div>
       </div>
-    </div>
-
-    <!-- CALLOUT: Comparativo com Estatinas (storytelling hook — será contradito no próximo slide) -->
-    <div
-      style="
-        background: rgba(var(--gold-rgb), 0.12);
-        border: 2px solid var(--gold);
-        border-radius: 10px;
-        padding: 14px 28px;
-        margin-top: 12px;
-      "
-    >
-      <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center">
-        <div style="text-align: center">
-          <p
-            style="
-              font-size: 11px;
-              font-weight: 700;
-              color: var(--muted);
-              margin: 0 0 3px 0;
-              text-transform: uppercase;
-              letter-spacing: 0.04em;
-            "
-          >
-            Estatinas pós-IAM (4S)
-          </p>
-          <p style="font-size: 20px; font-weight: 800; color: var(--navy); margin: 0; line-height: 1.2">
-            RRR 30% · NNT ~30
-          </p>
-          <p style="font-size: 11px; color: var(--muted); margin: 3px 0 0 0">em 5.4 anos</p>
-        </div>
-        <p style="font-size: 32px; color: var(--gold-dark); font-weight: 700; margin: 0; line-height: 1">≈</p>
-        <div style="text-align: center">
-          <p
-            style="
-              font-size: 11px;
-              font-weight: 700;
-              color: var(--muted);
-              margin: 0 0 3px 0;
-              text-transform: uppercase;
-              letter-spacing: 0.04em;
-            "
-          >
-            Zoledronato pós-fratura (HORIZON)
-          </p>
-          <p style="font-size: 20px; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1.2">
-            RRR 28% · NNT 27
-          </p>
-          <p style="font-size: 11px; color: var(--muted); margin: 3px 0 0 0">em 1.9 anos</p>
-        </div>
-      </div>
-      <p
-        style="
-          font-size: 14px;
-          font-weight: 700;
-          color: var(--navy);
-          text-align: center;
-          margin: 10px 0 0 0;
-          font-style: italic;
-        "
-      >
-        Tratar o osso pós-fratura é tão vital quanto tratar o colesterol.
-      </p>
     </div>
 
     <!-- FOOTER -->
-    <p style="font-size: 10px; font-style: italic; color: rgba(var(--muted-rgb), 0.55); margin: 6px 0 0 0">
+    <p style="font-size: 10px; font-style: italic; color: rgba(var(--muted-rgb), 0.45); margin: 8px 0 0 0">
       Lyles et al. N Engl J Med 2007;357:1799-1809 • 4S: Lancet 1994;344:1383-89
     </p>
   </div>
