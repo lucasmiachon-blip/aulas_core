@@ -37,18 +37,6 @@
   },
   {
     "n": 7,
-    "file": "S07_slide-07.html",
-    "id": "slide-utilidade-comparada",
-    "title": "Slide 6A - Utilidade Comparada: Fraturas vs Doenças"
-  },
-  {
-    "n": 8,
-    "file": "S08_slide-08.html",
-    "id": "slide-8",
-    "title": "Slide 8 - O que e Utilidade em Saude"
-  },
-  {
-    "n": 9,
     "file": "S13_slide-13.html",
     "id": "slide-9-osteopenia",
     "title": "Slide 9B - Paradoxo das Fraturas em Osteopenia"
@@ -85,12 +73,6 @@
   },
   {
     "n": 15,
-    "file": "S21_slide-21.html",
-    "id": "slide-18",
-    "title": "Slide 18 - NOGG 2024: Limiares Idade-Dependentes"
-  },
-  {
-    "n": 16,
     "file": "S22_slide-22.html",
     "id": "slide-19",
     "title": "Slide 19 - Classificação Prática de Risco"
@@ -186,6 +168,18 @@
     "title": "Slide 32 - Esse Achado Foi Replicado?"
   },
   {
+    "n": 29,
+    "file": "S08_slide-08.html",
+    "id": "slide-8",
+    "title": "Slide 8 - O que e Utilidade em Saude"
+  },
+  {
+    "n": 30,
+    "file": "S08b_slide-08b.html",
+    "id": "slide-08b",
+    "title": "Slide 8B - Perda acumulada de QALYs por sitio de fratura"
+  },
+  {
     "n": 32,
     "file": "S36_slide-36.html",
     "id": "slide-33",
@@ -264,13 +258,7 @@
     "title": "Slide 45 - Evidencias e Avaliacao de Risco"
   },
   {
-    "n": 45,
-    "file": "S49_slide-49.html",
-    "id": "slide-46",
-    "title": "Slide 46 - Classificacao de Risco e Tratamento ECTS 2024"
-  },
-  {
-    "n": 46,
+    "n": 44,
     "file": "S50_slide-50.html",
     "id": "slide-47",
     "title": "Slide 47 - Diretriz JSBMR 2023 -- Sistema de Pontuação"

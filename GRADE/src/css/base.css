@@ -66,7 +66,7 @@
   /* UI tokens */
   --radius-sm: 0.5vw;
   --radius-md: 0.8vw;
-  --shadow-sm: 0 0.35vw 1.2vw rgba(var(--navy-rgb), 0.1);
+  --shadow-sm: 0 0.15vw 0.5vw rgba(var(--navy-rgb), 0.06), 0 0.4vw 1.4vw rgba(var(--navy-rgb), 0.08);
 }
 
 html,

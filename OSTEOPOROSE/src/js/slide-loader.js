@@ -127,7 +127,7 @@
         }
 
       // Derivar chave Sxx_ a partir do nome do arquivo
-      const m = file.match(/^(S\d{2})_/);
+      const m = file.match(/^(S\d{2,3}[a-z]?)_/);
       if (m) el.setAttribute('data-key', m[1]);
 
       // Estado inicial: oculto (respeita display inline do slide)

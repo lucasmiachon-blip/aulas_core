@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/lucasmiachon-blip/aulas_core#readme",
   "devDependencies": {
-    "eslint": "^9.39.2"
+    "eslint": "^9.39.2",
+    "sharp": "^0.34.5"
   },
   "dependencies": {
     "playwright": "^1.58.1",

@@ -74,6 +74,8 @@ Meta do produto: **≥ 7,5/10** (consistência e previsibilidade, sem ruído).
 
 - **Headline:** 12–18 palavras. Se passar disso, está virando parágrafo.
 - **Projetor (tipografia):** valide em tela cheia (16:9) e a 2–3 metros. Referência de mínima: corpo ~19px; secundário ~16px; referências ~13px.
+- **Símbolos GRADE:** se usar ⊕/◯, o desenho deve bater com o rótulo (ALTA = ⊕⊕⊕⊕; MODERADA = ⊕⊕⊕◯; BAIXA = ⊕⊕◯◯; MUITO BAIXA = ⊕◯◯◯).
+- **Escopo (core vs apêndice):** no bloco core (até o slide 36), evite mencionar CCTA; deixe apenas no apêndice se for necessário.
 - **Números:** no máximo 2 por slide. Se precisar de mais, é outro slide.
 - **Citações/“ipsis litteris”:** preferir trechos curtos + atribuição clara.
 - **EtD:** uma vez no bloco (slide “definitivo”). O resto referencia.

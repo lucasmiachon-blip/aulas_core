@@ -1,35 +1,554 @@
 <!-- 36. Slide 32 - Esse Achado Foi Replicado? -->
-<section class="slide" data-slide="" data-title="Slide 32 - Esse Achado Foi Replicado?" id="slide-32" style="padding: 40px 44px 30px 44px; background: var(--bg);">
-<h1 style="font-family: Inter, sans-serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.15; margin: 0 0 12px 0; text-align: center;">Mas... Esse Achado Foi Replicado?</h1>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 600; color: var(--gold); text-align: center; margin: 0 0 24px 0;">Nunca interprete uma evidência isoladamente</p>
-<!-- EVIDÊNCIAS CONTRADITÓRIAS -->
-<div style="background: linear-gradient(135deg, var(--gold) 0%, var(--gold) 100%); border-radius: 14px; padding: 28px; margin-bottom: 0; box-shadow: 0 10px 26px rgba(0,0,0,0.18); display: flex; flex-direction: column; justify-content: center;">
-<p style="font-family: Inter, sans-serif; font-size: 26px; font-weight: 700; color: rgba(var(--navy-rgb), 0.92); margin: 0 0 18px 0; text-align: center;">Meta-análises NÃO Confirmam o Benefício</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-<!-- USPSTF 2018 -->
-<div style="background: rgba(var(--navy-rgb), 0.88); border: 2px solid rgba(var(--gold-rgb), 0.28); border-radius: 10px; padding: 18px; backdrop-filter: blur(10px);">
-<div style="margin-bottom: 12px;">
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: rgba(var(--gold-rgb), 0.92); margin: 0 0 6px 0;">USPSTF 2018 • JAMA</p>
-<p style="font-family: Inter, sans-serif; font-size: 15px; color: rgba(var(--white-rgb), 0.8); margin: 0;">Revisão sistemática • 27 RCTs</p>
-</div>
-<div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 12px; text-align: center; margin-bottom: 14px;">
-<p style="font-family: Inter, sans-serif; font-size: 30px; font-weight: 700; color: rgba(var(--white-rgb), 0.92); margin: 0 0 6px 0;">RR = 0.96</p>
-<p style="font-family: Inter, sans-serif; font-size: 15px; color: rgba(var(--gold-rgb), 0.92); margin: 0;">IC95% 0.85-1.08</p>
-</div>
-<p style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 700; color: rgba(var(--white-rgb), 0.82); margin: 0; text-align: center;">p &gt; 0.05 (NS)</p>
-</div>
-<!-- Canadian Task Force 2023 -->
-<div style="background: rgba(var(--navy-rgb), 0.88); border: 2px solid rgba(var(--gold-rgb), 0.28); border-radius: 10px; padding: 18px; backdrop-filter: blur(10px);">
-<div style="margin-bottom: 12px;">
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: rgba(var(--gold-rgb), 0.92); margin: 0 0 6px 0;">Canadian Task Force 2023</p>
-<p style="font-family: Inter, sans-serif; font-size: 15px; color: rgba(var(--white-rgb), 0.8); margin: 0;">Systematic Reviews • 32 estudos</p>
-</div>
-<div style="background: rgba(0,0,0,0.2); border-radius: 8px; padding: 14px; margin-bottom: 14px;">
-<p style="font-family: Inter, sans-serif; font-size: 15px; color: rgba(var(--white-rgb), 0.82); margin: 0; line-height: 1.5; text-align: center;">Bisphosphonates <strong style="color: var(--gold);">NÃO reduziram</strong> consistentemente a mortalidade em mulheres com osteoporose</p>
-</div>
-<p style="font-family: Inter, sans-serif; font-size: 15px; color: rgba(var(--white-rgb), 0.75); margin: 0; text-align: center; font-style: italic;">Certeza da evidência: <strong>moderada</strong></p>
-</div>
-</div>
-</div>
-<p style="font-family: Inter, sans-serif; font-size: 12px; font-style: italic; color: rgba(var(--muted-rgb), 0.82); text-align: center; margin: 16px 0 0 0;">Fontes: Lyles NEJM 2007 (PMID: 17878149) • Colón-Emeric JBMR 2010 (PMID: 19580467) • Viswanathan JAMA 2018 (PMID: 29946734) • Gates Syst Rev 2023 (PMID: 36945065)</p>
+<section
+  class="slide"
+  data-slide=""
+  data-title="Slide 32 - Esse Achado Foi Replicado?"
+  id="slide-32"
+  style="padding: 36px 44px 24px 44px; background: var(--bg)"
+>
+  <div style="height: 100%; display: flex; flex-direction: column">
+    <!-- TÍTULO -->
+    <h1
+      style="
+        font-size: 38px;
+        font-weight: 800;
+        color: var(--navy);
+        line-height: 1.1;
+        margin: 0 0 4px 0;
+        letter-spacing: -0.01em;
+      "
+    >
+      Mas... Esse Achado Foi Replicado?
+    </h1>
+    <p style="font-size: 15px; font-weight: 500; color: rgba(var(--navy-rgb), 0.42); margin: 0 0 20px 0">
+      Mortalidade &amp; bisfosfonatos — o que dizem as evidências de maior peso
+    </p>
+
+    <!-- CORPO: Forest Plot + Insight -->
+    <div style="flex: 1; display: grid; grid-template-columns: 1fr 300px; gap: 28px; min-height: 0">
+      <!-- ═══ FOREST PLOT ═══ -->
+      <div style="display: flex; flex-direction: column; gap: 0">
+        <!-- Header: Labels -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 200px 1fr 120px;
+            gap: 12px;
+            align-items: end;
+            padding-bottom: 8px;
+            border-bottom: 1.5px solid rgba(var(--navy-rgb), 0.1);
+          "
+        >
+          <p
+            style="
+              font-size: 11px;
+              font-weight: 700;
+              color: var(--navy);
+              margin: 0;
+              text-transform: uppercase;
+              letter-spacing: 0.06em;
+            "
+          >
+            Estudo
+          </p>
+          <div style="position: relative; height: 16px">
+            <span style="position: absolute; left: 0; font-size: 10px; color: var(--muted)">0.5</span>
+            <span
+              style="
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 10px;
+                font-weight: 700;
+                color: var(--navy);
+              "
+            >
+              1.0
+            </span>
+            <span style="position: absolute; right: 0; font-size: 10px; color: var(--muted)">1.5</span>
+          </div>
+          <p
+            style="
+              font-size: 11px;
+              font-weight: 700;
+              color: var(--navy);
+              margin: 0;
+              text-transform: uppercase;
+              letter-spacing: 0.06em;
+              text-align: right;
+            "
+          >
+            HR/RR (IC95%)
+          </p>
+        </div>
+
+        <!-- Row 1: HORIZON-RFT (Lyles 2007) — POSITIVO -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 200px 1fr 120px;
+            gap: 12px;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(var(--navy-rgb), 0.06);
+          "
+        >
+          <div>
+            <p style="font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.25">
+              Lyles NEJM 2007
+            </p>
+            <p style="font-size: 11px; color: var(--muted); margin: 2px 0 0 0">HORIZON-RFT • n=2.127</p>
+          </div>
+          <div style="position: relative; height: 20px">
+            <div
+              style="
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 1.5px;
+                background: rgba(var(--navy-rgb), 0.15);
+              "
+            ></div>
+            <!-- CI line: 0.56-0.93 → 6%-43% -->
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 6%;
+                width: 37%;
+                height: 3px;
+                background: var(--gold);
+                border-radius: 2px;
+              "
+            ></div>
+            <!-- Point estimate: 0.72 → 22% -->
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: 22%;
+                width: 12px;
+                height: 12px;
+                background: var(--gold);
+                border-radius: 2px;
+                transform: translate(-50%, -50%) rotate(45deg);
+                box-shadow: 0 1px 4px rgba(var(--gold-rgb), 0.4);
+              "
+            ></div>
+          </div>
+          <p
+            style="
+              font-size: 13px;
+              font-weight: 700;
+              color: var(--gold-dark);
+              margin: 0;
+              text-align: right;
+              line-height: 1.3;
+            "
+          >
+            0.72
+            <br />
+            <span style="font-size: 11px; font-weight: 500; color: var(--muted)">(0.56–0.93)</span>
+          </p>
+        </div>
+
+        <!-- Row 2: Colón-Emeric 2010 — POSITIVO -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 200px 1fr 120px;
+            gap: 12px;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1.5px solid rgba(var(--navy-rgb), 0.1);
+          "
+        >
+          <div>
+            <p style="font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.25">
+              Colón-Emeric 2010
+            </p>
+            <p style="font-size: 11px; color: var(--muted); margin: 2px 0 0 0">JBMR • Post-hoc HORIZON</p>
+          </div>
+          <div style="position: relative; height: 20px">
+            <div
+              style="
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 1.5px;
+                background: rgba(var(--navy-rgb), 0.15);
+              "
+            ></div>
+            <!-- CI: 0.65-0.95 → 15%-45% -->
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 15%;
+                width: 30%;
+                height: 3px;
+                background: var(--gold);
+                border-radius: 2px;
+              "
+            ></div>
+            <!-- Point: 0.79 → 29% -->
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: 29%;
+                width: 12px;
+                height: 12px;
+                background: var(--gold);
+                border-radius: 2px;
+                transform: translate(-50%, -50%) rotate(45deg);
+              "
+            ></div>
+          </div>
+          <p
+            style="
+              font-size: 13px;
+              font-weight: 700;
+              color: var(--gold-dark);
+              margin: 0;
+              text-align: right;
+              line-height: 1.3;
+            "
+          >
+            0.79
+            <br />
+            <span style="font-size: 11px; font-weight: 500; color: var(--muted)">(0.65–0.95)</span>
+          </p>
+        </div>
+
+        <!-- Separator: Meta-análises -->
+        <div style="padding: 8px 0 4px 0">
+          <p
+            style="
+              font-size: 11px;
+              font-weight: 700;
+              color: rgba(var(--navy-rgb), 0.4);
+              margin: 0;
+              text-transform: uppercase;
+              letter-spacing: 0.08em;
+            "
+          >
+            Meta-análises / Revisões Sistemáticas
+          </p>
+        </div>
+
+        <!-- Row 3: USPSTF / JAMA 2018 — NULO -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 200px 1fr 120px;
+            gap: 12px;
+            align-items: center;
+            padding: 12px 8px;
+            background: rgba(var(--navy-rgb), 0.035);
+            border-radius: 8px;
+            margin: 0 -8px;
+          "
+        >
+          <div>
+            <p style="font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.25">
+              Viswanathan JAMA 2018
+            </p>
+            <p style="font-size: 11px; color: var(--muted); margin: 2px 0 0 0">USPSTF • 27 RCTs</p>
+          </div>
+          <div style="position: relative; height: 20px">
+            <div
+              style="
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 1.5px;
+                background: rgba(var(--navy-rgb), 0.15);
+              "
+            ></div>
+            <!-- CI: 0.85-1.08 → 35%-58%, width=23% -->
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 35%;
+                width: 23%;
+                height: 3px;
+                background: rgba(var(--navy-rgb), 0.3);
+                border-radius: 2px;
+              "
+            ></div>
+            <!-- Point: 0.96 → 46% -->
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: 46%;
+                width: 12px;
+                height: 12px;
+                background: rgba(var(--navy-rgb), 0.4);
+                border-radius: 2px;
+                transform: translate(-50%, -50%) rotate(45deg);
+              "
+            ></div>
+          </div>
+          <p
+            style="
+              font-size: 13px;
+              font-weight: 600;
+              color: rgba(var(--navy-rgb), 0.5);
+              margin: 0;
+              text-align: right;
+              line-height: 1.3;
+            "
+          >
+            0.96
+            <br />
+            <span style="font-size: 11px; font-weight: 500; color: var(--muted)">(0.85–1.08)</span>
+          </p>
+        </div>
+
+        <!-- Row 4: Canadian TF 2023 — NULO -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 200px 1fr 120px;
+            gap: 12px;
+            align-items: center;
+            padding: 10px 8px;
+            background: rgba(var(--navy-rgb), 0.035);
+            border-radius: 8px;
+            margin: 0 -8px;
+          "
+        >
+          <div>
+            <p style="font-size: 13px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.25">
+              Gates Syst Rev 2023
+            </p>
+            <p style="font-size: 10px; color: var(--muted); margin: 2px 0 0 0">Canadian TF • 32 estudos</p>
+          </div>
+          <div style="position: relative; height: 18px">
+            <div
+              style="
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 1.5px;
+                background: rgba(var(--navy-rgb), 0.15);
+              "
+            ></div>
+            <p
+              style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 10px;
+                font-weight: 600;
+                color: rgba(var(--navy-rgb), 0.3);
+                margin: 0;
+                white-space: nowrap;
+              "
+            >
+              Sem redução consistente
+            </p>
+          </div>
+          <p
+            style="
+              font-size: 12px;
+              font-weight: 600;
+              color: rgba(var(--navy-rgb), 0.4);
+              margin: 0;
+              text-align: right;
+              line-height: 1.3;
+            "
+          >
+            NS
+            <br />
+            <span style="font-size: 10px; font-weight: 500; color: var(--muted)">Certeza moderada</span>
+          </p>
+        </div>
+
+        <!-- Row 5: Lan et al. CORR 2025 — NULO (maior meta-análise) -->
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 200px 1fr 120px;
+            gap: 12px;
+            align-items: center;
+            padding: 12px 8px;
+            background: rgba(var(--navy-rgb), 0.06);
+            border-radius: 8px;
+            margin: 4px -8px 0 -8px;
+            border: 1.5px solid rgba(var(--navy-rgb), 0.12);
+          "
+        >
+          <div>
+            <p style="font-size: 14px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.25">
+              Lan CORR 2025
+            </p>
+            <p style="font-size: 10px; color: var(--muted); margin: 2px 0 0 0; line-height: 1.3">
+              <strong style="color: var(--navy)">47 RCTs • n=59.437</strong>
+            </p>
+          </div>
+          <div style="position: relative; height: 22px">
+            <div
+              style="
+                position: absolute;
+                left: 50%;
+                top: 0;
+                bottom: 0;
+                width: 1.5px;
+                background: rgba(var(--navy-rgb), 0.15);
+              "
+            ></div>
+            <!-- CI: 0.88-1.03 → 38%-53%, width=15% — CRUZA 1.0 -->
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 38%;
+                width: 15%;
+                height: 3px;
+                background: rgba(var(--navy-rgb), 0.45);
+                border-radius: 2px;
+              "
+            ></div>
+            <!-- Point: 0.95 → 45% — diamond larger (most important) -->
+            <div
+              style="
+                position: absolute;
+                top: 50%;
+                left: 45%;
+                width: 14px;
+                height: 14px;
+                background: var(--navy);
+                border-radius: 2px;
+                transform: translate(-50%, -50%) rotate(45deg);
+              "
+            ></div>
+          </div>
+          <p
+            style="
+              font-size: 14px;
+              font-weight: 700;
+              color: var(--navy);
+              margin: 0;
+              text-align: right;
+              line-height: 1.3;
+            "
+          >
+            0.95
+            <br />
+            <span style="font-size: 11px; font-weight: 500; color: var(--muted)">(0.88–1.03)</span>
+          </p>
+        </div>
+
+        <!-- Axis labels -->
+        <div style="display: grid; grid-template-columns: 200px 1fr 120px; gap: 12px; padding-top: 6px">
+          <div></div>
+          <div style="display: flex; justify-content: space-between; padding: 0 2px">
+            <span style="font-size: 10px; font-weight: 600; color: var(--gold-dark)">← Favorece tratamento</span>
+            <span style="font-size: 10px; font-weight: 600; color: rgba(var(--navy-rgb), 0.35)">
+              Favorece controle →
+            </span>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- ═══ INSIGHT PANEL ═══ -->
+      <div style="display: flex; flex-direction: column; gap: 14px">
+        <!-- Box: Interpretação -->
+        <div
+          style="
+            background: var(--navy);
+            border-radius: 12px;
+            padding: 22px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+        >
+          <p
+            style="
+              font-size: 12px;
+              font-weight: 700;
+              color: var(--gold);
+              margin: 0 0 12px 0;
+              text-transform: uppercase;
+              letter-spacing: 0.08em;
+            "
+          >
+            Interpretação
+          </p>
+          <p style="font-size: 15px; color: rgba(255, 255, 255, 0.92); margin: 0 0 14px 0; line-height: 1.5">
+            Um
+            <strong style="color: var(--gold)">único RCT</strong>
+            (HORIZON) mostrou benefício, mas
+            <strong style="color: rgba(255, 255, 255, 1)">três meta-análises</strong>
+            independentes não confirmaram.
+          </p>
+          <div style="border-top: 1px solid rgba(var(--gold-rgb), 0.2); padding-top: 12px">
+            <p style="font-size: 13px; color: rgba(255, 255, 255, 0.7); margin: 0; line-height: 1.45">
+              O achado pode refletir:
+            </p>
+            <ul style="margin: 8px 0 0 0; padding-left: 18px">
+              <li style="font-size: 12px; color: rgba(255, 255, 255, 0.65); margin-bottom: 4px">
+                Efeito real em
+                <strong style="color: rgba(255, 255, 255, 0.85)">pós-fratura</strong>
+                (população específica)
+              </li>
+              <li style="font-size: 12px; color: rgba(255, 255, 255, 0.65); margin-bottom: 4px">
+                Viés de
+                <strong style="color: rgba(255, 255, 255, 0.85)">healthy user</strong>
+              </li>
+              <li style="font-size: 12px; color: rgba(255, 255, 255, 0.65)">Acaso estatístico (IC largo)</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Box: Conclusão -->
+        <div style="background: var(--gold); border-radius: 10px; padding: 16px">
+          <p
+            style="
+              font-size: 14px;
+              font-weight: 700;
+              color: var(--navy);
+              margin: 0;
+              line-height: 1.35;
+              text-align: center;
+            "
+          >
+            Não prescreva bisfosfonato
+            <em>pela mortalidade</em>
+            — prescreva pela
+            <strong>fratura</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <p
+      style="
+        font-size: 10px;
+        font-style: italic;
+        color: rgba(var(--muted-rgb), 0.65);
+        margin: 8px 0 0 0;
+        line-height: 1.35;
+      "
+    >
+      Lyles NEJM 2007 • Colón-Emeric JBMR 2010 • Viswanathan JAMA 2018 (USPSTF) • Gates Syst Rev 2023 (Canadian TF) •
+      <strong style="color: rgba(var(--navy-rgb), 0.5)">Lan et al. CORR 2025 (47 RCTs, n=59.437)</strong>
+    </p>
+  </div>
 </section>

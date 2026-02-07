@@ -251,6 +251,20 @@
   color: var(--navy);
   border-color: rgba(var(--navy-rgb), 0.22);
 }
+
+/* Chip overrides for dark slides */
+.bg-navy .chip--muted {
+  background: rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.bg-navy .chip--navy {
+  background: rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
 /* Notes */
 .note {
   border-left: 0.35vw solid var(--gold);

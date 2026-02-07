@@ -213,6 +213,8 @@ Aulas2/
 10. **Consistência cross-slide.** Títulos na mesma altura, mesmo tamanho, mesmo peso em todos os content slides. Consultar design tokens antes de editar.
 11. **Zero AI markers.** Sem linhas de acento sob títulos, gradientes genéricos, ou decoração sem propósito.
 12. **Paralelismo obrigatório.** Ao polir um slide (fontes, sombras, tamanhos, cores), o MESMO padrão deve ser aplicado a TODOS os slides do mesmo tipo. Nunca polir um slide isoladamente — a inconsistência resultante é pior que o estado anterior. Se não há tempo para padronizar todos, documentar as escolhas feitas e marcar como dívida técnica.
+13. **Data slides = narrativa, não tabela.** Quando múltiplos dados competem, NÃO dar peso igual a todos. O pior caso deve ser visualmente DOMINANTE (hero card, bg escuro, número gigante). Usar flex proporcional à severidade, color intensity cascade, e border-left como accent. Rows iguais = tabela de planilha. Rows proporcionais = narrativa visual.
+14. **Slide novo = tokens do vizinho.** Antes de começar um slide, abrir o slide anterior e posterior, extrair tokens visuais (title size/weight, subtitle color, footer style), e aplicá-los PRIMEIRO. Só depois projetar o conteúdo. Inconsistência entre slides vizinhos é pior que imperfeição isolada.
 
 ---
 
@@ -228,6 +230,12 @@ Aulas2/
 - **Variar layouts** — alternar entre colunas, grids, callouts, imagens half-bleed. Nunca repetir layout em slides consecutivos.
 - **Font pairing importa** — header font distintiva + body font limpa. Nunca Arial sozinho.
 - **Nunca usar linhas de acento sob títulos** — é marca de AI. Usar whitespace ou background color.
+- **Severity Cascade para data slides** — quando dados têm hierarquia natural (pior → melhor), usar:
+  - `flex` proporcional à severidade (flex: 3 para pior, flex: 1 para menor)
+  - **Hero card** (bg navy, número grande em gold) para o item dominante
+  - **Color intensity cascade**: navy bg → gold-dark border-left → gold lighter → muted
+  - **Border-left como accent**: espessura proporcional à importância (5px → 4px → 0)
+  - Exemplo: S08b (QALYs por sítio de fratura)
 
 ### Dívida técnica — paralelismo cross-slide (GRADE)
 
@@ -407,6 +415,80 @@ Aulas2/
 ---
 
 ## REGISTRO DE ERROS & APRENDIZADOS
+
+### Sessão 2026-02-07 (Round 2 — Reestilização bg-navy + QA visual GRADE)
+
+#### Erro 17: Chip CSS faltando override para bg-navy (chip--muted, chip--navy invisíveis)
+
+**O que fiz:** Converti S03 e S06 para `bg-navy` mas não verifiquei se os chips existentes (`chip--muted`, `chip--navy`) funcionavam em fundo escuro. No screenshot, "FORTE", "CONDICIONAL" e "recomendação + grau" eram invisíveis (navy text on navy bg).
+
+**Por que estava errado:** O `blocks.css` tinha overrides para `.bg-navy .iconCircle`, `.bg-navy .small-title`, `.bg-navy .label-gold`, mas NÃO tinha `.bg-navy .chip--muted` nem `.bg-navy .chip--navy`. Ao converter slides para bg-navy, preciso verificar TODOS os componentes CSS.
+
+**Correção:** Adicionados `.bg-navy .chip--muted` e `.bg-navy .chip--navy` com `color: rgba(255,255,255,0.88); background: rgba(255,255,255,0.10)`.
+
+**Aprendizado:**
+
+- **Ao converter slide para bg-navy:** verificar TODOS os componentes CSS usados no slide contra overrides existentes em `blocks.css`
+- **Checklist de componentes a verificar em bg-navy:** `.chip--*`, `.card`, `.note`, `.label-gold`, `.small-title`, `.iconCircle--*`, `.ref`, `.source`
+- **Screenshot é inegociável** — sem ele, chips invisíveis passam despercebidos
+
+#### Erro 18: Dead space em cards com conteúdo desigual (flex:1 + margin-top:auto)
+
+**O que fiz:** Usei `flex:1` nos cards de comparação (Certeza vs Força no S05, Downgrades vs Upgrades no S06) com `margin-top:auto` no footer. Quando um card tem menos conteúdo (ex: 3 upgrades vs 5 downgrades), o espaço entre bullets e footer fica visivelmente maior.
+
+**Por que é aceitável mas deve ser monitorado:** O `margin-top:auto` ancora o footer na base, criando visual de "breathing room intencional". Em conferência, isso funciona — é melhor que cards de altura desigual. Mas se o gap for >25% da altura do card, é dead space.
+
+**Padrão:**
+
+- **Cards com conteúdo desigual:** `margin-top:auto` é a melhor opção disponível
+- **Monitorar:** se o gap interno > 25% da altura do card, adicionar conteúdo ou reduzir a altura
+- **Alternativa:** `align-items:flex-start` nos cards (alturas desiguais) — mais honesto mas menos elegante
+
+#### Insight 7: Bloco visual escuro (3+ slides bg-navy consecutivos) cria contraste narrativo
+
+**O que fiz bem:** Posições 3-5 agora são todas `bg-navy`, formando um bloco escuro que se destaca do slide claro na posição 6+. O contraste dark→light cria um "capítulo" visual.
+
+**Por que funciona:** Duarte Sparkline — alternar "tensão" (escuro, conceitos fundamentais) vs "resolução" (claro, aplicação prática). A plateia percebe a mudança de ritmo inconscientemente.
+
+**Padrão extraído:**
+
+- Usar 3+ slides bg-navy consecutivos para criar "bloco de fundamentos"
+- Voltar para bg claro quando o conteúdo muda de conceitual para aplicado
+- O contraste de backgrounds funciona como separador de capítulos sem precisar de slide-divisor explícito
+
+### Sessão 2026-02-07 (Round 1 — Mover slide para apêndice)
+
+#### Erro 16: Confundir nome do arquivo (S07.html) com posição no deck (slide 7 = S04)
+
+**O que fiz:** O usuário pediu "mova o slide 7 para o apêndice". Eu interpretei "slide 7" como o **arquivo** `S07.html` (Indireção). Mas o usuário se referia ao slide na **posição 7 do contador** do viewer, que era `S04.html` (Calibragem rápida). Movi o slide errado.
+
+**Por que estava errado:** No sistema `_list.txt`, a ordem de apresentação é diferente da numeração dos arquivos. O `_list.txt` do GRADE tinha S04 na posição 7, não S07. O contador do viewer (`7 / 58`) reflete a **posição no deck**, não o nome do arquivo. O usuário inclusive compartilhou um screenshot mostrando o slide correto com o contador "7 / 58".
+
+**Evidência ignorada:** O screenshot do usuário mostrava claramente:
+
+- Contador: `7 / 58`
+- Título: "Calibragem rápida: como você decide?"
+- Chip: "INTERAÇÃO — CALIBRAR A SALA (ETD)"
+
+Eu nem olhei o screenshot antes de agir.
+
+**Correção:** Reverti a mudança errada (S07 de volta à posição original) e movi S04 corretamente para o apêndice.
+
+**Aprendizado:**
+
+- **"Slide N" = posição N no contador/viewer, NUNCA arquivo SNN.html** — a `_list.txt` reordena slides; posição ≠ nome de arquivo
+- **SEMPRE consultar `_list.txt` para mapear posição → arquivo** antes de mover/editar qualquer slide
+- **SEMPRE olhar screenshots/imagens do usuário ANTES de agir** — contêm evidência concreta do que ele está vendo
+- **Regra mental:** Quando o usuário diz "slide 7", fazer: `sed -n '7p' _list.txt` → descobrir qual arquivo está na posição 7 → confirmar com o conteúdo
+
+**Mapeamento rápido (GRADE atual):**
+
+| Posição | Arquivo             | Conteúdo (resumo) |
+| ------- | ------------------- | ----------------- |
+| 1       | S01                 | Título            |
+| 2       | S02                 | ...               |
+| ...     | ...                 | ...               |
+| N       | `_list.txt` linha N | Verificar SEMPRE  |
 
 ### Sessão 2026-02-06 (Round 8 — Print 16:9 + um slide por página)
 
@@ -874,6 +956,9 @@ Aulas2/
 - **Títulos de tamanhos/pesos diferentes entre slides de conteúdo** → inconsistência profissional. Consultar design tokens
 - **Override global `!important` sem escape hatches** → verificar todas as classes especiais
 - **Accent color diretamente sobre fundo de matiz similar** → verificar contraste WCAG. Gold (#DDB944) sobre cream (#F9F8F4) = 1.76:1 = DOR. Usar `--gold-dark` em light bg
+- **Confundir nome de arquivo (SNN.html) com posição no deck** → "slide 7" = posição 7 no contador = linha 7 do `_list.txt`, NÃO arquivo S07.html. SEMPRE consultar `_list.txt` e screenshots do usuário antes de agir
+- **`git checkout --` sem backup em arquivos com mudanças pré-sessão** → verificar `git status` ANTES; usar `git stash` ou cópia manual para preservar mudanças uncommitted de outras sessões
+- **`margin-top:auto` em AMBAS as colunas** → cria dead space simétrico. Combinar callouts em take-home bar full-width
 
 ---
 
@@ -911,12 +996,197 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 
 | Projeto                              | Tipo                  | Erros registrados |
 | ------------------------------------ | --------------------- | ----------------- |
-| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 15 (+5 insights)  |
+| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 19 (+9 insights)  |
 | _(novos projetos serão adicionados)_ |                       |                   |
 
 ---
 
 ## SESSÕES RECENTES
+
+### Sessão 2026-02-07 (Round 4 — Restauração seletiva + S03 visual audit)
+
+**Foco:** Restauração seletiva do estado pós-Round 3 (usuário pediu reverter tudo, depois pediu manter até o slide de cruzes ⊕/◯, depois até MESA migration). Auditoria visual do S03 com recomendações SBC.
+
+**Contexto:** O `git checkout` reverteu TODOS os arquivos (incluindo mudanças pré-sessão nos S09/S10). Reconstrução manual do estado desejado a partir do transcript.
+
+**Tarefas executadas:**
+
+- Restauração seletiva: `_list.txt` (S04→apêndice, posições trocadas), S06 (⊕/◯), S60 (cream), blocks.css (chip overrides)
+- Restauração Round 3: S03 (MESA migration), S09 (dedup GRADE), S10 (warranty sem MESA)
+- S03: recomendações SBC restauradas na coluna direita (substituindo MESA)
+- S03 v1→v2: eliminado dead space, criada take-home bar navy como ponto focal, chips ⊕⊕⊕◯
+
+#### Erro 19: `git checkout` reverteu mudanças pré-sessão (uncommitted changes perdidos)
+
+**O que fiz:** Quando o usuário pediu "volte ao que estava antes", usei `git checkout -- arquivo` para reverter. Mas S09 e S10 tinham mudanças uncommitted de sessões anteriores (visíveis no `git status` inicial: `M GRADE/src/slides/S09.html`, `M GRADE/src/slides/S10.html`). O checkout reverteu para o último commit, perdendo essas mudanças pré-existentes.
+
+**Por que estava errado:** `git checkout --` é destrutivo para mudanças não commitadas. Deveria ter usado `git stash` para preservar o estado, ou feito backup dos arquivos antes de reverter.
+
+**Aprendizado:**
+
+- **Antes de `git checkout --`:** verificar se os arquivos têm mudanças uncommitted de OUTRAS sessões (não só desta)
+- **Usar `git stash` ou backup** antes de reverter — preserva a possibilidade de restaurar
+- **`git diff` antes de checkout** para entender o que será perdido
+- **Mudanças uncommitted são vulneráveis** — se o usuário não commita, qualquer revert é destrutivo
+
+#### Insight 9: Take-home bar full-width como ponto focal resolve dead space + hierarquia
+
+**O que fiz bem:** S03 v1 tinha callouts separados em cada coluna ("Quando diretrizes divergem" na esquerda, "Leitura GRADE" na direita), ambos usando `margin-top:auto` que criava dead space. Na v2, combinei ambos em uma take-home bar navy full-width no fundo do slide.
+
+**Por que funcionou:**
+
+1. **Ponto focal claro** — navy bar é o elemento mais pesado visualmente, ancora o olho
+2. **Elimina dead space** — sem `margin-top:auto` nas colunas, conteúdo flui natural
+3. **Hierarquia de 3 níveis** — título → colunas (conteúdo) → barra (conclusão)
+4. **Bridge narrativo** — a barra conecta o caso-âncora ao framework GRADE
+
+**Padrão extraído:**
+
+- Quando um slide tem 2 callouts/footers em colunas diferentes → combinar em take-home bar full-width
+- Take-home bar = navy bg, gold badge, texto branco — é a "conclusão" do slide
+- Nunca usar `margin-top:auto` em AMBAS as colunas — cria dead space simétrico
+
+### Sessão 2026-02-07 (Round 10 — Restauração Slide Perdido S08b + Redesign)
+
+**Foco:** Encontrar e reconstruir slide perdido sobre perda de QALYs por sítio de fratura, aplicar refinamento visual com protocolo before/after.
+
+**Contexto:** Usuário pediu para achar slide que "continha estudos tier 1 ou 2 com modelagem para quantidade de anos perdidos por sítio em QALY". Slide existia no HTML original (Aula_Osteoporose.html) como Slide 11 ("O que é QALY?") e Slide 12 ("Quanto uma fratura custa em vida?") mas nunca foi convertido para arquivo modular.
+
+**Tarefas executadas:**
+
+- Busca sistemática: grep por QALY/modelagem em todos os slides, backup ZIPs, e HTML original
+- Identificação: slides 11 e 12 do `Aula_Osteoporose.html` (linhas 823-1005) tinham os dados
+- Dados confirmados (Tier 1): Tosteson et al. 2008, NOF Guide Committee — disutilities por sítio, horizonte 10 anos
+- Criação de S08b_slide-08b.html com 4 sítios de fratura + comparação cardiovascular
+- Posicionado entre S08 (Utilidade em Saúde) e S13 (Paradoxo Osteopenia) — slot n:8 na \_meta.json
+- Screenshot BEFORE + avaliação crítica como front-end sênior
+- Redesign completo com 10 correções identificadas
+- Screenshot AFTER para validação
+
+**Dados do slide (verificados):**
+
+| Sítio                        | 1º Ano | 2º+ Ano   | Total 10 anos |
+| ---------------------------- | ------ | --------- | ------------- |
+| Quadril                      | 0,208  | 0,187/ano | 1,89 QALYs    |
+| Vertebral clínica            | 0,374  | 0,091/ano | 1,19 QALYs    |
+| Outras (úmero, pelve, tíbia) | 0,133  | 0,064/ano | 0,71 QALYs    |
+| Punho                        | 0,023  | ~0/ano    | 0,03 QALYs    |
+| AVC isquêmico (ref. CV)      | —      | —         | ~1,90 QALYs   |
+| IAM (ref. CV)                | —      | —         | ~0,80 QALYs   |
+
+**Insight 6: Protocolo before/after para slides novos**
+
+**O que fiz bem:** Em vez de criar o slide e declarar "pronto", gerei screenshot BEFORE, fiz avaliação crítica documentada (10 problemas), apliquei correções, e gerei screenshot AFTER para comparação.
+
+**Por que funcionou:** Forçar a avaliação visual antes de seguir em frente previne os erros repetidos de sessões anteriores (Erros 1, 2, 6 do CLAUDE.md).
+
+**Padrão extraído:**
+
+1. Criar slide → screenshot BEFORE
+2. Avaliar criticamente (checklist visual do CLAUDE.md + coerência com slides vizinhos)
+3. Documentar problemas específicos (não genéricos)
+4. Aplicar correções direcionadas
+5. Screenshot AFTER → comparação
+6. Só declarar "pronto" após AFTER satisfatório
+
+**Insight 7: Coerência cross-slide via design tokens visuais**
+
+10 problemas do BEFORE vinham de descoerência com S08:
+
+- Título 34px vs 38px → mismatch
+- Subtítulo cor --muted vs rgba(navy, 0.42) → tom diferente
+- Footer sem badge navy → estilo diferente
+- Emojis em slide médico → amador
+
+**Regra:** Ao criar slide novo, SEMPRE abrir o slide anterior e posterior, extrair os tokens visuais (title size/weight, subtitle color, footer style, container style), e aplicá-los ANTES de começar o design do conteúdo.
+
+**Round 2 — Avaliação implacável (v2→v3):**
+
+v2 passou no checklist com 5/12. Problemas fundamentais:
+
+- Slide parecia TABELA (rows iguais) em vez de narrativa visual (severity cascade)
+- Ponto focal FRACO — Quadril era só uma row maior, não um HERO element
+- Whitespace morto acima do chart (~35% da área)
+- 3 boxes fragmentados à direita (carga cognitiva alta)
+
+v3 aplicou:
+
+- **HERO CARD navy** para Quadril (bg navy, 1,89 em gold 38px, box-shadow)
+- **Flex severity cascade** (flex: 3/2/1.5/1) — rows graduam em tamanho
+- **Color intensity cascade** (navy bg → gold-dark border → gold lighter → muted)
+- **Border-left como accent** em Vertebral (5px gold-dark) e Outras (4px gold)
+- **Uma ÚNICA card** à direita (insight + legenda + mensagem clínica)
+- Fill ratio: 65% → 80%
+
+v3 score: 11/12 PASS no checklist (1 minor: ligeiro espaço Punho↔footer).
+
+**Insight 8: "Tabela vs Narrativa" — data slides precisam de DRAMA, não igualdade**
+
+Quando múltiplos itens de dados são exibidos, a tentação é tratá-los igualmente (rows de mesma altura, mesmo peso). Isso cria uma TABELA. Mas em apresentação, o público precisa de DRAMA — o pior caso deve ser visualmente DOMINANTE. Técnicas:
+
+- Flex grow proporcional à severidade
+- Background escuro para o hero (sandwich dark/light)
+- Color intensity gradient (darkest = worst)
+- Border-left como accent visual (espessura proporcional)
+
+**Erros registrados:** Nenhum novo (problemas identificados e corrigidos iterativamente)
+**Insights registrados:** 3 (Insight 6: before/after, Insight 7: tokens, Insight 8: tabela vs narrativa)
+
+### Sessão 2026-02-07 (Round 3 — Dedup recomendações + MESA migration)
+
+#### Insight 8: Eliminar redundância cross-slide antes de polir
+
+**O que fiz bem:** Identifiquei que S03 (pos 5) e S09 (pos 7) tinham as MESMAS recomendações SBC 2025 (ipsis litteris). Ao invés de polir cada um separadamente, eliminei a duplicação: S03 recebeu a imagem MESA (movida do S10), S09 expandiu a análise GRADE única, e S10 ganhou espaço para conteúdo novo.
+
+**Padrão extraído:**
+
+- **Antes de editar um slide, verificar se o conteúdo principal existe em outro slide do deck** — `grep` pelo texto-chave
+- **Redundância = oportunidade de redistribuir conteúdo** — o slide liberado pode receber algo mais valioso
+- **Migrar assets visuais (figuras, gráficos) para slides onde adicionam dual-coding** — a imagem MESA no slide 5 complementa os 3 itens textuais da coluna esquerda
+
+### Sessão 2026-02-07 (Round 3 — Dedup recomendações + MESA migration)
+
+**Foco:** Eliminar redundância entre S03/S09 (recomendações SBC duplicadas), migrar MESA figure, liberar espaço
+
+**Tarefas executadas:**
+
+- S03 (pos 5): coluna direita trocada — recomendações SBC → imagem MESA + nota GRADE (dual-coding)
+- S09 (pos 7): recomendações SBC removidas, expandida análise GRADE (4 domínios) + nova coluna EtD (benefício, valores, custo, aceitabilidade)
+- S10 (pos 11): MESA removida (movida para S03), coluna direita redesenhada com leitura GRADE + "CAC=0 não é passe livre"
+- QA: screenshots 1600×900, todos passaram checklist
+
+**Insights registrados:** 1 novo (Insight 8: eliminar redundância antes de polir)
+**Aprendizado-chave:** Verificar redundância cross-slide ANTES de editar. Redundância = oportunidade de redistribuir conteúdo valioso.
+
+### Sessão 2026-02-07 (Round 2 — Reestilização bg-navy + QA visual)
+
+**Foco:** Converter slides 4 e 5 (S06/S03) para bg-navy, trocar ordem, QA visual com screenshots 1600×900
+
+**Tarefas executadas:**
+
+- Movido S04 (Calibragem ETD) da posição 7 para o apêndice (após S58)
+- Trocada ordem: posição 3→S05, 4→S06, 5→S03 (3 slides bg-navy consecutivos = bloco de fundamentos)
+- S06 convertido para bg-navy: stepper com cards semi-transparentes, setas gold, chips com descritores
+- S03 convertido para bg-navy: cards semi-transparentes, ícones numerados com fundo opaco
+- S05 polido: cards com `flex:1` + footers "Essência:" com `margin-top:auto`
+- CSS: adicionados `.bg-navy .chip--muted` e `.bg-navy .chip--navy` (chips invisíveis corrigidos)
+- QA: 2 rounds de screenshots (v1 → diagnóstico → fix → v2 → checklist formal)
+
+**Erros registrados:** 2 novos (Erro 17: chip sem override bg-navy, Erro 18: dead space em cards desiguais)
+**Insights registrados:** 1 novo (Insight 7: bloco escuro como contraste narrativo)
+**Aprendizado-chave:** Ao converter slide para bg-navy, verificar TODOS os componentes CSS contra overrides existentes. Screenshot é inegociável.
+
+### Sessão 2026-02-07 (Round 1 — Reorganização de slides GRADE)
+
+**Foco:** Mover slide de interação (Calibragem ETD) para o apêndice
+
+**Tarefas executadas:**
+
+- Movido S04 ("Calibragem rápida: como você decide?") da posição 7 do deck principal para o apêndice (após S58)
+- Deck principal: 35 slides → apêndice: 22 slides (incluindo S04)
+
+**Erros registrados:** 1 novo (Erro 16: confundir nome de arquivo com posição no deck)
+**Aprendizado-chave:** "Slide N" do usuário = posição N no contador/viewer = linha N do `_list.txt`, NUNCA arquivo SNN.html. Sempre consultar `_list.txt` e screenshots antes de agir.
 
 ### Sessão 2026-02-06 (Round 6 — Color Theory: Gold-on-Cream Fix)
 
@@ -1028,5 +1298,50 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 
 ---
 
+### Sessão 2026-02-07 (OSTEOPOROSE — Forest Plot S35 + Regex Fix)
+
+**Foco:** Redesign do slide S35 com forest plot HTML/CSS, fix do bug de navegação (regex S08b)
+
+**Tarefas executadas:**
+
+- **Fix Error 5** (CLAUDE.md): Regex do slide-loader.js `/^(S\d{2})_/` → `/^(S\d{2,3}[a-z]?)_/`. S08b e S14b agora recebem data-key correto
+- **Bug de navegação descoberto:** S08b sem data-key causava impossibilidade de navegar para o slide (ArrowRight ficava preso em S08). A causa era: sem data-key, o hash não mudava, e o viewer não avançava para o próximo slide
+- **Redesign S35** ("Esse Achado Foi Replicado?"): Substituído card gold com 2 sub-cards por **forest plot HTML/CSS** com 4 estudos:
+  - Lyles NEJM 2007 (HR 0.72, 0.56-0.93) — gold, à esquerda de 1.0
+  - Colón-Emeric JBMR 2010 (HR 0.79, 0.65-0.95) — gold, à esquerda de 1.0
+  - Viswanathan JAMA 2018 (RR 0.96, 0.85-1.08) — gray, cruza 1.0
+  - Gates Syst Rev 2023 — "Sem redução consistente"
+- Painel de interpretação navy à direita + conclusão gold ("prescreva pela fratura")
+- Screenshots BEFORE/AFTER capturados em `screenshots/`
+- S08 e S08b avaliados como sólidos — sem mudanças necessárias
+
+**Erros registrados:** Nenhum novo
+**Bug fix:** Error 5 (regex S08b) — finalmente aplicado
+
+**Insight 9: Forest plot em HTML/CSS puro**
+
+**O que fiz:** Criei visualização de forest plot usando CSS positioning (position: absolute, left: %) com escala 0.5-1.5 onde 50% = null line (1.0). Diamonds com `rotate(45deg)`, CI lines com width.
+
+**Por que funciona:**
+- Comunica visualmente a contradição entre estudos (gold à esquerda vs gray cruzando 1.0)
+- Preenche whitespace que existia no design anterior
+- Mantém precisão dos dados reais (nenhum número inventado)
+
+**Padrão extraído:**
+- Escala: `position_% = (value - min_scale) / (max_scale - min_scale) * 100`
+- Null line: `position: absolute; left: 50%; width: 1.5px`
+- CI: `position: absolute; left: CI_low_%; width: (CI_high_% - CI_low_%)%`
+- Diamond: `width: 12px; height: 12px; border-radius: 2px; transform: rotate(45deg)`
+
+**Insight 10: data-key nulo causa bug de navegação no viewer**
+
+**O que descobri:** Quando um slide não tem `data-key`, o viewer não atualiza o hash ao navegar para ele. Isso causa um comportamento onde ArrowRight "pula" o slide ou fica preso no anterior, porque:
+1. `setActive(N)` ativa o slide N
+2. Sem data-key, hash não muda
+3. Hash fica apontando para o slide anterior
+4. Possível re-ativação do slide anterior via hashchange residual
+
+**Regra nova:** TODO slide carregado pelo slide-loader DEVE ter `data-key`. O regex deve cobrir TODOS os padrões de filename (Sxx, Sxxb, Sxxx).
+
 _Criado: 2026-02-03_
-_Última atualização: 2026-02-06 (Round 8 — Print 16:9: caixa fixa por slide em ?print=1)_
+_Última atualização: 2026-02-07 (Round 4 — Restauração seletiva + S03 visual audit)_

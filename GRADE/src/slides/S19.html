@@ -1,379 +1,282 @@
 <section class="slide" data-slide-id="S19">
-  <p
+  <h2
     style="
-      margin: 0 0 0.25vw 0;
-      font-size: 0.72vw;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      font-weight: 700;
+      font-family: var(--font-serif);
+      font-size: 2.85vw;
+      color: var(--ink);
+      margin-bottom: 1.25vw;
+      line-height: 1.15;
     "
   >
-    Dom&iacute;nio do GRADE &middot; Core GRADE 4 (Guyatt et al.,
-    <em>BMJ</em>
-    2025)
-  </p>
+    Risco de Vi&eacute;s (RoB 2.0) no
+    <span class="title-accent">CLEAR Outcomes</span>
+  </h2>
 
-  <h2>Risco de Vi&eacute;s: o CLEAR n&atilde;o rebaixa</h2>
-
-  <!-- ═══ Definição dual-coding: Baixo vs Alto ═══ -->
-  <div
-    style="
-      display: flex;
-      gap: 0;
-      margin: 0 0 0.7vw 0;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    "
-  >
+  <div style="display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 2vw; flex-grow: 1; align-items: start">
+    <!-- ESQUERDA: DECIS&Atilde;O -->
     <div
+      class="card"
       style="
-        flex: 1;
-        display: flex;
-        align-items: center;
-        gap: 0.55vw;
-        padding: 0.4vw 0.75vw;
-        background: rgba(var(--teal-rgb), 0.06);
-        border-left: 0.22vw solid var(--teal);
-      "
-    >
-      <span style="font-size: 1vw; font-weight: 800; color: var(--teal); white-space: nowrap">&check; Baixo RoB</span>
-      <span style="font-size: 0.78vw; line-height: 1.3; color: var(--navy)"
-        >Salvaguardas adequadas (randomiza&ccedil;&atilde;o oculta, cegamento, ITT) &rarr; resultado confi&aacute;vel</span
-      >
-    </div>
-    <div style="width: 1px; background: var(--border)"></div>
-    <div
-      style="
-        flex: 1;
-        display: flex;
-        align-items: center;
-        gap: 0.55vw;
-        padding: 0.4vw 0.75vw;
-        background: rgba(var(--danger-rgb), 0.04);
-        border-left: 0.22vw solid var(--danger);
-      "
-    >
-      <span style="font-size: 1vw; font-weight: 800; color: var(--danger); white-space: nowrap">&cross; Alto RoB</span>
-      <span style="font-size: 0.78vw; line-height: 1.3; color: var(--navy)"
-        >Falhas no desenho podem distorcer o efeito &rarr; GRADE rebaixa a certeza</span
-      >
-    </div>
-  </div>
-
-  <!-- ═══ GRID PRINCIPAL ═══ -->
-  <div style="display: grid; grid-template-columns: 1.15fr 1.65fr; gap: 1.4vw; flex: 1; min-height: 0">
-    <!-- ═══ ESQUERDA — VEREDICTO + FERRAMENTAS ═══ -->
-    <div style="display: flex; flex-direction: column; gap: 0.65vw; min-height: 0">
-      <!-- Hero verdict -->
-      <div
-        style="
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          border: 2px solid rgba(var(--teal-rgb), 0.3);
-          border-radius: var(--radius-md);
-          background: rgba(var(--teal-rgb), 0.035);
-          box-shadow: 0 0.2vw 0.8vw rgba(var(--navy-rgb), 0.07);
-          padding: 0.9vw 1vw 0.75vw;
-          text-align: center;
-        "
-      >
-        <div
-          style="
-            font-size: 0.62vw;
-            text-transform: uppercase;
-            letter-spacing: 0.09em;
-            color: var(--muted);
-            font-weight: 800;
-            margin-bottom: 0.35vw;
-          "
-        >
-          Risco de vi&eacute;s geral
-        </div>
-        <div
-          style="
-            font-family: var(--font-serif);
-            font-size: 3.4vw;
-            font-weight: 800;
-            color: var(--teal);
-            line-height: 0.95;
-          "
-        >
-          Baixo
-        </div>
-        <div style="font-size: 0.95vw; font-weight: 800; color: var(--navy); margin-top: 0.35vw">Downgrade: 0</div>
-        <div style="margin-top: 0.3vw; font-size: 0.78vw; line-height: 1.3; color: var(--navy); max-width: 94%">
-          RCT come&ccedil;a em <strong>alta</strong> certeza &mdash; RoB n&atilde;o justifica rebaixamento.
-        </div>
-      </div>
-
-      <!-- Ferramentas por desenho de estudo -->
-      <div style="flex: 1; display: flex; flex-direction: column; gap: 0.4vw; min-height: 0">
-        <div
-          style="
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0.4vw 0.65vw;
-            border-left: 0.18vw solid var(--navy);
-            background: rgba(var(--navy-rgb), 0.02);
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-          "
-        >
-          <div
-            style="
-              font-size: 0.65vw;
-              text-transform: uppercase;
-              letter-spacing: 0.07em;
-              color: var(--muted);
-              font-weight: 800;
-              margin-bottom: 0.1vw;
-            "
-          >
-            Ferramentas &mdash; RCTs
-          </div>
-          <div style="font-size: 0.78vw; line-height: 1.35; color: var(--navy)">
-            <b>RoB&nbsp;2</b> (Cochrane; &kappa;&nbsp;interobs.&nbsp;=&nbsp;0,16) &middot;
-            <b>ROBUST&#8209;RCT</b> (McMaster; &uarr;&nbsp;reprodutibilidade) &middot; CLARITY &middot; CASP &middot; JBI
-          </div>
-        </div>
-        <div
-          style="
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0.4vw 0.65vw;
-            border-left: 0.18vw solid var(--gold);
-            background: rgba(var(--gold-rgb), 0.025);
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-          "
-        >
-          <div
-            style="
-              font-size: 0.65vw;
-              text-transform: uppercase;
-              letter-spacing: 0.07em;
-              color: var(--muted);
-              font-weight: 800;
-              margin-bottom: 0.1vw;
-            "
-          >
-            Ferramentas &mdash; Observacionais (NRSI)
-          </div>
-          <div style="font-size: 0.78vw; line-height: 1.35; color: var(--navy)">
-            <b>ROBINS&#8209;I&nbsp;v2</b> (7&nbsp;dom.) &middot; <b>Newcastle&#8209;Ottawa</b> &middot; CLARITY
-            modificado
-          </div>
-        </div>
-        <div
-          style="
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0.4vw 0.65vw;
-            border-left: 0.18vw solid var(--teal);
-            background: rgba(var(--teal-rgb), 0.02);
-            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-          "
-        >
-          <div
-            style="
-              font-size: 0.65vw;
-              text-transform: uppercase;
-              letter-spacing: 0.07em;
-              color: var(--muted);
-              font-weight: 800;
-              margin-bottom: 0.1vw;
-            "
-          >
-            Quando rebaixar? (Fig&nbsp;2 do artigo)
-          </div>
-          <div style="font-size: 0.75vw; line-height: 1.35; color: var(--navy)">
-            Alto RoB domina (&gt;65% peso) &rarr; <b>rebaixar</b>.
-            Evid&ecirc;ncia apreciável de baixo RoB + resultados <b>similares</b> &rarr; usar todos, <b>n&atilde;o rebaixar</b>.
-            Resultados <b>diferentes</b> &rarr; usar s&oacute; baixo RoB.
-            Avalie <b>por desfecho</b> e considere <b>dire&ccedil;&atilde;o do vi&eacute;s</b>.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══ DIREITA — 5 DOMÍNIOS RoB 2 ═══ -->
-    <div
-      style="
-        display: flex;
-        flex-direction: column;
-        border: 1px solid var(--border);
-        border-radius: var(--radius-md);
+        border: 2px solid rgba(var(--navy-rgb), 0.22);
+        padding: 0;
         overflow: hidden;
-        min-height: 0;
+        box-shadow: 0 0.2vw 0.8vw rgba(var(--navy-rgb), 0.07);
       "
     >
-      <div
-        style="
-          padding: 0.4vw 0.85vw;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          border-bottom: 1px solid var(--border);
-          background: rgba(var(--navy-rgb), 0.025);
-        "
-      >
-        <span style="font-weight: 800; font-size: 0.85vw; color: var(--navy)">RoB 2 &mdash; CLEAR Outcomes</span>
-        <span class="chip chip--navy" style="font-size: 0.68vw">5 dom&iacute;nios &middot; todos baixo</span>
+      <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center">
+        <span>Decis&atilde;o (GRADE)</span>
+        <span class="chip chip--gold">n&atilde;o rebaixar</span>
       </div>
-      <div style="flex: 1; display: grid; grid-template-rows: repeat(5, 1fr); padding: 0; min-height: 0">
-        <!-- D1 -->
+      <div class="cardBody" style="padding: 1.35vw 1.45vw">
         <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 0.7vw;
-            padding: 0 0.9vw;
-            border-bottom: 1px solid rgba(var(--navy-rgb), 0.06);
-            background: rgba(var(--navy-rgb), 0.018);
-          "
+          style="display: flex; align-items: baseline; justify-content: space-between; gap: 1.2vw; margin-bottom: 1vw"
         >
           <div
-            style="width: 0.22vw; align-self: stretch; background: var(--teal); border-radius: 2px; flex-shrink: 0"
-          ></div>
-          <div style="flex: 1; padding: 0.45vw 0">
-            <div style="font-weight: 800; color: var(--navy); font-size: 0.9vw; line-height: 1.2">
-              Randomiza&ccedil;&atilde;o
+            style="
+              font-family: var(--font-serif);
+              font-size: 3.6vw;
+              font-weight: 800;
+              color: var(--navy);
+              line-height: 1;
+            "
+          >
+            Baixo
+          </div>
+          <div style="text-align: right">
+            <div
+              style="
+                font-family: var(--font-sans);
+                font-size: 0.85vw;
+                color: var(--muted);
+                text-transform: uppercase;
+                letter-spacing: 0.08em;
+                font-weight: 900;
+              "
+            >
+              RoB 2.0
             </div>
-            <div style="color: var(--muted); font-size: 0.78vw; line-height: 1.3; margin-top: 0.1vw">
-              Sequ&ecirc;ncia centralizada + oculta&ccedil;&atilde;o adequada; baseline balanceado
+            <div style="font-family: var(--font-sans); font-size: 1.15vw; color: var(--navy); font-weight: 900">
+              Downgrade: 0
             </div>
           </div>
-          <span
-            style="font-size: 0.75vw; font-weight: 700; color: var(--teal); white-space: nowrap; letter-spacing: 0.02em"
-            >baixo</span
-          >
         </div>
 
-        <!-- D2 -->
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 0.7vw;
-            padding: 0 0.9vw;
-            border-bottom: 1px solid rgba(var(--navy-rgb), 0.06);
-          "
-        >
-          <div
-            style="width: 0.22vw; align-self: stretch; background: var(--teal); border-radius: 2px; flex-shrink: 0"
-          ></div>
-          <div style="flex: 1; padding: 0.45vw 0">
-            <div style="font-weight: 800; color: var(--navy); font-size: 0.9vw; line-height: 1.2">
-              Desvios da interven&ccedil;&atilde;o
-            </div>
-            <div style="color: var(--muted); font-size: 0.78vw; line-height: 1.3; margin-top: 0.1vw">
-              Duplo&#8209;cego mantido; cointerven&ccedil;&otilde;es similares; an&aacute;lise ITT
+        <div style="display: flex; flex-direction: column; gap: 0.75vw">
+          <div style="display: flex; gap: 0.75vw; align-items: flex-start">
+            <div style="font-size: 1.15vw; line-height: 1; color: var(--navy); font-weight: 900">✓</div>
+            <div style="font-family: var(--font-sans); font-size: 1.05vw; line-height: 1.35; color: var(--navy)">
+              Duplo‑cego, com
+              <strong>an&aacute;lise ITT</strong>
             </div>
           </div>
-          <span
-            style="font-size: 0.75vw; font-weight: 700; color: var(--teal); white-space: nowrap; letter-spacing: 0.02em"
-            >baixo</span
-          >
+          <div style="display: flex; gap: 0.75vw; align-items: flex-start">
+            <div style="font-size: 1.15vw; line-height: 1; color: var(--navy); font-weight: 900">✓</div>
+            <div style="font-family: var(--font-sans); font-size: 1.05vw; line-height: 1.35; color: var(--navy)">
+              Desfechos cl&iacute;nicos com
+              <strong>adjudica&ccedil;&atilde;o</strong>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.75vw; align-items: flex-start">
+            <div style="font-size: 1.15vw; line-height: 1; color: var(--navy); font-weight: 900">✓</div>
+            <div style="font-family: var(--font-sans); font-size: 1.05vw; line-height: 1.35; color: var(--navy)">
+              Acompanhamento robusto; perdas sem sinal de distor&ccedil;&atilde;o relevante
+            </div>
+          </div>
         </div>
 
-        <!-- D3 -->
         <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 0.7vw;
-            padding: 0 0.9vw;
-            border-bottom: 1px solid rgba(var(--navy-rgb), 0.06);
-            background: rgba(var(--navy-rgb), 0.018);
-          "
+          class="note"
+          style="margin-top: 1.1vw; border-left-color: var(--gold); background: rgba(var(--gold-rgb), 0.08)"
         >
-          <div
-            style="width: 0.22vw; align-self: stretch; background: var(--teal); border-radius: 2px; flex-shrink: 0"
-          ></div>
-          <div style="flex: 1; padding: 0.45vw 0">
-            <div style="font-weight: 800; color: var(--navy); font-size: 0.9vw; line-height: 1.2">Dados faltantes</div>
-            <div style="color: var(--muted); font-size: 0.78vw; line-height: 1.3; margin-top: 0.1vw">
-              Perdas baixas (&gt;97% completude); sem assimetria entre grupos
-            </div>
-          </div>
-          <span
-            style="font-size: 0.75vw; font-weight: 700; color: var(--teal); white-space: nowrap; letter-spacing: 0.02em"
-            >baixo</span
-          >
+          <p style="font-family: var(--font-sans); font-size: 1vw; color: var(--navy); margin: 0; line-height: 1.45">
+            <strong>Mensagem‑chave:</strong>
+            aqui, o GRADE come&ccedil;a em
+            <strong>alta</strong>
+            (RCT) e o RoB n&atilde;o justifica rebaixamento.
+          </p>
         </div>
+      </div>
+    </div>
 
-        <!-- D4 -->
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 0.7vw;
-            padding: 0 0.9vw;
-            border-bottom: 1px solid rgba(var(--navy-rgb), 0.06);
-          "
-        >
+    <!-- DIREITA: DOM&Iacute;NIOS (RoB 2.0) -->
+    <div
+      class="card"
+      style="
+        padding: 0;
+        overflow: hidden;
+        border: 1px solid rgba(var(--navy-rgb), 0.18);
+        box-shadow: 0 0.2vw 0.8vw rgba(var(--navy-rgb), 0.07);
+      "
+    >
+      <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center">
+        <span>RoB 2.0 &mdash; dom&iacute;nios</span>
+        <span class="chip chip--navy">CLEAR Outcomes</span>
+      </div>
+      <div class="cardBody" style="padding: 1.25vw 1.35vw">
+        <div style="display: grid; grid-template-columns: 1fr; gap: 0.75vw">
           <div
-            style="width: 0.22vw; align-self: stretch; background: var(--teal); border-radius: 2px; flex-shrink: 0"
-          ></div>
-          <div style="flex: 1; padding: 0.45vw 0">
-            <div style="font-weight: 800; color: var(--navy); font-size: 0.9vw; line-height: 1.2">
-              Mensura&ccedil;&atilde;o do desfecho
-            </div>
-            <div style="color: var(--muted); font-size: 0.78vw; line-height: 1.3; margin-top: 0.1vw">
-              MACE adjudicado por comit&ecirc; cego; blinding irrelevante p/ mortalidade
-            </div>
-          </div>
-          <span
-            style="font-size: 0.75vw; font-weight: 700; color: var(--teal); white-space: nowrap; letter-spacing: 0.02em"
-            >baixo</span
+            style="
+              display: flex;
+              justify-content: space-between;
+              gap: 1vw;
+              align-items: flex-start;
+              padding: 0.95vw 1.05vw;
+              border: 1px solid rgba(var(--navy-rgb), 0.1);
+              border-radius: 0.85vw;
+              background: rgba(var(--navy-rgb), 0.03);
+            "
           >
-        </div>
+            <div>
+              <div style="font-family: var(--font-sans); font-weight: 900; color: var(--navy); font-size: 1.05vw">
+                Randomiza&ccedil;&atilde;o
+              </div>
+              <div
+                style="
+                  font-family: var(--font-sans);
+                  color: var(--muted);
+                  font-size: 0.92vw;
+                  line-height: 1.35;
+                  margin-top: 0.2vw;
+                "
+              >
+                Sequ&ecirc;ncia + oculta&ccedil;&atilde;o adequadas; baseline balanceado
+              </div>
+            </div>
+            <span class="chip chip--navy" style="white-space: nowrap">baixo</span>
+          </div>
 
-        <!-- D5 -->
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            gap: 0.7vw;
-            padding: 0 0.9vw;
-            background: rgba(var(--navy-rgb), 0.018);
-          "
-        >
           <div
-            style="width: 0.22vw; align-self: stretch; background: var(--teal); border-radius: 2px; flex-shrink: 0"
-          ></div>
-          <div style="flex: 1; padding: 0.45vw 0">
-            <div style="font-weight: 800; color: var(--navy); font-size: 0.9vw; line-height: 1.2">Relato seletivo</div>
-            <div style="color: var(--muted); font-size: 0.78vw; line-height: 1.3; margin-top: 0.1vw">
-              Protocolo pr&eacute;&#8209;registrado (NCT02993406); desfechos coincidem com registro
-            </div>
-          </div>
-          <span
-            style="font-size: 0.75vw; font-weight: 700; color: var(--teal); white-space: nowrap; letter-spacing: 0.02em"
-            >baixo</span
+            style="
+              display: flex;
+              justify-content: space-between;
+              gap: 1vw;
+              align-items: flex-start;
+              padding: 0.95vw 1.05vw;
+              border: 1px solid rgba(var(--navy-rgb), 0.1);
+              border-radius: 0.85vw;
+              background: white;
+            "
           >
+            <div>
+              <div style="font-family: var(--font-sans); font-weight: 900; color: var(--navy); font-size: 1.05vw">
+                Desvios da interven&ccedil;&atilde;o
+              </div>
+              <div
+                style="
+                  font-family: var(--font-sans);
+                  color: var(--muted);
+                  font-size: 0.92vw;
+                  line-height: 1.35;
+                  margin-top: 0.2vw;
+                "
+              >
+                Duplo‑cego; cointerven&ccedil;&otilde;es similares; ITT
+              </div>
+            </div>
+            <span class="chip chip--navy" style="white-space: nowrap">baixo</span>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              gap: 1vw;
+              align-items: flex-start;
+              padding: 0.95vw 1.05vw;
+              border: 1px solid rgba(var(--navy-rgb), 0.1);
+              border-radius: 0.85vw;
+              background: rgba(var(--navy-rgb), 0.03);
+            "
+          >
+            <div>
+              <div style="font-family: var(--font-sans); font-weight: 900; color: var(--navy); font-size: 1.05vw">
+                Dados faltantes
+              </div>
+              <div
+                style="
+                  font-family: var(--font-sans);
+                  color: var(--muted);
+                  font-size: 0.92vw;
+                  line-height: 1.35;
+                  margin-top: 0.2vw;
+                "
+              >
+                Perdas baixas e sem assimetria relevante
+              </div>
+            </div>
+            <span class="chip chip--navy" style="white-space: nowrap">baixo</span>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              gap: 1vw;
+              align-items: flex-start;
+              padding: 0.95vw 1.05vw;
+              border: 1px solid rgba(var(--navy-rgb), 0.1);
+              border-radius: 0.85vw;
+              background: white;
+            "
+          >
+            <div>
+              <div style="font-family: var(--font-sans); font-weight: 900; color: var(--navy); font-size: 1.05vw">
+                Mensura&ccedil;&atilde;o
+              </div>
+              <div
+                style="
+                  font-family: var(--font-sans);
+                  color: var(--muted);
+                  font-size: 0.92vw;
+                  line-height: 1.35;
+                  margin-top: 0.2vw;
+                "
+              >
+                Endpoints cl&iacute;nicos + adjudica&ccedil;&atilde;o
+              </div>
+            </div>
+            <span class="chip chip--navy" style="white-space: nowrap">baixo</span>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              gap: 1vw;
+              align-items: flex-start;
+              padding: 0.95vw 1.05vw;
+              border: 1px solid rgba(var(--navy-rgb), 0.1);
+              border-radius: 0.85vw;
+              background: rgba(var(--navy-rgb), 0.03);
+            "
+          >
+            <div>
+              <div style="font-family: var(--font-sans); font-weight: 900; color: var(--navy); font-size: 1.05vw">
+                Relato seletivo
+              </div>
+              <div
+                style="
+                  font-family: var(--font-sans);
+                  color: var(--muted);
+                  font-size: 0.92vw;
+                  line-height: 1.35;
+                  margin-top: 0.2vw;
+                "
+              >
+                Registro/protocolo + desfechos pr&eacute;‑especificados
+              </div>
+            </div>
+            <span class="chip chip--navy" style="white-space: nowrap">baixo</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="ref" style="margin-top: auto; padding-top: 0.35vw; border-top: 1px solid var(--border)">
-    Sterne JAC et al. RoB 2:
-    <em>BMJ</em>
-    2019;366:l4898 &nbsp;|&nbsp; Minozzi S et al. RoB 2 reliability:
-    <em>J Clin Epidemiol</em>
-    2020;126:37 &nbsp;|&nbsp; Guyatt G et al. Core GRADE 4:
-    <em>BMJ</em>
-    2025;389:e083864 &nbsp;|&nbsp; Wang Y et al. ROBUST&#8209;RCT:
-    <em>BMJ</em>
-    2025;388:e081199
+  <div style="margin-top: auto; padding-top: 0.9vw; border-top: 1px solid var(--border)">
+    <p style="font-family: var(--font-sans); font-size: 0.75vw; color: var(--muted); margin: 0; line-height: 1.3">
+      <strong>Fonte:</strong>
+      RoB 2.0 (Sterne et al., BMJ 2019) aplicado ao CLEAR Outcomes.
+    </p>
   </div>
 </section>

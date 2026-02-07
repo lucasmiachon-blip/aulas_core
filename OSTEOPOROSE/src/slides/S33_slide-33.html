@@ -1,32 +1,271 @@
-<!-- 34. Slide 30 - Redução de mortalidade com zoledronato -->
-<section class="slide" data-slide="" data-title="Slide 30 - Redução de mortalidade com zoledronato" id="slide-30" style="padding: 50px; background: var(--bg);">
-<h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 15px 0;">Redução de mortalidade com zoledronato</h1>
-<p style="font-family: Inter, sans-serif; font-size: 22px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0 0 35px 0;">Único antiosteoporótico com impacto <strong style="font-weight: 700;">robusto</strong> em sobrevida pós-fratura</p>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin-bottom: 30px; align-items: start;">
-<div style="background: var(--white); border: 2px solid var(--border); border-radius: 12px; padding: 28px;">
-<p style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--navy); margin: 0 0 18px 0;">[Dados] Estudo HORIZON (2007)</p>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--navy); line-height: 1.6; margin: 0 0 25px 0;">Zoledronato 5mg IV anual vs placebo em pacientes pós-fratura de quadril recente</p>
-<div style="background: rgba(var(--border-rgb), 0.55); border-radius: 8px; padding: 18px; margin-bottom: 18px;">
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 8px 0;">Hazard Ratio: 0,72</p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 400; color: var(--muted); margin: 0;">(95% CI, 0,56–0,93) P=0,01</p>
-</div>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--navy); line-height: 1.6; margin: 0;">Curvas de sobrevida começam a divergir após ~12 meses</p>
-</div>
-<div style="display: flex; flex-direction: column; gap: 18px;">
-<div style="background: rgba(var(--gold-rgb), 0.18); border: 3px solid var(--gold); border-radius: 12px; padding: 28px; text-align: center; flex: 1;">
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--muted); margin: 0 0 12px 0;">Mortalidade por todas as causas:</p>
-<p style="font-family: Inter, sans-serif; font-size: 56px; font-weight: 700; color: var(--gold); line-height: 1; margin: 0;">→ 28%</p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; font-weight: 400; font-style: italic; color: var(--muted); margin: 12px 0 0 0;">Redução de HR.</p>
-</div>
-<div style="background: rgba(var(--gold-rgb), 0.14); border: 3px solid var(--gold); border-radius: 12px; padding: 28px; text-align: center; flex: 1;">
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--muted); margin: 0 0 12px 0;">O tamanho do efeito:</p>
-<p style="font-family: Inter, sans-serif; font-size: 56px; font-weight: 700; color: var(--gold); line-height: 1; margin: 0;">NNT 27</p>
-<p style="font-family: Inter, sans-serif; font-size: 15px; font-weight: 400; font-style: italic; color: var(--muted); margin: 12px 0 0 0; line-height: 1.4;">1 morte evitada para cada 27 pacientes tratados por 3 anos após fratura de quadril (ARR = 3,7%)</p>
-</div>
-</div>
-</div>
-<div style="background: rgba(var(--gold-rgb), 0.14); border-left: 4px solid var(--gold); border-radius: 8px; padding: 20px; margin-bottom: 20px;">
-<p style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 400; color: var(--navy); line-height: 1.6; margin: 0;"><span style="font-weight: 700;">[!] Contexto:</span> Estatinas em alto risco CV reduzem eventos em ~20-25%. <em style="font-style: italic;">Tratar o osso pós-fratura é tão vital quanto tratar o colesterol.</em></p>
-</div>
-<p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0;">Lyles KW et al. N Engl J Med. 2007.</p>
+<!-- 34. Slide 30 - HORIZON: Zoledronato Reduz Mortalidade -->
+<section
+  class="slide"
+  data-slide=""
+  data-title="Slide 30 - Zoledronato Reduz Mortalidade"
+  id="slide-30"
+  style="padding: 32px 44px 16px 44px; background: var(--bg)"
+>
+  <div style="height: 100%; display: flex; flex-direction: column">
+    <!-- TÍTULO -->
+    <h1
+      style="
+        font-size: 38px;
+        font-weight: 800;
+        color: var(--navy);
+        line-height: 1.1;
+        margin: 0 0 3px 0;
+        letter-spacing: -0.01em;
+      "
+    >
+      Zoledronato Reduz Mortalidade
+    </h1>
+    <p style="font-size: 15px; font-weight: 500; color: rgba(var(--navy-rgb), 0.42); margin: 0 0 16px 0">
+      HORIZON-Recurrent Fracture Trial • Lyles et al. NEJM 2007
+    </p>
+
+    <!-- CORPO: KM (real) + Stats -->
+    <div style="flex: 1; display: grid; grid-template-columns: 56% 44%; gap: 22px; min-height: 0; align-items: start">
+      <!-- ═══ LEFT: KM original do NEJM ═══ -->
+      <div
+        style="
+          background: white;
+          border: 1.5px solid rgba(var(--border-rgb), 0.55);
+          border-radius: 12px;
+          padding: 16px 16px 12px 16px;
+          display: flex;
+          flex-direction: column;
+        "
+      >
+        <p
+          style="
+            font-size: 10px;
+            font-weight: 700;
+            color: rgba(var(--navy-rgb), 0.45);
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+          "
+        >
+          Incidência Cumulativa de Morte — NEJM 2007, Fig. 2E
+        </p>
+        <img
+          src="../assets/horizon-km-death.jpg"
+          alt="Kaplan-Meier mortality curves from HORIZON-RFT showing divergence between zoledronic acid and placebo groups over 36 months"
+          style="width: 100%; height: auto; border-radius: 6px; display: block"
+        />
+        <p
+          style="
+            font-size: 9px;
+            color: rgba(var(--muted-rgb), 0.55);
+            margin: 8px 0 0 0;
+            font-style: italic;
+            line-height: 1.3;
+          "
+        >
+          Adaptado de Lyles et al. N Engl J Med 2007;357:1799-1809. PMC2324066. Uso acadêmico (fair use).
+        </p>
+      </div>
+
+      <!-- ═══ RIGHT: Stats ═══ -->
+      <div style="display: flex; flex-direction: column; gap: 12px">
+        <!-- HR Card (navy, destaque máximo — ponto focal) -->
+        <div style="background: var(--navy); border-radius: 12px; padding: 22px; text-align: center">
+          <p
+            style="
+              font-size: 11px;
+              font-weight: 600;
+              color: rgba(255, 255, 255, 0.5);
+              margin: 0 0 4px 0;
+              text-transform: uppercase;
+              letter-spacing: 0.06em;
+            "
+          >
+            Hazard Ratio — Mortalidade
+          </p>
+          <p
+            style="
+              font-size: 52px;
+              font-weight: 800;
+              color: var(--white);
+              margin: 0;
+              line-height: 1;
+              letter-spacing: -0.02em;
+            "
+          >
+            0.72
+          </p>
+          <p style="font-size: 14px; color: rgba(255, 255, 255, 0.65); margin: 8px 0 0 0">
+            (IC95% 0.56–0.93) • p = 0.01
+          </p>
+        </div>
+
+        <!-- RRR + NNT -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px">
+          <div
+            style="
+              background: rgba(var(--gold-rgb), 0.14);
+              border: 2px solid var(--gold);
+              border-radius: 10px;
+              padding: 14px;
+              text-align: center;
+            "
+          >
+            <p
+              style="
+                font-size: 10px;
+                font-weight: 700;
+                color: var(--muted);
+                margin: 0 0 2px 0;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+              "
+            >
+              RRR
+            </p>
+            <p style="font-size: 34px; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1">28%</p>
+          </div>
+          <div
+            style="
+              background: rgba(var(--gold-rgb), 0.14);
+              border: 2px solid var(--gold);
+              border-radius: 10px;
+              padding: 14px;
+              text-align: center;
+            "
+          >
+            <p
+              style="
+                font-size: 10px;
+                font-weight: 700;
+                color: var(--muted);
+                margin: 0 0 2px 0;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+              "
+            >
+              NNT
+            </p>
+            <p style="font-size: 34px; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1">27</p>
+          </div>
+        </div>
+
+        <!-- População -->
+        <div
+          style="
+            background: white;
+            border: 1.5px solid rgba(var(--border-rgb), 0.55);
+            border-radius: 10px;
+            padding: 14px 16px;
+          "
+        >
+          <p
+            style="
+              font-size: 10px;
+              font-weight: 700;
+              color: rgba(var(--navy-rgb), 0.45);
+              margin: 0 0 8px 0;
+              text-transform: uppercase;
+              letter-spacing: 0.06em;
+            "
+          >
+            População
+          </p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px 14px">
+            <p style="font-size: 13px; color: var(--navy); margin: 0; line-height: 1.35"><strong>n = 2.127</strong></p>
+            <p style="font-size: 13px; color: var(--navy); margin: 0; line-height: 1.35">
+              Idade
+              <strong>74.5a</strong>
+            </p>
+            <p style="font-size: 13px; color: var(--navy); margin: 0; line-height: 1.35">
+              Fx quadril
+              <strong>&lt;90d</strong>
+            </p>
+            <p style="font-size: 13px; color: var(--navy); margin: 0; line-height: 1.35">
+              Zol
+              <strong>5mg IV</strong>
+              anual
+            </p>
+          </div>
+        </div>
+
+        <!-- Insight clínico -->
+        <div style="background: rgba(var(--navy-rgb), 0.04); border-radius: 8px; padding: 10px 14px">
+          <p
+            style="font-size: 12px; color: rgba(var(--navy-rgb), 0.55); margin: 0; line-height: 1.4; font-style: italic"
+          >
+            Curvas divergem após ~12 meses — efeito mediado pela prevenção de novas fraturas
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALLOUT: Comparativo com Estatinas (storytelling hook — será contradito no próximo slide) -->
+    <div
+      style="
+        background: rgba(var(--gold-rgb), 0.12);
+        border: 2px solid var(--gold);
+        border-radius: 10px;
+        padding: 14px 28px;
+        margin-top: 12px;
+      "
+    >
+      <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items: center">
+        <div style="text-align: center">
+          <p
+            style="
+              font-size: 11px;
+              font-weight: 700;
+              color: var(--muted);
+              margin: 0 0 3px 0;
+              text-transform: uppercase;
+              letter-spacing: 0.04em;
+            "
+          >
+            Estatinas pós-IAM (4S)
+          </p>
+          <p style="font-size: 20px; font-weight: 800; color: var(--navy); margin: 0; line-height: 1.2">
+            RRR 30% · NNT ~30
+          </p>
+          <p style="font-size: 11px; color: var(--muted); margin: 3px 0 0 0">em 5.4 anos</p>
+        </div>
+        <p style="font-size: 32px; color: var(--gold-dark); font-weight: 700; margin: 0; line-height: 1">≈</p>
+        <div style="text-align: center">
+          <p
+            style="
+              font-size: 11px;
+              font-weight: 700;
+              color: var(--muted);
+              margin: 0 0 3px 0;
+              text-transform: uppercase;
+              letter-spacing: 0.04em;
+            "
+          >
+            Zoledronato pós-fratura (HORIZON)
+          </p>
+          <p style="font-size: 20px; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1.2">
+            RRR 28% · NNT 27
+          </p>
+          <p style="font-size: 11px; color: var(--muted); margin: 3px 0 0 0">em 1.9 anos</p>
+        </div>
+      </div>
+      <p
+        style="
+          font-size: 14px;
+          font-weight: 700;
+          color: var(--navy);
+          text-align: center;
+          margin: 10px 0 0 0;
+          font-style: italic;
+        "
+      >
+        Tratar o osso pós-fratura é tão vital quanto tratar o colesterol.
+      </p>
+    </div>
+
+    <!-- FOOTER -->
+    <p style="font-size: 10px; font-style: italic; color: rgba(var(--muted-rgb), 0.55); margin: 6px 0 0 0">
+      Lyles et al. N Engl J Med 2007;357:1799-1809 • 4S: Lancet 1994;344:1383-89
+    </p>
+  </div>
 </section>

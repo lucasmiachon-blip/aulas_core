@@ -1,107 +1,351 @@
-<!-- 8. Slide 8 - O que e Utilidade em Saude -->
-<section class="slide" data-slide="" data-title="Slide 8 - O que e Utilidade em Saude" id="slide-8" style="padding: 40px 48px; background: var(--bg);">
-
-    <!-- Inner wrapper (print-safe): garante ancoragem vertical em @media print (onde .slide vira block) -->
-    <div style="height: 100%; display: flex; flex-direction: column;">
-
-    <!-- TÍTULO: Hierarquia nível 0 -->
-    <h1 style="font-family: Inter, sans-serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 8px 0; text-align: left;">
-        O que é Utilidade em Saúde?
+<!-- 8. Slide 8 - O que é Utilidade em Saúde -->
+<section
+  class="slide"
+  data-slide=""
+  data-title="Slide 8 - O que e Utilidade em Saude"
+  id="slide-8"
+  style="padding: 36px 48px; background: var(--bg)"
+>
+  <!-- Wrapper vertical -->
+  <div style="height: 100%; display: flex; flex-direction: column">
+    <!-- TÍTULO -->
+    <h1
+      style="
+        font-size: 38px;
+        font-weight: 800;
+        color: var(--navy);
+        line-height: 1.1;
+        margin: 0 0 4px 0;
+        letter-spacing: -0.01em;
+      "
+    >
+      O que é Utilidade em Saúde?
     </h1>
-
-    <!-- SUBTÍTULO: Hierarquia nível 1, peso menor -->
-    <p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--muted); text-align: left; margin: 0 0 24px 0; line-height: 1.5;">
-        Utilidade = Valor atribuído a um estado de saúde, onde <strong style="color: var(--navy);">0 = morte</strong> e <strong style="color: var(--navy);">1.0 = saúde perfeita</strong>
+    <p style="font-size: 15px; font-weight: 500; color: rgba(var(--navy-rgb), 0.42); margin: 0 0 22px 0">
+      Valor atribuído a um estado de saúde — de
+      <strong style="color: var(--navy)">0 (morte)</strong>
+      a
+      <strong style="color: var(--navy)">1.0 (saúde perfeita)</strong>
     </p>
 
-    <!-- GRID: 4 colunas funcionais (flex:1 para ocupar miolo e empurrar a nota para o rodapé) -->
-    <div style="flex: 1 1 auto; display: flex; gap: 0; align-items: stretch; min-height: 380px;">
-
-        <!-- COL 1: Labels numéricos (100px) - Leitura começa aqui -->
-        <div style="width: 100px; position: relative;">
-            
-            <!-- 1.0 - Âncora superior (Hierarquia Nível 1) -->
-            <div style="position: absolute; top: 0; right: 8px; text-align: right;">
-                <p style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 800; color: var(--gold); margin: 0; line-height: 1;">1.0</p>
-                <p style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--gold); margin: 3px 0 0 0; letter-spacing: 0.3px;">Saúde perfeita</p>
-            </div>
-
-            <!-- 0.7 - Intermediário (Hierarquia Nível 2) -->
-            <div style="position: absolute; top: 22%; right: 8px; text-align: right;">
-                <p style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--gold); margin: 0; line-height: 1;">0.7</p>
-            </div>
-
-            <!-- 0.5 - Intermediário (Hierarquia Nível 2) -->
-            <div style="position: absolute; top: 44%; right: 8px; text-align: right;">
-                <p style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: rgba(var(--navy-rgb), 0.65); margin: 0; line-height: 1;">0.5</p>
-            </div>
-
-            <!-- 0.3 - Intermediário (Hierarquia Nível 2) -->
-            <div style="position: absolute; top: 66%; right: 8px; text-align: right;">
-                <p style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 700; color: var(--navy); margin: 0; line-height: 1;">0.3</p>
-            </div>
-
-            <!-- 0.0 - Âncora inferior (Hierarquia Nível 1) -->
-            <div style="position: absolute; bottom: 0; right: 8px; text-align: right;">
-                <p style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 800; color: var(--navy); margin: 0; line-height: 1;">0.0</p>
-                <p style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 600; color: var(--navy); margin: 3px 0 0 0; letter-spacing: 0.3px;">Morte</p>
-            </div>
-
+    <!-- GRID PRINCIPAL: régua + 4 cards -->
+    <div
+      style="
+        flex: 1;
+        display: grid;
+        grid-template-columns: 80px 36px 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        gap: 10px 0;
+        align-items: stretch;
+        min-height: 0;
+      "
+    >
+      <!-- ═══════ ROW 1: 1.0 — Saúde Perfeita ═══════ -->
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: center;
+          padding-right: 10px;
+        "
+      >
+        <span style="font-size: 26px; font-weight: 800; color: var(--gold-dark); line-height: 1">1.0</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center">
+        <div
+          style="
+            width: 26px;
+            height: 100%;
+            border-radius: 13px 13px 0 0;
+            background: linear-gradient(to bottom, rgba(var(--gold-rgb), 0.85), rgba(var(--gold-rgb), 0.65));
+          "
+        ></div>
+      </div>
+      <div
+        style="
+          background: white;
+          border: 2px solid rgba(var(--gold-rgb), 0.45);
+          border-radius: 10px;
+          padding: 14px 20px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        "
+      >
+        <div
+          style="
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(var(--gold-rgb), 0.12);
+            border: 2.5px solid var(--gold-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <span style="font-size: 20px">✦</span>
         </div>
-
-        <!-- COL 2: Barra gradiente (50px) - Elemento visual central -->
-        <div style="width: 50px; position: relative;">
-            <div style="position: absolute; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); width: 34px; background: linear-gradient(to bottom, var(--gold) 0%, var(--gold) 20%, rgba(var(--gold-rgb), 0.5) 40%, rgba(var(--navy-rgb), 0.5) 60%, var(--navy) 80%, var(--navy) 100%); border-radius: 17px; box-shadow: 0 3px 10px rgba(0,0,0,0.1);"></div>
+        <div>
+          <p style="font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 3px 0; line-height: 1.2">
+            Saúde Perfeita
+          </p>
+          <p style="font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.35">
+            Sem sintomas, dor ou limitações. Capacidade plena.
+          </p>
         </div>
+      </div>
 
-        <!-- COL 3: Linhas de conexão (50px) - Gestalt: Continuidade -->
-        <div style="width: 50px; position: relative;">
-            <!-- Linha 1.0: cor gold, espessura 3px -->
-            <div style="position: absolute; top: 14px; left: 0; right: 0; height: 3px; background: var(--gold); border-radius: 2px;"></div>
-            <!-- Linha 0.7 -->
-            <div style="position: absolute; top: calc(22% + 10px); left: 0; right: 0; height: 3px; background: var(--gold); border-radius: 2px;"></div>
-            <!-- Linha 0.5: transição de cor -->
-            <div style="position: absolute; top: calc(44% + 10px); left: 0; right: 0; height: 3px; background: rgba(var(--navy-rgb), 0.5); border-radius: 2px;"></div>
-            <!-- Linha 0.3 -->
-            <div style="position: absolute; top: calc(66% + 10px); left: 0; right: 0; height: 3px; background: var(--navy); border-radius: 2px;"></div>
+      <!-- ═══════ ROW 2: 0.7 — Fratura Morfométrica ═══════ -->
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: center;
+          padding-right: 10px;
+        "
+      >
+        <span style="font-size: 26px; font-weight: 800; color: var(--gold-dark); line-height: 1">0.7</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center">
+        <div
+          style="
+            width: 26px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(var(--gold-rgb), 0.55), rgba(var(--navy-rgb), 0.25));
+          "
+        ></div>
+      </div>
+      <div
+        style="
+          background: white;
+          border: 2px solid rgba(var(--gold-rgb), 0.35);
+          border-radius: 10px;
+          padding: 14px 20px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        "
+      >
+        <div
+          style="
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(var(--gold-rgb), 0.08);
+            border: 2.5px solid rgba(var(--gold-dark-rgb), 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <span style="font-size: 18px">🦴</span>
         </div>
-
-        <!-- COL 4: Boxes descritivos (flex: 1) - Conteúdo detalhado -->
-        <div style="flex: 1; position: relative; padding-left: 12px;">
-
-            <!-- Box 1.0: Borda gold, fundo gold claro -->
-            <div style="position: absolute; top: 0; left: 12px; right: 0; background: rgba(var(--gold-rgb), 0.12); border: 2px solid var(--gold); border-radius: 8px; padding: 12px 18px;">
-                <h3 style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 5px 0;">1.0 — Saúde Perfeita</h3>
-                <p style="font-family: Inter, sans-serif; font-size: 14px; color: var(--navy); margin: 0; line-height: 1.4;">Ausência de sintomas, dor ou limitações. Capacidade plena para todas as atividades.</p>
-            </div>
-
-            <!-- Box 0.7: Mesmo padrão gold -->
-            <div style="position: absolute; top: 22%; left: 12px; right: 0; background: rgba(var(--gold-rgb), 0.10); border: 2px solid var(--gold); border-radius: 8px; padding: 12px 18px;">
-                <h3 style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 5px 0;">0.7 — Fratura Morfométrica</h3>
-                <p style="font-family: Inter, sans-serif; font-size: 14px; color: var(--navy); margin: 0; line-height: 1.4;">Fratura vertebral <strong>assintomática</strong>, detectada em raio-X. Leve redução de altura vertebral.</p>
-            </div>
-
-            <!-- Box 0.5: Transição para navy -->
-            <div style="position: absolute; top: 44%; left: 12px; right: 0; background: rgba(var(--navy-rgb), 0.06); border: 2px solid rgba(var(--navy-rgb), 0.4); border-radius: 8px; padding: 12px 18px;">
-                <h3 style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 5px 0;">0.5 — Fratura Sintomática</h3>
-                <p style="font-family: Inter, sans-serif; font-size: 14px; color: var(--navy); margin: 0; line-height: 1.4;">Fratura vertebral com <strong>dor crônica</strong>, limitação de mobilidade, dificuldade para atividades diárias.</p>
-            </div>
-
-            <!-- Box 0.3: Navy completo (gravidade) -->
-            <div style="position: absolute; top: 66%; left: 12px; right: 0; background: rgba(var(--navy-rgb), 0.10); border: 2px solid var(--navy); border-radius: 8px; padding: 12px 18px;">
-                <h3 style="font-family: Inter, sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 5px 0;">0.3 — Fratura de Quadril</h3>
-                <p style="font-family: Inter, sans-serif; font-size: 14px; color: var(--navy); margin: 0; line-height: 1.4;"><strong>Perda de independência</strong>. 50% nunca voltam a andar sem auxílio. 20-25% morrem no 1º ano.</p>
-            </div>
-
+        <div>
+          <p style="font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 3px 0; line-height: 1.2">
+            Fratura Morfométrica
+          </p>
+          <p style="font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.35">
+            Vertebral
+            <strong style="color: var(--navy)">assintomática</strong>
+            — detectada em raio-X. Leve redução de altura.
+          </p>
         </div>
+        <div style="margin-left: auto; flex-shrink: 0; text-align: right">
+          <p
+            style="
+              font-size: 11px;
+              font-weight: 600;
+              color: var(--muted);
+              margin: 0;
+              text-transform: uppercase;
+              letter-spacing: 0.04em;
+            "
+          >
+            Equivale a
+          </p>
+          <p style="font-size: 13px; font-weight: 700; color: var(--navy); margin: 2px 0 0 0">Angina estável</p>
+        </div>
+      </div>
 
+      <!-- ═══════ ROW 3: 0.5 — Fratura Sintomática ═══════ -->
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: center;
+          padding-right: 10px;
+        "
+      >
+        <span style="font-size: 26px; font-weight: 800; color: rgba(var(--navy-rgb), 0.6); line-height: 1">0.5</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center">
+        <div
+          style="
+            width: 26px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(var(--navy-rgb), 0.25), rgba(var(--navy-rgb), 0.55));
+          "
+        ></div>
+      </div>
+      <div
+        style="
+          background: white;
+          border: 2px solid rgba(var(--navy-rgb), 0.25);
+          border-radius: 10px;
+          padding: 14px 20px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        "
+      >
+        <div
+          style="
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(var(--navy-rgb), 0.06);
+            border: 2.5px solid rgba(var(--navy-rgb), 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <span style="font-size: 18px">⚡</span>
+        </div>
+        <div>
+          <p style="font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 3px 0; line-height: 1.2">
+            Fratura Sintomática
+          </p>
+          <p style="font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.35">
+            Vertebral com
+            <strong style="color: var(--navy)">dor crônica</strong>
+            . Limitação de mobilidade e atividades diárias.
+          </p>
+        </div>
+        <div style="margin-left: auto; flex-shrink: 0; text-align: right">
+          <p
+            style="
+              font-size: 11px;
+              font-weight: 600;
+              color: var(--muted);
+              margin: 0;
+              text-transform: uppercase;
+              letter-spacing: 0.04em;
+            "
+          >
+            Equivale a
+          </p>
+          <p style="font-size: 13px; font-weight: 700; color: var(--navy); margin: 2px 0 0 0">DPOC GOLD 3</p>
+        </div>
+      </div>
+
+      <!-- ═══════ ROW 4: 0.3 — Fratura de Quadril ═══════ -->
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: center;
+          padding-right: 10px;
+        "
+      >
+        <span style="font-size: 26px; font-weight: 800; color: var(--navy); line-height: 1">0.3</span>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: center">
+        <div
+          style="
+            width: 26px;
+            height: 100%;
+            border-radius: 0 0 13px 13px;
+            background: linear-gradient(to bottom, rgba(var(--navy-rgb), 0.55), rgba(var(--navy-rgb), 0.92));
+          "
+        ></div>
+      </div>
+      <div
+        style="
+          background: rgba(var(--navy-rgb), 0.04);
+          border: 2px solid var(--navy);
+          border-radius: 10px;
+          padding: 14px 20px;
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          box-shadow: 0 3px 12px rgba(var(--navy-rgb), 0.08);
+        "
+      >
+        <div
+          style="
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          "
+        >
+          <span style="font-size: 20px; filter: brightness(10)">🏥</span>
+        </div>
+        <div>
+          <p style="font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 3px 0; line-height: 1.2">
+            Fratura de Quadril
+          </p>
+          <p style="font-size: 13.5px; color: var(--muted); margin: 0; line-height: 1.35">
+            <strong style="color: var(--navy)">Perda de independência.</strong>
+            50% nunca voltam a andar sem auxílio. 20-25% morrem no 1º ano.
+          </p>
+        </div>
+        <div style="margin-left: auto; flex-shrink: 0; text-align: right">
+          <p
+            style="
+              font-size: 11px;
+              font-weight: 600;
+              color: var(--muted);
+              margin: 0;
+              text-transform: uppercase;
+              letter-spacing: 0.04em;
+            "
+          >
+            Equivale a
+          </p>
+          <p style="font-size: 13px; font-weight: 700; color: var(--navy); margin: 2px 0 0 0">Paraplegia</p>
+        </div>
+      </div>
     </div>
 
-    <!-- Nota de método (ancorada no rodapé, sem depender de .slide ser flex) -->
-    <div style="margin-top: auto; padding-top: 18px; font-family: Inter, sans-serif; font-size: 12px; font-weight: 500; color: rgba(var(--navy-rgb), 0.55); text-align: center; line-height: 1.4;">
-        Medição de utilidade: EQ-5D, Time Trade-Off (TTO) e Standard Gamble (SG) — valores variam por método e população.
+    <!-- FOOTER: Método + fórmula QALY -->
+    <div
+      style="margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between; align-items: center"
+    >
+      <p style="font-size: 12px; color: var(--muted); margin: 0; line-height: 1.4">
+        Medição: EQ-5D, TTO, Standard Gamble — Fontes: Peasgood et al.
+        <em>Osteoporos Int</em>
+        2009; Borgström et al. 2013
+      </p>
+      <div
+        style="
+          background: var(--navy);
+          border-radius: 8px;
+          padding: 8px 16px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        "
+      >
+        <span style="font-size: 12px; font-weight: 700; color: var(--gold)">QALY</span>
+        <span style="font-size: 12px; color: rgba(255, 255, 255, 0.8)">= anos × utilidade</span>
+      </div>
     </div>
-
-    </div>
-
+  </div>
 </section>

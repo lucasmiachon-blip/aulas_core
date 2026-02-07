@@ -19,6 +19,8 @@ Checklist obrigatório a cada mudança:
 - [ ] **Não** adicionar `!important` em CSS novo
 - [ ] Preferir mudanças **por slide** (inline) a CSS global
 - [ ] Testar **viewer** (index), **print mode** (`?print=1`) e **PDF export**
+- [ ] Se mexer em ordem: manter `src/slides/_list.txt` e `src/js/slides-simple.js` (`defaultSlideIds`) **idênticos**
+- [ ] Não remover referências (SBC/papers). Se faltar referência, **pedir** em vez de inventar
 
 ## 3) Definição de “bom” (métricas práticas)
 
@@ -139,3 +141,10 @@ Checklist:
   - Pergunta: remover "dica"/pistas (mantém o momento de interação limpo).
   - Resposta: colocar badge "Resposta: B" e mover dica de dinâmica para o slide de resposta.
 - **Ordem didática** (solicitado): mover bloco **NNT + NOGG + classificação** para antes do bloco DM2/ajustes do FRAX.
+
+### 2026-02-07 (GRADE — CAC: coerência interna)
+- **Quando o slide mostra “Baseline + upgrade/downgrade”**: o rótulo final (⊕/◯) precisa bater com a aritmética.
+  - Se a incerteza é um **limite de aplicação** (ponte PICO / prognóstico → prescrição), tratar como **limite** e não como “−1” automático.
+- **Reordenação**: sempre sincronizar `src/slides/_list.txt` + `defaultSlideIds` no `src/js/slides-simple.js`.
+  - Isso evita que o viewer/PDF caia no fallback e “mude” a ordem sem aviso.
+

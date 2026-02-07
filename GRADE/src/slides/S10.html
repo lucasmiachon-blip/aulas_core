@@ -1,72 +1,194 @@
-<section class="slide" data-slide-id="S10" style="background: var(--bg);">
-  <div class="label-gold" style="margin-bottom: 0.6vw;">APLICAÇÃO — CAC=0</div>
+<section class="slide" data-slide-id="S10" style="background: var(--bg)">
+  <div class="label-gold" style="margin-bottom: 0.6vw">APLICAÇÃO — CAC=0</div>
 
-  <h2 style="margin-bottom: 0.45vw;">CAC=0: por quanto tempo rebaixa risco?</h2>
-  <div class="lead" style="max-width: 92%;">
-    <b>“Warranty period”</b> não é imunidade: é a <b>janela</b> em que o risco tende a permanecer baixo.
+  <h2 style="margin-bottom: 0.9vw !important">
+    CAC=0: janela depende do
+    <span class="title-accent">risco basal</span>
+  </h2>
+
+  <div class="lead" style="max-width: 92%">
+    <b>"Warranty period"</b>
+    não é imunidade: é a janela em que o risco tende a permanecer baixo.
   </div>
 
-  <div style="display:grid; grid-template-columns: 1.55fr 1fr; gap: 1.8vw; margin-top: 1.25vw;">
+  <div
+    style="display: grid; grid-template-columns: 1fr 1fr; gap: 2vw; margin-top: 1.4vw; align-items: stretch; flex: 1"
+  >
+    <!-- Coluna esquerda: Janela prática -->
+    <div class="card" style="padding: 1.4vw 1.5vw; display: flex; flex-direction: column">
+      <div class="small-title" style="margin-bottom: 1vw">Janela prática (quando repetir CAC)</div>
 
-    <!-- Left: figure -->
-    <div class="card" style="padding: 1.05vw 1.05vw 0.95vw 1.05vw;">
-      <div style="font-size: 0.86vw; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 800; margin-bottom: 0.55vw;">
-        MESA • eventos ao longo do tempo
+      <div
+        style="
+          padding: 0.75vw 0.85vw;
+          border-radius: 1vw;
+          background: rgba(var(--navy-rgb), 0.03);
+          border: 1px solid var(--border);
+          margin-bottom: 1vw;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78vw;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 900;
+          "
+        >
+          <span>Risco basal baixo</span>
+          <span>alto</span>
+        </div>
+        <div
+          style="
+            height: 0.55vw;
+            border-radius: 999px;
+            margin-top: 0.45vw;
+            background: linear-gradient(
+              90deg,
+              rgba(var(--navy-rgb), 0.18),
+              rgba(var(--gold-rgb), 0.3),
+              rgba(var(--danger-rgb), 0.22)
+            );
+            border: 1px solid rgba(var(--navy-rgb), 0.12);
+          "
+        ></div>
+        <div style="margin-top: 0.45vw; font-size: 0.98vw; color: rgba(var(--text-rgb), 0.72)">
+          A janela encurta conforme o risco basal sobe.
+        </div>
       </div>
 
-      <div style="border: 1px solid var(--border); border-radius: 1vw; overflow: hidden; background: #fff; height: 26.2vw;">
-        <img src="../assets/figures/mesa_cac_warranty.png" alt="MESA: curvas de Kaplan–Meier por categoria de CAC" style="display:block; width:100%; height:100%; object-fit:contain;">
+      <div style="display: grid; gap: 0.65vw; flex: 1">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7vw 0.85vw;
+            border-radius: 1vw;
+            background: rgba(var(--navy-rgb), 0.03);
+            border: 1px solid var(--border);
+          "
+        >
+          <div style="font-size: 1.05vw"><b>Risco baixo</b></div>
+          <div style="font-size: 1.12vw; font-weight: 900; color: var(--ink)">5–10 anos</div>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7vw 0.85vw;
+            border-radius: 1vw;
+            background: rgba(var(--navy-rgb), 0.03);
+            border: 1px solid var(--border);
+          "
+        >
+          <div style="font-size: 1.05vw"><b>Risco intermediário</b></div>
+          <div style="font-size: 1.12vw; font-weight: 900; color: var(--ink)">3–7 anos</div>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7vw 0.85vw;
+            border-radius: 1vw;
+            background: rgba(var(--gold-rgb), 0.08);
+            border: 1px solid rgba(var(--gold-rgb), 0.22);
+          "
+        >
+          <div style="font-size: 1.05vw">
+            <b>Risco alto</b>
+            / DM / tabagismo
+          </div>
+          <div style="font-size: 1.06vw; font-weight: 900; color: var(--navy)">janela menor</div>
+        </div>
       </div>
 
-      <div class="ref" style="margin-top: 0.7vw; font-size: 0.80vw; line-height: 1.25;">
-        Budoff MJ et al. <i>Eur Heart J</i> 2018. &nbsp;•&nbsp; Dzaye O et al. <i>JACC Img</i> 2021.
+      <div
+        style="
+          margin-top: 0.8vw;
+          display: flex;
+          gap: 0.6vw;
+          align-items: flex-start;
+          font-size: 1.02vw;
+          line-height: 1.35;
+          color: rgba(var(--text-rgb), 0.82);
+        "
+      >
+        <span class="iconCircle iconCircle--gold">!</span>
+        <div>
+          <b>Regra:</b>
+          repetir CAC apenas se a resposta puder
+          <b>mudar conduta</b>
+          .
+        </div>
       </div>
     </div>
 
-    <!-- Right: interpretation -->
-    <div style="display:flex; flex-direction:column; gap: 1.2vw;">
+    <!-- Coluna direita: Leitura GRADE -->
+    <div
+      class="card"
+      style="padding: 1.4vw 1.5vw; border-left: 6px solid var(--navy); display: flex; flex-direction: column"
+    >
+      <div class="small-title" style="margin-bottom: 1vw">Leitura GRADE — warranty period</div>
 
-      <div class="card" style="padding: 1.35vw; border-left: 6px solid var(--teal);">
-        <div class="small-title">Leitura com lente GRADE</div>
-
-        <div style="margin-top: 0.9vw; font-size: 1.08vw; line-height: 1.35;">
-          <div style="display:flex; gap: 0.6vw; align-items:flex-start; margin-bottom: 0.55vw;">
-            <span style="color: var(--teal); font-weight: 900;">+1</span>
-            <span><b>Gradiente</b>: risco sobe conforme o CAC aumenta (dose–resposta).</span>
-          </div>
-          <div style="display:flex; gap: 0.6vw; align-items:flex-start;">
-            <span class="iconCircle iconCircle--gold">!</span>
-            <span>Coorte → decisão terapêutica: atenção a <b>indireção</b> e <b>confusão residual</b>.</span>
+      <div style="display: flex; flex-direction: column; gap: 0.85vw; flex: 1">
+        <div style="display: flex; gap: 0.7vw; align-items: flex-start">
+          <span style="color: var(--teal); font-weight: 900; font-size: 1vw; min-width: 1.6vw">+1</span>
+          <div style="font-size: 1.05vw; line-height: 1.35">
+            <b>Gradiente dose-resposta</b>
+            : risco sobe conforme o CAC aumenta (0 → ≥300).
           </div>
         </div>
 
-        <div class="grade-final" style="margin-top: 0.85vw;">
-          <div>certeza global</div>
-          <div class="grade-dots"><span class="dot">⊕</span><span class="dot">⊕</span><span class="dot">⊕</span><span class="dot">◯</span></div>
-          <div class="grade-label">MODERADA</div>
+        <div style="display: flex; gap: 0.7vw; align-items: flex-start">
+          <span class="iconCircle iconCircle--gold">!</span>
+          <div style="font-size: 1.05vw; line-height: 1.35">
+            <b>Indireção</b>
+            : coorte → decisão terapêutica exige atenção a confusão residual.
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.7vw; align-items: flex-start">
+          <span class="iconCircle iconCircle--teal">✓</span>
+          <div style="font-size: 1.05vw; line-height: 1.35">
+            <b>Consistência</b>
+            : MESA, Rotterdam, Copenhagen, Dallas Heart convergem no gradiente.
+          </div>
         </div>
       </div>
 
-      <div class="card" style="padding: 1.35vw; border-left: 6px solid var(--gold);">
-        <div class="small-title">Janela prática (quando repetir CAC)</div>
-
-        <div style="margin-top: 0.95vw; display:grid; gap: 0.85vw;">
-          <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.85vw 1.0vw; border-radius: 1vw; background: rgba(11,20,37,.03); border: 1px solid var(--border);">
-            <div style="font-size: 1.06vw;"><b>Risco intermediário</b></div>
-            <div style="font-size: 1.12vw; font-weight: 900; color: var(--ink);">3–7 anos</div>
-          </div>
-
-          <div style="display:flex; justify-content:space-between; align-items:center; padding: 0.85vw 1.0vw; border-radius: 1vw; background: rgba(11,20,37,.03); border: 1px solid var(--border);">
-            <div style="font-size: 1.06vw;"><b>Risco baixo</b></div>
-            <div style="font-size: 1.12vw; font-weight: 900; color: var(--ink);">5–10 anos</div>
-          </div>
+      <div class="grade-final" style="margin-top: auto; padding-top: 0.8vw">
+        <div>certeza global</div>
+        <div class="grade-dots">
+          <span class="dot">⊕</span>
+          <span class="dot">⊕</span>
+          <span class="dot">⊕</span>
+          <span class="dot">◯</span>
         </div>
-
-        <div class="note" style="margin-top: 0.85vw;">
-          <p><b>Take‑home:</b> CAC=0 orienta <b>timing</b> de reavaliação — não “alta”.</p>
-        </div>
+        <div class="grade-label">MODERADA</div>
       </div>
 
+      <div
+        style="
+          margin-top: 1vw;
+          padding: 1vw 1.1vw;
+          border-radius: 0.8vw;
+          background: rgba(var(--navy-rgb), 0.04);
+          border: 1px solid rgba(var(--navy-rgb), 0.12);
+        "
+      >
+        <div style="font-size: 1vw; color: rgba(var(--text-rgb), 0.8); line-height: 1.35">
+          <strong>CAC=0 não é "passe livre"</strong>
+          — em sintomáticos, DM alto risco ou história familiar forte, considerar CCTA.
+        </div>
+      </div>
     </div>
   </div>
 </section>
