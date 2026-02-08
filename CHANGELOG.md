@@ -5,6 +5,7 @@
 ### Conteúdo
 
 - **S07 redesign completo (posição 11):** "Indireção: a evidência serve para este paciente?"
+
   - CardHeader navy + 4 PICO rows com `.badge` gold circles (P/I/C/O)
   - Right column: callouts semânticos stacked (gold=downgrade −1/−2, navy=CAC context, teal=upgrade +1, navy=essência)
   - Nota "Desfecho substituto" (LDL vs MACE, cadeia causal por classe)

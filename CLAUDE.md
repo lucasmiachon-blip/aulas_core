@@ -335,7 +335,7 @@ Aulas2/
 | Carga cogn.  | Uma ideia por slide? Chunks de 3-5?         |
 | Dual coding  | Visual complementa texto (não duplica)?     |
 | Narrativa    | Slide avança a história? Tem propósito?     |
-| Fill ratio   | Conteúdo preenche ≥70% da área útil?        |
+| Fill ratio   | Adequado ao tipo? (data: 75-90%, conceitual: 65-80%, interação: 50-65%, título: 30-50%) |
 | Dead space   | Zero whitespace acidental DENTRO de cards?  |
 | Redundância  | Zero informação repetida entre elementos?   |
 
@@ -343,7 +343,7 @@ Aulas2/
 
 1. Gerar slides → converter para imagens a **1600×900** → inspeção visual
 2. Checar: elementos sobrepostos, text overflow, texto/ícones low-contrast, espaçamento desigual
-3. Checar: **% de preenchimento** (conteúdo vs whitespace) — alvo ≥ 70%
+3. Checar: **% de preenchimento** — varia por tipo: data-heavy 75-90%, conceitual 65-80%, interação 50-65%, título/quote 30-55%. Todo whitespace deve ser intencional.
 4. Checar: **dead space dentro de containers** (cards, boxes) — deve ser zero
 5. Verificar placeholders: `grep -iE "xxxx|lorem|ipsum" output`
 6. Corrigir → re-verificar → repetir até pass limpo
@@ -1789,13 +1789,13 @@ Cada iteração tem foco diferente. Tentar fazer tudo de uma vez = miss inevitá
 
 **O que fiz bem:** Na coluna direita do S07, cada callout box tem border-left semântico:
 
-| Box | Border-left | Significado |
-| --- | --- | --- |
-| Quanto rebaixar | gold 0.2vw | Ação de downgrade |
-| CAC context | navy 0.2vw | Informação neutra |
-| Upgrade possível | teal 0.2vw | Ação de upgrade |
-| Essência | navy 0.22vw | Conceito-chave |
-| Na prática | (gold tint bg) | Aplicação clínica |
+| Box              | Border-left    | Significado       |
+| ---------------- | -------------- | ----------------- |
+| Quanto rebaixar  | gold 0.2vw     | Ação de downgrade |
+| CAC context      | navy 0.2vw     | Informação neutra |
+| Upgrade possível | teal 0.2vw     | Ação de upgrade   |
+| Essência         | navy 0.22vw    | Conceito-chave    |
+| Na prática       | (gold tint bg) | Aplicação clínica |
 
 **Padrão extraído:** Em stacks verticais de callout boxes, usar border-left com cor semântica para criar "ritmo visual". O olho percebe o padrão cromático na borda esquerda e navega verticalmente com facilidade. Não deixar nenhum box sem accent — a ausência quebra o ritmo.
 

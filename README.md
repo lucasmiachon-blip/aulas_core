@@ -13,29 +13,31 @@ Repositório de aulas médicas em HTML/CSS. Projeto ativo: **GRADE** (Diretriz B
 **Deadline MVP:** 10 Fevereiro 2026  
 **Viewer:** https://lucasmiachon-blip.github.io/aulas_core/grade/
 
-
 ## GRADE — Diagnóstico + P1 pass (2026-01-28)
 
 Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/slides/_list.txt`).
 
 ### P0 (resolver antes de apresentar)
-- **S04 (p.4)** — *slide de interação*: placeholders `[QR CODE]` e sliders → **deixar para o final** (combinado).
-- **S26 (p.41)** — *Comparativo de calculadoras*: nota interna (“este slide fica como apêndice…”) + excesso de espaço em branco → precisa conteúdo/estrutura.
+
+- **S04 (p.4)** — _slide de interação_: placeholders `[QR CODE]` e sliders → **deixar para o final** (combinado).
+- **S26 (p.41)** — _Comparativo de calculadoras_: nota interna (“este slide fica como apêndice…”) + excesso de espaço em branco → precisa conteúdo/estrutura.
 
 ### P1 aplicado nesta sessão (já feito)
+
 - **S10/S11**: PT-BR + consistência: “Reassess” → **“Reavaliar”**; padronizado **“warranty period”**; ranges com **en-dash** (`&ndash;`).
 - **S29/S41**: ranges numéricos com **en-dash** (ex.: `5–20%`, `5–10 anos`).
 - **S47**: badge “Publication Bias” padronizado (**ALERTA**) + cor via token (`rgba(var(--navy-rgb), …)`).
 
 **P1 v2 (2026-01-28):**
+
 - **Ordem (viewer):** S51 logo após S09; S07/S08 após S10; S59 (poesia) após S57.
 - **S18 (Imprecisão):** régua refeita como forest plot (escala linear + MID + RR 1,0).
 - **S19/S20:** RoB 2.0 e EtD redesenhados para formato talk-ready (cards + síntese).
 - **S49:** compactação de tipografia/espaçamento para caber com folga.
 - **PDF safety:** rodapés sem `position:absolute` (flex + `margin-top:auto`) nos slides até o viewer 40.
 
-
 ### P1 pendente (backlog)
+
 - **S02 (p.2)**: revisar/confirmar % de recomendações por **LOE C vs LOE A** (JAMA 2019) e alinhar texto.
 - **S32 (p.47)**: “Validação brasileira já existe.” → **incluir referência** ou ajustar wording.
 - **S53 (p.31)**: VESALIUS‑CV (data/NEJM) → checar e/ou reescrever como “atualização/living evidence” sem data fixa.
@@ -48,16 +50,18 @@ Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/s
 
 **Estes documentos DEVEM ser atualizados a cada sessão:**
 
-| Documento | Responsável | Propósito |
-|-----------|-------------|-----------|
-| `CLAUDE.md` | Claude | Persona frontend/design + registro de erros + aprendizados |
-| `chatgpt.md` | ChatGPT | Contexto de auditoria + decisões + feedback |
+| Documento    | Responsável | Propósito                                                  |
+| ------------ | ----------- | ---------------------------------------------------------- |
+| `CLAUDE.md`  | Claude      | Persona frontend/design + registro de erros + aprendizados |
+| `chatgpt.md` | ChatGPT     | Contexto de auditoria + decisões + feedback                |
 
 **Regras:**
+
 - **CLAUDE.md**: Atualizar com erros cometidos, aprendizados, e melhorias de processo
 - **chatgpt.md**: Atualizar com contexto de auditoria, decisões tomadas, e feedback
 
 **Transferência de conhecimento:**
+
 - Erros em um projeto previnem erros em outros
 - Padrões identificados viram regras permanentes
 - 3 erros similares = nova seção de referência criada
@@ -78,6 +82,7 @@ Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/s
 **⏱️ Tempo estimado:** 15-20 minutos (vale MUITO a pena!)
 
 **NUNCA:**
+
 - ❌ Criar arquivos sem aprovação
 - ❌ Fazer commits sem aprovação (só Auto/Claude Técnico faz commits)
 - ❌ Modificar código sem plano aprovado
@@ -86,6 +91,7 @@ Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/s
 - ❌ Tocar em `OSTEOPOROSE/` sem demanda explícita (PATCH0_6 foi uma exceção aprovada para correção de overflow)
 
 **SEMPRE:**
+
 - ✅ Apresentar PLANO antes de executar
 - ✅ Esperar aprovação explícita do usuário
 - ✅ Usar paleta oficial (`var(--navy)`, `var(--gold)`, etc)
@@ -98,11 +104,13 @@ Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/s
 **⚠️ CRÍTICO:** **TODA mudança DEVE ser documentada no `CHANGELOG.md` ANTES do commit.**
 
 **Você (assistente) DEVE:**
+
 1. **SEMPRE** atualizar `CHANGELOG.md` quando fizer QUALQUER mudança
 2. **SEMPRE** ler a última entrada do CHANGELOG antes de começar a trabalhar
 3. **SEMPRE** documentar o que foi feito, por quê, e o que NÃO foi feito (para evitar alucinações)
 
 **Formato da entrada no CHANGELOG:**
+
 - Data da sessão
 - Objetivo da sessão
 - O que foi feito (com detalhes técnicos)
@@ -121,6 +129,7 @@ Diagnóstico feito no **viewer PDF** (58 páginas; ordem baseada em `GRADE/src/s
 **⚠️ IMPORTANTE:** Antes de trabalhar, leia a última entrada do `CHANGELOG.md` para entender o contexto atual.
 
 **Última sessão (Batch 1 - Slides 1-5):**
+
 - ✅ **PDF Safety:** `print-color-adjust: exact` adicionado (NUNCA remover!)
 - ✅ **Classe `.cardHeader`:** Criada para headers navy reutilizáveis (use em novos slides)
 - ✅ **Correções de conteúdo:** S02 (números), S03 (layout vertical), S04 (gramática)
@@ -151,11 +160,13 @@ var(--blue)    /* #2563EB - Suporte/informação */
 ### ❌ CORES PROIBIDAS (NUNCA USAR):
 
 **Variáveis CSS problemáticas (NÃO EXISTEM mais):**
+
 - ❌ `var(--success)` → Use `var(--teal)` ou `var(--gold)`
 - ❌ `var(--warning)` → Use `var(--gold)`
 - ❌ `var(--danger)` → Use `var(--navy)` ou `var(--text)`
 
 **Cores hardcoded problemáticas (NUNCA usar):**
+
 - ❌ `#10B981` (verde) → Use `var(--teal)`
 - ❌ `#F59E0B` (laranja) → Use `var(--gold)`
 - ❌ `#EF4444` (vermelho) → Use `var(--navy)`
@@ -179,6 +190,7 @@ Este projeto usa **3 assistentes diferentes** com responsabilidades distintas:
 ### 1. 🔧 CLAUDE DEV ⬅️ **Desenvolvedor Sênior + UI/UX Profissional + Professor**
 
 **Você é Claude Dev se:**
+
 - Está no Cursor (este chat)
 - Foi chamado para resolver problemas técnicos
 - Trabalha com HTML/CSS/JS, Git, estrutura
@@ -188,12 +200,14 @@ Este projeto usa **3 assistentes diferentes** com responsabilidades distintas:
 **📖 `docs/ESSENTIAL/CLAUDE_DEV_ROLE.md`** ← **DOCUMENTO COMPLETO DO SEU PAPEL**
 
 Este documento contém:
+
 - ✅ Seu papel como parceiro técnico (não apenas executor)
 - ✅ Protocolo de comunicação e ensino
 - ✅ Foco em UI/UX profissional (design impecável obrigatório)
 - ✅ Code review e validação de decisões
 
 **LEITURA OBRIGATÓRIA (15-20 min):**
+
 1. **`docs/ESSENTIAL/CLAUDE_DEV_ROLE.md`** ← **SEU DOCUMENTO PRINCIPAL**
 2. `docs/ESSENTIAL/PROMPT_PALETA_OFICIAL.md` - Paleta de cores
 3. `docs/ESSENTIAL/TECHNICAL_QUALITY.md` - Critérios técnicos
@@ -201,6 +215,7 @@ Este documento contém:
 5. `CHANGELOG.md` - Histórico (para contexto)
 
 **RESUMO RÁPIDO:**
+
 - ✅ Você resolve problemas técnicos
 - ✅ Você **ENSINA** (explica POR QUÊ antes de COMO)
 - ✅ Você faz code review profissional
@@ -208,6 +223,7 @@ Este documento contém:
 - ✅ Você NÃO cria conteúdo médico
 
 **COMUNICAÇÃO COM OUTRAS IAs:**
+
 - Se receber HTML de outra IA, valide paleta antes de commitar
 - Se encontrar problema técnico, documente para outras IAs
 - Use `docs/HANDOFF.md` para passar contexto entre sessões
@@ -217,6 +233,7 @@ Este documento contém:
 ### 2. 📚 CLAUDE CONTEÚDO ⬅️ **LEIA ESTE DOCUMENTO PRIMEIRO**
 
 **Você é Claude Conteúdo se:**
+
 - Está em outro chat/projeto (não no Cursor)
 - Foi chamado para criar slides MÉDICOS
 - Trabalha com conteúdo educacional
@@ -225,12 +242,14 @@ Este documento contém:
 **📖 `docs/ESSENTIAL/CLAUDE_CONTENT_ROLE.md`** ← **DOCUMENTO COMPLETO DO SEU PAPEL**
 
 Este documento contém:
+
 - ✅ O que você PODE e NÃO pode fazer
 - ✅ Protocolo passo-a-passo para criar slides
 - ✅ Exemplos de código correto e incorreto
 - ✅ Checklist completo antes de entregar
 
 **LEITURA OBRIGATÓRIA (15 min):**
+
 1. **`docs/ESSENTIAL/CLAUDE_CONTENT_ROLE.md`** ← **SEU DOCUMENTO PRINCIPAL**
 2. `docs/PROMPT_PALETA_OFICIAL.md` - **PALETA OFICIAL** (obrigatório!)
 3. `docs/QUALITY.md` - EBM, educação de adultos
@@ -238,12 +257,14 @@ Este documento contém:
 5. `GRADE/refs/sources.md` - Fontes bibliográficas
 
 **RESUMO RÁPIDO:**
+
 - ✅ Você cria CONTEÚDO médico em HTML
 - ✅ Você USA paleta oficial (`var(--navy)`, `var(--gold)`, etc)
 - ✅ Você NÃO faz commits (Claude Técnico faz)
 - ✅ Você NÃO mexe em CSS/JS técnico
 
 **Workflow:**
+
 ```
 Você cria HTML → Claude Técnico valida → ChatGPT Auditor aprova → Claude Técnico commita
 ```
@@ -253,6 +274,7 @@ Você cria HTML → Claude Técnico valida → ChatGPT Auditor aprova → Claude
 ### 3. 🎯 CHATGPT AUDITOR ⬅️ **Guardião da Qualidade**
 
 **Você é ChatGPT Auditor se:**
+
 - Foi chamado para VALIDAR trabalho pronto
 - Está revisando qualidade final
 - Verifica se protocolos foram seguidos
@@ -262,12 +284,14 @@ Você cria HTML → Claude Técnico valida → ChatGPT Auditor aprova → Claude
 **📖 `docs/ESSENTIAL/CHATGPT_AUDITOR_ROLE.md`** ← **DOCUMENTO COMPLETO DO SEU PAPEL**
 
 Este documento contém:
+
 - ✅ Checklist completo de auditoria (paleta, acessibilidade, conteúdo, design, técnico)
 - ✅ Modelo de feedback estruturado (aprovado/reprovado)
 - ✅ Priorização de problemas (P0/P1/P2)
 - ✅ Exemplos práticos de auditoria
 
 **LEITURA OBRIGATÓRIA (15-20 min):**
+
 1. **`docs/ESSENTIAL/CHATGPT_AUDITOR_ROLE.md`** ← **SEU DOCUMENTO PRINCIPAL**
 2. `docs/ESSENTIAL/PROMPT_PALETA_OFICIAL.md` - Paleta oficial
 3. `docs/ESSENTIAL/QUALITY.md` - Benchmarks de qualidade
@@ -275,6 +299,7 @@ Este documento contém:
 5. `docs/ESSENTIAL/TECHNICAL_QUALITY.md` - Critérios técnicos
 
 **RESUMO RÁPIDO:**
+
 - ✅ Você audita TUDO (conteúdo + design + técnico)
 - ✅ Você aprova ✅ ou reprova ❌ com feedback específico
 - ✅ Você NÃO cria nem modifica arquivos
@@ -285,17 +310,20 @@ Este documento contém:
 ## 💬 COMO AS IAs SE COMUNICAM
 
 ### Handoff entre sessões:
+
 - Use `docs/HANDOFF.md` para passar contexto
 - Documente o que foi feito e o que falta fazer
 - Mencione problemas encontrados e soluções
 
 ### Validação de trabalho:
+
 1. **Claude Conteúdo** cria HTML → entrega para **Claude Dev**
 2. **Claude Dev** valida aspectos técnicos → entrega para **ChatGPT Auditor**
 3. **ChatGPT Auditor** valida TUDO → aprova ✅ ou reprova ❌ com feedback
 4. **Claude Dev** commita se aprovado (ou corrige se reprovado)
 
 ### Se encontrar problema:
+
 - Documente em `docs/HANDOFF.md`
 - Mencione qual IA deve resolver
 - Seja específico sobre o problema
@@ -360,15 +388,15 @@ aulas_core/
 
 ```css
 :root {
-    --bg: #F9F8F4;      /* Off-white - fundo padrão */
-    --navy: #0B1320;    /* Navy - títulos/base escura */
-    --gold: #DDB944;    /* Gold - destaques/ênfase */
-    --text: #222;       /* Cinza escuro - texto principal */
-    --muted: #666;      /* Cinza médio - legendas */
-    --border: #E9ECEF;  /* Cinza claro - bordas */
-    --teal: #1F766E;    /* Teal - clínico/dados */
-    --blue: #2563EB;    /* Azul - suporte */
-    --white: #FFFFFF;   /* Branco - cards */
+  --bg: #f9f8f4; /* Off-white - fundo padrão */
+  --navy: #0b1320; /* Navy - títulos/base escura */
+  --gold: #ddb944; /* Gold - destaques/ênfase */
+  --text: #222; /* Cinza escuro - texto principal */
+  --muted: #666; /* Cinza médio - legendas */
+  --border: #e9ecef; /* Cinza claro - bordas */
+  --teal: #1f766e; /* Teal - clínico/dados */
+  --blue: #2563eb; /* Azul - suporte */
+  --white: #ffffff; /* Branco - cards */
 }
 ```
 
@@ -378,6 +406,7 @@ Migração completa será feita após MVP (10 Fevereiro).
 **Para detalhes:** Ver `docs/ESSENTIAL/PALETA_MIGRATION_PLAN.md`
 
 ### ❌ NUNCA USE:
+
 - `#333333`, `#000000`, `#666` (hardcoded)
 - `#FF0000`, `#00FF00` (cores primárias puras)
 - `#10B981`, `#F59E0B`, `#EF4444` (cores problemáticas que foram removidas)
@@ -389,6 +418,7 @@ Migração completa será feita após MVP (10 Fevereiro).
 **SEMPRE use:** `var(--navy)`, `var(--gold)`, `var(--text)`, etc.
 
 ### 📖 TIPOGRAFIA:
+
 - **Títulos:** Georgia (serif) — autoridade acadêmica
 - **Corpo:** Lato (sans-serif) — legibilidade premium
 
@@ -397,6 +427,7 @@ Migração completa será feita após MVP (10 Fevereiro).
 ## 🚀 COMO USAR
 
 ### Visualizar Localmente:
+
 ```bash
 # Opção 1: Servidor local
 cd aulas_core
@@ -411,12 +442,14 @@ python -m http.server 8000
 ```
 
 ### Sincronizar src/ → dist/:
+
 ```bash
 cd scripts
 npm run sync-grade
 ```
 
 ### Gerar PDF:
+
 ```bash
 cd scripts
 npm run export-grade
@@ -427,18 +460,21 @@ npm run export-grade
 ## 📋 STATUS ATUAL
 
 ### Aula GRADE:
+
 - **Objetivo:** Metodologia GRADE aplicada à Diretriz Brasileira de Dislipidemia 2025
 - **Status:** MVP em desenvolvimento
 - **Score de qualidade:** 26/30 ✅
 - **Temas:** CAC, PREVENT, SAMS & Bempedoic Acid, LDL-C Targets
 
 ### Estrutura GRADE:
+
 - ✅ Core GRADE: 8 domínios fundamentais
 - ✅ **Modularização completa:** 42 slides em arquivos separados (2026-01-19)
 - ⏳ GRADEs Adicionais: Modelos preditivos, diretrizes
 - ⏳ Exemplos SBC 2025: Casos práticos brasileiros
 
 ### 🆕 Modularização de Slides:
+
 - **Status:** ✅ Completo (2026-01-19)
 - **Slides:** 42 arquivos em `GRADE/src/slides/` (S01.html a S42.html)
 - **Carregamento:** Dinâmico via `slide-loader.js`
@@ -451,12 +487,14 @@ npm run export-grade
 ### Para criar um novo slide:
 
 **1. Claude Conteúdo (outro projeto):**
+
 - Define conteúdo médico
 - Aplica andragogia
 - **USA paleta oficial** (`var(--navy)`, `var(--gold)`, etc)
 - Entrega HTML com `var(--nome)` correto
 
 **2. Auto/Claude Técnico (aqui):**
+
 - Recebe HTML do Claude Conteúdo
 - Valida paleta (`var(--nome)` usado?)
 - Valida tipografia (Georgia + Lato?)
@@ -465,6 +503,7 @@ npm run export-grade
 - Entrega para auditoria
 
 **3. ChatGPT Auditor:**
+
 - Recebe slide pronto
 - Valida TUDO (paleta, conteúdo, design)
 - Aprova ✅ ou reprova ❌ com feedback
@@ -474,6 +513,7 @@ npm run export-grade
 ## ✅ VALIDAÇÃO RÁPIDA
 
 ### Paleta correta?
+
 ```bash
 # Buscar cores hardcoded (deve retornar VAZIO)
 grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
@@ -483,6 +523,7 @@ grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
 ```
 
 ### Checklist rápido:
+
 - [ ] Usa `var(--nome)` ao invés de `#XXXXXX`? ✅
 - [ ] Tipografia: Georgia (títulos) + Lato (corpo)? ✅
 - [ ] Contraste WCAG AA (≥ 4.5:1)? ✅
@@ -501,6 +542,7 @@ grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
 7. **ALWAYS use `var(--nome)` for colors** (never hardcoded `#XXXXXX`)
 
 **Allowed operations:**
+
 - Technical fixes (GRADE only)
 - Bonus slides (append-only at the end)
 - Git commits with proper messages
@@ -514,20 +556,24 @@ grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
 ### Checklist Rápido:
 
 1. **Cores hardcoded?**
+
    ```bash
    grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
    # Deve retornar VAZIO
    ```
 
 2. **Estrutura OK?**
+
    - Caminhos corretos?
    - Referências não quebradas?
    - Arquivos não utilizados removidos?
 
 3. **Sincronização?**
+
    - Se mudou `src/`, executou `npm run sync-grade`?
 
 4. **CHANGELOG atualizado?**
+
    - `CHANGELOG.md` foi atualizado?
 
 5. **Regras rígidas?**
@@ -536,10 +582,13 @@ grep -o '#[0-9A-Fa-f]\{6\}' GRADE/src/index.html
    - OSTEOPOROSE não tocado?
 
 ### 📖 Documento Completo:
+
 **Leia:** `docs/PROCESSO_AUDITORIA_AUTO.md` ← **OBRIGATÓRIO antes de cada commit**
 
 ### 💬 Comunicação:
+
 Se encontrar problemas durante auditoria:
+
 1. Listar problemas encontrados
 2. Explicar impacto
 3. Sugerir correções
@@ -554,21 +603,25 @@ Se encontrar problemas durante auditoria:
 **Para IAs iniciando nova sessão, ler PRIMEIRO:**
 
 **🔧 Claude Técnico (este projeto - estrutura):**
+
 - `docs/HANDOFF_SESSAO_2026_01_20.md` ← Último handoff técnico completo
 - `CHANGELOG.md` ← Histórico completo de mudanças
 
 **📚 Claude de Conteúdo (outro projeto - conteúdo médico):**
+
 - `docs/HANDOFF_CONTEUDO_2026_01_20.md` ← **Último handoff de conteúdo** (status atualizado)
 - `CHANGELOG.md` ← Histórico completo de mudanças
 - `GRADE/refs/sources.md` ← Fontes bibliográficas
 
 **O handoff técnico contém:**
+
 - Contexto do que foi feito na última sessão técnica
 - Status atual do projeto (número de slides, estrutura)
 - Protocolo de trabalho reafirmado (o que posso/não posso fazer)
 - Próximas tarefas estruturais potenciais
 
 **O handoff de conteúdo contém:**
+
 - Status atual do conteúdo médico (45 slides)
 - Slides criados recentemente (S43-S46 sobre SAMS/Bempedóico)
 - Problemas de conteúdo identificados ([TBD], inconsistências)
@@ -598,7 +651,6 @@ Ajustes do **P1** (revisão visual/narrativa) nos slides 1–36:
 - **Slides 21–23:** CLEAR Outcomes + MID + Imprecisão com melhor contraste e símbolos mais “clean”.
 - **Slide 27:** fechamento SAMS com menos texto, mais respiro e dourado menos agressivo.
 - **Docs:** CHANGELOG e README atualizados.
-
 
 ## GRADE — PATCH 2.10 (2026-01-31)
 
