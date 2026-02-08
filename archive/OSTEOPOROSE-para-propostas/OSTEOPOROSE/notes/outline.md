@@ -1,3 +1,0 @@
-# Outline (OSTEOPOROSE)
-
-[TBD]

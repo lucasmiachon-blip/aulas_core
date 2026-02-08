@@ -1,100 +1,66 @@
-# ===================================================================
-# .gitignore — Aulas2 (Professional Presentation Project)
-# ===================================================================
+# .gitignore — Aulas2
 
-# -----------------------------------------------
 # Dependencies
-# -----------------------------------------------
 node_modules/
 package-lock.json
 
-# -----------------------------------------------
-# Generated Outputs (PDFs, PNGs, PPTX, ZIPs)
-# -----------------------------------------------
+# Generated outputs
 exports/
 screenshots/
 *.pdf
 *.pptx
+*.zip
 
-# -----------------------------------------------
+# Archives (old files, backups, debug packages)
+archive/
+_archive/
+
 # Logs
-# -----------------------------------------------
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
 
-# -----------------------------------------------
 # OS artifacts
-# -----------------------------------------------
 .DS_Store
 Thumbs.db
 Desktop.ini
-$RECYCLE.BIN/
 
-# -----------------------------------------------
 # IDE / Editor
-# -----------------------------------------------
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-.project
-.classpath
-.settings/
 
-# -----------------------------------------------
-# Cursor AI (debug logs, session data)
-# -----------------------------------------------
+# Cursor AI
 .cursor/debug.log
 
-# -----------------------------------------------
-# Temporary files
-# -----------------------------------------------
+# Temp files
 *.tmp
 *.temp
 ~*
 _temp_*/
+screenshot-*.cjs
+screenshot-*.js
+!scripts/screenshot-slide.js
+!scripts/screenshot-single-slide.js
 
-# -----------------------------------------------
 # Backups
-# -----------------------------------------------
 *.ORIGINAL
 *.backup
 
-# -----------------------------------------------
-# OneDrive sync artifacts
-# -----------------------------------------------
-*.cloud
-
-# -----------------------------------------------
-# Build / Dist (general)
-# -----------------------------------------------
+# Build / Dist
 build/
 out/
-
-# Exception: GRADE/dist is needed for GitHub Pages
 !GRADE/dist/
 !GRADE/dist/**
 
-# -----------------------------------------------
 # Tests
-# -----------------------------------------------
 coverage/
-.nyc_output/
 
-# -----------------------------------------------
 # Environment / Secrets
-# -----------------------------------------------
 .env
 .env.local
 .env.*.local
-config/github-token.txt
-github-token.txt
-*github-token*
-*GITHUB_TOKEN*
 *.token
 *.key
 *.secret
@@ -103,10 +69,13 @@ gho_*
 ghu_*
 ghs_*
 ghr_*
-METRICAS_MVP.txt
 
-# -----------------------------------------------
-# Auto-generated verification docs
-# -----------------------------------------------
-docs/STATUS_SYNC.md
-docs/VERIFICACAO_ALINHAMENTO.md
+# GRADE audit artifacts
+GRADE/audit/
+
+# Temp print files
+OSTEOPOROSE/src/print_*.html
+!OSTEOPOROSE/src/print.html
+
+# Commit message temp
+.commit-msg.txt
