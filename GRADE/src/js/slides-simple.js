@@ -140,6 +140,28 @@
         show(Math.max(current - 1, 0));
     }
     
+    // Fullscreen toggle
+    function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(() => {});
+        } else {
+            document.exitFullscreen().catch(() => {});
+        }
+    }
+
+    // Hide/show controls
+    function toggleControls() {
+        const ctrl = document.querySelector('.controls');
+        if (ctrl) ctrl.style.display = ctrl.style.display === 'none' ? '' : 'none';
+    }
+
+    // Auto-hide controls in fullscreen
+    document.addEventListener('fullscreenchange', () => {
+        const ctrl = document.querySelector('.controls');
+        if (!ctrl) return;
+        ctrl.style.display = document.fullscreenElement ? 'none' : '';
+    });
+
     // Teclado (handler nomeado para poder remover)
     function handleKey(e) {
         if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
@@ -154,6 +176,12 @@
         } else if (e.key === 'End') {
             e.preventDefault();
             show(slides.length - 1);
+        } else if (e.key === 'f' || e.key === 'F') {
+            e.preventDefault();
+            toggleFullscreen();
+        } else if (e.key === 'h' || e.key === 'H') {
+            e.preventDefault();
+            toggleControls();
         }
     }
 

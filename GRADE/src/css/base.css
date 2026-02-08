@@ -133,6 +133,12 @@ body {
   display: flex;
 }
 
+/* Fullscreen: slide sem bordas, ocupa tela inteira */
+:fullscreen .slide {
+  border-radius: 0;
+  box-shadow: none;
+}
+
 /* (evitar duplicatas de regras do S47) */
 
 .bg-navy {
