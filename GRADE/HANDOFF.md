@@ -28,7 +28,7 @@ Múltiplas rodadas iterativas (screenshot → avaliação → fix → re-screens
 
 > Callout 1: "Para os intolerantes a estatina que não atingem o alvo com ezetimiba, recomenda-se intensificar a terapia com ácido bempedóico."
 
-> Callout 2: "Em pacientes que não atingem a meta com estatina em dose máxima tolerada + ezetimiba, considerar adição de ácido bempedóico." *(reconstrução fiel — confirmar wording exato na tabela da diretriz)*
+> Callout 2: "Em pacientes que não atingem a meta com estatina em dose máxima tolerada + ezetimiba, considerar adição de ácido bempedóico." _(reconstrução fiel — confirmar wording exato na tabela da diretriz)_
 
 ## Tarefas pendentes
 
@@ -51,23 +51,23 @@ O callout 2 (meta não atingida) é reconstrução baseada no Afya/contexto. Ide
 
 ## Mapa de posições (slides auditados)
 
-| Posição | Arquivo | Status |
-|---------|---------|--------|
-| 1-6 | S01-S09 | Benchmark de paleta (usados como referência) |
-| 13 | **S14** | Polido nesta sessão (uncommitted) |
-| 14 | S17 | Polido (ruler MID) |
-| 15 | S19 | Polido (RoB compact) |
-| 16+ | ... | Não auditados |
+| Posição | Arquivo | Status                                       |
+| ------- | ------- | -------------------------------------------- |
+| 1-6     | S01-S09 | Benchmark de paleta (usados como referência) |
+| 13      | **S14** | Polido nesta sessão (uncommitted)            |
+| 14      | S17     | Polido (ruler MID)                           |
+| 15      | S19     | Polido (RoB compact)                         |
+| 16+     | ...     | Não auditados                                |
 
 ## Arquivos-chave
 
-| Arquivo | Função |
-|---------|--------|
-| `GRADE/src/slides/S14.html` | Cross-guideline (UNCOMMITTED) |
-| `GRADE/src/slides/_list.txt` | Ordem dos 56 slides |
-| `GRADE/src/css/blocks.css` | Componentes (cards, chips) |
-| `CLAUDE.md` (raiz) | Persona + regras + insights |
-| `scripts/_screenshot-batch.js` | Script de QA screenshots |
+| Arquivo                        | Função                        |
+| ------------------------------ | ----------------------------- |
+| `GRADE/src/slides/S14.html`    | Cross-guideline (UNCOMMITTED) |
+| `GRADE/src/slides/_list.txt`   | Ordem dos 56 slides           |
+| `GRADE/src/css/blocks.css`     | Componentes (cards, chips)    |
+| `CLAUDE.md` (raiz)             | Persona + regras + insights   |
+| `scripts/_screenshot-batch.js` | Script de QA screenshots      |
 
 ## Regras críticas
 
