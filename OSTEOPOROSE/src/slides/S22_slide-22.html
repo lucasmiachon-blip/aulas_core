@@ -1,192 +1,1065 @@
-<!-- Counter 15 — v15: 3×3 grid layout — breathing room + headings + callouts -->
-<section class="slide" data-slide="" data-title="Estratificação completa de risco de fratura" id="slide-risk-stratification"
-  style="padding: 26px 40px 12px 40px; background: var(--bg); display: flex; flex-direction: column; height: 100%; box-sizing: border-box;">
+<!-- Counter 15 — v15: Box grid layout — 3 boxes per card fills space naturally -->
+<section
+  class="slide"
+  data-slide=""
+  data-title="Estratificação completa de risco de fratura"
+  id="slide-risk-stratification"
+  style="
+    padding: 28px 40px 12px 40px;
+    background: var(--bg);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+  "
+>
+  <p
+    style="
+      font-family: var(--font-sans);
+      font-size: 0.68vw;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 0 0 2px 0;
+    "
+  >
+    FRAX Brasil 2.0 (ABRASSO 2024) · SBEM/ABRASSO 2022
+  </p>
+  <h1
+    style="
+      font-family: var(--font-sans);
+      font-size: 2.05vw;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.08;
+      margin: 0 0 0.5vw 0;
+      letter-spacing: -0.01em;
+    "
+  >
+    Estratificação de risco: da classificação à conduta
+  </h1>
 
-  <p style="font-family: var(--font-sans); font-size: 0.68vw; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 2px 0;">FRAX Brasil 2.0 (ABRASSO 2024) · SBEM/ABRASSO 2022</p>
-  <h1 style="font-family: var(--font-sans); font-size: 2.05vw; font-weight: 800; color: var(--navy); line-height: 1.08; margin: 0 0 0.45vw 0; letter-spacing: -0.01em;">Estratificação de risco: da classificação à conduta</h1>
-
-  <!-- ═══ GRID 3 col × 2 rows ═══ -->
-  <div style="flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap: 0.55vw; margin-bottom: 0.35vw;">
-
-    <!-- ═══ ROW 1 ═══ -->
-
+  <!-- ═══ 5 CARDS ═══ -->
+  <div style="flex: 1; display: flex; gap: 0.5vw; margin-bottom: 0.3vw">
     <!-- ── BAIXO ── -->
-    <div style="display: flex; flex-direction: column; background: var(--white); border: 1px solid var(--border); border-radius: 0.55vw; overflow: hidden; box-shadow: 0 1px 4px rgba(var(--navy-rgb), 0.04);">
-      <div style="padding: 0.4vw 0.65vw; background: rgba(var(--navy-rgb), 0.035); border-bottom: 2px solid rgba(var(--navy-rgb), 0.05);">
-        <p style="font-family: var(--font-sans); font-size: 1.05vw; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 0.04em; margin: 0; opacity: 0.4;">Baixo</p>
+    <div
+      style="
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35vw;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 0.55vw;
+        overflow: hidden;
+        box-shadow: 0 1px 4px rgba(var(--navy-rgb), 0.04);
+        padding: 0.45vw;
+      "
+    >
+      <!-- Header pill -->
+      <div
+        style="
+          background: rgba(var(--navy-rgb), 0.055);
+          border-radius: 0.3vw;
+          padding: 0.25vw 0.4vw;
+          display: flex;
+          align-items: center;
+          min-height: 1.6vw;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.95vw;
+            font-weight: 800;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0;
+            opacity: 0.5;
+          "
+        >
+          Baixo
+        </p>
       </div>
-      <div style="flex: 1; padding: 0.5vw 0.65vw; display: flex; flex-direction: column;">
-        <div style="display: flex; gap: 0.8vw; margin-bottom: 0.4vw;">
-          <div style="flex: 1;">
-            <p style="font-family: var(--font-sans); font-size: 0.55vw; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 0.12vw 0;">ABRASSO</p>
-            <p style="font-family: var(--font-sans); font-size: 0.82vw; color: var(--navy); margin: 0; line-height: 1.55;">FRAX abaixo do limiar de intervenção</p>
-          </div>
-          <div style="flex: 1;">
-            <p style="font-family: var(--font-sans); font-size: 0.55vw; font-weight: 700; color: rgba(var(--navy-rgb), 0.35); text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 0.12vw 0;">NOGG</p>
-            <p style="font-family: var(--font-sans); font-size: 0.82vw; color: rgba(var(--navy-rgb), 0.55); margin: 0; line-height: 1.55;">Reassegurar · reavaliar 3–5 a</p>
-          </div>
-        </div>
-        <div style="height: 1.5px; background: rgba(var(--navy-rgb), 0.05); margin-bottom: 0.4vw;"></div>
-        <p style="font-family: var(--font-sans); font-size: 0.95vw; font-weight: 700; color: var(--navy); margin: 0 0 0.25vw 0; line-height: 1.2;">Estilo de vida</p>
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: var(--navy); margin: 0; line-height: 1.65;">Ca 1000–1200 mg + Vit D 800–2000 UI/d</p>
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: var(--navy); margin: 0; line-height: 1.65;">Exercício resistido 2–3×/sem</p>
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: var(--navy); margin: 0; line-height: 1.65;">Prevenção de quedas</p>
-        <div style="margin-top: auto; border-left: 2.5px solid rgba(var(--navy-rgb), 0.1); padding: 0.18vw 0 0.18vw 0.4vw; background: rgba(var(--navy-rgb), 0.015); border-radius: 0 0.18vw 0.18vw 0;">
-          <p style="font-family: var(--font-sans); font-size: 0.68vw; color: var(--navy); margin: 0; line-height: 1.45; font-style: italic;">Sem farmacoterapia</p>
-          <p style="font-family: var(--font-sans); font-size: 0.65vw; color: var(--muted); margin: 0.06vw 0 0 0; line-height: 1.4;">Se fx durante follow-up → reclassificar</p>
-        </div>
+      <!-- Box 1: Critérios -->
+      <div
+        style="
+          flex: 1;
+          background: rgba(var(--navy-rgb), 0.025);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gold-dark);
+            margin: 0 0 0.2vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+          "
+        >
+          Critérios
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.75vw; color: var(--navy); margin: 0; line-height: 1.6">
+          FRAX abaixo do limiar de intervenção
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.7vw;
+            color: rgba(var(--navy-rgb), 0.5);
+            margin: 0.15vw 0 0 0;
+            line-height: 1.55;
+          "
+        >
+          Reassegurar · reavaliar 3–5 a
+        </p>
+      </div>
+      <!-- Box 2: Conduta -->
+      <div
+        style="
+          flex: 1.3;
+          background: rgba(var(--navy-rgb), 0.015);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--navy);
+            margin: 0 0 0.2vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+            opacity: 0.5;
+          "
+        >
+          Conduta
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.82vw;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 0.15vw 0;
+            line-height: 1.3;
+          "
+        >
+          Estilo de vida
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          Ca 1000–1200 mg · Vit D 800–2000 UI/d
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          Exercício resistido 2–3×/sem
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          Prevenção de quedas
+        </p>
+      </div>
+      <!-- Box 3: Follow-up -->
+      <div
+        style="
+          flex: 0.8;
+          background: rgba(var(--navy-rgb), 0.035);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--navy);
+            margin: 0 0 0.12vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+            opacity: 0.4;
+          "
+        >
+          Follow-up
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.7vw;
+            color: var(--navy);
+            margin: 0;
+            line-height: 1.6;
+            font-style: italic;
+          "
+        >
+          Sem farmacoterapia
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.65vw;
+            color: var(--muted);
+            margin: 0.1vw 0 0 0;
+            line-height: 1.5;
+          "
+        >
+          Se fx → reclassificar
+        </p>
       </div>
     </div>
 
     <!-- ── INTERMEDIÁRIO ── -->
-    <div style="display: flex; flex-direction: column; background: var(--white); border: 1px solid rgba(var(--gold-dark-rgb), 0.18); border-radius: 0.55vw; overflow: hidden; box-shadow: 0 1px 4px rgba(var(--navy-rgb), 0.04);">
-      <div style="padding: 0.4vw 0.65vw; background: rgba(var(--gold-dark-rgb), 0.055); border-bottom: 2px solid rgba(var(--gold-dark-rgb), 0.1);">
-        <p style="font-family: var(--font-sans); font-size: 1.05vw; font-weight: 800; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.04em; margin: 0;">Intermediário</p>
+    <div
+      style="
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35vw;
+        background: var(--white);
+        border: 1px solid rgba(var(--gold-dark-rgb), 0.18);
+        border-radius: 0.55vw;
+        overflow: hidden;
+        box-shadow: 0 1px 4px rgba(var(--navy-rgb), 0.04);
+        padding: 0.45vw;
+      "
+    >
+      <div
+        style="
+          background: rgba(var(--gold-dark-rgb), 0.07);
+          border-radius: 0.3vw;
+          padding: 0.25vw 0.4vw;
+          display: flex;
+          align-items: center;
+          min-height: 1.6vw;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.95vw;
+            font-weight: 800;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0;
+          "
+        >
+          Intermediário
+        </p>
       </div>
-      <div style="flex: 1; padding: 0.5vw 0.65vw; display: flex; flex-direction: column;">
-        <div style="display: flex; gap: 0.8vw; margin-bottom: 0.4vw;">
-          <div style="flex: 1;">
-            <p style="font-family: var(--font-sans); font-size: 0.55vw; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 0.12vw 0;">ABRASSO</p>
-            <p style="font-family: var(--font-sans); font-size: 0.82vw; color: var(--navy); margin: 0; line-height: 1.55;"><strong>Faixa amarela</strong> — solicitar DXA para reclassificar</p>
-          </div>
-          <div style="flex: 1;">
-            <p style="font-family: var(--font-sans); font-size: 0.55vw; font-weight: 700; color: rgba(var(--navy-rgb), 0.35); text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 0.12vw 0;">NOGG</p>
-            <p style="font-family: var(--font-sans); font-size: 0.82vw; color: rgba(var(--navy-rgb), 0.55); margin: 0; line-height: 1.55;">Na faixa — <strong style="color: var(--navy);">DXA confirma</strong> conduta</p>
-          </div>
-        </div>
-        <div style="height: 1.5px; background: rgba(var(--gold-dark-rgb), 0.08); margin-bottom: 0.4vw;"></div>
-        <p style="font-family: var(--font-sans); font-size: 0.95vw; font-weight: 700; color: var(--gold-dark); margin: 0 0 0.25vw 0; line-height: 1.2;">DXA → reclassificar</p>
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: var(--navy); margin: 0; line-height: 1.65;">T ≤ −2,5 ou FRAX ≥ limiar → <strong>tratar</strong></p>
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: var(--navy); margin: 0; line-height: 1.65;">T −1,0 a −2,4 sem fx → vigiar</p>
-        <div style="margin-top: auto; border-left: 2.5px solid rgba(var(--gold-dark-rgb), 0.22); padding: 0.18vw 0 0.18vw 0.4vw; background: rgba(var(--gold-dark-rgb), 0.02); border-radius: 0 0.18vw 0.18vw 0;">
-          <p style="font-family: var(--font-sans); font-size: 0.68vw; color: var(--navy); margin: 0; line-height: 1.45;">Considerar TBS, VFA, FRAXplus</p>
-          <p style="font-family: var(--font-sans); font-size: 0.65vw; color: var(--muted); margin: 0.06vw 0 0 0; line-height: 1.4;">TBS ↓ ou VFA (+) → reclassifica alto</p>
-        </div>
+      <div
+        style="
+          flex: 1;
+          background: rgba(var(--gold-dark-rgb), 0.04);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gold-dark);
+            margin: 0 0 0.2vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+          "
+        >
+          Critérios
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.75vw; color: var(--navy); margin: 0; line-height: 1.6">
+          <strong>Faixa amarela</strong>
+          — solicitar DXA
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.7vw;
+            color: rgba(var(--navy-rgb), 0.5);
+            margin: 0.15vw 0 0 0;
+            line-height: 1.55;
+          "
+        >
+          Na faixa —
+          <strong style="color: var(--navy)">DXA confirma</strong>
+        </p>
+      </div>
+      <div
+        style="
+          flex: 1.3;
+          background: rgba(var(--gold-dark-rgb), 0.02);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gold-dark);
+            margin: 0 0 0.2vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+            opacity: 0.7;
+          "
+        >
+          Conduta
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.82vw;
+            font-weight: 700;
+            color: var(--gold-dark);
+            margin: 0 0 0.15vw 0;
+            line-height: 1.3;
+          "
+        >
+          DXA → reclassificar
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          T ≤ −2,5 ou FRAX ≥ limiar →
+          <strong>tratar</strong>
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          T −1,0 a −2,4 sem fx → vigiar
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          Considerar TBS, VFA, FRAXplus
+        </p>
+      </div>
+      <div
+        style="
+          flex: 0.8;
+          background: rgba(var(--gold-dark-rgb), 0.055);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gold-dark);
+            margin: 0 0 0.12vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+            opacity: 0.6;
+          "
+        >
+          Follow-up
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.7vw; color: var(--navy); margin: 0; line-height: 1.6">
+          TBS ↓ ou VFA (+) →
+          <strong style="color: var(--gold-dark)">reclassifica alto</strong>
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.65vw;
+            color: var(--muted);
+            margin: 0.1vw 0 0 0;
+            line-height: 1.5;
+          "
+        >
+          Reavaliar 1–2 a se incerto
+        </p>
       </div>
     </div>
 
     <!-- ── ALTO ── -->
-    <div style="display: flex; flex-direction: column; background: var(--white); border: 1px solid rgba(var(--navy-rgb), 0.12); border-radius: 0.55vw; overflow: hidden; box-shadow: 0 1.5px 5px rgba(var(--navy-rgb), 0.05);">
-      <div style="padding: 0.4vw 0.65vw; background: rgba(var(--navy-rgb), 0.055); border-bottom: 2px solid rgba(var(--navy-rgb), 0.08);">
-        <p style="font-family: var(--font-sans); font-size: 1.05vw; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: 0.04em; margin: 0;">Alto</p>
+    <div
+      style="
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35vw;
+        background: var(--white);
+        border: 1px solid rgba(var(--navy-rgb), 0.12);
+        border-radius: 0.55vw;
+        overflow: hidden;
+        box-shadow: 0 1.5px 5px rgba(var(--navy-rgb), 0.05);
+        padding: 0.45vw;
+      "
+    >
+      <div
+        style="
+          background: rgba(var(--navy-rgb), 0.06);
+          border-radius: 0.3vw;
+          padding: 0.25vw 0.4vw;
+          display: flex;
+          align-items: center;
+          min-height: 1.6vw;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.95vw;
+            font-weight: 800;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0;
+          "
+        >
+          Alto
+        </p>
       </div>
-      <div style="flex: 1; padding: 0.5vw 0.65vw; display: flex; flex-direction: column;">
-        <div style="display: flex; gap: 0.8vw; margin-bottom: 0.4vw;">
-          <div style="flex: 1;">
-            <p style="font-family: var(--font-sans); font-size: 0.55vw; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 0.12vw 0;">ABRASSO</p>
-            <p style="font-family: var(--font-sans); font-size: 0.82vw; color: var(--navy); margin: 0; line-height: 1.55;">FRAX <strong>≥ limiar</strong> · T ≤ −2,5 + fator clínico</p>
-          </div>
-          <div style="flex: 1;">
-            <p style="font-family: var(--font-sans); font-size: 0.55vw; font-weight: 700; color: rgba(var(--navy-rgb), 0.35); text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 0.12vw 0;">NOGG</p>
-            <p style="font-family: var(--font-sans); font-size: 0.82vw; color: rgba(var(--navy-rgb), 0.55); margin: 0; line-height: 1.55;">Acima do limiar — <strong style="color: var(--navy);">tratar</strong></p>
-          </div>
-        </div>
-        <div style="height: 1.5px; background: rgba(var(--navy-rgb), 0.06); margin-bottom: 0.4vw;"></div>
-        <p style="font-family: var(--font-sans); font-size: 0.95vw; font-weight: 700; color: var(--navy); margin: 0 0 0.25vw 0; line-height: 1.2;">Antirreabsortivo</p>
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: var(--navy); margin: 0; line-height: 1.65;"><strong>Zoledronato</strong> <span style="color: var(--muted);">5 mg IV/ano</span></p>
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: var(--navy); margin: 0; line-height: 1.65;"><strong>Denosumabe</strong> <span style="color: var(--muted);">60 mg SC/6 m</span></p>
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: var(--navy); margin: 0; line-height: 1.65;"><strong>Alendronato</strong> <span style="color: var(--muted);">70 mg VO/sem</span></p>
-        <div style="margin-top: auto; border-left: 2.5px solid rgba(var(--navy-rgb), 0.1); padding: 0.18vw 0 0.18vw 0.4vw; background: rgba(var(--navy-rgb), 0.015); border-radius: 0 0.18vw 0.18vw 0;">
-          <p style="font-family: var(--font-sans); font-size: 0.68vw; color: var(--navy); margin: 0; line-height: 1.45;">Preferir IV se risco GI ou baixa adesão</p>
-          <p style="font-family: var(--font-sans); font-size: 0.65vw; color: var(--muted); margin: 0.06vw 0 0 0; line-height: 1.4;">5–10 a → reavaliar drug holiday</p>
-        </div>
+      <div
+        style="
+          flex: 1;
+          background: rgba(var(--navy-rgb), 0.035);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gold-dark);
+            margin: 0 0 0.2vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+          "
+        >
+          Critérios
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.75vw; color: var(--navy); margin: 0; line-height: 1.6">
+          FRAX
+          <strong>≥ limiar</strong>
+          · T ≤ −2,5 + fator
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.7vw;
+            color: rgba(var(--navy-rgb), 0.5);
+            margin: 0.15vw 0 0 0;
+            line-height: 1.55;
+          "
+        >
+          Acima do limiar —
+          <strong style="color: var(--navy)">tratar</strong>
+        </p>
+      </div>
+      <div
+        style="
+          flex: 1.3;
+          background: rgba(var(--navy-rgb), 0.018);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--navy);
+            margin: 0 0 0.2vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+            opacity: 0.5;
+          "
+        >
+          Conduta
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.82vw;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 0 0 0.15vw 0;
+            line-height: 1.3;
+          "
+        >
+          Antirreabsortivo
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          <strong>Zoledronato</strong>
+          <span style="color: var(--muted)">5 mg IV/ano</span>
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          <strong>Denosumabe</strong>
+          <span style="color: var(--muted)">60 mg SC/6 m</span>
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          <strong>Alendronato</strong>
+          <span style="color: var(--muted)">70 mg VO/sem</span>
+        </p>
+      </div>
+      <div
+        style="
+          flex: 0.8;
+          background: rgba(var(--navy-rgb), 0.04);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--navy);
+            margin: 0 0 0.12vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+            opacity: 0.4;
+          "
+        >
+          Follow-up
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.7vw; color: var(--navy); margin: 0; line-height: 1.6">
+          Preferir IV se risco GI ou
+          <strong>baixa adesão</strong>
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.65vw;
+            color: var(--muted);
+            margin: 0.1vw 0 0 0;
+            line-height: 1.5;
+          "
+        >
+          5–10 a → reavaliar drug holiday
+        </p>
       </div>
     </div>
 
-    <!-- ═══ ROW 2 ═══ -->
-
     <!-- ── MUITO ALTO ── -->
-    <div style="display: flex; flex-direction: column; background: rgba(var(--gold-dark-rgb), 0.015); border: 1.5px solid rgba(var(--gold-dark-rgb), 0.2); border-left: 3.5px solid var(--gold-dark); border-radius: 0.55vw; overflow: hidden; box-shadow: 0 2px 8px rgba(var(--navy-rgb), 0.07);">
-      <div style="padding: 0.4vw 0.65vw; background: rgba(var(--gold-dark-rgb), 0.07); border-bottom: 2px solid rgba(var(--gold-dark-rgb), 0.12);">
-        <p style="font-family: var(--font-sans); font-size: 1.05vw; font-weight: 800; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.04em; margin: 0;">Muito Alto</p>
+    <div
+      style="
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35vw;
+        background: rgba(var(--gold-dark-rgb), 0.015);
+        border: 1.5px solid rgba(var(--gold-dark-rgb), 0.2);
+        border-left: 3px solid var(--gold-dark);
+        border-radius: 0.55vw;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(var(--navy-rgb), 0.07);
+        padding: 0.45vw;
+      "
+    >
+      <div
+        style="
+          background: rgba(var(--gold-dark-rgb), 0.1);
+          border-radius: 0.3vw;
+          padding: 0.25vw 0.4vw;
+          display: flex;
+          align-items: center;
+          min-height: 1.6vw;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.95vw;
+            font-weight: 800;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0;
+          "
+        >
+          Muito Alto
+        </p>
       </div>
-      <div style="flex: 1; padding: 0.5vw 0.65vw; display: flex; flex-direction: column;">
-        <div style="display: flex; gap: 0.8vw; margin-bottom: 0.4vw;">
-          <div style="flex: 1;">
-            <p style="font-family: var(--font-sans); font-size: 0.55vw; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 0.12vw 0;">ABRASSO</p>
-            <p style="font-family: var(--font-sans); font-size: 0.82vw; color: var(--navy); margin: 0; line-height: 1.55;"><strong>Múltiplas vert</strong> · T ≤ −3 + fx · FRAX &gt;1,6× · GIOP</p>
-          </div>
-          <div style="flex: 1;">
-            <p style="font-family: var(--font-sans); font-size: 0.55vw; font-weight: 700; color: rgba(var(--navy-rgb), 0.35); text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 0.12vw 0;">NOGG</p>
-            <p style="font-family: var(--font-sans); font-size: 0.82vw; color: rgba(var(--navy-rgb), 0.55); margin: 0; line-height: 1.55;">T ≤ −3,5 · ≥2 vert — <strong style="color: var(--gold-dark);">anabólico first</strong></p>
-          </div>
-        </div>
-        <div style="height: 1.5px; background: rgba(var(--gold-dark-rgb), 0.1); margin-bottom: 0.4vw;"></div>
-        <p style="font-family: var(--font-sans); font-size: 0.95vw; font-weight: 700; color: var(--gold-dark); margin: 0 0 0.25vw 0; line-height: 1.2;">Anabólico first → AR</p>
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: var(--navy); margin: 0; line-height: 1.65;"><strong>Teriparatida</strong> <span style="color: var(--muted);">20 µg/d · 24 m</span> &ensp; <strong>Romosozumabe</strong> <span style="color: var(--muted);">210 mg/m · 12 m</span></p>
-        <div style="margin-top: auto; display: flex; align-items: center; gap: 0.6vw;">
-          <div style="background: rgba(var(--gold-dark-rgb), 0.06); border-radius: 0.3vw; padding: 0.22vw 0.5vw; text-align: center; flex-shrink: 0;">
-            <p style="font-family: var(--font-sans); font-size: 0.48vw; font-weight: 700; color: var(--gold-dark); text-transform: uppercase; letter-spacing: 0.04em; margin: 0;">NNT 24 m</p>
-            <p style="font-family: var(--font-serif); font-size: 1.6vw; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1;">15</p>
-            <p style="font-family: var(--font-sans); font-size: 0.42vw; color: var(--muted); margin: 0;">VERO · Saag 2017</p>
-          </div>
-          <div style="border-left: 2px solid rgba(var(--gold-dark-rgb), 0.15); padding-left: 0.45vw;">
-            <p style="font-family: var(--font-sans); font-size: 0.68vw; color: var(--navy); margin: 0; line-height: 1.5;">Transição obrigatória para AR após curso anabólico</p>
-            <p style="font-family: var(--font-sans); font-size: 0.62vw; color: var(--muted); margin: 0.06vw 0 0 0; line-height: 1.4;">Sem transição → perda de ganho ósseo</p>
-          </div>
-        </div>
+      <div
+        style="
+          flex: 1;
+          background: rgba(var(--gold-dark-rgb), 0.05);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gold-dark);
+            margin: 0 0 0.2vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+          "
+        >
+          Critérios
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.75vw; color: var(--navy); margin: 0; line-height: 1.6">
+          <strong>Múltiplas vert</strong>
+          · T ≤ −3 + fx
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.68vw;
+            color: rgba(var(--navy-rgb), 0.45);
+            margin: 0.08vw 0 0 0;
+            line-height: 1.5;
+          "
+        >
+          FRAX &gt;1,6× · GIOP
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.7vw;
+            color: rgba(var(--navy-rgb), 0.5);
+            margin: 0.15vw 0 0 0;
+            line-height: 1.55;
+          "
+        >
+          T ≤ −3,5 · ≥2 vert —
+          <strong style="color: var(--gold-dark)">anabólico first</strong>
+        </p>
+      </div>
+      <div
+        style="
+          flex: 1.1;
+          background: rgba(var(--gold-dark-rgb), 0.025);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gold-dark);
+            margin: 0 0 0.2vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+            opacity: 0.7;
+          "
+        >
+          Conduta
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.82vw;
+            font-weight: 700;
+            color: var(--gold-dark);
+            margin: 0 0 0.15vw 0;
+            line-height: 1.3;
+          "
+        >
+          Anabólico first → AR
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          <strong>Teriparatida</strong>
+          <span style="color: var(--muted)">20 µg/d · 24 m</span>
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65">
+          <strong>Romosozumabe</strong>
+          <span style="color: var(--muted)">210 mg/m · 12 m</span>
+        </p>
+      </div>
+      <!-- Metric box -->
+      <div
+        style="
+          flex: 0.9;
+          background: rgba(var(--gold-dark-rgb), 0.06);
+          border-radius: 0.35vw;
+          padding: 0.35vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.48vw;
+            font-weight: 700;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0;
+          "
+        >
+          NNT 24 m · VERO
+        </p>
+        <p
+          style="
+            font-family: var(--font-serif);
+            font-size: 1.6vw;
+            font-weight: 800;
+            color: var(--gold-dark);
+            margin: 0;
+            line-height: 1;
+          "
+        >
+          15
+        </p>
       </div>
     </div>
 
     <!-- ── IMINENTE ── -->
-    <div style="display: flex; flex-direction: column; background: var(--navy); border-radius: 0.55vw; overflow: hidden; box-shadow: 0 3px 12px rgba(var(--navy-rgb), 0.2);">
-      <div style="padding: 0.4vw 0.65vw; border-bottom: 1.5px solid rgba(255,255,255,0.06);">
-        <p style="font-family: var(--font-sans); font-size: 1.05vw; font-weight: 800; color: var(--gold); text-transform: uppercase; letter-spacing: 0.04em; margin: 0;">Iminente</p>
+    <div
+      style="
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35vw;
+        background: var(--navy);
+        border-radius: 0.55vw;
+        overflow: hidden;
+        box-shadow: 0 3px 12px rgba(var(--navy-rgb), 0.2);
+        padding: 0.45vw;
+      "
+    >
+      <div
+        style="
+          background: rgba(var(--gold-rgb), 0.12);
+          border-radius: 0.3vw;
+          padding: 0.25vw 0.4vw;
+          display: flex;
+          align-items: center;
+          min-height: 1.6vw;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.95vw;
+            font-weight: 800;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0;
+          "
+        >
+          Iminente
+        </p>
       </div>
-      <div style="flex: 1; padding: 0.5vw 0.65vw; display: flex; flex-direction: column;">
-        <div style="display: flex; gap: 0.8vw; margin-bottom: 0.4vw;">
-          <div style="flex: 1;">
-            <p style="font-family: var(--font-sans); font-size: 0.55vw; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 0.12vw 0;">ABRASSO</p>
-            <p style="font-family: var(--font-sans); font-size: 0.82vw; color: rgba(255,255,255,0.88); margin: 0; line-height: 1.55;">Fx fragilidade <strong style="color: var(--gold);">≤ 2 anos</strong></p>
-            <p style="font-family: var(--font-sans); font-size: 0.65vw; color: rgba(255,255,255,0.35); margin: 0.06vw 0 0 0; line-height: 1.35;">Vertebral · quadril · pelve</p>
-          </div>
-          <div style="flex: 1;">
-            <p style="font-family: var(--font-sans); font-size: 0.55vw; font-weight: 700; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.03em; margin: 0 0 0.12vw 0;">NOGG</p>
-            <p style="font-family: var(--font-sans); font-size: 0.82vw; color: rgba(255,255,255,0.55); margin: 0; line-height: 1.55;">Fx recente + T baixo — <strong style="color: var(--gold);">urgência</strong></p>
-          </div>
-        </div>
-        <div style="height: 1.5px; background: rgba(255,255,255,0.05); margin-bottom: 0.4vw;"></div>
-        <p style="font-family: var(--font-sans); font-size: 0.95vw; font-weight: 700; color: var(--gold); margin: 0 0 0.25vw 0; line-height: 1.2;">Máxima potência</p>
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: rgba(255,255,255,0.8); margin: 0; line-height: 1.65;">Anabólico preferencial · Iniciar <strong style="color: var(--gold);">na alta hospitalar</strong></p>
-        <div style="margin-top: auto; display: flex; align-items: center; gap: 0.6vw;">
-          <div style="background: rgba(var(--gold-rgb), 0.1); border-radius: 0.3vw; padding: 0.22vw 0.5vw; text-align: center; flex-shrink: 0;">
-            <p style="font-family: var(--font-sans); font-size: 0.48vw; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: 0.04em; margin: 0;">Risco 1º ano</p>
-            <p style="font-family: var(--font-serif); font-size: 1.6vw; font-weight: 800; color: var(--gold); margin: 0; line-height: 1;">2,7×</p>
-            <p style="font-family: var(--font-sans); font-size: 0.42vw; color: rgba(255,255,255,0.25); margin: 0;">Johansson 2017</p>
-          </div>
-          <div style="border-left: 2px solid rgba(var(--gold-rgb), 0.15); padding-left: 0.45vw;">
-            <p style="font-family: var(--font-sans); font-size: 0.68vw; color: rgba(255,255,255,0.8); margin: 0; line-height: 1.5;">Cada mês sem tratamento = oportunidade perdida</p>
-            <p style="font-family: var(--font-sans); font-size: 0.62vw; color: rgba(255,255,255,0.4); margin: 0.06vw 0 0 0; line-height: 1.4;">~15/1.000 pac-anos (1º ano → 5/1.000 após 4 m)</p>
-          </div>
-        </div>
+      <div
+        style="
+          flex: 1;
+          background: rgba(255, 255, 255, 0.04);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gold);
+            margin: 0 0 0.2vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+            opacity: 0.6;
+          "
+        >
+          Critérios
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.75vw;
+            color: rgba(255, 255, 255, 0.88);
+            margin: 0;
+            line-height: 1.6;
+          "
+        >
+          Fx fragilidade
+          <strong style="color: var(--gold)">≤ 2 anos</strong>
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.62vw;
+            color: rgba(255, 255, 255, 0.35);
+            margin: 0.08vw 0 0 0;
+            line-height: 1.4;
+          "
+        >
+          Vertebral · quadril · pelve
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.7vw;
+            color: rgba(255, 255, 255, 0.5);
+            margin: 0.15vw 0 0 0;
+            line-height: 1.55;
+          "
+        >
+          Fx recente + T baixo —
+          <strong style="color: var(--gold)">urgência</strong>
+        </p>
+      </div>
+      <div
+        style="
+          flex: 1.1;
+          background: rgba(255, 255, 255, 0.03);
+          border-radius: 0.35vw;
+          padding: 0.4vw;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.58vw;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--gold);
+            margin: 0 0 0.2vw 0;
+            border-left: 2px solid currentColor;
+            padding-left: 0.22vw;
+            opacity: 0.6;
+          "
+        >
+          Conduta
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.82vw;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 0 0 0.15vw 0;
+            line-height: 1.3;
+          "
+        >
+          Máxima potência
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.72vw;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            line-height: 1.65;
+          "
+        >
+          Anabólico preferencial
+        </p>
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.72vw;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+            line-height: 1.65;
+          "
+        >
+          Iniciar
+          <strong style="color: var(--gold)">na alta hospitalar</strong>
+        </p>
+      </div>
+      <!-- Metric box -->
+      <div
+        style="
+          flex: 0.9;
+          background: rgba(var(--gold-rgb), 0.1);
+          border-radius: 0.35vw;
+          padding: 0.35vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <p
+          style="
+            font-family: var(--font-sans);
+            font-size: 0.48vw;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0;
+          "
+        >
+          Risco 1º ano pós-fx
+        </p>
+        <p
+          style="
+            font-family: var(--font-serif);
+            font-size: 1.6vw;
+            font-weight: 800;
+            color: var(--gold);
+            margin: 0;
+            line-height: 1;
+          "
+        >
+          2,7×
+        </p>
+        <p style="font-family: var(--font-sans); font-size: 0.42vw; color: rgba(255, 255, 255, 0.25); margin: 0">
+          Johansson 2017
+        </p>
       </div>
     </div>
+  </div>
 
-    <!-- ── CALLOUT: Convergência + Outros ── -->
-    <div style="display: flex; flex-direction: column; background: rgba(var(--navy-rgb), 0.03); border: 1px solid var(--border); border-radius: 0.55vw; overflow: hidden; box-shadow: 0 1px 4px rgba(var(--navy-rgb), 0.04);">
-      <div style="padding: 0.4vw 0.65vw; background: rgba(var(--navy-rgb), 0.05); border-bottom: 1.5px solid rgba(var(--navy-rgb), 0.06);">
-        <p style="font-family: var(--font-sans); font-size: 0.82vw; font-weight: 700; color: var(--navy); margin: 0;">Convergência internacional</p>
-      </div>
-      <div style="flex: 1; padding: 0.5vw 0.65vw; display: flex; flex-direction: column;">
-        <p style="font-family: var(--font-sans); font-size: 0.78vw; color: var(--navy); margin: 0 0 0.3vw 0; line-height: 1.6;">ABRASSO e NOGG convergem: <strong>anabólico first</strong> para risco muito alto e iminente. Antirreabsortivo para alto.</p>
-        <div style="height: 1px; background: rgba(var(--navy-rgb), 0.06); margin: 0.15vw 0 0.35vw 0;"></div>
-        <p style="font-family: var(--font-sans); font-size: 0.58vw; font-weight: 700; color: rgba(var(--navy-rgb), 0.35); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 0.2vw 0;">Outras diretrizes</p>
-        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0; line-height: 1.65;"><strong style="color: rgba(var(--navy-rgb), 0.6);">AACE</strong> &ensp;MOF &gt;30% · Hip &gt;4,5%</p>
-        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0.1vw 0 0 0; line-height: 1.65;"><strong style="color: rgba(var(--navy-rgb), 0.6);">IOF-ESCEO</strong> &ensp;FRAX &gt;1,2× limiar</p>
-        <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0.1vw 0 0 0; line-height: 1.65;"><strong style="color: rgba(var(--navy-rgb), 0.6);">ACR 2022</strong> &ensp;GIOP → anabólico</p>
-        <div style="margin-top: auto; background: var(--navy); border-radius: 0.35vw; padding: 0.3vw 0.5vw; text-align: center;">
-          <p style="font-family: var(--font-sans); font-size: 0.72vw; font-weight: 600; color: var(--white); margin: 0; line-height: 1.4;">A categoria determina a <strong style="color: var(--gold);">classe terapêutica</strong></p>
-        </div>
-      </div>
-    </div>
-
+  <!-- Outros -->
+  <div style="display: flex; align-items: center; gap: 0.5vw; padding: 0 0.15vw; margin-bottom: 0.12vw">
+    <span
+      style="
+        font-family: var(--font-sans);
+        font-size: 0.58vw;
+        font-weight: 700;
+        color: rgba(var(--navy-rgb), 0.28);
+        text-transform: uppercase;
+      "
+    >
+      Outros:
+    </span>
+    <span style="font-family: var(--font-sans); font-size: 0.58vw; color: var(--muted)">
+      <strong style="color: rgba(var(--navy-rgb), 0.5)">AACE</strong>
+      MOF &gt;30% · Hip &gt;4,5%
+    </span>
+    <span style="font-family: var(--font-sans); font-size: 0.58vw; color: rgba(var(--navy-rgb), 0.12)">|</span>
+    <span style="font-family: var(--font-sans); font-size: 0.58vw; color: var(--muted)">
+      <strong style="color: rgba(var(--navy-rgb), 0.5)">IOF-ESCEO</strong>
+      FRAX &gt;1,2×
+    </span>
+    <span style="font-family: var(--font-sans); font-size: 0.58vw; color: rgba(var(--navy-rgb), 0.12)">|</span>
+    <span style="font-family: var(--font-sans); font-size: 0.58vw; color: var(--muted)">
+      <strong style="color: rgba(var(--navy-rgb), 0.5)">ACR 2022</strong>
+      GIOP → anabólico
+    </span>
   </div>
 
   <!-- Take-home -->
-  <div style="background: var(--navy); border-radius: 0.55vw; padding: 0.5vw 0.9vw; display: flex; align-items: center; gap: 0.7vw;">
-    <span style="font-family: var(--font-sans); font-size: 0.6vw; font-weight: 700; color: var(--navy); background: var(--gold); padding: 0.13vw 0.38vw; border-radius: 0.2vw; text-transform: uppercase; letter-spacing: 0.04em; flex-shrink: 0;">Takeaway</span>
-    <p style="font-family: var(--font-sans); font-size: 0.8vw; font-weight: 500; color: var(--white); margin: 0; line-height: 1.3;">Classificar o risco <strong style="color: var(--gold);">antes de escolher o fármaco</strong> — a intensidade do tratamento segue a severidade.</p>
+  <div
+    style="
+      background: var(--navy);
+      border-radius: 0.55vw;
+      padding: 0.5vw 0.9vw;
+      display: flex;
+      align-items: center;
+      gap: 0.7vw;
+    "
+  >
+    <span
+      style="
+        font-family: var(--font-sans);
+        font-size: 0.6vw;
+        font-weight: 700;
+        color: var(--navy);
+        background: var(--gold);
+        padding: 0.13vw 0.38vw;
+        border-radius: 0.2vw;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        flex-shrink: 0;
+      "
+    >
+      Takeaway
+    </span>
+    <p
+      style="
+        font-family: var(--font-sans);
+        font-size: 0.8vw;
+        font-weight: 500;
+        color: var(--white);
+        margin: 0;
+        line-height: 1.3;
+      "
+    >
+      A categoria determina a
+      <strong style="color: var(--gold)">classe terapêutica</strong>
+      , não apenas a decisão de tratar.
+    </p>
   </div>
 
-  <p style="font-family: var(--font-sans); font-size: 0.48vw; color: rgba(var(--navy-rgb), 0.3); margin: 0.1vw 0 0 0; line-height: 1.3;">FRAX Brasil 2.0 (ABRASSO, set/2024). Silva BC et al. Arch Endocrinol Metab 2022;66(5). NOGG 2024. Saag KG et al. NEJM 2017;377(20) [VERO]. Johansson H et al. Osteoporos Int 2017;28:775.</p>
+  <p
+    style="
+      font-family: var(--font-sans);
+      font-size: 0.48vw;
+      color: rgba(var(--navy-rgb), 0.3);
+      margin: 0.1vw 0 0 0;
+      line-height: 1.3;
+    "
+  >
+    FRAX Brasil 2.0 (ABRASSO, set/2024). Silva BC et al. Arch Endocrinol Metab 2022;66(5). NOGG 2024. Saag KG et al.
+    NEJM 2017;377(20) [VERO]. Johansson H et al. Osteoporos Int 2017;28:775.
+  </p>
 </section>

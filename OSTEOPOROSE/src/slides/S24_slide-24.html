@@ -55,7 +55,6 @@
           padding: 0.8vw 0.9vw;
           text-align: center;
           box-shadow: 0 0.2vw 0.8vw rgba(var(--navy-rgb), 0.07);
-          flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -100,7 +99,7 @@
       </div>
 
       <!-- Supporting stats — 2×2 mini grid -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35vw">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35vw; flex: 1">
         <div
           style="
             background: rgba(var(--navy-rgb), 0.04);
@@ -136,7 +135,7 @@
             risco no 1º ano
           </p>
           <p style="font-family: var(--font-sans); font-size: 0.55vw; color: var(--muted); margin: 0.08vw 0 0 0">
-            Johansson 2017
+            vs. população sem fx
           </p>
         </div>
         <div
@@ -173,10 +172,10 @@
               font-weight: 600;
               color: var(--navy);
               margin: 0;
-              line-height: 1.3;
+              line-height: 1.35;
             "
           >
-            Cada mês sem tratamento = oportunidade perdida.
+            Cada mês sem tratamento = <strong style="color: var(--gold-dark)">oportunidade perdida</strong>
           </p>
         </div>
       </div>
@@ -201,12 +200,14 @@
           font-weight: 700;
           color: var(--navy);
           margin: 0 0 0.5vw 0;
+          border-left: 3px solid var(--gold-dark);
+          padding-left: 0.4vw;
         "
       >
         Refratura 1 ano por sítio (n=377.561 mulheres ≥65a, Medicare)
       </p>
 
-      <!-- Bar: Coluna ~14% -->
+      <!-- Bar: Coluna ~14% — top severity: gold-dark accent -->
       <div style="display: flex; align-items: center; gap: 0.5vw; margin-bottom: 0.2vw">
         <div
           style="
@@ -215,7 +216,7 @@
             color: var(--navy);
             width: 4.5vw;
             text-align: right;
-            font-weight: 600;
+            font-weight: 700;
           "
         >
           Coluna
@@ -227,8 +228,9 @@
               left: 0;
               width: 93%;
               height: 100%;
-              background: var(--navy);
+              background: linear-gradient(90deg, var(--navy), rgba(var(--navy-rgb), 0.85));
               border-radius: 0.18vw;
+              box-shadow: 0 1px 3px rgba(var(--navy-rgb), 0.15);
             "
           ></div>
           <span
@@ -236,8 +238,8 @@
               position: absolute;
               left: calc(93% + 0.35vw);
               font-family: var(--font-sans);
-              font-size: 0.72vw;
-              font-weight: 700;
+              font-size: 0.78vw;
+              font-weight: 800;
               color: var(--navy);
               white-space: nowrap;
             "
@@ -256,7 +258,7 @@
             color: var(--navy);
             width: 4.5vw;
             text-align: right;
-            font-weight: 600;
+            font-weight: 700;
           "
         >
           Pelve
@@ -268,8 +270,9 @@
               left: 0;
               width: 83%;
               height: 100%;
-              background: rgba(var(--navy-rgb), 0.85);
+              background: rgba(var(--navy-rgb), 0.82);
               border-radius: 0.18vw;
+              box-shadow: 0 1px 2px rgba(var(--navy-rgb), 0.1);
             "
           ></div>
           <span
@@ -277,7 +280,7 @@
               position: absolute;
               left: calc(83% + 0.35vw);
               font-family: var(--font-sans);
-              font-size: 0.72vw;
+              font-size: 0.75vw;
               font-weight: 700;
               color: var(--navy);
               white-space: nowrap;
@@ -391,7 +394,7 @@
               left: 0;
               width: 53%;
               height: 100%;
-              background: rgba(var(--navy-rgb), 0.3);
+              background: rgba(var(--navy-rgb), 0.38);
               border-radius: 0.18vw;
             "
           ></div>
@@ -432,7 +435,7 @@
               left: 0;
               width: 47%;
               height: 100%;
-              background: rgba(var(--navy-rgb), 0.2);
+              background: rgba(var(--navy-rgb), 0.28);
               border-radius: 0.18vw;
             "
           ></div>
@@ -468,7 +471,7 @@
   <div
     style="
       background: var(--navy);
-      border-radius: 0.45vw;
+      border-radius: 0.55vw;
       padding: 0.6vw 1.1vw;
       display: flex;
       align-items: center;

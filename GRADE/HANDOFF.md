@@ -1,90 +1,143 @@
-# HANDOFF — Sessão 2026-02-08 (encerramento)
+# HANDOFF — Sessão 2026-02-08 (janela que travou)
 
 ## Estado atual
 
-- **Branch:** `main` (ahead of origin — não pushado)
-- **Deck GRADE:** 56 slides
-- **Live-server:** `npx live-server src --port=5501` (pode precisar reiniciar)
+- **Branch:** `main` (1 commit ahead of origin — não pushado)
+- **Último commit:** `a774a8b` — "redesign(GRADE): S14 palette coherence + S17/S19/S45/S62/S64 aesthetic overhaul"
+- **Uncommitted:** `GRADE/src/slides/S14.html` (polish pass — formatting cleanup, font bumps ~2-5%, text refinements)
+- **Deck GRADE:** 56 slides (via `_list.txt`)
+- **Live-server:** `npx live-server src --port=5501`
 
-## O que foi feito nesta sessão
+## O que foi feito na sessão que travou
 
-### 1. S07 (posição 11) — Redesign completo "Indireção"
+### Commit `a774a8b` — Overhaul massivo (23 arquivos, +5363/-840 linhas)
 
-**Antes:** Layout genérico com 2×2 PICO grid cramped + 4 boxes minúsculas no right side. Sem cardHeader, sem focal point, dead space abaixo, fonts inconsistentes com benchmarks.
+#### GRADE slides redesenhados/polidos:
 
-**Depois:** Redesign profissional em 4 iterações (v1→v4):
+| Slide          | O que mudou                                                 | Destaque                                                                                                              |
+| -------------- | ----------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **S14**        | 3-column cross-guideline (SBC/ESC/AACE) com unified palette | Color hierarchy fix: AACE = protagonista navy+gold (padrão ouro GRADE), SBC = teal, ESC = gold outline. Score 8.95/10 |
+| **S17**        | Ruler with MID (Minimally Important Difference)             | Régua visual para decisão clínica                                                                                     |
+| **S19**        | RoB compact redesign                                        | Versão condensada do Risk of Bias                                                                                     |
+| **S43**        | Polish significativo (+267/-)                               | —                                                                                                                     |
+| **S44**        | Polish significativo (+241/-)                               | —                                                                                                                     |
+| **S45**        | Merged EtD (Evidence to Decision)                           | Consolidação de evidence framework                                                                                    |
+| **S47**        | Polish (+254/-)                                             | —                                                                                                                     |
+| **S48**        | Minor adjustments                                           | —                                                                                                                     |
+| **S61**        | Expansion (+193/-)                                          | —                                                                                                                     |
+| **S62**        | GRADE synthesis (reescrito, +396)                           | Síntese visual dos 5 domínios                                                                                         |
+| **S63**        | New/expanded (+298)                                         | —                                                                                                                     |
+| **S64**        | AACE SoF (Summary of Findings) (+101)                       | Tabela SoF com imagem cropada                                                                                         |
+| **S18**        | Minor (2 lines)                                             | —                                                                                                                     |
+| **S20**        | Minor (18 lines)                                            | —                                                                                                                     |
+| **\_list.txt** | Reordenação (+10/-)                                         | —                                                                                                                     |
 
-- **CardHeader navy** com chip "Core GRADE 5" (branco sobre navy — fix de contraste)
-- **4 PICO rows stacked** com `.badge` gold circles (P/I/C/O) — focal point claro
-- **Right column:** 5 callouts semânticos stacked com border-left accent:
-  - Gold: Quanto rebaixar (−1 moderada / −2 grave)
-  - Navy: Onde aparece no CAC (4 bullets clínicos)
-  - Teal: Upgrade possível (+1)
-  - Navy: Essência (transferência vs erro)
-  - Gold tint: Na prática (pergunta clínica memorável)
-- **Conteúdo novo:** Desfecho substituto (LDL cadeia causal), populações MESA, essência expandida
-- **Bottom strip:** "Regra mental" ancorada
-- **Fill ratio:** ~90%, body text 0.92vw (legível em projetor)
+#### Novos assets:
 
-### 2. S11 (posição 9) — Ajustes pontuais
+- `GRADE/assets/figures/aace_table8_crop.png` — Crop da Table 8 do AACE 2025
 
-- Removido "francamente" de "Balanço francamente favorável" (NNT 100/5a)
-- ASPREE, ARRIVE, ASCEND em negrito
+#### OSTEOPOROSE slides no mesmo commit:
 
-## Tarefa pendente (próxima sessão)
+- S22, S24, S25, S26 — redesigns (parte do audit slide-a-slide)
+- `_list.txt` OSTEOPOROSE atualizado
 
-### A) Chip `.chip--gold` em contexto `bg-navy` — contraste insuficiente
+### Mudança uncommitted: S14 polish pass
 
-(Herdado de sessão anterior — NÃO executado)
+O diff mostra um polish pass no S14 (88 inserções, 442 remoções — maioria é compactação de formatting):
 
-- `.bg-navy .chip--gold` no `blocks.css` precisa de override
-- Fix proposto: `background: rgba(var(--gold-rgb), 0.22); color: var(--gold); border-color: rgba(var(--gold-rgb), 0.4);`
+- **Font bumps:** chips 1.35→1.4vw, body 0.78→0.8vw, labels 0.48→0.5vw, method label 0.52→0.55vw, take-home 0.85→0.88vw, hero 1.05→1.1vw
+- **Padding/gap bumps:** callout padding 0.6→0.65vw, gap 0.25→0.3vw, lead 0.82→0.85vw
+- **SBC callout quotes:** Trocados de "paráfrase explicativa" para citações ipsis litteris da diretriz SBC 2025, em itálico com border-left interno
+- **AACE callout title:** "Rebaixa por imprecisão" refinado → "Recomendação condicional" explícito
+- **Formatting:** Multiline styles → single-line (compactação sem mudança visual)
+- **Grid columns:** 1.05fr/0.85fr/1.1fr → 1.1fr/0.85fr/1.05fr (AACE coluna ligeiramente wider)
+
+## Insights-chave desta sessão (documentados no CLAUDE.md)
+
+### Insight 27: Hierarquia de cores deve mapear a narrativa
+
+A pergunta do S14 é "Qual o GRADE sustenta?". A resposta é AACE (único com SoF formal). Portanto:
+
+| Peso visual | Estilo                  | Sociedade               |
+| ----------- | ----------------------- | ----------------------- |
+| Máximo      | Solid navy + gold text  | **AACE** (protagonista) |
+| Alto        | Solid teal + white text | SBC (referência)        |
+| Médio       | Outline gold            | ESC (sem GRADE formal)  |
+
+**Regra:** O protagonista narrativo recebe a cor de MAIOR peso visual.
+
+### Erro 28: space-between com 5+ items
+
+≤3 children para space-between. Se >3 items, agrupar em 3 seções: Hero / Content / Footer.
+
+### Insight 24-26: Small multiples + chips grandes + 3-group pattern
+
+- 3 colunas paralelas (small multiples à la Tufte) para comparação cross-guideline
+- Chips 1.4-1.5vw como focal point em slides de comparação
+- 3-group space-between: Hero → Content wrapper → Footer
+
+## Tarefas pendentes
+
+### A) Commitar/descartar o polish pass do S14
+
+- O diff está limpo (só refinamento tipográfico + quotes ipsis litteris)
+- **Recomendação:** Commitar como `polish(GRADE): S14 font bumps + SBC ipsis litteris quotes`
+
+### B) Push para origin
+
+- Branch está 1 commit ahead. Usuário pode querer pushar.
+
+### C) Paralelismo cross-slide (restante do deck)
+
+- S14, S17, S19, S45, S62, S64 seguem padrão visual unificado
+- S43, S44, S47 foram polidos mas podem estar ligeiramente atrás
+- Slides posição 14+ não foram auditados sistematicamente
+
+### D) Chip `.chip--gold` em bg-navy (herdado)
+
+- Fix proposto mas NÃO aplicado: `.bg-navy .chip--gold { background: rgba(var(--gold-rgb), 0.22); color: var(--gold); border-color: rgba(var(--gold-rgb), 0.4); }`
 - Afeta: S05, S06, S03 (take-home bars navy)
 
-### B) Paralelismo cross-slide
+## Mapa de posições atualizado (56 slides)
 
-Os slides S08/S10/S11/S07 agora seguem o mesmo padrão visual (cardHeader, callouts, fonts generosas). Os demais slides do deck (posições 12+) podem estar com padrão anterior — eventual auditoria recomendada.
-
-## Mapa de posições (56 slides)
-
-| Posição | Arquivo | Título resumido                      | Status     |
-| ------- | ------- | ------------------------------------ | ---------- |
-| 1       | S01     | Título/abertura                      |            |
-| 2       | S02     | (verificar)                          |            |
-| 3       | S05     | (verificar)                          |            |
-| 4       | S06     | Downgrades GRADE                     |            |
-| 5       | S03     | Objetivos                            |            |
-| 6       | S09     | CAC leitura GRADE                    |            |
-| 7       | S36     | (verificar)                          |            |
-| 8       | S08     | Rate up (dose-resposta + magnitude)  | Benchmark  |
-| 9       | S11     | NNT/NNH estatina vs aspirina por CAC | Polido     |
-| 10      | S10     | CAC staging cardiovascular           | Polido     |
-| **11**  | **S07** | **Indireção — REDESENHADO**          | **Polido** |
-| 12      | S61     | (verificar)                          |            |
-| 13      | S14     | (verificar)                          |            |
-| ...     | ...     | ...                                  |            |
+| Posição | Arquivo | Status                          |
+| ------- | ------- | ------------------------------- |
+| 1       | S01     | —                               |
+| 2       | S02     | —                               |
+| 3       | S05     | —                               |
+| 4       | S06     | Downgrades GRADE                |
+| 5       | S03     | Objetivos                       |
+| 6       | S09     | CAC leitura GRADE               |
+| 7       | S36     | —                               |
+| 8       | S08     | Benchmark (rate up)             |
+| 9       | S11     | Polido (NNT/NNH)                |
+| 10      | S10     | Polido (CAC staging)            |
+| 11      | S07     | Polido (Indireção)              |
+| 12      | S61     | Polido nesta sessão             |
+| **13**  | **S14** | **Polido + uncommitted polish** |
+| 14      | S17     | Polido (ruler MID)              |
+| 15      | S19     | Polido (RoB compact)            |
+| 16+     | ...     | Verificar                       |
 
 ## Arquivos-chave
 
-| Arquivo                         | Função                            |
-| ------------------------------- | --------------------------------- |
-| `GRADE/src/slides/_list.txt`    | Ordem dos slides (56 entradas)    |
-| `GRADE/src/slides/S07.html`     | Indireção (redesenhado)           |
-| `GRADE/src/slides/S08.html`     | Benchmark visual (rate up)        |
-| `GRADE/src/slides/S10.html`     | Benchmark recente (staging)       |
-| `GRADE/src/slides/S11.html`     | Benchmark recente (NNT/NNH)       |
-| `GRADE/src/css/base.css`        | Variáveis CSS / design tokens     |
-| `GRADE/src/css/blocks.css`      | Componentes (cards, chips, notes) |
-| `GRADE/src/js/slides-simple.js` | Viewer / navegação                |
-| `CLAUDE.md` (raiz)              | Persona + regras + erros          |
+| Arquivo                         | Função                                       |
+| ------------------------------- | -------------------------------------------- |
+| `GRADE/src/slides/_list.txt`    | Ordem dos slides (56 entradas)               |
+| `GRADE/src/slides/S14.html`     | Cross-guideline (UNCOMMITTED)                |
+| `GRADE/src/css/base.css`        | Variáveis CSS / design tokens                |
+| `GRADE/src/css/blocks.css`      | Componentes (cards, chips, notes)            |
+| `GRADE/src/js/slides-simple.js` | Viewer / navegação                           |
+| `GRADE/assets/figures/`         | Assets visuais (inclui aace_table8_crop.png) |
+| `CLAUDE.md` (raiz)              | Persona + regras + erros + insights          |
 
-## Regras críticas (relembrete para próxima sessão)
+## Regras críticas (relembrete)
 
-1. **Cores sólidas para texto** — `var(--navy)`, `var(--muted)`, `var(--teal)`. Zero `rgba()` em body text.
-2. **Legibilidade projetor** — Sala de aula, projetor pequeno, gente longe. Fontes generosas (body ≥ 0.92vw).
-3. **Zero redundância** — Cada elemento carrega informação NOVA.
-4. **Ciclo obrigatório** — Screenshot → crítica → fix → novo screenshot → só então mostrar ao usuário.
-5. **Paralelismo cross-slide** — Títulos na mesma altura/tamanho/peso em todos os content slides.
-6. **Border-left rhythm** — Em stacks de callouts, usar border-left semântico em TODOS os boxes.
-7. **Nunca `display` inline na `<section class="slide">`** — o viewer controla isso.
-8. **Zero AI markers** — Sem linhas de acento, gradientes genéricos, decoração sem propósito.
+1. **Color hierarchy = narrative hierarchy** — protagonista recebe navy+gold (máximo peso visual)
+2. **Citações ipsis litteris** em itálico com border-left interno para diferenciar de paráfrase
+3. **Legibilidade projetor** — body ≥ 0.8vw, chips ≥ 1.4vw, labels ≥ 0.5vw
+4. **≤3 children para space-between** — agrupar em Hero/Content/Footer
+5. **Zero redundância** — cada elemento carrega informação NOVA
+6. **Ciclo obrigatório** — Screenshot → crítica → fix → re-screenshot
+7. **Paralelismo cross-slide** — mesmos tokens em todos os content slides
+8. **Zero AI markers** — sem linhas de acento, gradientes genéricos

@@ -2424,5 +2424,77 @@ ANTES de incluir um texto descritivo, perguntar:
 
 ---
 
+### Sessão 2026-02-08 (Round 17 — Slide-by-slide audit: C15 headers + C16 diagnostic)
+
+**Foco:** Auditoria slide-a-slide da apresentação OSTEOPOROSE. Processo: screenshot diagnóstico → avaliação completa (12 critérios) → fix → re-screenshot → re-avaliação.
+
+#### Counter 15 (S22 — Estratificação de risco: da classificação à conduta)
+
+**Estado anterior:** v15 (box grid 3×3 layout per card — 5 cards de severidade, cada um com 3 boxes: Critérios, Conduta, Follow-up).
+
+**Problema identificado:** Headers (category names + section labels) desconectados e pouco legíveis.
+
+**Fixes aplicados (v16):**
+
+- **Category headers** → transformados em pills com background tint progressivo (severity cascade):
+  - BAIXO: rgba(navy, 0.055), INTERMEDIÁRIO: rgba(gold-dark, 0.07), ALTO: rgba(navy, 0.06), MUITO ALTO: rgba(gold-dark, 0.10), IMINENTE: rgba(gold, 0.12)
+- **min-height: 1.6vw** em todos os header pills → alinhamento horizontal cross-card
+- **Section labels** (CRITÉRIOS, CONDUTA, FOLLOW-UP) bumped de 0.52vw → 0.58vw
+- **Border-left 2px solid currentColor** + padding-left 0.22vw em todos os section labels → ritmo visual
+- BAIXO header opacity bumped de 0.4 → 0.5
+
+**Resultado:** Headers profissionais com hierarquia pill → label → content.
+
+#### Counter 16 (S24 — Risco iminente: refratura no 1º ano)
+
+**Diagnóstico BEFORE (score 6.75/10):**
+
+- Hero card com `flex:1` → dead space navy massivo (~60% da coluna esquerda)
+- 2×2 mini grid comprimido
+- "Cada mês sem tratamento" motivacional redundante com take-home
+- Barras Fêmur (0.2) e Úmero (0.3) quase invisíveis
+- Sem severity accent nas top bars
+- Chart title sem border-left accent
+- "Johansson 2017" duplicado (mini-card + referência)
+- Take-home border-radius inconsistente (0.45vw vs 0.55vw deck padrão)
+
+**8 fixes aplicados:**
+
+1. Hero card: removido `flex:1` → auto-height proporcional
+2. 2×2 grid: `flex:1` para expandir no espaço liberado
+3. 4º card: substituído por frase motivacional sem dado fabricado (regra Error 21)
+4. Barras: opacity bumped (Fêmur 0.2→0.28, Úmero 0.3→0.38)
+5. Coluna/Pelve: gradient + box-shadow para ênfase top-severity
+6. Chart title: border-left 3px gold-dark + padding-left
+7. Mini-card 2,7×: "Johansson 2017" → "vs. população sem fx" (ref no rodapé)
+8. Take-home: border-radius 0.45→0.55vw
+
+**Score AFTER: 7.6/10** (delta +0.85)
+
+#### Estado do audit slide-a-slide
+
+| Counter | Arquivo | Status | Score |
+| ------- | ------- | ------ | ----- |
+| 1–14 | S01–S14b | Não auditados nesta sessão | — |
+| 15 | S22 | Headers fixados (v16) | — |
+| 16 | S24 | 8 fixes aplicados | 7.6 |
+| 17+ | S25+ | **PRÓXIMO** | — |
+
+**Próximo slide:** Counter 17 = S25 (posição 19 na `_list.txt`)
+
+**Script de screenshot:** `scripts/_shot-retina.js` — atualmente configurado para Counter 16 (15 ArrowRight). Para Counter 17, mudar para `i < 17`.
+
+**Processo padrão:**
+1. Ajustar `_shot-retina.js` (counter N = `i < N` ArrowRight, output `cN-3x-retina.png`)
+2. Tirar screenshot diagnóstico
+3. Ler HTML do slide
+4. Avaliar com checklist de 12 critérios (CLAUDE.md)
+5. Listar problemas específicos
+6. Aplicar fixes
+7. Screenshot AFTER
+8. Re-avaliar com scores comparativos
+
+---
+
 _Criado: 2026-02-03_
-_Última atualização: 2026-02-08 (Round 16 — S14: color hierarchy fix → AACE protagonista navy+gold, score 8.95/10)_
+_Última atualização: 2026-02-08 (Round 17 — Slide-by-slide audit: C15 headers v16 + C16 S24 8 fixes, score 7.6/10)_

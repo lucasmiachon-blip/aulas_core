@@ -1,5 +1,78 @@
 # Changelog
 
+## 2026-02-08 — GRADE S14 palette coherence + overhaul massivo (17 slides)
+
+### Conteúdo (commit `a774a8b`)
+
+- **S14 (cross-guideline SBC/ESC/AACE):** 3 colunas com palette hierárquica
+
+  - AACE = protagonista (navy+gold, SoF formal, padrão ouro)
+  - SBC = referência (teal, GRADE adaptado)
+  - ESC = suporte (gold outline, COR/LOE sem GRADE)
+  - Chips grandes (1.4vw), callouts com citações ipsis litteris, método footer
+  - Score: 8.95/10
+
+- **S17:** Redesign com ruler MID (Minimally Important Difference)
+- **S19:** RoB compact layout
+- **S43/S44/S47:** Polish significativo (tipografia, espaçamento, cores)
+- **S45:** Merged EtD (Evidence to Decision) consolidated
+- **S61:** Expansion
+- **S62:** GRADE synthesis visual (5 domínios)
+- **S63:** New/expanded content
+- **S64:** AACE SoF (Summary of Findings) com crop Table 8
+
+### Assets
+
+- `GRADE/assets/figures/aace_table8_crop.png` (Table 8 AACE 2025)
+
+### Uncommitted
+
+- S14 polish pass: font bumps ~2-5%, SBC quotes ipsis litteris, formatting compactado
+
+### Insights documentados
+
+- Insight 24: Small multiples (3 colunas paralelas à la Tufte)
+- Insight 25: Chips grandes como focal point em slides de comparação
+- Insight 26: 3-group space-between pattern (Hero/Content/Footer)
+- Insight 27: Color hierarchy mapeia narrativa (protagonista = maior peso visual)
+- Erro 28: ≤3 children para space-between
+
+---
+
+## 2026-02-08 — OSTEOPOROSE slide-by-slide audit (C15–C16)
+
+### Conteúdo
+
+- **Counter 15 (S22 — Estratificação de risco): header fix v16**
+
+  - Category headers (BAIXO, INTERMEDIÁRIO, ALTO, MUITO ALTO, IMINENTE) → pills com background tint (severity cascade)
+  - min-height: 1.6vw para alinhamento cross-card
+  - Section labels (CRITÉRIOS, CONDUTA, FOLLOW-UP) bumped 0.52→0.58vw + border-left 2px accent
+
+- **Counter 16 (S24 — Risco iminente: refratura 1º ano): 8 fixes**
+  - Hero card: removido flex:1 → auto-height (eliminado dead space navy)
+  - 2×2 mini grid expandido (flex:1)
+  - Bar chart: opacity bumped nas barras inferiores, gradient+shadow nas top bars
+  - Chart title: border-left 3px gold-dark
+  - Mini-card 2,7×: removida ref duplicada
+  - Take-home: border-radius padronizado 0.55vw
+  - Score: 6.75 → 7.6/10
+
+### Arquivos tocados
+
+- `OSTEOPOROSE/src/slides/S22_slide-22.html` (headers v16)
+- `OSTEOPOROSE/src/slides/S24_slide-24.html` (8 fixes)
+- `scripts/_shot-retina.js` (configurado para C16)
+- `CLAUDE.md` (sessão Round 17 + estado do audit)
+- `CHANGELOG.md`
+
+### Próximo
+
+- Continuar audit a partir de Counter 17 (S25, posição 19 na `_list.txt`)
+- Processo: shot diagnóstico → 12-critérios → fixes → re-shot
+
+---
+
 ## 2026-02-08 — GRADE S07 Indireção redesign + S11 polish
 
 ### Conteúdo
