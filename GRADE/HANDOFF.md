@@ -47,22 +47,22 @@ Os slides S08/S10/S11/S07 agora seguem o mesmo padrão visual (cardHeader, callo
 
 ## Mapa de posições (56 slides)
 
-| Posição | Arquivo | Título resumido                      | Status      |
-| ------- | ------- | ------------------------------------ | ----------- |
-| 1       | S01     | Título/abertura                      |             |
-| 2       | S02     | (verificar)                          |             |
-| 3       | S05     | (verificar)                          |             |
-| 4       | S06     | Downgrades GRADE                     |             |
-| 5       | S03     | Objetivos                            |             |
-| 6       | S09     | CAC leitura GRADE                    |             |
-| 7       | S36     | (verificar)                          |             |
-| 8       | S08     | Rate up (dose-resposta + magnitude)  | Benchmark   |
-| 9       | S11     | NNT/NNH estatina vs aspirina por CAC | Polido      |
-| 10      | S10     | CAC staging cardiovascular           | Polido      |
-| **11**  | **S07** | **Indireção — REDESENHADO**          | **Polido**  |
-| 12      | S61     | (verificar)                          |             |
-| 13      | S14     | (verificar)                          |             |
-| ...     | ...     | ...                                  |             |
+| Posição | Arquivo | Título resumido                      | Status     |
+| ------- | ------- | ------------------------------------ | ---------- |
+| 1       | S01     | Título/abertura                      |            |
+| 2       | S02     | (verificar)                          |            |
+| 3       | S05     | (verificar)                          |            |
+| 4       | S06     | Downgrades GRADE                     |            |
+| 5       | S03     | Objetivos                            |            |
+| 6       | S09     | CAC leitura GRADE                    |            |
+| 7       | S36     | (verificar)                          |            |
+| 8       | S08     | Rate up (dose-resposta + magnitude)  | Benchmark  |
+| 9       | S11     | NNT/NNH estatina vs aspirina por CAC | Polido     |
+| 10      | S10     | CAC staging cardiovascular           | Polido     |
+| **11**  | **S07** | **Indireção — REDESENHADO**          | **Polido** |
+| 12      | S61     | (verificar)                          |            |
+| 13      | S14     | (verificar)                          |            |
+| ...     | ...     | ...                                  |            |
 
 ## Arquivos-chave
 
