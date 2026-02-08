@@ -1,61 +1,307 @@
-<!-- S45 — EtD do ácido bempedóico (formato inspirado no slide-âncora do CAC) -->
-<section class="slide" data-slide-id="S45" style="background: var(--bg); padding: var(--pad);">
-  <p class="label-gold" style="margin-bottom: .4vw;">ETD — ÁCIDO BEMPEDÓICO (DECISÃO PRÁTICA)</p>
-  <h2 style="margin: 0 0 .6vw 0;">Quando o efeito é pequeno, o contexto decide</h2>
-  <p class="lead" style="margin: 0 0 1.2vw 0; max-width: 92%;">
-    O mesmo ARR pode ser “vale muito” ou “vale pouco” dependendo de valores, acesso e viabilidade.
+<!-- S45 — EtD aplicado ao bempedóico: da evidência à decisão (fusão S45+S20+S49) -->
+<section class="slide" data-slide-id="S45">
+  <p class="label-gold" style="margin: 0 0 0.2vw 0">ETD &mdash; DA EVID&Ecirc;NCIA &Agrave; DECIS&Atilde;O</p>
+
+  <h2 style="margin: 0 0 0.15vw 0; font-size: 2.5vw">
+    Quando o efeito &eacute; pequeno, o
+    <span class="title-accent">contexto decide</span>
+  </h2>
+  <p class="lead" style="margin: 0 0 0.45vw 0; font-size: 0.82vw">
+    O mesmo ARR pode valer muito ou pouco &mdash; o EtD (valores, acesso, viabilidade) &eacute; o que muda a conduta.
   </p>
 
-  <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 1.2vw; align-items: start;">
-    <!-- Coluna esquerda: prática -->
-    <div class="card" style="padding: 1.15vw 1.25vw;">
-      <div class="small-title" style="margin-bottom: .7vw;">O que isso muda na prática</div>
-      <div class="bullets" style="font-size: 1.05vw;">
-        <div style="display: grid; grid-template-columns: 2.2vw 1fr; gap: .7vw; margin-bottom: .65vw;">
-          <div class="step" style="width: 2.2vw; height: 2.2vw; border-radius: 999px; background: #eef4ff; display: grid; place-items: center; font-weight: 800; color: #1c3f8a;">1</div>
-          <div><strong>Confirme SAMS</strong> (dechallenge/rechallenge) antes de “carimbar” intolerância.</div>
+  <div style="display: grid; grid-template-columns: 1fr 1.15fr; gap: 1.1vw; flex: 1; align-items: stretch">
+    <!-- ESQUERDA: Card único com 3 seções internas -->
+    <div class="card" style="padding: 0; overflow: hidden; display: flex; flex-direction: column">
+      <div class="cardHeader" style="padding: 0.28vw 0.7vw">
+        <span style="font-size: 0.58vw">ETD EM 3 PERGUNTAS</span>
+      </div>
+      <div class="cardBody" style="padding: 0; flex: 1; display: flex; flex-direction: column">
+        <!-- 1. Certeza -->
+        <div
+          style="
+            padding: 0.45vw 0.7vw;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 0.8;
+          "
+        >
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.15vw">
+            <span style="font-weight: 800; color: var(--navy); font-size: 0.88vw">Certeza da evid&ecirc;ncia</span>
+            <span class="chip chip--gold" style="font-size: 0.52vw; padding: 0.08vw 0.35vw">
+              &oplus;&oplus;&oplus;&cir; &minus;1
+            </span>
+          </div>
+          <div style="font-size: 0.78vw; color: var(--muted); line-height: 1.35">
+            RCT bem conduzido, mas IC 95% toca o MID (imprecis&atilde;o). Indire&ccedil;&atilde;o depende da
+            popula&ccedil;&atilde;o-alvo.
+          </div>
         </div>
-        <div style="display: grid; grid-template-columns: 2.2vw 1fr; gap: .7vw; margin-bottom: .65vw;">
-          <div class="step" style="width: 2.2vw; height: 2.2vw; border-radius: 999px; background: #eef4ff; display: grid; place-items: center; font-weight: 800; color: #1c3f8a;">2</div>
-          <div><strong>Mantenha a estatina máxima tolerada</strong>; se ainda acima da meta, <strong>some terapia</strong>.</div>
+
+        <!-- 2. Benefício × riscos — HERO -->
+        <div
+          style="
+            padding: 0.55vw 0.7vw;
+            border-bottom: 1px solid var(--border);
+            background: rgba(var(--teal-rgb), 0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 1.2;
+          "
+        >
+          <div style="font-weight: 800; color: var(--navy); font-size: 0.88vw; margin-bottom: 0.2vw">
+            Benef&iacute;cio &times; riscos
+          </div>
+          <div style="display: flex; gap: 0.8vw; align-items: baseline; margin-bottom: 0.2vw">
+            <div>
+              <span
+                style="
+                  font-family: var(--font-serif);
+                  font-size: 2.4vw;
+                  font-weight: 800;
+                  color: var(--teal);
+                  line-height: 1;
+                "
+              >
+                ~63
+              </span>
+              <span style="font-size: 0.68vw; font-weight: 700; color: var(--muted); margin-left: 0.15vw">NNT</span>
+            </div>
+            <div style="font-size: 0.75vw; color: var(--muted); line-height: 1.35">
+              <b style="color: var(--navy)">IC 95%: 38&ndash;191</b>
+              <br />
+              MACE-4: ARR ~1,6% &bull; 3,4 anos
+            </div>
+          </div>
+          <div
+            style="
+              font-size: 0.72vw;
+              color: var(--muted);
+              line-height: 1.3;
+              padding-top: 0.15vw;
+              border-top: 1px solid rgba(var(--teal-rgb), 0.12);
+            "
+          >
+            Monitorar &uarr; &aacute;cido &uacute;rico/gota: 3,1% vs 2,1% (NNH ~100).
+          </div>
         </div>
-        <div style="display: grid; grid-template-columns: 2.2vw 1fr; gap: .7vw; margin-bottom: .25vw;">
-          <div class="step" style="width: 2.2vw; height: 2.2vw; border-radius: 999px; background: #eef4ff; display: grid; place-items: center; font-weight: 800; color: #1c3f8a;">3</div>
-          <div>
-            Se o risco é alto e o <strong>acesso</strong> é limitante, <strong>priorize opções VO</strong> (ezetimiba, bempedóico).
-            Se acesso permite (e o risco justifica), considere injetáveis.
+
+        <!-- 3. Recursos -->
+        <div
+          style="
+            padding: 0.45vw 0.7vw;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            flex: 0.8;
+          "
+        >
+          <div style="font-weight: 800; color: var(--navy); font-size: 0.88vw; margin-bottom: 0.15vw">
+            Recursos &amp; viabilidade
+          </div>
+          <div style="font-size: 0.78vw; color: var(--muted); line-height: 1.35">
+            VO 1&times;/dia, aceitabilidade alta. ANVISA aprovado; SUS depende de CONITEC. Prefer&ecirc;ncia VO vs
+            injet&aacute;vel, custo-benef&iacute;cio.
+          </div>
+        </div>
+
+        <!-- Regra (ancorada ao fundo) -->
+        <div
+          style="
+            padding: 0.35vw 0.7vw;
+            background: rgba(var(--gold-rgb), 0.06);
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+          "
+        >
+          <div style="font-size: 0.78vw; color: var(--navy); line-height: 1.35">
+            <strong style="color: var(--gold-dark)">Regra:</strong>
+            ARR pequena +
+            <strong>acesso + valores</strong>
+            = &ldquo;condicional&rdquo;, n&atilde;o &ldquo;forte&rdquo;.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIREITA: Escada terapêutica + síntese -->
+    <div style="display: flex; flex-direction: column; gap: 0.4vw">
+      <div class="card" style="padding: 0; overflow: hidden; flex: 1; display: flex; flex-direction: column">
+        <div class="cardHeader" style="padding: 0.28vw 0.7vw">
+          <span style="font-size: 0.58vw">ESCADA TERAP&Ecirc;UTICA (SEM ESTATINA PLENA)</span>
+        </div>
+        <div
+          class="cardBody"
+          style="padding: 0.5vw 0.65vw; flex: 1; display: flex; flex-direction: column; justify-content: space-evenly"
+        >
+          <!-- Pré-requisito -->
+          <div
+            style="
+              padding: 0.4vw 0.55vw;
+              border-radius: 0.4vw;
+              background: rgba(var(--danger-rgb), 0.04);
+              border: 1px solid rgba(var(--danger-rgb), 0.15);
+            "
+          >
+            <div style="font-size: 0.75vw; font-weight: 700; color: var(--navy); line-height: 1.35">
+              <span style="color: rgba(var(--danger-rgb), 0.8); font-weight: 800">Pr&eacute;-requisito:</span>
+              Confirme SAMS com
+              <b>dechallenge/rechallenge</b>
+              antes de &ldquo;carimbar&rdquo; intoler&acirc;ncia.
+            </div>
+          </div>
+
+          <!-- Step 1 -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1.7vw 1fr;
+              gap: 0.5vw;
+              align-items: center;
+              padding: 0.5vw 0.55vw;
+              border-radius: 0.45vw;
+              background: rgba(var(--navy-rgb), 0.03);
+              border: 1px solid var(--border);
+            "
+          >
+            <div
+              style="
+                width: 1.7vw;
+                height: 1.7vw;
+                border-radius: 999px;
+                background: rgba(var(--navy-rgb), 0.08);
+                display: grid;
+                place-items: center;
+                font-weight: 900;
+                font-size: 0.82vw;
+                color: var(--navy);
+              "
+            >
+              1
+            </div>
+            <div style="font-size: 0.82vw; line-height: 1.35; color: var(--navy)">
+              <b>Mantenha a maior dose tolerada</b>
+              +
+              <b>ezetimiba</b>
+              (quando indicado).
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1.7vw 1fr;
+              gap: 0.5vw;
+              align-items: center;
+              padding: 0.5vw 0.55vw;
+              border-radius: 0.45vw;
+              background: rgba(var(--gold-rgb), 0.06);
+              border: 1px solid rgba(var(--gold-rgb), 0.18);
+            "
+          >
+            <div
+              style="
+                width: 1.7vw;
+                height: 1.7vw;
+                border-radius: 999px;
+                background: rgba(var(--gold-rgb), 0.15);
+                display: grid;
+                place-items: center;
+                font-weight: 900;
+                font-size: 0.82vw;
+                color: var(--navy);
+              "
+            >
+              2
+            </div>
+            <div style="font-size: 0.82vw; line-height: 1.35; color: var(--navy)">
+              Se ainda acima da meta e acesso permite: adicione
+              <b>&aacute;cido bemped&oacute;ico</b>
+              (VO).
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div
+            style="
+              display: grid;
+              grid-template-columns: 1.7vw 1fr;
+              gap: 0.5vw;
+              align-items: center;
+              padding: 0.5vw 0.55vw;
+              border-radius: 0.45vw;
+              background: rgba(var(--teal-rgb), 0.06);
+              border: 1px solid rgba(var(--teal-rgb), 0.18);
+            "
+          >
+            <div
+              style="
+                width: 1.7vw;
+                height: 1.7vw;
+                border-radius: 999px;
+                background: rgba(var(--teal-rgb), 0.15);
+                display: grid;
+                place-items: center;
+                font-weight: 900;
+                font-size: 0.82vw;
+                color: var(--teal);
+              "
+            >
+              3
+            </div>
+            <div style="font-size: 0.82vw; line-height: 1.35; color: var(--navy)">
+              Em risco muito alto, se
+              <b>vi&aacute;vel</b>
+              : considere
+              <b>PCSK9i</b>
+              (trade-off: custo/acesso).
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="note" style="margin-top: 1vw;">
-        <strong>EtD é onde diretrizes divergem:</strong> evidência parecida, viabilidade diferente.
+      <!-- SÍNTESE -->
+      <div style="padding: 0.5vw 0.7vw; background: var(--navy); border-radius: var(--radius-sm)">
+        <div
+          style="
+            font-size: 0.52vw;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.08vw;
+          "
+        >
+          S&Iacute;NTESE &mdash; TRADU&Ccedil;&Atilde;O PARA O PLANT&Atilde;O
+        </div>
+        <div
+          style="
+            font-family: var(--font-serif);
+            font-size: 1.2vw;
+            line-height: 1.2;
+            color: var(--white);
+            margin-bottom: 0.1vw;
+          "
+        >
+          Recomenda&ccedil;&atilde;o
+          <span style="color: var(--gold); font-weight: 900">condicional</span>
+          a favor
+        </div>
+        <div style="font-size: 0.72vw; line-height: 1.3; color: rgba(255, 255, 255, 0.82)">
+          Se a SAMS &eacute; real e o risco &eacute; alto: mantenho dose tolerada e adiciono alternativa vi&aacute;vel.
+          <strong style="color: var(--gold)">Sem estatina &ne; sem preven&ccedil;&atilde;o.</strong>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- Coluna direita: EtD -->
-    <div class="card" style="padding: 1.15vw 1.25vw;">
-      <div class="small-title" style="margin-bottom: .7vw;">EtD em 3 perguntas rápidas</div>
-
-      <div style="display: grid; gap: .85vw;">
-        <div class="card" style="padding: .85vw 1vw; background: #ffffff;">
-          <div style="font-weight: 800; margin-bottom: .25vw;">Valores & preferências</div>
-          <div style="color: var(--muted); font-size: 1.02vw;">VO vs injetável, tolerabilidade, “aversão a remédio”, adesão real.</div>
-        </div>
-        <div class="card" style="padding: .85vw 1vw; background: #ffffff;">
-          <div style="font-weight: 800; margin-bottom: .25vw;">Custos & acesso</div>
-          <div style="color: var(--muted); font-size: 1.02vw;">SUS/privado, critérios de incorporação, custo mensal, disponibilidade contínua.</div>
-        </div>
-        <div class="card" style="padding: .85vw 1vw; background: #ffffff;">
-          <div style="font-weight: 800; margin-bottom: .25vw;">Viabilidade & segurança</div>
-          <div style="color: var(--muted); font-size: 1.02vw;">Interações, monitorização, eventos adversos relevantes (ex.: urato/gota).</div>
-        </div>
-      </div>
-
-      <div class="chip-row" style="margin-top: 1vw;">
-        <span class="chip chip--muted">Predição ≠ prescrição</span>
-        <span class="chip chip--muted">EtD ≠ “apêndice”</span>
-      </div>
-    </div>
+  <div class="ref" style="margin-top: 0.12vw">
+    GRADE EtD &bull; CLEAR Outcomes (NEJM 2023) &bull; Diretriz SBC 2025 &bull; AACE 2025 (Rec. 5-6).
   </div>
 </section>

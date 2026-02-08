@@ -72,14 +72,21 @@ Criar (ou refatorar) apresentações de alto nível com:
 
 ## CAMINHOS PADRÃO
 
-| Artefato                     | Caminho                      |
-| ---------------------------- | ---------------------------- |
-| **Exports (ZIP, PDF, PPTX)** | `exports/` (raiz do projeto) |
-| Slides fonte                 | `OSTEOPOROSE/src/slides/`    |
-| CSS                          | `OSTEOPOROSE/src/css/`       |
-| Scripts                      | `scripts/`                   |
+| Artefato                     | Caminho                         |
+| ---------------------------- | ------------------------------- |
+| **Exports (ZIP, PDF, PPTX)** | `exports/` (raiz do projeto)    |
+| Slides fonte (OSTEOPOROSE)   | `OSTEOPOROSE/src/slides/`       |
+| CSS (OSTEOPOROSE)            | `OSTEOPOROSE/src/css/`          |
+| **Slides fonte (GRADE)**     | `GRADE/src/slides/`             |
+| **CSS (GRADE)**              | `GRADE/src/css/`                |
+| **JS Viewer (GRADE)**        | `GRADE/src/js/slides-simple.js` |
+| **Ordem dos slides (GRADE)** | `GRADE/src/slides/_list.txt`    |
+| **Assets (GRADE)**           | `GRADE/assets/` (figures, pdf)  |
+| Scripts                      | `scripts/`                      |
 
 **Regra:** Todos os artefatos de exportação (ZIP, PDF, PPTX) devem ser salvos em `exports/` na raiz (`C:\Dev\Projetos\Aulas2\exports\`).
+
+**Regra GRADE:** A posição de um slide no deck é definida pela linha correspondente em `_list.txt`, NÃO pelo nome do arquivo HTML. "Slide 19" = posição 19 no counter = linha 19 do `_list.txt`.
 
 ---
 
@@ -215,6 +222,9 @@ Aulas2/
 12. **Paralelismo obrigatório.** Ao polir um slide (fontes, sombras, tamanhos, cores), o MESMO padrão deve ser aplicado a TODOS os slides do mesmo tipo. Nunca polir um slide isoladamente — a inconsistência resultante é pior que o estado anterior. Se não há tempo para padronizar todos, documentar as escolhas feitas e marcar como dívida técnica.
 13. **Data slides = narrativa, não tabela.** Quando múltiplos dados competem, NÃO dar peso igual a todos. O pior caso deve ser visualmente DOMINANTE (hero card, bg escuro, número gigante). Usar flex proporcional à severidade, color intensity cascade, e border-left como accent. Rows iguais = tabela de planilha. Rows proporcionais = narrativa visual.
 14. **Slide novo = tokens do vizinho.** Antes de começar um slide, abrir o slide anterior e posterior, extrair tokens visuais (title size/weight, subtitle color, footer style), e aplicá-los PRIMEIRO. Só depois projetar o conteúdo. Inconsistência entre slides vizinhos é pior que imperfeição isolada.
+15. **Diagnóstico de assimetria ANTES de layout.** Antes de escolher 2 colunas, contar o volume de conteúdo de cada lado. Se a diferença é >20%, NÃO usar 2 colunas — usar 3 colunas, full-width stacked, ou layout único. Nenhuma propriedade CSS resolve assimetria de conteúdo.
+16. **≤3 children para space-between.** Se um card stretched tem 5+ items, agrupar em 3 seções (hero/content/footer) e aplicar space-between nos GRUPOS, não nos items individuais. 2 gaps > 4 gaps.
+17. **Chip size ∝ importância narrativa.** Dados que DIVERGEM entre entidades comparadas devem ser os maiores e mais coloridos. Em comparações cross-guideline: ≥1.3vw para chips de classificação.
 
 ---
 
@@ -284,6 +294,95 @@ Aulas2/
 
 ---
 
+## PLAN MODE — OBRIGATÓRIO ANTES DE AGIR
+
+> **REGRA INVIOLÁVEL:** Eu NUNCA executo antes de planejar. Planejar é o trabalho. Executar é consequência.
+
+### Por que Plan Mode existe
+
+Este protocolo existe porque **meus piores erros foram todos de execução prematura:**
+
+| Erro    | Causa raiz                                         | Custo                                     |
+| ------- | -------------------------------------------------- | ----------------------------------------- |
+| Erro 1  | Mudanças incrementais sem visão clara              | Horas perdidas, "não estamos progredindo" |
+| Erro 6  | 19 slides alterados de uma vez sem validação       | Regressão visual massiva                  |
+| Erro 10 | Flex forçado sem pensar no layout                  | Redesign total necessário                 |
+| Erro 16 | Ação sem consultar `_list.txt` nem screenshot      | Slide errado movido                       |
+| Erro 20 | 5 iterações de over-engineering num fix de 1 linha | Piorou o que estava "muito bom"           |
+| Erro 21 | Dados médicos fabricados sem verificar fontes      | **Risco clínico real**                    |
+
+**Padrão:** Em TODOS os casos, 30 segundos de planejamento teriam evitado horas de retrabalho.
+
+### Quando DEVO entrar em Plan Mode
+
+**SEMPRE** que a tarefa envolver:
+
+1. **Editar mais de 1 slide** → Plan Mode (listar quais, em que ordem, qual token de referência)
+2. **Redesign ou mudança de layout** → Plan Mode (propor antes, executar depois)
+3. **Mover/reordenar slides** → Plan Mode (consultar `_list.txt`, mapear posição→arquivo)
+4. **Dados médicos/numéricos** → Plan Mode (listar fontes Tier 1 ANTES de escrever qualquer número)
+5. **CSS global ou `blocks.css`** → Plan Mode (listar todos os slides afetados, verificar overrides)
+6. **Qualquer tarefa com >3 passos** → Plan Mode
+7. **Tarefa ambígua ou com múltiplas interpretações** → Plan Mode (clarificar com o usuário)
+8. **O usuário disse que algo "está bom" e pediu ajuste** → Plan Mode MÍNIMO (escopo = APENAS o pedido)
+
+### O que Plan Mode significa NA PRÁTICA
+
+```
+ANTES DE TOCAR EM QUALQUER ARQUIVO:
+
+1. PARAR. Não abrir editor. Não escrever código. Não gerar screenshot.
+
+2. DECLARAR O PLANO ao usuário em texto claro:
+   - "Vou fazer X, Y e Z."
+   - "O escopo é: [lista exaustiva do que muda]."
+   - "O que NÃO mudo: [lista do que preservo]."
+   - "Referência visual: [slide/token que vou seguir]."
+   - "Fontes de dados: [papers/links para números]."
+
+3. ESPERAR APROVAÇÃO (quando o plano envolve decisões de design ou conteúdo).
+   - Se o usuário disser "vai", executar EXATAMENTE o plano.
+   - Se o usuário ajustar, incorporar e re-declarar.
+   - Se for fix trivial (typo, 1 propriedade CSS), posso executar direto
+     MAS ainda declaro o que fiz depois.
+
+4. EXECUTAR com disciplina:
+   - Seguir o plano. Não expandir escopo.
+   - Se descobrir algo novo durante execução → PARAR, informar, replanejar.
+   - "Achei X durante a execução. Quero também fazer Y. Posso?"
+
+5. REPORTAR o resultado:
+   - O que mudou (lista de arquivos + resumo).
+   - Screenshot se visual.
+   - O que NÃO mudou (confirmar que escopo foi respeitado).
+```
+
+### Níveis de planejamento por complexidade
+
+| Complexidade | Exemplo                                          | Plan Mode                                                                  |
+| ------------ | ------------------------------------------------ | -------------------------------------------------------------------------- |
+| **Trivial**  | Corrigir typo, mudar 1 cor                       | Declarar depois ("Mudei X.")                                               |
+| **Baixa**    | Ajustar padding, mover ref                       | Declarar antes em 1 frase ("Vou mover a ref de bottom:4% para bottom:1%.") |
+| **Média**    | Redesign de 1 slide, novo slide                  | Plano estruturado: layout, tokens, conteúdo, referência visual             |
+| **Alta**     | Batch de slides, mudança CSS global, reordenação | Plano completo + aprovação + execução em batches de 3-5                    |
+| **Crítica**  | Dados médicos, pipeline de export, print.css     | Plano completo + fontes verificadas + aprovação explícita                  |
+
+### Anti-padrões de Plan Mode (NUNCA fazer)
+
+- **"Vou melhorar o slide"** → VAGO. Que slide? Que melhoria? Que tokens?
+- **"Vou ajustar uns paddings"** → VAGO. Quais paddings? Quais valores? Por quê?
+- **"Vou padronizar as cores"** → PERIGOSO. Quais cores? Em quais slides? Qual referência?
+- **Começar a editar e "ver no que dá"** → PROIBIDO. Planejar PRIMEIRO.
+- **Planejar mentalmente sem declarar** → NÃO CONTA. O plano deve ser VISÍVEL ao usuário.
+- **Expandir escopo silenciosamente** → Se o plano era "ajustar padding do S09" e percebo que o S10 também precisa, PARAR e perguntar.
+
+### Frase-gatilho para auto-verificação
+
+> **Antes de cada ação, me pergunto: "Eu declarei o plano? O usuário sabe o que vou fazer? O escopo está definido?"**
+> Se a resposta a QUALQUER uma for "não" → PARAR e planejar.
+
+---
+
 ## PROCESSO DE TRABALHO
 
 ### Antes de qualquer mudança visual:
@@ -323,21 +422,21 @@ Aulas2/
 
 ### Checklist de qualidade visual (usar SEMPRE):
 
-| Critério     | Verificar                                   |
-| ------------ | ------------------------------------------- |
-| Ponto focal  | Existe UM elemento dominante?               |
-| Hierarquia   | 3 níveis claros (título > corpo > detalhe)? |
-| Contraste    | Texto legível? WCAG AA mínimo?              |
-| Whitespace   | Intencional ou "sobra"?                     |
-| Alinhamento  | Elementos alinhados em grid invisível?      |
-| Consistência | Mesmo padrão que slides anteriores?         |
-| Scanning 3s  | Mensagem principal óbvia em 3 segundos?     |
-| Carga cogn.  | Uma ideia por slide? Chunks de 3-5?         |
-| Dual coding  | Visual complementa texto (não duplica)?     |
-| Narrativa    | Slide avança a história? Tem propósito?     |
+| Critério     | Verificar                                                                               |
+| ------------ | --------------------------------------------------------------------------------------- |
+| Ponto focal  | Existe UM elemento dominante?                                                           |
+| Hierarquia   | 3 níveis claros (título > corpo > detalhe)?                                             |
+| Contraste    | Texto legível? WCAG AA mínimo?                                                          |
+| Whitespace   | Intencional ou "sobra"?                                                                 |
+| Alinhamento  | Elementos alinhados em grid invisível?                                                  |
+| Consistência | Mesmo padrão que slides anteriores?                                                     |
+| Scanning 3s  | Mensagem principal óbvia em 3 segundos?                                                 |
+| Carga cogn.  | Uma ideia por slide? Chunks de 3-5?                                                     |
+| Dual coding  | Visual complementa texto (não duplica)?                                                 |
+| Narrativa    | Slide avança a história? Tem propósito?                                                 |
 | Fill ratio   | Adequado ao tipo? (data: 75-90%, conceitual: 65-80%, interação: 50-65%, título: 30-50%) |
-| Dead space   | Zero whitespace acidental DENTRO de cards?  |
-| Redundância  | Zero informação repetida entre elementos?   |
+| Dead space   | Zero whitespace acidental DENTRO de cards?                                              |
+| Redundância  | Zero informação repetida entre elementos?                                               |
 
 ### QA — Slides (obrigatório)
 
@@ -410,9 +509,11 @@ Aulas2/
 - Preferir SVG para ícones e ilustrações
 - Usar `@` imports para referenciar arquivos do projeto
 - **NUNCA** inventar números, dados ou citações — usar `[TBD]` se faltar
+- **SEMPRE** que exibir NNT, incluir o **IC 95%** correspondente — NNT sem IC é enganoso (esconde a imprecisão)
 - **SEMPRE** usar `var(--nome)` para cores — nunca hardcoded `#XXXXXX`
 - **SEMPRE** atualizar `CHANGELOG.md` em cada commit
 - **HARD CONSTRAINT — Dados médicos:** TODO número (NNT, NNH, HR, RR, OR, %, dose, meta LDL) DEVE ser verificado no paper original via PubMed/PMC ANTES de ser colocado no slide. Time frame explícito. Categorias idênticas ao paper. Violação = erro de severidade MÁXIMA. (Ver Erro 21, sessão 2026-02-07)
+- **HARD CONSTRAINT — RR/HR/OR → sempre com contexto clínico:** Toda vez que um slide mostra RR, HR ou OR, incluir também: risco basal (controle), risco com tratamento, ARR, e NNT **com IC 95% e time frame explícito**. Transforma dado acadêmico em dado clínico acionável. Exemplo: "Vertebral: 5,4% vs 12,0% (RR 0,44; IC 95% 0,29–0,68) → Basal 12,0% → 5,4% · ARR 6,6% · **NNT 15 (IC 95% 11–24) em 24 m**". NNT sem IC e sem tempo é incompleto — o IC diz a precisão, o tempo diz a janela de benefício. (Ver sessão 2026-02-08, Round 13)
 
 ---
 
@@ -1170,6 +1271,28 @@ Eu nem olhei o screenshot antes de agir.
 - **`margin-top:auto` em AMBAS as colunas** → cria dead space simétrico. Combinar callouts em take-home bar full-width
 - **Over-engineering "minor fix"** → quando o usuário diz "muito bom, só ajusta X", a resposta é mudar X e NADA MAIS. Não redesenhar layout, grid, flex, paddings inteiros. Uma propriedade CSS por vez. 3ª reincidência = checklist obrigatório (ver Erro 20)
 - **Informação redundante entre elementos do slide** → cada elemento deve carregar informação NOVA. Se um dado aparece na tabela E num callout, um deles é desperdício de espaço e atenção. Antes de finalizar: varrer todos os elementos e perguntar "esta informação já está em outro lugar?". Se sim, remover ou transformar em cross-reference (ex: "ver →")
+- **`display` inline no `<section class="slide">`** → 3ª REINCIDÊNCIA (Erro 7 → Erro 23). PROIBIDO sob qualquer circunstância. O viewer controla display via CSS (`.slide { display: none }` / `.slide.active { display: flex }`). Inline `display` sobrescreve AMBOS, fazendo o slide ficar permanentemente visível e quebrando toda a navegação. **CHECKLIST OBRIGATÓRIO** (ver abaixo)
+- **SoF/tabela GRADE com dados de um trial isolado quando a guideline usa meta-análise** → SEMPRE verificar a fonte primária (a guideline, não o trial). AACE 2025 usa RR de meta-análise de 7 RCTs, NÃO HR do CLEAR isolado. Dados incorretos geram conclusões opostas (ex: mortalidade "4 a menos" quando na realidade é "10 a mais")
+- **`flex:1` em N cards com conteúdo de tamanhos diferentes** → 3ª REINCIDÊNCIA (Erros 6, 10, 26). Cria dead space interno proporcional à diferença entre conteúdo real e espaço alocado. **SOLUÇÕES:** (1) Card único com `border-bottom` dividers + flex ratios calibrados (0.8/1.2/0.8), (2) `space-evenly` na parent, (3) Conteúdo de peso similar. NUNCA flex:1 igualitário em containers com conteúdo desigual
+- **Entregar slides sem ≥3 rounds de screenshot→avaliação→fix** → Round 1 resolve ~50% mas cria novos problemas. Mínimo 3 rounds para convergir em qualidade profissional (evidência: média subiu de 5.2→6.2→6.8→7.3 nesta sessão)
+- **Layout 2-colunas com conteúdo fundamentalmente assimétrico** → Se col A tem 2 parágrafos e col B tem 5 itens, nenhum CSS salva o dead space. Mudar para layout diferente (3 colunas, full-width stacked, etc.) ANTES de tentar forçar com flex/space-between
+- **`space-between` em 5+ items individuais dentro de card stretched** → distribui gaps igualmente entre TODOS os items, criando micro-gaps acumulados. SOLUÇÃO: agrupar em 3 seções lógicas (hero/content/footer) e aplicar `space-between` nos 3 GRUPOS, não nos 5+ items
+- **Slide 100% texto sem nenhum elemento visual** → CLAUDE.md exige: "Todo slide precisa de elemento visual." Spectrum bars, ícones, shapes, imagens — algo visual que não seja só tipografia
+
+---
+
+## CHECKLIST OBRIGATÓRIO PRÉ-EDIÇÃO DE SLIDE (3ª reincidência Erro 7)
+
+> **Antes de salvar QUALQUER slide HTML, executar TODOS os itens:**
+
+| #   | Verificação                                            | Como                                                                                       |
+| --- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| 1   | `<section>` NÃO tem `style` com `display`              | Grep visual: a tag `<section class="slide"` deve ter NO MÁXIMO `style="background:..."`    |
+| 2   | Tags balanceadas (section, div)                        | Script: `(html.match(/<div/g)).length === (html.match(/<\/div/g)).length`                  |
+| 3   | Nenhum `display:flex` ou `display:grid` no `<section>` | Inline styles de layout devem estar DENTRO de divs filhas, NUNCA na section                |
+| 4   | Dados de tabelas/SoF verificados contra fonte primária | Se a slide cita uma guideline, os números devem vir DA GUIDELINE (não de um trial isolado) |
+
+**Se qualquer item falhar: NÃO salvar. Corrigir primeiro.**
 
 ---
 
@@ -1207,12 +1330,199 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 
 | Projeto                              | Tipo                  | Erros registrados |
 | ------------------------------------ | --------------------- | ----------------- |
-| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 21 (+11 insights) |
+| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 26 (+22 insights) |
 | _(novos projetos serão adicionados)_ |                       |                   |
 
 ---
 
 ## SESSÕES RECENTES
+
+### Sessão 2026-02-08 (Round 14 — Rodada milimétrica: 4 iterações de design visual)
+
+**Foco:** Avaliação milimétrica como front-end designer sênior + diretor de apresentações. 4 rounds de screenshot→avaliação→fix→re-screenshot nos 5 slides remodelados (S19, S17, S62, S64, S45).
+
+#### Tarefas executadas
+
+- **S19 (RoB 2.0):** Unificado hero card + evidências + mensagem em um único card coeso. Domínios com padding aumentado (0.45→0.45vw). Ecossistema + Crítica em grid 2-col. Score: 5.5→7.0.
+- **S17 (Régua MID):** Labels MID separados da barra (acima). Barra espessa (3.6vw). 3 example cards uniformes (grid 1fr 1fr 1fr). CLEAR application com card+cardHeader próprio e "HR 0,87" como hero number. Score: 5.0→7.5.
+- **S62 (5 Domínios):** Column headers DOMÍNIO/JULGAMENTO/JUSTIFICATIVA integrados na dark cardHeader band (eliminando gap). Rows com `space-evenly` e padding 0.5vw. Arrow transition com badge "−1 IMPRECISÃO". MODERADA em serif 2.4vw. Score: 5.5→7.5.
+- **S64 (SoF Table):** Bottom synthesis split em 2 colunas (Rec. 5 navy + Rec. 6 light). Lead text 0.82vw legível. Score: 7.0→7.5.
+- **S45 (EtD fusão):** Card único com dividers internos (elimina gaps inter-cards). NNT ~63 aumentado para 2.4vw serif como focal point. Regra ancorada com `margin-top: auto`. Escada com `space-evenly`. Score: 5.0→7.0.
+
+**Média geral: 5.2 → 7.3/10** em 4 iterações.
+
+#### Erro 26: Dead space por `flex:1` em cards com conteúdo desigual (3ª REINCIDÊNCIA)
+
+**O que fiz:** Apliquei `flex:1` em 3 cards EtD (Certeza, Benefício, Recursos) dentro de uma coluna. O card "Certeza" tinha 2 linhas de conteúdo, "Benefício" tinha NNT hero + 3 linhas, "Recursos" tinha 2 linhas. O flex:1 forçou alturas iguais, criando 30-40% de dead space dentro de cada card.
+
+**Causa raiz:** `flex:1` distribui espaço IGUALMENTE, mas conteúdo é DESIGUAL. Resultado inevitável: dead space interno proporcional à diferença entre conteúdo real e espaço alocado.
+
+**Correção aplicada:**
+
+1. **Round 3:** Tentei `flex:1` / `flex:1.5` / `flex:1` — amenizou mas não resolveu (Benefício card ainda tinha ~25% dead space)
+2. **Round 4 (definitivo):** Card único com `border-bottom` como dividers internos + `flex: 0.8 / 1.2 / 0.8` nas seções internas. Eliminou gaps entre cards e reduziu dead space para ~10%.
+
+**Padrão anti-dead-space (3 estratégias por ordem de preferência):**
+
+| Estratégia                          | Quando usar                              | Exemplo                          |
+| ----------------------------------- | ---------------------------------------- | -------------------------------- |
+| 1. Card único com dividers          | Itens semanticamente agrupados           | EtD 3 perguntas                  |
+| 2. `space-evenly` na parent         | Itens independentes de peso similar      | 5 domínios GRADE                 |
+| 3. Flex ratios calibrados (0.8/1.2) | Itens com conteúdo visivelmente desigual | Certeza vs Benefício vs Recursos |
+
+**NUNCA:** `flex:1` em N cards com conteúdo de tamanhos diferentes → dead space garantido.
+
+#### Insight 21: Column headers integrados na cardHeader band eliminam gap persistente
+
+**Problema:** Quando um card tem uma dark header band + uma row de column labels separada (ex: "DOMÍNIO | JULGAMENTO | JUSTIFICATIVA"), o gap entre a header band e a primeira row de dados é inevitável — o flexbox distribui espaço acima da primeira row.
+
+**Solução:** Mover os column labels PARA DENTRO da dark cardHeader band, como uma segunda sub-row com `background: rgba(255,255,255,0.06)`. Resultado: a primeira row de dados começa imediatamente após o header, eliminando o gap.
+
+**Padrão CSS:**
+
+```html
+<div class="cardHeader" style="padding:0; flex-direction:column">
+  <div style="padding:0.25vw 0.65vw; display:flex; justify-content:space-between">
+    <span>TÍTULO</span>
+    <span class="chip">Badge</span>
+  </div>
+  <div
+    style="display:grid; grid-template-columns:...; padding:0.15vw 0.65vw; background:rgba(255,255,255,0.06); border-top:1px solid rgba(255,255,255,0.08)"
+  >
+    <span>Col 1</span>
+    <span>Col 2</span>
+    <span>Col 3</span>
+  </div>
+</div>
+```
+
+#### Insight 22: Hero numbers como focal point em cards densos
+
+**Problema:** Cards com apenas texto em 0.78-0.88vw são monotônicos — todos os elementos competem igualmente pela atenção. Sem focal point, o slide parece genérico.
+
+**Solução:** Inserir um "hero number" (2-3vw, serif, cor de accent) como âncora visual:
+
+- S17: `HR 0,87` (gold-dark, 1.6vw) no card de aplicação
+- S45: `~63 NNT` (teal, 2.4vw) no card de Benefício
+- S62: `MODERADA` (navy, serif, 2.4vw) no resultado final
+
+**Regra:** Todo slide com dados numéricos importantes DEVE ter pelo menos 1 número em tamanho hero (≥2vw). O número hero + o título do slide formam a hierarquia de atenção primária.
+
+#### Insight 23: Iteração visual em 4 rounds é o mínimo para qualidade profissional
+
+**Evidência empírica desta sessão:**
+
+- Round 1 (pre-fix): média 5.2/10 — funcional mas amador
+- Round 2 (após 1ª correção): média 6.2/10 — melhor mas dead space
+- Round 3 (após 2ª correção): média 6.8/10 — quase lá mas detalhes
+- Round 4 (micro-cirurgia): média 7.3/10 — profissional, conference-ready
+
+**Aprendizado:** 1 iteração NÃO é suficiente. O primeiro fix resolve ~50% dos problemas mas cria novos (ex: flex:1 resolve distribuição mas cria dead space). São necessários 3-4 rounds para convergir em qualidade milimétrica.
+
+**Regra atualizada para o ciclo de qualidade:**
+
+```
+Produzir → Screenshot → Avaliar criticamente → Corrigir → Screenshot →
+Avaliar → Corrigir → Screenshot → Avaliar → [opcional: 1 micro-fix] →
+SÓ ENTÃO mostrar ao usuário
+```
+
+---
+
+### Sessão 2026-02-08 (Round 13 — SoF correction from AACE PDF + viewer debug + deck audit)
+
+**Foco:** Leitura do artigo AACE 2025 original (PDF), correção completa da tabela SoF (S64), debug do viewer (S17 stuck visible), análise de redundância do deck completo, cache-busting no index.html.
+
+#### Tarefas executadas
+
+- **S64 REESCRITO:** Tabela SoF corrigida com dados oficiais da Table 8 da AACE 2025 (meta-análise de 7 RCTs, 17 924 pacientes). Usava dados do CLEAR isolado; agora usa RR da meta-análise.
+- **Correções críticas na SoF:**
+  - Mortalidade total: era "HR 0,93, 4 a menos" → agora "**RR 1,19, 10 a MAIS**" (direção OPOSTA)
+  - IAM: certeza era Moderada → agora **Alta** (HIGH)
+  - Revasc. coronária: marcada "significativo" → AACE diz "**does NOT result in meaningful reduction**" (MID = 50/1000)
+  - Descontinuação por EA: era "Gota" genérico → agora "RR 1,21, 21 mais, Moderate" (dado oficial)
+  - Adicionados: Mortalidade CV (HIGH), PVD events (LOW)
+  - Mudança de HR → RR (meta-análise ≠ trial isolado)
+- **Viewer debug:** S17 "stuck visible" — diagnosticado como cache do browser (versão anterior com `display:flex` inline no section, já corrigido). Playwright confirmou funcionamento perfeito (58 slides, 1 visível por vez).
+- **Cache-busting:** Adicionado ao `index.html` — meta tags anti-cache + `?v=20260208b` em todos os CSS/JS.
+- **Deck audit completo:** Mapeados 58 slides em 5 blocos. Identificadas redundâncias: S17+S18 (fundir imprecisão), S45+S20 (fundir EtD), S43 (reposicionar), S64 (mover de bloco).
+- **AACE 2025 PDF lido:** Artigo completo processado. Extraídas Table 8 (SoF bempedóico), Recommendations 5-6, EtD framework, MID thresholds (5/1000 para todos os desfechos exceto revasc = 50/1000).
+
+#### Erro 23: `display:flex; flex-direction:column` inline no `<section>` do S17 — 3ª REINCIDÊNCIA do Erro 7
+
+**O que fiz:** Durante a sessão anterior (Round ~10), adicionei `style="display: flex; flex-direction: column"` na tag `<section class="slide">` do S17.html para criar layout vertical. Isso fez S17 ficar **permanentemente visível** sobre todos os outros slides, quebrando a navegação.
+
+**Histórico de reincidência:**
+
+- 1ª vez (Erro 7, sessão 2026-02-06): `display:flex` inline no S62 → viewer quebrado
+- 2ª vez (não documentada formalmente): `display:flex` inline no S17 durante edição
+- 3ª vez (Erro 23): Mesmo padrão no S17, causando o mesmo bug
+
+**Por que continua acontecendo:** Ao reestruturar o layout de um slide para `flex-direction: column`, a tentação natural é colocar o display no container mais externo — que É o `<section>`. Mas o `<section>` é um componente do SISTEMA de slides, não do conteúdo.
+
+**Correção permanente:** Criado CHECKLIST OBRIGATÓRIO pré-edição (ver seção dedicada no CLAUDE.md). O item #1 é: "`<section>` NÃO tem `style` com `display`".
+
+**Regra mental:** `<section class="slide">` é como uma `<iframe>` — eu controlo o que está DENTRO, mas NUNCA os atributos de display do container. O viewer é dono do `display`.
+
+#### Erro 24: index.html sem cache-busting em CSS/JS
+
+**O que fiz:** O `index.html` do GRADE carregava CSS e JS sem query strings de cache-busting (`base.css`, `slides-simple.js`). Apesar do http-server usar `-c-1`, o browser do usuário cacheou a versão antiga do S17.html (com o bug do Erro 23), causando o problema de "slide stuck".
+
+**Correção:** Adicionei meta tags (`cache-control: no-cache, no-store, must-revalidate`) e `?v=20260208b` em todos os CSS/JS links. Também adicionei `{ cache: 'no-store' }` já existia no JS loader.
+
+**Aprendizado:** Mesmo com servidor `-c-1`, browsers podem cachear agressivamente. Cache-busting via query string é a defesa definitiva.
+
+#### Erro 25: SoF com dados do CLEAR Outcomes (HR) quando AACE usa meta-análise de 7 RCTs (RR)
+
+**O que fiz:** Criei o S64 (SoF table) usando dados do CLEAR Outcomes (NEJM 2023) porque o artigo AACE estava atrás de paywall. Usei HR do CLEAR para todos os desfechos. Resultado: **mortalidade total mostrava "4 a menos"** quando a AACE diz **"10 a MAIS"** (RR 1.19). Também marquei revascularização como "significativo" quando a AACE diz explicitamente "does NOT result in meaningful reduction" (MID = 50/1000 para revasc, apenas 13 observado).
+
+**Por que estava errado:**
+
+1. **HR ≠ RR** — CLEAR reporta HR; AACE calcula RR de meta-análise de 7 RCTs
+2. **1 trial ≠ meta-análise** — CLEAR Outcomes é 1 dos 7 RCTs; a meta-análise inclui dados de 17 924 pacientes com diferentes populações
+3. **MID context-dependent** — AACE definiu MID de 50/1000 para revascularização (muito mais alto que os 5/1000 para outros desfechos). Sem saber o MID, interpretei incorretamente como "significativo"
+4. **Direção da mortalidade INVERTIDA** — o efeito pontual muda de "proteção" (HR 0.93) para "neutro-a-dano" (RR 1.19) quando se olha a meta-análise vs trial isolado
+
+**Aprendizado:**
+
+- **NUNCA criar SoF de uma guideline sem ler a guideline** — mesmo que o trial esteja disponível
+- **Quando a guideline está atrás de paywall:** declarar explicitamente "DADO A CONFIRMAR — baseado em dados públicos do trial, não da avaliação GRADE da guideline"
+- **Verificar se a guideline usa meta-análise ou trial isolado** antes de copiar números
+- **MID varia por desfecho** — sempre verificar na fonte qual MID foi usado para cada outcome
+- **HR de trial ≠ RR de meta-análise** — mesmo que os números pareçam similares, a interpretação pode ser oposta
+
+#### Insight 18: Playwright runtime debugging > code reading para viewer issues
+
+**O que fiz bem:** Quando o usuário reportou que S17 estava "stuck", em vez de apenas ler o código (que parecia correto), criei um script Playwright que:
+
+1. Abriu o viewer em headless Chrome
+2. Contou slides carregados (58)
+3. Verificou quantos estavam visíveis (1 — correto)
+4. Checou S17 especificamente (`display: none`, sem `active` class)
+5. Navegou 25 slides verificando `visibleCount` a cada click
+
+**Resultado:** Diagnóstico em 10 segundos — o código está correto, o problema é cache do browser. Sem este teste, eu teria passado horas investigando código que funciona.
+
+**Padrão extraído:** Para problemas de viewer/navegação, SEMPRE criar script de runtime que simule a interação do usuário. O código pode estar correto no filesystem mas o browser pode ter versão cacheada.
+
+#### Insight 19: Dados de guideline > dados de trial isolado para tabelas GRADE
+
+**O que fiz bem (na correção):** Ao receber o PDF da AACE, li sistematicamente a Table 8 e cruzei CADA célula com o S64 existente. Descobri 6 diferenças críticas. A lição: ter o artigo original é insubstituível.
+
+**Padrão extraído:**
+
+- Ao criar slides que citam uma guideline, **obter a guideline** é step 0 (não step N)
+- Se paywalled, declarar no slide com `[DADO A CONFIRMAR]`
+- Dados públicos do trial são COMPLEMENTARES, não substitutos
+- Meta-análise pode mudar a direção e magnitude dos efeitos vs trial isolado
+
+#### Insight 20: MID context-dependent muda interpretação de "significativo"
+
+**Descoberta:** A AACE definiu MID diferente para revascularização coronária (50/1000) vs todos os outros desfechos (5/1000). Isso significa que 13 menos revascularizações por 1000 (estatisticamente significativo, p < 0.05) é considerado "NOT clinically meaningful" pela AACE, porque 13 < 50. Para IAM, 11 menos por 1000 É meaningful (11 > 5). O MID é o que transforma significância estatística em significância clínica.
+
+**Padrão extraído:** Ao interpretar resultados GRADE, SEMPRE procurar o MID por desfecho. Sem o MID, não é possível classificar o efeito como "trivial", "small", ou "large".
+
+---
 
 ### Sessão 2026-02-07 (Round 5 — S09 padding/overlap fix + MESA figure)
 
@@ -1801,5 +2111,318 @@ Cada iteração tem foco diferente. Tentar fazer tudo de uma vez = miss inevitá
 
 ---
 
+### Sessão 2026-02-08 (Round 11 — Polish estético S22/S24/S25/S26, expert-audience audit)
+
+**Foco:** Polish milimétrico dos 4 slides redesenhados (counters 15-18), remoção de texto didático inadequado para plateia de experts, ciclo iterativo shot→crítica→fix→shot (4 rounds).
+
+#### Tarefas executadas
+
+- **S22 (counter 15):** Severity cascade com `flex` proporcional (0.7→0.8→1.0→1.3→1.6) — rows crescem de Baixo (fino) a Iminente (hero navy/gold). Fill ratio de ~55% para ~85%.
+- **S24 (counter 16):** Título alterado de "A janela crítica pós-fratura" para "Refratura no 1º ano: onde o risco se concentra" — elimina redundância com S23 subtitle.
+- **S25 (counter 17):** Critério #1 unificado em single-line ("Fratura recente (≤ 2a) — vertebral, quadril ou pelve") para consistência visual com critérios #2-#5. ASBMR/BHOF insight movido para base da coluna esquerda.
+- **S26 (counter 18):** Phase grid com `align-items: stretch` — 3 cards mesma altura. Removed "Objetivo:" lines (didáticas).
+- **Todos os 4 slides:** Take-home bars enxutas (sem repetir conteúdo do slide), labels de seção abreviados ("Quando" em vez de "QUANDO: CRITÉRIOS CONVERGENTES ENTRE SOCIEDADES"), descrições explicativas removidas.
+
+#### Insight 13: Flex proporcional para severity cascade é MELHOR que padding fixo (Round 11)
+
+**O que fiz:** Tentei 3 abordagens para preencher o vertical em S22:
+
+1. Padding fixo crescente (0.5vw→0.9vw) — não preencheu o espaço
+2. Container flex:1 com rows fixas — dead space entre última row e footer
+3. **Container flex:1 + rows com flex proporcional (0.7→1.6)** — FUNCIONA
+
+**Por que funciona:** O flex proporcional faz as rows crescerem para preencher o espaço disponível, com peso visual proporcional à severidade. O conteúdo fica `align-items: center` dentro de cada row, então cresce sem distorcer. É a versão CSS da Regra 13 (data slides = narrativa, não tabela).
+
+**Padrão extraído:**
+
+```css
+/* Severity cascade com flex proporcional */
+.cascade-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.4vw;
+}
+.row-low {
+  flex: 0.7;
+} /* mais leve */
+.row-med {
+  flex: 0.8;
+}
+.row-high {
+  flex: 1;
+}
+.row-vhigh {
+  flex: 1.3;
+}
+.row-hero {
+  flex: 1.6;
+} /* mais pesado */
+```
+
+**Quando usar:** Sempre que um slide tem 3+ categorias com hierarquia natural (risco, severidade, importância). Não usar flex:1 no container SE as rows não tiverem flex próprio — cria void.
+
+#### Insight 14: Texto didático vs texto para experts — regra de corte
+
+**O que fiz:** Removidas ~40 linhas de texto explicativo que experts não precisam:
+
+- "sem fratura prévia por fragilidade" → experts sabem a definição
+- "Cascata de fraturas = fragilidade extrema — anabólico quebra o ciclo" → obviedade
+- "Objetivo: construir osso novo rapidamente" → é a definição de anabólico
+- "Risco acumulado pós-fratura índice" → o dado fala por si
+
+**Regra de corte para experts:**
+
+```
+ANTES de incluir um texto descritivo, perguntar:
+1. Um especialista com 10+ anos saberia isso sem ler?
+   → SIM: remover
+2. O dado numérico já comunica a mensagem?
+   → SIM: remover a descrição, manter o dado
+3. O label é autoexplicativo?
+   → SIM: não adicionar subtitle
+4. O take-home repete algo que o slide já mostra visualmente?
+   → SIM: encurtar para apenas a CONCLUSÃO nova
+```
+
+**Exceções:** Manter texto quando:
+
+- Introduz terminologia que o speaker vai explicar ("blunting effect →")
+- É um bridge narrativo para o próximo slide
+- É uma recomendação de conduta não-óbvia
+
+#### Insight 15: Título de slide ≠ subtitle do section header
+
+**O que fiz:** S23 (section header) subtitle: "A janela crítica após a primeira fratura". S24 (content slide) title: "A janela crítica pós-fratura". Quase idênticos. Corrigido para "Refratura no 1º ano: onde o risco se concentra".
+
+**Regra:** O título de um content slide deve ser ESPECÍFICO ao dado/insight que apresenta, não repetir o tema do section header. O section header dá o contexto ("Risco Iminente"), o content slide dá o DADO ("Refratura no 1º ano: onde o risco se concentra").
+
+**Anti-padrão:** Section header "Tratamento" → Content slide "Tratamento: como tratar". O título deveria ser "Romosozumabe reduz fraturas em 73% em 12 meses" (afirmação + dado).
+
+**Erros:** Nenhum novo. Todos os problemas foram identificados via screenshot antes de serem entregues.
+
+### Sessão 2026-02-08 (Round 12 — Whitespace elimination + content reframe S22-S26)
+
+**Foco:** Eliminação agressiva de whitespace nos 4 slides de risco/tratamento (counters 15-18). Reframing de conteúdo: menos texto, mais fill, distribuição visual.
+
+#### Tarefas executadas
+
+**S22 (counter 15):** Title margin 1vw→0.6vw, convergence strip padding 0.5vw→0.35vw, label margin 0.25vw→0.15vw. Fill ratio ~85%→~90%.
+
+**S24 (counter 16):** Bar chart cortado de 8→6 bars (rádio, tíbia, tornozelo condensados em linha "Rádio 6% · Tíbia 5,5% · Tornozelo 4,5%"). Bars restantes taller (1.2vw→1.5vw). Slide tornado flex column com grid flex:1. Coluna esquerda `justify-content: center`. Coluna direita `justify-content: space-between`. Fill ratio ~72%→~80%.
+
+**S25 (counter 17):** ASBMR/BHOF box REMOVIDO (redundante — repete title + take-home + bridge). Criteria gap 0.45vw→0.3vw. Grid margin-bottom 0.7vw→0.4vw. Title margin 1vw→0.5vw. Ambas colunas com `justify-content: space-between` para distribuir verticalmente. Fill ratio ~70%→~75%.
+
+**S26 (counter 18):** Insights (blunting effect + descontinuação denosumabe) MERGED INTO phase cards como items inline. Row separada de insights REMOVIDA. Phase cards com `justify-content: space-between` + flex:1 no grid + stretch. Fonts aumentadas (0.7vw→0.78vw drugs, 0.92vw→1.1vw titles). Padding aumentado (0.3vw→0.45vw items, 0.7vw→1vw cards). Fill ratio ~55%→~85%.
+
+#### Erro 22: `flex:1` no grid SEM distribution interna = void DENTRO dos cards
+
+**O que fiz (Round 5):** Adicionei `flex:1` ao grid de S24, S25, S26 para fazer o grid expandir e preencher o espaço. Mas o conteúdo DENTRO do grid (columns e cards) não tinha nenhum mecanismo de distribuição. Resultado: o grid se expandiu, mas o conteúdo ficou no topo de cada célula, criando dead space INTERNO em vez de externo.
+
+**Por que estava errado:** `flex:1` faz o container crescer, mas sem `justify-content: space-between` ou `flex:1` nos filhos, o conteúdo fica grudado no topo. É como inflar um balão mas com todo o ar concentrado no topo.
+
+**Correção (Round 6-7):**
+
+- S24 left: `justify-content: center` (hero+stats centrados verticalmente)
+- S24 right: `justify-content: space-between` (bars distribuídos)
+- S25 both columns: `justify-content: space-between` (criteria e trials distribuídos)
+- S26 all cards: `justify-content: space-between` + `flex: 1` no grid + stretch (items distribuídos dentro dos cards)
+
+**Regra HARD:** Ao usar `flex:1` num container grid/flex, SEMPRE adicionar distribution mechanism nos filhos:
+
+- `justify-content: space-between` para distribuição vertical
+- `justify-content: center` para centralização
+- `flex: 1` em sub-items para preenchimento proporcional
+- **NUNCA** `flex:1` no pai sem distribution no filho
+
+#### Insight 16: Merge insights INTO cards elimina row intermediária e multiplica fill
+
+**O que fiz:** S26 tinha 3 phase cards (compact) + 2 insight boxes (blunting + denosumab) em row separada + take-home. A row intermediária criava ~80px de cream entre as cards e os insights. Ao mover as insights PARA DENTRO dos cards relevantes:
+
+- Blunting → footer do Phase 1 (navy card, gold tint bg)
+- Denosumab → footer do Phase 2 (white card, navy border-left)
+
+**Resultado:** Eliminei a row intermediária inteira. Os cards cresceram para absorver o espaço. Fill ratio de ~55% para ~85%.
+
+**Padrão extraído:**
+
+- **Callouts secundários devem viver DENTRO do card pai**, não em row separada
+- **Warnings de drogas** = footer do card da fase relevante (contextual, não genérico)
+- **`margin-top: auto`** NÃO funciona quando o card está com `space-between` — usar posição natural
+- **Row intermediária é anti-padrão** quando o conteúdo pertence a um container existente
+
+#### Insight 17: Tufte data-ink ratio — cortar bars de baixa relevância
+
+**O que fiz:** S24 bar chart tinha 8 bars. Os 3 menores (Rádio 6%, Tíbia 5.5%, Tornozelo 4.5%) contribuíam pouco para a mensagem ("coluna e pelve são os sites de maior refratura"). Cortei e condensei numa linha de texto.
+
+**Por que funciona:** Tufte data-ink ratio — cada pixel de tinta deve carregar informação nova. Os 3 bars menores eram "mais do mesmo" (mesma tendência descendente, sem insight novo). A linha condensada preserva a informação para quem precisa sem ocupar 30% do chart.
+
+**Regra:** Em bar charts com >6 items, condensar os menores em texto inline se eles não adicionam insight novo à narrativa principal.
+
+### Sessão 2026-02-08 (Round 13 — S22 vertical columns + S25 NNT enrichment)
+
+**Foco:** Redesign completo do S22 (horizontal rows → 5 colunas verticais com hero metrics) e enriquecimento do S25 com dados Tier 1 + NNTs calculados.
+
+#### Tarefas executadas
+
+**S22 (counter 15) — Redesign 5 colunas verticais:**
+
+- Layout: horizontal cascade rows → `grid-template-columns: repeat(5, 1fr)` com `flex:1` e `align-items: stretch`
+- Cada coluna: nome (topo), critérios (abaixo), hero metric (centro, flex:1), tratamento (fundo)
+- Severity cascade por cor: verde (#6BBF59) → gold-dark → navy → gold → navy hero
+- Hero metrics watermark-style (opacity 0.18-0.30): "3-5a" · "DXA" · "AR" · "NNT 15" · "2,7×"
+- Coluna Iminente: bg navy, texto gold, "2,7×" como ponto focal principal
+- 3 iterações: v1 (colunas vazias) → v2 (space-between, dashed separators) → v3 (hero metrics centralizados com flex:1)
+- Fill ratio: ~40% (v1) → ~55% (v2) → ~73% (v3 final)
+
+**S25 (counter 17) — Enriquecimento Tier 1 + NNTs:**
+
+- Removido `justify-content: space-between` e `flex:1` do grid (fix plan)
+- Removido `display: flex; flex-direction: column; height: 100%` da section
+- Grid ajustado para `1.15fr 0.85fr` com `gap: 0.4vw`
+- 5 critérios enriquecidos com 2ª linha Tier 1:
+  - #1: "Risco 2,7× no 1º ano (Johansson Osteoporos Int 2017)"
+  - #2: "19% nova vertebral em 1a (Lindsay JAMA 2001)" DADO A CONFIRMAR
+  - #3: "RR 2,6 por cada DP abaixo (Cummings 1993)" DADO A CONFIRMAR
+  - #4: "Perda 6-12% DMO no 1º ano de GC (ACR 2022)" DADO A CONFIRMAR
+  - #5: "Nova fratura ou DMO reduz >5% com adesão ≥ 80%"
+- 3 trials enriquecidos com NNT:
+  - VERO: Basal 12,0% → 5,4% · ARR 6,6% · **NNT 15** em 24m
+  - FRAME: Basal 1,8% → 0,5% · ARR 1,3% · **NNT 77** em 12m
+  - ARCH: Basal 11,9% → 6,2% · ARR 5,7% · **NNT 18** em 24m
+
+#### Insight 18: Hero metrics watermark-style preenchem dead space vertical em colunas
+
+**O que fiz:** Colunas verticais estreitas com pouco texto criavam ~60% de dead space. Em vez de forçar o texto a preencher (fontes maiores, mais padding), adicionei uma métrica central em font serif grande e opacity baixa (0.18-0.30) que funciona como watermark visual — "3-5a", "DXA", "AR", "NNT 15", "2,7×".
+
+**Por que funciona:**
+
+1. **Preenche o void** sem adicionar informação verbal — é reforço visual, não texto novo
+2. **Dual coding** — a mesma informação em dois formatos (texto em cima + número gigante no meio)
+3. **Não compete com o conteúdo primário** — a opacity baixa relega ao segundo plano
+4. **Progressão narrativa** — os hero metrics contam uma história: tempo → exame → classe → número → magnitude
+
+**Padrão extraído:**
+
+- Colunas verticais com pouco texto: usar hero metric watermark (serif, 1.9-2.8vw, opacity 0.18-0.30)
+- O metric deve ser o RESUMO MNEMÔNICO da coluna: um número, sigla, ou tempo que o expert lembra
+- `flex: 1; display: flex; align-items: center; justify-content: center` no container do metric
+
+#### Insight 19: NNT transforma RR acadêmico em decisão clínica
+
+**O que fiz:** Os trials VERO, FRAME e ARCH tinham RR/percentuais. Adicionei linha de NNT abaixo: "Basal X% → Y% · ARR Z% · **NNT N** em Tm".
+
+**Por que funciona para experts:** Médicos pensam em NNT — "preciso tratar 15 pacientes para evitar 1 fratura" é decisão clínica. "RR 0,44" é estatística. A conversão respeita a plateia (educação para adultos: contextualizar dados para aplicabilidade).
+
+**Regra adicionada ao CLAUDE.md:** Ver HARD CONSTRAINT — RR/HR/OR → sempre com contexto clínico.
+
+**Erros:** Nenhum novo. As 3 iterações de S22 foram identificadas e corrigidas via screenshot antes de entregar.
+
+---
+
+### Sessão 2026-02-08 (Round 15 — S14 redesign: 7 iterações de layout estrutural)
+
+**Foco:** Redesign radical do S14 (cross-guideline comparison: SBC vs ESC/EAS vs AACE sobre ácido bempedóico). 7 rounds de screenshot→avaliação→fix explorando múltiplas abordagens de layout.
+
+#### Tarefas executadas
+
+**S14 (counter 13) — 7 rounds de redesign:**
+
+- **Round 1-2:** Full-width stacked (SBC ref card + comparison table rows). Problema: comparison card com `flex:1` criava dead space entre rows
+- **Round 3:** Full-width stacked + spectrum visual bar. Problema: duplicação de informação entre spectrum e table
+- **Round 4:** Primeira versão 3 colunas (small multiples). `align-items: start` → cards natural height, gap massivo embaixo
+- **Round 5:** 3 colunas com `align-items: stretch` + `space-between` em 5+ items individuais. Gaps distribuídos entre TODOS os items
+- **Round 6:** 3 colunas com `margin-top: auto` no MÉTODO. Gap concentrado em único void — PIOR que space-between
+- **Round 7 (FINAL):** 3 colunas com **3-group space-between** (hero chips / detail items / método). Gaps entre 3 seções lógicas — profissional
+
+**Design final:**
+
+- Layout: `grid-template-columns: 1.15fr 0.9fr 0.95fr; flex: 1; align-items: stretch`
+- Cada card: 3 grupos lógicos com `space-between` (hero chips 1.5vw → detail boxes → método footer)
+- Chips como ponto focal: FORTE·ALTA (teal solid) vs Classe I·IIa (gold outline) vs COND.·MOD. (navy outline) — divergência legível em 3 segundos
+- Headers semânticos: teal (SBC ★ REFERÊNCIA), gold-dark (ESC/EAS), navy (AACE GRADE formal)
+- Spectrum bar (gradient teal→gold→navy) com 3 markers posicionados — elemento visual obrigatório
+- Avaliação final: **8.2/10**
+
+#### Erro 27: Layout 2-colunas com conteúdo fundamentalmente assimétrico
+
+**O que fiz (Rounds 1-3):** Tentei um layout com SBC como card esquerdo (2 recos curtos) e comparison table como card direito (3 rows detalhadas). Independente de `flex:1`, `space-between`, `space-evenly`, ou `margin-top: auto`, sempre havia dead space porque o conteúdo era estruturalmente desigual.
+
+**Por que estava errado:** Quando col A tem 2 parágrafos e col B tem 5 items densos, NENHUMA propriedade CSS resolve o problema. A assimetria é de CONTEÚDO, não de layout. É como tentar fazer duas pessoas de alturas diferentes ficarem da mesma altura com sapatos — o problema não é o sapato.
+
+**Aprendizado:**
+
+- **Diagnosticar assimetria de conteúdo ANTES de escolher layout** — se o conteúdo é fundamentalmente desigual, escolher layout que acomode (3 colunas, full-width stacked, etc.)
+- **2 colunas só funciona quando ambas têm volume de conteúdo similar** (±20%)
+- **Testar mentalmente:** "Se ambas as colunas tivessem flex:1, ambas pareceriam preenchidas?" Se não → layout errado
+
+#### Erro 28: `space-between` em 5+ items individuais dentro de card stretched
+
+**O que fiz (Round 5):** Apliquei `space-between` no card body com 5 items (chips, label, detail 1, detail 2, método). Com `flex:1` no card, os gaps se distribuíram igualmente entre os 5 items, criando 4 micro-gaps que somados davam ~20% de dead space.
+
+**Correção (Round 7):** Agrupei os 5 items em 3 seções lógicas: (1) hero chips + label, (2) wrapper com detail items, (3) método footer. `space-between` nos 3 GRUPOS cria apenas 2 gaps — muito menor e mais intencional.
+
+**Regra HARD:**
+
+- **≤3 children para space-between** — se tem 5+ items, agrupar em 3 seções lógicas primeiro
+- **Hero / Content / Footer** é o padrão universal para cards: chips/números → detalhes/evidência → método/nota
+
+#### Insight 24: 3-column small multiples para comparação cross-guideline
+
+**O que fiz bem:** Em vez de tabela ou 2 colunas, usei 3 cards paralelos (um por sociedade) com estrutura idêntica: header → hero chips → detail items → method. Cada society é uma "small multiple" no sentido de Tufte — mesma estrutura, dados diferentes.
+
+**Por que funciona:**
+
+1. **Scanning instantâneo** — o olho varre as 3 colunas e detecta a divergência (FORTE vs Classe I vs COND.) em <3 segundos
+2. **Parallel structure** — a repetição da estrutura permite comparação item-por-item
+3. **Zero redundância** — cada society tem UMA vez no slide, com TODO o contexto
+
+**Quando usar:** Sempre que comparar ≥3 entidades com os mesmos atributos (sociedades, medicamentos, trials, guidelines).
+
+#### Insight 25: Chips grandes (1.5vw) como focal point em slides de comparação
+
+**O que fiz bem:** Os chips de classificação (FORTE/ALTA, Classe I/IIa, COND./MOD.) em 1.5vw (~24px) com cores semânticas são o primeiro elemento que o olho detecta. A divergência É a story — os chips CONTAM a story visualmente.
+
+**Regra:** Em slides de comparação, o dado que DIVERGE entre entidades deve ser o ponto focal visual (maior, mais colorido, mais contrastante). Não o título, não a descrição — o DADO de divergência.
+
+#### Insight 27: Hierarquia de cores deve mapear a narrativa, não a ordem visual
+
+**O que fiz (Round 8):** Os chips AACE eram outline (navy border, fundo quase branco) enquanto SBC era solid teal. O SBC dominava visualmente. Mas a pergunta do slide é "Qual o GRADE sustenta?" — a resposta é AACE (GRADE formal). A hierarquia visual estava INVERTIDA em relação à narrativa.
+
+**Correção:**
+
+- AACE chips: `background: var(--navy); color: var(--gold)` — peso visual MÁXIMO (solid escuro + accent dourado)
+- AACE card: `box-shadow`, `border: 2px`, body tint, MÉTODO em navy bg com gold text
+- SBC: solid teal (forte mas secundário)
+- ESC: outline gold (mais fraco — sem GRADE)
+
+**Regra HARD:** Antes de escolher cores para elementos comparados, perguntar: **"Quem é o protagonista narrativo?"** O protagonista recebe a cor de MAIOR peso visual (solid escuro > solid colorido > outline). NUNCA deixar a hierarquia visual contradizer a hierarquia narrativa.
+
+| Peso visual | Estilo                  | Quando usar              |
+| ----------- | ----------------------- | ------------------------ |
+| Máximo      | Solid navy + gold text  | Protagonista / resposta  |
+| Alto        | Solid teal + white text | Referência / baseline    |
+| Médio       | Outline gold            | Suporte / contexto       |
+| Baixo       | Outline gray            | Descartado / irrelevante |
+
+#### Insight 26: 3-group space-between pattern
+
+**Padrão extraído para cards com flex:1:**
+
+```html
+<div style="display: flex; flex-direction: column; justify-content: space-between; flex: 1">
+  <!-- GRUPO 1: Hero (chips, números, visual) -->
+  <div style="text-align: center">...</div>
+  <!-- GRUPO 2: Content (wrapper com gap interno) -->
+  <div style="display: flex; flex-direction: column; gap: 0.3vw">...</div>
+  <!-- GRUPO 3: Footer (método, nota, ref) -->
+  <div style="...">...</div>
+</div>
+```
+
+**Resultado:** 2 gaps (hero↔content, content↔footer) em vez de N-1 gaps. Cada gap é ~5-8% do card — intencional, não acidental.
+
+---
+
 _Criado: 2026-02-03_
-_Última atualização: 2026-02-08 (Round 10 — S07 Indireção redesign + S11 polish)_
+_Última atualização: 2026-02-08 (Round 16 — S14: color hierarchy fix → AACE protagonista navy+gold, score 8.95/10)_

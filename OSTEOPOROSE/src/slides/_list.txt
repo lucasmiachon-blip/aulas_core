@@ -13,12 +13,11 @@ S14_slide-14.html
 S19_slide-19.html
 S14b_slide-14b.html
 S20_slide-20.html
-S22_slide-22.html
 S23_slide-23.html
+S22_slide-22.html
 S24_slide-24.html
 S25_slide-25.html
 S26_slide-26.html
-S27_slide-27.html
 S28_slide-28.html
 S29_slide-29.html
 S30_slide-30.html
