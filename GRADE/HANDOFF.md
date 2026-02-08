@@ -1,82 +1,90 @@
-# HANDOFF — Sessão 2026-02-07
+# HANDOFF — Sessão 2026-02-08 (encerramento)
 
 ## Estado atual
 
-- **Commit mais recente:** `e187fdd` — `polish(GRADE): redesign S06 downgrades + S03 layout refinement`
-- **Branch:** `main` (ahead of origin by 3 commits, não pushado)
-- **Live-server:** rodando em `http://127.0.0.1:56861` (porta pode mudar)
+- **Branch:** `main` (ahead of origin — não pushado)
+- **Deck GRADE:** 56 slides
+- **Live-server:** `npx live-server src --port=5501` (pode precisar reiniciar)
 
-## Tarefa pendente (interrompida)
+## O que foi feito nesta sessão
 
-### Problema identificado pelo usuário:
+### 1. S07 (posição 11) — Redesign completo "Indireção"
 
-> "No slides em navy ou blocos em navy-rgb, o conteúdo dentro do dourado não está com contraste bom."
+**Antes:** Layout genérico com 2×2 PICO grid cramped + 4 boxes minúsculas no right side. Sem cardHeader, sem focal point, dead space abaixo, fonts inconsistentes com benchmarks.
 
-### Análise em andamento:
+**Depois:** Redesign profissional em 4 iterações (v1→v4):
 
-**Slide 4 (S06 — bg-navy) — "quase perfeito":**
+- **CardHeader navy** com chip "Core GRADE 5" (branco sobre navy — fix de contraste)
+- **4 PICO rows stacked** com `.badge` gold circles (P/I/C/O) — focal point claro
+- **Right column:** 5 callouts semânticos stacked com border-left accent:
+  - Gold: Quanto rebaixar (−1 moderada / −2 grave)
+  - Navy: Onde aparece no CAC (4 bullets clínicos)
+  - Teal: Upgrade possível (+1)
+  - Navy: Essência (transferência vs erro)
+  - Gold tint: Na prática (pergunta clínica memorável)
+- **Conteúdo novo:** Desfecho substituto (LDL cadeia causal), populações MESA, essência expandida
+- **Bottom strip:** "Regra mental" ancorada
+- **Fill ratio:** ~90%, body text 0.92vw (legível em projetor)
 
-- O `chip--gold` em contexto `bg-navy` usa a regra padrão do CSS: `background: rgba(var(--gold-rgb), 0.12); color: var(--navy);` — texto **navy escuro sobre fundo gold transparente sobre navy** = contraste PÉSSIMO. O texto navy (#0B1320) fica quase invisível sobre o background navy do slide.
-- Precisa de override `.bg-navy .chip--gold` no `blocks.css` (similar ao que já existe para `.chip--muted` e `.chip--navy`)
-- Os `⊕` symbols em `var(--gold)` sobre navy estão OK (gold on navy = 9.7:1)
-- Os textos brancos estão OK (0.68-0.93 opacity)
+### 2. S11 (posição 9) — Ajustes pontuais
 
-**Slide 5 (S03 — fundo cream) — "dá para melhorar distribuição":**
+- Removido "francamente" de "Balanço francamente favorável" (NNT 100/5a)
+- ASPREE, ARRIVE, ASCEND em negrito
 
-- Take-home bar (navy bg): `chip--gold` dentro usa a regra padrão = texto navy sobre gold tint sobre navy = mesmo problema de contraste
-- As duas colunas de cards têm conteúdo compacto com gap entre cards e take-home (margin-top:auto empurra o take-home para o fundo, criando ~20% whitespace no meio)
-- Possível fix: remover `margin-top:auto` do take-home, usar `margin-top:1.3vw` fixo, e adicionar `flex:1` no container dos cards para distribuir melhor
+## Tarefa pendente (próxima sessão)
 
-### Fix proposto (não aplicado):
+### A) Chip `.chip--gold` em contexto `bg-navy` — contraste insuficiente
 
-**1. `blocks.css` — adicionar override para `.bg-navy .chip--gold`:**
+(Herdado de sessão anterior — NÃO executado)
 
-```css
-.bg-navy .chip--gold {
-  background: rgba(var(--gold-rgb), 0.92);
-  color: var(--navy);
-  border-color: rgba(var(--gold-rgb), 0.96);
-}
-```
+- `.bg-navy .chip--gold` no `blocks.css` precisa de override
+- Fix proposto: `background: rgba(var(--gold-rgb), 0.22); color: var(--gold); border-color: rgba(var(--gold-rgb), 0.4);`
+- Afeta: S05, S06, S03 (take-home bars navy)
 
-Isso faz o chip gold ter fundo gold sólido com texto navy = alto contraste.
+### B) Paralelismo cross-slide
 
-**Alternativa (se gold sólido for muito "gritante"):**
+Os slides S08/S10/S11/S07 agora seguem o mesmo padrão visual (cardHeader, callouts, fonts generosas). Os demais slides do deck (posições 12+) podem estar com padrão anterior — eventual auditoria recomendada.
 
-```css
-.bg-navy .chip--gold {
-  background: rgba(var(--gold-rgb), 0.22);
-  color: var(--gold);
-  border-color: rgba(var(--gold-rgb), 0.4);
-}
-```
+## Mapa de posições (56 slides)
 
-Texto gold sobre navy = 9.7:1 contraste. Mais sutil.
+| Posição | Arquivo | Título resumido                      | Status      |
+| ------- | ------- | ------------------------------------ | ----------- |
+| 1       | S01     | Título/abertura                      |             |
+| 2       | S02     | (verificar)                          |             |
+| 3       | S05     | (verificar)                          |             |
+| 4       | S06     | Downgrades GRADE                     |             |
+| 5       | S03     | Objetivos                            |             |
+| 6       | S09     | CAC leitura GRADE                    |             |
+| 7       | S36     | (verificar)                          |             |
+| 8       | S08     | Rate up (dose-resposta + magnitude)  | Benchmark   |
+| 9       | S11     | NNT/NNH estatina vs aspirina por CAC | Polido      |
+| 10      | S10     | CAC staging cardiovascular           | Polido      |
+| **11**  | **S07** | **Indireção — REDESENHADO**          | **Polido**  |
+| 12      | S61     | (verificar)                          |             |
+| 13      | S14     | (verificar)                          |             |
+| ...     | ...     | ...                                  |             |
 
-**2. S03 — melhorar distribuição vertical:**
+## Arquivos-chave
 
-- Considerar adicionar `flex:1` ao container dos dois cards para que eles ocupem mais espaço
-- Ou aumentar padding/gap interno dos cards para preencher melhor
+| Arquivo                         | Função                            |
+| ------------------------------- | --------------------------------- |
+| `GRADE/src/slides/_list.txt`    | Ordem dos slides (56 entradas)    |
+| `GRADE/src/slides/S07.html`     | Indireção (redesenhado)           |
+| `GRADE/src/slides/S08.html`     | Benchmark visual (rate up)        |
+| `GRADE/src/slides/S10.html`     | Benchmark recente (staging)       |
+| `GRADE/src/slides/S11.html`     | Benchmark recente (NNT/NNH)       |
+| `GRADE/src/css/base.css`        | Variáveis CSS / design tokens     |
+| `GRADE/src/css/blocks.css`      | Componentes (cards, chips, notes) |
+| `GRADE/src/js/slides-simple.js` | Viewer / navegação                |
+| `CLAUDE.md` (raiz)              | Persona + regras + erros          |
 
-### Outros slides bg-navy que podem ter o mesmo problema de chip--gold:
+## Regras críticas (relembrete para próxima sessão)
 
-- S05 (posição 3)
-- S06 (posição 4)
-- Qualquer slide futuro com `bg-navy` e `chip--gold`
-
-### Arquivos relevantes:
-
-- `GRADE/src/slides/S06.html` — slide 4 (bg-navy, quase perfeito)
-- `GRADE/src/slides/S03.html` — slide 5 (cream, distribuição)
-- `GRADE/src/css/blocks.css` — regras de chips (precisa de override bg-navy .chip--gold)
-- `GRADE/src/css/base.css` — variáveis CSS (--gold, --gold-rgb, --navy, etc.)
-- `GRADE/src/slides/_list.txt` — ordem dos slides
-
-### Screenshots mais recentes:
-
-- `GRADE/screenshots/shot_s06_final.png`
-- `GRADE/screenshots/shot_s03_final.png`
-
-### Script de screenshot:
-
-- `GRADE/screenshots/take_shots.cjs` — captura slides 4 e 5 via Playwright
+1. **Cores sólidas para texto** — `var(--navy)`, `var(--muted)`, `var(--teal)`. Zero `rgba()` em body text.
+2. **Legibilidade projetor** — Sala de aula, projetor pequeno, gente longe. Fontes generosas (body ≥ 0.92vw).
+3. **Zero redundância** — Cada elemento carrega informação NOVA.
+4. **Ciclo obrigatório** — Screenshot → crítica → fix → novo screenshot → só então mostrar ao usuário.
+5. **Paralelismo cross-slide** — Títulos na mesma altura/tamanho/peso em todos os content slides.
+6. **Border-left rhythm** — Em stacks de callouts, usar border-left semântico em TODOS os boxes.
+7. **Nunca `display` inline na `<section class="slide">`** — o viewer controla isso.
+8. **Zero AI markers** — Sem linhas de acento, gradientes genéricos, decoração sem propósito.

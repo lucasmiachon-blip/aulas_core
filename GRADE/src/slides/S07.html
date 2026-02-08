@@ -1,102 +1,330 @@
-<section class="slide" data-slide-id="S07" style="background: var(--bg);">
-  <div class="label-gold" style="margin-bottom: 0.6vw;">DOMÍNIO GRADE</div>
+<section class="slide" data-slide-id="S07" style="background: var(--bg)">
+  <div class="label-gold" style="margin-bottom: 0.4vw">DOMÍNIO GRADE — INDIREÇÃO</div>
 
-  <h2>Indireção: a evidência “serve” para este paciente?</h2>
-  <div class="lead" style="max-width: 92%; margin-top: 0.6vw;">
-    Quando <b>P</b>/<b>I</b>/<b>C</b>/<b>O</b> mudam, a ponte aumenta — e a <b>certeza</b> pode cair.
+  <h2>Indireção: a evidência "serve" para este paciente?</h2>
+  <div class="lead" style="max-width: 92%">
+    Quando <b>P</b>/<b>I</b>/<b>C</b>/<b>O</b> do estudo diferem da pergunta clínica, a
+    <b>ponte</b> cresce — e a <b>certeza</b> pode cair.
   </div>
 
-  <div style="display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 1.8vw; margin-top: 1.7vw;">
-
-    <!-- Left: PICO checklist -->
-    <div class="card" style="padding: 1.6vw;">
-      <div class="small-title">Checklist PICO (aplicabilidade)</div>
-
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.1vw; margin-top: 1.0vw;">
-        <div style="background: var(--panel2); border: 1px solid var(--border); border-radius: 1.0vw; padding: 1.15vw;">
-          <div style="display:flex; align-items:baseline; gap:0.7vw;">
-            <div style="font-weight: 900; font-size: 1.25vw; color: var(--ink);">P</div>
-            <div style="font-size: 1.05vw; font-weight: 800; color: var(--ink);">População</div>
-          </div>
-          <div style="font-size: 1.02vw; color: var(--muted); margin-top: 0.35vw; line-height: 1.35;">
-            Idade, risco basal, comorbidades, cenário (sintomático vs assintomático).
-          </div>
-        </div>
-
-        <div style="background: var(--panel2); border: 1px solid var(--border); border-radius: 1.0vw; padding: 1.15vw;">
-          <div style="display:flex; align-items:baseline; gap:0.7vw;">
-            <div style="font-weight: 900; font-size: 1.25vw; color: var(--ink);">I</div>
-            <div style="font-size: 1.05vw; font-weight: 800; color: var(--ink);">Intervenção</div>
-          </div>
-          <div style="font-size: 1.02vw; color: var(--muted); margin-top: 0.35vw; line-height: 1.35;">
-            Dose/intensidade, adesão, cointervenções (ex.: estatina +/− ezetimiba).
-          </div>
-        </div>
-
-        <div style="background: var(--panel2); border: 1px solid var(--border); border-radius: 1.0vw; padding: 1.15vw;">
-          <div style="display:flex; align-items:baseline; gap:0.7vw;">
-            <div style="font-weight: 900; font-size: 1.25vw; color: var(--ink);">C</div>
-            <div style="font-size: 1.05vw; font-weight: 800; color: var(--ink);">Comparador</div>
-          </div>
-          <div style="font-size: 1.02vw; color: var(--muted); margin-top: 0.35vw; line-height: 1.35;">
-            Placebo vs padrão de cuidado; diferença real entre estratégias.
-          </div>
-        </div>
-
-        <div style="background: var(--panel2); border: 1px solid var(--border); border-radius: 1.0vw; padding: 1.15vw;">
-          <div style="display:flex; align-items:baseline; gap:0.7vw;">
-            <div style="font-weight: 900; font-size: 1.25vw; color: var(--ink);">O</div>
-            <div style="font-size: 1.05vw; font-weight: 800; color: var(--ink);">Desfecho</div>
-          </div>
-          <div style="font-size: 1.02vw; color: var(--muted); margin-top: 0.35vw; line-height: 1.35;">
-            MACE vs LDL (substituto), duração de follow‑up, definição do evento.
-          </div>
-        </div>
+  <div style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 1.8vw; margin-top: 1vw; align-items: start">
+    <!-- ═══════ Left: PICO Bridge Card ═══════ -->
+    <div class="card" style="padding: 0; overflow: hidden">
+      <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center">
+        <span>CHECKLIST PICO — APLICABILIDADE</span>
+        <span
+          style="
+            font-size: 0.6vw;
+            padding: 0.12vw 0.42vw;
+            border-radius: 0.3vw;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 600;
+            letter-spacing: 0.03em;
+          "
+          >Core GRADE 5</span
+        >
       </div>
 
-      <div class="note" style="margin-top: 1.2vw;">
-        <p><b>Regra mental:</b> “Quanto maior a ponte, menor a certeza.”</p>
+      <div class="cardBody" style="padding: 1.05vw; display: flex; flex-direction: column; gap: 0.55vw">
+        <!-- P -->
+        <div
+          style="
+            padding: 0.65vw 0.8vw;
+            border-radius: 0.7vw;
+            background: rgba(var(--gold-rgb), 0.04);
+            border: 1px solid rgba(var(--gold-rgb), 0.12);
+            display: grid;
+            grid-template-columns: 2.4vw 1fr;
+            gap: 0.7vw;
+            align-items: center;
+          "
+        >
+          <div class="badge">P</div>
+          <div>
+            <div style="font-size: 1.08vw; font-weight: 800; color: var(--navy)">População</div>
+            <div style="font-size: 0.92vw; color: var(--muted); margin-top: 0.1vw; line-height: 1.3">
+              Idade, risco basal, comorbidades, cenário clínico (sintomático vs assintomático).
+            </div>
+          </div>
+        </div>
+
+        <!-- I -->
+        <div
+          style="
+            padding: 0.65vw 0.8vw;
+            border-radius: 0.7vw;
+            background: rgba(var(--gold-rgb), 0.04);
+            border: 1px solid rgba(var(--gold-rgb), 0.12);
+            display: grid;
+            grid-template-columns: 2.4vw 1fr;
+            gap: 0.7vw;
+            align-items: center;
+          "
+        >
+          <div class="badge">I</div>
+          <div>
+            <div style="font-size: 1.08vw; font-weight: 800; color: var(--navy)">Intervenção</div>
+            <div style="font-size: 0.92vw; color: var(--muted); margin-top: 0.1vw; line-height: 1.3">
+              Dose, intensidade, adesão, cointervenções (ex.: estatina ± ezetimiba).
+            </div>
+          </div>
+        </div>
+
+        <!-- C -->
+        <div
+          style="
+            padding: 0.65vw 0.8vw;
+            border-radius: 0.7vw;
+            background: rgba(var(--gold-rgb), 0.04);
+            border: 1px solid rgba(var(--gold-rgb), 0.12);
+            display: grid;
+            grid-template-columns: 2.4vw 1fr;
+            gap: 0.7vw;
+            align-items: center;
+          "
+        >
+          <div class="badge">C</div>
+          <div>
+            <div style="font-size: 1.08vw; font-weight: 800; color: var(--navy)">Comparador</div>
+            <div style="font-size: 0.92vw; color: var(--muted); margin-top: 0.1vw; line-height: 1.3">
+              Placebo vs padrão de cuidado; diferença real entre as estratégias comparadas.
+            </div>
+          </div>
+        </div>
+
+        <!-- O -->
+        <div
+          style="
+            padding: 0.65vw 0.8vw;
+            border-radius: 0.7vw;
+            background: rgba(var(--gold-rgb), 0.04);
+            border: 1px solid rgba(var(--gold-rgb), 0.12);
+            display: grid;
+            grid-template-columns: 2.4vw 1fr;
+            gap: 0.7vw;
+            align-items: center;
+          "
+        >
+          <div class="badge">O</div>
+          <div>
+            <div style="font-size: 1.08vw; font-weight: 800; color: var(--navy)">Desfecho</div>
+            <div style="font-size: 0.92vw; color: var(--muted); margin-top: 0.1vw; line-height: 1.3">
+              MACE vs LDL (substituto), duração de follow-up, definição clínica do evento.
+            </div>
+          </div>
+        </div>
+
+        <!-- Surrogate outcome note -->
+        <div
+          style="
+            margin-top: 0.15vw;
+            padding: 0.5vw 0.75vw;
+            border-radius: 0.6vw;
+            background: rgba(var(--navy-rgb), 0.025);
+            border: 1px solid rgba(var(--navy-rgb), 0.08);
+            font-size: 0.88vw;
+            line-height: 1.3;
+            color: var(--muted);
+          "
+        >
+          <b style="color: var(--navy)">Desfecho substituto:</b> LDL validado como substituto para estatinas
+          (MACE ∝ redução de LDL), mas a cadeia causal varia por classe — sempre verificar se o desfecho do
+          estudo é o que importa para o paciente.
+        </div>
       </div>
     </div>
 
-    <!-- Right: o que olhar (2×2) -->
-    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 1.1vw; align-content:start;">
-      <div class="card" style="padding: 1.35vw; border-left: 6px solid var(--gold);">
-        <div class="small-title">Quanto rebaixar (indireção)</div>
-        <div style="margin-top: 0.8vw; display:grid; gap: 0.65vw; font-size: 1.05vw; line-height: 1.35;">
-          <div style="display:flex; gap: 0.7vw; align-items:flex-start;">
-            <span class="chip chip--gold" style="min-width:3.1vw; justify-content:center; font-size:0.80vw;">−1</span>
-            <span><b>Diferenças moderadas</b> em P/I/C/O com impacto provável.</span>
+    <!-- ═══════ Right: Decision Framework ═══════ -->
+    <div style="display: flex; flex-direction: column; gap: 0.7vw">
+      <!-- Quanto rebaixar -->
+      <div
+        style="
+          padding: 0.82vw;
+          border-radius: 0.8vw;
+          background: rgba(var(--gold-rgb), 0.04);
+          border: 1px solid rgba(var(--gold-rgb), 0.14);
+          border-left: 0.2vw solid rgba(var(--gold-rgb), 0.5);
+        "
+      >
+        <div
+          style="
+            font-size: 0.78vw;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(var(--text-rgb), 0.5);
+            margin-bottom: 0.4vw;
+          "
+        >
+          Quanto rebaixar
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.4vw">
+          <div style="display: flex; gap: 0.55vw; align-items: flex-start">
+            <span
+              style="
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 2.1vw;
+                padding: 0.12vw 0.35vw;
+                border-radius: 0.35vw;
+                background: rgba(var(--gold-rgb), 0.15);
+                border: 1px solid rgba(var(--gold-rgb), 0.3);
+                font-weight: 900;
+                font-size: 0.98vw;
+                color: var(--navy);
+                flex-shrink: 0;
+              "
+              >−1</span
+            >
+            <span style="font-size: 0.92vw; line-height: 1.3; color: var(--navy)">
+              <b>Moderada</b> — diferenças em P/I/C/O com impacto provável na magnitude do efeito.
+            </span>
           </div>
-          <div style="display:flex; gap: 0.7vw; align-items:flex-start;">
-            <span class="chip chip--gold" style="min-width:3.1vw; justify-content:center; font-size:0.80vw;">−2</span>
-            <span><b>Diferenças graves</b> (ou desfecho substituto com incerteza relevante).</span>
+          <div style="display: flex; gap: 0.55vw; align-items: flex-start">
+            <span
+              style="
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 2.1vw;
+                padding: 0.12vw 0.35vw;
+                border-radius: 0.35vw;
+                background: rgba(var(--gold-rgb), 0.15);
+                border: 1px solid rgba(var(--gold-rgb), 0.3);
+                font-weight: 900;
+                font-size: 0.98vw;
+                color: var(--navy);
+                flex-shrink: 0;
+              "
+              >−2</span
+            >
+            <span style="font-size: 0.92vw; line-height: 1.3; color: var(--navy)">
+              <b>Grave</b> — diferenças sérias ou desfecho substituto com incerteza relevante.
+            </span>
           </div>
         </div>
       </div>
 
-      <div class="card card--soft" style="padding: 1.35vw;">
-        <div class="small-title">Onde isso aparece no CAC</div>
-        <ul style="margin: 0.75vw 0 0 1.2vw; font-size: 1.05vw; line-height: 1.35;">
-          <li><b>Exame anatômico (sintomático)</b> ≠ prevenção primária com <b>CAC</b>.</li>
-          <li><b>LDL</b> (substituto) ≠ <b>MACE</b> (desfecho clínico).</li>
-          <li>Coortes → decisão terapêutica: <b>confusão residual</b>.</li>
-        </ul>
-      </div>
-
-      <div class="card" style="padding: 1.35vw; border-left: 6px solid var(--teal);">
-        <div class="small-title">Upgrade possível (+1)</div>
-        <div style="margin-top: 0.8vw; display:grid; gap: 0.6vw; font-size: 1.05vw; line-height: 1.35;">
-          <div><b>Efeito grande</b> (“magnified effect”): diferença muito expressiva e plausível.</div>
-          <div><b>Confundimento plausível</b> tenderia a <b>reduzir</b> o efeito (não a criá‑lo).</div>
+      <!-- No contexto CAC -->
+      <div
+        style="
+          padding: 0.82vw;
+          border-radius: 0.8vw;
+          background: rgba(var(--navy-rgb), 0.03);
+          border: 1px solid rgba(var(--navy-rgb), 0.1);
+          border-left: 0.2vw solid rgba(var(--navy-rgb), 0.25);
+        "
+      >
+        <div
+          style="
+            font-size: 0.78vw;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(var(--text-rgb), 0.5);
+            margin-bottom: 0.35vw;
+          "
+        >
+          Onde isso aparece no CAC
+        </div>
+        <div style="display: grid; gap: 0.22vw; font-size: 0.92vw; line-height: 1.3; color: var(--navy)">
+          <div>• Exame <b>anatômico</b> (sintomático) ≠ prevenção primária com <b>CAC</b></div>
+          <div>• <b>LDL</b> (substituto) ≠ <b>MACE</b> (desfecho clínico duro)</div>
+          <div>• Coortes → decisão terapêutica: <b>confusão residual</b></div>
+          <div>• Dados de <b>populações americanas</b> (MESA) aplicados a contexto local</div>
         </div>
       </div>
 
-      <div class="note" style="margin:0; padding: 1.15vw; border-left-color: var(--navy); background: rgba(var(--navy-rgb),0.03);">
-        <p style="margin:0;"><b>Essência:</b> indireção não é “erro” — é <b>transferência</b> (aplicabilidade).</p>
+      <!-- Upgrade possível -->
+      <div
+        style="
+          padding: 0.82vw;
+          border-radius: 0.8vw;
+          background: rgba(var(--teal-rgb), 0.04);
+          border: 1px solid rgba(var(--teal-rgb), 0.14);
+          border-left: 0.2vw solid rgba(var(--teal-rgb), 0.5);
+        "
+      >
+        <div
+          style="
+            font-size: 0.78vw;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 0.35vw;
+          "
+        >
+          Upgrade possível (+1)
+        </div>
+        <div style="display: grid; gap: 0.22vw; font-size: 0.92vw; line-height: 1.3; color: var(--navy)">
+          <div>
+            <b>Efeito grande</b> ("magnified effect"): diferença muito expressiva e biologicamente plausível.
+          </div>
+          <div>
+            <b>Confundimento plausível</b> tenderia a <b>reduzir</b> o efeito observado, não a criá-lo.
+          </div>
+        </div>
+      </div>
+
+      <!-- Essência -->
+      <div
+        style="
+          padding: 0.62vw 0.82vw;
+          border-radius: 0.7vw;
+          border-left: 0.22vw solid var(--navy);
+          background: rgba(var(--navy-rgb), 0.025);
+          font-size: 0.92vw;
+          line-height: 1.3;
+          color: var(--navy);
+        "
+      >
+        <b>Essência:</b> indireção não é "erro" — é <b>transferência</b>. O GRADE distingue validade
+        interna (qualidade do estudo) de aplicabilidade (serve para <i>este</i> paciente?).
+      </div>
+
+      <!-- Na prática -->
+      <div
+        style="
+          padding: 0.5vw 0.82vw;
+          border-radius: 0.6vw;
+          background: rgba(var(--gold-rgb), 0.035);
+          border: 1px solid rgba(var(--gold-rgb), 0.1);
+          font-size: 0.88vw;
+          line-height: 1.3;
+          color: var(--muted);
+        "
+      >
+        <b style="color: var(--navy)">Na prática:</b> pergunte —
+        <i>"O estudo testou o que eu faria, no paciente que eu trato, medindo o que importa?"</i>
       </div>
     </div>
   </div>
 
-  <div class="ref" style="margin-top: 1.35vw;">Baseado em Core GRADE 1 & 5 — Guyatt et al., BMJ 2025;389:e081903.</div>
+  <!-- Bottom strip: regra mental -->
+  <div
+    style="
+      margin-top: 0.55vw;
+      padding: 0.55vw 1vw;
+      border-radius: 0.8vw;
+      background: rgba(var(--navy-rgb), 0.035);
+      border: 1px solid rgba(var(--navy-rgb), 0.1);
+      display: flex;
+      gap: 0.8vw;
+      align-items: center;
+      font-size: 0.92vw;
+    "
+  >
+    <span style="font-weight: 800; color: var(--navy)">Regra mental:</span>
+    <span style="color: var(--muted); font-style: italic">
+      "Quanto maior a ponte entre a evidência e a pergunta clínica, menor a certeza."
+    </span>
+  </div>
+
+  <div class="ref" style="margin-top: 0.3vw; font-size: 0.65vw; color: rgba(var(--text-rgb), 0.38)">
+    Core GRADE 1 & 5 — Guyatt et al., BMJ 2025;389:e081903. GRADE Handbook: Rating down for indirectness.
+  </div>
 </section>

@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-02-08 — GRADE S07 Indireção redesign + S11 polish
+
+### Conteúdo
+
+- **S07 redesign completo (posição 11):** "Indireção: a evidência serve para este paciente?"
+  - CardHeader navy + 4 PICO rows com `.badge` gold circles (P/I/C/O)
+  - Right column: callouts semânticos stacked (gold=downgrade −1/−2, navy=CAC context, teal=upgrade +1, navy=essência)
+  - Nota "Desfecho substituto" (LDL vs MACE, cadeia causal por classe)
+  - Bullet "populações americanas (MESA)" aplicadas a contexto local
+  - "Na prática" callout com pergunta clínica memorável
+  - Bottom strip "Regra mental" — takeaway ancorado
+  - 4 iterações (v1→v4) com screenshots de QA entre cada
+  - Fill ratio final ~90%, fonts generosas para projetor (body 0.92vw)
+
+- **S11 (posição 9):** Ajustes pontuais
+  - Removido "francamente" de "Balanço francamente favorável" (NNT 100/5a ≠ maravilha)
+  - **ASPREE**, **ARRIVE**, **ASCEND** em negrito nos 3 landmark trials
+
+### Arquivos tocados
+
+- `GRADE/src/slides/S07.html` (reescrito — redesign completo)
+- `GRADE/src/slides/S11.html` (polish — negrito trials + texto)
+- `CLAUDE.md` (insights 11-12: ciclo iterativo + border-left rhythm)
+- `CHANGELOG.md`
+- `GRADE/HANDOFF.md` (atualizado)
+
+---
+
 ## 2026-02-07 — Round 12 (S33 merge + S35 GRADE redesign)
 
 ### Conteúdo

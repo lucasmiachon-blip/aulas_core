@@ -1,202 +1,357 @@
 <section class="slide" data-slide-id="S11" style="background: var(--bg)">
-  <div class="label-gold" style="margin-bottom: 0.6vw">EVIDÊNCIA — CAC</div>
+  <div class="label-gold" style="margin-bottom: 0.4vw">EVIDÊNCIA — CAC</div>
 
-  <h2 style="margin-bottom: 0.55vw">CAC muda o benefício absoluto da estatina</h2>
+  <h2 style="margin-bottom: 0.35vw">NNT e NNH: estatina vs aspirina por CAC</h2>
   <div class="lead" style="max-width: 92%">
-    Mesmo com benefício relativo parecido, o
-    <b>NNT</b>
-    depende do
+    O
     <b>risco basal</b>
-    (CAC).
+    (CAC) determina o
+    <b>benefício absoluto</b>
+    . Nem sempre quem ganha com estatina ganha com aspirina.
   </div>
 
-  <div style="display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 1.8vw; margin-top: 1.35vw">
-    <!-- Left: NNT ladder -->
-    <div class="card" style="padding: 1.55vw">
-      <div class="small-title">NNT em 10 anos (prevenção primária)</div>
-
-      <div style="margin-top: 1.05vw; border: 1px solid var(--border); border-radius: 1.1vw; overflow: hidden">
-        <div style="display: grid; grid-template-columns: 1fr 0.8fr; gap: 0; padding: 1.1vw 1.2vw; background: #fff">
-          <div
-            style="
-              font-size: 1.05vw;
-              color: var(--muted);
-              letter-spacing: 0.06em;
-              text-transform: uppercase;
-              font-weight: 800;
-            "
-          >
-            Categoria CAC
-          </div>
-          <div
-            style="
-              font-size: 1.05vw;
-              color: var(--muted);
-              letter-spacing: 0.06em;
-              text-transform: uppercase;
-              font-weight: 800;
-              text-align: right;
-            "
-          >
-            NNT (10 a)
-          </div>
-        </div>
-
-        <div
-          style="
-            padding: 1.15vw 1.2vw;
-            border-top: 1px solid var(--border);
-            display: grid;
-            grid-template-columns: 1fr 0.8fr;
-            align-items: center;
-            background: rgba(var(--navy-rgb), 0.01);
-          "
-        >
-          <div>
-            <div style="font-size: 1.2vw; font-weight: 900">CAC = 0</div>
-            <div style="font-size: 0.98vw; color: var(--muted); margin-top: 0.25vw">aSHR 1,01 (IC 95% 0,94–1,09)</div>
-          </div>
-          <div style="text-align: right; font-size: 2.1vw; font-weight: 950; color: var(--muted)">3571</div>
-        </div>
-
-        <div
-          style="
-            padding: 1.15vw 1.2vw;
-            border-top: 1px solid var(--border);
-            display: grid;
-            grid-template-columns: 1fr 0.8fr;
-            align-items: center;
-            background: rgba(var(--gold-rgb), 0.06);
-          "
-        >
-          <div>
-            <div style="font-size: 1.2vw; font-weight: 900">CAC 1–100</div>
-            <div style="font-size: 0.98vw; color: var(--muted); margin-top: 0.25vw">aSHR 0,92 (0,78–1,08)</div>
-          </div>
-          <div style="text-align: right; font-size: 2.1vw; font-weight: 950">100</div>
-        </div>
-
-        <div
-          style="
-            padding: 1.15vw 1.2vw;
-            border-top: 1px solid var(--border);
-            display: grid;
-            grid-template-columns: 1fr 0.8fr;
-            align-items: center;
-            background: rgba(var(--teal-rgb), 0.05);
-          "
-        >
-          <div>
-            <div style="font-size: 1.2vw; font-weight: 900">CAC ≥ 101</div>
-            <div style="font-size: 0.98vw; color: var(--muted); margin-top: 0.25vw">aSHR 0,60 (0,43–0,83)</div>
-          </div>
-          <div style="text-align: right; font-size: 2.1vw; font-weight: 950; color: var(--teal)">12</div>
-        </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.8vw; margin-top: 1vw; align-items: start">
+    <!-- ═══════ Left: Estatina NNT (10 anos) ═══════ -->
+    <div class="card" style="padding: 0; overflow: hidden">
+      <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center">
+        <span>ESTATINA — NNT EM 10 ANOS</span>
+        <span class="chip chip--muted" style="font-size: 0.62vw">Mitchell JACC 2018</span>
       </div>
 
-      <div class="note" style="margin-top: 0.95vw">
-        <p>
-          <b>Leitura clínica:</b>
-          CAC “mede o risco”; o risco “mede o benefício absoluto”.
-        </p>
-      </div>
+      <div class="cardBody" style="padding: 1.05vw; display: flex; flex-direction: column; gap: 0.55vw">
+        <!-- CAC = 0 — NEUTRAL -->
+        <div
+          style="
+            padding: 0.72vw 0.88vw;
+            border-radius: 0.8vw;
+            background: rgba(var(--navy-rgb), 0.035);
+            border: 1px solid rgba(var(--navy-rgb), 0.13);
+          "
+        >
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <div style="font-weight: 800; color: var(--navy); font-size: 1.05vw">CAC = 0</div>
+            <span
+              style="
+                font-size: 0.62vw;
+                padding: 0.12vw 0.4vw;
+                border-radius: 0.3vw;
+                background: rgba(var(--navy-rgb), 0.06);
+                border: 1px solid rgba(var(--navy-rgb), 0.13);
+                color: var(--muted);
+                font-weight: 600;
+              "
+            >
+              aSHR 1,00 · p = 0,99
+            </span>
+          </div>
+          <div style="margin-top: 0.25vw; font-size: 1.25vw; font-weight: 800; color: var(--muted)">Sem benefício</div>
+          <div style="margin-top: 0.15vw; font-size: 0.9vw; line-height: 1.3; color: var(--muted)">
+            Exceção: risco &gt;20% → redução de 74%.
+          </div>
+        </div>
 
-      <div class="ref" style="margin-top: 0.85vw">
-        Fonte: Mitchell JD et al.
-        <i>JACC</i>
-        2018;72:3233–3242.
+        <!-- CAC 1-100 — MODERATE (gold = transitional) -->
+        <div
+          style="
+            padding: 0.72vw 0.88vw;
+            border-radius: 0.8vw;
+            background: rgba(var(--gold-rgb), 0.045);
+            border: 1px solid rgba(var(--gold-rgb), 0.16);
+            border-left: 0.2vw solid rgba(var(--gold-rgb), 0.5);
+          "
+        >
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <div style="font-weight: 800; color: var(--navy); font-size: 1.05vw">CAC 1–100</div>
+            <span
+              style="
+                font-size: 0.62vw;
+                padding: 0.12vw 0.4vw;
+                border-radius: 0.3vw;
+                background: rgba(var(--gold-rgb), 0.08);
+                border: 1px solid rgba(var(--gold-rgb), 0.18);
+                color: var(--muted);
+                font-weight: 600;
+              "
+            >
+              moderado
+            </span>
+          </div>
+          <div style="margin-top: 0.28vw; font-size: 1.9vw; font-weight: 900; color: var(--navy)">100</div>
+          <div style="margin-top: 0.1vw; font-size: 0.9vw; color: var(--muted)">
+            Tratar 100 pacientes por 10 a para prevenir 1 MACE.
+          </div>
+        </div>
+
+        <!-- CAC > 100 — HERO (teal = benefit) -->
+        <div
+          style="
+            padding: 0.78vw 0.92vw;
+            border-radius: 0.8vw;
+            background: rgba(var(--teal-rgb), 0.055);
+            border: 1px solid rgba(var(--teal-rgb), 0.18);
+            border-left: 0.22vw solid rgba(var(--teal-rgb), 0.6);
+          "
+        >
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <div style="font-weight: 800; color: var(--teal); font-size: 1.05vw">CAC &gt; 100</div>
+            <span
+              style="
+                font-size: 0.62vw;
+                padding: 0.12vw 0.4vw;
+                border-radius: 0.3vw;
+                background: rgba(var(--teal-rgb), 0.08);
+                border: 1px solid rgba(var(--teal-rgb), 0.18);
+                color: var(--teal);
+                font-weight: 600;
+              "
+            >
+              máximo
+            </span>
+          </div>
+          <div
+            style="margin-top: 0.28vw; font-size: 2.3vw; font-weight: 950; color: var(--teal); letter-spacing: -0.02em"
+          >
+            12
+          </div>
+          <div style="margin-top: 0.1vw; font-size: 0.9vw; color: var(--muted)">
+            Interação significativa (p &lt; 0,0001).
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Right: GRADE + decision -->
-    <div style="display: flex; flex-direction: column; gap: 1.1vw">
-      <div class="card" style="padding: 1.45vw; border-left: 6px solid var(--navy)">
-        <div class="small-title">Análise GRADE (em 20s)</div>
-
-        <div style="margin-top: 0.95vw; display: grid; gap: 0.55vw; font-size: 1.06vw; line-height: 1.35">
-          <div>
-            <b>Tipo:</b>
-            coorte (baseline CAC estratifica risco).
-          </div>
-          <div>
-            <b>Upgrade:</b>
-            +1 por
-            <b>dose–resposta</b>
-            (CAC ↑ → risco ↑).
-          </div>
-          <div>
-            <b>Limites:</b>
-            possível
-            <b>confusão residual</b>
-            e decisões clínicas não randomizadas.
-          </div>
-        </div>
-
-        <div class="grade-final" style="margin-top: 1vw">
-          <div>certeza</div>
-          <div class="grade-dots">
-            <span class="dot">⊕</span>
-            <span class="dot">⊕</span>
-            <span class="dot">⊕</span>
-            <span class="dot">◯</span>
-          </div>
-          <div class="grade-label">MODERADA</div>
-        </div>
+    <!-- ═══════ Right: Aspirina (5 anos) ═══════ -->
+    <div class="card" style="padding: 0; overflow: hidden">
+      <div class="cardHeader" style="display: flex; justify-content: space-between; align-items: center">
+        <span>ASPIRINA — BENEFÍCIO vs DANO EM 5 ANOS</span>
+        <span class="chip chip--muted" style="font-size: 0.58vw">Cainzos-Achirica Circ 2020</span>
       </div>
 
-      <div class="card card--soft" style="padding: 1.45vw">
-        <div class="small-title">Regra prática (quando diferir estatina)</div>
-
-        <div style="margin-top: 0.95vw; display: grid; gap: 0.6vw; font-size: 1.06vw; line-height: 1.35">
-          <div class="bulletRow">
-            <span class="iconCircle iconCircle--teal">✓</span>
-            <span>
-              <b>CAC=0</b>
-              confirmado
+      <div class="cardBody" style="padding: 1.05vw; display: flex; flex-direction: column; gap: 0.55vw">
+        <!-- CAC = 0 — NEUTRAL + red harm signal -->
+        <div
+          style="
+            padding: 0.72vw 0.88vw;
+            border-radius: 0.8vw;
+            background: rgba(var(--navy-rgb), 0.035);
+            border: 1px solid rgba(var(--navy-rgb), 0.13);
+          "
+        >
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <div style="font-weight: 800; color: var(--navy); font-size: 1.05vw">CAC = 0</div>
+            <span
+              style="
+                font-size: 0.62vw;
+                padding: 0.12vw 0.4vw;
+                border-radius: 0.3vw;
+                background: rgba(var(--red-rgb), 0.07);
+                border: 1px solid rgba(var(--red-rgb), 0.15);
+                color: rgba(var(--red-rgb), 0.75);
+                font-weight: 600;
+              "
+            >
+              dano &gt; benefício
             </span>
           </div>
-          <div class="bulletRow">
-            <span class="iconCircle iconCircle--teal">✓</span>
-            <span>
-              Risco
-              <b>borderline/intermediário</b>
-            </span>
-          </div>
-          <div class="bulletRow">
-            <span class="iconCircle iconCircle--teal">✓</span>
-            <span>
-              <b>LDL-c &lt; 190</b>
-              e
-              <b>sem diabetes</b>
-            </span>
-          </div>
-          <div class="bulletRow">
-            <span class="iconCircle iconCircle--teal">✓</span>
-            <span>
-              Concorda com
-              <b>reavaliação</b>
-              (5–10 anos)
-            </span>
+          <div style="margin-top: 0.32vw; display: flex; align-items: baseline; gap: 1.1vw">
+            <div>
+              <div
+                style="
+                  font-size: 0.65vw;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 0.05em;
+                  color: var(--muted);
+                "
+              >
+                NNT 5 anos
+              </div>
+              <div style="font-size: 1.7vw; font-weight: 900; color: rgba(var(--text-rgb), 0.45)">1 190</div>
+            </div>
+            <div style="font-size: 1vw; color: rgba(var(--text-rgb), 0.25); font-weight: 300">vs</div>
+            <div>
+              <div
+                style="
+                  font-size: 0.65vw;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 0.05em;
+                  color: rgba(var(--red-rgb), 0.75);
+                "
+              >
+                NNH 5 anos
+              </div>
+              <div style="font-size: 1.7vw; font-weight: 900; color: rgba(var(--red-rgb), 0.72)">567</div>
+            </div>
           </div>
         </div>
 
+        <!-- CAC >= 100 — TRANSITIONAL (GOLD) -->
         <div
           style="
-            margin-top: 0.85vw;
-            padding: 0.95vw;
-            border-radius: 1vw;
-            border: 1px solid rgba(var(--gold-rgb), 0.3);
-            background: rgba(var(--gold-rgb), 0.1);
-            font-size: 1vw;
-            line-height: 1.32;
+            padding: 0.78vw 0.92vw;
+            border-radius: 0.8vw;
+            background: rgba(var(--gold-rgb), 0.045);
+            border: 1px solid rgba(var(--gold-rgb), 0.16);
+            border-left: 0.2vw solid rgba(var(--gold-rgb), 0.5);
           "
         >
-          <b>Exceção:</b>
-          risco muito alto (ex.: diabetes + múltiplos fatores, HF, etc.) tende a exigir intensificação
-          <b>independente</b>
-          do CAC.
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <div style="font-weight: 800; color: var(--navy); font-size: 1.05vw">CAC ≥ 100</div>
+            <span
+              style="
+                font-size: 0.62vw;
+                padding: 0.12vw 0.4vw;
+                border-radius: 0.3vw;
+                background: rgba(var(--gold-rgb), 0.08);
+                border: 1px solid rgba(var(--gold-rgb), 0.18);
+                color: var(--muted);
+                font-weight: 600;
+              "
+            >
+              benefício &gt; dano
+            </span>
+          </div>
+          <div style="margin-top: 0.32vw; display: flex; align-items: baseline; gap: 1.1vw">
+            <div>
+              <div
+                style="
+                  font-size: 0.65vw;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 0.05em;
+                  color: var(--muted);
+                "
+              >
+                NNT 5 anos
+              </div>
+              <div style="font-size: 1.7vw; font-weight: 900; color: var(--navy)">140</div>
+            </div>
+            <div style="font-size: 1vw; color: rgba(var(--text-rgb), 0.25); font-weight: 300">vs</div>
+            <div>
+              <div
+                style="
+                  font-size: 0.65vw;
+                  font-weight: 700;
+                  text-transform: uppercase;
+                  letter-spacing: 0.05em;
+                  color: var(--muted);
+                "
+              >
+                NNH 5 anos
+              </div>
+              <div style="font-size: 1.7vw; font-weight: 900; color: rgba(var(--text-rgb), 0.45)">518</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CAC >= 400 — HERO (TEAL) -->
+        <div
+          style="
+            padding: 0.72vw 0.88vw;
+            border-radius: 0.8vw;
+            background: rgba(var(--teal-rgb), 0.055);
+            border: 1px solid rgba(var(--teal-rgb), 0.18);
+            border-left: 0.22vw solid rgba(var(--teal-rgb), 0.6);
+          "
+        >
+          <div style="display: flex; justify-content: space-between; align-items: center">
+            <div style="font-weight: 800; color: var(--teal); font-size: 1.05vw">CAC ≥ 400</div>
+            <span
+              style="
+                font-size: 0.62vw;
+                padding: 0.12vw 0.4vw;
+                border-radius: 0.3vw;
+                background: rgba(var(--teal-rgb), 0.08);
+                border: 1px solid rgba(var(--teal-rgb), 0.18);
+                color: var(--teal);
+                font-weight: 600;
+              "
+            >
+              muito favorável
+            </span>
+          </div>
+          <div style="margin-top: 0.28vw">
+            <div
+              style="
+                font-size: 0.65vw;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: var(--teal);
+              "
+            >
+              NNT 5 anos
+            </div>
+            <div style="font-size: 1.7vw; font-weight: 900; color: var(--teal)">100</div>
+          </div>
+          <div style="margin-top: 0.1vw; font-size: 0.88vw; color: var(--muted)">Balanço favorável.</div>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- 3 trials neutros + O CAC pode -->
+  <div class="note" style="margin-top: 0.55vw">
+    <p>
+      <b>3 RCTs neutros sem estratificação por CAC:</b>
+      <b>ASPREE</b>
+      (NEJM 2018; ≥70 a saudáveis, n = 19 114): CV HR 0,95 (0,83–1,08); bleeding HR 1,38 (1,18–1,62) ·
+      <b>ARRIVE</b>
+      (Lancet 2018; risco moderado, n = 12 546): HR 0,96 (0,81–1,13; p = 0,60) ·
+      <b>ASCEND</b>
+      (NEJM 2018; DM sem DCV prévia, n = 15 480): RR 0,88 (0,79–0,97) mas bleeding RR 1,29 (1,09–1,52) — benefício
+      anulado.
+      <b>O CAC pode</b>
+      identificar o subgrupo onde NNT supera NNH.
+    </p>
+  </div>
+
+  <!-- GRADE condensado -->
+  <div
+    style="
+      margin-top: 0.4vw;
+      padding: 0.5vw 1vw;
+      border-radius: 0.8vw;
+      background: rgba(var(--navy-rgb), 0.035);
+      border: 1px solid rgba(var(--navy-rgb), 0.1);
+      display: flex;
+      gap: 1vw;
+      align-items: center;
+    "
+  >
+    <div
+      style="
+        display: flex;
+        gap: 0.6vw;
+        align-items: center;
+        flex: 1;
+        font-size: 0.88vw;
+        line-height: 1.3;
+        color: var(--muted);
+      "
+    >
+      <span style="font-weight: 800; color: var(--navy)">GRADE:</span>
+      <span>Coorte</span>
+      <span style="color: rgba(var(--navy-rgb), 0.2)">·</span>
+      <span>+1 dose–resposta</span>
+      <span style="color: rgba(var(--navy-rgb), 0.2)">·</span>
+      <span>Limite: confusão residual</span>
+    </div>
+    <div class="grade-final" style="flex-shrink: 0">
+      <div>certeza</div>
+      <div class="grade-dots">
+        <span class="dot">⊕</span>
+        <span class="dot">⊕</span>
+        <span class="dot">⊕</span>
+        <span class="dot">◯</span>
+      </div>
+      <div class="grade-label">MODERADA</div>
+    </div>
+  </div>
+
+  <div class="ref" style="margin-top: 0.3vw; font-size: 0.65vw; color: rgba(var(--text-rgb), 0.38)">
+    Mitchell JACC 2018;72:3233–42; Cainzos-Achirica Circ 2020;141:1541–53; McNeil NEJM 2018;379:1509–18; Gaziano Lancet
+    2018;392:1036–46; ASCEND NEJM 2018;379:1529–39.
   </div>
 </section>

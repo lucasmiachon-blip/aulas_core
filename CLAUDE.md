@@ -337,6 +337,7 @@ Aulas2/
 | Narrativa    | Slide avança a história? Tem propósito?     |
 | Fill ratio   | Conteúdo preenche ≥70% da área útil?        |
 | Dead space   | Zero whitespace acidental DENTRO de cards?  |
+| Redundância  | Zero informação repetida entre elementos?   |
 
 ### QA — Slides (obrigatório)
 
@@ -411,6 +412,7 @@ Aulas2/
 - **NUNCA** inventar números, dados ou citações — usar `[TBD]` se faltar
 - **SEMPRE** usar `var(--nome)` para cores — nunca hardcoded `#XXXXXX`
 - **SEMPRE** atualizar `CHANGELOG.md` em cada commit
+- **HARD CONSTRAINT — Dados médicos:** TODO número (NNT, NNH, HR, RR, OR, %, dose, meta LDL) DEVE ser verificado no paper original via PubMed/PMC ANTES de ser colocado no slide. Time frame explícito. Categorias idênticas ao paper. Violação = erro de severidade MÁXIMA. (Ver Erro 21, sessão 2026-02-07)
 
 ---
 
@@ -670,6 +672,32 @@ Eu nem olhei o screenshot antes de agir.
 | 2       | S02                 | ...               |
 | ...     | ...                 | ...               |
 | N       | `_list.txt` linha N | Verificar SEMPRE  |
+
+### Sessão 2026-02-06 (Round 9 — S12/S13/S14/S14b/S17 Visual Polish + Reorder)
+
+**Foco:** Refinamento milimétrico (screenshot → avaliação CLAUDE.md → fix → re-screenshot) dos slides de caso clínico e modelos de risco.
+
+**Slides trabalhados:**
+
+- **S12** (Risco de Fratura): redesign horizontal 3-column severity cascade, 13+ iterações até eliminar dead space, ajustar fontes, fechar gaps
+- **S13** (Paradoxo Osteopenia): pequenos ajustes, marcado como "muito bom" pelo usuário
+- **S17** (Modelos FRAX): paleta gold/navy, padronização tokens, link clicável
+- **S14** (Caso Clínico — pergunta): paleta unificada, "caucasiana" visível em gold-dark, peso 57 kg destacado, link FRAX clicável, opcões compactadas, remoção do box "Pense nisso" (conteúdo pertence à resposta)
+- **S14b** (Caso Clínico — resposta): gap eliminado (margin-top:auto → 12px), "Outros modelos" como card separado com accent navy (OST/OSTA, ORAI, Garvan em 3 mini-cards), evidência separada, take-home suavizado ("deve" → linguagem mais leve)
+
+**Reordenação `_list.txt`:**
+
+- S17 → S14 → S14b (teach → apply → answer)
+- S19 removido de entre S14 e S14b (estava quebrando o fluxo)
+- Nova ordem: S17 (counter 9) → S14 (10) → S14b (11) → S19 (12)
+
+**Erros registrados:** Nenhum novo (padrões anteriores aplicados corretamente)
+
+**Pendente para próxima sessão:**
+
+- Continuar loop milimétrico a partir do slide 12 (S19 no counter)
+- Verificar se S14 tem "Pense nisso" residual (foi removido mas confirmar via screenshot)
+- Avaliar restante do deck slide-a-slide
 
 ### Sessão 2026-02-06 (Round 8 — Print 16:9 + um slide por página)
 
@@ -1141,6 +1169,7 @@ Eu nem olhei o screenshot antes de agir.
 - **`git checkout --` sem backup em arquivos com mudanças pré-sessão** → verificar `git status` ANTES; usar `git stash` ou cópia manual para preservar mudanças uncommitted de outras sessões
 - **`margin-top:auto` em AMBAS as colunas** → cria dead space simétrico. Combinar callouts em take-home bar full-width
 - **Over-engineering "minor fix"** → quando o usuário diz "muito bom, só ajusta X", a resposta é mudar X e NADA MAIS. Não redesenhar layout, grid, flex, paddings inteiros. Uma propriedade CSS por vez. 3ª reincidência = checklist obrigatório (ver Erro 20)
+- **Informação redundante entre elementos do slide** → cada elemento deve carregar informação NOVA. Se um dado aparece na tabela E num callout, um deles é desperdício de espaço e atenção. Antes de finalizar: varrer todos os elementos e perguntar "esta informação já está em outro lugar?". Se sim, remover ou transformar em cross-reference (ex: "ver →")
 
 ---
 
@@ -1178,7 +1207,7 @@ A cada sessão onde eu cometer erros, **em qualquer projeto**, vou:
 
 | Projeto                              | Tipo                  | Erros registrados |
 | ------------------------------------ | --------------------- | ----------------- |
-| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 20 (+11 insights) |
+| Aulas2 (OSTEOPOROSE/GRADE)           | Apresentações médicas | 21 (+11 insights) |
 | _(novos projetos serão adicionados)_ |                       |                   |
 
 ---
@@ -1544,5 +1573,233 @@ Quando múltiplos itens de dados são exibidos, a tentação é tratá-los igual
 
 **Regra nova:** TODO slide carregado pelo slide-loader DEVE ter `data-key`. O regex deve cobrir TODOS os padrões de filename (Sxx, Sxxb, Sxxx).
 
+### Sessão 2026-02-07 (Round 7 — S11/S10: NNT/NNH + CAC Staging)
+
+**Foco:** Redesign S11 (NNT/NNH estatina vs aspirina por CAC) e S10 (CAC staging com Maron 2024). Verificação de dados em fontes Tier 1.
+
+#### Erro 21: Fabricação de dados médicos — NNT/NNH de aspirina inventados (CRÍTICO — NOVO TIPO)
+
+**O que fiz:** No S11, criei uma tabela comparativa estatina vs aspirina por CAC. Os números de aspirina foram FABRICADOS — não vieram de nenhum paper:
+
+| Meu valor                      | Fonte real                                 | Magnitude do erro                                    |
+| ------------------------------ | ------------------------------------------ | ---------------------------------------------------- |
+| Aspirina NNT "~2000" (CAC=0)   | NNT5 = 1190 (Cainzos-Achirica 2020)        | ~70% errado                                          |
+| Aspirina NNT "~90" (CAC 1-100) | Não existe valor publicado para esta faixa | 100% inventado                                       |
+| Aspirina NNT "~12" (CAC>100)   | NNT5 = 140 (Cainzos-Achirica 2020)         | **Errado por 10x**                                   |
+| Aspirina NNH "~400" (CAC=0)    | NNH5 = 567 (Cainzos-Achirica 2020)         | ~30% errado                                          |
+| Aspirina NNH "~110" (CAC>100)  | NNH5 = 518 (Cainzos-Achirica 2020)         | **Errado por 5x**                                    |
+| Estatina NNT "3571" (CAC=0)    | aSHR 1,00 (p=0,99) → sem benefício         | Conceito errado (não existe NNT se não há benefício) |
+| Time frame "10a" para aspirina | Dados reais são **5 anos**                 | Enganoso                                             |
+
+**Por que estava errado:**
+
+1. **Inventei números médicos** — em vez de buscar os papers, extrapolei do plano que eu mesmo havia escrito com "dados aproximados"
+2. **Não verifiquei em fontes Tier 1** — o CLAUDE.md já diz "nunca inventar dados", "referências verificáveis"
+3. **Misturei time frames** — estatina (10a, Mitchell) e aspirina (5a, Cainzos-Achirica) na mesma tabela sem sinalizar
+4. **NNT de aspirina errado por 10x no CAC>100** — em apresentação médica, isso poderia mudar conduta clínica
+
+**Gravidade:** Este é o erro mais grave registrado neste CLAUDE.md. Dados médicos fabricados em apresentação para médicos podem causar decisões clínicas erradas. ZERO tolerância.
+
+**Dados verificados (fontes Tier 1):**
+
+**Estatina — Mitchell et al., JACC 2018;72:3233–42 (n=13.644, 9,4a follow-up):**
+
+| CAC       | aSHR (IC 95%)            | NNT 10 anos                             |
+| --------- | ------------------------ | --------------------------------------- |
+| CAC = 0   | 1,00 (0,79–1,27); p=0,99 | Sem benefício (exceto risco >20%: -74%) |
+| CAC 1-100 | —                        | 100                                     |
+| CAC > 100 | —                        | 12                                      |
+
+**Aspirina — Cainzos-Achirica et al., Circulation 2020;141:1541–53 (MESA, n=3.540, NNT/NNH em 5 anos):**
+
+| CAC   | NNT5  | NNH5 | Balanço          |
+| ----- | ----- | ---- | ---------------- |
+| = 0   | 1 190 | 567  | Dano > benefício |
+| ≥ 100 | 140   | 518  | Benefício > dano |
+| ≥ 400 | 100   | —    | Muito favorável  |
+
+**Aspirina — Miedema et al., Circ Cardiovasc Qual Outcomes 2014;7:453–60 (MESA, n=4.229, NNT/NNH em 5 anos):**
+
+| CAC   | FRS <10% NNT5 | FRS ≥10% NNT5 | NNH5 |
+| ----- | ------------- | ------------- | ---- |
+| = 0   | 2 036         | 808           | 442  |
+| 1-99  | 571           | 146           | 442  |
+| ≥ 100 | 173           | 92            | 442  |
+
+**CAC Staging — Maron et al., JACC Advances 2024;3:101287 (5 stages, NÃO 4):**
+
+| Stage | CAC             | Meta LDL | Conduta-chave                                                                                    |
+| ----- | --------------- | -------- | ------------------------------------------------------------------------------------------------ |
+| 0     | = 0             | —        | Life's E8. Sem estatina se baixo risco. Repeat: 3-7a conforme risco                              |
+| 1     | 1-99 (<P75)     | <100     | Estatina ± nonstatin                                                                             |
+| 2     | 100-299 ou ≥P75 | <70      | Estatina intensificada. Considerar aspirina                                                      |
+| 3     | 300-999         | <55      | Alta intensidade + aspirina. ≈ pós-IAM (Budoff CONFIRM 2023)                                     |
+| 4     | ≥ 1000          | <55      | Máxima intensidade + terapias emergentes. ≈ múltiplos eventos ASCVD (Peng MESA/Circulation 2021) |
+
+---
+
+### REGRA HARD: Verificação obrigatória de dados médicos em fontes Tier 1
+
+> **A partir desta sessão, TODA informação numérica médica (NNT, NNH, HR, RR, OR, %, incidência, prevalência, dose, meta terapêutica) usada em slides DEVE ser:**
+>
+> 1. **Buscada no paper original** (PubMed, PMC, journal site) — NUNCA de memória ou "aproximação"
+> 2. **Citada com:** autor, journal, ano, volume, páginas
+> 3. **Time frame explícito** — NUNCA misturar 5a com 10a na mesma tabela sem sinalizar
+> 4. **Se o valor não existir publicado** → escrever "DADO A CONFIRMAR" ou omitir
+> 5. **Se dois papers usam categorias diferentes** (ex: CAC 1-100 vs 1-99) → NÃO harmonizar, apresentar cada um com suas categorias originais
+> 6. **Checklist pré-slide para dados médicos:**
+>    ```
+>    □ Valor vem de paper específico (não de memória)?
+>    □ Paper verificado via PubMed/PMC?
+>    □ Time frame correto e explícito?
+>    □ Categorias iguais às do paper original?
+>    □ Nenhum valor "aproximado" ou "estimado" sem label?
+>    ```
+>
+> **Violação desta regra = erro de severidade MÁXIMA.** Dados médicos fabricados são piores que slide vazio.
+
+---
+
+### Sessão 2026-02-07 (Round 8 — S11/S10 Polish Loop: Palette + Font + Color Hierarchy)
+
+**Foco:** Iteração milimétrica de palheta, tipografia e hierarquia de cores em S11 e S10 via ciclo shot→crítica→fix→shot.
+
+#### Insight 7: Sistema de cores unificado cross-cards
+
+**O que fiz bem:** Ao comparar o card esquerdo (estatina) com o direito (aspirina), identifiquei que usavam vocabulários de cor diferentes (gold+teal vs red+teal). Unifiquei:
+
+- **Navy base** (0.02 bg) = neutro / sem benefício → MESMO em ambos os cards para CAC=0
+- **Gold accent** (0.03 bg, 0.35 border-left) = transição (benefício moderado) → apenas no card esquerdo, único estrato intermediário
+- **Teal accent** (0.03 bg, 0.45 border-left) = benefício → MESMO nos dois cards para CAC>100
+- **Red** = sinal de dano → APENAS no NNH number e chip "dano > benefício", NUNCA no background do row
+
+**Padrão extraído — vocabulário de cor semântico:**
+
+| Cor  | Significado          | Onde usar                            | Opacidade bg | Opacidade border-left |
+| ---- | -------------------- | ------------------------------------ | ------------ | --------------------- |
+| Navy | Neutro/sem benefício | CAC=0 em qualquer card               | 0.02         | —                     |
+| Gold | Transição/moderado   | Estratos intermediários              | 0.025-0.03   | 0.3-0.35              |
+| Teal | Benefício claro      | Estratos com melhor NNT              | 0.03-0.04    | 0.4-0.45              |
+| Red  | Sinal de dano        | APENAS números NNH e chips de alerta | —            | —                     |
+
+#### Insight 8: Chips devem harmonizar com row backgrounds
+
+**Problema:** CSS `.chip--teal` default tem background 0.12 e border 0.28. Quando os row backgrounds estão a 0.02-0.04, os chips saltam visualmente — são os elementos MAIS saturados do slide, puxando atenção para si em vez dos hero numbers.
+
+**Solução:** Override inline de todos os chips: bg 0.04-0.05, border 0.1-0.12, color rgba a 0.55-0.65. Chips devem ser **whispers, não gritos**.
+
+**Regra:** Opacity do chip background ≤ 2× opacity do row background. Se row bg = 0.03, chip bg ≤ 0.06.
+
+#### Insight 9: Piso de legibilidade tipográfica a 1600px
+
+| Elemento                 | Mínimo | Preferido   |
+| ------------------------ | ------ | ----------- |
+| Labels (NNT 5 ANOS, LDL) | 0.55vw | 0.62vw      |
+| Chips / tags             | 0.58vw | 0.62-0.65vw |
+| Body text                | 0.78vw | 0.85vw      |
+| Row labels (CAC = 0)     | 0.92vw | 1.0vw       |
+| Hero numbers             | 1.55vw | 1.65-2.3vw  |
+
+Abaixo dos mínimos, texto fica ilegível na resolução 1600×900 do viewer.
+
+#### Dado verificado: 3 RCTs neutros de aspirina em prevenção primária (com IC 95%)
+
+| Trial  | Journal/Ano             | População         | N      | CV endpoint (IC 95%)                       | Bleeding (IC 95%)                   |
+| ------ | ----------------------- | ----------------- | ------ | ------------------------------------------ | ----------------------------------- |
+| ASPREE | NEJM 2018;379:1509–18   | ≥70 a, saudáveis  | 19 114 | HR 0,95 (0,83–1,08) — cruza nulo           | HR 1,38 (1,18–1,62) — significativo |
+| ARRIVE | Lancet 2018;392:1036–46 | Risco moderado    | 12 546 | HR 0,96 (0,81–1,13; p = 0,60) — cruza nulo | —                                   |
+| ASCEND | NEJM 2018;379:1529–39   | DM sem DCV prévia | 15 480 | RR 0,88 (0,79–0,97) — significativo        | RR 1,29 (1,09–1,52) — significativo |
+
+**Interpretação:** ASPREE e ARRIVE cruzam o nulo (IC inclui 1,0) — sem efeito real. ASCEND mostra benefício E dano significativos — se anulam. Sem estratificação por CAC, aspirina não tem benefício líquido.
+
+**Regra HARD:** Sempre reportar point estimate COM IC 95%. Point estimate sem IC é incompleto — o IC diz se o efeito é real.
+
+#### Insight 10: Zero redundância — cada elemento carrega informação NOVA
+
+**Problema:** No S10, três informações apareciam duplicadas:
+
+1. "Repeat: 3–7 a." no Stage 0 da tabela E no box "Período de garantia" à direita
+2. "Risco ≈ pós-IAM (Budoff 2023)" no Stage 3 da tabela E no box "Paralelo — prevenção secundária"
+3. "≈ múltiplos eventos ASCVD" no Stage 4 da tabela E no box "Paralelo — prevenção secundária"
+
+**Por que redundância é ruim:**
+
+- **Desperdiça espaço** — real estate no slide é finito. Cada pixel repetido é um pixel que poderia carregar informação nova
+- **Dilui hierarquia** — quando a mesma informação aparece 2x, o leitor não sabe qual é a "oficial". Confusão de prioridade
+- **Aumenta carga cognitiva** — o cérebro tenta diferenciar as duas instâncias ("são iguais? há nuance?"), gastando atenção sem ganho
+- **Parece desleixo** — num contexto de conferência, repetir informação sinaliza falta de edição/curadoria
+
+**Correção aplicada:**
+
+1. Stage 0: "Repeat: 3–7 a." → "Ver período de garantia →" (cross-reference em vez de duplicata)
+2. Stage 3: removido "(Budoff 2023)" e risco pós-IAM → espaço usado para conduta terapêutica adicional (PCSK9i)
+3. Stage 4: removido "≈ múltiplos eventos ASCVD" → espaço usado para listar PCSK9i junto com colchicina
+
+**Regra (HARD):**
+
+- **Antes de finalizar qualquer slide:** varrer TODOS os elementos e perguntar "esta informação já aparece em outro lugar do slide?"
+- Se sim: **remover uma instância** e transformar a outra em cross-reference ("→"), ou **manter apenas na localização mais natural** e usar o espaço liberado para informação nova
+- **Nunca duplicar para "reforçar"** — reforço é função do apresentador (fala), não do slide (visual)
+
+---
+
+### Sessão 2026-02-08 (Round 10 — S07 Indireção: redesign completo + S11 polish)
+
+**Foco:** Redesign profissional do S07 (posição 11 — "Indireção") seguindo padrão visual dos benchmarks S08/S10/S11. Ajustes menores em S11 (posição 9).
+
+#### Tarefas executadas
+
+**S07 — Redesign completo (4 iterações: v1→v4):**
+
+- **v1:** Layout 2 colunas com `.cardHeader` navy no PICO card, 4 rows stacked com `.badge` gold circles (P/I/C/O), callouts semânticos na direita (gold=downgrade, teal=upgrade, navy=essência). Fix chip contrast na cardHeader (branco sobre navy).
+- **v2:** Grid ajustado de 1.15fr/0.85fr → 1.1fr/0.9fr para equilibrar colunas.
+- **v3:** Bump ~10-15% em fonts e paddings para reduzir whitespace. Body text 0.88→0.92vw, PICO titles 1.02→1.08vw, callout labels 0.72→0.78vw, callout padding 0.72→0.82vw.
+- **v4:** Border-left accent adicionado ao box "CAC context" (navy). "Na prática" callout adicionado para equilibrar alturas L/R e adicionar valor clínico actionable. Fill ratio final ~90%.
+
+**Conteúdo adicionado ao S07:**
+
+- Nota sobre desfecho substituto (LDL validado para estatinas, cadeia causal varia por classe)
+- Bullet sobre populações americanas (MESA) aplicadas a contexto local
+- "Essência" expandida: GRADE distingue validade interna de aplicabilidade
+- "Na prática" com pergunta clínica memorável
+
+**S11 — Ajustes pontuais:**
+
+- Removido "francamente" de "Balanço francamente favorável" (CAC≥400, NNT 100/5a não merece exagero)
+- Nomes dos 3 landmark trials (ASPREE, ARRIVE, ASCEND) em negrito
+
+#### Insight 11: Ciclo iterativo de screenshot → crítica → fix reduz whitespace eficientemente
+
+**O que fiz bem:** Em vez de tentar acertar tudo na primeira versão, fiz 4 iterações com screenshots de QA entre cada uma. Cada iteração focou em problemas específicos:
+
+1. v1→v2: Fix contraste + proporção de grid
+2. v2→v3: Bump de fonts/padding para preencher
+3. v3→v4: Equilibrar alturas L/R + adicionar conteúdo
+
+**Padrão extraído:**
+
+- **v1 = estrutura** (layout, hierarquia, componentes)
+- **v2 = fix de bugs** (contraste, alinhamento)
+- **v3 = scale up** (preencher espaço com fontes/padding maiores)
+- **v4 = polish** (equilibrar colunas, adicionar conteúdo de valor)
+
+Cada iteração tem foco diferente. Tentar fazer tudo de uma vez = miss inevitável.
+
+#### Insight 12: Border-left accent como sistema de ritmo visual
+
+**O que fiz bem:** Na coluna direita do S07, cada callout box tem border-left semântico:
+
+| Box | Border-left | Significado |
+| --- | --- | --- |
+| Quanto rebaixar | gold 0.2vw | Ação de downgrade |
+| CAC context | navy 0.2vw | Informação neutra |
+| Upgrade possível | teal 0.2vw | Ação de upgrade |
+| Essência | navy 0.22vw | Conceito-chave |
+| Na prática | (gold tint bg) | Aplicação clínica |
+
+**Padrão extraído:** Em stacks verticais de callout boxes, usar border-left com cor semântica para criar "ritmo visual". O olho percebe o padrão cromático na borda esquerda e navega verticalmente com facilidade. Não deixar nenhum box sem accent — a ausência quebra o ritmo.
+
+---
+
 _Criado: 2026-02-03_
-_Última atualização: 2026-02-07 (Round 5 — S09 padding/overlap fix + MESA figure)_
+_Última atualização: 2026-02-08 (Round 10 — S07 Indireção redesign + S11 polish)_
