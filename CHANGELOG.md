@@ -1,5 +1,74 @@
 # Changelog
 
+## 2026-02-08 — GRADE visual audit S43, S44, S63
+
+### Polish (3 slides)
+
+- **S43 (pos 14):** SAMS slide - Step 2 hero (teal), contraste corrigido, quebras de linha fixadas | Score 8.3
+- **S44 (pos 15):** "Mesmo HR" - NNT como hero (teal 3.4vw), IC 95% adicionado (~40-150), hierarquia NNT > ARR > HR | Score 8.8
+- **S63 (pos 16):** Nustendi - hero "-38%" teal, NNTs teal, dados verificados via PubMed/web | Score 8.9
+
+### Correções de dados (S63)
+
+- **Prev. primária:** "MACE-3" → "MACE-4" (IC 0,55-0,89) conforme JAMA 2023
+- **Obesidade:** IC corrigido para 0,67-0,89 (não 0,66-0,91)
+- **Ano:** JAHA 2024 → JAHA 2025
+
+### Padrões aplicados
+
+- Contraste: `var(--muted)` → `var(--text)` em todos os slides
+- Hierarquia numérica: NNT (ação clínica) > ARR (magnitude) > HR (estatística)
+- NNT obrigatório com IC 95% e time frame
+- Verificação de dados via web search quando PubMed indisponível
+
+---
+
+## 2026-02-08 — OSTEOPOROSE visual audit S24-S28
+
+### Polish (4 slides)
+
+- **S24 (pos 16):** 3 boxes texto + bar chart dominante, dados Tier 1 verificados | Score 7.5
+- **S25 (pos 17):** "Anabolic first" título, NNT+IC+tempo, critérios com sublinhas | Score 7.8
+- **S26 (pos 18):** Blunting effect protagonista, high contrast cards (21:1), ponte narrativa para S28 | Score 8.3
+- **S28 (pos 19):** Treat-to-target 3-card layout clean, números hero 3.5vw | Score 8.2
+
+### Remoções
+
+- **S26:** Teriparatida removida (não disponível no SUS brasileiro)
+- **S26:** Bloco "Alvo T-score" redundante com S28
+
+### Aprendizados documentados
+
+- Boundary contrast (bordas) > background contrast para legibilidade
+- Navy text sobre white = máximo contraste (~21:1)
+- Título em posição padrão mantém coerência cross-slide
+
+### Limpeza
+
+- Removidos 11 scripts temporários de screenshot (`_shot-*.js`)
+- Removido `HARD_CONSTRAINTS.md` (absorvido no CLAUDE.md)
+
+---
+
+## 2026-02-08 — OSTEOPOROSE audit session + fixes S25/S26
+
+### Fixes
+
+- **S25, S26:** Removido `display:flex` inline do `<section>` (anti-padrão E07)
+- **S24:** Revertido para versão estável (fe80b0c) após tentativa de redesign
+
+### Docs
+
+- **CLAUDE.md HC5:** Esclarecido que inclui reinstalar/atualizar pacotes
+- **memory/MEMORY.md:** Adicionado ciclo de auditoria visual obrigatório
+
+### Nota
+
+- Deadline 12/02 — sem refatoração estrutural até lá
+- Pós-deadline: refatoração completa planejada
+
+---
+
 ## 2026-02-08 — GRADE S14 palette coherence + overhaul massivo (17 slides)
 
 ### Conteúdo (commit `a774a8b`)

@@ -11,12 +11,12 @@
       .
     </div>
 
-    <div style="display: flex; gap: 1.8vw; margin-top: 1.2vw; align-items: stretch">
+    <div style="display: flex; gap: 1.8vw; margin-top: 1.2vw; flex: 1; align-items: stretch">
       <!-- Coluna esquerda: O que o CAC muda -->
       <div
         class="card"
         style="
-          flex: 1;
+          flex: 0.85;
           padding: 1.5vw 1.6vw;
           border-left: 0.22vw solid var(--teal);
           display: flex;
@@ -118,11 +118,12 @@
       <div
         class="card"
         style="
-          flex: 1.05;
+          flex: 1.15;
           padding: 1.5vw 1.6vw;
-          border-left: 0.22vw solid var(--gold);
+          border-left: 0.25vw solid var(--gold);
           display: flex;
           flex-direction: column;
+          background: rgba(var(--gold-rgb), 0.03);
         "
       >
         <div
@@ -148,30 +149,13 @@
               border: 1px solid rgba(var(--border-rgb), 0.85);
             "
           >
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 0.5vw;
-                margin-bottom: 0.55vw;
-              "
-            >
-              <div
-                style="
-                  font-size: 0.82vw;
-                  font-weight: 900;
-                  color: rgba(var(--navy-rgb), 0.75);
-                  text-transform: uppercase;
-                  letter-spacing: 0.06em;
-                "
-              >
-                Risco intermediário
-              </div>
-              <div style="display: flex; gap: 0.35vw">
-                <span class="chip chip--navy" style="font-size: 0.7vw">FORTE</span>
-                <span class="chip chip--gold" style="font-size: 0.7vw">⊕⊕⊕◯</span>
-              </div>
+            <!-- HERO: Chips como ponto focal (Duarte) -->
+            <div style="display: flex; align-items: center; gap: 0.6vw; margin-bottom: 0.6vw;">
+              <span style="background: var(--navy); color: white; font-size: 1.1vw; font-weight: 800; padding: 0.35vw 0.7vw; border-radius: 0.3vw;">FORTE</span>
+              <span style="background: var(--gold); color: var(--navy); font-size: 1.2vw; font-weight: 900; padding: 0.35vw 0.7vw; border-radius: 0.3vw;">⊕⊕⊕◯</span>
+            </div>
+            <div style="font-size: 0.82vw; font-weight: 700; color: rgba(var(--navy-rgb), 0.65); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4vw;">
+              Risco intermediário
             </div>
             <div style="border-left: 0.2vw solid rgba(var(--gold-rgb), 0.5); padding-left: 0.75vw">
               <div style="font-size: 1vw; line-height: 1.4; color: var(--text)">
@@ -189,30 +173,13 @@
               border: 1px solid rgba(var(--border-rgb), 0.85);
             "
           >
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 0.5vw;
-                margin-bottom: 0.55vw;
-              "
-            >
-              <div
-                style="
-                  font-size: 0.82vw;
-                  font-weight: 900;
-                  color: rgba(var(--navy-rgb), 0.75);
-                  text-transform: uppercase;
-                  letter-spacing: 0.06em;
-                "
-              >
-                Baixo risco + história familiar
-              </div>
-              <div style="display: flex; gap: 0.35vw">
-                <span class="chip chip--navy" style="font-size: 0.7vw">CONDICIONAL</span>
-                <span class="chip chip--gold" style="font-size: 0.7vw">⊕⊕⊕◯</span>
-              </div>
+            <!-- HERO: Chips como ponto focal -->
+            <div style="display: flex; align-items: center; gap: 0.6vw; margin-bottom: 0.6vw;">
+              <span style="background: rgba(var(--navy-rgb), 0.15); color: var(--navy); font-size: 1vw; font-weight: 800; padding: 0.3vw 0.6vw; border-radius: 0.3vw; border: 1px solid rgba(var(--navy-rgb), 0.3);">CONDICIONAL</span>
+              <span style="background: rgba(var(--gold-rgb), 0.2); color: var(--gold-dark); font-size: 1.1vw; font-weight: 900; padding: 0.3vw 0.6vw; border-radius: 0.3vw; border: 1px solid var(--gold-dark);">⊕⊕⊕◯</span>
+            </div>
+            <div style="font-size: 0.78vw; font-weight: 700; color: rgba(var(--navy-rgb), 0.6); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.35vw;">
+              Baixo risco + história familiar
             </div>
             <div style="border-left: 0.2vw solid rgba(var(--gold-rgb), 0.5); padding-left: 0.75vw">
               <div style="font-size: 1vw; line-height: 1.4; color: var(--text)">

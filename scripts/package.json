@@ -41,6 +41,6 @@
   },
   "types": "types/types.d.ts",
   "dependencies": {
-    "playwright": "^1.58.1"
+    "playwright": "^1.58.2"
   }
 }
