@@ -1,68 +1,260 @@
 <!DOCTYPE html>
-<!--
-  print.html: gerado por build-osteoporose-print-html.js a partir dos slides.
-  Mesma fonte que o index (sync, UTF-8). Para PDF: index.html?print=1 é preferido.
--->
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <title>Osteoporose - 67 slides</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>:root {
-  --bg: #F9F8F4; --white: #FFFFFF; --navy: #0B1320; --gold: #DDB944; --gold-dark: #A07D1C;
-  --teal: #1F766E; --blue: #2563EB; --text: #222222; --muted: #666666;
-  --border: #E9ECEF;
-  --text-rgb: 34,34,34; --muted-rgb: 102,102,102; --border-rgb: 233,236,239;
-  --bg-rgb: 249,248,244; --navy-rgb: 11,19,32; --gold-rgb: 221,185,68; --gold-dark-rgb: 160,125,28;
-  --teal-rgb: 31,118,110; --blue-rgb: 37,99,235;
-  --stage-w: 1600; --stage-h: 900;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-serif: Georgia, "Times New Roman", Times, serif;
+<style>
+/*
+  base.css
+  Tokens + estilos base (viewer + slides)
+
+  OSTEOPOROSE:
+  - Conteúdo médico permanece congelado nesta fase.
+  - Permitido: ajustes de viewer/print, modularização e correções de encoding/truncamento.
+
+  ASSISTENTES DE IA (ChatGPT, Claude, etc.): Antes de modificar este arquivo,
+  leia scripts/AI-RESTRICTIONS.md e a seção "Restrições CSS/JS" no README.md.
+  Não remova o bloco #utilidade-grid/.utilidade-grid nem altere paleta/dimensões críticas.
+*/
+
+:root {
+  /* Brand / UI */
+  --bg: #f9f8f4;
+  --white: #ffffff;
+
+  --navy: #0b1320;
+  --gold: #ddb944;
+  --gold-dark: #a07d1c; /* Burnished gold — 3.6:1 on cream, 4.7:1 on navy */
+
+  /* Accents (permitidos) */
+  --teal: #1f766e;
+  --blue: #2563eb;
+
+  /* Text */
+  --text: #222222;
+  --muted: #666666;
+
+  /* UI border */
+  --border: #e9ecef;
+
+  /* RGB tokens (para rgba() sem hardcode) */
+  --bg-rgb: 249, 248, 244;
+  --white-rgb: 255, 255, 255;
+
+  --navy-rgb: 11, 19, 32;
+  --gold-rgb: 221, 185, 68;
+  --gold-dark-rgb: 160, 125, 28;
+
+  --teal-rgb: 31, 118, 110;
+  --blue-rgb: 37, 99, 235;
+
+  --text-rgb: 34, 34, 34;
+  --muted-rgb: 102, 102, 102;
+  --border-rgb: 233, 236, 239;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', Times, serif;
 }
-*,*::before,*::after{box-sizing:border-box}
-html,body{margin:0;padding:0}
-html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-body{font-family:var(--font-sans);color:var(--text);background:#E5E5E5;line-height:1.4}
-h1,h2,h3{font-family:var(--font-sans);color:var(--navy);margin:0 0 .6rem}
-p{margin:0 0 .8rem}
-.slides-container{max-width:100%;margin:0 auto;padding:20px 0}
-.slide{
-  width:1600px!important;height:900px!important;
-  min-height:900px!important;max-height:900px!important;
-  margin:0 auto 24px!important;
-  overflow:hidden!important;position:relative!important;
-  border:none!important;border-radius:0!important;
-  box-shadow:none!important;
-  page-break-after:always!important;break-after:page!important;
-  page-break-inside:avoid!important;break-inside:avoid!important;
+
+* {
+  box-sizing: border-box;
 }
-/* Capa (1º) e contracapa (2º = Rilke): navy. Demais slides: fundo padrão. */
-.slide:not(:first-child):not(:nth-child(2)){background:var(--bg)!important}
-.slide:first-child,.slide:nth-child(2){
-  background:linear-gradient(135deg, var(--navy) 0%, rgba(var(--navy-rgb), 0.88) 50%, rgba(var(--navy-rgb), 0.78) 100%)!important;
-  display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
-.slide:last-child{page-break-after:auto!important;break-after:auto!important;margin-bottom:0!important}
-.slide[hidden]{display:block!important}
-/* Slide 8 (Utilidade): forçar grid 2 colunas para régua + 4 caixas lado a lado no print */
-#utilidade-grid,.utilidade-grid{display:grid!important;grid-template-columns:300px minmax(0,1fr)!important;gap:24px!important;align-items:start!important;width:100%!important}
-/* polish.css sync: fonte/referência footer fixo */
-.slide__source,.slide .source,.slide [data-role="source"]{position:absolute!important;bottom:20px!important;left:48px!important;right:48px!important;margin:0!important}
-.slide>p:last-of-type[style*="font-style: italic"]{position:absolute!important;bottom:20px!important;left:48px!important;right:48px!important;margin:0!important}
-/* polish.css sync: proteção texto longo */
-.slide p,.slide h1,.slide h2,.slide h3,.slide span{word-wrap:break-word;overflow-wrap:break-word}
-@media print{
-  @page{size:16.667in 9.375in;margin:0}
-  body{background:white!important;overflow:hidden!important}
-  html{overflow:hidden!important}
-  .slides-container{padding:0!important;margin:0!important;max-width:none!important;overflow:hidden!important}
-  .slide{width:16.667in!important;height:9.375in!important;min-height:9.375in!important;max-height:9.375in!important;overflow:hidden!important;margin:0!important;border:none!important;box-shadow:none!important;page-break-after:always!important;break-after:page!important;page-break-inside:avoid!important;break-inside:avoid!important;box-sizing:border-box!important;isolation:isolate!important;-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
-  .slide:first-child{page-break-before:auto!important;break-before:auto!important}
-  .slide:last-child{page-break-after:auto!important;break-after:auto!important}
-}</style>
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-sans);
+  color: var(--navy);
+  margin: 0 0 0.6rem 0;
+}
+
+p {
+  margin: 0 0 0.8rem 0;
+}
+
+.deck {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.deck__topbar {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.deck__title {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.deck__hint {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.slides {
+  position: relative;
+  flex: 1;
+}
+
+.slide {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 32px 48px; /* safe margins - reduzido para ocupar melhor a tela */
+  overflow: hidden;
+}
+/* Slide com conteúdo alto (ex.: S08 Utilidade): permite scroll vertical para ver todos os boxes */
+.slide[data-overflow='allow'] {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Proteção global contra overflow */
+.slide * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Slide 8 (Utilidade): grid 2 colunas (régua + 4 caixas) — garantir no index e evitar override */
+#utilidade-grid,
+.utilidade-grid {
+  display: grid !important;
+  grid-template-columns: 300px minmax(0, 1fr) !important;
+  gap: 24px !important;
+  align-items: start !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Mídia responsiva */
+.slide img,
+.slide video,
+.slide iframe,
+.slide svg {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Tabelas responsivas */
+.slide table {
+  max-width: 100%;
+  width: 100%;
+  table-layout: auto;
+}
+
+.slide[hidden] {
+  display: none !important;
+}
+
+/* Classe de estado (display controlado via [hidden] para respeitar display inline do slide) */
+.slide.is-active {
+}
+
+.slide__kicker {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.slide__footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--bg);
+}
+
+.slide__source {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.nav button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--navy);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.nav button:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.counter {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Minimal print styles - NO !important */
+body { margin: 0; padding: 20px; background: #ccc; }
+.slide { 
+  width: 1600px; 
+  height: 900px; 
+  margin: 0 auto 20px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+</style>
 </head>
 <body>
-<div class="slides-container">
 <!-- 1. Slide 1 - Mudancas de Paradigma no Tratamento da Osteoporose -->
 <section
   class="slide slide--center"
@@ -262,7 +454,6 @@ p{margin:0 0 .8rem}
   
 </div>
 </section>
-
 <!-- 3. Slide 3 - Objetivos Educacionais -->
 <section
   class="slide"
@@ -4773,7 +4964,6 @@ p{margin:0 0 .8rem}
 </div>
 </div>
 </section>
-
 <!-- Counter 15 — v15: Box grid layout — 3 boxes per card fills space naturally -->
 <section
   class="slide"
@@ -7156,7 +7346,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0;">Potências derivadas de análises pós-hoc dos trials (FREEDOM, HORIZON, FRAME, ARCH)</p>
 </section>
-
 <!-- 31. Slide 27 - Matriz T-score x escolha da droga inicial -->
 <section class="slide" data-slide="" data-title="Slide 27 - Matriz T-score x escolha da droga inicial" id="slide-27" style="padding: 50px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 35px 0;">Matriz T-score x escolha da droga inicial</h1>
@@ -7212,7 +7401,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0 0 20px 0; text-align: center;">Síntese de NOGG 2024, SBEM/ABRASSO, ACR 2022 • Trials: VERO, FRAME, ARCH</p>
 </section>
-
 <!-- 32. Slide 28 - Romosozumabe (Evenity) no SUS -->
 <section class="slide" data-slide="" data-title="Slide 28 - Romosozumabe (Evenity) no SUS" id="slide-28" style="padding: 50px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 12px 0;">Romosozumabe (Evenity) no SUS</h1>
@@ -7267,7 +7455,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0; text-align: center;">Portaria SECTICS/MS n.40, Set/2024 • PCDT 2025 • ARCH (NEJM 2017), FRAME (NEJM 2016)</p>
 </section>
-
 <!-- 33. Slide 29 - [Divisor conceitual] -->
 <section class="slide slide--center" data-slide="" data-title="Slide 29 - [Divisor conceitual]" id="slide-29" style="padding: 0; background: var(--bg); min-height: 100%; display: flex; flex-direction: column; justify-content: flex-end; position: relative; overflow: hidden;">
 <!-- Background artistico conceitual -->
@@ -7281,7 +7468,6 @@ p{margin:0 0 .8rem}
 <p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; font-style: italic; color: var(--muted); margin: 0; text-align: right;">Zao Wou-Ki (1920—2013)  1.3.67, 1967  óleo sobre tela</p>
 </div>
 </section>
-
 <!-- 34. Slide 30 - HORIZON: Zoledronato Reduz Mortalidade -->
 <section
   class="slide"
@@ -8535,7 +8721,6 @@ p{margin:0 0 .8rem}
 <p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--navy); line-height: 1.6; margin: 0;"><strong style="font-weight: 700;">Comparação:</strong> Estatinas em prevenção primária levam 2-3 anos para reduzir eventos CV. O osso também precisa de tempo — aderência no primeiro ano.</p>
 </div>
 </section>
-
 <!-- 38. Slide 34 - Quando NAO tratar -->
 <section class="slide" data-slide="" data-title="Slide 34 - Quando NAO tratar" id="slide-34" style="padding: 40px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 12px 0;">Quando NÃO tratar</h1>
@@ -8569,7 +8754,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 20px 0 0 0;">Holmes HM et al. JAMA Intern Med 2013 | Clinical Frailty Scale (Rockwood) | Lee SJ et al. JAMA 2013</p>
 </section>
-
 <!-- 39. Slide 35 - Algoritmo Treat-to-Target em 5 Passos -->
 <section class="slide" data-slide="" data-title="Slide 35 - Algoritmo Treat-to-Target em 5 Passos" id="slide-35" style="padding: 24px 32px 20px 32px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 14px 0;">Algoritmo Treat-to-Target em 5 Passos</h1>
@@ -8629,7 +8813,6 @@ p{margin:0 0 .8rem}
 <p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; color: rgba(var(--white-rgb), 0.72); margin: 10px 0 0 0;">NOGG 2024, ASBMR/BHOF 2024, Cosman 2020</p>
 </div>
 </section>
-
 <!-- 40. Slide 36 - Take Home Points -->
 <section class="slide" data-slide="" data-title="Slide 36 - Take Home Points" id="slide-36" style="padding: 50px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 48px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 30px 0;">Take Home Points</h1>
@@ -8679,7 +8862,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0;">IOF 2024 | NOGG 2024 | ASBMR/BHOF 2024</p>
 </section>
-
 <!-- 41. Slide 37 - Conceitos de EBM -->
 <section class="slide" data-slide="" data-title="Slide 37 - Conceitos de EBM" id="slide-37" style="padding: 50px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 15px 0;">Conceitos de EBM</h1>
@@ -8709,7 +8891,6 @@ p{margin:0 0 .8rem}
 </div>
 </div>
 </section>
-
 <!-- 42. Slide 38 - Citação Rilke (Dragões) -->
 <section class="slide slide--center" data-slide="" data-title="Slide 38 - Citação Rilke (Dragões)" id="slide-38" style="padding: 0; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
 <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(var(--navy-rgb),0.92) 0%, rgba(var(--navy-rgb),0.80) 50%, rgba(var(--gold-rgb),0.20) 100%), url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzFhMmUzZCIvPjwvc3ZnPg=='); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;">
@@ -8720,7 +8901,6 @@ p{margin:0 0 .8rem}
 </div>
 </div>
 </section>
-
 <!-- 43. Slide 39 - Osteoporose Induzida por Glicocorticoides -->
 <section class="slide slide--center" data-slide="" data-title="Slide 39 - Osteoporose Induzida por Glicocorticoides" id="slide-39" style="padding: 0; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: center;">
 <div style="width: 100%; height: 100%; background: linear-gradient(135deg, rgba(var(--navy-rgb),0.96) 0%, rgba(var(--navy-rgb),0.88) 40%, rgba(var(--navy-rgb),0.88) 70%, rgba(var(--navy-rgb),0.88) 100%); display: flex; align-items: center; justify-content: center;">
@@ -8736,7 +8916,6 @@ p{margin:0 0 .8rem}
 </div>
 </div>
 </section>
-
 <!-- 44. Slide 40 - Risco de Fratura Vertebral por Dose de GC -->
 <section class="slide" data-slide="" data-title="Slide 40 - Risco de Fratura Vertebral por Dose de GC" id="slide-40" style="padding: 40px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 50px 0;">Risco de Fratura Vertebral por Dose de GC</h1>
@@ -8786,7 +8965,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0;">Koh 2020, n=1,9M | Van Staa 2000; De Vries 2007</p>
 </section>
-
 <!-- 45. Slide 41 - Caso Clinico -->
 <section class="slide" data-slide="" data-title="Slide 41 - Caso Clinico" id="slide-41" style="padding: 40px 60px 50px 60px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 48px; font-weight: 700; color: var(--navy); text-align: center; margin: 0 0 60px 0;">Caso Clínico</h1>
@@ -8838,7 +9016,6 @@ p{margin:0 0 .8rem}
 </div>
 </div>
 </section>
-
 <!-- 46. Slide 42 - O que cada diretriz recomendaria para Maria? -->
 <section class="slide" data-slide="" data-title="Slide 42 - O que cada diretriz recomendaria para Maria?" id="slide-42" style="padding: 28px 36px 24px 36px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 20px 0;">O que cada diretriz recomendaria para Maria?</h1>
@@ -8910,7 +9087,6 @@ p{margin:0 0 .8rem}
 <p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 400; color: var(--text); margin: 10px 0 0 0;">VFA ou RX coluna<br/><strong style="font-weight: 700;">antes de decidir</strong></p>
 </div>
 </section>
-
 <!-- 47. Slide 43 - Evidencias e Populacoes Especiais -->
 <section class="slide" data-slide="" data-title="Slide 43 - Evidencias e Populacoes Especiais" id="slide-43" style="padding: 40px 60px 50px 60px; background: var(--bg);">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px;">
@@ -8991,7 +9167,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0;">ALN=alendronato | ZOL=zoledronato | TERI=teriparatida | ROMO=romosozumabe<br/>Humphrey MB et al. Arthritis Rheumatol. 2023;75(12):2088-2102 | Saag KG 2009 | HORIZON (Reid 2009)</p>
 </section>
-
 <!-- 48. Slide 44 - Classificacao de Risco ACR 2022 -->
 <section class="slide" data-slide="" data-title="Slide 44 - Classificacao de Risco ACR 2022" id="slide-44" style="padding: 24px 36px 24px 36px; background: var(--bg);">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
@@ -9059,7 +9234,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 16px 0 0 0;">Humphrey MB et al. Arthritis Rheumatol. 2023;75(12):2088-2102</p>
 </section>
-
 <!-- 49. Slide 45 - Evidencias e Avaliacao de Risco -->
 <section class="slide" data-slide="" data-title="Slide 45 - Evidencias e Avaliacao de Risco" id="slide-45" style="padding: 44px 44px 34px 44px; background: var(--bg);">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
@@ -9130,7 +9304,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.35; margin: 0;">ALN=alendronato | RIS=risedronato | ZOL=zoledronato | DEN=denosumabe | TERI=teriparatida<br/>Paccou J et al. Eur J Endocrinol. 2024;191(6):G1-G17 | HORIZON (Reid 2009) | Saag 2009, 2018</p>
 </section>
-
 <!-- 51. Slide 47 - Diretriz JSBMR 2023  -  Sistema de Pontuação -->
 <section class="slide" data-slide="" data-title="Slide 47 - Diretriz JSBMR 2023 -- Sistema de Pontuação" id="slide-47" style="padding: 40px 44px 30px 44px; background: var(--bg);">
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
@@ -9215,7 +9388,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.35; margin: 18px 0 0 0;">Tanaka Y et al. J Bone Miner Metab. 2024;42:143-154</p>
 </section>
-
 <!-- 16. A Armadilha do FRAX no Diabetes -->
 <section class="slide" data-slide="" data-title="A Armadilha do FRAX no Diabetes" id="slide-frax-diabetes-1" style="padding: 48px; background: var(--bg); display: flex; flex-direction: column;">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 32px 0;">A Armadilha do FRAX no Diabetes</h1>
@@ -9357,7 +9529,6 @@ p{margin:0 0 .8rem}
 </div>
 </div>
 </section>
-
 <!-- 11. Slide 12A - QALY por risco: por que o risco basal muda tudo -->
 <section class="slide" data-slide="" data-title="Slide 12A - QALY por risco: por que o risco basal muda tudo" id="slide-qaly-por-risco" style="padding: 40px 48px; background: var(--bg);">
 
@@ -9456,7 +9627,6 @@ p{margin:0 0 .8rem}
 
 </div>
 </section>
-
 <!-- 12. Slide 12B - Quanto vale 1 QALY? Limiar por país -->
 <section class="slide" data-slide="" data-title="Slide 12B - Quanto vale 1 QALY? Limiar por país" id="slide-qaly-limiar-paises" style="padding: 40px 48px; background: var(--bg); display: flex; flex-direction: column;">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); margin: 0 0 14px 0; text-align: left;">
@@ -9545,7 +9715,6 @@ p{margin:0 0 .8rem}
 </div>
 </div>
 </section>
-
 <!-- 52. Slide 48 - TBS: Interpretação e Ajuste do FRAX -->
 <section class="slide" data-slide="" data-title="Slide 48 - TBS: Interpretação e Ajuste do FRAX" id="slide-48" style="padding: 20px 32px 20px 32px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 14px 0;">TBS: Interpretação e Ajuste do FRAX</h1>
@@ -9614,7 +9783,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.35; margin: 14px 0 0 0;">Silva BC et al. JBMR 2014 | McCloskey EV et al. JBMR 2016 | ISCD 2019 | Goel H et al. J Clin Densitom 2024</p>
 </section>
-
 <!-- 53. Slide 49 - DIOP: quando o remedio vira fratura  -  osso vs quedas -->
 <section class="slide" data-slide="" data-title="Slide 49 - DIOP: quando o remedio vira fratura -- osso vs quedas" id="slide-49" style="padding: 24px 36px 24px 36px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 18px 0;">DIOP: quando o remédio vira fratura — osso vs quedas</h1>
@@ -9697,7 +9865,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.35; margin: 14px 0 0 0;">PMIDs: 32077867, 32711800, 27935736, 31403601, 30247774, 30237993, 24780876, 26895998</p>
 </section>
-
 <!-- 54. Slide 50 - DIOP (1/2): classes comuns + armadilhas MBE -->
 <section class="slide" data-slide="" data-title="Slide 50 - DIOP (1/2): classes comuns + armadilhas MBE" id="slide-50" style="padding: 32px 48px 36px 48px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 32px 0;">DIOP (1/2): classes comuns + armadilhas MBE</h1>
@@ -9817,7 +9984,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 30px 0 0 0;">PMIDs: 24780876, 30237993, 31152740, 30247774, 26895998 | LEI = indutor enzimatico hepático</p>
 </section>
-
 <!-- 55. Slide 55 -->
 <section class="slide" data-slide="" data-title='Slide 51 - DIOP (2/2): quando a via "osso" e mais provavel' id="slide-51" style="padding: 28px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 32px 0;">DIOP (2/2): quando a via "osso" e mais provavel</h1>
@@ -9938,7 +10104,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 30px 0 0 0;">PMIDs: 32077867 (Baranek), 32711800 (DISCOVER/Mayer), 27935736, 31403601, 23635623 | *Comparador direto no DISCOVER</p>
 </section>
-
 <!-- 56. Slide 52 - MBE: PPI  -  associação consistente, causalidade incerta -->
 <section class="slide" data-slide="" data-title="Slide 52 - MBE: PPI -- associação consistente, causalidade incerta" id="slide-52" style="padding: 28px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 32px 0;">MBE: PPI -- associação <u>consistente</u>, causalidade <u>incerta</u></h1>
@@ -10032,7 +10197,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 30px 0 0 0;">PMIDs: 30237993, 31152740</p>
 </section>
-
 <!-- 57. Slide 57 -->
 <section class="slide" data-slide="" data-title='Slide 53 - Farmacos "potencialmente protetores"' id="slide-53" style="padding: 40px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 50px 0;">Farmacos "potencialmente protetores"</h1>
@@ -10079,7 +10243,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 40px 0 0 0;">PMIDs: 35833956, 36398110, 35677694</p>
 </section>
-
 <!-- 58. Slide 58 -->
 <section class="slide" data-slide="" data-title='Slide 54 - Quando "protecao" pode ser vies' id="slide-54" style="padding: 40px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 50px 0;">Quando "protecao" pode ser vies</h1>
@@ -10128,7 +10291,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 30px 0 0 0;">PMIDs: 35677694, 36398110, 35833956</p>
 </section>
-
 <!-- 59. Slide 55 - Vitamina D e quedas: beneficio incerto; bolus alto pode aumentar quedas -->
 <section class="slide" data-slide="" data-title="Slide 55 - Vitamina D e quedas: beneficio incerto; bolus alto pode aumentar quedas" id="slide-55" style="padding: 28px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 28px 0;">Vitamina D e quedas: beneficio incerto; bolus alto pode aumentar quedas</h1>
@@ -10154,7 +10316,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 20px 0 0 0;">USPSTF Draft 2024 | PMIDs: 33284677, 26747333, 20460620 | NOGG 2024</p>
 </section>
-
 <!-- 60. Slide 56 - Dose diaria vs semanal de vitamina D: 25(OH)D → queda -->
 <section class="slide" data-slide="" data-title="Slide 56 - Dose diaria vs semanal de vitamina D: 25(OH)D → queda" id="slide-56" style="padding: 40px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 50px 0;">Dose diaria vs semanal de vitamina D: 25(OH)D ≠ queda</h1>
@@ -10197,7 +10358,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 30px 0 0 0;">PMIDs: 27718150, 39978583, 26747333, 20460620, 38828931 | NOGG 2024</p>
 </section>
-
 <!-- 61. Slide 57 - VFA: a fratura vertebral que ninguem viu -->
 <section class="slide" data-slide="" data-title="Slide 57 - VFA: a fratura vertebral que ninguem viu" id="slide-57" style="padding: 40px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 50px 0;">VFA: a fratura vertebral que ninguem viu</h1>
@@ -10245,7 +10405,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 13px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 30px 0 0 0;">Yang J et al. Bone 2020 | IOF-ESCEO Guidelines 2021 | Schousboe JT et al. JBMR 2008</p>
 </section>
-
 <!-- 62. Slide 58 - Apêndice  -  Reacao de fase aguda ao zoledronato (APR) -->
 <section class="slide" data-slide="" data-title="Slide 58 - Apêndice -- Reacao de fase aguda ao zoledronato (APR)" id="slide-58" style="padding: 40px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 50px 0;">Apêndice -- Reacao de fase aguda ao zoledronato (APR)</h1>
@@ -10293,7 +10452,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 30px 0 0 0;">Lewiecki 2010 (PMCID: PMC2899787) | Reid 2010 (PMID: 20554708)</p>
 </section>
-
 <!-- 63. Slide 59 - Apêndice  -  Como reduzir sintomas da APR (e manter adesao) -->
 <section class="slide" data-slide="" data-title="Slide 59 - Apêndice -- Como reduzir sintomas da APR (e manter adesao)" id="slide-59" style="padding: 40px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 50px 0;">Apêndice -- Como reduzir sintomas da APR (e manter adesao)</h1>
@@ -10335,7 +10493,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 30px 0 0 0;">Silverman 2011 (PMID: 21116816) | Wark 2012 (PMID: 21331467) | Billington 2017 (PMID: 28233020) | Murdoch 2023 (PMID: 36970850)</p>
 </section>
-
 <!-- 64. Slide 60 - Efeitos adversos raros: AFF e MRONJ -->
 <section class="slide" data-slide="" data-title="Slide 60 - Efeitos adversos raros: AFF e MRONJ" id="slide-60" style="padding: 24px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 20px 0;">Efeitos adversos raros: AFF e MRONJ</h1>
@@ -10396,7 +10553,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 20px 0 0 0;">Black 2019 (PMID: 30169557) | Watts 2019 (PMID: 30759221) | Grbic 2010 (PMID: 21037195) | SDCEP 2017 | AAOMS 2022</p>
 </section>
-
 <!-- 65. Slide 61 - Drug Holiday: quando pausar, quando NAO pausar -->
 <section class="slide" data-slide="" data-title="Slide 61 - Drug Holiday: quando pausar, quando NAO pausar" id="slide-61" style="padding: 40px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 50px 0;">Drug Holiday: quando pausar, quando NAO pausar</h1>
@@ -10445,7 +10601,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 30px 0 0 0;">ASBMR Task Force 2016 | Adler RA et al. JBMR 2016;31:16-35 | Hayes KN et al. Ann Intern Med 2022</p>
 </section>
-
 <!-- 66. Slide 62 - Sequenciamento de terapias: 3 armadilhas que mudam desfechos -->
 <section class="slide" data-slide="" data-title="Slide 62 - Sequenciamento de terapias: 3 armadilhas que mudam desfechos" id="slide-62" style="padding: 40px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 50px 0;">Sequenciamento de terapias: 3 armadilhas que mudam desfechos</h1>
@@ -10482,7 +10637,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 30px 0 0 0;">ECTS: Tsourdi et al. (PMID 33103722) | Endocrine Society 2020 | ASBMR Joint Guidance | Leder BZ et al. DATA-Switch (PMC4420731) | Grassi G et al. JCEM 2024 (PMID 38609157) | Reclast FDA: 5 mg IV</p>
 </section>
-
 <!-- 67. Slide 63 - CTX e P1NP: como coletar e interpretar -->
 <section class="slide" data-slide="" data-title="Slide 63 - CTX e P1NP: como coletar e interpretar" id="slide-63" style="padding: 28px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 32px 0;">CTX e P1NP: como coletar e interpretar (na prática)</h1>
@@ -10526,7 +10680,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0;">Vasikaran 2011 (PMID 21184054) | Sväk 2017 (PMID 28631236) | Eastell 2017 (PMID 28689768) | Bhattos 2023 (PMID 40152990) | Schini 2023 (PMID 36510335)</p>
 </section>
-
 <!-- 68. Slide 64 - Armadilhas, limitacoes e mensagens-chave BTMs -->
 <section class="slide" data-slide="" data-title="Slide 64 - Armadilhas, limitacoes e mensagens-chave BTMs" id="slide-64" style="padding: 28px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 42px; font-weight: 700; color: var(--navy); line-height: 1.2; margin: 0 0 24px 0;">Armadilhas, limitacoes e mensagens-chave</h1>
@@ -10578,7 +10731,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 12px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.4; margin: 0;">Vasikaran 2011 (PMID 21184054) | Sväk 2017 (PMID 28631236) | Eastell 2017 (PMID 28689768) | Bhattos 2023 (PMID 40152990) | Schini 2023 (PMID 36510335)</p>
 </section>
-
 <!-- 70. Slide 66 - DXA da coluna: artefatos + regra ISCD -->
 <section class="slide" data-slide="" data-title="Slide 66 - DXA da coluna: artefatos + regra ISCD" id="slide-66" style="padding: 40px 44px 30px 44px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.15; margin: 0 0 14px 0;">DXA da coluna: artefatos + regra ISCD</h1>
@@ -10632,7 +10784,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.35; margin: 18px 0 0 0;">ISCD Official Positions 2023 * Leslie WD et al. J Clin Densitom 2024 (2 vertebras nao contíguas)</p>
 </section>
-
 <!-- 70. Slide 66 - DXA da coluna: artefatos + regra ISCD -->
 <section class="slide" data-slide="" data-title="Slide 66 - DXA da coluna: artefatos + regra ISCD" id="slide-66" style="padding: 40px 44px 30px 44px; background: var(--bg);">
 <h1 style="font-family: Inter, sans-serif; font-size: 38px; font-weight: 700; color: var(--navy); line-height: 1.15; margin: 0 0 14px 0;">DXA da coluna: artefatos + regra ISCD</h1>
@@ -10686,7 +10837,6 @@ p{margin:0 0 .8rem}
 </div>
 <p style="font-family: Inter, sans-serif; font-size: 11px; font-weight: 400; font-style: italic; color: var(--muted); line-height: 1.35; margin: 18px 0 0 0;">ISCD Official Positions 2023 * Leslie WD et al. J Clin Densitom 2024 (2 vertebras nao contíguas)</p>
 </section>
-
 <!-- 71. Slide 67 - Monitoramento: LSC define mudança real -->
 <section class="slide" data-slide="67" data-title="Slide 67 - Monitoramento: LSC define mudança real" id="slide-67" style="padding: 34px; background: var(--bg);">
   <h1 style="font-family: Inter, sans-serif; font-size: 36px; font-weight: 700; color: var(--navy); line-height: 1.15; margin: 0 0 10px 0;">Monitoramento: LSC define mudança real</h1>
@@ -10889,6 +11039,4 @@ p{margin:0 0 .8rem}
                     Adachi et al. Osteoporos Int 2018 (PMID: 29455262) | CONITEC 2023 (limiares Brasil)
                 </p>
 </section>
-</div>
-</body>
-</html>
+</body></html>
