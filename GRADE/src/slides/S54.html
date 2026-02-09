@@ -6,197 +6,61 @@
 
   <h2>Inconsist&ecirc;ncia: leitura visual do forest plot</h2>
 
-  <div style="display:grid; grid-template-columns:1fr 1fr 0.72fr; gap:0.9vw; flex:1; align-items:stretch; min-height:0;">
+  <div style="display:flex; gap:1.0vw; flex:1; min-height:0;">
 
-    <!-- ═══ COL 1 — Consistente ═══ -->
-    <div style="display:flex; flex-direction:column; border:1px solid var(--border); border-top:0.22vw solid var(--teal); border-radius:var(--radius-md); overflow:hidden; min-height:0;">
-      <div style="padding:0.45vw 0.7vw; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); background:rgba(var(--teal-rgb),0.03);">
-        <span style="font-weight:800; font-size:0.88vw; color:var(--navy);">Consistente</span>
-        <span style="font-size:0.72vw; color:var(--muted); font-weight:500;">I&sup2;&thinsp;=&thinsp;8%&ensp;&middot;&ensp;p&thinsp;=&thinsp;0,36</span>
-      </div>
-      <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:0.2vw 0.35vw; min-height:0; overflow:hidden;">
-        <svg viewBox="0 0 420 270" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-height:100%;" font-family="Inter,system-ui,sans-serif">
-          <line x1="220" y1="14" x2="220" y2="232" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="4,3"/>
-          <text x="155" y="14" fill="#94a3b8" font-size="7.5" text-anchor="middle">&larr; Benef&iacute;cio</text>
-          <text x="285" y="14" fill="#94a3b8" font-size="7.5" text-anchor="middle">Risco &rarr;</text>
-          <text x="315" y="14" fill="#94a3b8" font-size="7" font-weight="600">RR [IC 95%]</text>
-
-          <!-- Tanaka 2018 — RR 0,72 [0,58–0,89] -->
-          <text x="5" y="40" fill="#1e293b" font-size="9.5">Tanaka 2018</text>
-          <line x1="157" y1="36" x2="206" y2="36" stroke="#475569" stroke-width="1.2"/>
-          <line x1="157" y1="33" x2="157" y2="39" stroke="#475569" stroke-width="0.8"/>
-          <line x1="206" y1="33" x2="206" y2="39" stroke="#475569" stroke-width="0.8"/>
-          <rect x="176" y="31" width="10" height="10" fill="#0b1320"/>
-          <text x="315" y="40" fill="#475569" font-size="8.5">0,72 [0,58&ndash;0,89]</text>
-
-          <!-- Rivera 2019 — RR 0,78 [0,65–0,93] -->
-          <text x="5" y="74" fill="#1e293b" font-size="9.5">Rivera 2019</text>
-          <line x1="170" y1="70" x2="211" y2="70" stroke="#475569" stroke-width="1.2"/>
-          <line x1="170" y1="67" x2="170" y2="73" stroke="#475569" stroke-width="0.8"/>
-          <line x1="211" y1="67" x2="211" y2="73" stroke="#475569" stroke-width="0.8"/>
-          <rect x="185" y="64" width="12" height="12" fill="#0b1320"/>
-          <text x="315" y="74" fill="#475569" font-size="8.5">0,78 [0,65&ndash;0,93]</text>
-
-          <!-- Kim 2020 — RR 0,69 [0,52–0,91] -->
-          <text x="5" y="108" fill="#1e293b" font-size="9.5">Kim 2020</text>
-          <line x1="144" y1="104" x2="209" y2="104" stroke="#475569" stroke-width="1.2"/>
-          <line x1="144" y1="101" x2="144" y2="107" stroke="#475569" stroke-width="0.8"/>
-          <line x1="209" y1="101" x2="209" y2="107" stroke="#475569" stroke-width="0.8"/>
-          <rect x="173" y="100" width="8" height="8" fill="#0b1320"/>
-          <text x="315" y="108" fill="#475569" font-size="8.5">0,69 [0,52&ndash;0,91]</text>
-
-          <!-- Müller 2021 — RR 0,75 [0,63–0,89] -->
-          <text x="5" y="142" fill="#1e293b" font-size="9.5">M&uuml;ller 2021</text>
-          <line x1="166" y1="138" x2="206" y2="138" stroke="#475569" stroke-width="1.2"/>
-          <line x1="166" y1="135" x2="166" y2="141" stroke="#475569" stroke-width="0.8"/>
-          <line x1="206" y1="135" x2="206" y2="141" stroke="#475569" stroke-width="0.8"/>
-          <rect x="180" y="132" width="11" height="11" fill="#0b1320"/>
-          <text x="315" y="142" fill="#475569" font-size="8.5">0,75 [0,63&ndash;0,89]</text>
-
-          <!-- Chen 2022 — RR 0,80 [0,61–1,05] -->
-          <text x="5" y="176" fill="#1e293b" font-size="9.5">Chen 2022</text>
-          <line x1="162" y1="172" x2="225" y2="172" stroke="#475569" stroke-width="1.2"/>
-          <line x1="162" y1="169" x2="162" y2="175" stroke="#475569" stroke-width="0.8"/>
-          <line x1="225" y1="169" x2="225" y2="175" stroke="#475569" stroke-width="0.8"/>
-          <rect x="190" y="168" width="7" height="7" fill="#0b1320"/>
-          <text x="315" y="176" fill="#475569" font-size="8.5">0,80 [0,61&ndash;1,05]</text>
-
-          <line x1="5" y1="196" x2="415" y2="196" stroke="#e2e8f0" stroke-width="0.6"/>
-
-          <!-- Agrupado: RR 0,75 [0,68–0,83] -->
-          <text x="5" y="222" fill="#0b1320" font-size="9.5" font-weight="700">Agrupado</text>
-          <polygon points="175,218 186,208 198,218 186,228" fill="#0f766e"/>
-          <text x="315" y="222" fill="#0b1320" font-size="8.5" font-weight="700">0,75 [0,68&ndash;0,83]</text>
-
-          <line x1="80" y1="244" x2="300" y2="244" stroke="#e2e8f0" stroke-width="0.6"/>
-          <line x1="80" y1="241" x2="80" y2="247" stroke="#cbd5e1" stroke-width="0.6"/>
-          <text x="80" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,3</text>
-          <line x1="139" y1="241" x2="139" y2="247" stroke="#cbd5e1" stroke-width="0.6"/>
-          <text x="139" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,5</text>
-          <line x1="178" y1="241" x2="178" y2="247" stroke="#cbd5e1" stroke-width="0.6"/>
-          <text x="178" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,7</text>
-          <line x1="220" y1="241" x2="220" y2="247" stroke="#94a3b8" stroke-width="0.6"/>
-          <text x="220" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle" font-weight="600">1,0</text>
-          <line x1="259" y1="241" x2="259" y2="247" stroke="#cbd5e1" stroke-width="0.6"/>
-          <text x="259" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle">1,4</text>
-          <line x1="300" y1="241" x2="300" y2="247" stroke="#cbd5e1" stroke-width="0.6"/>
-          <text x="300" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle">2,0</text>
-        </svg>
-      </div>
-      <div style="padding:0.35vw 0.65vw; margin:0 0.45vw 0.45vw; border-radius:0.3vw; border-left:0.18vw solid var(--teal); background:rgba(var(--teal-rgb),0.04); font-size:0.78vw; line-height:1.3; color:var(--navy); font-weight:600;">
-        ICs sobrepostos, mesma dire&ccedil;&atilde;o &rarr; <b>n&atilde;o rebaixar</b>
+    <!-- LEFT — Fig 3 image -->
+    <div style="flex:1.2; display:flex; flex-direction:column; justify-content:center; min-height:0; overflow:hidden;">
+      <div style="border:1px solid rgba(var(--navy-rgb),0.12); border-radius:0.35vw; background:#fff; padding:0.35vw;">
+        <img src="./assets/figures/core3_fig3_forest_tight.png"
+             alt="Forest plots: Consistente (I&sup2;=0%, RR 0.73) vs Inconsistente (I&sup2;=93%, RR 0.74)"
+             style="width:100%; height:auto; display:block;">
       </div>
     </div>
 
-    <!-- ═══ COL 2 — Inconsistente ═══ -->
-    <div style="display:flex; flex-direction:column; border:1px solid var(--border); border-top:0.22vw solid var(--gold); border-radius:var(--radius-md); overflow:hidden; min-height:0;">
-      <div style="padding:0.45vw 0.7vw; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); background:rgba(var(--gold-rgb),0.04);">
-        <span style="font-weight:800; font-size:0.88vw; color:var(--navy);">Inconsistente</span>
-        <span style="font-size:0.72vw; color:var(--muted); font-weight:500;">I&sup2;&thinsp;=&thinsp;82%&ensp;&middot;&ensp;p&thinsp;&lt;&thinsp;0,001</span>
-      </div>
-      <div style="flex:1; display:flex; align-items:center; justify-content:center; padding:0.2vw 0.35vw; min-height:0; overflow:hidden;">
-        <svg viewBox="0 0 420 270" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-height:100%;" font-family="Inter,system-ui,sans-serif">
-          <line x1="220" y1="14" x2="220" y2="232" stroke="#cbd5e1" stroke-width="0.8" stroke-dasharray="4,3"/>
-          <text x="155" y="14" fill="#94a3b8" font-size="7.5" text-anchor="middle">&larr; Benef&iacute;cio</text>
-          <text x="285" y="14" fill="#94a3b8" font-size="7.5" text-anchor="middle">Risco &rarr;</text>
-          <text x="315" y="14" fill="#94a3b8" font-size="7" font-weight="600">RR [IC 95%]</text>
+    <!-- RIGHT — Annotations -->
+    <div style="flex:0.8; display:flex; flex-direction:column; gap:0.7vw; justify-content:center;">
 
-          <!-- Adams 2017 — RR 0,52 [0,35–0,77] -->
-          <text x="5" y="40" fill="#1e293b" font-size="9.5">Adams 2017</text>
-          <line x1="98" y1="36" x2="189" y2="36" stroke="#475569" stroke-width="1.2"/>
-          <line x1="98" y1="33" x2="98" y2="39" stroke="#475569" stroke-width="0.8"/>
-          <line x1="189" y1="33" x2="189" y2="39" stroke="#475569" stroke-width="0.8"/>
-          <rect x="140" y="32" width="8" height="8" fill="#0b1320"/>
-          <text x="315" y="40" fill="#475569" font-size="8.5">0,52 [0,35&ndash;0,77]</text>
-
-          <!-- Patel 2019 — RR 0,91 [0,72–1,15] -->
-          <text x="5" y="74" fill="#1e293b" font-size="9.5">Patel 2019</text>
-          <line x1="181" y1="70" x2="236" y2="70" stroke="#475569" stroke-width="1.2"/>
-          <line x1="181" y1="67" x2="181" y2="73" stroke="#475569" stroke-width="0.8"/>
-          <line x1="236" y1="67" x2="236" y2="73" stroke="#475569" stroke-width="0.8"/>
-          <rect x="204" y="65" width="10" height="10" fill="#0b1320"/>
-          <text x="315" y="74" fill="#475569" font-size="8.5">0,91 [0,72&ndash;1,15]</text>
-
-          <!-- Li 2020 — RR 0,68 [0,48–0,96] -->
-          <text x="5" y="108" fill="#1e293b" font-size="9.5">Li 2020</text>
-          <line x1="135" y1="104" x2="215" y2="104" stroke="#475569" stroke-width="1.2"/>
-          <line x1="135" y1="101" x2="135" y2="107" stroke="#475569" stroke-width="0.8"/>
-          <line x1="215" y1="101" x2="215" y2="107" stroke="#475569" stroke-width="0.8"/>
-          <rect x="172" y="101" width="7" height="7" fill="#0b1320"/>
-          <text x="315" y="108" fill="#475569" font-size="8.5">0,68 [0,48&ndash;0,96]</text>
-
-          <!-- Santos 2021 — RR 1,12 [0,85–1,48] -->
-          <text x="5" y="142" fill="#1e293b" font-size="9.5">Santos 2021</text>
-          <line x1="201" y1="138" x2="265" y2="138" stroke="#475569" stroke-width="1.2"/>
-          <line x1="201" y1="135" x2="201" y2="141" stroke="#475569" stroke-width="0.8"/>
-          <line x1="265" y1="135" x2="265" y2="141" stroke="#475569" stroke-width="0.8"/>
-          <rect x="229" y="134" width="9" height="9" fill="#0b1320"/>
-          <text x="315" y="142" fill="#475569" font-size="8.5">1,12 [0,85&ndash;1,48]</text>
-
-          <!-- Weber 2022 — RR 0,60 [0,38–0,95] -->
-          <text x="5" y="176" fill="#1e293b" font-size="9.5">Weber 2022</text>
-          <line x1="107" y1="172" x2="214" y2="172" stroke="#475569" stroke-width="1.2"/>
-          <line x1="107" y1="169" x2="107" y2="175" stroke="#475569" stroke-width="0.8"/>
-          <line x1="214" y1="169" x2="214" y2="175" stroke="#475569" stroke-width="0.8"/>
-          <rect x="156" y="168" width="8" height="8" fill="#0b1320"/>
-          <text x="315" y="176" fill="#475569" font-size="8.5">0,60 [0,38&ndash;0,95]</text>
-
-          <line x1="5" y1="196" x2="415" y2="196" stroke="#e2e8f0" stroke-width="0.6"/>
-
-          <!-- Agrupado: RR 0,76 [0,55–1,06] — cruza nulo -->
-          <text x="5" y="222" fill="#0b1320" font-size="9.5" font-weight="700">Agrupado</text>
-          <polygon points="150,218 188,208 226,218 188,228" fill="#d2b55b"/>
-          <text x="315" y="222" fill="#0b1320" font-size="8.5" font-weight="700">0,76 [0,55&ndash;1,06]</text>
-
-          <line x1="80" y1="244" x2="300" y2="244" stroke="#e2e8f0" stroke-width="0.6"/>
-          <line x1="80" y1="241" x2="80" y2="247" stroke="#cbd5e1" stroke-width="0.6"/>
-          <text x="80" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,3</text>
-          <line x1="139" y1="241" x2="139" y2="247" stroke="#cbd5e1" stroke-width="0.6"/>
-          <text x="139" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,5</text>
-          <line x1="178" y1="241" x2="178" y2="247" stroke="#cbd5e1" stroke-width="0.6"/>
-          <text x="178" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle">0,7</text>
-          <line x1="220" y1="241" x2="220" y2="247" stroke="#94a3b8" stroke-width="0.6"/>
-          <text x="220" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle" font-weight="600">1,0</text>
-          <line x1="259" y1="241" x2="259" y2="247" stroke="#cbd5e1" stroke-width="0.6"/>
-          <text x="259" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle">1,4</text>
-          <line x1="300" y1="241" x2="300" y2="247" stroke="#cbd5e1" stroke-width="0.6"/>
-          <text x="300" y="258" fill="#94a3b8" font-size="6.5" text-anchor="middle">2,0</text>
-        </svg>
-      </div>
-      <div style="padding:0.35vw 0.65vw; margin:0 0.45vw 0.45vw; border-radius:0.3vw; border-left:0.18vw solid var(--gold); background:rgba(var(--gold-rgb),0.04); font-size:0.78vw; line-height:1.3; color:var(--navy); font-weight:600;">
-        Dire&ccedil;&otilde;es opostas, diamante cruza nulo &rarr; <b>rebaixar</b>
-      </div>
-    </div>
-
-    <!-- ═══ COL 3 — Explica&ccedil;&atilde;o ═══ -->
-    <div style="display:flex; flex-direction:column; gap:0.5vw; min-height:0;">
-      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:0.55vw 0.7vw; border-left:0.18vw solid var(--navy); background:rgba(var(--navy-rgb),0.02); border-radius:0 0.4vw 0.4vw 0;">
-        <div style="font-size:0.68vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">Como avaliar</div>
-        <ol style="margin:0; padding-left:0.9vw; font-size:0.82vw; line-height:1.32; color:var(--navy); display:flex; flex-direction:column; gap:0.2vw;">
-          <li><b>Pontos estimados</b> pr&oacute;ximos ou distantes?</li>
-          <li><b>ICs se sobrep&otilde;em</b> ou h&aacute; outliers?</li>
-          <li>Estudos apontam para <b>dire&ccedil;&otilde;es opostas</b>?</li>
-          <li><b>Explica&ccedil;&atilde;o plaus&iacute;vel</b> (dose, popula&ccedil;&atilde;o)?</li>
-        </ol>
-      </div>
-      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:0.55vw 0.7vw; border-left:0.18vw solid var(--gold); background:rgba(var(--gold-rgb),0.03); border-radius:0 0.4vw 0.4vw 0;">
-        <div style="font-size:0.68vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">Quando rebaixar</div>
-        <div style="font-size:0.82vw; line-height:1.32; color:var(--navy);">
-          Avalie efeitos <b>relativos</b> (RR/OR) para bin&aacute;rios e <b>absolutos</b> para cont&iacute;nuos. Se a varia&ccedil;&atilde;o <b>n&atilde;o tem explica&ccedil;&atilde;o</b>, rebaixe 1&ndash;2 n&iacute;veis.
+      <!-- Consistent verdict -->
+      <div style="padding:0.65vw 0.7vw; border-radius:0.35vw; border-left:0.25vw solid var(--teal); background:rgba(var(--teal-rgb),0.07);">
+        <div style="font-size:0.7vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.15vw;">Consistente (topo)</div>
+        <div style="font-size:1.0vw; line-height:1.4; color:var(--navy); font-weight:600;">
+          ICs sobrepostos, mesma dire&ccedil;&atilde;o, I&sup2;&thinsp;=&thinsp;0%
+          &rarr; <b style="color:var(--teal);">n&atilde;o rebaixar</b>
         </div>
       </div>
-      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:0.55vw 0.7vw; border-left:0.18vw solid var(--teal); background:rgba(var(--teal-rgb),0.02); border-radius:0 0.4vw 0.4vw 0;">
-        <div style="font-size:0.68vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.3vw;">Al&eacute;m do I&sup2;</div>
-        <div style="font-size:0.82vw; line-height:1.32; color:var(--navy);">
-          I&sup2; e Cochran&nbsp;Q s&atilde;o <b>ponto de partida</b>. O julgamento final vem da <b>inspe&ccedil;&atilde;o visual</b> do forest plot e da relev&acirc;ncia cl&iacute;nica.
+
+      <!-- Inconsistent verdict -->
+      <div style="padding:0.65vw 0.7vw; border-radius:0.35vw; border-left:0.25vw solid var(--gold-dark); background:rgba(var(--gold-rgb),0.07);">
+        <div style="font-size:0.7vw; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); font-weight:800; margin-bottom:0.15vw;">Inconsistente (base)</div>
+        <div style="font-size:1.0vw; line-height:1.4; color:var(--navy); font-weight:600;">
+          Dire&ccedil;&otilde;es opostas, ICs n&atilde;o sobrepostos, I&sup2;&thinsp;=&thinsp;93%
+          &rarr; <b style="color:var(--gold-dark);">rebaixar 1&ndash;2 n&iacute;veis</b>
         </div>
       </div>
+
+      <!-- Key insight -->
+      <div style="padding:0.65vw 0.7vw; border-radius:0.35vw; background:rgba(var(--navy-rgb),0.05); border:1px solid rgba(var(--navy-rgb),0.12);">
+        <div style="font-size:0.95vw; line-height:1.45; color:var(--navy);">
+          Mesma estimativa pontual (<b>RR&thinsp;&asymp;&thinsp;0.74</b>), certeza <b>oposta</b> &mdash; a dispers&atilde;o dos estudos individuais determina se rebaixar.
+        </div>
+      </div>
+
+      <!-- 3 criteria -->
+      <div style="padding:0.65vw 0.7vw; border-radius:0.35vw; background:rgba(var(--teal-rgb),0.05); border:1px solid rgba(var(--teal-rgb),0.12);">
+        <div style="font-size:0.72vw; text-transform:uppercase; letter-spacing:0.06em; color:var(--teal); font-weight:800; margin-bottom:0.2vw;">3 crit&eacute;rios visuais</div>
+        <div style="font-size:0.92vw; line-height:1.5; color:var(--navy);">
+          <b>1.</b> Sobreposi&ccedil;&atilde;o dos ICs<br>
+          <b>2.</b> Estimativas do mesmo lado vs limiar<br>
+          <b>3.</b> I&sup2; = ponto de partida, n&atilde;o veredicto
+        </div>
+      </div>
+
     </div>
 
   </div>
 
-  <div class="ref" style="margin-top:auto; padding-top:0.45vw; border-top:1px solid var(--border);">
-    Dados ilustrativos (log-scale). Sch&uuml;nemann HJ et al. Core GRADE 3 &mdash; assessing inconsistency. <i>BMJ</i> 2025;389:e081905.
+  <div class="ref" style="margin-top:auto; padding-top:0.35vw; border-top:1px solid var(--border);">
+    Fig 3 de Guyatt GH et al. Core GRADE 3 &mdash; rating certainty of evidence: assessing inconsistency. <i>BMJ</i> 2025;389:e081905. doi:&thinsp;10.1136/bmj-2024-081905.
   </div>
 
 </div>

@@ -1,5 +1,5 @@
 # Lista de slides - Osteoporose
-# 69 slides total (S34 mesclado em S33; S08+S08b movidos para após S35; S09-S11 apêndice; S12/S13 invertidos; S07, S21 e S49 removidos)
+# 69 slides total (S20 removido; S13 movido após S12; S73+S74+S75 NNT/NNS adicionados após S31)
 S01_slide-01.html
 S02_slide-02.html
 S03_slide-03.html
@@ -12,7 +12,6 @@ S17_slide-17.html
 S14_slide-14.html
 S19_slide-19.html
 S14b_slide-14b.html
-S20_slide-20.html
 S23_slide-23.html
 S22_slide-22.html
 S24_slide-24.html
@@ -22,6 +21,9 @@ S28_slide-28.html
 S29_slide-29.html
 S30_slide-30.html
 S31_slide-31.html
+S73_slide-73.html
+S74_slide-74.html
+S75_slide-75.html
 S32_slide-32.html
 S33_slide-33.html
 S35_slide-35.html
@@ -36,11 +38,11 @@ S41_slide-41.html
 S42_slide-42.html
 S43_slide-43.html
 S44_slide-44.html
-S45_slide-45.html
-S46_slide-46.html
 S47_slide-47.html
+S46_slide-46.html
 S48_slide-48.html
 S50_slide-50.html
+S45_slide-45.html
 S15_slide-15.html
 S09_slide-09.html
 S10_slide-10.html

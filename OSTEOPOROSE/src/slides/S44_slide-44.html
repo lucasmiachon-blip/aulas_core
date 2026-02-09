@@ -1,51 +1,83 @@
-<!-- 45. Slide 41 - Caso Clinico -->
-<section class="slide" data-slide="" data-title="Slide 41 - Caso Clinico" id="slide-41" style="padding: 40px 60px 50px 60px; background: var(--bg);">
-<h1 style="font-family: Inter, sans-serif; font-size: 48px; font-weight: 700; color: var(--navy); text-align: center; margin: 0 0 60px 0;">Caso Clínico</h1>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px;">
-<div>
-<div style="background: rgba(var(--navy-rgb), 0.78); border-radius: 12px; padding: 35px; margin-bottom: 30px;">
-<h2 style="font-family: Inter, sans-serif; font-size: 32px; font-weight: 700; color: var(--white); margin: 0 0 15px 0;">Maria, 58 anos</h2>
-<p style="font-family: Inter, sans-serif; font-size: 20px; font-weight: 400; color: var(--gold); margin: 0;">Artrite Reumatoide há 8 anos</p>
+<!-- S44 — Caso Clínico: Maria, 58 anos (HOOK interativo) -->
+<section class="slide" data-slide="" data-title="Caso Clínico Maria" id="slide-44" style="padding: 36px 48px; background: var(--bg);">
+
+<h1 style="font-size: 38px; font-weight: 800; letter-spacing: -0.01em; color: var(--navy); margin: 0 0 18px 0;">Caso Clínico</h1>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+  <!-- COLUNA ESQUERDA — Dados da paciente -->
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <!-- Header paciente -->
+    <div style="background: rgba(var(--navy-rgb), 0.88); border-radius: 10px; padding: 22px 26px;">
+      <h2 style="font-size: 26px; font-weight: 800; color: var(--white); margin: 0 0 6px 0;">Maria, 58 anos</h2>
+      <p style="font-size: 16px; font-weight: 500; color: var(--gold); margin: 0;">Artrite Reumatoide há 8 anos</p>
+    </div>
+
+    <!-- 4 data cards em grid 2x2 -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+      <div style="background: var(--white); border: 1.5px solid var(--border); border-left: 4px solid var(--gold-dark); border-radius: 8px; padding: 14px 16px;">
+        <p style="font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 4px 0;">Glicocorticoide</p>
+        <p style="font-size: 20px; font-weight: 800; color: var(--navy); margin: 0;">7,5 mg/d</p>
+        <p style="font-size: 12px; color: var(--muted); margin: 4px 0 0 0;">Prednisona × 3 anos</p>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--border); border-left: 4px solid var(--gold-dark); border-radius: 8px; padding: 14px 16px;">
+        <p style="font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 4px 0;">DXA</p>
+        <p style="font-size: 20px; font-weight: 800; color: var(--navy); margin: 0;">−2,1 / −1,8</p>
+        <p style="font-size: 12px; color: var(--muted); margin: 4px 0 0 0;">Coluna | Fêmur</p>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--border); border-left: 4px solid var(--gold-dark); border-radius: 8px; padding: 14px 16px;">
+        <p style="font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 4px 0;">FRAX (corrigido GC)</p>
+        <p style="font-size: 20px; font-weight: 800; color: var(--navy); margin: 0;">18% / 3,2%</p>
+        <p style="font-size: 12px; color: var(--muted); margin: 4px 0 0 0;">MOF | Hip</p>
+      </div>
+      <div style="background: var(--white); border: 1.5px solid var(--border); border-left: 4px solid var(--gold-dark); border-radius: 8px; padding: 14px 16px;">
+        <p style="font-size: 11px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 4px 0;">Hx Familiar</p>
+        <p style="font-size: 20px; font-weight: 800; color: var(--navy); margin: 0;">Positiva</p>
+        <p style="font-size: 12px; color: var(--muted); margin: 4px 0 0 0;">Mãe fx quadril 72a</p>
+      </div>
+    </div>
+
+    <!-- Key observation -->
+    <div style="background: rgba(var(--gold-rgb), 0.10); border: 1.5px solid rgba(var(--gold-rgb), 0.25); border-radius: 8px; padding: 14px 18px;">
+      <p style="font-size: 14px; font-weight: 700; color: var(--navy); margin: 0 0 4px 0;">O que NÃO consta no encaminhamento:</p>
+      <p style="font-size: 13px; color: var(--text); margin: 0;">Sem fratura prévia documentada. Sem avaliação de imagem vertebral (VFA ou RX coluna).</p>
+    </div>
+  </div>
+
+  <!-- COLUNA DIREITA — Pergunta + MCQ -->
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <h2 style="font-size: 22px; font-weight: 800; color: var(--navy); text-align: center; margin: 0;">O que você faria com Maria?</h2>
+
+    <div style="display: flex; flex-direction: column; gap: 10px; flex: 1;">
+      <!-- Opção A -->
+      <div style="background: var(--white); border: 1.5px solid rgba(var(--border-rgb), 0.85); border-left: 4px solid rgba(var(--navy-rgb), 0.3); border-radius: 8px; padding: 16px 18px; display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-size: 18px; font-weight: 800; color: rgba(var(--navy-rgb), 0.5); flex-shrink: 0;">A</span>
+        <p style="font-size: 15px; color: var(--text); margin: 0;">Iniciar alendronato 70 mg/semana</p>
+      </div>
+
+      <!-- Opção B -->
+      <div style="background: var(--white); border: 1.5px solid rgba(var(--border-rgb), 0.85); border-left: 4px solid rgba(var(--navy-rgb), 0.3); border-radius: 8px; padding: 16px 18px; display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-size: 18px; font-weight: 800; color: rgba(var(--navy-rgb), 0.5); flex-shrink: 0;">B</span>
+        <p style="font-size: 15px; color: var(--text); margin: 0;">Solicitar VFA ou RX coluna + iniciar bisfosfonato conforme resultado</p>
+      </div>
+
+      <!-- Opção C -->
+      <div style="background: var(--white); border: 1.5px solid rgba(var(--border-rgb), 0.85); border-left: 4px solid rgba(var(--navy-rgb), 0.3); border-radius: 8px; padding: 16px 18px; display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-size: 18px; font-weight: 800; color: rgba(var(--navy-rgb), 0.5); flex-shrink: 0;">C</span>
+        <p style="font-size: 15px; color: var(--text); margin: 0;">Cálcio + vitamina D, repetir DXA em 2 anos</p>
+      </div>
+
+      <!-- Opção D -->
+      <div style="background: var(--white); border: 1.5px solid rgba(var(--border-rgb), 0.85); border-left: 4px solid rgba(var(--navy-rgb), 0.3); border-radius: 8px; padding: 16px 18px; display: flex; align-items: baseline; gap: 12px;">
+        <span style="font-size: 18px; font-weight: 800; color: rgba(var(--navy-rgb), 0.5); flex-shrink: 0;">D</span>
+        <p style="font-size: 15px; color: var(--text); margin: 0;">Iniciar teriparatida 20 mcg/d SC</p>
+      </div>
+    </div>
+
+    <!-- Hint bar -->
+    <div style="background: rgba(var(--navy-rgb), 0.06); border-radius: 8px; padding: 12px 16px; text-align: center;">
+      <p style="font-size: 13px; color: var(--muted); margin: 0;">Considere: risco da paciente, o que falta na avaliação e as diretrizes que veremos a seguir.</p>
+    </div>
+  </div>
 </div>
-<div style="background: rgba(var(--border-rgb), 0.80); border-radius: 12px; padding: 30px;">
-<div style="margin-bottom: 20px;">
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 8px 0;">GC:</p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--text); margin: 0;">Prednisona 7,5 mg/d há 3 anos</p>
-</div>
-<div style="margin-bottom: 20px;">
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 8px 0;">DXA:</p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--text); margin: 0;">Coluna −2,1 | Fêmur −1,8</p>
-</div>
-<div style="margin-bottom: 20px;">
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 8px 0;">FRAX:</p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--text); margin: 0;">MOF 18% | Hip 3,2%</p>
-</div>
-<div>
-<p style="font-family: Inter, sans-serif; font-size: 18px; font-weight: 700; color: var(--navy); margin: 0 0 8px 0;">Hx familiar:</p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--text); margin: 0;">Mãe fratura quadril 72a</p>
-</div>
-</div>
-</div>
-<div>
-<h2 style="font-family: Inter, sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); text-align: center; margin: 0 0 40px 0;">O que você faria com Maria?</h2>
-<div style="display: flex; flex-direction: column; gap: 15px;">
-<div style="background: var(--white); border: 3px solid rgba(var(--border-rgb), 0.85); border-radius: 12px; padding: 25px;">
-<p style="font-family: Inter, sans-serif; font-size: 24px; font-weight: 700; color: rgba(var(--navy-rgb), 0.78); margin: 0 0 10px 0;">A</p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--text); margin: 0;">Iniciar alendronato 70 mg/semana</p>
-</div>
-<div style="background: var(--white); border: 3px solid var(--gold); border-radius: 12px; padding: 25px;">
-<p style="font-family: Inter, sans-serif; font-size: 24px; font-weight: 700; color: var(--gold); margin: 0 0 10px 0;">B</p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--text); margin: 0;">Solicitar VFA ou RX + iniciar bisfosfonato</p>
-</div>
-<div style="background: var(--white); border: 3px solid rgba(var(--border-rgb), 0.85); border-radius: 12px; padding: 25px;">
-<p style="font-family: Inter, sans-serif; font-size: 24px; font-weight: 700; color: rgba(var(--navy-rgb), 0.78); margin: 0 0 10px 0;">C</p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--text); margin: 0;">Cálcio + vitamina D, repetir DXA em 2 anos</p>
-</div>
-<div style="background: rgba(var(--border-rgb), 0.80); border: 3px solid rgba(var(--navy-rgb), 0.78); border-radius: 12px; padding: 25px;">
-<p style="font-family: Inter, sans-serif; font-size: 24px; font-weight: 700; color: rgba(var(--navy-rgb), 0.78); margin: 0 0 10px 0;">D</p>
-<p style="font-family: Inter, sans-serif; font-size: 16px; color: var(--text); margin: 0;">Iniciar teriparatida 20 mcg/d SC</p>
-</div>
-</div>
-</div>
-</div>
+
 </section>

@@ -25,7 +25,7 @@
     </p>
 
     <!-- CORPO: Forest Plot (JAMA real) + GRADE Panel -->
-    <div style="flex: 1; display: grid; grid-template-columns: 58% 42%; gap: 22px; min-height: 0; align-items: stretch">
+    <div style="flex: 1; display: grid; grid-template-columns: 58% 42%; gap: 22px; min-height: 0; align-items: start; align-content: start">
       <!-- ═══ LEFT: Forest Plot — Cummings JAMA Intern Med 2019, Fig. 3 ═══ -->
       <div
         style="
@@ -52,12 +52,12 @@
           Bisfosfonatos &amp; Mortalidade — 21 RCTs, n=42.867
         </p>
         <div
-          style="flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; overflow: hidden"
+          style="min-height: 0; overflow: hidden"
         >
           <img
-            src="../assets/cummings2019-fig3-forest.jpg"
+            src="assets/images/cummings2019-fig3-forest.jpg"
             alt="Forest plot from Cummings JAMA Intern Med 2019 showing bisphosphonate treatments and overall mortality: RR 0.95 (95% CI 0.86-1.04), I²=0%. Lyles 2007 (HORIZON) is the only study with significant benefit (RR 0.72)."
-            style="width: 100%; height: 100%; object-fit: contain; border-radius: 4px; display: block"
+            style="width: 100%; object-fit: contain; border-radius: 4px; display: block"
           />
         </div>
         <p
@@ -116,47 +116,15 @@
           "
         >
           <div style="display: flex; align-items: center; gap: 10px">
-            <div style="display: flex; gap: 3px">
-              <span
-                style="
-                  display: inline-block;
-                  width: 18px;
-                  height: 18px;
-                  border-radius: 50%;
-                  background: var(--gold-dark);
-                "
-              ></span>
-              <span
-                style="
-                  display: inline-block;
-                  width: 18px;
-                  height: 18px;
-                  border-radius: 50%;
-                  background: var(--gold-dark);
-                "
-              ></span>
-              <span
-                style="
-                  display: inline-block;
-                  width: 18px;
-                  height: 18px;
-                  border-radius: 50%;
-                  background: var(--gold-dark);
-                "
-              ></span>
-              <span
-                style="
-                  display: inline-block;
-                  width: 18px;
-                  height: 18px;
-                  border-radius: 50%;
-                  background: var(--gold-dark);
-                "
-              ></span>
+            <div style="display: flex; gap: 2px">
+              <span style="font-size: 20px; color: var(--gold-dark); line-height: 1">★</span>
+              <span style="font-size: 20px; color: var(--gold-dark); line-height: 1">★</span>
+              <span style="font-size: 20px; color: var(--gold-dark); line-height: 1">★</span>
+              <span style="font-size: 20px; color: var(--gold-dark); line-height: 1">★</span>
             </div>
             <div>
               <p style="font-size: 15px; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1.1">
-                GRADE: Alta Certeza
+                GRADE: Alto Grau de Evidência
               </p>
               <p style="font-size: 10px; color: var(--muted); margin: 2px 0 0 0">Sem downgrade em nenhum domínio</p>
             </div>
@@ -202,6 +170,13 @@
             <div style="display: flex; align-items: baseline; gap: 7px">
               <span style="font-size: 13px; color: var(--gold-dark)">✓</span>
               <p style="font-size: 12.5px; color: var(--navy); margin: 0; line-height: 1.3">
+                <strong>Indireção:</strong>
+                Direta (PICO)
+              </p>
+            </div>
+            <div style="display: flex; align-items: baseline; gap: 7px">
+              <span style="font-size: 13px; color: var(--gold-dark)">✓</span>
+              <p style="font-size: 12.5px; color: var(--navy); margin: 0; line-height: 1.3">
                 <strong>Imprecisão:</strong>
                 n = 42.867
               </p>
@@ -236,14 +211,11 @@
           >
             Interpretação GRADE
           </p>
-          <p style="font-size: 13px; color: var(--navy); margin: 0; line-height: 1.5">
-            Com
-            <strong>alta certeza</strong>
-            , bisfosfonatos
-            <strong style="color: var(--gold-dark)">não reduzem mortalidade geral</strong>
-            . O HORIZON foi o único RCT positivo — em população
-            <em>pós-fratura de quadril</em>
-            (frágil, alta mortalidade basal).
+          <p style="font-size: 13.5px; color: var(--navy); margin: 0; line-height: 1.45">
+            Com <strong>alto grau de evidência</strong>, bisfosfonatos
+            <strong style="color: var(--gold-dark)">não reduzem mortalidade geral</strong>.
+            O HORIZON foi o único RCT positivo — em população
+            <em>pós-fratura de quadril</em> (frágil, alta mortalidade basal).
           </p>
           <p style="font-size: 11.5px; color: rgba(var(--navy-rgb), 0.5); margin: 8px 0 0 0; line-height: 1.4">
             Confirmado por Lan CORR 2025 (47 RCTs, n=59.437): RR 0.95 (0.88–1.03), I²=0%.
