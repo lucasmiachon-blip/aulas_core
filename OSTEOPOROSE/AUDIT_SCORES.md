@@ -8,9 +8,10 @@
 | S24 | 16 | 7.5/10 | 3 boxes texto + bar chart dominante, dados Tier 1 | Commitado |
 | S25 | 17 | 7.8/10 | Anabolic first, NNT+IC+tempo, hierarquia cores, sublinhas | Commitado |
 | S26 | 18 | 8.3/10 | Blunting effect protagonista, high contrast cards, sem Teriparatida | Commitado |
+| S28 | 19 | 8.2/10 | 3-card layout clean, números hero 3.5vw, título posição padrão | Commitado |
 
 ## Próximos
-- S27 (posição 19) - verificar se é S28 treat-to-target
+- S29 (posição 20)
 - ...
 
 ## Critérios de Avaliação
