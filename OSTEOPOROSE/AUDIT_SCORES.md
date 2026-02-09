@@ -7,7 +7,7 @@
 |-------|---------|-------|-------|--------|
 | S24 | 16 | 7.5/10 | 3 boxes texto + bar chart dominante, dados Tier 1 | Commitado |
 | S25 | 17 | 7.8/10 | Anabolic first, NNT+IC+tempo, hierarquia cores, sublinhas | Commitado |
-| S26 | 18 | 7.6/10 | Sequência 3 fases, redundância alvos eliminada, ref a S28 | Pronto |
+| S26 | 18 | 8.3/10 | Blunting effect protagonista, high contrast cards, sem Teriparatida | Commitado |
 
 ## Próximos
 - S27 (posição 19) - verificar se é S28 treat-to-target
