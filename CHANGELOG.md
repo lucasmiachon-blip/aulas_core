@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-02-09 — OSTEO: GIOP bloco final — paleta, narrativa, slide encerramento
+
+### Mudanças de conteúdo e paleta
+
+| Slide | Mudança |
+|-------|---------|
+| S43 | "TRATAR" → "AVALIAR" (4 instâncias); "sempre tratar" → "risco máximo"; rainbow border-left (teal/navy/gold) → unified gold-dark |
+| S44 | Redesign: 2×2 data cards (7.5 mg/d, −2.1/−1.8, 18%/3.2%, Positiva), seção "O que NÃO consta", hint bar |
+| S45 | NOGG removido — agora 3 guidelines (ACR 2022, ECTS 2024, JSBMR 2023); contexto 3-col → 2-col; RESPOSTA com "a imagem define o caminho" |
+| S48 | Cards comparação: alternância gold/dark → todos `rgba(255,255,255,0.12)` |
+| S50 | Score borders: teal → gold-dark; exemplos border-left unificados; backgrounds gold-rgb família |
+
+### Estrutura da apresentação
+
+- **S99_slide-closing.html** — NOVO slide de encerramento (navy bg, placeholder `[pintura]`)
+- **_list.txt** — S99 inserido na pos 44 (após S45 payoff); S15 movido para apêndice
+- **Apêndice** — Marcador `# --- APÊNDICE ---` adicionado; 26 slides extras preservados
+- Header atualizado: "43 slides apresentação + 26 slides apêndice"
+
+### Auditoria de paleta
+
+Comparação GIOP vs slides de referência (S28, S73, S38):
+- Cores unificadas: zero rainbow borders remanescentes
+- Fill ratio: 60-70% nos GIOP (vs 85-95% referência) — gap identificado mas não atacado
+- Scores finais: S42(8.5) S43(7.5) S44(7.0) S47(8.0) S46(7.5) S48(8.0) S50(7.5) S45(7.5) — média 7.8
+
+---
+
 ## 2026-02-09 — GRADE: S65 Take-Home Messages (novo slide, posição 33)
 
 - **CRIADO** `GRADE/src/slides/S65.html` — slide Take-Home Messages com 5 conceitos-chave

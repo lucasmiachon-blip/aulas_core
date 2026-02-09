@@ -1,6 +1,6 @@
 # CLAUDE.md — Prompt Compacto
 
-> **Cross-project** | Atualizado: 2026-02-08 | **Memória expandida:** `.claude/projects/.../memory/`
+> **Cross-project** | Atualizado: 2026-02-09 | **Memória expandida:** `.claude/projects/.../memory/`
 
 ---
 
@@ -42,8 +42,8 @@ Criar apresentações com: narrativa forte (Duarte), slides limpos (hierarquia),
 ### Arquitetura
 ```
 Aulas2/
-├── OSTEOPOROSE/src/slides/ (72 slides)
-├── GRADE/src/slides/ (56+ slides)
+├── OSTEOPOROSE/src/slides/ (46 main + 25 appendix)
+├── GRADE/src/slides/ (58 slides, S65=take-home)
 ├── exports/ (deliverables)
 ├── scripts/ (automação)
 ├── docs/ (guias)
@@ -97,7 +97,7 @@ Zero novos `!important`. Exceção: print.css existentes.
 ### HC5: Pacotes
 - Pode instalar pacotes **com aprovação** para funcionalidade necessária
 - NUNCA reinstalar/atualizar pacotes existentes sem motivo
-- NUNCA modificar estrutura do projeto antes do deadline (12/02)
+- NUNCA modificar estrutura do projeto sem aprovação
 
 ### HC6: Git Checkpoint
 Mudança em 3+ arquivos → commit checkpoint primeiro.
@@ -127,7 +127,7 @@ Permitidos em slides, MAS verificar CSS antes para evitar conflitos.
 |---|-------------|--------------|
 | 1 | `flex:1` em containers com conteúdo desigual | Dead space garantido |
 | 2 | `display` inline no `<section class="slide">` | Viewer quebrado |
-| 3 | `space-between` com 5+ items | Micro-gaps; usar 3-group |
+| 3 | `space-between` com 5+ items | Usar `space-evenly` ou 3-group |
 | 4 | Dados médicos de memória | SEMPRE fonte Tier 1 |
 | 5 | Linhas de acento sob título | AI marker |
 | 6 | Gold (#DDB944) sobre cream | Usar gold-dark |
@@ -138,7 +138,7 @@ Permitidos em slides, MAS verificar CSS antes para evitar conflitos.
 
 ---
 
-## ERROS RESUMIDOS (28)
+## ERROS RESUMIDOS (29)
 
 ### Cluster A: Flexbox & Layout
 - E06: Batch 19 slides sem validação → NUNCA >5 slides por batch
@@ -177,6 +177,7 @@ Permitidos em slides, MAS verificar CSS antes para evitar conflitos.
 - E11: "Bom o suficiente" → primeiro render é rascunho
 - E16: Arquivo vs posição → "slide N" = linha N do _list.txt
 - E19: git checkout sem backup → verificar uncommitted changes
+- E29: Cleanup sem verificar refs → antes de deletar imagem/script, confirmar que nenhum slide a referencia
 
 **Análise completa:** `memory/errors.md`
 
@@ -308,4 +309,4 @@ A cada sessão com erros:
 
 ---
 
-*Versão compacta: 2026-02-08 | Original: 2500 linhas → Compacto: ~400 linhas*
+*Versão compacta: 2026-02-09 | Original: 2500 linhas → Compacto: ~400 linhas*

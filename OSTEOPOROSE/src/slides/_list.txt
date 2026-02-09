@@ -1,5 +1,5 @@
 # Lista de slides - Osteoporose
-# 43 slides total — apresentação termina no bloco GIOP (S45 payoff)
+# 44 slides apresentação + 25 slides apêndice — apresentação principal termina no GIOP (S45)
 S01_slide-01.html
 S02_slide-02.html
 S03_slide-03.html
@@ -43,3 +43,30 @@ S46_slide-46.html
 S48_slide-48.html
 S50_slide-50.html
 S45_slide-45.html
+S99_slide-closing.html
+# --- APÊNDICE (slides extras, fora da apresentação principal) ---
+S09_slide-09.html
+S10_slide-10.html
+S11_slide-11.html
+S51_slide-51.html
+S52_slide-52.html
+S53_slide-53.html
+S54_slide-54.html
+S55_slide-55.html
+S56_slide-56.html
+S57_slide-57.html
+S58_slide-58.html
+S59_slide-59.html
+S60_slide-60.html
+S61_slide-61.html
+S62_slide-62.html
+S63_slide-63.html
+S64_slide-64.html
+S65_slide-65.html
+S66_slide-66.html
+S67_slide-67.html
+S68_slide-68.html
+S69_slide-69.html
+S70_slide-70.html
+S71_slide-71.html
+S72_slide-72.html
