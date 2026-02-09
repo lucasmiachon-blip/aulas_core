@@ -21,7 +21,7 @@ Se aparecer algo como `v20.11.0`, está instalado corretamente!
 ## Passo 3: Ir para a pasta do projeto
 
 ```bash
-cd C:\Users\lucas\OneDrive\LM\Documentos\Dev\Projetos\Aulas\scripts
+cd C:\Dev\Projetos\Aulas2\scripts
 ```
 
 ## Passo 4: Instalar dependências
@@ -49,7 +49,7 @@ npm run export-grade
 Pronto! O PDF será gerado em:
 
 ```
-C:\Users\lucas\OneDrive\LM\Documentos\Dev\Projetos\Aulas\exports\GRADE-slides.pdf
+C:\Dev\Projetos\Aulas2\exports\GRADE-slides.pdf
 ```
 
 ## Problemas?
@@ -76,7 +76,7 @@ C:\Users\lucas\OneDrive\LM\Documentos\Dev\Projetos\Aulas\exports\GRADE-slides.pd
 Instalar tudo de uma vez (após instalar Node.js):
 
 ```bash
-cd C:\Users\lucas\OneDrive\LM\Documentos\Dev\Projetos\Aulas\scripts
+cd C:\Dev\Projetos\Aulas2\scripts
 npm install
 npx playwright install chromium
 npm run export-grade

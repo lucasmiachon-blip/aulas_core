@@ -8,7 +8,7 @@ COMANDOS PARA EXECUTAR (um por vez):
 -------------------------------------
 
 1. Ir para a pasta:
-   cd C:\Users\lucas\OneDrive\LM\Documentos\Dev\Projetos\Aulas\scripts
+   cd C:\Dev\Projetos\Aulas2\scripts
 
 2. Instalar Playwright (primeira vez):
    npm install
@@ -22,7 +22,7 @@ COMANDOS PARA EXECUTAR (um por vez):
 RESULTADO:
 ----------
 O PDF será salvo em:
-C:\Users\lucas\OneDrive\LM\Documentos\Dev\Projetos\Aulas\exports\GRADE-slides.pdf
+C:\Dev\Projetos\Aulas2\exports\GRADE-slides.pdf
 
 PROBLEMAS:
 ----------
