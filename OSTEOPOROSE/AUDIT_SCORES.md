@@ -6,11 +6,11 @@
 | Slide | Posição | Score | Notas | Status |
 |-------|---------|-------|-------|--------|
 | S24 | 16 | 7.5/10 | 3 boxes texto + bar chart dominante, dados Tier 1 | Commitado |
-| S25 | 17 | 7.5/10 | Anabolic first, NNT+IC+tempo, critérios simplificados | Em revisão |
+| S25 | 17 | 7.8/10 | Anabolic first, NNT+IC+tempo, hierarquia cores, sublinhas | Commitado |
+| S26 | 18 | 7.6/10 | Sequência 3 fases, redundância alvos eliminada, ref a S28 | Pronto |
 
 ## Próximos
-- S25 (posição 17)
-- S26 (posição 18)
+- S27 (posição 19) - verificar se é S28 treat-to-target
 - ...
 
 ## Critérios de Avaliação
