@@ -6,7 +6,9 @@
   id="slide-anabolic-first"
   style="padding: 32px 44px 16px 44px; background: var(--bg);"
 >
-  <div style="display: flex; flex-direction: column; height: 100%; box-sizing: border-box;">
+  <div style="display: flex; flex-direction: column; height: 100%; box-sizing: border-box; justify-content: space-between;">
+  <!-- TOP CONTENT GROUP -->
+  <div>
   <!-- Eyebrow -->
   <p
     style="
@@ -34,13 +36,13 @@
       letter-spacing: -0.01em;
     "
   >
-    Anabólico primeiro: quando e por quê
+    Anabolic first: quando e por quê
   </h1>
 
-  <!-- 2-column layout — flex:1 fills vertical space -->
-  <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.2vw; margin-bottom: 0.5vw; flex: 1">
+  <!-- 2-column layout -->
+  <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 1.2vw; margin-bottom: auto;">
     <!-- LEFT: When — criteria with Tier 1 data -->
-    <div style="display: flex; flex-direction: column; gap: 0.4vw; justify-content: space-between">
+    <div style="display: flex; flex-direction: column; gap: 0.7vw;">
       <p
         style="
           font-family: var(--font-sans);
@@ -56,222 +58,48 @@
       </p>
 
       <!-- Criterion 1 -->
-      <div
-        style="
-          padding: 0.45vw 0.7vw;
-          background: rgba(var(--navy-rgb), 0.03);
-          border-left: 0.18vw solid var(--navy);
-          border-radius: 0.3vw;
-        "
-      >
-        <div style="display: flex; align-items: center; gap: 0.45vw">
-          <span
-            style="
-              font-family: var(--font-sans);
-              font-size: 0.65vw;
-              font-weight: 800;
-              color: var(--navy);
-              background: rgba(var(--navy-rgb), 0.07);
-              padding: 0.1vw 0.35vw;
-              border-radius: 0.15vw;
-              flex-shrink: 0;
-            "
-          >
-            1
-          </span>
-          <p
-            style="
-              font-family: var(--font-sans);
-              font-size: 0.82vw;
-              font-weight: 700;
-              color: var(--navy);
-              margin: 0;
-              line-height: 1.3;
-            "
-          >
-            Fratura recente (≤ 2a) — vertebral, quadril ou pelve
-          </p>
-        </div>
-        <p
-          style="
-            font-family: var(--font-sans);
-            font-size: 0.62vw;
-            color: var(--muted);
-            margin: 0.15vw 0 0 1.8vw;
-            line-height: 1.3;
-          "
-        >
-          Risco 2,7× no 1º ano (Johansson Osteoporos Int 2017)
+      <div style="padding: 0.6vw 0.9vw; background: rgba(var(--navy-rgb), 0.04); border-left: 3px solid var(--navy); border-radius: 0.3vw;">
+        <p style="font-family: var(--font-sans); font-size: 0.92vw; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3;">
+          Fratura recente <strong style="color: var(--gold-dark);">≤2 anos</strong> — vertebral, quadril, pelve
         </p>
+        <p style="font-family: var(--font-sans); font-size: 0.62vw; color: var(--muted); margin: 0.15vw 0 0 0;">Risco 2,7× no 1º ano</p>
       </div>
 
       <!-- Criterion 2 -->
-      <div
-        style="
-          padding: 0.45vw 0.7vw;
-          background: rgba(var(--navy-rgb), 0.03);
-          border-left: 0.18vw solid var(--gold-dark);
-          border-radius: 0.3vw;
-        "
-      >
-        <div style="display: flex; align-items: center; gap: 0.45vw">
-          <span
-            style="
-              font-family: var(--font-sans);
-              font-size: 0.65vw;
-              font-weight: 800;
-              color: var(--gold-dark);
-              background: rgba(var(--gold-dark-rgb), 0.07);
-              padding: 0.1vw 0.35vw;
-              border-radius: 0.15vw;
-              flex-shrink: 0;
-            "
-          >
-            2
-          </span>
-          <p style="font-family: var(--font-sans); font-size: 0.82vw; font-weight: 700; color: var(--navy); margin: 0">
-            ≥ 2 fraturas vertebrais
-          </p>
-        </div>
-        <p
-          style="
-            font-family: var(--font-sans);
-            font-size: 0.62vw;
-            color: var(--muted);
-            margin: 0.15vw 0 0 1.8vw;
-            line-height: 1.3;
-          "
-        >
-          19% nova vertebral em 1 a (Lindsay JAMA 2001; IC 95% 14–25%)
+      <div style="padding: 0.6vw 0.9vw; background: rgba(var(--gold-rgb), 0.06); border-left: 3px solid var(--gold-dark); border-radius: 0.3vw;">
+        <p style="font-family: var(--font-sans); font-size: 0.92vw; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3;">
+          <strong style="color: var(--gold-dark);">≥2</strong> fraturas vertebrais
         </p>
+        <p style="font-family: var(--font-sans); font-size: 0.62vw; color: var(--muted); margin: 0.15vw 0 0 0;">19% nova Fx vertebral em 1 ano</p>
       </div>
 
       <!-- Criterion 3 -->
-      <div
-        style="
-          padding: 0.45vw 0.7vw;
-          background: rgba(var(--navy-rgb), 0.03);
-          border-left: 0.18vw solid var(--gold-dark);
-          border-radius: 0.3vw;
-        "
-      >
-        <div style="display: flex; align-items: center; gap: 0.45vw">
-          <span
-            style="
-              font-family: var(--font-sans);
-              font-size: 0.65vw;
-              font-weight: 800;
-              color: var(--gold-dark);
-              background: rgba(var(--gold-dark-rgb), 0.07);
-              padding: 0.1vw 0.35vw;
-              border-radius: 0.15vw;
-              flex-shrink: 0;
-            "
-          >
-            3
-          </span>
-          <p style="font-family: var(--font-sans); font-size: 0.82vw; font-weight: 700; color: var(--navy); margin: 0">
-            T-score ≤ −3,0 com fratura prévia
-          </p>
-        </div>
-        <p
-          style="
-            font-family: var(--font-sans);
-            font-size: 0.62vw;
-            color: var(--muted);
-            margin: 0.15vw 0 0 1.8vw;
-            line-height: 1.3;
-          "
-        >
-          RR 2,6 (IC 95% 1,9–3,6) por SD no T-score (Cummings Lancet 1993)
+      <div style="padding: 0.6vw 0.9vw; background: rgba(var(--gold-rgb), 0.06); border-left: 3px solid var(--gold-dark); border-radius: 0.3vw;">
+        <p style="font-family: var(--font-sans); font-size: 0.92vw; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3;">
+          T-score <strong style="color: var(--gold-dark);">≤−3,0</strong> + fratura prévia
         </p>
+        <p style="font-family: var(--font-sans); font-size: 0.62vw; color: var(--muted); margin: 0.15vw 0 0 0;">RR 2,6 por SD no T-score</p>
       </div>
 
       <!-- Criterion 4 -->
-      <div
-        style="
-          padding: 0.45vw 0.7vw;
-          background: rgba(var(--teal-rgb), 0.03);
-          border-left: 0.18vw solid var(--teal);
-          border-radius: 0.3vw;
-        "
-      >
-        <div style="display: flex; align-items: center; gap: 0.45vw">
-          <span
-            style="
-              font-family: var(--font-sans);
-              font-size: 0.65vw;
-              font-weight: 800;
-              color: var(--teal);
-              background: rgba(var(--teal-rgb), 0.07);
-              padding: 0.1vw 0.35vw;
-              border-radius: 0.15vw;
-              flex-shrink: 0;
-            "
-          >
-            4
-          </span>
-          <p style="font-family: var(--font-sans); font-size: 0.82vw; font-weight: 700; color: var(--navy); margin: 0">
-            GIOP "very high risk" (ACR 2022)
-          </p>
-        </div>
-        <p
-          style="
-            font-family: var(--font-sans);
-            font-size: 0.62vw;
-            color: var(--muted);
-            margin: 0.15vw 0 0 1.8vw;
-            line-height: 1.3;
-          "
-        >
-          Perda 6-12% DMO trabecular no 1º ano de GC (Van Staa Osteoporos Int 2002)
+      <div style="padding: 0.6vw 0.9vw; background: rgba(var(--teal-rgb), 0.06); border-left: 3px solid var(--teal); border-radius: 0.3vw;">
+        <p style="font-family: var(--font-sans); font-size: 0.92vw; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3;">
+          GIOP <strong style="color: var(--teal);">very high risk</strong> (ACR 2022)
         </p>
+        <p style="font-family: var(--font-sans); font-size: 0.62vw; color: var(--muted); margin: 0.15vw 0 0 0;">Perda 6-12% DMO no 1º ano de GC</p>
       </div>
 
       <!-- Criterion 5 -->
-      <div
-        style="
-          padding: 0.45vw 0.7vw;
-          background: rgba(var(--teal-rgb), 0.03);
-          border-left: 0.18vw solid var(--teal);
-          border-radius: 0.3vw;
-        "
-      >
-        <div style="display: flex; align-items: center; gap: 0.45vw">
-          <span
-            style="
-              font-family: var(--font-sans);
-              font-size: 0.65vw;
-              font-weight: 800;
-              color: var(--teal);
-              background: rgba(var(--teal-rgb), 0.07);
-              padding: 0.1vw 0.35vw;
-              border-radius: 0.15vw;
-              flex-shrink: 0;
-            "
-          >
-            5
-          </span>
-          <p style="font-family: var(--font-sans); font-size: 0.82vw; font-weight: 700; color: var(--navy); margin: 0">
-            Falha de AR com adesão adequada
-          </p>
-        </div>
-        <p
-          style="
-            font-family: var(--font-sans);
-            font-size: 0.62vw;
-            color: var(--muted);
-            margin: 0.15vw 0 0 1.8vw;
-            line-height: 1.3;
-          "
-        >
-          Nova fratura ou DMO reduz &gt;5% com adesão ≥ 80%
+      <div style="padding: 0.6vw 0.9vw; background: rgba(var(--teal-rgb), 0.06); border-left: 3px solid var(--teal); border-radius: 0.3vw;">
+        <p style="font-family: var(--font-sans); font-size: 0.92vw; font-weight: 700; color: var(--navy); margin: 0; line-height: 1.3;">
+          Falha de AR com adesão <strong style="color: var(--teal);">≥80%</strong>
         </p>
+        <p style="font-family: var(--font-sans); font-size: 0.62vw; color: var(--muted); margin: 0.15vw 0 0 0;">Nova fratura ou DMO reduz >5%</p>
       </div>
     </div>
 
     <!-- RIGHT: Why — evidence head-to-head + NNTs -->
-    <div style="display: flex; flex-direction: column; gap: 0.4vw; justify-content: space-between">
+    <div style="display: flex; flex-direction: column; gap: 0.7vw;">
       <p
         style="
           font-family: var(--font-sans);
@@ -287,104 +115,51 @@
       </p>
 
       <!-- VERO -->
-      <div
-        style="background: var(--white); border: 1px solid var(--border); border-radius: 0.4vw; padding: 0.5vw 0.7vw"
-      >
-        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.12vw">
-          <span style="font-family: var(--font-sans); font-size: 0.75vw; font-weight: 800; color: var(--navy)">
-            VERO
-          </span>
-          <span style="font-family: var(--font-sans); font-size: 0.55vw; color: var(--muted)">
-            Kendler · Lancet 2018
-          </span>
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 0.4vw; padding: 0.7vw 0.9vw;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div>
+            <p style="font-family: var(--font-sans); font-size: 0.9vw; font-weight: 800; color: var(--navy); margin: 0;">VERO <span style="font-weight: 500; font-size: 0.65vw; color: var(--muted);">Lancet 2018</span></p>
+            <p style="font-family: var(--font-sans); font-size: 0.7vw; color: var(--muted); margin: 0.15vw 0 0 0;">Teriparatida vs risedronato · n=1.360</p>
+            <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0.1vw 0 0 0;">Vertebral: <strong>5,4% vs 12,0%</strong> (RR 0,44)</p>
+          </div>
+          <div style="text-align: right; padding-left: 0.5vw;">
+            <p style="font-family: var(--font-serif); font-size: 2vw; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1;">15</p>
+            <p style="font-family: var(--font-sans); font-size: 0.6vw; font-weight: 700; color: var(--navy); margin: 0;">NNT <span style="font-weight: 500;">(IC 12–26)</span></p>
+            <p style="font-family: var(--font-sans); font-size: 0.55vw; color: var(--muted); margin: 0;">em 24 meses</p>
+          </div>
         </div>
-        <p style="font-family: var(--font-sans); font-size: 0.6vw; color: var(--muted); margin: 0 0 0.1vw 0">
-          Teriparatida vs risedronato · n=1.360 · 24m
-        </p>
-        <p
-          style="
-            font-family: var(--font-sans);
-            font-size: 0.78vw;
-            font-weight: 700;
-            color: var(--gold-dark);
-            margin: 0 0 0.12vw 0;
-          "
-        >
-          Vertebral:
-          <strong>5,4% vs 12,0%</strong>
-          (RR 0,44; IC 95% 0,29–0,68)
-        </p>
-        <p style="font-family: var(--font-sans); font-size: 0.6vw; color: var(--navy); margin: 0; line-height: 1.3">
-          Basal 12,0% → 5,4% · ARR 6,6% ·
-          <strong style="color: var(--gold-dark)">NNT 15 (IC 95% 12–26)</strong>
-          em 24 m
-        </p>
       </div>
 
       <!-- FRAME -->
-      <div
-        style="background: var(--white); border: 1px solid var(--border); border-radius: 0.4vw; padding: 0.5vw 0.7vw"
-      >
-        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.12vw">
-          <span style="font-family: var(--font-sans); font-size: 0.75vw; font-weight: 800; color: var(--navy)">
-            FRAME
-          </span>
-          <span style="font-family: var(--font-sans); font-size: 0.55vw; color: var(--muted)">Cosman · NEJM 2016</span>
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 0.4vw; padding: 0.7vw 0.9vw;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div>
+            <p style="font-family: var(--font-sans); font-size: 0.9vw; font-weight: 800; color: var(--navy); margin: 0;">FRAME <span style="font-weight: 500; font-size: 0.65vw; color: var(--muted);">NEJM 2016</span></p>
+            <p style="font-family: var(--font-sans); font-size: 0.7vw; color: var(--muted); margin: 0.15vw 0 0 0;">Romosozumabe vs placebo · n=7.180</p>
+            <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0.1vw 0 0 0;">Vertebral: <strong>0,5% vs 1,8%</strong> (RR 0,27)</p>
+          </div>
+          <div style="text-align: right; padding-left: 0.5vw;">
+            <p style="font-family: var(--font-serif); font-size: 2vw; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1;">77</p>
+            <p style="font-family: var(--font-sans); font-size: 0.6vw; font-weight: 700; color: var(--navy); margin: 0;">NNT <span style="font-weight: 500;">(IC 66–105)</span></p>
+            <p style="font-family: var(--font-sans); font-size: 0.55vw; color: var(--muted); margin: 0;">em 12 meses</p>
+          </div>
         </div>
-        <p style="font-family: var(--font-sans); font-size: 0.6vw; color: var(--muted); margin: 0 0 0.1vw 0">
-          Romosozumabe vs placebo · n=7.180 · 12m
-        </p>
-        <p
-          style="
-            font-family: var(--font-sans);
-            font-size: 0.78vw;
-            font-weight: 700;
-            color: var(--gold-dark);
-            margin: 0 0 0.12vw 0;
-          "
-        >
-          Vertebral:
-          <strong>0,5% vs 1,8%</strong>
-          (RR 0,27; IC 95% 0,16–0,47)
-        </p>
-        <p style="font-family: var(--font-sans); font-size: 0.6vw; color: var(--navy); margin: 0; line-height: 1.3">
-          Basal 1,8% → 0,5% · ARR 1,3% ·
-          <strong style="color: var(--gold-dark)">NNT 77 (IC 95% 66–105)</strong>
-          em 12 m
-        </p>
       </div>
 
       <!-- ARCH -->
-      <div
-        style="background: var(--white); border: 1px solid var(--border); border-radius: 0.4vw; padding: 0.5vw 0.7vw"
-      >
-        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.12vw">
-          <span style="font-family: var(--font-sans); font-size: 0.75vw; font-weight: 800; color: var(--navy)">
-            ARCH
-          </span>
-          <span style="font-family: var(--font-sans); font-size: 0.55vw; color: var(--muted)">Saag · NEJM 2017</span>
+      <div style="background: var(--white); border: 1px solid var(--border); border-radius: 0.4vw; padding: 0.7vw 0.9vw;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <div>
+            <p style="font-family: var(--font-sans); font-size: 0.9vw; font-weight: 800; color: var(--navy); margin: 0;">ARCH <span style="font-weight: 500; font-size: 0.65vw; color: var(--muted);">NEJM 2017</span></p>
+            <p style="font-family: var(--font-sans); font-size: 0.7vw; color: var(--muted); margin: 0.15vw 0 0 0;">Romo→Alen vs Alen · n=4.093</p>
+            <p style="font-family: var(--font-sans); font-size: 0.72vw; color: var(--navy); margin: 0.1vw 0 0 0;">Vertebral: <strong>6,2% vs 11,9%</strong> (RR 0,52)</p>
+          </div>
+          <div style="text-align: right; padding-left: 0.5vw;">
+            <p style="font-family: var(--font-serif); font-size: 2vw; font-weight: 800; color: var(--gold-dark); margin: 0; line-height: 1;">18</p>
+            <p style="font-family: var(--font-sans); font-size: 0.6vw; font-weight: 700; color: var(--navy); margin: 0;">NNT <span style="font-weight: 500;">(IC 13–25)</span></p>
+            <p style="font-family: var(--font-sans); font-size: 0.55vw; color: var(--muted); margin: 0;">em 24 meses</p>
+          </div>
         </div>
-        <p style="font-family: var(--font-sans); font-size: 0.6vw; color: var(--muted); margin: 0 0 0.1vw 0">
-          Romo → alendronato vs alendronato · n=4.093 · 24m
-        </p>
-        <p
-          style="
-            font-family: var(--font-sans);
-            font-size: 0.78vw;
-            font-weight: 700;
-            color: var(--gold-dark);
-            margin: 0 0 0.12vw 0;
-          "
-        >
-          Vertebral:
-          <strong>6,2% vs 11,9%</strong>
-          (RR 0,52; p &lt; 0,001)
-        </p>
-        <p style="font-family: var(--font-sans); font-size: 0.6vw; color: var(--navy); margin: 0; line-height: 1.3">
-          Basal 11,9% → 6,2% · ARR 5,7% ·
-          <strong style="color: var(--gold-dark)">NNT 18 (IC 95% 13–25)</strong>
-          em 24 m
-        </p>
       </div>
 
       <!-- Bridge to next slide -->
@@ -393,7 +168,7 @@
           background: rgba(var(--gold-rgb), 0.05);
           border-left: 0.2vw solid var(--gold-dark);
           border-radius: 0.3vw;
-          padding: 0.45vw 0.7vw;
+          padding: 0.6vw 0.9vw;
         "
       >
         <p
@@ -414,7 +189,10 @@
       </div>
     </div>
   </div>
+  </div><!-- /TOP CONTENT GROUP -->
 
+  <!-- BOTTOM GROUP -->
+  <div>
   <!-- Take-home -->
   <div
     style="
@@ -464,5 +242,6 @@
     Kendler DL et al. Lancet 2018;391:230-40 (VERO). Cosman F et al. NEJM 2016;375:1532-43 (FRAME). Saag KG et al. NEJM
     2017;377:1417-27 (ARCH). Cosman F et al. JBMR 2024;39(10):1393-1405.
   </p>
+  </div><!-- /BOTTOM GROUP -->
   </div>
 </section>

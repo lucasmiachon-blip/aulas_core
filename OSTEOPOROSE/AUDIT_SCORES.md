@@ -5,7 +5,8 @@
 
 | Slide | Posição | Score | Notas | Status |
 |-------|---------|-------|-------|--------|
-| S24 | 16 | 7.5/10 | 3 boxes texto + bar chart dominante, dados Tier 1 | Pendente ajuste fino |
+| S24 | 16 | 7.5/10 | 3 boxes texto + bar chart dominante, dados Tier 1 | Commitado |
+| S25 | 17 | 7.5/10 | Anabolic first, NNT+IC+tempo, critérios simplificados | Em revisão |
 
 ## Próximos
 - S25 (posição 17)
